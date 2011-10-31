@@ -39,5 +39,4 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'steak'
-  gem "annotate", "~> 2.4.0"
 end
