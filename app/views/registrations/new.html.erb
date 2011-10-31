@@ -2,51 +2,7 @@
 
 <div class="container">
   <div class="register-box">
-    
-    <%= semantic_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form| %>
-      <%= devise_error_messages! %>
-      <%= form.inputs :basic do %>
-        <%= form.input :email %>
-        <%= form.input :password %>
-        <%= form.input :password_confirmation %>
-        <%= form.input :role, :as => :hidden, :value => params[:role] %>
-      <% end %>
-      <%= form.buttons do %>
-        <%= form.commit_button %>
-      <% end %>
-    <% end %>
-    
-    <form>
-      <fieldset>
-        <legend>Register</legend>
-        <div class="clearfix">
-          <label for="xlInput">Email</label>
-          <div class="input">
-            <input class="xlarge" id="xlInput" name="xlInput" size="30" type="text" />
-          </div>
-        </div><!-- /clearfix -->
-        
-        <div class="clearfix">
-          <label for="xlInput">Password</label>
-          <div class="input">
-            <input class="xlarge" id="xlInput" name="xlInput" size="30" type="password" />
-          </div>
-        </div><!-- /clearfix -->
-        
-        <div class="clearfix">
-          <label for="xlInput">Password Confirmation</label>
-          <div class="input">
-            <input class="xlarge" id="xlInput" name="xlInput" size="30" type="password" />
-          </div>
-        </div><!-- /clearfix -->
-        
-        <div class="actions">
-          <input type="submit" class="btn" value="Register">
-        </div>
-        
-      </fieldset>
-    </form>
-    
+    <%= render :partial => 'form', :locals => {:resource => resource, :resource_name => resource_name, :url => registration_path(resource_name)} %>
   </div>
 </div>
 <%= link_to 'Registro como alumno', new_student_user_registration_path %>

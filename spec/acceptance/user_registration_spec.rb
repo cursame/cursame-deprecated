@@ -11,7 +11,7 @@ feature 'User registration', %q{
   end
 
   scenario 'signing up as student' do
-    visit new_student_user_registration_url(:subdomain => @network.subdomain)
+    visit root_url(:subdomain => @network.subdomain)
     fill_in 'student_user[email]', :with => 'user@example.com'
     fill_in 'student_user[password]', :with => 'password'
     fill_in 'student_user[password_confirmation]', :with => 'password'
