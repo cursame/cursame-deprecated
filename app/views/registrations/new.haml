@@ -1,12 +1,2 @@
-= debug params
-= semantic_form_for resource, :as => resource_name, :url => registration_path(resource_name) do |form|
-  = devise_error_messages!
-  = form.inputs :basic do
-    = form.input :email
-    = form.input :password
-    = form.input :password_confirmation
-
-  = form.buttons do
-    = form.commit_button :button_html => {:id => :register}
-
+= render :partial => 'form', :locals => {:resource => resource, :resource_name => resource_name, :url => registration_path(resource_name)}
 = render :partial => "devise/shared/links"
