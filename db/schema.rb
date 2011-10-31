@@ -11,18 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031200055) do
+ActiveRecord::Schema.define(:version => 20111031215119) do
 
   create_table "networks", :force => true do |t|
-    t.string   "subodmain"
+    t.string   "subdomain"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "networks_users", :id => false, :force => true do |t|
+    t.integer "network_id"
+    t.integer "user_id"
+  end
+
+  add_index "networks_users", ["network_id"], :name => "index_networks_users_on_network_id"
+  add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
+
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"

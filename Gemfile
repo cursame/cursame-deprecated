@@ -22,8 +22,7 @@ end
 
 group :test do
   # gem 'turn', :require => false
-  gem 'shoulda'
-  gem 'ffaker'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
 end
@@ -35,8 +34,10 @@ group :staging, :production do
 end
 
 group :development, :test do
+  gem 'ffaker'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'steak'
+  gem 'spork'
 end
