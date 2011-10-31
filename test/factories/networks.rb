@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :network do
-      subodmain "MyString"
-      name "MyString"
-    end
+    subdomain { Faker::Lorem.words(1).join } 
+    name { Faker::Lorem.words(3).join(' ') }
+  end
 end
