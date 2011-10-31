@@ -44,5 +44,12 @@ module Cursame
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    config.generators do |gen|
+      gen.orm :active_record
+      gen.template_engine :haml
+      gen.test_framework :rspec, :fixture_replacement => :factory_girl   
+      gen.helper = false
+    end
   end
 end
