@@ -10,7 +10,6 @@ gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'
 gem 'jquery-rails'
-gem 'sass-rails'#, '>=3.1.0.rc.4'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +25,7 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda'
   gem 'ffaker'
+  gem 'capybara'
 end
 
 group :staging, :production do
