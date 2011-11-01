@@ -13,12 +13,29 @@
       </div>
       <div class="span10">
         <h2><%= t('.title') %></h2>
-
         <ul>
           <% @courses.each do |course| %>
             <li class="course">
             <%= course.name %><br/>
             <%= course.description %>
+
+            <p style="color:red;">
+            <% enrollment = current_user.enrollments.where(:course_id => course).first %>
+            <% if enrollment.pending? %>
+              <em><%= t('.join_requested') %></em>
+
+            <% elsif enrollment.accepted? %>
+              <em><%= t('.join_rejected') %></em>
+              <%= link_to t(".request_join_again"), join_course_path(course), :method => :post %>
+
+            <% elsif enrollment.accepted? %>
+              <em><%= t('.join_accepted') %></em>
+
+            <% else %>
+              <%= link_to t(".request_join"), join_course_path(course), :method => :post %>
+            <% end %>
+            </p>
+
             </li>
           <% end %>
         </ul>

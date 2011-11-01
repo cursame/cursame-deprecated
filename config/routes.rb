@@ -6,7 +6,9 @@ Cursame::Application.routes.draw do
     opts.devise_for :users, :path => 'alumnos',  :as => :student, :conditions => {:role => :student}
   end
 
-  resources :courses
+  resources :courses do
+    post :join, :on => :member
+  end
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
 

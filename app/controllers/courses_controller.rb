@@ -31,6 +31,16 @@ class CoursesController < ApplicationController
   end
 
 
+  def join
+    @course = current_network.courses.find params[:id]
+
+    unless current_user.enrollments.where(:course_id => @course).exists?
+      current_user.enrollments.create(:course => @course, :state => 'pending')
+    end
+
+    redirect_to course_path(@course), :notice => t('flash.course_join_requested')
+  end
+
   private
 
   def require_network
