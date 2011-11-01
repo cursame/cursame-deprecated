@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031215119) do
+ActiveRecord::Schema.define(:version => 20111101015133) do
+
+  create_table "assignations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.boolean  "admin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "assignations", ["course_id"], :name => "index_assignations_on_course_id"
+  add_index "assignations", ["user_id"], :name => "index_assignations_on_user_id"
+
+  create_table "courses", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "finish_date"
+    t.boolean  "public"
+    t.string   "reference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "networks", :force => true do |t|
     t.string   "subdomain"
@@ -30,7 +52,6 @@ ActiveRecord::Schema.define(:version => 20111031215119) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"

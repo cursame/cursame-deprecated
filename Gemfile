@@ -40,4 +40,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'steak'
   gem 'spork'
+  gem 'launchy'
 end

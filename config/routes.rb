@@ -6,5 +6,7 @@ Cursame::Application.routes.draw do
     opts.devise_for :users, :path => 'alumnos',  :as => :student, :conditions => {:role => :student}
   end
 
+  resources :courses
+
   root :to => "home#index"
 end
