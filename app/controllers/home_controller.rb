@@ -6,6 +6,6 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @courses = current_user.teacher? ? current_user.lectures : nil
+    @courses = current_user.teacher? ? current_user.lectures : []
   end
 end
