@@ -1,2 +1,24 @@
-<h1>Courses#index</h1>
-<p>Find me in app/views/courses/index.html.erb</p>
+<% content_for :head do%>
+  <style type="text/css">
+    body {
+    	margin-top: 40px;
+    }
+  </style>
+<% end %>
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span3">
+        <p>Something here</p>
+      </div>
+      <div class="span10">
+      <h1>Courses#index</h1>
+      <p>Find me in app/views/courses/index.html.erb</p>
+      </div>
+      <div class="span3" style="margin:0;">
+        <p>Something else here</p>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>

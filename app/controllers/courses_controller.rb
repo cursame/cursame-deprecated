@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @course = current_network.courses.find(params[:id]) 
   end
 
 end

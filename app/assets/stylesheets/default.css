@@ -33,6 +33,18 @@ selected: #e0f5f8
 	margin-top: 100px;
 }
 
+.content .span3  {
+	width: 180px;
+}
+
+.content .span10 {
+	border-left: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	margin-left: 0;
+	padding-left: 20px;
+	width: 550px;
+}
+
 /* @end */
 
 /* @group Standard */
