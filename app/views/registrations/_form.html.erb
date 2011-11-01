@@ -1,10 +1,12 @@
-<%= semantic_form_for resource, :as => resource_name, :url => url do |form| %>
-  <%= form.inputs :basic do %>
-    <%= form.input :email %>
-    <%= form.input :password %>
-    <%= form.input :password_confirmation %>
+<div class="register-box">
+  <%= semantic_form_for resource, :as => resource_name, :url => url do |form| %>
+    <%= form.inputs :basic do %>
+      <%= form.input :email, :input_html => { :placeholder => "Username" } %>
+      <%= form.input :password, :input_html => { :placeholder => "Password" } %>
+      <%= form.input :password_confirmation, :input_html => { :placeholder => "password Confirmation" } %>
+    <% end %>
+    <%= form.buttons do %>
+      <%= form.commit_button :button_html => {:id => :register, :class => "btn" } %>
+    <% end %>
   <% end %>
-  <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :register} %>
-  <% end %>
-<% end %>
+</div>

@@ -1,7 +1,71 @@
+/* @group Default Colors */
+
+/*
+Colors:
+
+General text: #9c9c9c
+header: #00282e
+Links:#00afc9
+Darker Text: #474747
+selected: #e0f5f8
+*/
+
+/* @end */
+
+/* @group Custom Elements */
+
+.topbar .fill{
+	background-color: #00282e;
+}
+
+.topbar .brand {
+  float: left;
+  display: block;
+  padding: 8px 20px 8px;
+  margin-left: -20px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1;
+}
+
+.top-margin-100{
+	margin-top: 100px;
+}
+
+/* @end */
+
 /* @group Standard */
 
+/* @group Register Forms */
+
 .register-box {
-	margin: 100px 200px 0;
+	padding: 20px;
+	background-color: #eaeaea;
 }
+
+.register-box label {
+	display: none;
+}
+
+.register-box form lo {
+	
+}
+
+.register-box form lo li {
+	list-style-type: none;
+}
+
+.inputs ol, .buttons ol {
+	margin: 0;	
+}
+
+.inputs li, .buttons li {
+	list-style-type: none;
+}
+
+
+/* @end */
+
 
 /* @end */

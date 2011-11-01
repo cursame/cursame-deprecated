@@ -1,0 +1,11 @@
+es:
+  forms: 
+    email: 'Email'
+    password: 'Contraseña'
+    password_conf: 'Confirmar Contraseña'
+    sign_in_btn: 'Iniciar Sesión'
+    register_btn: 'Regístrate'
+    register_slogun: '¡Regístrate, es gratis!'
+    email_confirmation_text: 'Se enviará un mail de confirmación'
+    remember_me: 'Recuerda mis datos'
+    lost_password_text: '¿La olvidaste?'
