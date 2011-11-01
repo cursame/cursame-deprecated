@@ -1,7 +1,10 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_teacher!, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_network
+
 
   def index
+    @courses = current_network.courses
   end
 
   def new
@@ -11,7 +14,6 @@ class CoursesController < ApplicationController
   def create
     @course = current_network.courses.build params[:course]
     @course.assignations.build(:user => current_user, :admin => true)
-    puts request.host
 
     if @course.save
       redirect_to @course, :notice => t('flash.course_created')
@@ -25,5 +27,12 @@ class CoursesController < ApplicationController
   end
 
   def show
+  end
+
+
+  private
+
+  def require_network
+    redirect_to root_path unless current_network
   end
 end

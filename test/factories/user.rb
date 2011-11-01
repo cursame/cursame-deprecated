@@ -13,4 +13,7 @@ FactoryGirl.define do
   factory :teacher, :parent => :confirmed_user do
     role 'teacher'
   end
+
+  factory :student, :parent => :confirmed_user do
+  end
 end

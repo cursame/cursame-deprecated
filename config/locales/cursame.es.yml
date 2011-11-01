@@ -32,3 +32,9 @@ es:
       actions:
         update: Actualizar
         create: Crear
+
+
+
+  courses:
+    index:
+      title: Todos los cursos disponibles
