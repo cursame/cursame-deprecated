@@ -47,7 +47,6 @@ module Cursame
 
     config.generators do |gen|
       gen.orm :active_record
-      gen.template_engine :haml
       gen.test_framework :rspec, :fixture_replacement => :factory_girl   
       gen.helper = false
     end

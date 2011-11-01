@@ -2,10 +2,10 @@
   <div class="fill">
     <div class="container">
       <%= link_to(image_tag("logo.png"), root_url, :class => "brand") %>
-      <form action="" class="pull-right">
-        <input class="input-small" type="text" placeholder="Username">
-        <input class="input-small" type="password" placeholder="Password">
-        <button class="btn" type="submit">Sign in</button>
+      <form action="<%= user_session_path %>" class="pull-right" method="post">
+        <input class="input-small" name="user[email]" type="text" placeholder="Username">
+        <input class="input-small" name="user[password]" type="password" placeholder="Password">
+        <button class="btn" type="submit" id="sign_in">Sign in</button>
       </form>
     </div>
   </div>

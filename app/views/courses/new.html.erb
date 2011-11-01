@@ -1,0 +1,16 @@
+<h1>Crear Curso Nuevo</h1>
+
+<%= semantic_form_for @course do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :start_date %>
+    <%= form.input :finish_date %>
+    <%= form.input :reference %>
+    <%= form.input :public %>
+  <% end %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+<% end %>
