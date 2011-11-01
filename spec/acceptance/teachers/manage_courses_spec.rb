@@ -6,10 +6,12 @@ feature 'Manage courses', %q{
   I want to create and manage courses
 } do
 
-  scenario 'creating a course' do
-    teacher = Factory(:teacher)
+  background do
+    @teacher = Factory(:teacher)
+    sign_in_with @teacher
+  end
 
-    sign_in_with teacher
+  scenario 'creating a course' do
     visit new_course_path
     fill_in 'course[name]', :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
@@ -36,9 +38,19 @@ feature 'Manage courses', %q{
     course.reference.should == 'classroom A'
     course.public.should be_true
 
-    course.teachers.should include(teacher)
-    course.teachers.where('assignations.admin' => true).should include(teacher)
+    course.teachers.should include(@teacher)
+    course.teachers.where('assignations.admin' => true).should include(@teacher)
 
     page.should have_notice I18n.t('flash.course_created')
+  end
+
+
+  scenario 'view my courses' do
+    courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
+    (1..2).map { Factory(:course) }
+
+    visit dashboard_path
+
+    page.should have_css('.course', :count => 3)
   end
 end

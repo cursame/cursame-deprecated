@@ -2,11 +2,11 @@
 
 FactoryGirl.define do
   factory :course do
-      name "MyString"
-      description "MyString"
-      start_date "2011-10-31"
-      finish_date "2011-10-31"
+      name { Faker::Lorem.words(5).join(' ') }
+      description { Faker::Lorem.paragraph(2) }
+      start_date { Time.now }
+      finish_date { 1.month.from_now }
       public false
-      group "MyString"
+      reference "MyString"
     end
 end

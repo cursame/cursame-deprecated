@@ -11,4 +11,9 @@ class User < ActiveRecord::Base
 
   has_many :assignations
   has_many :lectures, :through => :assignations, :class_name => 'Course', :source => :course
+
+
+  def teacher?
+    role == 'teacher'
+  end
 end
