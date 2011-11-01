@@ -41,4 +41,6 @@ group :development, :test do
   gem 'steak'
   gem 'spork'
   gem 'launchy'
+  # gem "capybara-webkit"
+  gem "selenium-webdriver"
 end

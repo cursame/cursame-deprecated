@@ -1,0 +1,23 @@
+es:
+  forms: 
+    email: 'Email'
+    password: 'Contraseña'
+    password_confirmation: 'Confirmar Contraseña'
+    sign_in_btn: 'Iniciar Sesión'
+    register_btn: 'Regístrate'
+    register_slogun: '¡Regístrate, es gratis!'
+    email_confirmation_text: 'Se enviará un mail de confirmación'
+    remember_me: 'Recuerdame'
+    lost_password_text: '¿Olvidaste tu contraseña?'
+    
+  footer:
+    teacher_register: 'Registro como maestro'
+        
+  flash:
+    course_created: Curso creado
+
+  activerecord:
+    models:
+      course:
+        one: Curso
+        many: Cursos
