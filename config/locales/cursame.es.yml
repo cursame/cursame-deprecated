@@ -2,23 +2,16 @@ es:
   forms: 
     email: 'Email'
     password: 'Contraseña'
-    password_conf: 'Confirmar Contraseña'
+    password_confirmation: 'Confirmar Contraseña'
     sign_in_btn: 'Iniciar Sesión'
     register_btn: 'Regístrate'
     register_slogun: '¡Regístrate, es gratis!'
     email_confirmation_text: 'Se enviará un mail de confirmación'
-    remember_me: 'Recuerda mis datos'
-    lost_password_text: '¿La olvidaste?'
-
-  errors:
-    messages:
-      expired: "ha expirado, por favor pida uno nuevo"
-      not_found: "no encontrado"
-      already_confirmed: "ya está confirmada, por favor intente ingresar"
-      not_locked: "no está bloqueada"
-      not_saved:
-        one: "1 error evitó que este %{resource} fuera guardado:"
-        other: "%{count} errores evitaron que este %{resource} fuera guardado:"
+    remember_me: 'Recuerdame'
+    lost_password_text: '¿Olvidaste tu contraseña?'
+    
+  footer:
+    teacher_register: 'Registro como maestro'
         
   flash:
     course_created: Curso creado

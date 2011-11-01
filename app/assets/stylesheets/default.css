@@ -14,10 +14,6 @@ selected: #e0f5f8
 
 /* @group Custom Elements */
 
-body {
-	margin-top: 60px;
-}
-
 .topbar .fill{
 	background-color: #00282e;
 }
@@ -44,8 +40,12 @@ body {
 /* @group Register Forms */
 
 .register-box {
-	padding: 20px;
-	background-color: #eaeaea;
+	padding: 30px;
+	background: transparent url(login-bg.jpg) no-repeat;
+}
+
+.register-box h1 {
+	color: #fffeff;
 }
 
 .register-box label {
@@ -61,8 +61,22 @@ body {
 	margin-bottom: 10px;
 }
 
-fieldset {
+fieldset.textbox, fieldset.checkbox {
 	margin: 0;
+	padding: 0;
+}
+
+fieldset.checkbox label {
+	padding-top: 3px;
+	font-size: 11px;
+	color: #BFBFBF;
+	width: 80px;
+}
+
+form.pull-right p {
+	line-height: 24px;
+	font-size: 11px;
+	padding-left: 116px;
 }
 
 /* @end */

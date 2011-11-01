@@ -1,3 +1,11 @@
+<% content_for :head do %>
+  <style type="text/css">
+    body {
+    	margin-top: 100px;
+    }
+  </style>
+<% end %>
+
 <% content_for :header do %>
   <%= render :partial => "shared/topbar_with_login" %>
 <% end %>
@@ -11,6 +19,5 @@
       <%= render :partial => 'registrations/form', :locals => {:resource => @user, :resource_name => 'student_user', :url => student_user_registration_path} %>
     </div>
   </div>
+  <%= render :partial => "shared/footer" %>
 </div>
-
-<%= render :partial => "shared/footer" %>

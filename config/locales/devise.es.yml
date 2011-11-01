@@ -1,4 +1,14 @@
 es:
+  errors:
+     messages:
+       expired: "ha expirado, por favor pida uno nuevo"
+       not_found: "no encontrado"
+       already_confirmed: "ya está confirmada, por favor intente ingresar"
+       not_locked: "no está bloqueada"
+       not_saved:
+         one: "1 error evitó que este %{resource} fuera guardado:"
+         other: "%{count} errores evitaron que este %{resource} fuera guardado:"
+
   devise:
     failure:
       already_authenticated: 'Ya estás dentro del sistema.'
