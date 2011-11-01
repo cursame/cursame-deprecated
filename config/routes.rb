@@ -8,5 +8,7 @@ Cursame::Application.routes.draw do
 
   resources :courses
 
+  match '/dashboard', :to => 'home#dashboard', :as => :dashboard
+
   root :to => "home#index"
 end

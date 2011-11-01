@@ -11,3 +11,7 @@ en:
       course:
         one: Course
         many: Courses
+
+  home:
+    dashboard:
+      my_courses: My Courses
