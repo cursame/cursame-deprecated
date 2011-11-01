@@ -12,7 +12,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield(:header).empty? ? render(:partial => 'shared/topbar') : yield(:header) %>
+  <%= content_for?(:header) ? yield(:header) : render(:partial => 'shared/topbar') %>
   <% flash.each do |key, val| %>
     <div class="flash <%= key %>"><%= val %></div>
   <% end %>
