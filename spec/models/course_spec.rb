@@ -11,7 +11,7 @@ describe Course do
     let(:teacher) { Factory(:teacher) }
 
     it 'should build and save asignation' do
-      course = Course.new
+      course = Factory.build(:course)
       course.assignations.build(:user => teacher, :admin => true)
       lambda { course.save }.should change(Assignation, :count).by(1)
     end

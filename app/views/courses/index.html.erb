@@ -12,8 +12,16 @@
         <p>Something here</p>
       </div>
       <div class="span10">
-      <h1>Courses#index</h1>
-      <p>Find me in app/views/courses/index.html.erb</p>
+        <h2><%= t('.title') %></h2>
+
+        <ul>
+          <% @courses.each do |course| %>
+            <li class="course">
+            <%= course.name %><br/>
+            <%= course.description %>
+            </li>
+          <% end %>
+        </ul>
       </div>
       <div class="span3" style="margin:0;">
         <p>Something else here</p>
