@@ -9,10 +9,10 @@ feature 'Manage courses', %q{
   background do
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
+    sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
   scenario 'creating a course' do
-    sign_in_with @teacher, :subdomain => @network.subdomain
     visit new_course_url(:subdomain => @network.subdomain)
     fill_in 'course[name]',        :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
@@ -49,7 +49,7 @@ feature 'Manage courses', %q{
   scenario 'view my courses' do
     courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
     (1..2).map { Factory(:course) }
-    visit dashboard_path
+    visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.course', :count => 3)
   end
 end
