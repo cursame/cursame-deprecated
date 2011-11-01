@@ -14,6 +14,10 @@ selected: #e0f5f8
 
 /* @group Custom Elements */
 
+body {
+	margin-top: 60px;
+}
+
 .topbar .fill{
 	background-color: #00282e;
 }
@@ -48,24 +52,22 @@ selected: #e0f5f8
 	display: none;
 }
 
-.register-box form lo {
-	
-}
-
-.register-box form lo li {
-	list-style-type: none;
-}
-
 .inputs ol, .buttons ol {
 	margin: 0;	
 }
 
 .inputs li, .buttons li {
 	list-style-type: none;
+	margin-bottom: 10px;
 }
 
+fieldset {
+	margin: 0;
+}
 
 /* @end */
 
-
+.last {
+	margin: 0;
+}
 /* @end */
