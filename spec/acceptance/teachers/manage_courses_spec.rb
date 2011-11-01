@@ -11,18 +11,18 @@ feature 'Manage courses', %q{
     sign_in_with @teacher
   end
 
-  scenario 'creating a course' do
+  scenario 'creating a course', :selenium => true do
     visit new_course_path
-    fill_in 'course[name]', :with => 'Introduction to algebra'
+    fill_in 'course[name]',        :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
 
-    select '2011', :from => 'course[start_date(1i)]'
+    select '2011',    :from => 'course[start_date(1i)]'
     select 'January', :from => 'course[start_date(2i)]'
-    select '20', :from => 'course[start_date(3i)]'
+    select '20',      :from => 'course[start_date(3i)]'
 
-    select '2011', :from => 'course[finish_date(1i)]'
-    select 'May', :from => 'course[finish_date(2i)]'
-    select '29', :from => 'course[finish_date(3i)]'
+    select '2011',    :from => 'course[finish_date(1i)]'
+    select 'May',     :from => 'course[finish_date(2i)]'
+    select '29',      :from => 'course[finish_date(3i)]'
 
     fill_in 'course[reference]', :with => 'classroom A'
     check 'course[public]'
@@ -44,13 +44,11 @@ feature 'Manage courses', %q{
     page.should have_notice I18n.t('flash.course_created')
   end
 
-
   scenario 'view my courses' do
     courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
     (1..2).map { Factory(:course) }
 
     visit dashboard_path
-
     page.should have_css('.course', :count => 3)
   end
 end
