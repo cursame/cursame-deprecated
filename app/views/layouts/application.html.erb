@@ -9,15 +9,14 @@
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
-  
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<% flash.each do |key, val| %>
-  <div class="flash <%= key %>"><%= val %></div>
-<% end %>
-<%= yield %>
+  <%= yield(:header).empty? ? render(:partial => 'shared/topbar') : yield(:header) %>
+  <% flash.each do |key, val| %>
+    <div class="flash <%= key %>"><%= val %></div>
+  <% end %>
+  <%= yield %>
 
 </body>
 </html>
