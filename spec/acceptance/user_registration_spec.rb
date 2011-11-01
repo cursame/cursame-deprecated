@@ -35,4 +35,9 @@ feature 'User registration', %q{
     user.networks.should include @network
     user.role.should == 'teacher'
   end
+
+  scenario 'signing in' do
+    sign_in_with Factory(:confirmed_user)
+    page.should have_css '.flash.notice', :text => 'Signed in successfully.'
+  end
 end
