@@ -38,6 +38,6 @@ feature 'User registration', %q{
 
   scenario 'signing in' do
     sign_in_with Factory(:confirmed_user)
-    page.should have_css '.flash.notice', :text => 'Signed in successfully.'
+    page.should have_css '.flash.notice', :text => 'Ingreso exitoso'
   end
 end

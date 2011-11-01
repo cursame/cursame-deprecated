@@ -42,5 +42,5 @@ group :development, :test do
   gem 'spork'
   gem 'launchy'
   # gem "capybara-webkit"
-  gem "selenium-webdriver"
+  # gem "selenium-webdriver"
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101015133) do
+ActiveRecord::Schema.define(:version => 20111101183309) do
 
   create_table "assignations", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(:version => 20111101015133) do
   add_index "assignations", ["course_id"], :name => "index_assignations_on_course_id"
   add_index "assignations", ["user_id"], :name => "index_assignations_on_user_id"
 
+  create_table "course_assets", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "file"
+    t.string   "content_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "courses", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -33,7 +41,10 @@ ActiveRecord::Schema.define(:version => 20111101015133) do
     t.string   "reference"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "network_id"
   end
+
+  add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
 
   create_table "networks", :force => true do |t|
     t.string   "subdomain"

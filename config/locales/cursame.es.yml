@@ -19,7 +19,6 @@ es:
       not_saved:
         one: "1 error evitó que este %{resource} fuera guardado:"
         other: "%{count} errores evitaron que este %{resource} fuera guardado:"
-
         
   flash:
     course_created: Curso creado
@@ -29,3 +28,14 @@ es:
       course:
         one: Curso
         many: Cursos
+    attributes:
+      course:
+        name: Nombre
+        description: Descripción
+        start_date: Fecha de inicio
+        finish_date: Fecha de término
+
+    formtastic:
+      actions:
+        update: Actualizar
+        create: Crear

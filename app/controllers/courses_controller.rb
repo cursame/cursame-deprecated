@@ -7,8 +7,10 @@ class CoursesController < ApplicationController
   end
 
   def create
-    @course = Course.new(params[:course])
+    @course = current_network.courses.build params[:course]
     @course.assignations.build(:user => current_user, :admin => true)
+    puts current_user.inspect
+    puts @course.assignations.inspect
 
     if @course.save
       redirect_to @course, :notice => t('flash.course_created')
