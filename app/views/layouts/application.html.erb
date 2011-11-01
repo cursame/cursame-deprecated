@@ -10,6 +10,8 @@
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <%= csrf_meta_tags %>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <%= yield :head %>
 </head>
 <body>
   <%= content_for?(:header) ? yield(:header) : render(:partial => 'shared/topbar') %>

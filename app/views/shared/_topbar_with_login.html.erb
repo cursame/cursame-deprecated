@@ -1,11 +1,18 @@
 <div class="topbar">
   <div class="fill">
     <div class="container">
-      <%= link_to(image_tag("logo.png"), root_url, :class => "brand") %>
+      <%= link_to(image_tag("logo.png"), root_url, :class => "brand", :style => "padding-top: 16px;") %>
       <form action="<%= user_session_path %>" class="pull-right" method="post">
-        <input class="input-small" name="user[email]" type="text" placeholder="Username">
-        <input class="input-small" name="user[password]" type="password" placeholder="Password">
-        <button class="btn" type="submit" id="sign_in">Sign in</button>
+        <fieldset class="textbox">
+          <input class="input-small" name="user[email]" type="text" placeholder="<%= t('forms.email') %>">
+          <input class="input-small" name="user[password]" type="password" placeholder="<%= t('forms.password') %>">
+          <button class="btn" type="submit" id="sign_in"><%= t('forms.sign_in_btn') %></button>
+        </fieldset>
+        <fieldset class="checkbox">
+          <input name="user[remember_me]" type="hidden" value="0" />
+          <label for="user_remember_me"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <%= t('forms.remember_me')%></label>
+          <p><%= link_to t('forms.lost_password_text'), new_user_password_path %></p>
+        </fieldset>
       </form>
     </div>
   </div>
