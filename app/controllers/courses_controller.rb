@@ -1,4 +1,6 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_teacher!, :only => [:new, :create, :edit, :update, :destroy]
+
   def index
   end
 
@@ -19,9 +21,9 @@ class CoursesController < ApplicationController
   end
 
   def edit
+    @course = current_user.manageable_lectures.find params[:id]
   end
 
   def show
   end
-
 end

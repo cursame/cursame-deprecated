@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :assignations
   has_many :lectures, :through => :assignations, :class_name => 'Course', :source => :course
-
+  has_many :manageable_lectures, :through => :assignations, :class_name => 'Course', :source => :course, :conditions => {'assignations.admin' => true}
 
   def teacher?
     role == 'teacher'
