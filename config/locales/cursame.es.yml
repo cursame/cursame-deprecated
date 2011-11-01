@@ -33,8 +33,8 @@ es:
         update: Actualizar
         create: Crear
 
-
-
   courses:
+    archives: 'Archivos'
     index:
       title: Todos los cursos disponibles
+      
