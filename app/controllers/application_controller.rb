@@ -6,11 +6,20 @@ class ApplicationController < ActionController::Base
     Network.find_by_subdomain(request.subdomain)
   end
 
+  private
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
   end
 
   def authenticate_student!
     current_user && current_user.student? or throw(:warden)
+  end
+
+  def uploaded_file
+    { 
+      :filename => env['HTTP_X_FILE_NAME'], 
+      :type     => env["CONTENT_TYPE"], 
+      :tempfile => env['rack.input']  
+    } 
   end
 end

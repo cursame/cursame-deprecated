@@ -7,6 +7,7 @@ require 'rspec/rails'
 require 'rspec/autorun'
 require 'database_cleaner'
 require 'shoulda/matchers/integrations/rspec'
+require 'carrierwave/test/matchers'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 

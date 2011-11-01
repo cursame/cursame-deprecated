@@ -1,10 +1,9 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
-gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem 'devise'
-gem "cancan"
-gem 'carrierwave'
+gem 'mime-types'
+gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
 gem 'fog'
 gem 'mini_magick'
 gem 'kaminari'

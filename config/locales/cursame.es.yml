@@ -27,8 +27,18 @@ es:
         description: Descripción
         start_date: Fecha de inicio
         finish_date: Fecha de término
+        logo_file: Logo del curso
+      course_asset:
+        name: Nombre
+        description: Descripción
+        file: Archivo
+        _destroy: Eliminar
+    
+  courses:
+    form:
+      add_asset: Añadir archivo
 
-    formtastic:
-      actions:
-        update: Actualizar
-        create: Crear
+  formtastic:
+    actions:
+      update: Actualizar
+      create: Crear

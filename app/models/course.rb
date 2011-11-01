@@ -5,6 +5,14 @@ class Course < ActiveRecord::Base
   validates_presence_of :network
 
   belongs_to :network
-  
-  #has_many :students, :through => :blah, :class_name => 'User'
+  accepts_nested_attributes_for :course_assets, :allow_destroy => true
+
+  mount_uploader :logo_file, CourseLogoUploader
+
+  # hack to save carrierwave assets from cache
+  after_save do
+    course_assets.each do |image|
+      image.update_attribute :logo_file_cache, image.logo_file_cache
+    end
+  end
 end

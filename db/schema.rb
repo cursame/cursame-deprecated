@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101183309) do
+ActiveRecord::Schema.define(:version => 20111101215541) do
 
   create_table "assignations", :force => true do |t|
     t.integer  "user_id"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(:version => 20111101183309) do
     t.string   "content_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.string   "description"
   end
 
   create_table "courses", :force => true do |t|
@@ -42,6 +44,7 @@ ActiveRecord::Schema.define(:version => 20111101183309) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_id"
+    t.string   "logo_file"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
