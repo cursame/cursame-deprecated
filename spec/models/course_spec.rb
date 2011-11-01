@@ -5,6 +5,7 @@ describe Course do
   it { should have_many(:course_assets) }
   it { should belong_to :network }
 
+  it { should validate_presence_of :network }
 
   describe 'assignation and teachers' do
     let(:teacher) { Factory(:teacher) }
