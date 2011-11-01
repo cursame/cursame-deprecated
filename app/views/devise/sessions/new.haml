@@ -1,0 +1,10 @@
+= semantic_form_for resource, :as => resource_name, :url => session_path(resource_name) do |form|
+  = devise_error_messages!
+  = form.inputs :id => 'sign_in' do
+    = form.input :email, :required => false
+    = form.input :password, :required => false
+    - if devise_mapping.rememberable?
+      = form.input :remember_me, :as => :boolean
+  = form.buttons do
+    = form.commit_button :label => t('formtastic.actions.session.create')
+= render :partial => "devise/shared/links"
