@@ -14,6 +14,9 @@
 </head>
 <body>
 
+<% flash.each do |key, val| %>
+  <div class="flash <%= key %>"><%= val %></div>
+<% end %>
 <%= yield %>
 
 </body>
