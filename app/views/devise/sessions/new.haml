@@ -6,5 +6,5 @@
     - if devise_mapping.rememberable?
       = form.input :remember_me, :as => :boolean
   = form.buttons do
-    = form.commit_button :label => t('formtastic.actions.session.create')
+    = form.commit_button :label => "Create"
 = render :partial => "devise/shared/links"
