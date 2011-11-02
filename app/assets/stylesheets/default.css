@@ -142,6 +142,30 @@ ul.left-nav-main-ul {
 .left-nav-main-ul li a.calendario:hover {
 	background: #00afc9 url(menu-calendario.png) no-repeat 5px;
 }
+
+.left-nav-main-ul li a.miembros {
+	background: url(menu-amigos.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.miembros:hover {
+	background: #00afc9 url(menu-amigos.png) no-repeat 5px;
+}
+
+.total-members {
+	font-size: 10px;
+}
+
+ul.nav-member-avatars {
+	list-style: none !important;	
+	display: inline-block;
+	margin: 0;
+}
+
+ul.nav-member-avatars li {
+	float: left;
+	margin-right: 4px;
+}
+
 /* @end */
 
 /* @group Register Forms */

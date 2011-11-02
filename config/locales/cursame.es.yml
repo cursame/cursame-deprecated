@@ -62,6 +62,7 @@ es:
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
+      members: 'Miembros'
     index:
       title: Todos los cursos disponibles
       request_join: Solicitar unirse
