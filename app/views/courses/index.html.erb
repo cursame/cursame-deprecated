@@ -16,7 +16,7 @@
         <ul>
           <% @courses.each do |course| %>
             <li class="course">
-            <%= course.name %><br/>
+            <%= link_to course.name, course_path(course) %><br/>
             <%= course.description %>
 
             <p style="color:red;">
@@ -27,7 +27,7 @@
             <% elsif enrollment.pending? %>
               <em><%= t('.join_requested') %></em>
 
-            <% elsif enrollment.accepted? %>
+            <% elsif enrollment.rejected? %>
               <em><%= t('.join_rejected') %></em>
               <%= link_to t(".request_join_again"), join_course_path(course), :method => :post %>
 
