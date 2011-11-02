@@ -11,6 +11,7 @@ es:
       default: "%d/%m/%Y"
       short: "%d de %b"
       long: "%d de %B de %Y"
+      medium: "%e %b '%y"
 
     day_names:
       - domingo

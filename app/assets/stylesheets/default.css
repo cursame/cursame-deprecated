@@ -49,11 +49,18 @@ selected: #e0f5f8
 .section-divider {
 	background-color: #eaeaea;
 	margin-bottom: 20px;
+	border-top: 1px solid #d5d5d5;
+	margin-top: 10px;
 }
 
 .section-divider h3 {
 	margin-left: 10px;
 	text-shadow: 1px 1px 1px rgba(255,255,255,1);
+}
+
+.description {
+	color: #c0c0c0;
+	font-weight: bold;
 }
 
 /* @end */
@@ -102,9 +109,34 @@ form.pull-right p {
 	padding-left: 116px;
 }
 
+.public-course {
+	font-size: 13px;
+	color: #BFBFBF;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
 /* @end */
 
 .last {
 	margin: 0;
+}
+
+.no-margin {
+	margin: 0;
+}
+
+.line {
+	border-top: 1px solid #eaeaea;
+	padding-top: 5px;
+}
+
+.with {
+	margin-left: 0;
+}
+
+.left-margin {
+	margin-left: 20px;
 }
 /* @end */

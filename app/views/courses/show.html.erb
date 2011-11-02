@@ -6,7 +6,7 @@
   </style>
   <script>
     $(document).ready(function(){ 
-      $("#sortTableExample").tablesorter( { sortList: [[ 1, 0 ]] } )
+      $("#sortTable").tablesorter( { sortList: [[ 1, 0 ]] } )
     });
   </script>
 <% end %>
@@ -18,11 +18,29 @@
       </div>
       <div class="span10">
         <h2><%= @course.name %></h2>
-        <p><%= @course.description %></p>
-        <p><%= @course.reference %></p>
+        <div class="public-course">
+          <% if @course.public? %>
+            <%= t('courses.public') %>
+          <% else %>
+            <%= t('courses.private') %>
+          <% end %>
+        </div>
+        <div class="row with line">
+          <div class="span2 description no-margin"><%= t('courses.time') %></div>
+          <div class="span6"><p><%= l @course.start_date, :format => :medium %> - <%= l @course.finish_date, :format => :medium %></p></div>
+        </div>
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <p><%= @course.description %></p>
+        </div>
+        <div class="row with">
+          <div class="description"><%= t('courses.details') %></div>
+          <p><%= @course.reference %></p>
+        </div>
+        
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         
-        <table class="zebra-striped" id="sortTableExample">
+        <table class="zebra-striped" id="sortTable">
           <thead>
             <tr>
               <th class="blue">Type</th>
