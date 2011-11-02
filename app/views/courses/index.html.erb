@@ -2,15 +2,18 @@
   <div class="content">
     <div class="row">
       <div class="span3">
-        <p>Something here</p>
+        <%= render :partial => "course_menu" %>
       </div>
       <div class="span10">
         <h2><%= t('.title') %></h2>
-        <ul>
+        <div class="courses">
           <% @courses.each do |course| %>
-            <li class="course">
-            <%= link_to course.name, course_path(course) %><br/>
-            <%= course.description %>
+
+            <h3><%= link_to course.name, course_path(course) %></h3>
+            <div class="course-by">
+              por Florentino Perez - <%= course.reference %>
+            </div>
+            <p><%= truncate(course.description, :length => 200) %></p>
 
             <p style="color:red;">
             <% enrollment = current_user.enrollments.where(:course_id => course).first %>
@@ -29,13 +32,11 @@
 
             <% end %>
             </p>
-
-            </li>
           <% end %>
-        </ul>
+        </div>
       </div>
       <div class="span3" style="margin:0;">
-        <p>Something else here</p>
+        <%= render :partial => "shared/adds" %>
       </div>
     </div>
   </div>

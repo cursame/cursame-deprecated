@@ -66,6 +66,27 @@ body {
 	font-weight: bold;
 }
 
+.public-course {
+	font-size: 13px;
+	color: #BFBFBF;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.courses {
+	
+}
+
+.courses h3 {
+	line-height: 26px;
+}
+.course-by {
+	font-size: 12px;
+	color: #BFBFBF;
+	font-style: italic;
+	font-weight: bold;
+}
+
 /* @end */
 
 /* @group Standard */
@@ -208,14 +229,6 @@ form.pull-right p {
 	line-height: 24px;
 	font-size: 11px;
 	padding-left: 116px;
-}
-
-.public-course {
-	font-size: 13px;
-	color: #BFBFBF;
-	text-transform: uppercase;
-	font-weight: bold;
-	margin-bottom: 10px;
 }
 
 /* @end */

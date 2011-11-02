@@ -2,7 +2,28 @@
   <div class="fill">
     <div class="container">
       <%= link_to image_tag("logo.png"), root_url, :class => "brand" %>
-      <%= link_to t('.logout'), destroy_user_session_path, :method => :delete %>
+      <form class="pull-left" action="">
+        <input type="text" placeholder="Buscar" />
+      </form>
+      
+      <ul class="nav">
+        <li class="active"><a href="#">Inicio</a></li>
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Bandeja de Entrada</a></li>
+      </ul>
+
+      <ul class="nav secondary-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">Username</a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Secondary link</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        </li>
+      </ul>
+    
     </div>
   </div>
 </div>
