@@ -7,3 +7,131 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(function(){
+  $('fieldset[data-association]').nestedAssociations();
+
+  $('input[type=file]').livequery(function(){
+    if ($(this).data('upload-path')) {
+      $(this).ajaxyUpload({
+        url     : $(this).data('upload-path'),
+        success : function(data){
+          var fieldset = $(this).closest('fieldset');
+          var preview  = $('.preview img', fieldset);
+          var file, thumb_url;
+
+          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache);
+          file = data.logo_file;
+
+          if (file && file.thumb) {
+            thumb_url = file.thumb.url;
+          }
+
+          $('.preview img', fieldset).attr('src', thumb_url);
+        },
+        start : function() {
+        },
+        complete : function() {
+        },
+        error : function(data) {
+        }
+      });
+    }
+  });
+
+  $('textarea[data-editor]').wysiwyg({
+    controls : {
+      bold: {
+        visible: true
+      },
+      italic: {
+        visible: true
+      },
+      insertOrderedList: {
+        visible: true
+      },
+      insertUnorderedList: {
+        visible: true
+      },
+      html: {
+        visible: true
+      },
+      createLink: {
+        tooltip: "Create Link"
+      },
+      insertImage: {
+        exec: function() {
+          return $('#link-to-upload').click();
+        },
+        tooltip: "Insert image"
+      },
+      underline: {
+        visible: false
+      },
+      strikeThrough: {
+        visible: false
+      },
+      justifyLeft: {
+        visible: false
+      },
+      justifyCenter: {
+        visible: false
+      },
+      justifyRight: {
+        visible: false
+      },
+      justifyFull: {
+        visible: false
+      },
+      indent: {
+        visible: false
+      },
+      outdent: {
+        visible: false
+      },
+      subscript: {
+        visible: false
+      },
+      superscript: {
+        visible: false
+      },
+      undo: {
+        visible: false
+      },
+      redo: {
+        visible: false
+      },
+      insertHorizontalRule: {
+        visible: false
+      },
+      h1: {
+        visible: false
+      },
+      h4: {
+        visible: false
+      },
+      h5: {
+        visible: false
+      },
+      h6: {
+        visible: false
+      },
+      cut: {
+        visible: false
+      },
+      copy: {
+        visible: false
+      },
+      paste: {
+        visible: false
+      },
+      increaseFontSize: {
+        visible: false
+      },
+      decreaseFontSize: {
+        visible: false
+      }
+    }
+  });
+})
+

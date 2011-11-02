@@ -1,12 +1,15 @@
 <%= semantic_form_for @course do |form| %>
   <%= form.inputs :file do %>
+    <li class='preview'>
+      <img /> 
+    </li>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
     <%= form.input :logo_file_cache, :as => :hidden %>
   <% end %>
 
   <%= form.inputs do %>
     <%= form.input :name %>
-    <%= form.input :description %>
+    <%= form.input :description, :input_html => {'data-editor' => true} %>
     <%= form.input :start_date %>
     <%= form.input :finish_date %>
     <%= form.input :reference %>
@@ -18,6 +21,9 @@
     <%= form.semantic_fields_for :course_assets do |asset| %>
       <%- record = asset.object %>
       <fieldset class="<%= record.new_record? ? :new : nil %>">
+        <div class='preview'>
+          <img /> 
+        </div>
         <ol>
           <%= asset.input :name %>
           <%= asset.input :description %>
