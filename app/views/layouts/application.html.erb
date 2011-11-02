@@ -14,12 +14,10 @@
   <%= yield :head %>
 </head>
 <body>
-  <%= content_for?(:header) ? yield(:header) : render(:partial => 'shared/topbar') %>
+  <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <% flash.each do |key, val| %>
     <div class="flash <%= key %>"><%= val %></div>
   <% end %>
   <%= yield %>
-  <%= current_user %>
-
 </body>
 </html>

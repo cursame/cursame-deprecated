@@ -1,15 +1,3 @@
-<% content_for :head do%>
-  <style type="text/css">
-    body {
-    	margin-top: 40px;
-    }
-  </style>
-  <script>
-    $(document).ready(function(){ 
-      $("#sortTableExample").tablesorter( { sortList: [[ 1, 0 ]] } )
-    });
-  </script>
-<% end %>
 <div class="container">
   <div class="content">
     <div class="row">
@@ -22,7 +10,7 @@
         <p><%= @course.reference %></p>
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         
-        <table class="zebra-striped" id="sortTableExample">
+        <table class="zebra-striped" data-sortable="true">
           <thead>
             <tr>
               <th class="blue">Type</th>

@@ -44,6 +44,10 @@ es:
         update: Actualizar
         create: Crear
 
+  shared:
+    toolbar:
+      logout: Salir
+  
   courses:
     archives: 'Archivos'
     index:
