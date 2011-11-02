@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span3">
+       <%= render :partial => "img_profile" %>
+      </div>
+      <div class="span10">
+         <form>
+         <fieldset>
+         <legend><%=@user.email%></legend>
+           <div class="clearfix">
+            <label class="info-title">Introducción:</label>
+            <div class="input info-content">
+              Someday Ill change The World, meanwhile Im just a Rockstar
+              Web Designer & Wannabe Entrepreneur
+              (http://cursa.me) #cpmx #cpeu #generamx #Wayra.
+            </div>
+          </div><!-- /clearfix -->
+
+         <div class="clearfix">
+            <label class="info-title">Estudios:</label>
+            <div class="input info-content">
+              - Secundaria Anexa a La Normal Superior de México (E.S.A.N.S.)
+              <br>
+              - E.N.P. Plantel 9, PEdro de Alba
+              <br>
+               - Universidad del Valle de México Campus San Rafael
+            </div>
+          </div><!-- /clearfix -->
+
+          <div class="clearfix">
+            <label class="info-title">Cumpleaños:</label>
+            <div class="input info-content">
+                16 de Noviembre.
+            </div>
+          </div><!-- /clearfix -->
+
+           <div class="clearfix">
+            <label class="info-title">Ocupación:</label>
+            <div class="input info-content">
+                Fundador en Cúrsame
+            </div>
+          </div><!-- /clearfix -->
+
+         <div class="clearfix">
+            <label class="info-title">Mail:</label>
+            <div class="input info-content">
+              <a href="#">aaaa@mail.com</a>
+              <br>
+              <a href="#">bbbb@mail.com</a>
+              <br>
+              <a href="#">cccc@mail.com</a>
+            </div>
+         </div><!-- /clearfix -->
+
+         <div class="clearfix">
+            <label class="info-title">Redes Sociales:</label>
+            <div class="input info-content">
+              Twitter:  <a href="#">@rangel</a>
+              <br>
+              Facebook: <a href="#">Rangel</a>
+              <br>
+            </div>
+          </div><!-- /clearfix -->
+        </fieldset>
+        </form>
+      </div>
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>

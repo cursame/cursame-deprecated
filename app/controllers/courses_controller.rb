@@ -4,6 +4,14 @@ class CoursesController < ApplicationController
 
   def index
     @courses = current_network.courses
+    data = Hash.new()
+    data[:total] = @courses.count
+    data[:data]  = @courses.collect{|u| {:name=>u.name,:description=>u.description}}
+
+    respond_to do |format|
+      format.html
+      format.json {render :json => data}
+    end
   end
 
   def new

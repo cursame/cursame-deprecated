@@ -10,6 +10,11 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @courses = current_user.teacher? ? current_user.lectures : []
+    @courses =  current_user.lectures
+  end
+
+  def profile
+    @user = params[:user] ? User.find(params[:user]):current_user;
   end
 end
+#

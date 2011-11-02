@@ -318,3 +318,32 @@ form.pull-right p {
 
 /* @end */
 
+/* @profile*/
+dl dt, dl dd {
+    font-size: 11px;
+    line-height: 13px;
+}
+dt{
+  color: #00AFC9;
+}
+dd,.info-content  {
+  color: #9C9C9C;
+}
+
+.info-title {
+    color: #00AFC9;
+    font-size: 14px;
+    float: left;
+}
+
+.info-content {
+    padding-top: 10px;
+    font-size: 12px;
+}
+
+/*@a link*/
+a{
+    color: #00AFC9;
+    text-decoration: none;
+}
+

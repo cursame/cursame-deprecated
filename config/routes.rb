@@ -22,5 +22,7 @@ Cursame::Application.routes.draw do
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
 
+  match '/profile', :to => 'home#profile', :as => :profile
+
   root :to => "home#index"
 end
