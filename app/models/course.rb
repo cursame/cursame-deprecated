@@ -9,6 +9,8 @@ class Course < ActiveRecord::Base
 
   has_many :course_assets
 
+  has_many :assignments
+
   validates_presence_of :network, :name, :description, :start_date, :finish_date
 
   belongs_to :network

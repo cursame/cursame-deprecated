@@ -1,15 +1,20 @@
 require 'spec_helper'
 
 describe Course do
-  it { should have_many(:teachers).through(:assignations) }
-  it { should have_many(:course_assets) }
-  it { should belong_to :network }
+  describe 'associations' do
+    it { should have_many(:teachers).through(:assignations) }
+    it { should have_many(:course_assets) }
+    it { should belong_to :network }
+    it { should have_many :assignments }
+  end
 
-  it { should validate_presence_of :network }
-  it { should validate_presence_of :name }
-  it { should validate_presence_of :description }
-  it { should validate_presence_of :start_date }
-  it { should validate_presence_of :finish_date }
+  describe 'validations' do
+    it { should validate_presence_of :network }
+    it { should validate_presence_of :name }
+    it { should validate_presence_of :description }
+    it { should validate_presence_of :start_date }
+    it { should validate_presence_of :finish_date }
+  end
 
   describe 'assignation and teachers' do
     let(:teacher) { Factory(:teacher) }

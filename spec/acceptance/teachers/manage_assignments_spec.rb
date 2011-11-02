@@ -14,9 +14,8 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'creating an assignment' do
-    pending
-    visit courses_url(:subdomain => @network.subdomain)
-    click_link 'create_assignment'
+    visit course_url(@course, :subdomain => @network.subdomain)
+    click_link 'new_assignment'
     fill_in 'assignment[name]',        :with => 'First assignment'
     fill_in 'assignment[description]', :with => 'This is a test assignment'
     fill_in 'assignment[value]',       :with => 9
@@ -26,23 +25,27 @@ feature 'Manage assignments', %q{
     select '2011',    :from => 'assignment[due_to(1i)]'
     select 'enero',   :from => 'assignment[due_to(2i)]'
     select '20',      :from => 'assignment[due_to(3i)]'
+    select '8',       :from => 'assignment[due_to(4i)]'
+    select '30',      :from => 'assignment[due_to(5i)]'
 
     lambda do
       click_button 'submit'
     end.should change(Assignment, :count).by(1)
-
-    assignment = Assignment.last
 
     expected_attrs = {
       :name => 'First assignment', 
       :description => 'This is a test assignment', 
       :value => 9, 
       :period => 1,
-      :due_to => Date.civil(2011,1,20)
+      # :due_to => Time.new(2011,1,20,8,30)
     }
 
-    Assignment.should exist.with expected_attrs
+    Assignment.should exist_with expected_attrs
+    assignment = Assignment.last
+
     assignment.course.should == @course
+
+    page.current_url.should match assignment_path(assignment)
     page.should show_assignment assignment
     page.should have_notice t('flash.assignment_created')
   end

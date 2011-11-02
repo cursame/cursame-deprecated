@@ -1,0 +1,15 @@
+<h1><%= t('.new_assignature') %></h1>
+
+<%= semantic_form_for [@course, @assignment] do |form| %>
+  <%= form.inputs :basic do %>
+    <%= form.input :name %>
+    <%= form.input :description %>
+    <%= form.input :value %>
+    <%= form.input :period %>
+    <%= form.input :due_to %>
+  <% end %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+<% end %>

@@ -28,6 +28,10 @@
         </div>
         
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
+
+        <! create assignment link !>
+        <%= link_to t('.create_assignment'), new_course_assignment_path(@course), :id => 'new_assignment' %>
+
         
         <% unless @course.course_assets.empty? %>
           <table class="zebra-striped" data-sortable="true">
