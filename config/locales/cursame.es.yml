@@ -1,11 +1,15 @@
 es:
   forms: 
     email: 'Email'
+    first_name: 'Nombre'
+    last_name: 'Apellido'
     password: 'Contraseña'
     password_confirmation: 'Confirmar Contraseña'
     sign_in_btn: 'Iniciar Sesión'
     register_btn: 'Regístrate'
     register_slogun: '¡Regístrate, es gratis!'
+    register_student: 'Regístro de Estudiantes'
+    register_teacher: 'Regístro de Maestros'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'

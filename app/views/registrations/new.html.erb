@@ -1,7 +1,18 @@
+<% content_for :head do %>
+  <style>
+    body {
+      margin-top: 100px;
+    }
+  </style>
+<% end %>
 <div class="container">
-  <div class="register-box">
-    <%= render :partial => 'form', :locals => {:resource => resource, :resource_name => resource_name, :url => registration_path(resource_name)} %>
+  <div class="row">
+    <div class="span11">
+      <p>Creamos <b>Redes Sociales</b> especialmente <b>diseñadas</b> para el <b>aprendizaje en línea.</b></p>
+    </div>
+    <div class="span5">
+      <%= render :partial => 'form', :locals => {:resource => resource, :resource_name => resource_name, :url => registration_path(resource_name)} %>
+    </div>
   </div>
+  <%= render :partial => "shared/footer" %>
 </div>
-
-<%= render :partial => "shared/footer" %>

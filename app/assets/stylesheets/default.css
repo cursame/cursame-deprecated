@@ -226,8 +226,31 @@ ul.nav-member-avatars li {
 	color: #fffeff;
 }
 
+.register-box a {
+	color: #fffeff;
+	float: right;
+}
+
 .register-box label {
 	display: none;
+}
+
+input.names {
+  display: inline-block;
+  width: 95px;
+  height: 18px;
+  padding: 4px;
+  font-size: 13px;
+  line-height: 18px;
+  color: #808080;
+  border: 1px solid #ccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.string {
+	float: left;
 }
 
 .inputs ol, .buttons ol {
@@ -237,6 +260,14 @@ ul.nav-member-avatars li {
 .inputs li, .buttons li {
 	list-style-type: none;
 	margin-bottom: 10px;
+}
+
+fieldset {
+	padding-top: 0;
+}
+
+fieldset.buttons {
+	margin-bottom: 0;
 }
 
 fieldset.textbox, fieldset.checkbox {
