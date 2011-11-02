@@ -61,6 +61,13 @@ es:
     time: 'Fecha'
     public: 'Curso Público'
     private: 'Curso Privado'
+    menu:
+      updates: 'Actualizaciones'
+      discus: 'Discusiones'
+      tasks: 'Tareas'
+      docs: 'Documentos'
+      evaluations: 'Evaluaciones'
+      calendar: 'Calendario'
     index:
       title: Todos los cursos disponibles
       request_join: Solicitar unirse

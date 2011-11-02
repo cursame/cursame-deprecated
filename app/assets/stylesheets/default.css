@@ -17,26 +17,26 @@ body {
   margin-top: 140px;
 }
 
-.topbar .fill{
+.topbar .fill {
 	background-color: #00282e;
 }
 
 .topbar .brand {
-  float: left;
-  display: block;
-  padding: 8px 20px 6px;
-  margin-left: -20px;
-  color: #ffffff;
-  font-size: 20px;
-  font-weight: 200;
-  line-height: 1;
+	float: left;
+	display: block;
+	padding: 8px 20px 6px;
+	margin-left: -20px;
+	color: #ffffff;
+	font-size: 20px;
+	font-weight: 200;
+	line-height: 1;
 }
 
-.top-margin-100{
+.top-margin-100 {
 	margin-top: 100px;
 }
 
-.content .span3  {
+.content .span3 {
 	width: 180px;
 	padding-top: 10px;
 }
@@ -70,6 +70,80 @@ body {
 
 /* @group Standard */
 
+/* @group Left Menu */
+
+.left-nav-main-ul {
+	
+}
+
+ul.left-nav-main-ul {
+	list-style: none !important;
+	margin: 0 0 10px 0;
+}
+
+.left-nav-main-ul li a {
+	width: 150px;
+	height: 22px;
+	display: block;
+	line-height: 22px;
+	padding-left: 30px;
+}
+
+.left-nav-main-ul li a:hover {
+	background-color: #00afc9; 
+	color:#fff;
+	text-decoration: none;
+}
+
+.left-nav-main-ul li a.actualizaciones {
+	background: url(menu-actualizaciones.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.actualizaciones:hover {
+	background: #00afc9 url(menu-actualizaciones.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.discusiones {
+	background: url(menu-discusiones.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.discusiones:hover {
+	background: #00afc9 url(menu-discusiones.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.tareas {
+	background: url(menu-tareas.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.tareas:hover {
+	background: #00afc9 url(menu-tareas.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.documentos {
+	background: url(menu-documentos.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.documentos:hover {
+	background: #00afc9 url(menu-documentos.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.evaluaciones {
+	background: url(menu-examen.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.evaluaciones:hover {
+	background: #00afc9 url(menu-examen.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.calendario {
+	background: url(menu-calendario.png) no-repeat 5px;
+}
+
+.left-nav-main-ul li a.calendario:hover {
+	background: #00afc9 url(menu-calendario.png) no-repeat 5px;
+}
+/* @end */
+
 /* @group Register Forms */
 
 .register-box {
@@ -86,7 +160,7 @@ body {
 }
 
 .inputs ol, .buttons ol {
-	margin: 0;	
+	margin: 0;
 }
 
 .inputs li, .buttons li {
@@ -135,6 +209,11 @@ form.pull-right p {
 	padding-top: 5px;
 }
 
+.underline {
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: 10px;
+}
+
 .with {
 	margin-left: 0;
 }
@@ -142,4 +221,6 @@ form.pull-right p {
 .left-margin {
 	margin-left: 20px;
 }
+
 /* @end */
+
