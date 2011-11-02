@@ -38,7 +38,12 @@ es:
     form:
       add_asset: Añadir archivo
 
-  formtastic:
-    actions:
-      update: Actualizar
-      create: Crear
+    formtastic:
+      actions:
+        update: Actualizar
+        create: Crear
+
+  courses:
+    archives: 'Archivos'
+    index:
+      title: Todos los cursos disponibles

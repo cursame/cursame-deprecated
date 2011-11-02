@@ -1,7 +1,9 @@
 class CoursesController < ApplicationController
   before_filter :authenticate_teacher!, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :require_network
 
   def index
+    @courses = current_network.courses
   end
 
   def new
@@ -24,6 +26,12 @@ class CoursesController < ApplicationController
   end
 
   def show
+    @course = current_network.courses.find(params[:id]) 
+  end
+
+  private
+  def require_network
+    redirect_to root_path unless current_network
   end
 
   def upload_asset

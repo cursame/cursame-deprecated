@@ -22,4 +22,12 @@ class ApplicationController < ActionController::Base
       :tempfile => env['rack.input']  
     } 
   end
+
+  def after_sign_in_path_for(resource)
+    if resource.is_a?(User)
+      dashboard_url(:subdomain => request.subdomain || resource.networks.first.subdomain)
+    else
+      super
+    end
+  end
 end

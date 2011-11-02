@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
   # hack to save carrierwave assets from cache
   after_save do
     course_assets.each do |image|
-      image.update_attribute :logo_file_cache, image.logo_file_cache
+      image.update_attribute :file_cache, image.file_cache
     end
   end
 end

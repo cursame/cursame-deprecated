@@ -1,6 +1,7 @@
 <%= semantic_form_for @course do |form| %>
   <%= form.inputs :file do %>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
+    <%= form.input :logo_file_cache, :as => :hidden %>
   <% end %>
 
   <%= form.inputs do %>

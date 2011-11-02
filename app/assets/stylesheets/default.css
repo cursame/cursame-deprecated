@@ -33,6 +33,29 @@ selected: #e0f5f8
 	margin-top: 100px;
 }
 
+.content .span3  {
+	width: 180px;
+	padding-top: 10px;
+}
+
+.content .span10 {
+	border-left: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	margin-left: 0;
+	width: 530px;
+	padding: 10px 20px 0;
+}
+
+.section-divider {
+	background-color: #eaeaea;
+	margin-bottom: 20px;
+}
+
+.section-divider h3 {
+	margin-left: 10px;
+	text-shadow: 1px 1px 1px rgba(255,255,255,1);
+}
+
 /* @end */
 
 /* @group Standard */

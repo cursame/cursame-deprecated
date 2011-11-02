@@ -1,2 +1,63 @@
-<h1>Courses#show</h1>
-<p>Find me in app/views/courses/show.html.erb</p>
+<% content_for :head do%>
+  <style type="text/css">
+    body {
+    	margin-top: 40px;
+    }
+  </style>
+  <script>
+    $(document).ready(function(){ 
+      $("#sortTableExample").tablesorter( { sortList: [[ 1, 0 ]] } )
+    });
+  </script>
+<% end %>
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span3">
+        <p>Something here</p>
+      </div>
+      <div class="span10">
+        <h2><%= @course.name %></h2>
+        <p><%= @course.description %></p>
+        <p><%= @course.reference %></p>
+        <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
+        
+        <table class="zebra-striped" id="sortTableExample">
+          <thead>
+            <tr>
+              <th class="blue">Type</th>
+              <th class="blue">File Name</th>
+              <th class="blue">File Desc.</th>
+              <th class="blue">Date Uploaded</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>PNG</td>
+              <td>sdfsdfs</td>
+              <td>sdgfdfgrtg</td>
+              <td>09/11/2011</td>
+            </tr>
+            <tr>
+              <td>RTF</td>
+              <td>sdgsdfg</td>
+              <td>sdgdfgdfger</td>
+              <td>09/13/2011</td>
+            </tr>
+            <tr>
+              <td>PDF</td>
+              <td>sadgcvdfg</td>
+              <td>dsfergdg</td>
+              <td>09/09/2011</td>
+            </tr>
+          </tbody>
+        </table>
+        
+      </div>
+      <div class="span3" style="margin:0;">
+        <p>Something else here</p>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>

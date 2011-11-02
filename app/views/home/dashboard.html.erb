@@ -1,7 +1,29 @@
-<%= t('.my_courses') %>
-
-<% @courses.each do |course| %>
-  <div class="course">
-    <%= course.name %>
-  </div>
+<% content_for :head do%>
+  <style type="text/css">
+    body {
+    	margin-top: 40px;
+    }
+  </style>
 <% end %>
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span3">
+        <p>Something here</p>
+      </div>
+      <div class="span10">
+        <%= t('.my_courses') %>
+
+        <% @courses.each do |course| %>
+          <div class="course">
+            <%= course.name %>
+          </div>
+        <% end %>
+      </div>
+      <div class="span3" style="margin:0;">
+        <p>Something else here</p>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
