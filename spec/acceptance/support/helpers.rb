@@ -11,6 +11,12 @@ module HelperMethods
     click_button 'sign_in'
   end
 
+
+  def sign_out
+    visit root_path
+    click_link 'Logout'
+  end
+
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance
