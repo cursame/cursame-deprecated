@@ -27,6 +27,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'thin'
   gem 'heroku'
   gem "pg"
   gem 'therubyracer-heroku'
