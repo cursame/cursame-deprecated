@@ -51,7 +51,8 @@ es:
 
   shared:
     toolbar:
-      logout: Salir
+      logout: 'Salir'
+      search: 'Buscar'
   
   courses:
     archives: 'Archivos'
@@ -68,6 +69,12 @@ es:
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
       members: 'Miembros'
+    members:
+      members_in_group: 'Miembros en este grupo'
+      teachers: 'Maestros'
+      students: 'Estudiantes'
+    requests:
+      pending_requests: 'Solicitudes Pendientes'
     index:
       title: Todos los cursos disponibles
       request_join: Solicitar unirse

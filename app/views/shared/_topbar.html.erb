@@ -5,7 +5,7 @@
         <%= link_to image_tag("logo.png"), root_url, :class => "brand" %>
       </div>
       <form class="pull-left" action="">
-        <input type="text" placeholder="Buscar" />
+        <input type="text" placeholder="<%= t('shared.toolbar.search') %>" />
       </form>
       
       <ul class="nav">
@@ -16,7 +16,7 @@
 
       <ul class="nav secondary-nav">
         <li class="dropdown">
-          <%= link_to t('.logout'), destroy_user_session_path, :method => :delete, :class => "dropdown-toggle" %>
+          <%= link_to t('shared.toolbar.logout'), destroy_user_session_path, :method => :delete, :class => "dropdown-toggle" %>
           <ul class="dropdown-menu">
             <li><a href="#">Secondary link</a></li>
             <li><a href="#">Something else here</a></li>

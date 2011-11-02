@@ -1,16 +1,31 @@
-<h1>Miembros en este grupo</h1>
+<div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "course_menu" %>
+      </div>
+      <div class="span10">
+        <h2><%= t('courses.members.members_in_group') %></h2>
 
-<h2>Maestros</h2>
-<ul>
-  <% @course.teachers.each do |teacher| %>
-    <li class="teacher"><%= teacher.email %></li>
-  <% end %>
-</ul>
+        <h3><%= t('courses.members.teachers') %></h3>
+        <div class="members">
+          <% @course.teachers.each do |teacher| %>
+            <div class="teacher"><%= teacher.email %></div>
+          <% end %>
+        </div>
 
 
-<h2>Estudiantes</h2>
-<ul>
-  <% @course.students.each do |student| %>
-    <li class="student"><%= student.email %></li>
-  <% end %>
-</ul>
+        <h3><%= t('courses.members.students') %></h2>
+        <div class="members">
+          <% @course.students.each do |student| %>
+            <div class="student"><%= student.email %></div>
+          <% end %>
+        </div>
+      </div>
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
