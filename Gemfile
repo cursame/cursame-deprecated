@@ -10,6 +10,7 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem 'formtastic'
 gem 'haml'
+gem 'sanitize'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -27,6 +28,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem 'thin'
   gem 'heroku'
   gem "pg"
   gem 'therubyracer-heroku'
@@ -40,6 +42,4 @@ group :development, :test do
   gem 'steak'
   gem 'spork'
   gem 'launchy'
-  # gem "capybara-webkit"
-  # gem "selenium-webdriver"
 end

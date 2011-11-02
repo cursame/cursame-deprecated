@@ -39,6 +39,8 @@ $(function(){
     }
   });
 
+  $("table[data-sortable]").tablesorter( { sortList: [[ 1, 0 ]] } )
+
   $('textarea[data-editor]').wysiwyg({
     controls : {
       bold: {

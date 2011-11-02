@@ -1,7 +1,8 @@
 <div class="topbar">
   <div class="fill">
     <div class="container">
-      <%= link_to(image_tag("logo.png"), root_url, :class => "brand") %>
+      <%= link_to image_tag("logo.png"), root_url, :class => "brand" %>
+      <%= link_to t('.logout'), destroy_user_session_path, :method => :delete %>
     </div>
   </div>
 </div>

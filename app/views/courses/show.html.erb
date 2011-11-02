@@ -1,18 +1,7 @@
-<% content_for :head do%>
-  <style type="text/css">
-    body {
-    	margin-top: 40px;
-    }
-  </style>
-  <script>
-    $(document).ready(function(){ 
-      $("#sortTable").tablesorter( { sortList: [[ 1, 0 ]] } )
-    });
-  </script>
-<% end %>
 <div class="container">
   <div class="content">
     <div class="row">
+      <img src="<%= @course.logo_file.small.url %>"/>
       <div class="span3">
         <%= render :partial => "course_menu" %>
       </div>
@@ -40,7 +29,7 @@
         
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         
-        <table class="zebra-striped" id="sortTable">
+        <table class="zebra-striped" data-sortable="true">
           <thead>
             <tr>
               <th class="blue">Type</th>

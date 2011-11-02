@@ -28,7 +28,9 @@ feature 'Manage courses', %q{
     fill_in 'course[reference]', :with => 'classroom A'
     check 'course[public]'
 
-    click_button 'submit'
+    lambda do
+      click_button 'submit'
+    end.should change(Course, :count)
 
     course = Course.last
     course.should_not be_nil
@@ -38,12 +40,21 @@ feature 'Manage courses', %q{
     course.finish_date.should == Date.civil(2012,01,29)
     course.reference.should   == 'classroom A'
     course.public.should be_true
-
     course.network.should == @network
     course.teachers.should include(@teacher)
     course.teachers.where('assignations.admin' => true).should include(@teacher)
 
     page.should have_notice I18n.t('flash.course_created')
+  end
+
+  scenario 'update course' do
+    course = Factory(:course, :assignations => [Assignation.create(:user => @teacher, :admin => true)], :network => @network)
+    visit edit_course_url course, :subdomain => @network.subdomain
+    save_and_open_page
+    fill_in 'course[name]', :with => 'Course updated'
+    click_button 'submit'
+    course.reload
+    course.name.should == 'Course updated'
   end
 
   scenario 'view my courses' do
