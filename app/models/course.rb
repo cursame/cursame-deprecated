@@ -10,7 +10,7 @@ class Course < ActiveRecord::Base
   validates_presence_of :network, :name, :description, :start_date, :finish_date
 
   belongs_to :network
-  accepts_nested_attributes_for :course_assets, :allow_destroy => true
+  accepts_nested_attributes_for :course_assets, :allow_destroy => true, :reject_if => lambda { |hash| hash[:file].blank? }
 
   mount_uploader :logo_file, CourseLogoUploader
 
