@@ -40,6 +40,20 @@ $(function(){
   });
 
   $("table[data-sortable]").tablesorter( { sortList: [[ 1, 0 ]] } )
+  
+  $('div.expander').expander({
+    slicePoint: 300,
+    widow: 2,
+    expandText: 'Leer Mas',
+    expandPrefix: '&hellip; ',
+    expandEffect: 'fadeIn',
+    expandSpeed: 600,
+    collapseEffect: 'fadeOut',
+    collapseSpeed: 200,
+    userCollapse: true,
+    userCollapseText: 'Cerrar',
+    userCollapsePrefix: ''
+  });
 
   $('textarea[data-editor]').wysiwyg({
     controls : {
