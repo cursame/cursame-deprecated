@@ -1,5 +1,6 @@
+<% if params[:id] %>
 <div class="underline">
-  <%= image_tag 'microeconomia.png' %>
+  <%= image_tag @course.logo_file.small.url %>
 </div>
 
 <div class="underline">	
@@ -12,3 +13,11 @@
     <li><%= link_to(t('courses.menu.calendar'), "#", :class => "calendario") %></li>
   </ul>
 </div>
+<% else %>
+<div class="underline">
+  <ul class="left-nav-main-ul">
+    <li><%= link_to(t('courses.menu.my_courses'), "#") %></li>
+    <li><%= link_to(t('courses.menu.new_course'), new_course_path) %></li>
+  </ul>
+</div>
+<% end %>

@@ -2,21 +2,21 @@
   <div class="fill">
     <div class="container">
       <div class="logo-container">
-        <%= link_to image_tag("logo.png"), root_url, :class => "brand" %>
+        <%= link_to image_tag("logo.png"), root_path, :class => "brand" %>
       </div>
       <form class="pull-left" action="">
         <input type="text" placeholder="<%= t('shared.toolbar.search') %>" />
       </form>
       
       <ul class="nav">
-        <li class="active"><a href="#">Inicio</a></li>
+        <li class="active"><%= link_to('Inicio', root_path) %></li>
         <li><a href="#">Perfil</a></li>
         <li><a href="#">Bandeja de Entrada</a></li>
       </ul>
 
       <ul class="nav secondary-nav">
         <li class="dropdown">
-          <%= link_to t('shared.toolbar.logout'), destroy_user_session_path, :method => :delete, :class => "dropdown-toggle" %>
+          <%= link_to current_user.first_name, "#", :class => "dropdown-toggle" %>
           <ul class="dropdown-menu">
             <li><a href="#">Secondary link</a></li>
             <li><a href="#">Something else here</a></li>

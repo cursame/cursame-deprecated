@@ -11,6 +11,7 @@ gem 'jquery-rails'
 gem 'formtastic'
 gem 'haml'
 gem 'sanitize'
+gem "breadcrumbs_on_rails", "~> 2.1.0"
 
 # Gems used only for assets and not required
 # in production environments by default.

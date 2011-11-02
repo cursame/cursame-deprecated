@@ -39,6 +39,10 @@ body {
 	float: left;	
 }
 
+.nav {
+	margin-left: 20px !important;
+}
+
 .top-margin-100 {
 	margin-top: 100px;
 }
@@ -110,73 +114,88 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a {
-	width: 150px;
+	width: 180px;
 	height: 22px;
 	display: block;
 	line-height: 22px;
-	padding-left: 30px;
 }
 
 .left-nav-main-ul li a:hover {
 	background-color: #00afc9; 
 	color:#fff;
 	text-decoration: none;
+	padding-left: 10px;
+	width: 170px;
 }
 
 .left-nav-main-ul li a.actualizaciones {
 	background: url(menu-actualizaciones.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.actualizaciones:hover {
 	background: #00afc9 url(menu-actualizaciones.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.discusiones {
 	background: url(menu-discusiones.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.discusiones:hover {
 	background: #00afc9 url(menu-discusiones.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.tareas {
 	background: url(menu-tareas.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.tareas:hover {
 	background: #00afc9 url(menu-tareas.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.documentos {
 	background: url(menu-documentos.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.documentos:hover {
 	background: #00afc9 url(menu-documentos.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.evaluaciones {
 	background: url(menu-examen.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.evaluaciones:hover {
 	background: #00afc9 url(menu-examen.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.calendario {
 	background: url(menu-calendario.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.calendario:hover {
 	background: #00afc9 url(menu-calendario.png) no-repeat 5px;
+	width: 150px;
 }
 
 .left-nav-main-ul li a.miembros {
 	background: url(menu-amigos.png) no-repeat 5px;
+	padding-left: 30px;
 }
 
 .left-nav-main-ul li a.miembros:hover {
 	background: #00afc9 url(menu-amigos.png) no-repeat 5px;
+	width: 150px;
 }
 
 .total-members {
