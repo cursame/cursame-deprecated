@@ -22,7 +22,7 @@ feature 'Course navigation', %q{
   scenario 'Join a course' do
     course = Factory(:course, :network => @network)
     visit courses_url(:subdomain => @network.subdomain)
-    click_link 'Join'
+    click_link I18n.t('courses.index.request_join')
 
     # should redirect to show page
     page.current_url.should match course_path(course)
@@ -33,13 +33,14 @@ feature 'Course navigation', %q{
   scenario 'Cannot create two requests to join the same course' do
     course = Factory(:course, :network => @network)
     visit courses_url(:subdomain => @network.subdomain)
-    click_link 'Join'
+    click_link I18n.t('courses.index.request_join')
 
     @student.enrollments.count.should == 1
 
-    # Repeat
-    visit courses_url(:subdomain => @network.subdomain)
-    click_link 'Join'
+    # Since the view does not have a link to request again,
+    # we must manually fire a post request
+    page.driver.post(join_course_url(course, :subdomain => @network.subdomain))
+    page.current_url.should match course_path(course)
 
     @student.enrollments.count.should == 1
   end
