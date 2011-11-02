@@ -52,6 +52,27 @@ class CoursesController < ApplicationController
     @course = current_network.courses.find params[:id]
   end
 
+  def requests
+    @course = current_network.courses.find params[:id]
+    @requests = @course.enrollments.where(:state => 'pending')
+  end
+
+  def accept_request
+    @course = current_network.courses.find params[:course_id]
+    enrollment = @course.enrollments.where(:state => 'pending', :id => params[:id]).first
+    enrollment.update_attribute(:state, 'accepted')
+
+    redirect_to requests_course_path(@course)
+  end
+
+  def reject_request
+    @course = current_network.courses.find params[:course_id]
+    enrollment = @course.enrollments.where(:state => 'pending', :id => params[:id]).first
+    enrollment.update_attribute(:state, 'rejected')
+
+    redirect_to requests_course_path(@course)
+  end
+
   def upload_asset
     asset_file = CourseAsset.new :file => uploaded_file
     render :json => asset_file.as_json(:methods => [:file_cache], :only => [:file, :file_cache])

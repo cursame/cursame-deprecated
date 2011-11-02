@@ -72,6 +72,7 @@ feature 'Course interactions', %q{
 
 
   scenario 'As a teacher, the same tests as above apply' do
+    sign_out
     sign_in_with @teacher, :subdomain => @network.subdomain
 
     (1..10).map do

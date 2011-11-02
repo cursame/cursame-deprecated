@@ -1,0 +1,12 @@
+<h1>Pending requests</h1>
+
+<ul>
+  <% @requests.each do |request| %>
+    <li class="request">
+    <%= request.user.email %>
+    <%= link_to 'Accept', course_accept_request_path(@course, request.id), :method => :post %>
+    <br/>
+    <%= link_to 'Reject', course_reject_request_path(@course, request.id), :method => :post %>
+    </li>
+  <% end %>
+</ul>
