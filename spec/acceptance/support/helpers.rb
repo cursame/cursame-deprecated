@@ -1,4 +1,4 @@
-module HelperMethods
+module NavigationHelpers
   def sign_in_with user, opts = {}
     user.confirm!
     if opts[:subdomain]
@@ -11,12 +11,15 @@ module HelperMethods
     click_button 'sign_in'
   end
 
-
   def sign_out
     visit root_path
     click_link 'Logout'
   end
+end
 
+module HelperMethods
+  include NavigationHelpers
+  include I18n
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

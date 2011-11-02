@@ -19,6 +19,7 @@ feature 'Manage courses', %q{
     fill_in 'course[name]',        :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
 
+    # TODO: we need a select_date helper
     select '2011',    :from => 'course[start_date(1i)]'
     select 'enero',   :from => 'course[start_date(2i)]'
     select '20',      :from => 'course[start_date(3i)]'
