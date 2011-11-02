@@ -39,7 +39,6 @@ es:
         created_at: Añadido
         _destroy: Eliminar
         type: Tipo
-        
     
   courses:
     form:
