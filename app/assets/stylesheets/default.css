@@ -32,6 +32,13 @@ body {
 	line-height: 1;
 }
 
+.logo-container {
+	width: 170px;
+	height: 40px;
+	margin-right: 10px;
+	float: left;	
+}
+
 .top-margin-100 {
 	margin-top: 100px;
 }
