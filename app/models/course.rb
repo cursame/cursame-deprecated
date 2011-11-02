@@ -7,7 +7,7 @@ class Course < ActiveRecord::Base
 
   has_many :course_assets
 
-  validates_presence_of :network
+  validates_presence_of :network, :name, :description, :start_date, :finish_date
 
   belongs_to :network
   accepts_nested_attributes_for :course_assets, :allow_destroy => true
@@ -19,5 +19,13 @@ class Course < ActiveRecord::Base
     course_assets.each do |image|
       image.update_attribute :file_cache, image.file_cache
     end
+  end
+
+  def description= html
+    self[:description] = Sanitize.clean(html, Sanitize::Config::BASIC)
+  end
+
+  def description
+    ActiveSupport::SafeBuffer.new self[:description] if self[:description]
   end
 end

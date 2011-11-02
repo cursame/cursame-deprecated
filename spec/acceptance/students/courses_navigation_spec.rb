@@ -18,7 +18,6 @@ feature 'Course navigation', %q{
     page.should have_css('.course', :count => 5)
   end
 
-
   scenario 'Join a course' do
     course = Factory(:course, :network => @network)
     visit courses_url(:subdomain => @network.subdomain)

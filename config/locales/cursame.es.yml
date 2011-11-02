@@ -15,6 +15,7 @@ es:
         
   flash:
     course_created: Curso creado
+    course_updated: El curso fue actualizado
     course_join_requested: Solicitud de unirse enviada
 
   activerecord:
@@ -29,11 +30,16 @@ es:
         start_date: Fecha de inicio
         finish_date: Fecha de término
         logo_file: Logo del curso
+        reference: Referencia
+        public: ¿Es público?
       course_asset:
         name: Nombre
         description: Descripción
         file: Archivo
+        created_at: Añadido
         _destroy: Eliminar
+        type: Tipo
+        
     
   courses:
     form:
