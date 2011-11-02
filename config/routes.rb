@@ -11,6 +11,7 @@ Cursame::Application.routes.draw do
       post :upload_asset, :as => :upload_asset_for
       post :upload_logo,  :as => :upload_logo_for
     end
+    post :join, :on => :member
   end
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard

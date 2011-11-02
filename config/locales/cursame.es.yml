@@ -15,6 +15,7 @@ es:
         
   flash:
     course_created: Curso creado
+    course_join_requested: Solicitud de unirse enviada
 
   activerecord:
     models:
@@ -47,3 +48,8 @@ es:
     archives: 'Archivos'
     index:
       title: Todos los cursos disponibles
+      request_join: Solicitar unirse
+      request_join_again: Solicitar unirse de nuevo
+      join_requested: Solicitud pendiente
+      join_rejected: Solicitud rechazada
+      join_accepted: Cursando
