@@ -1,0 +1,16 @@
+<h1>Miembros en este grupo</h1>
+
+<h2>Maestros</h2>
+<ul>
+  <% @course.teachers.each do |teacher| %>
+    <li class="teacher"><%= teacher.email %></li>
+  <% end %>
+</ul>
+
+
+<h2>Estudiantes</h2>
+<ul>
+  <% @course.students.each do |student| %>
+    <li class="student"><%= student.email %></li>
+  <% end %>
+</ul>

@@ -39,6 +39,10 @@ class CoursesController < ApplicationController
     redirect_to course_path(@course), :notice => t('flash.course_join_requested')
   end
 
+  def members
+    @course = current_network.courses.find params[:id]
+  end
+
   def upload_asset
     asset_file = CourseAsset.new :file => uploaded_file
     render :json => asset_file.as_json(:methods => [:file_cache], :only => [:file, :file_cache])
