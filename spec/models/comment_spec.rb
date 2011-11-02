@@ -2,10 +2,18 @@ require 'spec_helper'
 
 describe Comment do
   let(:comment) { Factory.build(:comment) }
+  it { comment.valid? or raise comment.errors.inspect }
 
-  it { comment.should be_valid }
-  it { should belong_to :commentable }
-  it { should validate_prescence_of :text }
+  describe 'associations' do
+    it { should belong_to :commentable }
+    it { should belong_to :user }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of :text }
+    it { should validate_presence_of :commentable }
+    it { should validate_presence_of :user }
+  end
 
   describe 'html description sanitization' do
     before { comment.text = 'hello<script></script>'}
