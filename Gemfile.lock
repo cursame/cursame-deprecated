@@ -32,6 +32,7 @@ GEM
     addressable (2.2.6)
     arel (2.2.1)
     bcrypt-ruby (3.0.1)
+    breadcrumbs_on_rails (2.1.0)
     builder (3.0.0)
     capybara (1.1.1)
       mime-types (>= 1.16)
@@ -208,6 +209,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  breadcrumbs_on_rails (~> 2.1.0)
   capybara
   carrierwave
   coffee-rails (~> 3.1.1)

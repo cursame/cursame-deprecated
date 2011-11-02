@@ -57,7 +57,7 @@ es:
   courses:
     archives: 'Archivos'
     description: 'Descripción'
-    details: 'Información Detallada'
+    details: 'Detalles'
     time: 'Fecha'
     public: 'Curso Público'
     private: 'Curso Privado'
@@ -69,8 +69,12 @@ es:
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
       members: 'Miembros'
+      courses: 'Cursos'
+      my_courses: 'Mis Cursos'
+      new_course: 'Crear Curso Nuevo'
     members:
       members_in_group: 'Miembros en este grupo'
+      members_in_course: 'Miembros en este curso'
       teachers: 'Maestros'
       students: 'Estudiantes'
     requests:
