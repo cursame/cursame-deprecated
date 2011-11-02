@@ -39,9 +39,8 @@ class CoursesController < ApplicationController
     redirect_to course_path(@course), :notice => t('flash.course_join_requested')
   end
 
-  private
-  def require_network
-    redirect_to root_path unless current_network
+  def members
+    @course = current_network.courses.find params[:id]
   end
 
   def upload_asset
@@ -52,5 +51,10 @@ class CoursesController < ApplicationController
   def upload_logo
     asset_file = Course.new :logo_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
+  end
+
+  private
+  def require_network
+    redirect_to root_path unless current_network
   end
 end
