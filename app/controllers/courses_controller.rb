@@ -53,12 +53,12 @@ class CoursesController < ApplicationController
   end
 
   def requests
-    @course = current_network.courses.find params[:id]
+    @course = current_user.manageable_lectures.find params[:id]
     @requests = @course.enrollments.where(:state => 'pending')
   end
 
   def accept_request
-    @course = current_network.courses.find params[:course_id]
+    @course = current_user.manageable_lectures.find params[:id]
     enrollment = @course.enrollments.where(:state => 'pending', :id => params[:id]).first
     enrollment.update_attribute(:state, 'accepted')
 
@@ -66,7 +66,7 @@ class CoursesController < ApplicationController
   end
 
   def reject_request
-    @course = current_network.courses.find params[:course_id]
+    @course = current_user.manageable_lectures.find params[:id]
     enrollment = @course.enrollments.where(:state => 'pending', :id => params[:id]).first
     enrollment.update_attribute(:state, 'rejected')
 
