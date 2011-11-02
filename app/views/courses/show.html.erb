@@ -30,37 +30,28 @@
         
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         
-        <table class="zebra-striped" data-sortable="true">
-          <thead>
-            <tr>
-              <th class="blue">Type</th>
-              <th class="blue">File Name</th>
-              <th class="blue">File Desc.</th>
-              <th class="blue">Date Uploaded</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>PNG</td>
-              <td>sdfsdfs</td>
-              <td>sdgfdfgrtg</td>
-              <td>09/11/2011</td>
-            </tr>
-            <tr>
-              <td>RTF</td>
-              <td>sdgsdfg</td>
-              <td>sdgdfgdfger</td>
-              <td>09/13/2011</td>
-            </tr>
-            <tr>
-              <td>PDF</td>
-              <td>sadgcvdfg</td>
-              <td>dsfergdg</td>
-              <td>09/09/2011</td>
-            </tr>
-          </tbody>
-        </table>
-        
+        <% unless @course.course_assets.empty? %>
+          <table class="zebra-striped" data-sortable="true">
+            <thead>
+              <tr>
+                <th class="blue"><%= CourseAsset.human_attribute_name :type %></th>
+                <th class="blue"><%= CourseAsset.human_attribute_name :name %></th>
+                <th class="blue"><%= CourseAsset.human_attribute_name :description %></th>
+                <th class="blue"><%= CourseAsset.human_attribute_name :created_at %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @course.course_assets.each do |asset| %>
+                <tr class='asset'>
+                  <td><%= asset.file.url.match(/\.(\w+)$/)[1] %></td>
+                  <td><%= link_to asset.name, asset.file.url %></td>
+                  <td><%= asset.description %></td>
+                  <td><%= l asset.created_at, :format => :short %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
       </div>
       <div class="span3" style="margin:0;">
         <%= render :partial => "shared/adds" %>

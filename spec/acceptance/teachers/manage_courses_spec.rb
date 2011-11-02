@@ -9,6 +9,8 @@ feature 'Manage courses', %q{
   background do
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
+    @course = Factory(:course, :network => @network)
+    @course.assignations.create(:user => @teacher, :admin => true)
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
@@ -50,7 +52,6 @@ feature 'Manage courses', %q{
   scenario 'update course' do
     course = Factory(:course, :assignations => [Assignation.create(:user => @teacher, :admin => true)], :network => @network)
     visit edit_course_url course, :subdomain => @network.subdomain
-    save_and_open_page
     fill_in 'course[name]', :with => 'Course updated'
     click_button 'submit'
     course.reload
@@ -61,6 +62,62 @@ feature 'Manage courses', %q{
     courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
     (1..2).map { Factory(:course) }
     visit dashboard_url(:subdomain => @network.subdomain)
-    page.should have_css('.course', :count => 3)
+    page.should have_css('.course', :count => 4)
+  end
+
+
+  scenario 'View pending requests to join a course' do
+    (1..3).map do
+      student = Factory(:student, :networks => [@network])
+      student.enrollments.create(:course => @course, :state => 'pending')
+    end
+
+    # These should not appear on the list
+    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'accepted')
+    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'rejected')
+
+    visit requests_course_url(@course, :subdomain => @network.subdomain)
+    page.should have_css('.request', :count => 3)
+  end
+
+
+  scenario 'Accept a request to join a course' do
+    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'pending')
+
+    visit requests_course_url(@course, :subdomain => @network.subdomain)
+    page.should have_css('.request', :count => 1)
+
+    click_link 'Accept'
+
+    page.current_url.should match requests_course_url(@course, :subdomain => @network.subdomain)
+    page.should have_no_css('.requests')
+    Enrollment.last.state = 'accepted'
+  end
+
+
+  scenario 'Reject a request to join a course' do
+    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'pending')
+
+    visit requests_course_url(@course, :subdomain => @network.subdomain)
+    page.should have_css('.request', :count => 1)
+
+    click_link 'Reject'
+
+    page.current_url.should match requests_course_url(@course, :subdomain => @network.subdomain)
+    page.should have_no_css('.requests')
+    Enrollment.last.state = 'rejected'
+  end
+
+
+  scenario 'A student cannot go to the requests page' do
+    student = Factory(:student, :networks => [@network])
+    student.enrollments.create(:course => @course, :state => 'accepted')
+
+    sign_out
+    sign_in_with student, :subdomain => @network.subdomain
+
+    visit requests_course_url(@course, :subdomain => @network.subdomain)
+    page.current_url.should_not match requests_course_url(@course)
+    page.current_url.should match dashboard_path
   end
 end
