@@ -24,10 +24,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    if resource.is_a?(User)
-      dashboard_url(:subdomain => request.subdomain || resource.networks.first.subdomain)
-    else
-      super
-    end
+    request.subdomain.blank? ? root_path : dashboard_url(:subdomain => request.subdomain)
   end
 end

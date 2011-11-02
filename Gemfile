@@ -6,7 +6,6 @@ gem 'mime-types'
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
 gem 'mini_magick'
 gem 'fog'
-gem 'mini_magick'
 gem 'kaminari'
 gem 'jquery-rails'
 gem 'formtastic'

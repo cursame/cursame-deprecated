@@ -230,13 +230,13 @@ body {
   margin-left: 240px;
 }
 a {
-  color: #0069d6;
+  color: #00afc9;
   text-decoration: none;
   line-height: inherit;
   font-weight: inherit;
 }
 a:hover {
-  color: #00438a;
+  color: #474747;
   text-decoration: underline;
 }
 .pull-right {

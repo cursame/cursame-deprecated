@@ -7,8 +7,26 @@
       </div>
       <div class="span10">
         <h2><%= @course.name %></h2>
-        <p><%= @course.description %></p>
-        <p><%= @course.reference %></p>
+        <div class="public-course">
+          <% if @course.public? %>
+            <%= t('courses.public') %>
+          <% else %>
+            <%= t('courses.private') %>
+          <% end %>
+        </div>
+        <div class="row with line">
+          <div class="span2 description no-margin"><%= t('courses.time') %></div>
+          <div class="span6"><p><%= l @course.start_date, :format => :medium %> - <%= l @course.finish_date, :format => :medium %></p></div>
+        </div>
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <p><%= @course.description %></p>
+        </div>
+        <div class="row with">
+          <div class="description"><%= t('courses.details') %></div>
+          <p><%= @course.reference %></p>
+        </div>
+        
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         
         <table class="zebra-striped" data-sortable="true">

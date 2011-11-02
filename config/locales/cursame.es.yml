@@ -50,6 +50,11 @@ es:
   
   courses:
     archives: 'Archivos'
+    description: 'Descripción'
+    details: 'Información Detallada'
+    time: 'Fecha'
+    public: 'Curso Público'
+    private: 'Curso Privado'
     index:
       title: Todos los cursos disponibles
       request_join: Solicitar unirse
