@@ -1,7 +1,10 @@
 <% if params[:id] %>
-<div class="underline">
-  <%= image_tag @course.logo_file.small.url %>
-</div>
+
+  <% unless @course.logo_file.blank? %>
+    <div class="underline">
+      <%= image_tag @course.logo_file.small.url %>
+    </div>
+  <% end %>
 
 <div class="underline">	
   <ul class="left-nav-main-ul">

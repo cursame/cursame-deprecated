@@ -23,13 +23,9 @@ Cursame::Application.routes.draw do
         post :reject
       end
     end
-
-    # match '/requests/:id/accept' => 'courses#accept_request', :as => :accept_request, :via => :post
-    # match '/requests/:id/reject' => 'courses#reject_request', :as => :reject_request, :via => :post
   end
 
-
+  resources :users
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
-
   root :to => "home#index"
 end
