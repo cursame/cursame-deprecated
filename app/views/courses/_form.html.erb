@@ -1,7 +1,7 @@
 <%= semantic_form_for @course do |form| %>
   <%= form.inputs :file do %>
     <li class='preview'>
-      <%= image_tag @course.logo_file.thumb.url %>
+      <img src="<%= @course.logo_file.thumb.url %>"/>
     </li>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
     <%= form.input :logo_file_cache, :as => :hidden %>
@@ -16,25 +16,7 @@
     <%= form.input :public %>
   <% end %>
 
-  <fieldset class="nested_models course_assets input" data-association="course_assets">
-    <%- @course.course_assets.build %>
-    <%= form.semantic_fields_for :course_assets do |asset| %>
-      <%- record = asset.object %>
-      <fieldset class="<%= record.new_record? ? :new : nil %>">
-        <div class='preview'>
-          <img /> 
-        </div>
-        <ol>
-          <%= asset.input :name %>
-          <%= asset.input :description %>
-          <%= asset.input :file, :as => :file, :input_html => {'data-upload-path' => upload_asset_for_courses_path} %>
-          <%= asset.input :file_cache, :as => :hidden %>
-          <%= asset.input :_destroy, :as => :boolean %>
-        </ol>
-      </fieldset>
-    <% end %>
-    <%= link_to t('.add_asset'), '#', :class => 'add_record', :style => 'display:none' %>
-  </fieldset>
+  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
 
   <%= form.buttons do %>
     <%= form.commit_button :button_html => {:id => :submit} %>

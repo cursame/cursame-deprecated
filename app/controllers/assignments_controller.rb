@@ -10,9 +10,8 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = @course.assignments.build params[:assignment]
-
     if @assignment.save
-      redirect_to @assignment
+      redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
       render 'new'
     end
@@ -22,6 +21,7 @@ class AssignmentsController < ApplicationController
   end
 
   def show
+    @assignment = current_user.assignments.find params[:id]
   end
 
   private

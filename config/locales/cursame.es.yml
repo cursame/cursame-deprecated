@@ -31,6 +31,9 @@ es:
       assignment:
         one: Ejercicio
         many: Ejercicios
+      user:
+        one: Usuario
+        many: Usuarios
     attributes:
       course:
         name: Nombre
@@ -47,6 +50,14 @@ es:
         created_at: Añadido
         _destroy: Eliminar
         type: Tipo
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        about_me: Acerca de mí
+        studies: Mis estudios
+        birth_date: Fecha de nacimiento
+        occupation: Mi ocupación
+
     
   courses:
     form:

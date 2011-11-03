@@ -19,6 +19,6 @@ RSpec::Matchers.define :show_assignment do |assignment|
     page.should have_content assignment.description
     page.should have_content assignment.value
     page.should have_content assignment.period
-    page.should have_content I18n.l(assignment.due_to :format => :medium) 
+    page.should have_content I18n.l(assignment.due_to, :format => :short) 
   end
 end

@@ -51,7 +51,6 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'commenting on an assignment' do
-    pending
     assignment = Factory(:assignment, :course => @course)
     visit assignment_url assignment, :subdomain => @subdomain
 

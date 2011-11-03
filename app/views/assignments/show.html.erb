@@ -1,1 +1,8 @@
 <h1><%= Assignment.model_name.human %> <%= @assignment.name %></h1>
+
+<%= @assignment.course.name %>
+<%= @assignment.name %>
+<%= @assignment.description %>
+<%= @assignment.value %>
+<%= @assignment.period %>
+<%= l @assignment.due_to, :format => :short %>
