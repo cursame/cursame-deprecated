@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     :class_name => 'Course', :source => :course, 
     :conditions => {'enrollments.admin' => true}
 
-  has_many :enrollment_requests, :through => :courses, :class_name => 'Enrollment', :source => :enrollments
+  has_many :enrollment_requests, :through => :manageable_courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :assignments, :through => :courses
 
   validates :first_name, :presence => true
