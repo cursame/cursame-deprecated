@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :about_me, :studies, :birth_date,
-                  :occupation, :twitter_link, :facebook_link, :linkedin_link
+                  :occupation, :twitter_link, :facebook_link, :linkedin_link,
+                  :avatar_file, :avatar_file_cache
 
   has_and_belongs_to_many :networks
   has_many :enrollments
@@ -20,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :assignments, :through => :courses
 
   validates :first_name, :presence => true
+
+  mount_uploader :avatar_file, AvatarUploader
 
   def to_s
     "#{first_name} #{last_name}"
