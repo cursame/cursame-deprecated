@@ -8,6 +8,10 @@
       <div class="span10">
         <h1><span>[<%= @user.role %>]</span> <%= @user %></h1>
 
+        <% if @user == current_user %>
+          <%= link_to t('.edit'), edit_user_path(@user) %>
+        <% end %>
+
         <p>
           <label><%= t('.about_me') %>:</label>
           <%= @user.about_me %>
@@ -20,12 +24,7 @@
 
         <p style="clear:both;">
           <label><%= t('.birth_date') %>:</label>
-          <%= @user.birth_date %>
-        </p>
-
-        <p style="clear:both;">
-          <label><%= t('.birth_date') %>:</label>
-          <%= @user.birth_date %>
+          <%= l @user.birth_date, :format => :medium %>
         </p>
 
         <p style="clear:both;">
