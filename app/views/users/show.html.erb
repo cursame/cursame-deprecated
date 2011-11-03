@@ -2,6 +2,11 @@
   <div class="content">
     <div class="row">
       <div class="span3">
+
+        <% unless @user.avatar_file.blank? %>
+          <%= image_tag @user.avatar_file.small.url %>
+        <% end %>
+
         profile partial goes here (or something like that)
       </div>
 
@@ -24,7 +29,9 @@
 
         <p style="clear:both;">
           <label><%= t('.birth_date') %>:</label>
-          <%= l @user.birth_date, :format => :medium %>
+          <% if @user.birth_date %>
+            <%= l @user.birth_date, :format => :medium %>
+          <% end %>
         </p>
 
         <p style="clear:both;">

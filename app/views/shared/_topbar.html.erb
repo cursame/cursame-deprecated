@@ -10,7 +10,7 @@
       
       <ul class="nav">
         <li class="active"><%= link_to('Inicio', root_path) %></li>
-        <li><a href="#">Perfil</a></li>
+        <li><%= link_to 'Perfil', current_user %></li>
         <li><a href="#">Bandeja de Entrada</a></li>
         <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>
       </ul>
