@@ -1361,8 +1361,8 @@ table .headerSortUp.purple, table .headerSortDown.purple {
   text-decoration: none;
 }
 .topbar div > ul .active > a, .nav .active > a {
-  background-color: #222;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #00AFC9;
+  background-color: rgba(0, 175, 201, 1);
 }
 .topbar div > ul.secondary-nav, .nav.secondary-nav {
   float: right;

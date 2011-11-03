@@ -185,6 +185,7 @@ GEM
       capybara (>= 1.0.0)
       rspec-rails (>= 2.5.0)
     subexec (0.1.0)
+    tabs_on_rails (2.0.2)
     term-ansicolor (1.0.7)
     therubyracer-heroku (0.8.1.pre3)
     thin (1.2.11)
@@ -235,6 +236,7 @@ DEPENDENCIES
   spork (= 0.9.0.rc9)
   sqlite3
   steak
+  tabs_on_rails (~> 2.0.2)
   therubyracer-heroku
   thin
   uglifier (>= 1.0.3)

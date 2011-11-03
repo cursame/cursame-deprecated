@@ -115,6 +115,5 @@ es:
       join_accepted: Cursando
 
 
-  users:
-    show:
-      edit: Editar perfil
+  profile:
+    edit_profile: Editar perfil

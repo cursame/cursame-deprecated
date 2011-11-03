@@ -1,5 +1,16 @@
 <div class="container">
   <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><a href="#">Dashboard</a> <span class="divider">/</span></li>
+          <li><a href="#">Profiles</a> <span class="divider">/</span></li>
+          <li class="active"><%= current_user.first_name %></li>
+        </ul>  
+      </div>
+    </div>
+    
     <div class="row">
       <div class="span3">
 
@@ -7,50 +18,55 @@
           <%= image_tag @user.avatar_file.small.url %>
         <% end %>
 
-        profile partial goes here (or something like that)
       </div>
 
       <div class="span10">
-        <h1><span>[<%= @user.role %>]</span> <%= @user %></h1>
+        <div class="row">
+          <div class="span4">
+            <h2><%= @user %></h2>
+            <p class="description"><%= @user.role %></p>
+          </div>
+          <div class="span5" style="margin-left:30px;">
+            <% if @user == current_user %>
+              <%= link_to t('profile.edit_profile'), edit_user_path(@user), :class => "btn info small right" %>
+            <% end %>
+          </div>
+        </div>
+        <div class="section-divider"></div>
 
-        <% if @user == current_user %>
-          <%= link_to t('.edit'), edit_user_path(@user) %>
-        <% end %>
+        <div class="row bottom-margin">
+          <div class="span2 text-right description"><%= t('.about_me') %>:</div>
+          <div class="span7"><%= @user.about_me %></div>
+        </div>
 
-        <p>
-          <label><%= t('.about_me') %>:</label>
-          <%= @user.about_me %>
-        </p>
+        <div class="row bottom-margin">
+          <div class="span2 text-right description"><%= t('.studies') %>:</div>
+          <div class="span7"><%= @user.studies %></div>
+        </div>
 
-        <p style="clear:both;">
-          <label><%= t('.studies') %>:</label>
-          <%= @user.studies %>
-        </p>
+        <div class="row bottom-margin">
+          <div class="span2 text-right description"><%= t('.birth_date') %>:</div>
+          <div class="span7"><% if @user.birth_date %><%= l @user.birth_date, :format => :medium %><% end %></div>
+        </div>
 
-        <p style="clear:both;">
-          <label><%= t('.birth_date') %>:</label>
-          <% if @user.birth_date %>
-            <%= l @user.birth_date, :format => :medium %>
-          <% end %>
-        </p>
+        <div class="row bottom-margin">
+          <div class="span2 text-right description"><%= t('.occupation') %>:</div>
+          <div class="span7"><%= @user.occupation %></div>
+        </div>
 
-        <p style="clear:both;">
-          <label><%= t('.occupation') %>:</label>
-          <%= @user.occupation %>
-        </p>
-
-
-        <p style="clear:both;">
-          <label><%= t('.social_networks') %>:</label>
-          <%= @user.twitter_link %>
-          <%= @user.facebook_link %>
-          <%= @user.linkedin_link %>
-        </p>
+        <div class="row bottom-margin">
+          <div class="span2 text-right description"><%= t('.social_networks') %>:</div>
+          <div class="span7">
+            <p><%= link_to("@#{@user.twitter_link}", "http://twitter.com/#{@user.twitter_link}") %></p>
+            <p><%= @user.facebook_link %></p>
+            <p><%= @user.linkedin_link %></p>
+          </div>
+        </div>
 
       </div>
 
       <div class="span3" style="margin:0;">
-        <p>Something else here</p>
+        <%= render :partial => "shared/adds" %>
       </div>
     </div>
   </div>
