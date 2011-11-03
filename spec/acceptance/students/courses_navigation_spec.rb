@@ -15,6 +15,7 @@ feature 'Course navigation', %q{
   scenario 'List all available courses' do
     courses = (1..5).map { Factory(:course, :network => @network) }
     visit courses_url(:subdomain => @network.subdomain)
+    save_and_open_page
     page.should have_css('.course', :count => 5)
   end
 
@@ -38,7 +39,7 @@ feature 'Course navigation', %q{
 
     # Since the view does not have a link to request again,
     # we must manually fire a post request
-    page.driver.post(join_course_url(course, :subdomain => @network.subdomain))
+    page.driver.post(course_requests_url(course, :subdomain => @network.subdomain))
     page.current_url.should match course_path(course)
 
     @student.enrollments.count.should == 1

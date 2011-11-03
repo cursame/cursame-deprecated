@@ -27,6 +27,9 @@ es:
       course:
         one: Curso
         many: Cursos
+      assignment:
+        one: Ejercicio
+        many: Ejercicios
     attributes:
       course:
         name: Nombre

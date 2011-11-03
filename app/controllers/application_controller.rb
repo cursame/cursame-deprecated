@@ -2,10 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
 
-  def current_network
-    Network.find_by_subdomain(request.subdomain)
-  end
-
   private
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
@@ -24,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    request.subdomain.blank? ? root_path : dashboard_url(:subdomain => request.subdomain)
+    dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
+  end
+
+  def current_network
+    @current_network ||= Network.find_by_subdomain(request.subdomain)
   end
 end
