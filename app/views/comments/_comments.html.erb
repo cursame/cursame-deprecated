@@ -1,0 +1,8 @@
+<ul class="comments">
+  <% commentable.comments.each do |comment| %>
+    <li id="<%= "comment_#{comment.id}" %>">
+      <%= comment.user.name %>
+      <%= comment.text %>
+    </i>
+  <% end %>
+</ul>

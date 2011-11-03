@@ -29,11 +29,4 @@ feature 'Manage assignments', %q{
 
     page.should show_assignment assignment
   end
-
-  # scenario 'commenting on an assignment' do
-  #   pending
-  # end
-  # scenario 'commenting on an assignment comment' do
-  #   pending
-  # end
 end
