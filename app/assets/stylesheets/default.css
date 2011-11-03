@@ -14,7 +14,7 @@ selected: #e0f5f8
 
 /* @group Custom Elements */
 body {
-  margin-top: 40px;
+  margin-top: 50px;
 }
 
 .topbar .fill {
@@ -96,6 +96,57 @@ body {
 	color: #BFBFBF;
 	font-style: italic;
 	font-weight: bold;
+}
+
+.course-detail {
+	height: 60px;
+	padding-top: 20px;
+}
+
+.course-detail h4 {
+	line-height: 20px;
+}
+
+.course-detail p {
+	font-style: italic;
+	color: #a9a9a9;
+}
+
+.all-courses {
+	margin-top: 10px;
+	padding-left: 20px;
+}
+
+.course-notification {
+	padding-right: 3px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.course-notification a {
+	color: #fff;
+	display: inline-block;
+}
+
+.course-notification a:hover {
+	text-decoration: none;
+}
+
+.course-notification a img {
+	vertical-align: -4px;
+}
+
+.span1 {
+	margin-left: 5px;
+}
+
+.dashboard-box {
+  background-color: #f5f5f5;
+  margin-bottom: 30px;
+  padding: 60px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }
 
 /* @end */
@@ -316,5 +367,33 @@ form.pull-right p {
 	margin-left: 20px;
 }
 
+.verticle_line {
+	border-right: 1px solid #eaeaea;
+	min-height: 400px;
+}
+
+.span-one-third {
+  width: 300px;
+}
+
+.span-two-thirds {
+  width: 619px;
+}
+
+.even {
+	background-color: #f6f6f6;
+}
+
+.odd {
+	background-color: #fbfefe;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
 /* @end */
 

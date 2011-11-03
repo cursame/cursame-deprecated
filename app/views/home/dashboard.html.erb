@@ -1,21 +1,58 @@
 <div class="container">
   <div class="content">
     <div class="row">
-      <div class="span3">
-        <%= render :partial => 'menu' %>
+      <span class="span16">
+        <ul class="breadcrumb">
+          <li>Dashboard</li>
+        </ul>  
       </div>
-      <div class="span10">
-        <%= t('.my_courses') %>
-
-        <% @courses.each do |course| %>
-          <div class="course">
-            <%= course.name %>
+    </div>
+    <div class="row">
+      
+    <div class="span-one-third verticle_line">
+      <div class="underline">
+        <div class="row">
+          <div class="span3">
+            <h2><%= t('courses.my_courses') %></h2>
           </div>
+          <div class="span2">
+            <% if current_user.teacher? %>
+              <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small right") %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <% unless @courses.blank? %>
+      <% @courses.each do |course| %>
+         <div class="course-detail <%= cycle("odd", "even")%>">
+           <div class="span4">
+            <h4><%= link_to(course.name, course_path(course)) %></h4>
+            <p><%= course.reference %></p>
+           </div>
+           <div class="span1"><span class="label notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span></div>
+         </div>
         <% end %>
+      <% else %>
+        <% if current_user.teacher? %>
+          <p>Te pedimos crees los cursos que impartes.</p>
+        <% else %>
+          <p>Te invitamos a navegar entre los cursos disponibles y solicites participar en los que te corresponde.</p>
+        <% end %>
+      <% end %>
+      <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path) %></div>
+    </div>
+    
+    <div class="span-two-thirds">
+      <div class="dashboard-box">
+    
       </div>
-      <div class="span3" style="margin:0;">
-        <p>Something else here</p>
+  
+      <div class="dashboard-box">
+    
       </div>
+    </div>
+
     </div>
   </div>
   <%= render :partial => "shared/footer" %>
