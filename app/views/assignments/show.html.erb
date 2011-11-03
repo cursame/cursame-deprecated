@@ -6,3 +6,6 @@
 <%= @assignment.value %>
 <%= @assignment.period %>
 <%= l @assignment.due_to, :format => :short %>
+
+
+<%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>

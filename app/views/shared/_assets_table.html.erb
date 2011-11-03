@@ -1,0 +1,20 @@
+<table class="zebra-striped" data-sortable="true">
+  <thead>
+    <tr>
+      <th class="blue"><%= Asset.human_attribute_name :type %></th>
+      <th class="blue"><%= Asset.human_attribute_name :name %></th>
+      <th class="blue"><%= Asset.human_attribute_name :description %></th>
+      <th class="blue"><%= Asset.human_attribute_name :created_at %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% record.assets.each do |asset| %>
+      <tr class='asset'>
+        <td><%= asset.file.url.match(/\.(\w+)$/)[1] %></td>
+        <td><%= link_to asset.name, asset.file.url %></td>
+        <td><%= asset.description %></td>
+        <td><%= l asset.created_at, :format => :short %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

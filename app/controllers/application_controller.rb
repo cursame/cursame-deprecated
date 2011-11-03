@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_user!
 
   private
-
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
   end

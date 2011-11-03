@@ -9,9 +9,12 @@ feature 'Manage assignments', %q{
   background do
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
-    @course  = Factory(:course, :teachers => [@teacher], :network => @network)
+    @course  = Factory(:course, :network => @network)
+    Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'admin')
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
+
+  it_should_behave_like 'has basic actions for assignments'
 
   scenario 'creating an assignment' do
     visit course_url(@course, :subdomain => @network.subdomain)
@@ -48,46 +51,6 @@ feature 'Manage assignments', %q{
     page.current_url.should match assignment_path(assignment)
     page.should show_assignment assignment
     page.should have_notice t('flash.assignment_created')
-  end
-
-  scenario 'commenting on an assignment' do
-    assignment = Factory(:assignment, :course => @course)
-    visit assignment_url assignment, :subdomain => @subdomain
-
-    fill_in 'comment[text]', :with => '<p>Just testing the comments</p>'
-    
-    lambda do
-      click_button 'comment'
-    end.should change(assignment, :comments).by(1)
-
-    comment = Comment.last
-    comment.text.should == '<p>Just testing the comments</p>'
-
-    page.should show_comment comment
-    page.should have_notice t('flash.assignment_created')
-  end
-
-  scenario 'commenting on an assignment comment' do
-    pending
-    assignment = Factory(:assignment)
-    comment    = Factory(:comment, :commentable => assignment)
-    visit assignment_url assignment, :subdomain => @subdomain
-
-    within('#root_comments .comment:last') do
-      fill_in 'comment[text]', :with => '<p>Comment of a comment</p>'
-      lambda do
-        click_button 'comment'
-      end.should change(assignment, :comments).by(1)
-    end
-
-    comments_comment = Comment.last
-    comments_comment.text.should == '<p>Comment of a comment</p>'
-    comments_comment.commentable.should == comment
-
-    within('#root_comments .comment:last') do
-      page.should show_comment comments_comment
-    end
-    page.should have_notice t('flash.comment_created')
   end
 
   scenario 'removing an assignment comment' do

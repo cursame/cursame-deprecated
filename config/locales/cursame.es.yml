@@ -22,18 +22,19 @@ es:
     course_updated: El curso fue actualizado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
+    assignment_created: La tarea fue creada
 
   activerecord:
     models:
       course:
         one: Curso
-        many: Cursos
+        other: Cursos
       assignment:
-        one: Ejercicio
-        many: Ejercicios
+        one: Tarea
+        other: Tareas
       user:
         one: Usuario
-        many: Usuarios
+        other: Usuarios
     attributes:
       course:
         name: Nombre
@@ -43,7 +44,7 @@ es:
         logo_file: Logo del curso
         reference: Referencia
         public: ¿Es público?
-      course_asset:
+      asset:
         name: Nombre
         description: Descripción
         file: Archivo

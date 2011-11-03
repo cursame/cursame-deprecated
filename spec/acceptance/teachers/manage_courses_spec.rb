@@ -62,7 +62,7 @@ feature 'Manage courses', %q{
     courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
     (1..2).map { Factory(:course) }
     visit dashboard_url(:subdomain => @network.subdomain)
-    page.should have_css('.course', :count => 4)
+    page.should have_css('.course-detail', :count => 4)
   end
 
   scenario 'View pending requests to join a course' do

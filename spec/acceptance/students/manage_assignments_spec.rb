@@ -10,17 +10,13 @@ feature 'Manage assignments', %q{
     @network = Factory(:network)
     @user    = Factory(:user, :networks => [@network])
     @course  = Factory(:course,  :network => @network)
+    Enrollment.create(:course => @course, :user => @user, :admin => false, :role => 'student')
     sign_in_with @user, :subdomain => @network.subdomain
   end
 
-  scenario 'viewing a list of assignments' do
-    pending
-    assignments = (1..3).map { Factory(:assignment, :course => @course) }
-    visit course_assignments_path course
-    assignments.each do |assignment|
-      page.should show_assignment_preview assignment
-    end
-  end
+  it_should_behave_like 'has basic actions for assignments'
+
+  # TODO: this should go in a shared example group and be ran with student and teacher
 
   scenario 'viewing the detail of an assignment' do
     pending
