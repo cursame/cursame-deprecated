@@ -57,6 +57,9 @@ es:
     toolbar:
       logout: 'Salir'
       search: 'Buscar'
+      
+  dashboard:
+    view_all_courses: 'Ver todos los cursos disponibles'
   
   courses:
     archives: 'Archivos'
@@ -65,6 +68,8 @@ es:
     time: 'Fecha'
     public: 'Curso Público'
     private: 'Curso Privado'
+    my_courses: 'Mis Cursos'
+    create_course: 'Crear Curso'
     menu:
       updates: 'Actualizaciones'
       discus: 'Discusiones'
