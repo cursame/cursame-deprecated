@@ -13,7 +13,6 @@ Cursame::Application.routes.draw do
     end
 
     member do
-      post :join
       get  :members
     end
 

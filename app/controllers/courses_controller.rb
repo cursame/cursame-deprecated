@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_teacher!, :except => [:index, :show, :join]
+  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :require_network
 
   def index
