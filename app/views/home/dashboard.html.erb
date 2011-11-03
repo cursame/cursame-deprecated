@@ -24,7 +24,7 @@
       </div>
       
       <% unless @courses.blank? %>
-      <% @courses.each do |course| %>
+        <% @courses.each do |course| %>
          <div class="course-detail <%= cycle("odd", "even")%>">
            <div class="span4">
             <h4><%= link_to(course.name, course_path(course)) %></h4>
