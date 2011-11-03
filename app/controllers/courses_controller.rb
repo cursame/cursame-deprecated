@@ -44,7 +44,7 @@ class CoursesController < ApplicationController
   end
 
   def upload_asset
-    asset_file = CourseAsset.new :file => uploaded_file
+    asset_file = Asset.new :file => uploaded_file
     render :json => asset_file.as_json(:methods => [:file_cache], :only => [:file, :file_cache])
   end
 

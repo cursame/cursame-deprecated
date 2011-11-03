@@ -1,7 +1,7 @@
 <%= semantic_form_for @course do |form| %>
   <%= form.inputs :file do %>
     <li class='preview'>
-      <%= image_tag @course.logo_file.thumb.url %>
+      <img src="<%= @course.logo_file.thumb.url %>"/>
     </li>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
     <%= form.input :logo_file_cache, :as => :hidden %>
@@ -16,9 +16,9 @@
     <%= form.input :public %>
   <% end %>
 
-  <fieldset class="nested_models course_assets input" data-association="course_assets">
-    <%- @course.course_assets.build %>
-    <%= form.semantic_fields_for :course_assets do |asset| %>
+  <fieldset class="nested_models assets input" data-association="assets">
+    <%- @course.assets.build %>
+    <%= form.semantic_fields_for :assets do |asset| %>
       <%- record = asset.object %>
       <fieldset class="<%= record.new_record? ? :new : nil %>">
         <div class='preview'>

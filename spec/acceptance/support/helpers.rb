@@ -20,6 +20,10 @@ end
 module HelperMethods
   include NavigationHelpers
   include I18n
+
+  def t *args
+    I18n.t *args
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

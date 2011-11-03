@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe CourseAsset do
+describe Asset do
   include CarrierWave::Test::Matchers
-  it { should belong_to :course }
+  it { should belong_to :owner }
 end

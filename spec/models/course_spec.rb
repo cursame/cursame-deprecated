@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Course do
   describe 'associations' do
-    it { should have_many(:course_assets) }
+    it { should have_many(:assets) }
     it { should belong_to :network }
     it { should have_many :assignments }
     it { should have_many(:teachers).through(:enrollments) }
