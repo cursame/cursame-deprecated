@@ -10,4 +10,9 @@ FactoryGirl.define do
     role 'student'
     state 'pending'
   end
+
+  factory :admin_enrollment, :parent => :teacher_enrollment do
+    admin true
+    user { Factory(:teacher) }
+  end
 end

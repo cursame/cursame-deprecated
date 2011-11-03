@@ -51,14 +51,12 @@
         <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
         <%= render :partial => 'shared/assets_table', :locals => {:record => @course} %>
 
-<<<<<<< HEAD
-=======
         <% unless @course.assets.empty? %>
           <%= render :partial => 'shared/assets_table', :locals => {:record => @course} %>
         <% else %>
           <p>No hay archivos del curso.</p>
         <% end %>
->>>>>>> 0a41a7a4411748044b280de14528741760d78966
+
       </div>
       <div class="span3" style="margin:0;">
         <%= render :partial => "shared/adds" %>

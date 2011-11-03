@@ -2,8 +2,6 @@ shared_examples_for 'has basic actions for assignments' do
   scenario 'viewing a list of assignments' do
     assignments = (1..3).map { Factory(:assignment, :course => @course) }
     visit course_assignments_url @course, :subdomain => @network.subdomain
-    puts page.driver.current_url
-    save_and_open_page
     assignments.each do |assignment|
       page.should show_assignment_preview assignment
     end

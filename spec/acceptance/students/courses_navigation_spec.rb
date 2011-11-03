@@ -13,13 +13,13 @@ feature 'Course navigation', %q{
   end
 
   scenario 'List all available courses' do
-    courses = (1..5).map { Factory(:course, :network => @network) }
+    courses = (1..5).map { Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)]) }
     visit courses_url(:subdomain => @network.subdomain)
     page.should have_css('.course', :count => 5)
   end
 
   scenario 'Join a course' do
-    course = Factory(:course, :network => @network)
+    course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
     visit courses_url(:subdomain => @network.subdomain)
     click_link I18n.t('courses.index.request_join')
 
@@ -30,7 +30,7 @@ feature 'Course navigation', %q{
   end
 
   scenario 'Cannot create two requests to join the same course' do
-    course = Factory(:course, :network => @network)
+    course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
     visit courses_url(:subdomain => @network.subdomain)
     click_link I18n.t('courses.index.request_join')
 
