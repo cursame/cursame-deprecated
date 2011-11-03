@@ -65,6 +65,7 @@ body {
 	margin-bottom: 20px;
 	border-top: 1px solid #d5d5d5;
 	margin-top: 10px;
+	height: 37px;
 }
 
 .section-divider h3 {
@@ -367,6 +368,10 @@ form.pull-right p {
 	margin-left: 20px;
 }
 
+.bottom-margin {
+	margin-bottom: 20px;
+}
+
 .verticle_line {
 	border-right: 1px solid #eaeaea;
 	min-height: 400px;
@@ -394,6 +399,14 @@ form.pull-right p {
 
 .left {
 	float: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
 }
 /* @end */
 
