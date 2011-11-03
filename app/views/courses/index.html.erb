@@ -26,12 +26,20 @@
         
         <div class="courses">
           <% @courses.each do |course| %>
-            <div class='course'>
-              <h3><%= link_to course.name, course_path(course) %></h3>
-              <div class="course-by">
-                <%= t('courses.by') %> <%= course.teachers.where("enrollments.admin" => true).first.name %> - <%= course.reference %>
+            <div class="course padding-all <%= cycle('odd', 'even') %>">
+              <div class="row">
+                <div class="span6"><h3><%= link_to course.name, course_path(course) %></h3></div>
+                <div class="span4" style="margin-top: 5px;">
+                <% if current_user.manageable_courses.include? course %>
+                <span class="label notice course-notification"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
+                <span class="label important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('confirm_delete'), :method => :delete) %></span>
+                <% end %>
+                </div>
               </div>
-              <p class="padding-right"><%= truncate(course.description, :length => 300) %></p>
+              <div class="course-by">
+                <%= t('courses.by') %> <%= course.owner.name %> - <%= course.reference %>
+              </div>
+              <p class="padding-right"><%= truncate(course.description, :length => 200) %></p>
 
               <p style="color:red;">
               <% enrollment = current_user.enrollments.where(:course_id => course).first %>

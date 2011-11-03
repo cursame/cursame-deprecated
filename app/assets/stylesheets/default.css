@@ -379,12 +379,20 @@ form.pull-right p {
 	margin-right: 20px;
 }
 
+.top-margin {
+	margin-top: 10px;
+}
+
 .padding-right {
 	padding-right: 20px;
 }
 
 .padding-top {
 	padding-top: 10px;
+}
+
+.padding-all {
+	padding: 10px;
 }
 
 .verticle_line {

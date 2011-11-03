@@ -1,5 +1,5 @@
 es:
-  confirm_delete: ¿Seguro?  
+  confirm_delete: ¿Estas Seguro?  
 
   forms: 
     email: 'Email'
@@ -89,6 +89,8 @@ es:
     my_courses: 'Mis Cursos'
     create_course: 'Crear Curso'
     by: 'por'
+    edit: 'Editar'
+    delete: 'Eliminar'
     menu:
       updates: 'Actualizaciones'
       discus: 'Discusiones'
