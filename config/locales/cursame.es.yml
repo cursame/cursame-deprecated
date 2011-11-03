@@ -86,6 +86,7 @@ es:
     private: 'Curso Privado'
     my_courses: 'Mis Cursos'
     create_course: 'Crear Curso'
+    by: 'por'
     menu:
       updates: 'Actualizaciones'
       discus: 'Discusiones'
@@ -102,6 +103,8 @@ es:
       members_in_course: 'Miembros en este curso'
       teachers: 'Maestros'
       students: 'Estudiantes'
+      member: 'Miembro'
+      members: 'Miembros'
     requests:
       pending_requests: 'Solicitudes Pendientes'
     index:
@@ -114,4 +117,9 @@ es:
 
 
   profile:
-    edit_profile: Editar perfil
+    edit_profile: 'Editar perfil'
+    about_me: 'Acerca de mí'
+    studies: 'Estudios'
+    birth_date: 'Fecha de nacimiento'
+    occupation: 'Ocupación'
+    social_networks: 'Redes sociales'

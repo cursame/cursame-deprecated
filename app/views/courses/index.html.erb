@@ -1,19 +1,37 @@
 <div class="container">
   <div class="content">
+    
     <div class="row">
-      <div class="span3">
-        <%= render :partial => "course_menu" %>
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li>Courses</li>
+        </ul>  
       </div>
-      <div class="span10">
-        <h2><%= t('.title') %></h2>
+    </div>
+    
+    <div class="row">
+      <div class="span13">
+        
+        <div class="row bottom-margin">
+          <div class="span10">
+            <h2><%= t('.title') %></h2>
+          </div>
+          <div class="span3">
+            <% if current_user.teacher? %>
+              <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small right") %>
+            <% end %>
+          </div>
+        </div>
+        
         <div class="courses">
           <% @courses.each do |course| %>
             <div class='course'>
               <h3><%= link_to course.name, course_path(course) %></h3>
               <div class="course-by">
-                por Florentino Perez - <%= course.reference %>
+                <%= t('courses.by') %> <%= course.teachers.where("enrollments.admin" => true).first.name %> - <%= course.reference %>
               </div>
-              <p><%= truncate(course.description, :length => 200) %></p>
+              <p class="padding-right"><%= truncate(course.description, :length => 300) %></p>
 
               <p style="color:red;">
               <% enrollment = current_user.enrollments.where(:course_id => course).first %>

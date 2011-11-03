@@ -53,11 +53,14 @@ body {
 }
 
 .content .span10 {
-	border-left: 1px solid #eaeaea;
-	border-right: 1px solid #eaeaea;
 	margin-left: 0;
 	width: 530px;
 	padding: 10px 20px 0;
+}
+
+.content .span13 {
+	border-right: 1px solid #eaeaea;
+	width: 759px;
 }
 
 .section-divider {
@@ -370,6 +373,18 @@ form.pull-right p {
 
 .bottom-margin {
 	margin-bottom: 20px;
+}
+
+.right-margin {
+	margin-right: 20px;
+}
+
+.padding-right {
+	padding-right: 20px;
+}
+
+.padding-top {
+	padding-top: 10px;
 }
 
 .verticle_line {
