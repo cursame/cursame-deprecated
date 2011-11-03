@@ -8,7 +8,6 @@ Cursame::Application.routes.draw do
 
   resources :courses, :shallow => true do
     collection do
-      post :upload_asset, :as => :upload_asset_for
       post :upload_logo,  :as => :upload_logo_for
     end
 
@@ -27,5 +26,6 @@ Cursame::Application.routes.draw do
 
   resources :users
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
+  post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   root :to => "home#index"
 end

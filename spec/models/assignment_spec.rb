@@ -8,6 +8,7 @@ describe Assignment do
     it { should belong_to :course }
     it { should have_many :comments }
     it { should validate_presence_of :course }
+    it { should have_many :assets }
   end
   
   describe 'validations' do

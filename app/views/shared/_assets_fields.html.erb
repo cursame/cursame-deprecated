@@ -1,0 +1,19 @@
+<fieldset class="nested_models assets input" data-association="assets">
+  <%- form.object.assets.build %>
+  <%= form.semantic_fields_for :assets do |asset| %>
+    <%- record = asset.object %>
+    <fieldset class="<%= record.new_record? ? :new : nil %>">
+      <div class='preview'>
+        <img /> 
+      </div>
+      <ol>
+        <%= asset.input :name %>
+        <%= asset.input :description %>
+        <%= asset.input :file, :as => :file, :input_html => {'data-upload-path' => upload_asset_path} %>
+        <%= asset.input :file_cache, :as => :hidden %>
+        <%= asset.input :_destroy, :as => :boolean %>
+      </ol>
+    </fieldset>
+  <% end %>
+  <%= link_to t('.add_asset'), '#', :class => 'add_record', :style => 'display:none' %>
+</fieldset>

@@ -16,25 +16,7 @@
     <%= form.input :public %>
   <% end %>
 
-  <fieldset class="nested_models assets input" data-association="assets">
-    <%- @course.assets.build %>
-    <%= form.semantic_fields_for :assets do |asset| %>
-      <%- record = asset.object %>
-      <fieldset class="<%= record.new_record? ? :new : nil %>">
-        <div class='preview'>
-          <img /> 
-        </div>
-        <ol>
-          <%= asset.input :name %>
-          <%= asset.input :description %>
-          <%= asset.input :file, :as => :file, :input_html => {'data-upload-path' => upload_asset_for_courses_path} %>
-          <%= asset.input :file_cache, :as => :hidden %>
-          <%= asset.input :_destroy, :as => :boolean %>
-        </ol>
-      </fieldset>
-    <% end %>
-    <%= link_to t('.add_asset'), '#', :class => 'add_record', :style => 'display:none' %>
-  </fieldset>
+  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
 
   <%= form.buttons do %>
     <%= form.commit_button :button_html => {:id => :submit} %>
