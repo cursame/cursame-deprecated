@@ -15,18 +15,4 @@ feature 'Manage assignments', %q{
   end
 
   it_should_behave_like 'has basic actions for assignments'
-
-  # TODO: this should go in a shared example group and be ran with student and teacher
-
-  scenario 'viewing the detail of an assignment' do
-    pending
-    assignment = Factory(:assignment, :course => @course)
-    visit course_assignments_path course
-
-    within('.assignment:last') do
-      click_link t('show_details')
-    end
-
-    page.should show_assignment assignment
-  end
 end

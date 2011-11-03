@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
 
   can_haz_assets
 
-  validates_presence_of :network, :name, :description, :start_date, :finish_date
+  validates_presence_of :name, :description, :start_date, :finish_date, :network
 
   belongs_to :network
 

@@ -33,9 +33,28 @@ feature 'Manage assignments', %q{
     page.current_url.should match assignment_url(@assignment, :subdomain => @network.subdomain)
   end
 
-  # scenario 'commenting on an assignment comment' do
-  #   pending
-  # end
+  scenario 'commenting on an assignment comment' do
+    pending
+    assignment = Factory(:assignment)
+    comment    = Factory(:comment, :commentable => assignment)
+    visit assignment_url assignment, :subdomain => @subdomain
+
+    within('#root_comments .comment:last') do
+      fill_in 'comment[text]', :with => '<p>Comment of a comment</p>'
+      lambda do
+        click_button 'comment'
+      end.should change(assignment, :comments).by(1)
+    end
+
+    comments_comment = Comment.last
+    comments_comment.text.should == '<p>Comment of a comment</p>'
+    comments_comment.commentable.should == comment
+
+    within('#root_comments .comment:last') do
+      page.should show_comment comments_comment
+    end
+    page.should have_notice t('flash.comment_created')
+  end
 
   scenario 'removing an assignment comment' do
     pending

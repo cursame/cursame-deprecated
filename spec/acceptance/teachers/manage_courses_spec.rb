@@ -59,8 +59,8 @@ feature 'Manage courses', %q{
   end
 
   scenario 'view my courses' do
-    courses = (1..3).map { Factory(:course, :teachers => [@teacher]) }
-    (1..2).map { Factory(:course) }
+    courses = (1..3).map { Factory(:course, :enrollments => [Factory(:student_enrollment, :user => @teacher)], :network => @network) }
+    (1..2).map { Factory(:course, :network => @network) }
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.course-detail', :count => 4)
   end
@@ -68,7 +68,7 @@ feature 'Manage courses', %q{
   scenario 'View pending requests to join a course' do
     (1..3).map do
       student = Factory(:student, :networks => [@network])
-      student.enrollments.create(:course => @course, :state => 'pending')
+      student.enrollments.create(:course => @course, :state => 'pending', :role => 'student')
     end
 
     # These should not appear on the list
@@ -80,7 +80,7 @@ feature 'Manage courses', %q{
   end
 
   scenario 'Accept a request to join a course' do
-    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'pending')
+    Factory(:student_enrollment, :course => @course, :state => 'pending', :user => Factory(:user))
 
     visit course_requests_url(@course, :subdomain => @network.subdomain)
     page.should have_css('.request', :count => 1)
@@ -93,7 +93,7 @@ feature 'Manage courses', %q{
   end
 
   scenario 'Reject a request to join a course' do
-    Factory(:student, :networks => [@network]).enrollments.create(:course => @course, :state => 'pending')
+    Factory(:student_enrollment, :course => @course, :state => 'pending', :user => Factory(:user))
 
     visit course_requests_url(@course, :subdomain => @network.subdomain)
     page.should have_css('.request', :count => 1)

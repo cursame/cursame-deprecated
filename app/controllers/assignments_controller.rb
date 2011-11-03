@@ -1,6 +1,6 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :manageable_course, :only => [:index, :new, :create]
+  before_filter :manageable_course, :only => [:new, :create]
 
   def index
     @course      = current_user.courses.find params[:course_id]
