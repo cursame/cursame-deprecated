@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :require_network
-  before_filter :find_user
-  before_filter :can_edit?, :except => [:show]
+  before_filter :find_user, :except => [:upload_avatar]
+  before_filter :can_edit?, :except => [:show, :upload_avatar]
 
   def show
     # FIXME: You should only see the profile of a user if you have a course in common
@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def upload_avatar
+    asset_file = User.new :avatar_file => uploaded_file
+    render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
 
 

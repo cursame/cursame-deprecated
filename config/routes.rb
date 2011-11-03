@@ -24,7 +24,12 @@ Cursame::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users do
+    collection do
+      post :upload_avatar,  :as => :upload_avatar_for
+    end
+  end
+
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   root :to => "home#index"

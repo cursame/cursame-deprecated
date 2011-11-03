@@ -20,8 +20,8 @@ $(function(){
           var preview  = $('.preview img', fieldset);
           var file, thumb_url;
 
-          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache);
-          file = data.logo_file;
+          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache);
+          file = data.logo_file || data.avatar_file;
 
           if (file && file.thumb) {
             thumb_url = file.thumb.url;

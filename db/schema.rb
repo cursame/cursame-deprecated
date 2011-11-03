@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103015955) do
+ActiveRecord::Schema.define(:version => 20111103030709) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20111103015955) do
     t.string   "twitter_link"
     t.string   "facebook_link"
     t.string   "linkedin_link"
+    t.string   "avatar_file"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
