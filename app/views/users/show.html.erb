@@ -24,7 +24,9 @@
 
         <p style="clear:both;">
           <label><%= t('.birth_date') %>:</label>
-          <%= l @user.birth_date, :format => :medium %>
+          <% if @user.birth_date %>
+            <%= l @user.birth_date, :format => :medium %>
+          <% end %>
         </p>
 
         <p style="clear:both;">
