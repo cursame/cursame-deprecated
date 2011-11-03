@@ -18,4 +18,8 @@ class Course < ActiveRecord::Base
 
   mount_uploader :logo_file, CourseLogoUploader
   html_sanitized :description
+  
+  def owner
+    teachers.where("enrollments.admin" => true).first
+  end
 end
