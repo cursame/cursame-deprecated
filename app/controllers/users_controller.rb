@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find params[:id]
+    @user = current_network.users.find params[:id]
   end
 
   def can_edit?
