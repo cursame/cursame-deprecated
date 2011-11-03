@@ -15,7 +15,6 @@ feature 'Course navigation', %q{
   scenario 'List all available courses' do
     courses = (1..5).map { Factory(:course, :network => @network) }
     visit courses_url(:subdomain => @network.subdomain)
-    save_and_open_page
     page.should have_css('.course', :count => 5)
   end
 

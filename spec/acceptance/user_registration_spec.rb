@@ -12,9 +12,12 @@ feature 'User registration', %q{
 
   scenario 'signing up as student' do
     visit root_url(:subdomain => @network.subdomain)
-    fill_in 'student_user[email]', :with => 'user@example.com'
-    fill_in 'student_user[password]', :with => 'password'
+    fill_in 'student_user[first_name]', :with => 'Macario'
+    fill_in 'student_user[last_name]',  :with => 'Ortega'
+    fill_in 'student_user[email]',      :with => 'user@example.com'
+    fill_in 'student_user[password]',   :with => 'password'
     fill_in 'student_user[password_confirmation]', :with => 'password'
+
     click_button 'register'
 
     user = User.last
@@ -25,6 +28,8 @@ feature 'User registration', %q{
 
   scenario 'signing up as teacher' do
     visit new_teacher_user_registration_url(:subdomain => @network.subdomain)
+    fill_in 'teacher_user[first_name]', :with => 'Macario'
+    fill_in 'teacher_user[last_name]',  :with => 'Ortega'
     fill_in 'teacher_user[email]', :with => 'user@example.com'
     fill_in 'teacher_user[password]', :with => 'password'
     fill_in 'teacher_user[password_confirmation]', :with => 'password'
