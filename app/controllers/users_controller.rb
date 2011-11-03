@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     # If the intersection of the two sets is not empty then we have at least
     # one course in common.
-    if (my_courses & his_courses).empty?
+    if (my_courses & his_courses).empty? && current_user != @user
       redirect_to root_path
     end
   end
