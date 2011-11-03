@@ -13,12 +13,23 @@ end
 RSpec::Matchers.define :show_assignment do |assignment|
   match do |page|
     page.should have_content Assignment.model_name.human
-
     page.should have_content assignment.course.name
     page.should have_content assignment.name
     page.should have_content assignment.description
     page.should have_content assignment.value
     page.should have_content assignment.period
     page.should have_content I18n.l(assignment.due_to, :format => :short) 
+  end
+end
+
+RSpec::Matchers.define :show_assignment_preview do |assignment|
+  match do |page|
+    page.should have_content assignment.course.name
+    page.should have_content assignment.name
+    page.should have_content assignment.value
+    page.should have_content assignment.period
+    page.should have_content I18n.l(assignment.due_to, :format => :short) 
+
+    page.should have_css "a[href='#{assignment_path assignment}']"
   end
 end

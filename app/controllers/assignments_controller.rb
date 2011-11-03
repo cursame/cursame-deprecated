@@ -1,7 +1,11 @@
 class AssignmentsController < ApplicationController
-  before_filter :load_course, :only => [:new, :create]
+  before_filter :authenticate_user!
+  before_filter :manageable_course, :except => [:index, :show]
 
   def index
+    @course      = current_user.courses.find params[:course_id]
+    puts @course.assignments.inspect
+    @assignments = @course.assignments
   end
 
   def new
@@ -25,7 +29,8 @@ class AssignmentsController < ApplicationController
   end
 
   private
-  def load_course
-    @course = current_network.courses.find params[:course_id]
+  def manageable_course
+    authenticate_teacher!
+    @course ||= current_user.manageable_courses.find params[:course_id]
   end
 end
