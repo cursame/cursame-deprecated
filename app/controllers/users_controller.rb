@@ -4,7 +4,15 @@ class UsersController < ApplicationController
   before_filter :can_edit?, :except => [:show, :upload_avatar]
 
   def show
-    # FIXME: You should only see the profile of a user if you have a course in common
+    # You should only see the profile of a user if you have a course in common
+    my_courses = current_user.courses
+    his_courses = @user.courses
+
+    # If the intersection of the two sets is not empty then we have at least
+    # one course in common.
+    if (my_courses & his_courses).empty?
+      redirect_to root_path
+    end
   end
 
   def edit
