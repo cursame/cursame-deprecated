@@ -13,27 +13,27 @@ feature 'Course interactions', %q{
     @course  = Factory(:course, :network => @network)
     @teacher = Factory(:teacher, :networks => [@network])
 
-    @student.enrollments.create(:course => @course, :state => 'accepted')
-    @teacher.assignations.create(:course => @course)
+    @student.enrollments.create(:course => @course, :state => 'accepted', :role => 'student')
+    @teacher.enrollments.create(:course => @course, :admin => true, :role => 'teacher')
 
     sign_in_with @student, :subdomain => @network.subdomain
   end
 
 
   scenario 'View all students participating in this course' do
-    (1..10).map do
+    (1..3).map do
       student = Factory(:student, :networks => [@network])
-      student.enrollments.create(:course => @course, :state => 'accepted')
+      student.enrollments.create(:course => @course, :state => 'accepted', :role => 'student')
     end
 
     visit members_course_url(@course, :subdomain => @network.subdomain)
-    page.should have_css('.student', :count => 11) # 10 + the current student
+    page.should have_css('.student', :count => 4) # plus me
   end
 
 
   scenario 'View teachers on this course' do
     other_teacher = Factory(:teacher, :networks => [@network])
-    @course.assignations.create(:user => other_teacher)
+    @course.enrollments.create(:user => other_teacher, :admin => 'true', :role => 'teacher')
 
     visit members_course_url(@course, :subdomain => @network.subdomain)
     page.should have_css('.teacher', :count => 2)
@@ -41,7 +41,7 @@ feature 'Course interactions', %q{
 
 
   scenario 'Should not include users from other courses' do
-    other_course = Factory(:course, :network => @network)
+    other_course  = Factory(:course, :network => @network)
     other_student = Factory(:student, :networks => [@network])
     other_student.enrollments.create(:course => other_course, :state => 'accepted')
 
@@ -74,20 +74,8 @@ feature 'Course interactions', %q{
   scenario 'As a teacher, the same tests as above apply' do
     sign_out
     sign_in_with @teacher, :subdomain => @network.subdomain
-
-    (1..10).map do
-      student = Factory(:student, :networks => [@network])
-      student.enrollments.create(:course => @course, :state => 'accepted')
-    end
-
-    other_student = Factory(:student, :networks => [@network])
-    other_student.enrollments.create(:course => @course, :state => 'pending')
-
-    other_student = Factory(:student, :networks => [@network])
-    other_student.enrollments.create(:course => @course, :state => 'rejected')
-
     visit members_course_url(@course, :subdomain => @network.subdomain)
-    page.should have_css('.student', :count => 11)
+    page.should have_css('.student', :count => 1)
     page.should have_css('.teacher', :count => 1)
   end
 end

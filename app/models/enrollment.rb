@@ -2,7 +2,7 @@ class Enrollment < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
 
-  validates_inclusion_of :state, :in => %w(pending rejected accepted)
+  validates_inclusion_of :state, :in => %w(pending rejected accepted), :allow_blank => true
 
   def pending?
     state == 'pending'

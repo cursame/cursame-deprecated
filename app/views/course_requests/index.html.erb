@@ -2,7 +2,7 @@
   <div class="content">
     <div class="row">
       <div class="span3">
-        <%= render :partial => "course_menu" %>
+        <%= render :partial => "courses/course_menu" %>
       </div>
       <div class="span10">
         <h2><%= t('courses.requests.pending_requests') %></h2>
@@ -11,9 +11,9 @@
           <% @requests.each do |request| %>
             <div class="request">
             <%= request.user.email %>
-            <%= link_to 'Accept', course_accept_request_path(@course, request.id), :method => :post %>
+            <%= link_to 'Accept', accept_request_path(request), :method => :post %>
             <br/>
-            <%= link_to 'Reject', course_reject_request_path(@course, request.id), :method => :post %>
+            <%= link_to 'Reject', reject_request_path(request), :method => :post %>
             </div>
           <% end %>
         </div>

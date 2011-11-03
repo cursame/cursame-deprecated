@@ -1,0 +1,22 @@
+<%= semantic_form_for @user do |form| %>
+
+  <%= form.inputs do %>
+    <%= form.input :first_name %>
+    <%= form.input :last_name %>
+    <%= form.input :about_me %>
+    <%= form.input :studies %>
+    <%= form.input :birth_date %>
+    <%= form.input :occupation %>
+  <% end %>
+
+  <%= form.inputs 'Redes sociales' do %>
+    <%= form.input :twitter_link, :label => 'http://twitter.com/' %>
+    <%= form.input :facebook_link, :label => 'https://www.facebook.com/' %>
+    <%= form.input :linkedin_link, :label => 'LinkedIn' %>
+  <% end %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+
+<% end %>

@@ -21,12 +21,16 @@ es:
     course_created: Curso creado
     course_updated: El curso fue actualizado
     course_join_requested: Solicitud de unirse enviada
+    user_updated: Perfil actualizado
 
   activerecord:
     models:
       course:
         one: Curso
         many: Cursos
+      assignment:
+        one: Ejercicio
+        many: Ejercicios
     attributes:
       course:
         name: Nombre
@@ -95,3 +99,8 @@ es:
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
+
+
+  users:
+    show:
+      edit: Editar perfil

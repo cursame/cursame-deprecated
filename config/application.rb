@@ -1,6 +1,7 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
+require "#{File.dirname __FILE__}/../lib/active_record/html_sanitization"
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
