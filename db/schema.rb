@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102193758) do
+ActiveRecord::Schema.define(:version => 20111102232919) do
 
   create_table "assignations", :force => true do |t|
     t.integer  "user_id"
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20111102193758) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin"
+    t.string   "role"
   end
 
   add_index "enrollments", ["course_id"], :name => "index_enrollments_on_course_id"

@@ -15,14 +15,20 @@ Cursame::Application.routes.draw do
     member do
       post :join
       get  :members
-      get  :requests
     end
 
     resources :assignments
+    resources :requests, :only => [:create, :index], :controller => 'course_requests' do
+      member do
+        post :accept
+        post :reject
+      end
+    end
 
-    match '/requests/:id/accept' => 'courses#accept_request', :as => :accept_request, :via => :post
-    match '/requests/:id/reject' => 'courses#reject_request', :as => :reject_request, :via => :post
+    # match '/requests/:id/accept' => 'courses#accept_request', :as => :accept_request, :via => :post
+    # match '/requests/:id/reject' => 'courses#reject_request', :as => :reject_request, :via => :post
   end
+
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
 

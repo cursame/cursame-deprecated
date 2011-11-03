@@ -22,7 +22,6 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    @assignment = current_user.assignments
   end
 
   private

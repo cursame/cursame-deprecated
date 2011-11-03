@@ -1,14 +1,10 @@
 class Course < ActiveRecord::Base
   extend ActiveRecord::HTMLSanitization
 
-  has_many :assignations
-  has_many :teachers, :through => :assignations, :class_name => 'User', :conditions => "users.role = 'teacher'", :source => :user
-
   has_many :enrollments
-  has_many :students, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted'", :source => :user
-
+  has_many :students, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'student'", :source => :user
+  has_many :teachers, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.role  = 'teacher'", :source => :user
   has_many :course_assets
-
   has_many :assignments
 
   validates_presence_of :network, :name, :description, :start_date, :finish_date
