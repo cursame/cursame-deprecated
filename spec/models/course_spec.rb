@@ -7,6 +7,18 @@ describe Course do
     it { should have_many :assignments }
     it { should have_many(:teachers).through(:enrollments) }
     it { should have_many(:students).through(:enrollments) }
+    it { should have_many(:users).through(:enrollments) }
+
+    describe '#users' do
+      it 'does not include rejected users' do
+        course = Factory(:course)
+        course.enrollments.create(:user => Factory(:student), :state => 'accepted', :role => 'student')
+        course.enrollments.create(:user => Factory(:student), :state => 'accepted', :role => 'student')
+        course.enrollments.create(:user => Factory(:student), :state => 'rejected', :role => 'student')
+
+        course.users.count.should == 2
+      end
+    end
   end
 
   describe 'validations' do

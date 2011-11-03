@@ -5,7 +5,9 @@ class CourseRequestsController < ApplicationController
   # def join
   def create
     unless current_user.enrollments.where(:course_id => @course).exists?
-      current_user.enrollments.create(:course => @course, :state => 'pending')
+      current_user.enrollments.create(:course => @course,
+                                      :state => 'pending',
+                                      :role => current_user.role)
     end
     redirect_to course_path(@course), :notice => t('flash.course_join_requested')
   end
