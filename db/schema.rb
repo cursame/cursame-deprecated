@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111102175903) do
+ActiveRecord::Schema.define(:version => 20111103003256) do
 
   create_table "assignations", :force => true do |t|
     t.integer  "user_id"
@@ -77,7 +77,6 @@ ActiveRecord::Schema.define(:version => 20111102175903) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "", :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
     t.string   "reset_password_token"
@@ -95,6 +94,13 @@ ActiveRecord::Schema.define(:version => 20111102175903) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.text     "about_me"
+    t.text     "studies"
+    t.date     "birth_date"
+    t.text     "occupation"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "linkedin_link"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

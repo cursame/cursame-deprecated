@@ -82,9 +82,4 @@ class CoursesController < ApplicationController
     asset_file = Course.new :logo_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
   end
-
-  private
-  def require_network
-    redirect_to root_path unless current_network
-  end
 end

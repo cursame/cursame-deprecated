@@ -20,6 +20,8 @@ Cursame::Application.routes.draw do
     match '/requests/:id/reject' => 'courses#reject_request', :as => :reject_request, :via => :post
   end
 
+  resources :users
+
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
 
   root :to => "home#index"
