@@ -17,6 +17,7 @@ Cursame::Application.routes.draw do
     end
 
     resources :assignments
+    resources :discussions
     resources :requests, :only => [:create, :index], :controller => 'course_requests' do
       member do
         post :accept
@@ -35,6 +36,14 @@ Cursame::Application.routes.draw do
     put :password
   end
 
+
+  resource :supervisor, :only => [:show] do
+    get :courses
+    get :teachers
+    get :students
+  end
+
+
   namespace :admin do
     resources :networks
   end
@@ -44,6 +53,7 @@ Cursame::Application.routes.draw do
   match '/assignments/:commentable_id/comment', :to => 'comments#create', :as => :comment_assignment, :conditions => {:commentable => :assignment}
   match '/comments/:commentable_id/comment',    :to => 'comments#create', :as => :comment_comment,    :conditions => {:commentable => :comment}
   match '/courses/:commentable_id/comment',     :to => 'comments#create', :as => :comment_course,     :conditions => {:commentable => :course}
+  match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

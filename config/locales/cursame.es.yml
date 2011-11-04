@@ -28,6 +28,7 @@ es:
     assignment_created: La tarea fue creada
     network_created: La red fue creada
     network_updated: La red fue actualizada
+    discussion_created: Discusion creada 
 
   activerecord:
     models:
@@ -94,7 +95,8 @@ es:
     add_asset: Añadir archivo
     course_menu:
       wall: 'Muro'
-      discus: 'Discusiones'
+      new_discussion: 'Crear discusión'
+      discussions: 'Discusiones'
       tasks: 'Tareas'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
@@ -148,3 +150,9 @@ es:
       
   breadcrumb:
     dashboard: 'Dashboard'
+
+  supervisors:
+    show:
+      courses: Cursos
+      teachers: Maestros
+      students: Estudiantes

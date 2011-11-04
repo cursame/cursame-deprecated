@@ -6,6 +6,7 @@ describe Course do
     it { should belong_to :network }
     it { should have_many :assignments }
     it { should have_many :comments }
+    it { should have_many :discussions }
     it { should have_many(:teachers).through(:enrollments) }
     it { should have_many(:students).through(:enrollments) }
     it { should have_many(:users).through(:enrollments) }

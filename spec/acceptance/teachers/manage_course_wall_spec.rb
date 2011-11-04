@@ -34,7 +34,6 @@ feature 'Manage course wall', %q{
     comment = Factory(:comment, :commentable => @course, :user => @teacher)
     visit wall_for_course_url @course, :subdomain => @network.subdomain
 
-    save_and_open_page
     within('.comment:last') do
       lambda do
         click_link t('comments.comments.remove')

@@ -1,0 +1,14 @@
+
+<div class="courses">
+  <% @courses.each do |course| %>
+    <div class="course padding-all <%= cycle('odd', 'even') %>">
+      <div class="row">
+        <div class="span6"><h3><%= link_to course.name, course_path(course) %></h3></div>
+      </div>
+      <div class="course-by">
+        <%= t('courses.by') %> <%= course.owner.name %> - <%= course.reference %>
+      </div>
+      <p class="padding-right"><%= truncate(course.description, :length => 200) %></p>
+    </div>
+  <% end %>
+</div>

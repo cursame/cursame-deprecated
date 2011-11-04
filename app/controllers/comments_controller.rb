@@ -27,6 +27,8 @@ class CommentsController < ApplicationController
         current_user.assignments.find params[:commentable_id]
       when :course
         current_user.courses.find params[:commentable_id]
+      when :discussion
+        current_user.discussions.find params[:commentable_id]
       when :comment
         comment = Comment.find params[:commentable_id]
         raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)

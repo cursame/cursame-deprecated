@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-  before_filter :authenticate_user!
   before_filter :manageable_course, :only => [:new, :create]
 
   def index

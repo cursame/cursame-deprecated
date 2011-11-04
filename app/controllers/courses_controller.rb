@@ -17,7 +17,6 @@ class CoursesController < ApplicationController
     if @course.save
       redirect_to @course, :notice => t('flash.course_created')
     else
-      raise @course.errors.inspect
       render :new
     end
   end

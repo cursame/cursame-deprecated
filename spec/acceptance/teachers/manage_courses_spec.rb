@@ -19,8 +19,6 @@ feature 'Manage courses', %q{
     fill_in 'course[name]',        :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
 
-    save_and_open_page
-
     # TODO: we need a select_date helper
     fill_in 'course[start_date]',  :with => '20-01-2011'
     fill_in 'course[finish_date]', :with => '29-01-2012'
