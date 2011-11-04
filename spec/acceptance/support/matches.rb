@@ -40,3 +40,16 @@ RSpec::Matchers.define :show_comment do |comment|
     page.should have_css "#comment_#{comment.id}", :text => comment.text
   end
 end
+
+RSpec::Matchers.define :show_discussion do |discussion|
+  match do |page|
+    page.should have_content discussion.title
+    page.should have_content discussion.description
+  end
+end
+
+RSpec::Matchers.define :show_discussion_preview do |discussion|
+  match do |page|
+    page.should have_css "a[href='#{discussion_path discussion}']", :text => discussion.title
+  end
+end

@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20111104025314) do
 
   create_table "discussions", :force => true do |t|
     t.integer  "course_id"
+    t.integer  "user_id"
     t.string   "title"
     t.text     "description"
     t.datetime "created_at"

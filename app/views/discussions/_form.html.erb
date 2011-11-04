@@ -1,0 +1,12 @@
+<%= semantic_form_for [@course, @discussion] do |form| %>
+  <%= form.inputs :basic do %>
+    <%= form.input :title %>
+    <%= form.input :description, :input_html => {'data-editor' => true} %>
+  <% end %>
+
+  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+<% end %>

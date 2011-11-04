@@ -1,0 +1,9 @@
+<%= t('.header') %>
+
+<ul id="discussions">
+  <% @discussions.each do |discussion| %>
+    <li>
+      <%= link_to discussion.title, discussion %>
+    </li>
+  <% end %>
+</ul>

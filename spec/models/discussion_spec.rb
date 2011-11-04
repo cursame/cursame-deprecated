@@ -9,10 +9,13 @@ describe Discussion do
     it { should have_many :comments }
     it { should validate_presence_of :course }
     it { should have_many :assets }
+    it { should belong_to :starter }
   end
   
   describe 'validations' do
     it { should validate_presence_of :title }
+    it { should validate_presence_of :starter }
+    it { should validate_presence_of :course }
   end
 
   describe 'html description sanitization' do

@@ -15,8 +15,10 @@ class User < ActiveRecord::Base
   has_many :courses,                :through => :enrollments
   has_many :manageable_courses,     :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => {'enrollments.admin' => true}
   has_many :manageable_assignments, :through => :manageable_courses, :source => :assignments, :class_name => 'Assignment'
-  has_many :assignments,            :through => :courses
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments
+  has_many :assignments,            :through => :courses
+  has_many :discussions,            :through => :courses
+  has_many :manageable_discussions, :class_name => 'Discussion'
   has_many :comments
 
   validates_presence_of :first_name, :last_name
