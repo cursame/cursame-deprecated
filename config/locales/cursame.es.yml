@@ -156,3 +156,7 @@ es:
       courses: Cursos
       teachers: Maestros
       students: Estudiantes
+      pending_approvals: Registros de maestros pendientes
+    pending_approvals:
+      approve: Aceptar
+      reject: Rechazar

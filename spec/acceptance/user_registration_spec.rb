@@ -24,6 +24,7 @@ feature 'User registration', %q{
     user.should_not be_nil
     user.networks.should include @network
     user.role.should == 'student'
+    user.state.should == 'active'
   end
 
   scenario 'signing up as teacher' do
@@ -35,14 +36,25 @@ feature 'User registration', %q{
     fill_in 'teacher_user[password_confirmation]', :with => 'password'
     click_button 'register'
 
-    user = User.last
+    user = User.unscoped.last
     user.should_not be_nil
     user.networks.should include @network
     user.role.should == 'teacher'
+    user.state.should == 'inactive'
   end
 
   scenario 'signing in' do
     sign_in_with Factory(:confirmed_user)
+    page.should have_css '.flash.notice', :text => 'Ingreso exitoso'
+  end
+
+  scenario 'a teacher cannot sign in without being approved' do
+    sign_in_with Factory(:teacher, :state => 'inactive')
+    page.current_url.should match new_user_session_path
+  end
+
+  scenario 'a teacher can sign in after being approved' do
+    sign_in_with Factory(:teacher, :state => 'active')
     page.should have_css '.flash.notice', :text => 'Ingreso exitoso'
   end
 end

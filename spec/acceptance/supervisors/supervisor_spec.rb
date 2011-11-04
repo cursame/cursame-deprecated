@@ -75,17 +75,39 @@ feature 'Supervisor', %q{
 
 
   scenario 'view new teacher registrations' do
-    pending
+    (1..3).map { Factory(:teacher, :networks => [@network], :state => 'inactive') }
+    # Other users that are already approved
+    (1..5).map { Factory(:teacher, :networks => [@network]) }
+    (1..3).map { Factory(:student, :networks => [@network]) }
+
+    #sign_in_with @supervisor, :subdomain => @network.subdomain
+    click_link t('supervisors.show.pending_approvals')
+    page.should have_css('.pending', :count => 3)
   end
 
 
   scenario 'accept a teacher registration' do
-    pending
+    pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
+    visit pending_approvals_supervisor_url(:subdomain => @network.subdomain)
+    click_button t('supervisors.pending_approvals.approve')
+
+    page.current_url.should match pending_approvals_supervisor_path
+    page.should have_notice t('flash.user_registration_accepted')
+
+    pending.reload
+    pending.state.should == 'active'
   end
 
 
   scenario 'reject a teacher registration' do
-    pending
+    pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
+    visit pending_approvals_supervisor_url(:subdomain => @network.subdomain)
+    click_button t('supervisors.pending_approvals.reject')
+
+    page.current_url.should match pending_approvals_supervisor_path
+    page.should have_notice t('flash.user_registration_rejected')
+
+    User.unscoped.where(:id => pending.id).should be_empty
   end
 
 

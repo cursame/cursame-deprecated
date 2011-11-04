@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user!
+  before_filter :user_is_active
 
   private
   def authenticate_teacher!
@@ -39,5 +40,9 @@ class ApplicationController < ActionController::Base
 
   def current_network
     @current_network ||= Network.find_by_subdomain(request.subdomain)
+  end
+
+  def user_is_active
+    redirect_to pending_approval_path if current_user && !current_user.active?
   end
 end
