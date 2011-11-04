@@ -19,14 +19,11 @@ feature 'Manage courses', %q{
     fill_in 'course[name]',        :with => 'Introduction to algebra'
     fill_in 'course[description]', :with => 'course description'
 
-    # TODO: we need a select_date helper
-    select '2011',    :from => 'course[start_date(1i)]'
-    select 'enero',   :from => 'course[start_date(2i)]'
-    select '20',      :from => 'course[start_date(3i)]'
+    save_and_open_page
 
-    select '2012',    :from => 'course[finish_date(1i)]'
-    select 'enero',   :from => 'course[finish_date(2i)]'
-    select '29',      :from => 'course[finish_date(3i)]'
+    # TODO: we need a select_date helper
+    fill_in 'course[start_date]',  :with => '20-01-2011'
+    fill_in 'course[finish_date]', :with => '29-01-2012'
 
     fill_in 'course[reference]', :with => 'classroom A'
     check 'course[public]'
