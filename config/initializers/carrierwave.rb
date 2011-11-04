@@ -3,6 +3,7 @@ CarrierWave.configure do |config|
   config.s3_secret_access_key = "8gAD87HsktqMUamIQNZnrs5elIsjkAaYwmfoT+Yu" 
   config.s3_bucket            = "cursame-#{Rails.env}"
   config.storage(Rails.env.test? || Rails.env.development? ? :file : :s3) 
+  config.s3_headers = {"Content-Disposition" => "attachment"}
 end
 
 CarrierWave.configure do |config|
