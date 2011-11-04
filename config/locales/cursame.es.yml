@@ -92,8 +92,8 @@ es:
     delete: 'Eliminar'
     courses: 'Cursos'
     add_asset: Añadir archivo
-    menu:
-      updates: 'Actualizaciones'
+    course_menu:
+      wall: 'Muro'
       discus: 'Discusiones'
       tasks: 'Tareas'
       docs: 'Documentos'
