@@ -82,6 +82,16 @@ feature 'Manage discussions', %q{
     page.should have_notice t('flash.discussion_deleted')
   end
 
+  scenario 'not being able to delete a discussion if it has comments already' do
+    visit discussion_url @discussion, :subdomain => @network.subdomain
+
+    page.should_not have_css 'a#remove_discussion'
+    
+    lambda do
+      page.driver.delete(discussion_url(@discussion, :subdomain => @network.subdomain))
+    end.should_not change(Discussion, :count)
+  end
+
   scenario 'commenting on a discussion' do
     @discussion.comments = []
     visit discussion_url @discussion, :subdomain => @network.subdomain

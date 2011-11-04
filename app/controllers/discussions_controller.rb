@@ -26,8 +26,12 @@ class DiscussionsController < ApplicationController
   end
 
   def destroy
-    manageable_discussion.destroy
-    redirect_to course_discussions_path(manageable_discussion.course), :notice => t('flash.discussion_deleted')
+    if manageable_discussion.comments.empty?
+      manageable_discussion.destroy
+      flash[:notice] = t('flash.discussion_deleted')
+    end
+
+    redirect_to course_discussions_path(manageable_discussion.course)
   end
 
   def update

@@ -1,7 +1,9 @@
 <%= t('.header') %>
 
 <%= link_to t('.edit'),   edit_discussion_url(@discussion), :id => 'edit_discussion' %>
-<%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :method => :delete, :confirm => t('confirm_delete')  %>
+<% if @discussion.comments.empty? %>
+  <%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :method => :delete, :confirm => t('confirm_delete')  %>
+<% end %>
 
 <%= @discussion.title %>
 <%= @discussion.description %>
