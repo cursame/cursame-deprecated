@@ -73,6 +73,7 @@ es:
     toolbar:
       logout: 'Salir'
       search: 'Buscar'
+      settings: 'Configuración'
       
   dashboard:
     view_all_courses: 'Ver todos los cursos disponibles'
@@ -91,8 +92,8 @@ es:
     delete: 'Eliminar'
     courses: 'Cursos'
     add_asset: Añadir archivo
-    menu:
-      updates: 'Actualizaciones'
+    course_menu:
+      wall: 'Muro'
       discus: 'Discusiones'
       tasks: 'Tareas'
       docs: 'Documentos'
@@ -133,3 +134,7 @@ es:
     comments:
       remove: eliminar commentario
     
+  settings:
+    show:
+      title:  'Configuraciones'
+      change_password: 'Cambiar contraseña'
