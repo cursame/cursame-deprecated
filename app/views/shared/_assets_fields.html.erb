@@ -1,4 +1,4 @@
-<fieldset class="nested_models assets input" data-association="assets">
+<fieldset class="nested_models assets input no-margin inputs" data-association="assets">
   <%- form.object.assets.build %>
   <%= form.semantic_fields_for :assets do |asset| %>
     <%- record = asset.object %>
@@ -15,5 +15,5 @@
       </ol>
     </fieldset>
   <% end %>
-  <%= link_to t('.add_asset'), '#', :class => 'add_record', :style => 'display:none' %>
+  <%= link_to t('courses.add_asset'), '#', :class => 'btn info add_record', :style => 'display:none' %>
 </fieldset>

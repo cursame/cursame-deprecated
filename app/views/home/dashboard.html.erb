@@ -30,7 +30,7 @@
             <h4><%= link_to(course.name, course_path(course)) %></h4>
             <p><%= course.reference %></p>
            </div>
-           <div class="span1"><span class="label notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span></div>
+           <div class="span1"><span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span></div>
          </div>
         <% end %>
       <% else %>

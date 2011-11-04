@@ -61,15 +61,10 @@ es:
         birth_date: Fecha de nacimiento
         occupation: Mi ocupación
 
-    
-  courses:
-    form:
-      add_asset: Añadir archivo
-
-    formtastic:
-      actions:
-        update: Actualizar
-        create: Crear
+  formtastic:
+    actions:
+      update: Actualizar
+      create: Crear
 
   shared:
     toolbar:
@@ -91,6 +86,8 @@ es:
     by: 'por'
     edit: 'Editar'
     delete: 'Eliminar'
+    courses: 'Cursos'
+    add_asset: Añadir archivo
     menu:
       updates: 'Actualizaciones'
       discus: 'Discusiones'

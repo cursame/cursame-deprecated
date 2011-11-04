@@ -1,24 +1,24 @@
 <%= semantic_form_for @course do |form| %>
   <%= form.inputs :file do %>
-    <li class='preview'>
-      <img src="<%= @course.logo_file.thumb.url %>"/>
-    </li>
+    <li class='preview'><img src="<%= @course.logo_file.thumb.url %>" /></li>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
     <%= form.input :logo_file_cache, :as => :hidden %>
   <% end %>
 
   <%= form.inputs do %>
-    <%= form.input :name %>
-    <%= form.input :description, :input_html => {'data-editor' => true} %>
-    <%= form.input :start_date %>
-    <%= form.input :finish_date %>
-    <%= form.input :reference %>
+    <%= form.input :name, :input_html => {:class => "xlarge"}  %>
+    <!--<%= form.input :description, :input_html => {'data-editor' => true, :class => 'xlarge'} %>-->
+    <%= form.input :description, :input_html => {:class => "xlarge"} %>
+    <%= form.input :start_date, :as => :string, :input_html => {:placeholder => "dd/mmm/yy", :class => 'xlarge ui-date-picker'} %>
+    <%= form.input :finish_date, :as => :string, :input_html => {:placeholder => "dd/mmm/yy", :class => 'xlarge ui-date-picker'} %>
+    <%= form.input :reference, :input_html => {:class => "xlarge"} %>
     <%= form.input :public %>
   <% end %>
 
-  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
-
+  <div class="well">
+    <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+  </div>
   <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit} %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => 'btn'} %>
   <% end %>
 <% end %>

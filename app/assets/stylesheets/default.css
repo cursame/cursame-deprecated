@@ -13,6 +13,35 @@ selected: #e0f5f8
 /* @end */
 
 /* @group Custom Elements */
+
+/* @group Labels */
+
+.label-tag {
+  padding: 1px 3px 2px;
+  background-color: #bfbfbf;
+  font-size: 9.75px;
+  font-weight: bold;
+  color: #ffffff;
+  text-transform: uppercase;
+  white-space: nowrap;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+.label-tag.important {
+  background-color: #c43c35;
+}
+.label-tag.warning {
+  background-color: #f89406;
+}
+.label-tag.success {
+  background-color: #46a546;
+}
+.label-tag.notice {
+  background-color: #00afc9;
+}
+
+/* @end */
 body {
   margin-top: 50px;
 }
@@ -56,6 +85,8 @@ body {
 	margin-left: 0;
 	width: 530px;
 	padding: 10px 20px 0;
+	border-right: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
 }
 
 .content .span13 {
@@ -270,11 +301,22 @@ ul.nav-member-avatars li {
 
 /* @end */
 
-/* @group Register Forms */
+/* @group Forms */
 
 .register-box {
 	padding: 30px;
-	background: transparent url(login-bg.jpg) no-repeat;
+	background-color: #00afc9;
+ 	margin-bottom: 20px;
+  	/* padding: 19px; */
+  	min-height: 20px;
+  	border: 1px solid #eee;
+  	border: 1px solid rgba(0, 0, 0, 0.05);
+  	-webkit-border-radius: 4px;
+  	-moz-border-radius: 4px;
+  	border-radius: 4px;
+  	-webkit-box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
+  	-moz-box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
+  	box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
 }
 
 .register-box h1 {
@@ -304,8 +346,12 @@ input.names {
   border-radius: 3px;
 }
 
-.string {
-	float: left;
+label {
+	margin-right: 10px;
+}
+
+form .input {
+	margin-left: 0;
 }
 
 .inputs ol, .buttons ol {
@@ -319,6 +365,19 @@ input.names {
 
 fieldset {
 	padding-top: 0;
+}
+
+fieldset ol li.preview {
+	padding-left: 130px;
+}
+
+fieldset ol li.boolean {
+	padding-left: 98px;
+}
+
+
+fieldset.inputs {
+	
 }
 
 fieldset.buttons {
@@ -335,6 +394,18 @@ fieldset.checkbox label {
 	font-size: 11px;
 	color: #BFBFBF;
 	width: 80px;
+}
+
+fieldset.new ol {
+	list-style: none;
+}
+
+.remove-associated-record {
+	margin-left: 190px;
+}
+
+.remove-associated-record {
+	
 }
 
 form.pull-right p {
