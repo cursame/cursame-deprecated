@@ -31,9 +31,7 @@ class UsersController < ApplicationController
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
 
-
   private
-
   def find_user
     @user = current_network.users.find params[:id]
   end

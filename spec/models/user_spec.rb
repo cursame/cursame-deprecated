@@ -7,9 +7,12 @@ describe User do
     it { should have_many(:assignments).through(:courses) }
     it { should have_many(:manageable_courses).through(:enrollments) }
     it { should have_many(:enrollment_requests).through(:courses) }
+    it { should have_many(:manageable_assignments).through(:manageable_courses) }
+    it { should have_many(:comments) }
   end
 
   describe 'validations' do
+    it { should validate_presence_of :first_name }
     it { should validate_presence_of :first_name }
   end
 end

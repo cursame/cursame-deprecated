@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Course do
   describe 'associations' do
-    it { should have_many(:assets) }
+    it { should have_many :assets }
     it { should belong_to :network }
     it { should have_many :assignments }
+    it { should have_many :comments }
     it { should have_many(:teachers).through(:enrollments) }
     it { should have_many(:students).through(:enrollments) }
     it { should have_many(:users).through(:enrollments) }
@@ -15,7 +16,6 @@ describe Course do
         course.enrollments.create(:user => Factory(:student), :state => 'accepted', :role => 'student')
         course.enrollments.create(:user => Factory(:student), :state => 'accepted', :role => 'student')
         course.enrollments.create(:user => Factory(:student), :state => 'rejected', :role => 'student')
-
         course.users.count.should == 2
       end
     end

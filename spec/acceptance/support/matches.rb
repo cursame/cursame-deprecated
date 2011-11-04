@@ -33,3 +33,10 @@ RSpec::Matchers.define :show_assignment_preview do |assignment|
     page.should have_css "a[href='#{assignment_path assignment}']"
   end
 end
+
+RSpec::Matchers.define :show_comment do |comment|
+  match do |page|
+    page.should have_css "#comment_#{comment.id}", :text => comment.user.name
+    page.should have_css "#comment_#{comment.id}", :text => comment.text
+  end
+end

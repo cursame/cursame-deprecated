@@ -13,6 +13,7 @@ Cursame::Application.routes.draw do
 
     member do
       get  :members
+      get  'muro', :as => :wall_for, :to => 'courses#wall'
     end
 
     resources :assignments
@@ -29,6 +30,16 @@ Cursame::Application.routes.draw do
       post :upload_avatar,  :as => :upload_avatar_for
     end
   end
+
+  namespace :admin do
+    resources :networks
+  end
+  match '/admin' => 'admin/base#admin'
+
+  resources :comments, :only => [:update, :destroy]
+  match '/assignments/:commentable_id/comment', :to => 'comments#create', :as => :comment_assignment, :conditions => {:commentable => :assignment}
+  match '/comments/:commentable_id/comment',    :to => 'comments#create', :as => :comment_comment,    :conditions => {:commentable => :comment}
+  match '/courses/:commentable_id/comment',     :to => 'comments#create', :as => :comment_course,     :conditions => {:commentable => :course}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

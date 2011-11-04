@@ -9,7 +9,7 @@
   <div class="underline">	
     <ul class="left-nav-main-ul">
       <li><%= link_to Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %></li>
-      <!--<li><%= link_to t('.create_assignment'), new_course_assignment_path(@course), :id => 'new_assignment' %></li>
+      <li><%= link_to t('.create_assignment'), new_course_assignment_path(@course), :id => 'new_assignment' %></li>
       <li><%= link_to(t('courses.menu.updates'), "#", :class => "actualizaciones") %></li>
       <li><%= link_to(t('courses.menu.discus'), "#", :class => "discusiones" ) %></li>
       <li><%= link_to(t('courses.menu.docs'), "#", :class => "documentos") %></li>

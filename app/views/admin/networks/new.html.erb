@@ -1,0 +1,23 @@
+<h1>New Network</h1>
+
+<%= semantic_form_for [:admin, @network] do |form| %>
+
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :subdomain %>
+  <% end %>
+
+  <%= form.semantic_fields_for :supervisors do |user| %>
+    <%= user.input :first_name %>
+    <%= user.input :last_name %>
+    <%= user.input :email %>
+    <%= user.input :password %>
+    <%= user.input :password_confirmation %>
+  <% end %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+
+<% end %>
+

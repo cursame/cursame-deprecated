@@ -18,4 +18,12 @@ FactoryGirl.define do
 
   factory :student, :parent => :confirmed_user do
   end
+
+  factory :admin, :parent => :confirmed_user do
+    # You won't be able to directly instantiate this user, since the role
+    # 'superadmin' is not allowed by the model. Create it like:
+    # a = Factory.build(:superadmin)
+    # a.save(:validate => false)
+    role 'admin'
+  end
 end

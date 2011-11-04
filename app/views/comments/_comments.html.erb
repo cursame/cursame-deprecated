@@ -1,0 +1,16 @@
+<ul class="comments">
+  <% commentable.comments.each do |comment| %>
+    <li class="comment" id="<%= "comment_#{comment.id}" %>">
+      <%= comment.user.name %>
+      <%= comment.text %>
+      <% if current_user.can_destroy_comment? comment %>
+        <%= link_to t('.remove'), comment, :method => :delete, :confirm => t('confirm_delete') %> 
+      <% end %>
+      <% unless Comment === comment.commentable %>
+        <%= link_to t('comment'), '#' %>
+        <%= render :partial => 'comments/form', :locals => {:commentable => comment} %>
+      <% end %>
+    </li>
+    <%= render :partial => 'comments/comments', :locals => {:commentable => comment} unless comment.comments.blank? %>
+  <% end %>
+</ul>
