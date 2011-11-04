@@ -1,5 +1,6 @@
 es:
   confirm_delete: ¿Estas Seguro?  
+  comment: comentar
 
   forms: 
     email: 'Email'
@@ -127,3 +128,8 @@ es:
     birth_date: 'Fecha de nacimiento'
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
+
+  comments:
+    comments:
+      remove: eliminar commentario
+    

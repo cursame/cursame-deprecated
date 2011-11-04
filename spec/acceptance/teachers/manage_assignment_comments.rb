@@ -16,7 +16,7 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'commenting on an assignment' do
-    visit assignment_url @assignment, :subdomain => @subdomain
+    visit assignment_url @assignment, :subdomain => @network.subdomain
     fill_in 'comment[text]', :with => 'Test Comment'
     
     lambda do
@@ -27,43 +27,17 @@ feature 'Manage assignments', %q{
 
     comment = Comment.last
     comment.user.should == @teacher
-    within("#comment_#{comment.id}") do
-      page.should have_content 'Test Comment'
-    end
+    page.should show_comment comment
     page.current_url.should match assignment_url(@assignment, :subdomain => @network.subdomain)
   end
 
-  scenario 'commenting on an assignment comment' do
-    pending
-    assignment = Factory(:assignment)
-    comment    = Factory(:comment, :commentable => assignment)
-    visit assignment_url assignment, :subdomain => @subdomain
-
-    within('#root_comments .comment:last') do
-      fill_in 'comment[text]', :with => '<p>Comment of a comment</p>'
-      lambda do
-        click_button 'comment'
-      end.should change(assignment, :comments).by(1)
-    end
-
-    comments_comment = Comment.last
-    comments_comment.text.should == '<p>Comment of a comment</p>'
-    comments_comment.commentable.should == comment
-
-    within('#root_comments .comment:last') do
-      page.should show_comment comments_comment
-    end
-    page.should have_notice t('flash.comment_created')
-  end
-
-  scenario 'removing an assignment comment' do
-    pending
+  scenario 'removing a posted comment' do
     comment    = Factory(:comment, :commentable => @assignment)
     visit assignment_url @assignment, :subdomain => @subdomain
 
-    within('#root_comments .comment:last') do
+    within('.comment:last') do
       lambda do
-        click_link t('remove')
+        click_link t('comments.comments.remove')
       end.should change(@assignment.comments, :count).by(-1)
     end
 
@@ -71,17 +45,34 @@ feature 'Manage assignments', %q{
     page.should have_notice t('flash.comment_deleted')
   end
 
-  scenario 'not being able to delete an assignment comment if it has comments already' do
-    pending
+  scenario 'removing a student comment (moderating)' do
+  end
+
+  scenario 'commenting on an assignment comment' do
     comment    = Factory(:comment, :commentable => @assignment)
     visit assignment_url @assignment, :subdomain => @subdomain
 
-    within('#root_comments .comment:last') do
-      page.should_not have_css 'a'
+    within('.comment:last') do
+      click_link t('comment')
+      fill_in 'comment[text]', :with => 'Comment of a comment'
+      lambda do
+        click_button 'submit'
+      end.should change(comment.comments, :count).by(1)
     end
 
+    comments_comment = Comment.last
+    comments_comment.commentable.should == comment
+
+    page.should show_comment comments_comment
+    page.should have_notice t('flash.comment_added')
+  end
+
+  scenario 'not being able to delete an assignment comment if it has comments already' do
+    comment = Factory(:comment, :commentable => @assignment, :comments => [Factory(:comment, :user => @teacher)])
+    visit assignment_url @assignment, :subdomain => @subdomain
+    page.should have_css 'a', :text => t('comments.comments.remove'), :count => 1
     lambda do
-      page.driver.delete(delete_comment_url(comment, :subdomain => @network.subdomain))
+      page.driver.delete(comment_url(comment.comments.first, :subdomain => @network.subdomain))
     end.should_not change(@assignment.comments, :count)
   end
 

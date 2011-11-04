@@ -8,6 +8,7 @@ describe User do
     it { should have_many(:manageable_courses).through(:enrollments) }
     it { should have_many(:enrollment_requests).through(:courses) }
     it { should have_many(:manageable_assignments).through(:manageable_courses) }
+    it { should have_many(:comments) }
   end
 
   describe 'validations' do

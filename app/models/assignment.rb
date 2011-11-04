@@ -1,4 +1,6 @@
 class Assignment < ActiveRecord::Base
+  # default_scope :include => {:comments => :comments}
+
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
 
