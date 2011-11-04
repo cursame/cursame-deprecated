@@ -1,0 +1,16 @@
+
+<h1><%= t('.title') %></h1>
+
+
+<div id="change_password">
+  <h3><%= t('.change_password') %></h3>
+
+  <%= semantic_form_for current_user, :url => password_settings_path do |form| %>
+    <%= form.input :password, :as => :password %>
+    <%= form.input :password_confirmation, :as => :password %>
+
+    <%= form.buttons do %>
+      <%= form.commit_button :button_html => {:id => :submit} %>
+    <% end %>
+  <% end %>
+</div>

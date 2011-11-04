@@ -31,6 +31,10 @@ Cursame::Application.routes.draw do
     end
   end
 
+  resource :settings, :only => [:show] do
+    put :password
+  end
+
   namespace :admin do
     resources :networks
   end

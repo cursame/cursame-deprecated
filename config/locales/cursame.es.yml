@@ -73,6 +73,7 @@ es:
     toolbar:
       logout: 'Salir'
       search: 'Buscar'
+      settings: 'Configuración'
       
   dashboard:
     view_all_courses: 'Ver todos los cursos disponibles'
@@ -133,3 +134,7 @@ es:
     comments:
       remove: eliminar commentario
     
+  settings:
+    show:
+      title:  'Configuraciones'
+      change_password: 'Cambiar contraseña'

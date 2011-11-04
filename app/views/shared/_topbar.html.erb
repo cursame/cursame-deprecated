@@ -12,7 +12,8 @@
         <li class="active"><%= link_to('Inicio', root_path) %></li>
         <li><%= link_to 'Perfil', current_user %></li>
         <li><a href="#">Bandeja de Entrada</a></li>
-        <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to t('shared.toolbar.logout'), destroy_user_session_path, :method => :delete %></li>
+        <li><%= link_to t('shared.toolbar.settings'), settings_path %></li>
       </ul>
 
       <ul class="nav secondary-nav">
