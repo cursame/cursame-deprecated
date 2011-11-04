@@ -1,0 +1,15 @@
+<%= semantic_form_for [@course, @assignment] do |form| %>
+  <%= form.inputs :basic do %>
+    <%= form.input :name %>
+    <%= form.input :description, :input_html => {'data-editor' => true} %>
+    <%= form.input :value %>
+    <%= form.input :period %>
+    <%= form.input :due_to %>
+  <% end %>
+
+  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+<% end %>

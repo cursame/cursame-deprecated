@@ -1,3 +1,8 @@
+<% if current_user.manageable_assignments.include? @assignment %>
+  <%= link_to t('.edit'), edit_assignment_path(@assignment), :id => 'edit' %>
+  <%= link_to t('.delete'), @assignment, :id => 'delete', :method => :delete, :confirm => t('confirm_delete') %>
+<% end %>
+
 <h1><%= Assignment.model_name.human %> <%= @assignment.name %></h1>
 
 <%= @assignment.course.name %>
@@ -7,5 +12,6 @@
 <%= @assignment.period %>
 <%= l @assignment.due_to, :format => :short %>
 
-
 <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
+<%= render :partial => 'comments/comments',   :locals => {:commentable => @assignment} %>
+<%= render :partial => 'comments/form',       :locals => {:commentable => @assignment} %>

@@ -10,7 +10,7 @@ feature 'Manage assignments', %q{
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
     @course  = Factory(:course, :network => @network)
-    Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'admin')
+    Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'teacher')
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
@@ -53,38 +53,24 @@ feature 'Manage assignments', %q{
     page.should have_notice t('flash.assignment_created')
   end
 
-  scenario 'removing an assignment comment' do
-    pending
-    assignment = Factory(:assignment)
-    comment    = Factory(:comment, :commentable => assignment)
-    visit assignment_url assignment, :subdomain => @subdomain
-
-    within('#root_comments .comment:last') do
-      lambda do
-        click_link t('remove')
-      end.should change(assignment, :comments).by(-1)
-    end
-
-    page.should_not show_comment comment
-    page.should have_notice t('flash.comment_deleted')
+  scenario 'editing an existing assignment' do
+    assignment = Factory(:assignment, :course => @course)
+    visit assignment_url(assignment, :subdomain => @network.subdomain)
+    click_link 'edit'
+    fill_in 'assignment[name]', :with => 'Edited Assignment'
+    click_button 'submit'
+    Assignment.should exist_with :name => 'Edited Assignment'
+    page.should have_notice t('flash.assignment_updated')
   end
 
-  scenario 'not being able to delete an assignment comment if it has comments already' do
-    pending
-    assignment = Factory(:assignment)
-    comment    = Factory(:comment, :commentable => assignment)
-    visit assignment_url assignment, :subdomain => @subdomain
-
-    within('#root_comments .comment:last') do
-      page.should_not have_css 'a'
-    end
+  scenario 'removing an existing assignment' do
+    assignment = Factory(:assignment, :course => @course)
+    visit assignment_url(assignment, :subdomain => @network.subdomain)
 
     lambda do
-      page.driver.delete(delete_comment_url(comment, :subdomain => @network.subdomain))
-    end.should_not change(assignment.comments, :count)
-  end
-
-  scenario 'cant remove comments from a course that is not mine' do
-    pending
+      click_link 'delete'
+    end.should change(Assignment, :count).by(-1)
+    page.should have_notice t('flash.assignment_deleted')
+    page.current_url.should match course_assignments_path(@course)
   end
 end

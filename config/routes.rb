@@ -37,6 +37,9 @@ Cursame::Application.routes.draw do
   match '/admin' => 'admin/base#admin'
 
 
+  resources :comments, :only => [:update, :destroy]
+  match '/assignments/:commentable_id/comment', :to => 'comments#create', :as => :comment_assignment, :conditions => {:commentable => :assignment}
+
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   root :to => "home#index"

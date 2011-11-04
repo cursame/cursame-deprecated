@@ -4,7 +4,7 @@ class Assignment < ActiveRecord::Base
 
   belongs_to :course
   has_many :comments, :as => :commentable
-  has_many :assets, :as => :owner
+  has_many :assets,   :as => :owner
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in =>(0..100)

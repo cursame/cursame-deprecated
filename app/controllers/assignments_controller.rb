@@ -1,10 +1,9 @@
 class AssignmentsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :manageable_course, :except => [:index, :show]
+  before_filter :manageable_course, :only => [:new, :create]
 
   def index
     @course      = current_user.courses.find params[:course_id]
-    puts @course.assignments.inspect
     @assignments = @course.assignments
   end
 
@@ -22,6 +21,22 @@ class AssignmentsController < ApplicationController
   end
 
   def edit
+    @assignment = manageable_assignment
+  end
+
+  def update
+    @assignment = manageable_assignment
+
+    if @assignment.update_attributes params[:assignment]
+      redirect_to @assignment, :notice => I18n.t('flash.assignment_updated')
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    manageable_assignment.destroy
+    redirect_to course_assignments_path(manageable_assignment.course), :notice => I18n.t('flash.assignment_deleted')
   end
 
   def show
@@ -32,5 +47,9 @@ class AssignmentsController < ApplicationController
   def manageable_course
     authenticate_teacher!
     @course ||= current_user.manageable_courses.find params[:course_id]
+  end
+
+  def manageable_assignment
+    @manageagle_assignment ||= current_user.manageable_assignments.find params[:id]
   end
 end
