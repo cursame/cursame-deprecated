@@ -1,8 +1,9 @@
 <%= semantic_form_for Comment.new, :url => polymorphic_path(commentable, :action => 'comment') do |form| %>
   <%= form.inputs :text do %>
-    <%= form.input :text, :input_html => {'data-editor' => true} %>
+    <!-- <%= form.input :text, :input_html => {'data-editor' => true} %>-->
+    <%= form.input :text, :input_html => {:rows => 3} %>
   <% end %>
   <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit} %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => "btn"} %>
   <% end %>
 <% end %>

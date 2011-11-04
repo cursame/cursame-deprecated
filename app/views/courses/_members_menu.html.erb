@@ -1,20 +1,11 @@
 <div class="underline">	
   <ul class="left-nav-main-ul">
-    <li><%= link_to(t('courses.menu.members'), members_course_path, :class => "miembros") %></li>
+    <li><%= link_to(t('courses.course_menu.members'), members_course_path(@course), :class => "miembros") %></li>
   </ul>
-  <div class="total-members"><%= course_members %></div>
+  <div class="total-members"><%= course_members(@course) %></div>
   <ul class="nav-member-avatars">
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
-    <li><%= link_to(image_tag('al.png'), "#") %></li>
-    <li><%= link_to(image_tag('profr.png'), "#") %></li>
+    <% @course.users.each do |avatars| %>
+      <li><%= image_tag(avatars.avatar_file.xsmall.url) %></li>
+    <% end %>
   </ul>
 </div>

@@ -121,6 +121,13 @@ es:
       join_accepted: Cursando
     wall:
       header: Muro
+    assignments:
+      create_assignment: 'Crear tarea'
+      assignments: 'Tareas'
+      new_assignment: 'Nueva Tarea'
+      date_time: 'Fecha Límite'
+      value: 'Valor'
+      period: 'Periodo'
 
   profile:
     edit_profile: 'Editar perfil'
@@ -138,3 +145,6 @@ es:
     show:
       title:  'Configuraciones'
       change_password: 'Cambiar contraseña'
+      
+  breadcrumb:
+    dashboard: 'Dashboard'

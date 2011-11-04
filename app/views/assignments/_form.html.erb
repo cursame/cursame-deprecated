@@ -1,15 +1,18 @@
 <%= semantic_form_for [@course, @assignment] do |form| %>
   <%= form.inputs :basic do %>
-    <%= form.input :name %>
-    <%= form.input :description, :input_html => {'data-editor' => true} %>
-    <%= form.input :value %>
-    <%= form.input :period %>
-    <%= form.input :due_to %>
+    <%= form.input :name, :input_html => {:class => "span6"} %>
+    <!--<%= form.input :description, :input_html => {'data-editor' => true} %>-->
+    <%= form.input :description, :input_html => {:class => "span6"} %>
+    <%= form.input :value, :input_html => {:class => "span6"} %>
+    <%= form.input :period, :input_html => {:class => "span6"} %>
+    <li><label><%= t('courses.assignments.date_time') %></label><%= form.datetime_select(:due_to) %></li>
   <% end %>
 
-  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+  <div class="well">
+    <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+  </div>
 
   <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit} %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => 'btn'} %>
   <% end %>
 <% end %>

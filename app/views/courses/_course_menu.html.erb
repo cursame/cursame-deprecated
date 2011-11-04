@@ -1,26 +1,17 @@
-<% if params[:id] %>
-  <% unless @course.logo_file.blank? %>
-    <div class="underline">
-      <%= image_tag @course.logo_file.small.url %>
-    </div>
-  <% end %>
-
-  <div class="underline">	
-    <ul class="left-nav-main-ul">
-      <li><%= link_to Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %></li>
-      <li><%= link_to t('.create_assignment'), new_course_assignment_path(@course), :id => 'new_assignment' %></li>
-      <li><%= link_to(t('.wall'), wall_for_course_path(@course), :class => "actualizaciones") %></li>
-      <!--<li><%= link_to(t('.discus'), "#", :class => "discusiones" ) %></li>
-      <li><%= link_to(t('.docs'), "#", :class => "documentos") %></li>
-      <li><%= link_to(t('.evaluations'), "#", :class => "evaluaciones") %></li>
-      <li><%= link_to(t('.calendar'), "#", :class => "calendario") %></li>-->
-    </ul>
-  </div>
-<% else %>
+<% unless @course.logo_file.blank? %>
   <div class="underline">
-    <ul class="left-nav-main-ul">
-      <li><%= link_to(t('.my_courses'), "#") %></li>
-      <li><%= link_to(t('.new_course'), new_course_path) %></li>
-    </ul>
+    <%= image_tag @course.logo_file.small.url %>
   </div>
 <% end %>
+
+<div class="underline">	
+  <ul class="left-nav-main-ul">
+    <li><%= link_to(t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones") %></li>
+    <li><%= link_to Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %></li>
+    <li><%= link_to("Informacion", course_path(@course), :class => "informacion") %></li>
+    <!--<li><%= link_to(t('.discus'), "#", :class => "discusiones" ) %></li>
+    <li><%= link_to(t('.docs'), "#", :class => "documentos") %></li>
+    <li><%= link_to(t('.evaluations'), "#", :class => "evaluaciones") %></li>
+    <li><%= link_to(t('.calendar'), "#", :class => "calendario") %></li>-->
+  </ul>
+</div>

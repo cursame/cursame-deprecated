@@ -1,13 +1,53 @@
-<h1><%= Assignment.model_name.human(:count => :many) %></h1>
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to("Courses", courses_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(@course.name, course_path(@course)) %> <span class="divider">/</span></li>
+          <li class="active"><%= t('courses.assignments.assignments') %></li>
+        </ul>  
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
+      </div>
+      
+      <div class="span10">
+        
+        <div class="row bottom-margin">
+          <div class="span5">
+            <h2><%= Assignment.model_name.human(:count => :many) %></h2>
+          </div>
+          <div class="span3" style="margin-left:45px;">
+            <% if current_user.teacher? %>
+              <%= link_to t('courses.assignments.create_assignment'), new_course_assignment_path(@course), :id => 'new_assignment', :class => "btn small right" %>
+            <% end %>
+          </div>
+        </div>
 
-<ul id="assignments">
-  <% @assignments.each do |assignment| %>
-    <li>
-      <%= assignment.course.name %>
-      <%= link_to assignment.name, assignment %>
-      <%= assignment.value %>
-      <%= assignment.period %>
-      <%= l assignment.due_to, :format => :short %>
-    </li>
-  <% end %>
-</ul>
+        <div class="courses">
+          <% @assignments.each do |assignment| %> 
+            <div class="course padding-all <%= cycle('odd', 'even') %>">
+            <h3><%= assignment.course.name %></h3>
+            <%= link_to assignment.name, assignment %>
+            <%= assignment.value %>
+            <%= assignment.period %>
+            <%= l assignment.due_to, :format => :short %>
+            </div>
+          <% end %>
+        </div>
+        
+      </div>
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+    
+  </div>
+</div>
