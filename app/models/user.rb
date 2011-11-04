@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :about_me, :studies, :birth_date,
                   :occupation, :twitter_link, :facebook_link, :linkedin_link,
-                  :avatar_file, :avatar_file_cache
+                  :avatar_file, :avatar_file_cache, :role
 
   has_and_belongs_to_many :networks
   has_many :enrollments
@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_many :enrollment_requests, :through => :manageable_courses, :class_name => 'Enrollment', :source => :enrollments
 
   validates_presence_of :first_name, :last_name
-
+  validates_inclusion_of :role, :in => %w(student teacher supervisor)
 
   mount_uploader :avatar_file, AvatarUploader
 
@@ -33,5 +33,9 @@ class User < ActiveRecord::Base
 
   def student?
     role == 'student'
+  end
+
+  def supervisor?
+    role == 'supervisor'
   end
 end

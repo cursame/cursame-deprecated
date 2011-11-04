@@ -1,0 +1,15 @@
+
+<h1>Existing networks</h1>
+
+<p>
+<%= link_to 'New Network', new_admin_network_path %>
+</p>
+
+<div class="networks">
+  <% @networks.each do |network| %>
+    <div class="network">
+      <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
+      <strong>Subdomain:</strong> <%= network.subdomain %>
+    </div>
+  <% end %>
+</div>

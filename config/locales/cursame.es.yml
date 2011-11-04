@@ -25,6 +25,8 @@ es:
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
     assignment_created: La tarea fue creada
+    network_created: La red fue creada
+    network_updated: La red fue actualizada
 
   activerecord:
     models:

@@ -30,6 +30,13 @@ Cursame::Application.routes.draw do
     end
   end
 
+
+  namespace :admin do
+    resources :networks
+  end
+  match '/admin' => 'admin/base#admin'
+
+
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   root :to => "home#index"
