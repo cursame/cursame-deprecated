@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def destroy
     comment = Comment.find params[:id]
-    if current_user.can_manage_comment?(comment)
+    if current_user.can_destroy_comment? comment
       comment.destroy
       redirect_to comment.commentable, :notice => t('flash.comment_deleted')
     end

@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
   end
 
   def can_destroy_comment? comment
-    puts comment.comments.inspect
     comment.comments.empty? && can_manage_comment?(comment)
   end
 
