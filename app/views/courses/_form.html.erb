@@ -9,8 +9,8 @@
     <%= form.input :name, :input_html => {:class => "span6"}  %>
     <!--<%= form.input :description, :input_html => {'data-editor' => true, :class => 'span6'} %>-->
     <%= form.input :description, :input_html => {:class => "span6"} %>
-    <%= form.input :start_date, :as => :string, :input_html => {:placeholder => "dd/mmm/yy", :class => 'span6 datepicker'} %>
-    <%= form.input :finish_date, :as => :string, :input_html => {:placeholder => "dd/mmm/yy", :class => 'span6 datepicker'} %>
+    <%= form.input :start_date, :as => :string, :input_html => {:placeholder => "dd-mm-yy", :class => 'span6 datepicker'} %>
+    <%= form.input :finish_date, :as => :string, :input_html => {:placeholder => "dd-mm-yy", :class => 'span6 datepicker'} %>
     <%= form.input :reference, :input_html => {:class => "span6"} %>
     <%= form.input :public %>
   <% end %>
