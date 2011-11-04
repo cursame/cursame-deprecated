@@ -12,6 +12,10 @@ FactoryGirl.define do
     confirmed_at { Time.now }
   end
 
+  factory :supervisor, :parent => :confirmed_user do
+    role 'supervisor'
+  end
+
   factory :teacher, :parent => :confirmed_user do
     role 'teacher'
   end

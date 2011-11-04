@@ -140,3 +140,11 @@ es:
     show:
       title:  'Configuraciones'
       change_password: 'Cambiar contraseña'
+
+
+
+  supervisors:
+    show:
+      courses: Cursos
+      teachers: Maestros
+      students: Estudiantes

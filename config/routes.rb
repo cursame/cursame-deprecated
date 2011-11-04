@@ -36,6 +36,14 @@ Cursame::Application.routes.draw do
     put :password
   end
 
+
+  resource :supervisor, :only => [:show] do
+    get :courses
+    get :teachers
+    get :students
+  end
+
+
   namespace :admin do
     resources :networks
   end
