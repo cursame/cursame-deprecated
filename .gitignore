@@ -10,4 +10,4 @@ pickle-email*
 .DS_Store
 .sass-cache
 bin
-
+*.sqlite3-journal

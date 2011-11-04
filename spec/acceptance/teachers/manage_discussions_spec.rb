@@ -102,7 +102,6 @@ feature 'Manage discussions', %q{
   scenario 'removing a posted comment from discussion' do
     comment = @discussion.comments.first
     visit discussion_url(@discussion, :subdomain => @network.subdomain)
-    save_and_open_page
 
     within('.comment:first') do
       lambda do
