@@ -25,7 +25,7 @@ feature 'SuperAdmin', %q{
   end
 
 
-  scenario 'redirect to /admin after signin in' do
+  scenario 'redirect to /admin after signing in' do
     page.current_url.should match admin_path
 
     # Also if you go directly to root_path

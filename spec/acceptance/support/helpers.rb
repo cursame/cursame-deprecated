@@ -11,8 +11,12 @@ module NavigationHelpers
     click_button 'sign_in'
   end
 
-  def sign_out
-    visit root_path
+  def sign_out opts = {}
+    if opts[:subdomain]
+      visit root_url(:subdomain => opts[:subdomain])
+    else
+      visit root_path
+    end
     click_link 'Logout'
   end
 end

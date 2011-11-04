@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     current_user && current_user.student? or throw(:warden)
   end
 
+  def authenticate_supervisor!
+    current_user && current_user.supervisor? or throw(:warden)
+  end
+
   def require_network
     redirect_to root_path unless current_network
   end
@@ -26,6 +30,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if resource.role == 'admin'
       admin_path
+    elsif resource.role == 'supervisor'
+      supervisor_path
     else
       dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
     end
