@@ -102,7 +102,6 @@ feature 'Manage courses', %q{
     Enrollment.last.state = 'rejected'
   end
 
-
   scenario 'A student cannot go to the requests page' do
     student = Factory(:student, :networks => [@network])
     student.enrollments.create(:course => @course, :state => 'accepted')
