@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111103030709) do
+ActiveRecord::Schema.define(:version => 20111104025314) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -69,6 +69,14 @@ ActiveRecord::Schema.define(:version => 20111103030709) do
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
+
+  create_table "discussions", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "enrollments", :force => true do |t|
     t.integer  "user_id"
