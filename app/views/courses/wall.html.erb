@@ -1,0 +1,4 @@
+<%= t('.header') %>
+
+<%= render :partial => 'comments/comments',   :locals => {:commentable => @course} %>
+<%= render :partial => 'comments/form',       :locals => {:commentable => @course} %>

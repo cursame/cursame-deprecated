@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     role == 'supervisor'
   end
 
-  def can_manage_comment? comment
+  def can_edit_comment? comment
     comments.include?(comment) || 
       case comment.commentable
       when Assignment
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   def can_destroy_comment? comment
-    comment.comments.empty? && can_manage_comment?(comment)
+    comment.comments.empty? && can_edit_comment?(comment)
   end
 
   def can_view_comment? comment

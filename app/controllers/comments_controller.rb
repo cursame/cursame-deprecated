@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     comment = Comment.find params[:id]
     if current_user.can_destroy_comment? comment
       comment.destroy
-      redirect_to comment.commentable, :notice => t('flash.comment_deleted')
+      redirect_to commentable_path_for(comment), :notice => t('flash.comment_deleted')
     end
   end
 
@@ -25,6 +25,8 @@ class CommentsController < ApplicationController
       case params[:conditions][:commentable]
       when :assignment
         current_user.assignments.find params[:commentable_id]
+      when :course
+        current_user.courses.find params[:commentable_id]
       when :comment
         comment = Comment.find params[:commentable_id]
         raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)
@@ -33,6 +35,8 @@ class CommentsController < ApplicationController
   end
 
   def commentable_path_for comment
-    Comment === comment.commentable ? commentable_path_for(comment.commentable) : polymorphic_path(comment.commentable)
+    commentable = comment.commentable
+    return wall_for_course_path commentable if Course === commentable
+    Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
   end
 end

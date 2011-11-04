@@ -41,6 +41,7 @@ feature 'Manage assignments', %q{
       end.should change(@assignment.comments, :count).by(-1)
     end
 
+    page.current_url.should match assignment_url(@assignment, :subdomain => @network.subdomain)
     page.should_not show_comment comment
     page.should have_notice t('flash.comment_deleted')
   end

@@ -121,7 +121,8 @@ es:
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
-
+    wall:
+      header: Muro
 
   profile:
     edit_profile: 'Editar perfil'

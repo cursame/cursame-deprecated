@@ -6,10 +6,8 @@ class Course < ActiveRecord::Base
   has_many :students, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'student'", :source => :user
   has_many :teachers, :through => :enrollments, :class_name => 'User', :conditions => {'enrollments.role' => 'teacher'}, :source => :user
   has_many :users,    :through => :enrollments, :conditions => "(enrollments.state = 'accepted' AND enrollments.role = 'student') OR enrollments.role  = 'teacher'", :source => :user
-
   has_many :assignments
-  has_many :assets, :as => :owner
-
+  has_many :comments, :as => :commentable
 
   can_haz_assets
 

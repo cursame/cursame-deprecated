@@ -36,10 +36,14 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = current_network.courses.find(params[:id]) 
+    @course = current_network.courses.find params[:id] 
   end
 
   def members
+    @course = current_network.courses.find params[:id]
+  end
+
+  def wall
     @course = current_network.courses.find params[:id]
   end
 
