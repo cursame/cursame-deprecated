@@ -1,0 +1,22 @@
+
+<div class="users">
+  <% @pending.each do |user| %>
+    <div class="user padding-all <%= cycle('odd', 'even') %>">
+      <div class="row user pending">
+        <%= user.name %>
+
+        <div>
+        <%= form_tag accept_user_supervisor_path(user.id), :method => :post do |form| %>
+          <%= submit_tag t('.approve') %>
+        <% end %>
+        </div>
+
+        <div style="background-color:red;padding:3px;">
+        <%= form_tag reject_user_supervisor_path(user.id), :method => :post do |form| %>
+          <%= submit_tag t('.reject') %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

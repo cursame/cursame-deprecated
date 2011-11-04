@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104025314) do
+ActiveRecord::Schema.define(:version => 20111104054527) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -109,8 +109,8 @@ ActiveRecord::Schema.define(:version => 20111104025314) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.string   "email",                                 :default => "", :null => false
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20111104025314) do
     t.string   "facebook_link"
     t.string   "linkedin_link"
     t.string   "avatar_file"
+    t.string   "state",                                 :default => "active"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

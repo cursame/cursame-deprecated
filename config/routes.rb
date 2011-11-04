@@ -41,6 +41,9 @@ Cursame::Application.routes.draw do
     get :courses
     get :teachers
     get :students
+    get :pending_approvals
+    match '/pending_approvals/:user_id/accept', :via => :post, :to => 'supervisors#accept_user', :as => :accept_user
+    match '/pending_approvals/:user_id/reject', :via => :post, :to => 'supervisors#reject_user', :as => :reject_user
   end
 
 
@@ -57,5 +60,6 @@ Cursame::Application.routes.draw do
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
+
   root :to => "home#index"
 end
