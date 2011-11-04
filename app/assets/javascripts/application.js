@@ -41,7 +41,7 @@ $(function(){
 
   $("table[data-sortable]").tablesorter( { sortList: [[ 1, 0 ]] } )
   
-  $('input.ui-date-picker').datepicker();
+  $('input.datepicker').datepicker();
   
   $('div.expander').expander({
     slicePoint: 300,

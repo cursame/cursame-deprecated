@@ -375,7 +375,6 @@ fieldset ol li.boolean {
 	padding-left: 98px;
 }
 
-
 fieldset.inputs {
 	
 }
@@ -412,6 +411,18 @@ form.pull-right p {
 	line-height: 24px;
 	font-size: 11px;
 	padding-left: 116px;
+}
+
+.social-media {
+	margin-left: 140px;
+	margin-top: 20px;
+}
+
+input.span5-5, textarea.span5-5, select.span5-5 {
+  display: inline-block;
+  float: none;
+  width: 300px;
+  margin-left: 0;
 }
 
 /* @end */
