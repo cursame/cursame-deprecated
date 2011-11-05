@@ -88,6 +88,8 @@ es:
     private: 'Curso Privado'
     my_courses: 'Mis Cursos'
     create_course: 'Crear Curso'
+    edit_course: 'Editar Curso'
+    information: 'Información de Curso'
     by: 'por'
     edit: 'Editar'
     delete: 'Eliminar'

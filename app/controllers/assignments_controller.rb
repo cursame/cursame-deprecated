@@ -40,6 +40,7 @@ class AssignmentsController < ApplicationController
 
   def show
     @assignment = current_user.assignments.find params[:id]
+    @course     = @assignment.course
   end
 
   private

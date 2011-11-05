@@ -7,7 +7,7 @@ module ApplicationHelper
   end
   
   def avatar
-    
+
   end
   
 end

@@ -8,7 +8,7 @@
   <ul class="left-nav-main-ul">
     <li><%= link_to(t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones") %></li>
     <li><%= link_to Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %></li>
-    <li><%= link_to("Informacion", course_path(@course), :class => "informacion") %></li>
+    <li><%= link_to(t('courses.information'), course_path(@course), :class => "informacion") %></li>
     <!--<li><%= link_to(t('.discus'), "#", :class => "discusiones" ) %></li>
     <li><%= link_to(t('.docs'), "#", :class => "documentos") %></li>
     <li><%= link_to(t('.evaluations'), "#", :class => "evaluaciones") %></li>

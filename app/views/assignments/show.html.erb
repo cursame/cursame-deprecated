@@ -1,17 +1,49 @@
-<% if current_user.manageable_assignments.include? @assignment %>
-  <%= link_to t('.edit'), edit_assignment_path(@assignment), :id => 'edit' %>
-  <%= link_to t('.delete'), @assignment, :id => 'delete', :method => :delete, :confirm => t('confirm_delete') %>
-<% end %>
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to("Courses", courses_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(@assignment.course.name, course_path(@assignment.course)) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('courses.assignments.assignments'), course_assignments_path(@assignment.course)) %> <span class="divider">/</span></li>
+          <li class="active"><%= @assignment.name %></li>
+        </ul>  
+      </div>
+    </div>
+    
+    <div class="row">
+      
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
+      </div>
+      
+      <div class="span10">
+      <% if current_user.manageable_assignments.include? @assignment %>
+        <%= link_to t('.edit'), edit_assignment_path(@assignment), :id => 'edit' %>
+        <%= link_to t('.delete'), @assignment, :id => 'delete', :method => :delete, :confirm => t('confirm_delete') %>
+      <% end %>
 
-<h1><%= Assignment.model_name.human %> <%= @assignment.name %></h1>
+      <h1><%= Assignment.model_name.human %> <%= @assignment.name %></h1>
 
-<%= @assignment.course.name %>
-<%= @assignment.name %>
-<%= @assignment.description %>
-<%= @assignment.value %>
-<%= @assignment.period %>
-<%= l @assignment.due_to, :format => :short %>
+      <%= @assignment.course.name %>
+      <%= @assignment.name %>
+      <%= @assignment.description %>
+      <%= @assignment.value %>
+      <%= @assignment.period %>
+      <%= l @assignment.due_to, :format => :short %>
 
-<%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
-<%= render :partial => 'comments/comments',   :locals => {:commentable => @assignment} %>
-<%= render :partial => 'comments/form',       :locals => {:commentable => @assignment} %>
+      <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
+      <%= render :partial => 'comments/comments',   :locals => {:commentable => @assignment} %>
+      <%= render :partial => 'comments/form',       :locals => {:commentable => @assignment} %>
+      </div>
+      
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+      
+    </div>
+  </div>
+</div>

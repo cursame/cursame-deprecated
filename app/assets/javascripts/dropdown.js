@@ -1,8 +1,5 @@
 !function( $ ){
 
-  /* DROPDOWN PLUGIN DEFINITION
-   * ========================== */
-
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
       $(this).delegate(selector || d, 'click', function (e) {
@@ -16,9 +13,6 @@
     })
   }
 
-  /* APPLY TO STANDARD DROPDOWN ELEMENTS
-   * =================================== */
-
   var d = 'a.menu, .dropdown-toggle'
 
   function clearMenus() {
@@ -27,7 +21,7 @@
 
   $(function () {
     $('html').bind("click", clearMenus)
-    $('body').dropdown( '[data-dropdown] a.menu, [data-dropdown] .dropdown-toggle' )
+    $('body').dropdown()
   })
 
 }( window.jQuery || window.ender );

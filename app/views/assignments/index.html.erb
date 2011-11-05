@@ -34,8 +34,8 @@
         <div class="courses">
           <% @assignments.each do |assignment| %> 
             <div class="course padding-all <%= cycle('odd', 'even') %>">
-            <h3><%= assignment.course.name %></h3>
-            <%= link_to assignment.name, assignment %>
+            <h3><%= link_to assignment.name, assignment %></h3>
+            <%= assignment.course.name %>
             <%= assignment.value %>
             <%= assignment.period %>
             <%= l assignment.due_to, :format => :short %>
