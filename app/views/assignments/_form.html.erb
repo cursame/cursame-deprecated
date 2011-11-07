@@ -1,18 +1,16 @@
-<%= semantic_form_for [@course, @assignment] do |form| %>
-  <%= form.inputs :basic do %>
-    <%= form.input :name, :input_html => {:class => "span6"} %>
-    <!--<%= form.input :description, :input_html => {'data-editor' => true} %>-->
-    <%= form.input :description, :input_html => {:class => "span6"} %>
-    <%= form.input :value, :input_html => {:class => "span6"} %>
-    <%= form.input :period, :input_html => {:class => "span6"} %>
-    <li><label><%= t('courses.assignments.date_time') %></label><%= form.datetime_select(:due_to) %></li>
-  <% end %>
+<%= form.inputs :basic do %>
+  <%= form.input :name, :input_html => {:class => "span6"} %>
+  <!--<%= form.input :description, :input_html => {'data-editor' => true} %>-->
+  <%= form.input :description, :input_html => {:class => "span6"} %>
+  <%= form.input :value, :input_html => {:class => "span6"} %>
+  <%= form.input :period, :input_html => {:class => "span6"} %>
+  <li><label><%= t('courses.assignments.date_time') %></label><%= form.datetime_select(:due_to) %></li>
+<% end %>
 
-  <div class="well">
-    <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
-  </div>
+<div class="well">
+  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+</div>
 
-  <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>
-  <% end %>
+<%= form.buttons do %>
+  <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>
 <% end %>

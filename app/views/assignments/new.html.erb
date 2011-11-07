@@ -21,7 +21,9 @@
       
       <div class="span10">
         <h2><%= t('courses.assignments.new_assignment') %></h2>
-        <%= render :partial => 'form' %>
+        <%= semantic_form_for [@course, @assignment] do |form| %>
+          <%= render :partial => 'form', :locals => {:form => form} %>
+        <% end %>
       </div>
       <div class="span3" style="margin:0;">
         <%= render :partial => "shared/adds" %>

@@ -22,14 +22,34 @@
         <h3><%= t('courses.members.teachers') %></h3>
         <div class="members">
           <% @course.teachers.each do |teacher| %>
-            <div class="teacher"><%= teacher.email %></div>
+            <div class="teacher">
+              <div class="row">
+                <div class="span1" style="margin-left:20px;">
+                  <%= image_tag(teacher.avatar_file.xsmall.url) %>
+                </div>
+                <div class="span5">
+                  <%= link_to(teacher.name, user_path(teacher)) %><br />
+                  <%= teacher.email %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
 
         <h3><%= t('courses.members.students') %></h2>
         <div class="members">
           <% @course.students.each do |student| %>
-            <div class="student"><%= student.email %></div>
+            <div class="student">
+              <div class="row">
+                <div class="span1" style="margin-left:20px;">
+                  <%= image_tag(student.avatar_file.xsmall.url) %>
+                </div>
+                <div class="span5">
+                  <%= link_to(student.name, user_path(student)) %><br />
+                  <%= student.email %>
+                </div>
+              </div>
+            </div>
           <% end %>
         </div>
       </div>
