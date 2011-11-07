@@ -69,6 +69,8 @@ es:
     actions:
       update: Actualizar
       create: Crear
+      edit: 'Editar'
+      delete: 'Eliminar'
 
   shared:
     toolbar:
@@ -96,6 +98,7 @@ es:
     edit: 'Editar'
     delete: 'Eliminar'
     courses: 'Cursos'
+    course: 'Curso'
     add_asset: Añadir archivo
     course_menu:
       wall: 'Muro'
@@ -131,9 +134,11 @@ es:
       create_assignment: 'Crear tarea'
       assignments: 'Tareas'
       new_assignment: 'Nueva Tarea'
+      edit_assignment: 'Editar Tarea'
       date_time: 'Fecha Límite'
       value: 'Valor'
       period: 'Periodo'
+      comments: 'Comentarios'
 
   profile:
     edit_profile: 'Editar perfil'

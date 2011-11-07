@@ -1,7 +1,7 @@
 <% content_for :head do %>
 <style>
   <% commentable.comments.each do |comment| %>
-    .wall .comment-box<%= comment.id %> {
+    .wall .comment-box<%= comment.id %> , .assignments .comment-box<%= comment.id %> {
     	display: none;
     }
   <% end %>
@@ -18,7 +18,7 @@
 </script>
 <% end %>
 <div class="comments">
-  <% commentable.comments.each do |comment| %>
+  <% commentable.comments.order("created_at DESC").each do |comment| %>
     <div class="comment comment-box" id="<%= "comment_#{comment.id}" %>">
       <div class="row">
         <div class="span1"><%= link_to(image_tag(comment.user.avatar_file.xsmall.url), user_path(comment.user)) %></div>

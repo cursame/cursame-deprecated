@@ -32,13 +32,17 @@
         </div>
 
         <div class="courses">
-          <% @assignments.each do |assignment| %> 
+          <% @assignments.order("due_to DESC").each do |assignment| %> 
             <div class="course padding-all <%= cycle('odd', 'even') %>">
             <h3><%= link_to assignment.name, assignment %></h3>
             <%= assignment.course.name %>
-            <%= assignment.value %>
-            <%= assignment.period %>
-            <%= l assignment.due_to, :format => :short %>
+            <div class="row">
+              <div class="assignment-values">
+                <%= t('courses.assignments.value') %>: <b><%= assignment.value %></b> -
+                <%= t('courses.assignments.period') %>: <b><%= assignment.period %></b> -
+                <%= t('courses.assignments.date_time') %>: <b><%= l assignment.due_to, :format => :short %></b>
+              </div>
+            </div>
             </div>
           <% end %>
         </div>

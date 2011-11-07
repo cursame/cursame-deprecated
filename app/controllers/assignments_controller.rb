@@ -21,6 +21,7 @@ class AssignmentsController < ApplicationController
 
   def edit
     @assignment = manageable_assignment
+    @courses    = @assignment.course
   end
 
   def update
