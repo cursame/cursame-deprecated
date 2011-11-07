@@ -65,6 +65,8 @@ class User < ActiveRecord::Base
     case comment.commentable
     when Assignment
       assignments.include? comment.commentable
+    when Course
+      courses.include? comment.commentable
     end
   end
 end

@@ -16,8 +16,8 @@ feature 'Manage discussions', %q{
   end
 
   scenario 'creating a discussion' do
-    visit course_url(@course, :subdomain => @network.subdomain)
-    click_link I18n.t('courses.course_menu.new_discussion')
+    visit course_discussions_url(@course, :subdomain => @network.subdomain)
+    click_link 'new_discussion'
 
     fill_in 'discussion[title]',       :with => 'Introduction to algebra'
     fill_in 'discussion[description]', :with => 'discussion description'

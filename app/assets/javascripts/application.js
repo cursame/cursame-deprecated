@@ -59,6 +59,10 @@ $(function(){
     userCollapsePrefix: ''
   });
 
+  $('a.toggle_comment_box').click(function(){
+    $(this).closest('.comment').find('.comment-form').toggle(400);
+  })
+
   $('textarea[data-editor]').wysiwyg({
     controls : {
       bold: {

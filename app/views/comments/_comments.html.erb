@@ -1,21 +1,9 @@
 <% content_for :head do %>
-<style>
-  <% commentable.comments.each do |comment| %>
-    .wall .comment-box<%= comment.id %> , .assignments .comment-box<%= comment.id %> {
-    	display: none;
+  <style>
+    .comment .comment {
+      padding-left: 80px;
     }
-  <% end %>
-</style>
-<script>
-  $(document).ready(function() {
-    <% commentable.comments.each do |comment| %>
-    $('.toggle<%= comment.id %>').click(function() {
-      $('.comment-box<%= comment.id %>').show(400);
-      return false;
-    });
-    <% end %>
-  });
-</script>
+  </style>
 <% end %>
 <div class="comments">
   <% commentable.comments.order("created_at DESC").each do |comment| %>
@@ -30,18 +18,18 @@
           </blockquote>
           <p>
           <% if current_user.can_destroy_comment? comment %>
-            <%= link_to t('.remove'), comment, :method => :delete, :confirm => t('confirm_delete') %> -
+            <%= link_to t('.remove'), comment, :method => :delete, :confirm => t('confirm_delete'), :html => {:title => 'delete comment'} %> -
           <% end %>
           <% unless Comment === comment.commentable %>
-            <%= link_to t('comment'), '#' , :class => "toggle#{comment.id}"%>
-            <div class="comment-box<%= comment.id %>">
+            <%= link_to t('comment'), '#' , :class => "toggle_comment_box"%>
+            <div class="comment-form" style='display:none'>
               <%= render :partial => 'comments/comment_form', :locals => {:commentable => comment} %>
             </div>
           <% end %>
           </p>
         </div>
       </div>
+      <%= render :partial => 'comments/comments', :locals => {:commentable => comment} unless comment.comments.blank? %>
     </div>
-    <%= render :partial => 'comments/comments', :locals => {:commentable => comment} unless comment.comments.blank? %>
   <% end %>
 </div>

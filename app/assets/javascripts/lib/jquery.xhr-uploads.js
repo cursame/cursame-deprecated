@@ -16,6 +16,8 @@
       complete   : $.noop
     };
 
+    $(this).attr("multiple", "multiple");
+
     return $(this).each(function(){
       var fileInput = $(this);
       if (opts) { $.extend(settings, opts); }
