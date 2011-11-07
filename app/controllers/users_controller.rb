@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_filter :require_network
   before_filter :find_user, :except => [:upload_avatar]
   before_filter :can_edit?, :except => [:show, :upload_avatar]
+  set_tab :profile
 
   def show
     # You should only see the profile of a user if you have a course in common

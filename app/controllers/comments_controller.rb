@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
       when :assignment
         current_user.assignments.find params[:commentable_id]
       when :course
-        current_user.courses.find params[:commentable_id]
+        current_user.courses.order.find params[:commentable_id]
       when :discussion
         current_user.discussions.find params[:commentable_id]
       when :comment

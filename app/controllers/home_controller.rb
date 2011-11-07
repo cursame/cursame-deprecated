@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
   skip_before_filter :authenticate_user!, :only => :index
+  set_tab :dashboard
 
   def index
     if current_user && current_user.role == 'admin'

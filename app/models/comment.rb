@@ -10,4 +10,5 @@ class Comment < ActiveRecord::Base
   validates_presence_of :text, :commentable, :user
 
   html_sanitized :text
+  
 end

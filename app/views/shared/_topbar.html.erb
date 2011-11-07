@@ -8,10 +8,10 @@
         <input type="text" placeholder="<%= t('shared.toolbar.search') %>" />
       </form>
       
-      <ul class="nav">
-        <li class="active"><%= link_to('Inicio', root_path) %></li>
-        <li><%= link_to 'Perfil', current_user %></li>
-      </ul>
+      <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
+        <%= tab.dashboard t('dashboard.start'), root_path %>
+        <%= tab.profile t('dashboard.profile'), current_user %>
+      <% end %>
 
       <ul class="nav secondary-nav">
         <li class="dropdown">

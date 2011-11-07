@@ -5,6 +5,7 @@ class DiscussionsController < ApplicationController
 
   def index
     @discussions = course.discussions
+    @course      = current_user.courses.find params[:course_id]
   end
 
   def create
