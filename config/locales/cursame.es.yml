@@ -87,7 +87,7 @@ es:
   courses:
     archives: 'Archivos'
     description: 'Descripción'
-    details: 'Detalles'
+    details: 'Horario/Grupo'
     time: 'Fecha'
     public: 'Curso Público'
     private: 'Curso Privado'
@@ -149,6 +149,9 @@ es:
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
 
+  discusions:
+    title: 'Discusiones'
+  
   comments:
     comments:
       remove: eliminar comentario
