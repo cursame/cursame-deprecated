@@ -104,6 +104,7 @@ es:
       wall: 'Muro'
       new_discussion: 'Crear discusión'
       discussions: 'Discusiones'
+      requests: 'Solicitudes'
       tasks: 'Tareas'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'

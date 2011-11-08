@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                :through => :enrollments
+  has_many :visible_courses,        :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
   has_many :manageable_courses,     :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => {'enrollments.admin' => true}
   has_many :manageable_assignments, :through => :manageable_courses, :source => :assignments, :class_name => 'Assignment'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar_file, AvatarUploader
 
-  default_scope where(:state => 'active')
+  default_scope where(:state => 'active') # TODO: this can lead to obscure bugs
 
   def name
     "#{first_name} #{last_name}".strip

@@ -1,13 +1,12 @@
 class RegistrationsController < Devise::RegistrationsController
-  
   helper_method :role
-  
+
   def build_resource(hash=nil)
     hash ||= params[resource_name] || {}
     self.resource    = resource_class.new_with_session(hash, session)
     resource.networks << current_network 
     resource.role    = role
-    resource.state = resource.role == 'student' ? 'active' : 'inactive'
+    resource.state   = 'active'
   end
 
   protected

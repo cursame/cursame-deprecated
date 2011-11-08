@@ -9,7 +9,7 @@ class CourseRequestsController < ApplicationController
                                       :state => 'pending',
                                       :role => current_user.role)
     end
-    redirect_to course_path(@course), :notice => t('flash.course_join_requested')
+    redirect_to courses_path, :notice => t('flash.course_join_requested')
   end
 
   def index

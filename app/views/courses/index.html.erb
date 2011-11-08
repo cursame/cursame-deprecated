@@ -28,7 +28,11 @@
           <% @courses.each do |course| %>
             <div class="course padding-all <%= cycle('odd', 'even') %>">
               <div class="row">
-                <div class="span6"><h3><%= link_to course.name, course_path(course) %></h3></div>
+                <div class="span6">
+                  <h3>
+                    <%= current_user.visible_courses.include?(course) ? link_to(course.name, course) : course.name %>
+                  </h3>
+                </div>
                 <div class="span4" style="margin-top: 5px;">
                   <% enrollment = current_user.enrollments.where(:course_id => course).first %>
                   <% if !enrollment %>
@@ -46,8 +50,8 @@
                     <% end %>
                   
                 <% if current_user.manageable_courses.include? course %>
-                <span class="label-tag notice course-notification"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
-                <!--<span class="label-tag important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('confirm_delete'), :method => :delete) %></span>-->
+                  <span class="label-tag notice course-notification"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
+                  <!--<span class="label-tag important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('confirm_delete'), :method => :delete) %></span>-->
                 <% end %>
                 </div>
               </div>
