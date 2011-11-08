@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def uploaded_file
+    params[:file] ||
     {
       :filename => env['HTTP_X_FILE_NAME'], 
       :type     => env["CONTENT_TYPE"], 

@@ -17,7 +17,7 @@ feature 'Manage assignments', %q{
   it_should_behave_like 'has basic actions for assignments'
 
   scenario 'creating an assignment' do
-    visit course_url(@course, :subdomain => @network.subdomain)
+    visit course_assignments_url(@course, :subdomain => @network.subdomain)
     click_link 'new_assignment'
     fill_in 'assignment[name]',        :with => 'First assignment'
     fill_in 'assignment[description]', :with => 'This is a test assignment'

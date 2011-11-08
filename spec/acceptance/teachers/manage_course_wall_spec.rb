@@ -34,14 +34,31 @@ feature 'Manage course wall', %q{
     comment = Factory(:comment, :commentable => @course, :user => @teacher)
     visit wall_for_course_url @course, :subdomain => @network.subdomain
 
-    within('.comment:last') do
-      lambda do
-        click_link t('comments.comments.remove')
-      end.should change(@course.comments, :count).by(-1)
-    end
+    lambda do
+      click_link t('comments.comments.remove')
+    end.should change(@course.comments, :count).by(-1)
 
     page.current_url.should match wall_for_course_url(@course, :subdomain => @network.subdomain)
     page.should_not show_comment comment
     page.should have_notice t('flash.comment_deleted')
+  end
+
+  scenario 'commenting on an wall comment' do
+    comment    = Factory(:comment, :commentable => @course)
+    visit wall_for_course_url @course, :subdomain => @network.subdomain
+
+    within('.comments .comment:last') do
+      # click_link t('comment')
+      fill_in 'comment[text]', :with => 'Comment of a comment'
+      lambda do
+        click_button 'submit'
+      end.should change(comment.comments, :count).by(1)
+    end
+
+    comments_comment = Comment.last
+    comments_comment.commentable.should == comment
+
+    page.should show_comment comments_comment
+    page.should have_notice t('flash.comment_added')
   end
 end
