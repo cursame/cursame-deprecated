@@ -12,7 +12,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = current_network.courses.build params[:course]
-    @course.enrollments.build(:user => current_user, :admin => true, :role => 'teacher')
+    @course.enrollments.build(:user => current_user, :admin => true, :role => 'teacher', :state => 'accepted')
 
     if @course.save
       redirect_to @course, :notice => t('flash.course_created')
@@ -35,19 +35,24 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = current_network.courses.find params[:id] 
+    @course = accessible_course
   end
 
   def members
-    @course = current_network.courses.find params[:id]
+    @course = accessible_course
   end
 
   def wall
-    @course = current_network.courses.find params[:id]
+    @course = accessible_course
   end
 
   def upload_logo
     course = Course.new :logo_file => uploaded_file
     render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
+  end
+
+  def accessible_course # TODO: hack
+    et = Enrollment.arel_table
+    @accessible_course ||= current_user.courses.where(et['state'].eq('accepted').or(et['role'].eq('teacher'))).find params[:id]
   end
 end
