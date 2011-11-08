@@ -139,6 +139,10 @@ body {
 	/* Should consider removing since it's blank */
 }
 
+.course {
+	display: block;
+}
+
 .courses h3 {
 	line-height: 26px;
 }
@@ -209,31 +213,43 @@ body {
 	color: #fff;
 }
 
-.wall label, .assignments label {
+.wall label, 
+.assignments label,
+.discussions label {
 	display: none;
 }
 
-.wall .actions, .assignments .actions {
+.wall .actions, 
+.assignments .actions,
+.discussions .actions {
   	margin-top: 0;
  	margin-bottom: 18px;
 	padding: 5px 20px 1px;
 }
 
-.wall .textarea-size, .assignments .textarea-size {
+.wall .textarea-size, 
+.assignments .textarea-size,
+.discussions .textarea-size {
 	width: 480px;
 }
 
-.wall .comment-box, .assignments .comment-box {
+.wall .comment-box, 
+.assignments .comment-box,
+.discussions .comment-box {
 	border-top: 1px solid #eaeaea;
 	padding-top: 10px;
 	margin-top: 10px;
 }
 
-.wall .span1, .assignments .span1 {
+.wall .span1, 
+.assignments .span1,
+.discussions .span1 {
 	margin-left: 20px;
 }
 
-.wall h6, .assignments h6 {
+.wall h6, 
+.assignments h6,
+.discussions h6 {
 	line-height: 10px;
 	margin-bottom: 5px;
 }

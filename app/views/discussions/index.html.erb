@@ -6,8 +6,8 @@
         <ul class="breadcrumb">
           <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
           <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
-          <li><%= link_to("course name", "") %> <span class="divider">/</span></li>
-          <li></li>
+          <li><%= link_to(@course.name, course_path(@course)) %> <span class="divider">/</span></li>
+          <li><%= t('discussions.title') %></li>
         </ul>  
       </div>
     </div>
@@ -22,19 +22,22 @@
 
         <div class="row bottom-margin">
           <div class="span5">
-            <h2><%= t('.header') %></h2>
+            <h2><%= t('discussions.title') %></h2>
           </div>
           <div class="span3" style="margin-left:45px;">
             <% if current_user.teacher? %>
-              <%= link_to t('.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
+              <%= link_to t('discussions.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
             <% end %>
           </div>
         </div>
 
         <div class="courses">
           <% @discussions.order("created_at DESC").each do |discussion| %>
-            <div class="course padding-all <%= cycle('odd', 'even') %>">
-            <h3><%= link_to discussion.title, discussion %></h3>
+            <div class="row course padding-all <%= cycle('odd', 'even') %>" style="margin-left:0;">
+              <div class="span7">
+                <h3><%= link_to discussion.title, discussion %></h3>
+              </div>
+              <div class="span1"><span class="label-tag notice course-notification" style="margin-top:2px;"><a href="<%= discussion_path(discussion) %>"><%= discussion.comments.count %> <%= image_tag("menu-discusiones.png") %></a></span></div>
             </div>
           <% end %>
         </div>

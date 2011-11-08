@@ -1,13 +1,53 @@
-<%= t('.header') %>
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(@course.name, course_path(@course)) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('discussions.title'), course_discussions_path(@course)) %> <span class="divider">/</span></li>
+          <li><%= @discussion.title %></li>
+        </ul>  
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
+      </div>
+      
+      <div class="span10 discussions">
+        <div class="row bottom-margin">
+          <div class="span5">
+            <h2><%= @discussion.title %></h2>
+          </div>
+          <div class="span3" style="margin-left:70px;">
+            <% if @discussion.comments.empty? %>
+              <%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete')  %>
+            <% end %>
+            <%= link_to t('.edit'),   edit_discussion_url(@discussion), :id => 'edit_discussion', :class => 'btn info right' %>
+          </div>
+        </div>
+              
+        <p><%= @discussion.description %></p>
 
-<%= link_to t('.edit'),   edit_discussion_url(@discussion), :id => 'edit_discussion' %>
-<% if @discussion.comments.empty? %>
-  <%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :method => :delete, :confirm => t('confirm_delete')  %>
-<% end %>
-
-<%= @discussion.title %>
-<%= @discussion.description %>
-
-<%= render :partial => 'shared/assets_table', :locals => {:record => @discussion} %>
-<%= render :partial => 'comments/comments',   :locals => {:commentable => @discussion} %>
-<%= render :partial => 'comments/form',       :locals => {:commentable => @discussion} %>
+      <%= render :partial => 'shared/assets_table', :locals => {:record => @discussion} %>
+      
+      <div class="actions">
+        <h2><%= t('courses.assignments.comments') %></h2>
+        <%= render :partial => 'comments/form',       :locals => {:commentable => @discussion} %>
+      </div>
+      <%= render :partial => 'comments/comments',   :locals => {:commentable => @discussion} %>
+      
+      </div>
+      
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+    
+  </div>
+</div>

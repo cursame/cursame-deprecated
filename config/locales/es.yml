@@ -188,6 +188,7 @@ es:
       
   flash:
     comment_added: 'Comment added with succes!'
+    discussion_updated: 'Discusion Actualisada'
 
   errors:
     format: "%{attribute} %{message}"
