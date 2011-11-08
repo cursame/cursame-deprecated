@@ -1,5 +1,4 @@
 class CoursesController < ApplicationController
-  before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :require_network
 
   def index
@@ -51,8 +50,7 @@ class CoursesController < ApplicationController
     render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
   end
 
-  def accessible_course # TODO: hack
-    et = Enrollment.arel_table
-    @accessible_course ||= current_user.courses.where(et['state'].eq('accepted').or(et['role'].eq('teacher'))).find params[:id]
+  def accessible_course
+    @accessible_course ||= current_user.visible_courses.where(:network_id => current_network).find params[:id]
   end
 end

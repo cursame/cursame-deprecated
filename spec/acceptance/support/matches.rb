@@ -1,6 +1,6 @@
 RSpec::Matchers.define :have_notice do |expected|
   match do |page|
-    page.should have_css '.flash.notice', :text => expected
+    page.should have_css '.alert-message.notice', :text => expected
   end
 end
 

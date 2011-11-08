@@ -23,8 +23,7 @@ feature 'Course navigation', %q{
     visit courses_url(:subdomain => @network.subdomain)
     click_link I18n.t('courses.index.request_join')
 
-    # should redirect to show page
-    page.current_url.should match course_path(course)
+    page.current_url.should match courses_path
 
     @student.enrollments.count.should == 1
   end
