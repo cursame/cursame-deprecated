@@ -472,10 +472,16 @@ form.pull-right p {
 }
 
 input.span5-5, textarea.span5-5, select.span5-5 {
-  display: inline-block;
-  float: none;
-  width: 300px;
-  margin-left: 0;
+  	display: inline-block;
+  	float: none;
+  	width: 300px;
+  	margin-left: 0;
+}
+
+ul.auth-links {
+	list-style: none;
+	margin-bottom: 0;
+	margin-left: 75px;
 }
 
 /* @end */
