@@ -6,7 +6,7 @@ class RegistrationsController < Devise::RegistrationsController
     self.resource    = resource_class.new_with_session(hash, session)
     resource.networks << current_network 
     resource.role    = role
-    resource.state   = 'active'
+    resource.state   = role == 'student' ? 'active' : 'inactive'
   end
 
   protected

@@ -28,8 +28,6 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar_file, AvatarUploader
 
-  default_scope where(:state => 'active') # TODO: this can lead to obscure bugs
-
   def name
     "#{first_name} #{last_name}".strip
   end

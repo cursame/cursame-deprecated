@@ -50,6 +50,7 @@ feature 'Manage assignments', %q{
 
     page.current_url.should match assignment_path(assignment)
     page.should show_assignment assignment
+    save_and_open_page
     page.should have_notice t('flash.assignment_created')
   end
 
