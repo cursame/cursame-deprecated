@@ -1,6 +1,3 @@
-<%= link_to t('.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion' %>
-
-
 <div class="container">
   <div class="content">
     
@@ -17,19 +14,31 @@
     
     <div class="row">
       <div class="span3">
-      
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
       </div>
     
       <div class="span10">
-        <%= t('.header') %>
 
-        <ul id="discussions">
-          <% @discussions.each do |discussion| %>
-            <li>
-              <%= link_to discussion.title, discussion %>
-            </li>
+        <div class="row bottom-margin">
+          <div class="span5">
+            <h2><%= t('.header') %></h2>
+          </div>
+          <div class="span3" style="margin-left:45px;">
+            <% if current_user.teacher? %>
+              <%= link_to t('.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="courses">
+          <% @discussions.order("created_at DESC").each do |discussion| %>
+            <div class="course padding-all <%= cycle('odd', 'even') %>">
+            <h3><%= link_to discussion.title, discussion %></h3>
+            </div>
           <% end %>
-        </ul>
+        </div>
+
       </div>
     
       <div class="span3">

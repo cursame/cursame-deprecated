@@ -41,6 +41,22 @@ selected: #e0f5f8
   background-color: #00afc9;
 }
 
+.alert-message.notice {
+  background-color: #57a957;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#62c462), to(#57a957));
+  background-image: -moz-linear-gradient(top, #62c462, #57a957);
+  background-image: -ms-linear-gradient(top, #62c462, #57a957);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #62c462), color-stop(100%, #57a957));
+  background-image: -webkit-linear-gradient(top, #62c462, #57a957);
+  background-image: -o-linear-gradient(top, #62c462, #57a957);
+  background-image: linear-gradient(top, #62c462, #57a957);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#62c462', endColorstr='#57a957', GradientType=0);
+  /*text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);*/
+  border-color: #57a957 #57a957 #3d773d;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+}
+
 /* @end */
 body {
   margin-top: 50px;
@@ -416,6 +432,14 @@ form .input {
 	margin-bottom: 10px;
 }
 
+#student_user_first_name_input, 
+#teacher_user_first_name_input,
+#teacher_user_last_name_input,
+#student_user_last_name_input {
+	float: left;
+	display: block;
+}
+
 fieldset {
 	padding-top: 0;
 }
@@ -472,10 +496,16 @@ form.pull-right p {
 }
 
 input.span5-5, textarea.span5-5, select.span5-5 {
-  display: inline-block;
-  float: none;
-  width: 300px;
-  margin-left: 0;
+  	display: inline-block;
+  	float: none;
+  	width: 300px;
+  	margin-left: 0;
+}
+
+ul.auth-links {
+	list-style: none;
+	margin-bottom: 0;
+	margin-left: 75px;
 }
 
 /* @end */

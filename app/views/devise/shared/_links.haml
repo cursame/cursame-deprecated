@@ -1,9 +1,9 @@
-%ul#auth_links
+%ul.auth-links
   - if controller_name != 'sessions'
-    %li= link_to "Sign in", new_user_session_path
+    %li= link_to "Iniciar sesión", new_user_session_path
   -# - if devise_mapping.registerable? && controller_name != 'registrations'
-  -#   %li= link_to "Sign up", sign_up_path
+  -#   %li= link_to "Regístrate", sign_up_path
   - if devise_mapping.recoverable? && controller_name != 'passwords'
-    %li= link_to "Forgot your password?", new_user_password_path
+    %li= link_to "¿Olvidaste tu contraseña?", new_user_password_path
   - if devise_mapping.confirmable? && controller_name != 'confirmations'
-    %li.last= link_to "Didn't receive confirmation instructions?", new_user_confirmation_path
+    %li.last= link_to "No recibiste instrucciones de confirmación?", new_user_confirmation_path

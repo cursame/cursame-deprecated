@@ -185,6 +185,9 @@ es:
       create: 'Crear %{model}'
       update: 'Actualizar %{model}'
       submit: 'Guardar %{model}'
+      
+  flash:
+    comment_added: 'Comment added with succes!'
 
   errors:
     format: "%{attribute} %{message}"

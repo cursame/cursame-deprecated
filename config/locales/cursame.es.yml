@@ -82,11 +82,12 @@ es:
     view_all_courses: 'Ver todos los cursos disponibles'
     start: 'Inicio'
     profile: 'Perfil'
+    account_settings: 'Configuración de la cuenta'
   
   courses:
     archives: 'Archivos'
     description: 'Descripción'
-    details: 'Detalles'
+    details: 'Horario/Grupo'
     time: 'Fecha'
     public: 'Curso Público'
     private: 'Curso Privado'
@@ -149,6 +150,9 @@ es:
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
 
+  discusions:
+    title: 'Discusiones'
+  
   comments:
     comments:
       remove: eliminar comentario
