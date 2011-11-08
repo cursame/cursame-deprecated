@@ -432,6 +432,14 @@ form .input {
 	margin-bottom: 10px;
 }
 
+#student_user_first_name_input, 
+#teacher_user_first_name_input,
+#teacher_user_last_name_input,
+#student_user_last_name_input {
+	float: left;
+	display: block;
+}
+
 fieldset {
 	padding-top: 0;
 }

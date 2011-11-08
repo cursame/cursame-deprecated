@@ -2,11 +2,11 @@
   <h1><%= t("forms.register_#{params[:controller] == 'registrations' ? role : 'student'}") %></h1>
   <%= semantic_form_for resource, :as => resource_name, :url => url do |form| %>
     <%= form.inputs :basic do %>
-      <%= form.input :email, :input_html => { :placeholder => t('forms.email') + " *" } %>
+      <%= form.input :email, :input_html => { :placeholder => t('forms.email') + " *", :class => "span4" } %>
       <%= form.input :first_name, :input_html => { :placeholder => t('forms.first_name') + " *", :class => "names", :style => 'margin-right:10px;' }%>
       <%= form.input :last_name, :input_html => { :placeholder => t('forms.last_name'), :class => "names" } %>
-      <%= form.input :password, :input_html => { :placeholder => t('forms.password') + " *" } %>
-      <%= form.input :password_confirmation, :input_html => { :placeholder => t('forms.password_confirmation') + " *" } %>
+      <%= form.input :password, :input_html => { :placeholder => t('forms.password') + " *", :class => "span4" } %>
+      <%= form.input :password_confirmation, :input_html => { :placeholder => t('forms.password_confirmation') + " *", :class => "span4" } %>
     <% end %>
     <%= form.buttons do %>
       <%= form.commit_button :button_html => {:id => :register, :class => "btn", :value => t('forms.register_btn') } %>
