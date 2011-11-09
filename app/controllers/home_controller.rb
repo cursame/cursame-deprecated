@@ -1,20 +1,24 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => :index
+  skip_before_filter :authenticate_active_user!, :only => :index
   set_tab :dashboard
 
   def index
-    if current_user && current_user.role == 'admin'
-      redirect_to admin_path
-    elsif current_user && current_user.role == 'supervisor'
-      redirect_to supervisor_path
-    elsif current_user
-      redirect_to dashboard_url
+    if current_user && current_user.active?
+      case current_user.role
+      when 'admin'
+        redirect_to admin_path
+      when 'supervisor'
+        redirect_to supervisor_path
+      else
+        redirect_to dashboard_url
+      end
     else
       @user = User.new
     end
   end
 
   def dashboard
-    @courses = current_user.courses
+    # TODO: not specked visible courses scope
+    @courses = current_user.visible_courses.where(:network_id => current_network)
   end
 end

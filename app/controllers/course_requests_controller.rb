@@ -2,13 +2,12 @@ class CourseRequestsController < ApplicationController
   before_filter :authenticate_teacher!, :except => [:create]
   before_filter :load_course, :only => [:create, :index]
 
-  # def join
   def create
-    unless current_user.enrollments.where(:course_id => @course).exists?
-      current_user.enrollments.create(:course => @course,
-                                      :state => 'pending',
-                                      :role => current_user.role)
-    end
+    # TODO: requesting again has no acceptance test
+    request = current_user.enrollments.where(:course_id => @course, :user_id => current_user).first || current_user.enrollments.build(:course => @course)
+    request.state = 'pending'
+    request.role = 'student'
+    request.save!
     redirect_to courses_path, :notice => t('flash.course_join_requested')
   end
 

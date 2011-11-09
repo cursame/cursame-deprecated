@@ -4,6 +4,12 @@ RSpec::Matchers.define :have_notice do |expected|
   end
 end
 
+RSpec::Matchers.define :have_error do |expected|
+  match do |page|
+    page.should have_css '.alert-message.error', :text => expected
+  end
+end
+
 RSpec::Matchers.define :exist_with do |attributes|
   match do |model|
     model.where(attributes).count.should be > 0

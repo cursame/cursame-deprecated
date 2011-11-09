@@ -1,4 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
+  skip_before_filter :authenticate_active_user!, :only => [ :new, :create, :cancel ]
+  
   helper_method :role
 
   def build_resource(hash=nil)
