@@ -15,14 +15,7 @@
 </head>
 <body>
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
-  <% flash.each do |key, val| %>
-  <div class="container">
-    <div class="alert-message <%= key %>">
-      <a class="close" href="#">&times;</a>
-      <p><%= val %></p>
-    </div>
-  </div>
-  <% end %>
+  <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
   <%= yield %>
 </body>
 </html>

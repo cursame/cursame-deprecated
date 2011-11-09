@@ -3,12 +3,15 @@ class HomeController < ApplicationController
   set_tab :dashboard
 
   def index
-    if current_user && current_user.role == 'admin'
-      redirect_to admin_path
-    elsif current_user && current_user.role == 'supervisor'
-      redirect_to supervisor_path
-    elsif current_user
-      redirect_to dashboard_url
+    if current_user && current_user.active?
+      case current_user.role
+      when 'admin'
+        redirect_to admin_path
+      when 'supervisor'
+        redirect_to supervisor_path
+      else
+        redirect_to dashboard_url
+      end
     else
       @user = User.new
     end

@@ -45,16 +45,17 @@ feature 'User registration', %q{
 
   scenario 'signing in' do
     sign_in_with Factory(:confirmed_user)
-    page.should have_css '.flash.notice', :text => 'Ingreso exitoso'
+    page.should have_notice t('devise.sessions.signed_in')
   end
 
   scenario 'a teacher cannot sign in without being approved' do
     sign_in_with Factory(:teacher, :state => 'inactive')
-    page.current_url.should match new_user_session_path
+    page.current_url.should match root_path
+    page.should have_error t('flash.account_not_active')
   end
 
   scenario 'a teacher can sign in after being approved' do
     sign_in_with Factory(:teacher, :state => 'active')
-    page.should have_css '.flash.notice', :text => 'Ingreso exitoso'
+    page.should have_notice t('devise.sessions.signed_in')
   end
 end

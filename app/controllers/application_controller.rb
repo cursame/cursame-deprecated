@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_user!
-  before_filter :user_is_active
+  before_filter :authenticate_active_user!
 
   private
   def authenticate_teacher!
@@ -43,7 +42,11 @@ class ApplicationController < ActionController::Base
     @current_network ||= Network.find_by_subdomain(request.subdomain)
   end
 
-  def user_is_active
-    redirect_to pending_approval_path if current_user && !current_user.active?
+  def authenticate_active_user!
+    authenticate_user!
+    if current_user && !current_user.active?
+      flash[:error] = t('flash.account_not_active')
+      redirect_to root_path
+    end
   end
 end

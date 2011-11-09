@@ -54,7 +54,7 @@ feature 'Manage courses', %q{
   end
 
   scenario 'view my courses' do
-    courses = (1..3).map { Factory(:course, :enrollments => [Factory(:student_enrollment, :user => @teacher)], :network => @network) }
+    courses = (1..3).map { Factory(:course, :enrollments => [Factory(:teacher_enrollment, :user => @teacher)], :network => @network) }
     (1..2).map { Factory(:course, :network => @network) }
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.course-detail', :count => 4)

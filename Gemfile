@@ -27,6 +27,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'fuubar'
 end
 
 group :staging, :production do

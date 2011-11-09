@@ -17,9 +17,7 @@
 
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
 
-  <% flash.each do |key, val| %>
-    <div class="flash <%= key %>"><%= val %></div>
-  <% end %>
+  <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
 
   <div class="container">
     <div class="content">
