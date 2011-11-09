@@ -56,7 +56,7 @@
                     <% if request.state == 'pending' %>
                       <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small" %>
                     <% elsif request.state == 'accepted' %>
-                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small disabled" %>
+                      <%= link_to t(".#{request.state}"), "#", :class => "btn small disabled" %>
                     <% end %>
                     <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "btn small danger" %>
                   <% end %>
