@@ -3,6 +3,7 @@ class CourseRequestsController < ApplicationController
   before_filter :load_course, :only => [:create, :index]
 
   def create
+    # TODO: requesting again has no acceptance test
     request = current_user.enrollments.where(:course_id => @course, :user_id => current_user).first || current_user.enrollments.build(:course => @course)
     request.state = 'pending'
     request.role = 'student'
