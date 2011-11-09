@@ -16,6 +16,6 @@ class HomeController < ApplicationController
 
   def dashboard
     # TODO: not specked visible courses scope
-    @courses = current_user.visible_courses
+    @courses = current_user.visible_courses.where(:network_id => current_network)
   end
 end
