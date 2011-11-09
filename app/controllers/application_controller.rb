@@ -45,6 +45,7 @@ class ApplicationController < ActionController::Base
   def authenticate_active_user!
     authenticate_user!
     if current_user && !current_user.active?
+      sign_out
       flash[:error] = t('flash.account_not_active')
       redirect_to root_path
     end

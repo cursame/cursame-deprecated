@@ -29,7 +29,7 @@ es:
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusion creada 
-    account_not_active: Tu cuenta no ha sido aprobada
+    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
 
   activerecord:
     models:

@@ -50,7 +50,12 @@ class CoursesController < ApplicationController
     render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
   end
 
+  private
   def accessible_course
-    @accessible_course ||= current_user.visible_courses.where(:network_id => current_network).find params[:id]
+    @accessible_course ||= accessible_courses.find params[:id]
+  end
+
+  def accessible_courses
+    current_user.supervisor? ? current_network.courses : current_user.visible_courses.where(:network_id => current_network)
   end
 end
