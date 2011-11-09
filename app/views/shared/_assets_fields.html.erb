@@ -7,13 +7,13 @@
         <img /> 
       </div>
       <ol>
-        <%= asset.input :name %>
-        <%= asset.input :description %>
+        <%= asset.input :name, :input_html => {:class => "span4"} %>
+        <%= asset.input :description, :input_html => {:class => "span4"} %>
         <%= asset.input :file, :as => :file, :input_html => {'data-upload-path' => upload_asset_path} %>
         <%= asset.input :file_cache, :as => :hidden %>
         <%= asset.input :_destroy, :as => :boolean %>
       </ol>
     </fieldset>
   <% end %>
-  <%= link_to t('courses.add_asset'), '#', :class => 'btn info add_record', :style => 'display:none' %>
+  <%= link_to t('courses.add_asset'), '#', :class => 'btn small info add_record', :style => 'display:none' %>
 </fieldset>

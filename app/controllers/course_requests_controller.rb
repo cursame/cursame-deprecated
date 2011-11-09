@@ -1,6 +1,7 @@
 class CourseRequestsController < ApplicationController
   before_filter :authenticate_teacher!, :except => [:create]
   before_filter :load_course, :only => [:create, :index]
+  set_tab :request
 
   def create
     # TODO: requesting again has no acceptance test

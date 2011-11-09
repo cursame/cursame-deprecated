@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
   before_filter :manageable_course, :only => [:new, :create]
+  set_tab :assignments
 
   def index
     @course      = current_user.courses.find params[:course_id]

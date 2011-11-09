@@ -9,7 +9,7 @@
     return $(this).livequery(function(){
       var container     = $(this);
       var destroyLi     = container.children('fieldset').children('ol').children('li[id$=destroy_input]');
-      var destroyLink   = $('<a href="#" class="btn danger remove-associated-record">').text(destroyLi.first().text());
+      var destroyLink   = $('<a href="#" class="btn danger small remove-associated-record">').text(destroyLi.first().text());
       var template      = container.children('fieldset.new').last().detach();
       var association   = container.attr('data-association');
 

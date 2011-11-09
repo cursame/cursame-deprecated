@@ -7,15 +7,22 @@
       </div>
       <div class="span10">
         <h2><%= t('courses.requests.pending_requests') %></h2>
-
-        <div>
+        
+        <div class="members top-margin">
           <% @requests.each do |request| %>
-            <div class="request">
-            <%= request.user.email %>
-            <%= link_to 'Accept', accept_request_path(request), :method => :post %>
-            <br/>
-            <%= link_to 'Reject', reject_request_path(request), :method => :post %>
-            </div>
+              <div class="row <%= cycle("odd", "even") %>">
+                <div class="span1" style="margin-left:20px;">
+                  <%= image_tag(request.user.avatar_file.xsmall.url) %>
+                </div>
+                <div class="span4">
+                  <%= link_to(request.user.name, user_path(request.user)) %><br />
+                  <%= request.user.email %>
+                </div>
+                <div class="span4">
+                  <%= link_to 'Accept', accept_request_path(request), :method => :post, :class => 'btn small success' %>
+                  <%= link_to 'Reject', reject_request_path(request), :method => :post, :class => 'btn small danger' %>
+                </div>
+              </div>
           <% end %>
         </div>
         

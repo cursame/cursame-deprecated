@@ -10,4 +10,8 @@ module ApplicationHelper
 
   end
   
+  def current_tab_in_menu
+
+  end
+  
 end

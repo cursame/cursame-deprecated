@@ -1,4 +1,6 @@
 class DiscussionsController < ApplicationController
+  set_tab :discussions
+  
   def new
     @discussion = course.discussions.build
   end

@@ -1,5 +1,8 @@
 class CoursesController < ApplicationController
   before_filter :require_network
+  set_tab :course, :only => %w(index show new create edit update)
+  set_tab :wall, :only => %w(wall)
+  set_tab :members, :only => %w(members)
 
   def index
     @courses = current_network.courses
