@@ -17,7 +17,6 @@ selected: #e0f5f8
 /* @group Labels */
 
 .label-tag {
-  padding: 1px 3px 2px;
   background-color: #bfbfbf;
   font-size: 9.75px;
   font-weight: bold;
@@ -27,6 +26,7 @@ selected: #e0f5f8
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
+	padding: 1px 3px 2px;
 }
 .label-tag.important {
   background-color: #c43c35;
@@ -42,7 +42,7 @@ selected: #e0f5f8
 }
 
 .label-tag.notifications {
-  background-color: #00d6fa;
+  background-color: #e2453f;
 }
 
 .alert-message.notice {

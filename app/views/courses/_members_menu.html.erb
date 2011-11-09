@@ -1,6 +1,7 @@
 <div class="underline">	
   <ul class="left-nav-main-ul">
-    <li><a href="<%= members_course_path(@course) %>" class="miembros"><%= t('courses.course_menu.members') %> <span class="label-tag notifications"><%= @course.enrollments.where(:state => 'pending').count %></span></a></li>
+    <li><a href="<%= members_course_path(@course) %>" class="miembros"><%= t('courses.course_menu.members') %> 
+        <span class="label-tag notifications"><%= @course.enrollments.where(:state => 'pending').count %></span></a></li>
     <!--<li><%= link_to(t('courses.members.requests'), course_requests_path(@course), :class => "solicitudes" ) %></li>-->
   </ul>
   <div class="total-members"><%= course_members(@course) %></div>
