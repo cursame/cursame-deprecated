@@ -213,6 +213,17 @@ body {
 	color: #fff;
 }
 
+.comment-comments {
+	margin-left: 60px;
+}
+
+.comment-comments .body {
+	border-bottom: 1px solid #D2D9E7;
+	margin-top: 1px;
+	background-color: #f4f7f7;
+	padding: 5px;
+}
+
 .wall label, 
 .assignments label,
 .discussions label {
