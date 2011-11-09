@@ -46,21 +46,23 @@
                   <%= image_tag(student.avatar_file.xsmall.url) %>
                 </div>
                 <div class="span4">
-                  <%= link_to(student.name, user_path(student)) %><br />
+                  <%= link_to(student.name, user_path(student)) %>
+                  <% if current_user.manageable_courses.include? @course %>
+                    <% request = @course.enrollments.where(:user_id => student).first %>
+                    <% if request.state == 'accepted' %>
+                     - <%= link_to t('.reject'), reject_request_path(request), :method => :post, :style => "color:red;"%>
+                    <% end %>
+                  <% end %><br />
                   <%= mail_to student.email %>
                 </div>
                 <div class="span4">
-                  <div class="top-margin">
                   <% if current_user.manageable_courses.include? @course %>
                     <% request = @course.enrollments.where(:user_id => student).first %>
                     <% if request.state == 'pending' %>
-                      <span class="label-tag success"><%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post %></span>
-                    <% elsif request.state == 'accepted' %>
-                      <span class="label-tag"><%= t(".#{request.state}") %></span>
+                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small" %>
+                      <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "btn small danger" %>
                     <% end %>
-                    <span class="label-tag notifications"><%= link_to t('.reject'), reject_request_path(request), :method => :post %></span>
                   <% end %>
-                  </div>
                 </div>
                 </div>
               </div>
