@@ -45,7 +45,11 @@ class ApplicationController < ActionController::Base
   def authenticate_active_user!
     authenticate_user!
     if current_user && !current_user.active?
+      sign_out
+      warden.logout
       flash[:error] = t('flash.account_not_active')
+      # sign_out
+      # Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
       redirect_to root_path
     end
   end
