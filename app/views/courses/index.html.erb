@@ -42,7 +42,7 @@
 
                     <% elsif enrollment.rejected? %>
                       <span class="label-tag important"><%= t('.join_rejected') %></span>
-                      <%= link_to t(".request_join_again"), join_course_path(course), :method => :post %>
+                      <%= link_to t(".request_join_again"), course_requests_path(course), :method => :post %>
 
                     <% elsif enrollment.accepted? %>
                       <span class="label-tag success"><%= t('.join_accepted') %></span>
