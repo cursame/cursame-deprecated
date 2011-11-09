@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_user!, :only => :index
+  skip_before_filter :authenticate_active_user!, :only => :index
   set_tab :dashboard
 
   def index
@@ -15,6 +15,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @courses = current_user.courses
+    # TODO: not specked visible courses scope
+    @courses = current_user.visible_courses
   end
 end
