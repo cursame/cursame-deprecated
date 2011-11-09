@@ -41,6 +41,10 @@ selected: #e0f5f8
   background-color: #00afc9;
 }
 
+.label-tag.notifications {
+  background-color: #00d6fa;
+}
+
 .alert-message.notice {
   background-color: #57a957;
   background-repeat: repeat-x;
@@ -373,11 +377,28 @@ ul.left-nav-main-ul {
 .left-nav-main-ul li a.miembros {
 	background: url(menu-amigos.png) no-repeat 5px;
 	padding-left: 30px;
+	width: 120px;
 }
 
 .left-nav-main-ul li a.miembros:hover {
 	background: #00afc9 url(menu-amigos.png) no-repeat 5px;
 	width: 150px;
+}
+
+.left-nav-main-ul li a.solicitudes {
+	background: url(notification.png) no-repeat 5px;
+	padding-left: 30px;
+}
+
+.left-nav-main-ul li a.solicitudes:hover {
+	background: #00afc9 url(notification.png) no-repeat 5px;
+	width: 150px;
+}
+
+.left-nav-main-ul li a.solicitudes.active {
+	background: #00afc9 url(notification.png) no-repeat 5px;
+	width: 150px;
+	color: #fff;
 }
 
 .total-members {

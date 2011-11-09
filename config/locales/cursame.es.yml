@@ -122,6 +122,7 @@ es:
       students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
+      requests: 'Solicitudes'
     requests:
       pending_requests: 'Solicitudes Pendientes'
     index:

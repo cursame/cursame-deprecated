@@ -25,9 +25,7 @@
             <h2><%= t('discussions.title') %></h2>
           </div>
           <div class="span3" style="margin-left:45px;">
-            <% if current_user.teacher? %>
-              <%= link_to t('discussions.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
-            <% end %>
+            <%= link_to t('discussions.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
           </div>
         </div>
 
