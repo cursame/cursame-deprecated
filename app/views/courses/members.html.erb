@@ -22,7 +22,7 @@
 
         <h3><%= t('courses.members.teachers') %></h3>
         <div class="members">
-          <% @course.teachers.each do |teacher| %>
+          <% @teachers.each do |teacher| %>
             <div class="teacher">
               <div class="row">
                 <div class="span1" style="margin-left:20px;">
@@ -39,7 +39,7 @@
 
         <h3><%= t('courses.members.students') %></h2>
         <div class="members">
-          <% @course.students.each do |student| %>
+          <% @students.each do |student| %>
             <div class="student">
               <div class="row">
                 <div class="span1" style="margin-left:20px;">
@@ -47,7 +47,14 @@
                 </div>
                 <div class="span5">
                   <%= link_to(student.name, user_path(student)) %><br />
-                  <%= student.email %>
+                  <%= mail_to student.email %><br />
+                  <% if current_user.manageable_courses.include? @course %>
+                    <% request = @course.enrollments.where(:user_id => student).first %>
+                    <%= t (".#{request.state}") %><br /> 
+                    <%= link_to t('.accept'), accept_request_path(request), :method => :post %>
+                    |
+                    <%= link_to t('.reject'), reject_request_path(request), :method => :post %>
+                  <% end %>
                 </div>
               </div>
             </div>

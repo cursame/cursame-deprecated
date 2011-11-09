@@ -11,10 +11,11 @@
         <div>
           <% @requests.each do |request| %>
             <div class="request">
-            <%= request.user.email %>
-            <%= link_to 'Accept', accept_request_path(request), :method => :post %>
-            <br/>
-            <%= link_to 'Reject', reject_request_path(request), :method => :post %>
+              <%= request.user.email %>
+              <%= request.user.name %>
+              <%= link_to 'Accept', accept_request_path(request), :method => :post %>
+              <br/>
+              <%= link_to 'Reject', reject_request_path(request), :method => :post %>
             </div>
           <% end %>
         </div>

@@ -12,7 +12,7 @@ class CourseRequestsController < ApplicationController
   end
 
   def index
-    @requests = @course.enrollments.where(:state => 'pending')
+    @requests = current_user.enrollment_requests.where(:state => 'pending')
   end
 
   def accept

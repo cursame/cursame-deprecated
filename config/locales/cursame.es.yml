@@ -123,6 +123,12 @@ es:
       member: 'Miembro'
       members: 'Miembros'
       requests: 'Solicitudes'
+      pending: 'Pendiente de aceptación'
+      rejected: 'Rechazado'
+      accepted: 'Aceptado'
+      accept: 'Aceptar'
+      reject: 'Rechazar'
+      
     requests:
       pending_requests: 'Solicitudes Pendientes'
     index:
