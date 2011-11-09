@@ -150,8 +150,13 @@ es:
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
 
-  discusions:
+  discussions:
     title: 'Discusiones'
+    edit_discussion: 'Editar Discusion'
+    new_discussion: 'Nueva Discusion'
+    form_title: 'Título'
+    form_description: 'Descripción'
+    new_discussion: 'Nueva Discusion'
   
   comments:
     comments:

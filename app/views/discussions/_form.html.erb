@@ -1,12 +1,12 @@
-<%= semantic_form_for [@course, @discussion] do |form| %>
-  <%= form.inputs :basic do %>
-    <%= form.input :title %>
-    <%= form.input :description, :input_html => {'data-editor' => true} %>
-  <% end %>
+<%= form.inputs :basic do %>
+  <%= form.input :title, :label => t('discussions.form_title'), :input_html => {:class => "span6"} %>
+  <%= form.input :description, :label => t('discussions.form_description'), :input_html => {:class => "span6"} %>
+<% end %>
 
+<div class="well">
   <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+</div>
 
-  <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit} %>
-  <% end %>
+<%= form.buttons do %>
+  <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>
 <% end %>

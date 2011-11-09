@@ -61,6 +61,7 @@ $(function(){
 
   $('a.toggle_comment_box').click(function(){
     $(this).closest('.comment').find('.comment-form').toggle(400);
+    return
   })
 
   $('textarea[data-editor]').wysiwyg({

@@ -20,10 +20,12 @@ class DiscussionsController < ApplicationController
 
   def show
     @discussion = current_user.discussions.find params[:id]
+    @course     = @discussion.course
   end
 
   def edit
     @discussion = manageable_discussion
+    @course     = @discussion.course
   end
 
   def destroy

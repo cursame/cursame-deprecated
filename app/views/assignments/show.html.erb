@@ -32,31 +32,33 @@
             <% end %>
           </div>
         </div>
+        
         <h6><%= t('courses.course')%>: <%= @assignment.course.name %></h6>
-      <p><%= @assignment.description %></p>
+        <p><%= @assignment.description %></p>
       
-      <div class="row">
-        <div class="assignment-values bottom-margin">
-          <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
-          <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-          <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+        <div class="row">
+          <div class="assignment-values bottom-margin">
+            <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
+            <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
+            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+          </div>
         </div>
-      </div>
 
-      <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
+        <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
       
-      <div class="actions">
-        <h2><%= t('courses.assignments.comments') %></h2>
-        <%= render :partial => 'comments/form',       :locals => {:commentable => @assignment} %>
-      </div>
+        <div class="actions">
+          <h2><%= t('courses.assignments.comments') %></h2>
+          <%= render :partial => 'comments/form',       :locals => {:commentable => @assignment} %>
+        </div>
       
-      <%= render :partial => 'comments/comments',   :locals => {:commentable => @assignment} %>
-      </div>
+        <%= render :partial => 'comments/comments',   :locals => {:commentable => @assignment} %>
+        </div>
       
-      <div class="span3" style="margin:0;">
-        <%= render :partial => "shared/adds" %>
-      </div>
+        <div class="span3" style="margin:0;">
+          <%= render :partial => "shared/adds" %>
+        </div>
       
     </div>
+    
   </div>
 </div>
