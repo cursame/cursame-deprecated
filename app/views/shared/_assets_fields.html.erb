@@ -4,7 +4,11 @@
     <%- record = asset.object %>
     <fieldset class="<%= record.new_record? ? :new : nil %>">
       <div class='preview'>
-        <img /> 
+        <% if !record.file.blank? %>
+          <%= image_tag record.file.thumb_url %>
+        <% else %>
+          <img /> 
+        <% end %>
       </div>
       <ol>
         <%= asset.input :name %>

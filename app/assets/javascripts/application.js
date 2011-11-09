@@ -18,16 +18,15 @@ $(function(){
         success : function(data){
           var fieldset = $(this).closest('fieldset');
           var preview  = $('.preview img', fieldset);
-          var file, thumb_url;
+          var file;
 
           $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache);
-          file = data.logo_file || data.avatar_file;
+          file = data.file || data.logo_file || data.avatar_file;
+          console.log(file);
 
           if (file && file.thumb) {
-            thumb_url = file.thumb.url;
+            $('.preview img', fieldset).attr('src', file.thumb.url);
           }
-
-          $('.preview img', fieldset).attr('src', thumb_url);
         },
         start : function() {
         },
@@ -159,4 +158,3 @@ $(function(){
     }
   });
 })
-

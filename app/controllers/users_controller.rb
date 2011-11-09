@@ -28,9 +28,6 @@ class UsersController < ApplicationController
   end
 
   def upload_avatar
-    puts '-' * 30
-    puts uploaded_file.inspect
-    puts '-' * 30
     asset_file = User.new :avatar_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
