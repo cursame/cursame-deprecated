@@ -49,10 +49,13 @@ class User < ActiveRecord::Base
   end
 
   def can_edit_comment? comment
+    commentable = comment.commentable
     comments.include?(comment) || 
-      case comment.commentable
+      case commentable
       when Assignment
-        manageable_assignments.include? comment.commentable
+        manageable_assignments.include? commentable
+      when Course
+        manageable_courses.include? commentable
       end
   end
 
