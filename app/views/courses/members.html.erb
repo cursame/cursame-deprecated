@@ -50,16 +50,17 @@
                   <%= mail_to student.email %>
                 </div>
                 <div class="span4">
+                  <div class="top-margin">
                   <% if current_user.manageable_courses.include? @course %>
                     <% request = @course.enrollments.where(:user_id => student).first %>
-                    <!--<%= link_to(t(".#{request.state}"), "#", :class => "btn success small disabled") %>-->
                     <% if request.state == 'pending' %>
-                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small" %>
+                      <span class="label-tag success"><%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post %></span>
                     <% elsif request.state == 'accepted' %>
-                      <%= link_to t(".#{request.state}"), "#", :class => "btn small disabled" %>
+                      <span class="label-tag"><%= t(".#{request.state}") %></span>
                     <% end %>
-                    <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "btn small danger" %>
+                    <span class="label-tag notifications"><%= link_to t('.reject'), reject_request_path(request), :method => :post %></span>
                   <% end %>
+                  </div>
                 </div>
                 </div>
               </div>

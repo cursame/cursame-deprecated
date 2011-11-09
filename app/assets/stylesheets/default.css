@@ -28,6 +28,11 @@ selected: #e0f5f8
   border-radius: 3px;
 	padding: 1px 3px 2px;
 }
+
+.label-tag a {
+	color: #fff;
+}
+
 .label-tag.important {
   background-color: #c43c35;
 }
