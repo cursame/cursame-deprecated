@@ -26,13 +26,9 @@ feature 'User Settings', %q{
 
     visit settings_url(:subdomain => @network.subdomain)
 
-    within('#change_password') do
-      fill_in 'user[password]',              :with => new_password
-      fill_in 'user[password_confirmation]', :with => new_password
-      click_button 'submit'
-    end
-
-    # At this point Devise should have logged out us automatically
+    fill_in 'user[password]',              :with => new_password
+    fill_in 'user[password_confirmation]', :with => new_password
+    click_button 'submit'
 
     sign_in_with @student, :password => new_password, :subdomain => @network.subdomain
     page.current_url.should match settings_path
