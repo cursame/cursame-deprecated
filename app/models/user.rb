@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
         manageable_courses.include? commentable
       when Discussion # TODO: no integration test
         manageable_discussions.include? commentable
-      when Comment
+      when Comment # TODO: no integration test to test deleting comment of comment
         can_edit_comment? commentable
       end
   end
