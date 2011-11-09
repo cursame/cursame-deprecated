@@ -59,8 +59,10 @@ $(function(){
   });
 
   $('a.toggle_comment_box').click(function(){
-    $(this).closest('.comment').find('.comment-form').toggle(400);
-    return
+    $(this).closest('.comment').find('.comment-form').toggle(400, function(){
+      $('textarea', $(this)).focus();
+    });
+    return false;
   })
 
   $('textarea[data-editor]').wysiwyg({
