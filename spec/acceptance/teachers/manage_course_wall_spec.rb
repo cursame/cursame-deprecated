@@ -30,8 +30,21 @@ feature 'Manage course wall', %q{
     page.current_url.should match wall_for_course_url(@course, :subdomain => @network.subdomain)
   end
 
-  scenario 'removing a posted comment from the wall' do
+  scenario 'removing a posted comment from the wall (owned by teacher)' do
     comment = Factory(:comment, :commentable => @course, :user => @teacher)
+    visit wall_for_course_url @course, :subdomain => @network.subdomain
+
+    lambda do
+      click_link t('comments.comments.remove')
+    end.should change(@course.comments, :count).by(-1)
+
+    page.current_url.should match wall_for_course_url(@course, :subdomain => @network.subdomain)
+    page.should_not show_comment comment
+    page.should have_notice t('flash.comment_deleted')
+  end
+  
+  scenario 'removing a posted comment from the wall (not owned by teacher)' do
+    comment = Factory(:comment, :commentable => @course, :user => Factory(:user))
     visit wall_for_course_url @course, :subdomain => @network.subdomain
 
     lambda do

@@ -42,7 +42,6 @@
           pBar.css('border', pBar.css('border') || '1px solid #BBB');
 
           fileInput.after(pBar);
-          console.log(file);
 
           var xhrUpload = $.ajax({
             type : "POST",

@@ -13,17 +13,17 @@ class CourseRequestsController < ApplicationController
   end
 
   def index
-    @requests = @course.enrollments.where(:state => 'pending')
+    @requests = current_user.enrollment_requests.where(:state => 'pending')
   end
 
   def accept
-    request = current_user.enrollment_requests.where(:state => 'pending').find params[:id]
+    request = current_user.enrollment_requests.find params[:id]
     request.update_attribute(:state, 'accepted')
     redirect_to course_requests_path request.course
   end
 
   def reject
-    request = current_user.enrollment_requests.where(:state => 'pending').find params[:id]
+    request = current_user.enrollment_requests.find params[:id]
     request.update_attribute(:state, 'rejected')
     redirect_to course_requests_path request.course
   end

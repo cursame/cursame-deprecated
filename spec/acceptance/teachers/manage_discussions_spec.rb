@@ -109,8 +109,43 @@ feature 'Manage discussions', %q{
     page.should show_comment comment
   end
 
-  scenario 'removing a posted comment from discussion' do
+  scenario 'commenting on an discussion comment' do
+    @discussion.comments = []
+    comment    = Factory(:comment, :commentable => @discussion)
+    visit discussion_url @discussion, :subdomain => @subdomain
+
+    within('.comments .comment:last') do
+      click_link t('comment')
+      fill_in 'comment[text]', :with => 'Comment of a comment'
+      lambda do
+        click_button 'submit'
+      end.should change(comment.comments, :count).by(1)
+    end
+
+    comments_comment = Comment.last
+    comments_comment.commentable.should == comment
+
+    page.should show_comment comments_comment
+    page.should have_notice t('flash.comment_added')
+  end
+
+  scenario 'removing a posted comment from discussion (created by admin teacher)' do
     comment = @discussion.comments.first
+    visit discussion_url(@discussion, :subdomain => @network.subdomain)
+
+    within('.comment:first') do
+      lambda do
+        click_link t('comments.comments.remove')
+      end.should change(@discussion.comments, :count).by(-1)
+    end
+
+    page.current_url.should match discussion_url(@discussion, :subdomain => @network.subdomain)
+    page.should have_notice t('flash.comment_deleted')
+  end
+
+  scenario 'removing a posted comment from discussion (created by a student)' do
+    @discussion.comments = []
+    comment = Factory(:comment, :commentable => @discussion)
     visit discussion_url(@discussion, :subdomain => @network.subdomain)
 
     within('.comment:first') do

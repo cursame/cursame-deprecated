@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :visible_courses,        :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
   has_many :manageable_courses,     :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => {'enrollments.admin' => true}
   has_many :manageable_assignments, :through => :manageable_courses, :source => :assignments, :class_name => 'Assignment'
+  has_many :manageable_discussions, :through => :manageable_courses, :source => :discussions, :class_name => 'Discussion'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :assignments,            :through => :courses
   has_many :discussions,            :through => :courses
@@ -49,10 +50,17 @@ class User < ActiveRecord::Base
   end
 
   def can_edit_comment? comment
+    commentable = comment.commentable
     comments.include?(comment) || 
-      case comment.commentable
+      case commentable
       when Assignment
-        manageable_assignments.include? comment.commentable
+        manageable_assignments.include? commentable
+      when Course
+        manageable_courses.include? commentable
+      when Discussion # TODO: no integration test
+        manageable_discussions.include? commentable
+      when Comment # TODO: no integration test to test deleting comment of comment
+        can_edit_comment? commentable
       end
   end
 
@@ -61,11 +69,14 @@ class User < ActiveRecord::Base
   end
 
   def can_view_comment? comment
-    case comment.commentable
+    commentable = comment.commentable
+    case commentable
     when Assignment
-      assignments.include? comment.commentable
+      assignments.include? commentable
     when Course
-      courses.include? comment.commentable
+      courses.include? commentable
+    when Discussion # TODO: no integration test
+      discussions.include? commentable
     end
   end
 end
