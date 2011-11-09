@@ -41,20 +41,26 @@
         <div class="members">
           <% @students.each do |student| %>
             <div class="student">
-              <div class="row">
+              <div class="row bottom-margin <%= cycle("odd", "even") %>">
                 <div class="span1" style="margin-left:20px;">
                   <%= image_tag(student.avatar_file.xsmall.url) %>
                 </div>
-                <div class="span5">
+                <div class="span4">
                   <%= link_to(student.name, user_path(student)) %><br />
-                  <%= mail_to student.email %><br />
+                  <%= mail_to student.email %>
+                </div>
+                <div class="span4">
                   <% if current_user.manageable_courses.include? @course %>
                     <% request = @course.enrollments.where(:user_id => student).first %>
-                    <%= t (".#{request.state}") %><br /> 
-                    <%= link_to t('.accept'), accept_request_path(request), :method => :post %>
-                    |
-                    <%= link_to t('.reject'), reject_request_path(request), :method => :post %>
+                    <!--<%= link_to(t(".#{request.state}"), "#", :class => "btn success small disabled") %>-->
+                    <% if request.state == 'pending' %>
+                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small" %>
+                    <% elsif request.state == 'accepted' %>
+                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small disabled" %>
+                    <% end %>
+                    <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "btn small danger" %>
                   <% end %>
+                </div>
                 </div>
               </div>
             </div>

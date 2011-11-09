@@ -10,7 +10,7 @@
         
         <div class="members top-margin">
           <% @requests.each do |request| %>
-            <div class="row <%= cycle("odd", "even") %>">
+            <div class="row bottom-margin <%= cycle("odd", "even") %>">
               <div class="span1" style="margin-left:20px;">
                 <%= image_tag(request.user.avatar_file.xsmall.url) %>
               </div>
