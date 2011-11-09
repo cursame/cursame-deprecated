@@ -31,8 +31,8 @@ feature 'Manage assignments', %q{
     page.current_url.should match assignment_url(@assignment, :subdomain => @network.subdomain)
   end
 
-  scenario 'removing a posted comment' do
-    comment    = Factory(:comment, :commentable => @assignment)
+  scenario 'removing a posted comment (posted by teacher)' do
+    comment    = Factory(:comment, :commentable => @assignment, :user => @teacher)
     visit assignment_url @assignment, :subdomain => @subdomain
 
     within('.comment:last') do
@@ -47,6 +47,18 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'removing a student comment (moderating)' do
+    comment    = Factory(:comment, :commentable => @assignment)
+    visit assignment_url @assignment, :subdomain => @subdomain
+
+    within('.comment:last') do
+      lambda do
+        click_link t('comments.comments.remove')
+      end.should change(@assignment.comments, :count).by(-1)
+    end
+
+    page.current_url.should match assignment_url(@assignment, :subdomain => @network.subdomain)
+    page.should_not show_comment comment
+    page.should have_notice t('flash.comment_deleted')
   end
 
   scenario 'commenting on an assignment comment' do

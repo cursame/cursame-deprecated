@@ -16,5 +16,4 @@ class Enrollment < ActiveRecord::Base
   def accepted?
     state == 'accepted'
   end
-
 end
