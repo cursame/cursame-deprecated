@@ -1,8 +1,10 @@
 <div class="underline">	
   <ul class="left-nav-main-ul">
     <li>
-      <a href="<%= members_for_course_path(@course) %>" class="miembros <%= members_active %>"><%= t('courses.course_menu.members') %> 
-        <span class="label-tag notifications"><%= @course.enrollments.where(:state => 'pending').count %></span>
+      <a href="<%= members_for_course_path(@course) %>" class="miembros <%= members_active %>"><%= t('courses.course_menu.members') %>
+        <% unless @course.enrollments.where(:state => 'pending').count == 0 %>
+          <span class="label-tag notifications tip" title="<%= t('courses.members.pending_requests')%>"><%= @course.enrollments.where(:state => 'pending').count %></span>
+        <% end %>
       </a>
     </li>
 

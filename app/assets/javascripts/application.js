@@ -64,6 +64,10 @@ $(function(){
     });
     return false;
   })
+  
+  $("span.tip").twipsy({
+    live: true
+  })
 
   $('textarea[data-editor]').wysiwyg({
     controls : {

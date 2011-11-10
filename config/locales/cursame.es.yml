@@ -126,6 +126,7 @@ es:
       member: 'Miembro'
       members: 'Miembros'
       requests: 'Solicitudes'
+      pending_requests: 'Solicitudes Pendientes'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
