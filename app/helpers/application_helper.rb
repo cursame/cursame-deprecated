@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def course_members(model)
-    numbers = model.users.count
+    numbers = model.students.count
     members = numbers == 1 ? t('courses.members.member') : t('courses.members.members')
     result = "#{numbers} #{members}"
   end

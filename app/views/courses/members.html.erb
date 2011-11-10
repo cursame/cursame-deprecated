@@ -20,6 +20,13 @@
       <div class="span10">
         <h2><%= t('courses.members.members_in_course') %></h2>
 
+        <% if @pending_students %>
+          <h3><%= t('courses.members.requests') %></h2>
+          <div class="members">
+            <%= render :partial => 'member', :collection => @pending_students %>
+          </div>
+        <% end %>
+
         <h3><%= t('courses.members.teachers') %></h3>
         <div class="members">
           <% @teachers.each do |teacher| %>
@@ -30,7 +37,7 @@
                 </div>
                 <div class="span5">
                   <%= link_to(teacher.name, user_path(teacher)) %><br />
-                  <%= teacher.email %>
+                  <%= mail_to teacher.email %>
                 </div>
               </div>
             </div>
@@ -39,35 +46,7 @@
 
         <h3><%= t('courses.members.students') %></h2>
         <div class="members">
-          <% @students.each do |student| %>
-            <div class="student">
-              <div class="row bottom-margin <%= cycle("odd", "even") %>">
-                <div class="span1" style="margin-left:20px;">
-                  <%= image_tag(student.avatar_file.xsmall.url) %>
-                </div>
-                <div class="span4">
-                  <%= link_to(student.name, user_path(student)) %>
-                  <% if current_user.manageable_courses.include? @course %>
-                    <% request = @course.enrollments.where(:user_id => student).first %>
-                    <% if request.state == 'accepted' %>
-                     - <%= link_to t('.reject'), reject_request_path(request), :method => :post, :style => "color:red;"%>
-                    <% end %>
-                  <% end %><br />
-                  <%= mail_to student.email %>
-                </div>
-                <div class="span4">
-                  <% if current_user.manageable_courses.include? @course %>
-                    <% request = @course.enrollments.where(:user_id => student).first %>
-                    <% if request.state == 'pending' %>
-                      <%= link_to t(".#{request.state}"), accept_request_path(request), :method => :post, :class => "btn success small" %>
-                      <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "btn small danger" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                </div>
-              </div>
-            </div>
-          <% end %>
+          <%= render :partial => 'member', :collection => @students %>
         </div>
       </div>
       <div class="span3" style="margin:0;">

@@ -65,6 +65,9 @@ es:
         studies: Mis estudios
         birth_date: Fecha de nacimiento
         occupation: Mi ocupación
+        current_password: Contraseña actual
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
 
   formtastic:
     actions:
@@ -123,11 +126,13 @@ es:
       member: 'Miembro'
       members: 'Miembros'
       requests: 'Solicitudes'
+    member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
       accepted: 'Aceptado'
       accept: 'Aceptar'
-      reject: 'Quitar del curso'
+      reject: 'Rechazar'
+      remove: 'Quitar del curso'
       
     requests:
       pending_requests: 'Solicitudes Pendientes'
