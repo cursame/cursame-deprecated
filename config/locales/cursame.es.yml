@@ -170,6 +170,8 @@ es:
     form_title: 'Título'
     form_description: 'Descripción'
     new_discussion: 'Nueva Discusion'
+    ago: 'hace'
+    by: 'por'
   
   comments:
     comments:

@@ -106,6 +106,14 @@ body {
 	padding-top: 10px;
 }
 
+.content .span3-5 {
+	width: 140px;
+}
+
+.content .span5-5 {
+width: 300px;
+}
+
 .content .span10 {
 	margin-left: 0;
 	width: 530px;
@@ -231,6 +239,14 @@ body {
 	margin-top: 1px;
 	background-color: #f4f7f7;
 	padding: 5px;
+}
+
+.small {
+display: block;
+font-size: 12px;
+font-weight: 300;
+line-height: 18px;
+color: #BFBFBF;
 }
 
 .wall label, 
