@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class SettingsController < ApplicationController
 
   def show
@@ -16,7 +18,7 @@ class SettingsController < ApplicationController
       current_user.password_confirmation = password
       current_user.save(:validate => false)
 
-      redirect_to settings_path
+      redirect_to root_path, :notice => "Tu contraseña fue cambiada, por favor ingresa con tu nueva contraseña"
     else
       render :show
     end
