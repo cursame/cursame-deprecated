@@ -131,7 +131,8 @@ es:
       rejected: 'Rechazado'
       accepted: 'Aceptado'
       accept: 'Aceptar'
-      reject: 'Quitar del curso'
+      reject: 'Reject'
+      remove: 'Quitar del curso'
       
     requests:
       pending_requests: 'Solicitudes Pendientes'

@@ -13,8 +13,10 @@
       <% if current_user.manageable_courses.include? @course %>
         <% if request.state == 'pending' %>
           <%= link_to t(".accept"), accept_request_path(request), :method => :post, :class => "accept btn success small" %>
+          <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "reject btn small danger" %>
+        <% else %>
+          <%= link_to t('.remove'), reject_request_path(request), :method => :post, :class => "reject small danger" %>
         <% end %>
-        <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "reject btn small danger" %>
       <% end %>
     </div>
     </div>
