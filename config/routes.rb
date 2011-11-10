@@ -12,8 +12,8 @@ Cursame::Application.routes.draw do
     end
 
     member do
-      get  :members
-      get  'muro', :as => :wall_for, :to => 'courses#wall'
+      get  'miembros', :as => :members_for, :to => 'courses#members'
+      get  'muro',     :as => :wall_for,    :to => 'courses#wall'
     end
 
     resources :assignments
