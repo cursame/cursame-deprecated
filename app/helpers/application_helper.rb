@@ -6,12 +6,11 @@ module ApplicationHelper
     result = "#{numbers} #{members}"
   end
   
-  def avatar
-
-  end
-  
-  def current_tab_in_menu
-
+  def avatar(user, size=nil)
+    case size
+      when 180 then image_tag(user.has_avatar? ? user.avatar_file.size.url : 'professor.jpg')
+      when 40 then image_tag(user.has_avatar? ? user.avatar_file.size.url : 'professor_small.jpg')
+    end
   end
   
 end
