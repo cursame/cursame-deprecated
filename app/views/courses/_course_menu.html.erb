@@ -5,18 +5,12 @@
 <% end %>
 
 <div class="underline">	
-  <ul class="left-nav-main-ul">
-    <li><%= link_to(t('courses.information'), course_path(@course), :class => "informacion") %></li>
-    <li><%= link_to(t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones") %></li>
-    <li><%= link_to Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %></li>
-    <li><%= link_to(t('.discussions'), course_discussions_path(@course), :class => "discusiones" ) %></li>
-  </ul>
         
-  <!--<%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
+  <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
     <%= tab.course t('courses.information'), course_path(@course), :class => "informacion" %>
     <%= tab.wall t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones" %>
     <%= tab.assignments Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %>
     <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
-  <% end %>-->
+  <% end %>
   
 </div>

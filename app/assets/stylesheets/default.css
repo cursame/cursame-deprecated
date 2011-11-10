@@ -320,7 +320,7 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.actualizaciones.active {
-	background: #00afc9 url(menu-actualizaciones.png) no-repeat 5px;
+	background: #00ccec url(menu-actualizaciones.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }
@@ -336,7 +336,7 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.discusiones.active {
-	background: #00afc9 url(menu-discusiones.png) no-repeat 5px;
+	background: #00ccec url(menu-discusiones.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }
@@ -352,7 +352,7 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.tareas.active {
-	background: #00afc9 url(menu-tareas.png) no-repeat 5px;
+	background: #00ccec url(menu-tareas.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }
@@ -398,7 +398,7 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.informacion.active {
-	background: #00afc9 url(menu-info.png) no-repeat 5px;
+	background: #00ccec url(menu-info.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }
@@ -415,7 +415,7 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.miembros.active {
-	background: #00afc9 url(menu-amigos.png) no-repeat 5px;
+	background: #00ccec url(menu-amigos.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }
