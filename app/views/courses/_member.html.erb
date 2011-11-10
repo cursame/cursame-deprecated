@@ -1,0 +1,22 @@
+<% request  = @course.enrollments.where(:user_id => member).first %>
+
+<div class="<%= member.role %> <%= request.state %>">
+  <div class="row bottom-margin <%= cycle("odd", "even") %>">
+    <div class="span1" style="margin-left:20px;">
+      <%= image_tag(member.avatar_file.xsmall.url) %>
+    </div>
+    <div class="span4">
+      <%= link_to(member.name, user_path(member)) %>
+      <%= mail_to member.email %>
+    </div>
+    <div class="span4">
+      <% if current_user.manageable_courses.include? @course %>
+        <% if request.state == 'pending' %>
+          <%= link_to t(".accept"), accept_request_path(request), :method => :post, :class => "accept btn success small" %>
+        <% end %>
+        <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "reject btn small danger" %>
+      <% end %>
+    </div>
+    </div>
+  </div>
+</div>

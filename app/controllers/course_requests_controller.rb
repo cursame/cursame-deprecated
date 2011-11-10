@@ -1,34 +1,34 @@
 class CourseRequestsController < ApplicationController
   before_filter :authenticate_teacher!, :except => [:create]
-  before_filter :load_course, :only => [:create, :index]
   set_tab :request
 
   def create
     # TODO: requesting again has no acceptance test
+    @course = current_network.courses.find params[:course_id]
     request = current_user.enrollments.where(:course_id => @course, :user_id => current_user).first || current_user.enrollments.build(:course => @course)
     request.state = 'pending'
-    request.role = 'student'
+    request.role  = 'student'
     request.save!
     redirect_to courses_path, :notice => t('flash.course_join_requested')
   end
 
-  def index
-    @requests = current_user.enrollment_requests.where(:state => 'pending')
-  end
-
   def accept
-    request = current_user.enrollment_requests.find params[:id]
-    request.update_attribute(:state, 'accepted')
-    redirect_to course_requests_path request.course
+    course_request = current_user.enrollment_requests.find params[:id]
+    course_request.update_attribute(:state, 'accepted')
+    if request.xhr?
+      head :ok
+    else
+      redirect_to members_for_course_path course_request.course
+    end
   end
 
   def reject
-    request = current_user.enrollment_requests.find params[:id]
-    request.update_attribute(:state, 'rejected')
-    redirect_to course_requests_path request.course
-  end
-
-  def load_course
-    @course = current_network.courses.find params[:course_id]
+    course_request = current_user.enrollment_requests.find params[:id]
+    course_request.update_attribute(:state, 'rejected')
+    if request.xhr?
+      head :ok
+    else
+      redirect_to members_for_course_path course_request.course
+    end
   end
 end

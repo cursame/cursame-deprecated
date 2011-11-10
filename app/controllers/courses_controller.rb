@@ -43,10 +43,9 @@ class CoursesController < ApplicationController
   def members
     @course = accessible_course
     if current_user.manageable_courses.include? @course
-      @students = @course.students | @course.pending_students # TODO: no integration specs
-    else
-      @students = @course.students
+      @pending_students = @course.pending_students
     end
+    @students = @course.students
     @teachers = @course.teachers
   end
 
