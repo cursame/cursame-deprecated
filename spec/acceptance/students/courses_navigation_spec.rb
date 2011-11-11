@@ -21,7 +21,7 @@ feature 'Course navigation', %q{
   scenario 'Join a course' do
     course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.requests.request_join')
 
     page.current_url.should match courses_path
 
@@ -31,7 +31,7 @@ feature 'Course navigation', %q{
   scenario 'Cannot create two requests to join the same course' do
     course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.requests.request_join')
 
     @student.enrollments.count.should == 1
 
