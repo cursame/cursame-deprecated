@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_active_user!
+  helper_method :accessible_courses
 
-  private
+  protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
   end
@@ -29,11 +30,10 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for resource
-    if resource.role == 'admin'
-      admin_path
-    elsif resource.role == 'supervisor'
-      supervisor_path
-    else
+    case resource.role
+    when 'admin'      then admin_path
+    when 'supervisor' then supervisor_path
+    else 
       dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
     end
   end
@@ -49,5 +49,9 @@ class ApplicationController < ActionController::Base
       flash[:error] = t('flash.account_not_active')
       redirect_to root_path
     end
+  end
+
+  def accessible_courses
+    current_user.supervisor? ? current_network.courses : current_user.visible_courses
   end
 end

@@ -1,5 +1,4 @@
 # encoding: UTF-8
-
 class SettingsController < ApplicationController
 
   def show

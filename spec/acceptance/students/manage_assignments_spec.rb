@@ -10,7 +10,7 @@ feature 'Manage assignments', %q{
     @network = Factory(:network)
     @user    = Factory(:user, :networks => [@network])
     @course  = Factory(:course,  :network => @network)
-    Enrollment.create(:course => @course, :user => @user, :admin => false, :role => 'student')
+    Enrollment.create(:course => @course, :user => @user, :admin => false, :role => 'student', :state => 'accepted')
     sign_in_with @user, :subdomain => @network.subdomain
   end
 

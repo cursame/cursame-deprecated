@@ -38,7 +38,6 @@ Cursame::Application.routes.draw do
 
 
   resource :supervisor, :only => [:show] do
-    get :courses
     get :teachers
     get :students
     get :pending_approvals
