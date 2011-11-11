@@ -34,8 +34,13 @@
             <div class="discussion row course padding-all <%= cycle('odd', 'even') %>" style="margin-left:0;">
               <div class="span7">
                 <h3><%= link_to discussion.title, discussion %></h3>
+                <span class="author"><%= t('discussions.ago')%> <%= time_ago_in_words(discussion.created_at) %> <%= t('discussions.by')%> <%= link_to(discussion.starter.name, user_path(discussion.starter)) %></span>
               </div>
-              <div class="span1"><span class="label-tag notice course-notification" style="margin-top:2px;"><a href="<%= discussion_path(discussion) %>"><%= discussion.comments.count %> <%= image_tag("menu-discusiones.png") %></a></span></div>
+              <div class="span1" style="padding-top:12px;">
+                <span class="label-tag notice course-notification" style="margin-top:2px;">
+                  <a href="<%= discussion_path(discussion) %>"><%= discussion.comments.count %> <%= image_tag("menu-discusiones.png") %></a>
+                </span>
+              </div>
             </div>
           <% end %>
         </div>

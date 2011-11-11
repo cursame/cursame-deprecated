@@ -5,20 +5,19 @@
     <div class="span1" style="margin-left:20px;">
       <%= image_tag(member.avatar_file.xsmall.url) %>
     </div>
-    <div class="span4">
-      <%= link_to(member.name, user_path(member)) %>
+    <div class="span5-5">
+      <%= link_to(member.name, user_path(member)) %><br />
       <%= mail_to member.email %>
     </div>
-    <div class="span4">
+    <div class="span3-5">
       <% if current_user.manageable_courses.include? @course %>
         <% if request.state == 'pending' %>
           <%= link_to t(".accept"), accept_request_path(request), :method => :post, :class => "accept btn success small" %>
           <%= link_to t('.reject'), reject_request_path(request), :method => :post, :class => "reject btn small danger" %>
         <% else %>
-          <%= link_to t('.remove'), reject_request_path(request), :method => :post, :class => "reject small danger" %>
+          <%= link_to t('.remove'), reject_request_path(request), :method => :post, :style => "color:red;" %>
         <% end %>
       <% end %>
-    </div>
     </div>
   </div>
 </div>

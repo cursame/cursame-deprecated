@@ -126,6 +126,7 @@ es:
       member: 'Miembro'
       members: 'Miembros'
       requests: 'Solicitudes'
+      pending_requests: 'Solicitudes Pendientes'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
@@ -171,6 +172,8 @@ es:
     form_title: 'Título'
     form_description: 'Descripción'
     new_discussion: 'Nueva Discusion'
+    ago: 'hace'
+    by: 'por'
   
   comments:
     comments:
