@@ -1,18 +1,17 @@
 class AssignmentsController < ApplicationController
-  before_filter :manageable_course, :only => [:new, :create]
   set_tab :assignments
 
   def index
-    @course      = current_user.courses.find params[:course_id]
-    @assignments = @course.assignments
+    @assignments = course.assignments
   end
 
   def new
-    @assignment = @course.assignments.build
+    @assignment = manageable_course.assignments.build
   end
 
   def create
-    @assignment = @course.assignments.build params[:assignment]
+    @assignment = manageable_course.assignments.build(params[:assignment])
+
     if @assignment.save
       redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
@@ -41,14 +40,21 @@ class AssignmentsController < ApplicationController
   end
 
   def show
-    @assignment = current_user.assignments.find params[:id]
+    @assignment = accessible_assignments.find params[:id]
     @course     = @assignment.course
   end
 
   private
+  def course
+    @course ||= accessible_courses.find params[:course_id]
+  end
+
   def manageable_course
-    authenticate_teacher!
     @course ||= current_user.manageable_courses.find params[:course_id]
+  end
+
+  def accessible_assignments
+    current_user.supervisor? ? current_network.assignments : current_user.assignments
   end
 
   def manageable_assignment

@@ -1,7 +1,7 @@
 class CoursesController < ApplicationController
   before_filter :require_network
-  set_tab :course, :only => %w(index show new create edit update)
-  set_tab :wall, :only => %w(wall)
+  set_tab :course,  :only => %w(index show new create edit update)
+  set_tab :wall,    :only => %w(wall)
   set_tab :members, :only => %w(members)
 
   def index
@@ -58,12 +58,8 @@ class CoursesController < ApplicationController
     render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
   end
 
-  private
+  protected
   def accessible_course
     @accessible_course ||= accessible_courses.find params[:id]
-  end
-
-  def accessible_courses
-    current_user.supervisor? ? current_network.courses : current_user.visible_courses.where(:network_id => current_network)
   end
 end

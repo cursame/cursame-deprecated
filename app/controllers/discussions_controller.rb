@@ -6,8 +6,7 @@ class DiscussionsController < ApplicationController
   end
 
   def index
-    @discussions = course.discussions
-    @course      = current_user.courses.find params[:course_id]
+    @course, @discussions = course, course.discussions
   end
 
   def create
@@ -21,7 +20,7 @@ class DiscussionsController < ApplicationController
   end
 
   def show
-    @discussion = current_user.discussions.find params[:id]
+    @discussion = accessible_discussions.find params[:id]
     @course     = @discussion.course
   end
 
@@ -36,7 +35,7 @@ class DiscussionsController < ApplicationController
       flash[:notice] = t('flash.discussion_deleted')
     end
 
-    redirect_to course_discussions_path(manageable_discussion.course)
+    redirect_to course_discussions_path manageable_discussion.course
   end
 
   def update
@@ -51,7 +50,11 @@ class DiscussionsController < ApplicationController
 
   private
   def course
-    @course ||= current_user.courses.find params[:course_id]
+    @course ||= accessible_courses.find params[:course_id]
+  end
+
+  def accessible_discussions
+    current_user.supervisor? ? current_network.discussions : current_user.discussions
   end
   
   def manageable_discussion

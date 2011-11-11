@@ -21,7 +21,7 @@
         <h2><%= t('courses.members.members_in_course') %></h2>
 
         <% if @pending_students %>
-          <h3><%= t('courses.members.requests') %></h2>
+          <h3><%= t('courses.requests.requests') %></h2>
           <div class="members">
             <%= render :partial => 'member', :collection => @pending_students %>
           </div>

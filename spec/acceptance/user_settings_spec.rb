@@ -31,6 +31,6 @@ feature 'User Settings', %q{
     click_button 'submit'
 
     sign_in_with @student, :password => new_password, :subdomain => @network.subdomain
-    page.current_url.should match settings_path
+    page.current_url.should match dashboard_path
   end
 end

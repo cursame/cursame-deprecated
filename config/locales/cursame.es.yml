@@ -125,8 +125,6 @@ es:
       students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
-      requests: 'Solicitudes'
-      pending_requests: 'Solicitudes Pendientes'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
@@ -135,14 +133,15 @@ es:
       reject: 'Rechazar'
       remove: 'Quitar del curso'
     requests:
+      requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
-    index:
-      title: Todos los cursos disponibles
       request_join: Solicitar unirse
       request_join_again: Solicitar unirse de nuevo
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
+    index:
+      title: Todos los cursos disponibles
     wall:
       header: Muro
     assignments:
