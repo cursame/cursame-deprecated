@@ -134,7 +134,6 @@ es:
       accept: 'Aceptar'
       reject: 'Rechazar'
       remove: 'Quitar del curso'
-      
     requests:
       pending_requests: 'Solicitudes Pendientes'
     index:
