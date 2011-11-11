@@ -472,7 +472,6 @@ ul.nav-member-avatars li {
 /* @group Forms */
 
 .register-box {
-	padding: 30px;
 	background-color: #00afc9;
  	margin-bottom: 20px;
   	/* padding: 19px; */
@@ -485,6 +484,7 @@ ul.nav-member-avatars li {
   	-webkit-box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
   	-moz-box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
   	box-shadow: inset 0 1px 10px 8px rgba(0, 0, 0, 0.08);
+	padding: 28px 26px 28px 28px;
 }
 
 .register-box h1 {
