@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :manageable_discussions, :class_name => 'Discussion'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :comments
+  # TODO: refactor commentable models to homogenize access to comments (below)
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
 
   validates_presence_of :first_name, :last_name

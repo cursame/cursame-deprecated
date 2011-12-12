@@ -69,3 +69,12 @@ RSpec::Matchers.define :show_discussion_preview do |discussion|
     page.should have_css "a[href='#{discussion_path discussion}']", :text => discussion.title
   end
 end
+
+RSpec::Matchers.define :show_user do |user|
+  match do |page|
+    page.should have_content user.name
+    page.should have_content user.about_me
+    page.should have_content user.studies
+    page.should have_content user.occupation
+  end
+end
