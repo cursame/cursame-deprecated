@@ -5,15 +5,6 @@ class UsersController < ApplicationController
   set_tab :profile
 
   def show
-    # You should only see the profile of a user if you have a course in common
-    my_courses = current_user.courses
-    his_courses = @user.courses
-
-    # If the intersection of the two sets is not empty then we have at least
-    # one course in common.
-    if (my_courses & his_courses).empty? && current_user != @user && !current_user.supervisor?
-      redirect_to root_path
-    end
   end
 
   def edit
@@ -28,7 +19,7 @@ class UsersController < ApplicationController
   end
 
   def wall
-    @comments = @user.profile_comments.order("created_at DESC")
+    @comments = @user.profile_comments.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def upload_avatar
