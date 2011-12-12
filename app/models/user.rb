@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                :through => :enrollments # may go away
-  has_many :visible_courses,        :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
-  has_many :manageable_courses,     :through => :enrollments,        :class_name => 'Course', :source => :course, :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
-  has_many :manageable_assignments, :through => :manageable_courses, :source => :assignments, :class_name => 'Assignment'
-  has_many :manageable_discussions, :through => :manageable_courses, :source => :discussions, :class_name => 'Discussion'
+  has_many :visible_courses,        :through => :enrollments,        :class_name => 'Course',     :source => :course,      :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
+  has_many :manageable_courses,     :through => :enrollments,        :class_name => 'Course',     :source => :course,      :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
+  has_many :manageable_assignments, :through => :manageable_courses, :class_name => 'Assignment', :source => :assignments
+  has_many :manageable_discussions, :through => :manageable_courses, :class_name => 'Discussion', :source => :discussions
   has_many :assignments,            :through => :courses
   has_many :discussions,            :through => :courses
   has_many :manageable_discussions, :class_name => 'Discussion'

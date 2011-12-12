@@ -21,7 +21,7 @@ RSpec::Matchers.define :show_assignment do |assignment|
     page.should have_content Assignment.model_name.human
     page.should have_content assignment.course.name
     page.should have_content assignment.name
-    page.should have_content assignment.description
+    page.should have_content Sanitize.clean(assignment.description).strip
     page.should have_content assignment.value
     page.should have_content assignment.period
     page.should have_content I18n.l(assignment.due_to, :format => :short) 
@@ -42,15 +42,25 @@ end
 
 RSpec::Matchers.define :show_comment do |comment|
   match do |page|
-    page.should have_css "#comment_#{comment.id}", :text => comment.user.name
-    page.should have_css "#comment_#{comment.id}", :text => comment.text
+    page.should have_css "#comment_#{comment.id}"
+    within "#comment_#{comment.id}" do
+      page.should have_content comment.user.name
+      page.should have_content Sanitize.clean(comment.text).strip 
+    end
+  end
+end
+
+RSpec::Matchers.define :show_course do |course|
+  match do |page|
+    page.should have_content course.name
+    page.should have_content Sanitize.clean(course.description).strip
   end
 end
 
 RSpec::Matchers.define :show_discussion do |discussion|
   match do |page|
     page.should have_content discussion.title
-    page.should have_content discussion.description
+    page.should have_content Sanitize.clean(discussion.description).strip
   end
 end
 

@@ -145,8 +145,7 @@ feature 'Supervisor', %q{
       click_link @course.name
 
       page.current_url.should match course_path @course
-      page.should have_content @course.name
-      page.should have_content @course.description
+      page.should show_course @course
     end
 
     scenario 'view a course wall' do

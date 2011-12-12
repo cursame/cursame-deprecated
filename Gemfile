@@ -12,7 +12,7 @@ gem 'formtastic'
 gem 'haml'
 gem 'sanitize'
 gem "breadcrumbs_on_rails", "~> 2.1.0"
-gem "tabs_on_rails", "~> 2.0.2"
+gem "tabs_on_rails",        "~> 2.0.2"
 gem "auto_html"
 
 # Gems used only for assets and not required
@@ -20,7 +20,7 @@ gem "auto_html"
 group :assets do
   gem 'sass-rails',   '~> 3.1.4'
   gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier',     '>= 1.0.3'
 end
 
 group :test do
@@ -29,6 +29,7 @@ group :test do
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'launchy'
+  gem 'timecop'
 end
 
 group :staging, :production do
