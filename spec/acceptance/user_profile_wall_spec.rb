@@ -74,4 +74,12 @@ feature 'Manage profile wall', %q{
     page.should show_comment comments_comment
     page.should have_notice t('flash.comment_added')
   end
+
+  scenario 'viewing other user wall' do
+    @user2  = Factory(:user, :networks => [@network])
+    comment = Factory(:comment, :commentable => @user2)
+    visit wall_for_user_url @user2, :subdomain => @network.subdomain
+    save_and_open_page
+    page.should show_comment comment
+  end
 end

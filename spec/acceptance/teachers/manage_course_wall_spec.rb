@@ -78,7 +78,6 @@ feature 'Manage course wall', %q{
   scenario 'paginating comments on wall (TODO: Global on all commentable pages)' do
     @comments = 20.times.map { |i| Factory(:comment, :commentable => @course, :user => @teacher, :text => "comment: #{i+1}") }
     visit wall_for_course_url @course, :subdomain => @network.subdomain
-    save_and_open_page
 
     @comments[10..-1].each { |comment| page.should show_comment comment }
     @comments[0..9].each { |comment| page.should_not show_comment comment }

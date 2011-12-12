@@ -1,17 +1,18 @@
 class UsersController < ApplicationController
   before_filter :require_network
-  before_filter :find_user, :except => [:upload_avatar]
-  before_filter :can_edit?, :except => [:show, :upload_avatar]
   set_tab :profile, :only => %w(show)
   set_tab :wall,    :only => %w(wall)
 
   def show
+    find_user
   end
 
   def edit
+    find_user and check_edit_permissions!
   end
 
   def update
+    find_user and check_edit_permissions!
     if @user.update_attributes(params[:user])
       redirect_to @user, :notice => t('flash.user_updated')
     else
@@ -20,6 +21,7 @@ class UsersController < ApplicationController
   end
 
   def wall
+    find_user
     @comments = @user.profile_comments.order("created_at DESC").page(params[:page]).per(10)
   end
 
@@ -30,14 +32,11 @@ class UsersController < ApplicationController
 
   private
   def find_user
-    @user = current_network.users.find params[:id]
+    @user ||= current_network.users.find params[:id]
   end
 
-  def can_edit?
-    # This can be extended to let teachers (or other administrative type of
-    # user) edit other users profiles
-    unless current_user == @user
-      redirect_to root_path
-    end
+  def check_edit_permissions!
+    raise ActiveRecord::RecordNotFound unless current_user == @user
+    true
   end
 end

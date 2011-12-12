@@ -32,7 +32,7 @@ feature 'Manage courses', %q{
 
     Course.should exist_with :name => 'Introduction to algebra',
       :name => 'Introduction to algebra',
-      :description => 'course description',
+      :description => ActiveRecord::HTMLSanitization.sanitize('course description'), 
       :start_date => Date.civil(2011,01,20),
       :finish_date => Date.civil(2012,01,29),
       :reference  => 'classroom A',

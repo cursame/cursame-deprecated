@@ -26,7 +26,8 @@ feature 'Manage discussions', %q{
       click_button 'submit'
     end.should change(Discussion, :count)
 
-    Discussion.should exist_with :title => 'Introduction to algebra', :description => 'discussion description'
+    Discussion.should exist_with :title => 'Introduction to algebra', 
+      :description => ActiveRecord::HTMLSanitization.sanitize('discussion description') 
 
     discussion = Discussion.last
     discussion.course.should  == @course

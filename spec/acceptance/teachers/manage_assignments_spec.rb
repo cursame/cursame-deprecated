@@ -37,7 +37,7 @@ feature 'Manage assignments', %q{
 
     expected_attrs = {
       :name => 'First assignment', 
-      :description => 'This is a test assignment', 
+      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test assignment'), 
       :value => 9, 
       :period => 1,
       # :due_to => Time.new(2011,1,20,8,30)
