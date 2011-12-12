@@ -16,6 +16,7 @@ es:
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
+    leave_comment: 'Dejar comentario'
     
   footer:
     teacher_register: 'Registro como maestro'
@@ -87,10 +88,6 @@ es:
     start: 'Inicio'
     profile: 'Perfil'
     account_settings: 'Configuración de la cuenta'
-
-  users:
-    wall:
-      header: Muro
   
   courses:
     archives: 'Archivos'
@@ -167,9 +164,8 @@ es:
     birth_date: 'Fecha de nacimiento'
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
-    
-  wall:
     wall: 'Muro'
+    information: 'Mi Información'
 
   discussions:
     title: 'Discusiones'
