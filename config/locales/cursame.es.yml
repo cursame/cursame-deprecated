@@ -87,6 +87,10 @@ es:
     start: 'Inicio'
     profile: 'Perfil'
     account_settings: 'Configuración de la cuenta'
+
+  users:
+    wall:
+      header: Muro
   
   courses:
     archives: 'Archivos'
