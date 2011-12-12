@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   end
 
   def wall
-    @comments = @user.comments.order("created_at DESC")
+    @comments = @user.profile_comments.order("created_at DESC")
   end
 
   def upload_avatar

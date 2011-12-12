@@ -45,6 +45,7 @@ feature 'Manage profile wall', %q{
   
   scenario 'removing a posted comment from the wall (owned by other)' do
     comment = Factory(:comment, :commentable => @user, :user => Factory(:user))
+    save_and_open_page
     visit wall_for_user_url @user, :subdomain => @network.subdomain
 
     lambda do
