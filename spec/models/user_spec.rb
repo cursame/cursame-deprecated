@@ -11,6 +11,7 @@ describe User do
     it { should have_many(:manageable_discussions) }
     it { should have_many(:discussions).through(:courses) }
     it { should have_many(:comments) }
+    it { should have_many(:profile_comments) }
   end
 
   describe 'validations' do

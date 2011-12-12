@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create
-    comment      = commentable.comments.build params[:comment]
+    comment      = (User === commentable ? commentable.profile_comments : commentable.comments).build params[:comment]
     comment.user = current_user
     if comment.save
       redirect_to commentable_path_for(comment) + "#comment_#{comment.id}", :notice => I18n.t('flash.comment_added')
@@ -27,6 +27,8 @@ class CommentsController < ApplicationController
         current_user.courses.order.find params[:commentable_id]
       when :discussion
         current_user.discussions.find params[:commentable_id]
+      when :user
+        current_network.users.find params[:commentable_id]
       when :comment
         comment = Comment.find params[:commentable_id]
         raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)
@@ -36,7 +38,13 @@ class CommentsController < ApplicationController
 
   def commentable_path_for comment
     commentable = comment.commentable
-    return wall_for_course_path commentable if Course === commentable
-    Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
+    case commentable
+    when Course
+      wall_for_course_path commentable
+    when User
+      wall_for_user_path commentable
+    else
+      Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
+    end
   end
 end

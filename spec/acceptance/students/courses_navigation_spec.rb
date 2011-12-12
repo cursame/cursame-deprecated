@@ -21,7 +21,6 @@ feature 'Course navigation', %q{
   scenario 'Join a course' do
     course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
     visit courses_url(:subdomain => @network.subdomain)
-    save_and_open_page
     click_link I18n.t('courses.requests.request_join')
 
     page.current_url.should match courses_path

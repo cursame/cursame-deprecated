@@ -30,6 +30,9 @@ Cursame::Application.routes.draw do
     collection do
       post :upload_avatar,  :as => :upload_avatar_for
     end
+    member do
+      get  'muro', :as => :wall_for, :to => 'users#wall'
+    end
   end
 
   resource :settings, :only => [:show] do
@@ -56,6 +59,7 @@ Cursame::Application.routes.draw do
   match '/comments/:commentable_id/comment',    :to => 'comments#create', :as => :comment_comment,    :conditions => {:commentable => :comment}
   match '/courses/:commentable_id/comment',     :to => 'comments#create', :as => :comment_course,     :conditions => {:commentable => :course}
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
+  match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

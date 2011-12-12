@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :manageable_discussions, :class_name => 'Discussion'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :comments
+  has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
 
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
@@ -59,6 +60,8 @@ class User < ActiveRecord::Base
         manageable_courses.include? commentable
       when Discussion # TODO: no integration test
         manageable_discussions.include? commentable
+      when User
+        profile_comments.include? comment
       when Comment # TODO: no integration test to test deleting comment of comment
         can_edit_comment? commentable
       end
@@ -77,6 +80,8 @@ class User < ActiveRecord::Base
       courses.include? commentable
     when Discussion # TODO: no integration test
       discussions.include? commentable
+    when User
+      true
     end
   end
 end

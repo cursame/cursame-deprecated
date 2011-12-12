@@ -27,6 +27,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def wall
+    @comments = @user.comments.order("created_at DESC")
+  end
+
   def upload_avatar
     asset_file = User.new :avatar_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
