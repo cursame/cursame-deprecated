@@ -1,8 +1,17 @@
 module ActiveRecord
   module HTMLSanitization
+
     def html_sanitized attr
       define_method "#{attr}=" do |html|
-        self[attr] = Sanitize.clean(html, Sanitize::Config::BASIC)
+        html       = Sanitize.clean(html, Sanitize::Config::BASIC)
+        self[attr] = AutoHtml.auto_html html do
+          youtube :width => 400, :height => 250
+          vimeo :width => 400, :height => 250
+          google_video :width => 400, :height => 250
+          dailymotion :width => 400, :height => 250
+          image
+          link :target => "_blank", :rel => "nofollow"
+        end
       end
 
       define_method attr do

@@ -22,4 +22,16 @@ describe Comment do
     it { comment.text.should be_html_safe }
     it { comment.text.should =~ /hello/}
   end
+
+  describe 'autolink' do
+    it 'should autolink image' do
+      comment.text = 'http://rors.org/images/rails.png'
+      comment.text.should == '<img src="http://rors.org/images/rails.png" alt=""/>'
+    end
+
+    it 'should autolink youtube' do
+      comment.text = 'http://www.youtube.com/watch?v=BwNrmYRiX_o'
+      comment.text.should == '<iframe width="400" height="250" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe>'
+    end
+  end
 end

@@ -2,7 +2,7 @@ class AssignmentsController < ApplicationController
   set_tab :assignments
 
   def index
-    @assignments = course.assignments
+    @assignments = course.assignments.order("due_to DESC")
   end
 
   def new
@@ -42,7 +42,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = accessible_assignments.find params[:id]
     @course     = @assignment.course
-    @comments   = @assignment.comments.order("created_at DESC")
+    @comments   = @assignment.comments.order("created_at DESC").page(params[:page]).per(10)
   end
 
   private
