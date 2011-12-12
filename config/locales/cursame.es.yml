@@ -140,6 +140,8 @@ es:
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
+    course:
+      request_join: Solicitar unirse
     index:
       title: Todos los cursos disponibles
     wall:

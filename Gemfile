@@ -30,7 +30,7 @@ group :test do
   gem 'fuubar'
 end
 
-group :staging, :production do
+group :production do
   gem 'thin'
   gem 'heroku'
   gem "pg"
