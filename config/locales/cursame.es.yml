@@ -163,6 +163,9 @@ es:
     birth_date: 'Fecha de nacimiento'
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
+    
+  wall:
+    wall: 'Muro'
 
   discussions:
     title: 'Discusiones'
