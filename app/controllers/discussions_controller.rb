@@ -22,6 +22,7 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = accessible_discussions.find params[:id]
     @course     = @discussion.course
+    @comments   = @discussion.comments.order("created_at DESC")
   end
 
   def edit

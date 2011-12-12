@@ -1,5 +1,5 @@
 <div class="comments">
-  <% commentable.comments.order("created_at DESC").each do |comment| %>
+  <% comments.each do |comment| %>
     <div class="comment comment-box" id="<%= "comment_#{comment.id}" %>">
       <div class="row">
         <div class="span1"><%= link_to(image_tag(comment.user.avatar_file.xsmall.url), user_path(comment.user)) %></div>

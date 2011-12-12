@@ -50,7 +50,8 @@ class CoursesController < ApplicationController
   end
 
   def wall
-    @course = accessible_course
+    @course   = accessible_course
+    @comments = @course.comments.order("created_at DESC")
   end
 
   def upload_logo

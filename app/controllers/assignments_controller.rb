@@ -42,6 +42,7 @@ class AssignmentsController < ApplicationController
   def show
     @assignment = accessible_assignments.find params[:id]
     @course     = @assignment.course
+    @comments   = @assignment.comments.order("created_at DESC")
   end
 
   private
