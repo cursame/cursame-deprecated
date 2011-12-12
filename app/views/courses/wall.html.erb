@@ -21,7 +21,6 @@
       <div class="span10 wall">
         
         <div class="actions">
-          <h2><%= t('.header') %></h2>
           <%= render :partial => 'comments/form',  :locals => {:commentable => @course} %>
         </div>
         <%= render :partial => 'comments/comments', :locals => {:commentable => @course, :comments => @comments} %>

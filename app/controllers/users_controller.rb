@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_filter :require_network
   before_filter :find_user, :except => [:upload_avatar]
   before_filter :can_edit?, :except => [:show, :upload_avatar]
-  set_tab :profile
+  set_tab :profile, :only => %w(show)
+  set_tab :wall,    :only => %w(wall)
 
   def show
   end

@@ -1,5 +1,3 @@
-<%= link_to 'Muro', wall_for_user_path(@user)  %>
-
 <div class="container">
   <div class="content">
     
@@ -14,11 +12,7 @@
     
     <div class="row">
       <div class="span3">
-
-        <% unless @user.avatar_file.blank? %>
-          <%= image_tag @user.avatar_file.small.url %>
-        <% end %>
-
+        <%= render :partial => "users/profile_menu" %>
       </div>
 
       <div class="span10">

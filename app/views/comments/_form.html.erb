@@ -3,6 +3,6 @@
     <%= form.input :text, :input_html => {:rows => 3, :class => "textarea-size"} %>
   <% end %>
   <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit, :class => "btn right"} %>
+    <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :submit, :class => "btn right"} %>
   <% end %>
 <% end %>
