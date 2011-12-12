@@ -105,6 +105,7 @@ GEM
       rails (>= 3.0.0)
     launchy (2.0.5)
       addressable (~> 2.2.6)
+    libv8 (3.3.10.4)
     mail (2.3.0)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -193,7 +194,8 @@ GEM
     subexec (0.1.0)
     tabs_on_rails (2.0.2)
     term-ansicolor (1.0.7)
-    therubyracer-heroku (0.8.1.pre3)
+    therubyracer (0.9.9)
+      libv8 (~> 3.3.10)
     thin (1.2.11)
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
@@ -244,6 +246,6 @@ DEPENDENCIES
   sqlite3
   steak
   tabs_on_rails (~> 2.0.2)
-  therubyracer-heroku
+  therubyracer
   thin
   uglifier (>= 1.0.3)

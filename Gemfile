@@ -23,18 +23,18 @@ group :assets do
 end
 
 group :test do
-  # gem 'turn', :require => false
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'fuubar'
+  gem 'launchy'
 end
 
-group :production do
+group :staging, :production do
   gem 'thin'
   gem 'heroku'
   gem "pg"
-  gem 'therubyracer-heroku'
+  gem 'therubyracer'
 end
 
 group :development, :test do
@@ -44,5 +44,4 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'steak'
   gem 'spork', '0.9.0.rc9'
-  gem 'launchy'
 end
