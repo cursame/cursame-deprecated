@@ -198,3 +198,11 @@ es:
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
+
+  views:
+    pagination:
+      previous: "&lt;"
+      first: "&laquo;"
+      last: "&raquo;"
+      truncate: "..."
+      next: "&gt;"

@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
 
   def wall
     @course   = accessible_course
-    @comments = @course.comments.order("created_at DESC")
+    @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def upload_logo

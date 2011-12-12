@@ -74,4 +74,13 @@ feature 'Manage course wall', %q{
     page.should show_comment comments_comment
     page.should have_notice t('flash.comment_added')
   end
+
+  scenario 'paginating comments on wall (TODO: Global on all commentable pages)' do
+    @comments = 20.times.map { |i| Factory(:comment, :commentable => @course, :user => @teacher, :text => "comment: #{i+1}") }
+    visit wall_for_course_url @course, :subdomain => @network.subdomain
+    save_and_open_page
+
+    @comments[10..-1].each { |comment| page.should show_comment comment }
+    @comments[0..9].each { |comment| page.should_not show_comment comment }
+  end
 end
