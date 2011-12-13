@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104054527) do
+ActiveRecord::Schema.define(:version => 20111213043858) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -97,6 +97,10 @@ ActiveRecord::Schema.define(:version => 20111104054527) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slogan"
+    t.string   "welcome_message"
+    t.string   "logo_file"
+    t.string   "time_zone"
   end
 
   create_table "networks_users", :id => false, :force => true do |t|

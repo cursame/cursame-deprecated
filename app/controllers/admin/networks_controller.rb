@@ -1,6 +1,5 @@
 module Admin
   class NetworksController < BaseController
-
     def index
       @networks = Network.order('name ASC')
     end
@@ -35,6 +34,5 @@ module Admin
         render :edit
       end
     end
-
   end
 end

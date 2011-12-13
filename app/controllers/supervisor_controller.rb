@@ -1,7 +1,8 @@
-class SupervisorsController < ApplicationController
+class SupervisorController < ApplicationController
   before_filter :authenticate_supervisor!
 
-  def show
+  def dashboard
+    @networks = current_user.networks
   end
 
   def teachers
@@ -27,12 +28,12 @@ class SupervisorsController < ApplicationController
       @user.save(:validate => false)
     end
 
-    redirect_to pending_approvals_supervisor_path, :notice => t('flash.user_registration_accepted')
+    redirect_to supervisor_pending_approvals_path, :notice => t('flash.user_registration_accepted')
   end
 
   def reject_user # TODO: not to destroy ---DANGER---
     @user = User.unscoped.find params[:user_id]
     @user.destroy if @user.networks.include? current_network
-    redirect_to pending_approvals_supervisor_path, :notice => t('flash.user_registration_rejected')
+    redirect_to supervisor_pending_approvals_path, :notice => t('flash.user_registration_rejected')
   end
 end

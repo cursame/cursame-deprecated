@@ -8,7 +8,7 @@ class HomeController < ApplicationController
       when 'admin'
         redirect_to admin_path
       when 'supervisor'
-        redirect_to supervisor_path
+        redirect_to supervisor_dashboard_path
       else
         redirect_to dashboard_url
       end

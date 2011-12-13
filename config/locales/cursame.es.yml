@@ -69,6 +69,10 @@ es:
         current_password: Contraseña actual
         password: Contraseña
         password_confirmation: Confirmación de contraseña
+      network:
+        slogan: Lema
+        welcome_message: Mensaje de bienvenida
+        time_zone: Zona horaria
 
   formtastic:
     actions:
@@ -187,8 +191,8 @@ es:
   breadcrumb:
     dashboard: 'Dashboard'
 
-  supervisors:
-    show:
+  supervisor:
+    dashboard:
       courses: Cursos
       teachers: Maestros
       students: Estudiantes

@@ -7,15 +7,15 @@ feature 'Supervisor', %q{
 } do
 
   background do
-    @network = Factory(:network)
+    @network    = Factory(:network)
     @supervisor = Factory(:supervisor, :networks => [@network])
     sign_in_with @supervisor, :subdomain => @network.subdomain
   end
 
   scenario 'redirect to /supervisor after signing in' do
-    page.current_url.should match supervisor_path
+    page.current_url.should match supervisor_dashboard_path
     visit root_url(:subdomain => @network.subdomain)
-    page.current_url.should match supervisor_path
+    page.current_url.should match supervisor_dashboard_path
   end
 
   scenario 'change my password' do
@@ -28,7 +28,7 @@ feature 'Supervisor', %q{
     click_button 'submit'
 
     sign_in_with @supervisor, :password => new_password, :subdomain => @network.subdomain
-    page.current_url.should match supervisor_path
+    page.current_url.should match supervisor_dashboard_path
   end
 
   context 'teacher listing and aproval/rejecting' do
@@ -37,15 +37,15 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student, :networks => [@network]) }
       (1..3).map { Factory(:teacher) } # Other networks
 
-      visit supervisor_url(:subdomain => @network.subdomain)
-      click_link t('supervisors.show.teachers')
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.dashboard.teachers')
 
       page.should have_css('.teacher', :count => 3)
     end
 
     scenario 'view the details of a teacher' do
       teacher = Factory(:teacher, :networks => [@network])
-      visit teachers_supervisor_url(:subdomain => @network.subdomain)
+      visit supervisor_teachers_url(:subdomain => @network.subdomain)
       click_link teacher.name
 
       page.current_url.should match user_path(teacher)
@@ -58,16 +58,16 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student, :networks => [@network]) }
 
       #sign_in_with @supervisor, :subdomain => @network.subdomain
-      click_link t('supervisors.show.pending_approvals')
+      click_link t('supervisor.dashboard.pending_approvals')
       page.should have_css('.pending', :count => 3)
     end
 
     scenario 'accept a teacher registration' do
       pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
-      visit pending_approvals_supervisor_url(:subdomain => @network.subdomain)
-      click_button t('supervisors.pending_approvals.approve')
+      visit supervisor_pending_approvals_url(:subdomain => @network.subdomain)
+      click_button t('supervisor.pending_approvals.approve')
 
-      page.current_url.should match pending_approvals_supervisor_path
+      page.current_url.should match supervisor_pending_approvals_path
       page.should have_notice t('flash.user_registration_accepted')
 
       pending.reload
@@ -76,10 +76,10 @@ feature 'Supervisor', %q{
 
     scenario 'reject a teacher registration' do
       pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
-      visit pending_approvals_supervisor_url(:subdomain => @network.subdomain)
-      click_button t('supervisors.pending_approvals.reject')
+      visit supervisor_pending_approvals_url(:subdomain => @network.subdomain)
+      click_button t('supervisor.pending_approvals.reject')
 
-      page.current_url.should match pending_approvals_supervisor_path
+      page.current_url.should match supervisor_pending_approvals_path
       page.should have_notice t('flash.user_registration_rejected')
 
       User.unscoped.where(:id => pending.id).should be_empty
@@ -92,14 +92,14 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student, :networks => [@network]) }
       (1..3).map { Factory(:student) } # Other networks
 
-      visit supervisor_url(:subdomain => @network.subdomain)
-      click_link t('supervisors.show.students') 
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.dashboard.students') 
       page.should have_css('.student', :count => 3)
     end
 
     scenario 'view the details of a student' do
       student = Factory(:student, :networks => [@network])
-      visit students_supervisor_url(:subdomain => @network.subdomain)
+      visit supervisor_students_url(:subdomain => @network.subdomain)
       click_link student.name
 
       page.current_url.should match user_path(student)
@@ -111,7 +111,7 @@ feature 'Supervisor', %q{
       sign_out :subdomain => @network.subdomain
       sign_in_with Factory(:teacher, :networks => [@network])
 
-      visit supervisor_url(:subdomain => @network.subdomain)
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       page.current_url.should match dashboard_path
     end
 
@@ -119,7 +119,7 @@ feature 'Supervisor', %q{
       sign_out :subdomain => @network.subdomain
       sign_in_with Factory(:student, :networks => [@network])
 
-      visit supervisor_url(:subdomain => @network.subdomain)
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       page.current_url.should match dashboard_path
     end
   end
@@ -135,8 +135,8 @@ feature 'Supervisor', %q{
       # These course if from other networks, and shouldn't appear on the page.
       Factory(:course)
 
-      visit supervisor_url(:subdomain => @network.subdomain)
-      click_link t('supervisors.show.courses')
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.dashboard.courses')
       page.should have_css('.course', :count => 1)
     end
 

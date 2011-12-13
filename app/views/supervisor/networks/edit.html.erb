@@ -1,0 +1,17 @@
+<h1>Edit Network</h1>
+
+<%= semantic_form_for [:supervisor, @network] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :slogan %>
+    <%= form.input :welcome_message %>
+    <%= form.input :time_zone, :as => :time_zone %>
+  <% end %>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit} %>
+  <% end %>
+
+<% end %>
+
+
+<%= link_to 'cancel', admin_network_path(@network) %>
