@@ -51,6 +51,11 @@ class CoursesController < ApplicationController
   def wall
     @course   = accessible_course
     @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)
+    
+    respond_to do |format|
+        format.js
+        format.html # index.html.erb
+    end
   end
 
   def upload_logo

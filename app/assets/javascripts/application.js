@@ -164,3 +164,37 @@ $(function(){
     }
   });
 })
+
+var setupAutoScroll = function() {
+  
+  function nearBottomOfPage() {
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 300;
+  }
+
+  var page = 1, loading = false;
+
+  $(window).scroll(function(){
+    if (this.loading) {
+      return;
+    }
+    
+    if(nearBottomOfPage()) {
+      loading=true;
+      page++;
+      $.ajax({
+        url: '?page=' + page,
+        type: 'get',
+        dataType: 'script',
+        success: function() {
+          $(window).sausage('draw');
+          loading=false;
+        }
+      });
+    }
+  });
+    
+  $(window).sausage();
+};
+
+
+

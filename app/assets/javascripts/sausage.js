@@ -43,7 +43,7 @@
             //      ;
             //
             content: function (i, $page) {
-                return '<span class="sausage-span">' + (i + 1) + '</span>';
+                return '<span class="sausage-span">' + 'Página ' + (i + 1) + '</span>';
             }
             
         },
