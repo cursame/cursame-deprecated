@@ -6,7 +6,7 @@
 
 <div class="underline">	
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
-    <%= tab.profile t('profile.information'), current_user, :class => "informacion" %>
+    <%= tab.profile t('dashboard.profile'), user_path(@user), :class => "informacion" %>
     <%= tab.wall t('profile.wall'), wall_for_user_path(@user), :class => "actualizaciones" %>
   <% end %>
 </div>
