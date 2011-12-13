@@ -9,8 +9,9 @@ class Network < ActiveRecord::Base
 
   accepts_nested_attributes_for :supervisors
 
-
   validates_presence_of   :name, :subdomain
   validates_uniqueness_of :subdomain
   validates_format_of     :subdomain, :with => /^[\-a-z0-9]+$/i
+
+  mount_uploader :logo_file, LogoUploader
 end

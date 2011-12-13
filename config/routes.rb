@@ -1,8 +1,4 @@
 Cursame::Application.routes.draw do
-  get "networks/edit"
-
-  get "networks/update"
-
   devise_for :users, :skip => [:registrations]
 
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
@@ -44,7 +40,11 @@ Cursame::Application.routes.draw do
   end
 
   namespace :supervisor do
-    resource :network, :only => [:edit, :update]
+    resource :network, :only => [:edit, :update] do
+      collection do
+        post :upload_logo,  :as => :upload_logo_for
+      end
+    end
     get :dashboard
     get :teachers
     get :students

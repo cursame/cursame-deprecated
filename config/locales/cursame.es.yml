@@ -197,6 +197,7 @@ es:
       teachers: Maestros
       students: Estudiantes
       pending_approvals: Registros de maestros pendientes
+      configuration: Configuración
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
