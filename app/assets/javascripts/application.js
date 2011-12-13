@@ -168,10 +168,11 @@ $(function(){
 var setupAutoScroll = function() {
   
   function nearBottomOfPage() {
-    return $(window).scrollTop() > $(document).height() - $(window).height() - 300;
+    return $(window).scrollTop() > $(document).height() - $(window).height() - 200;
   }
 
-  var page = 1, loading = false;
+  var page = 1;
+  var loading = false;
 
   $(window).scroll(function(){
     if (this.loading) {
@@ -195,6 +196,3 @@ var setupAutoScroll = function() {
     
   $(window).sausage();
 };
-
-
-

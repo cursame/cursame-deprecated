@@ -50,8 +50,11 @@
           <h2><%= t('courses.assignments.comments') %></h2>
           <%= render :partial => 'comments/form', :locals => {:commentable => @assignment} %>
         </div>
-      
-        <%= render :partial => 'comments/comments', :locals => {:commentable => @assignment, :comments => @comments} %>
+        <div id="comments">
+          <div class="page">
+            <%= render :partial => 'comments/comments', :locals => {:commentable => @assignment, :comments => @comments} %>
+          </div>
+        </div>
         </div>
       
         <div class="span3" style="margin:0;">
