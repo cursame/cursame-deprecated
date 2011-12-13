@@ -44,7 +44,12 @@
         <h2><%= t('courses.assignments.comments') %></h2>
         <%= render :partial => 'comments/form', :locals => {:commentable => @discussion} %>
       </div>
-      <%= render :partial => 'comments/comments', :locals => {:commentable => @discussion, :comments => @comments} %>
+      
+      <div id="comments">
+        <div class="page">
+          <%= render :partial => 'comments/comments', :locals => {:commentable => @discussion, :comments => @comments} %>
+        </div>
+      </div>
       
       </div>
       
@@ -55,3 +60,9 @@
     
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    setupAutoScroll();
+  });
+</script>

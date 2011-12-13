@@ -20,7 +20,11 @@
         <div class="actions">
           <%= render :partial => 'comments/form',  :locals => {:commentable => @user} %>
         </div>
-        <%= render :partial => 'comments/comments', :locals => {:commentable => @user, :comments => @comments} %>
+        <div id="comments">
+          <div class="page">
+            <%= render :partial => 'comments/comments', :locals => {:commentable => @user, :comments => @comments} %>
+          </div>
+        </div>
       </div>
       <div class="span3" style="margin:0;">
         <%= render :partial => "shared/adds" %>
@@ -28,4 +32,11 @@
     </div>
     
   </div>
+  <%= render :partial => "shared/footer" %>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    setupAutoScroll();
+  });
+</script>
