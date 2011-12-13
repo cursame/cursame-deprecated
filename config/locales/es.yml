@@ -189,6 +189,7 @@ es:
   flash:
     comment_added: 'Comment added with succes!'
     discussion_updated: 'Discusion Actualisada'
+    wrong_network: 'Red equivocada'
 
   errors:
     format: "%{attribute} %{message}"

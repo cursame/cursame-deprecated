@@ -174,7 +174,7 @@ var setupAutoScroll = function() {
   var loading = false;
 
   $(window).scroll(function(){
-    if (this.loading) {
+    if (loading) {
       return;
     }
     
