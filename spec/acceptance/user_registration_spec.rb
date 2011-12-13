@@ -44,18 +44,24 @@ feature 'User registration', %q{
   end
 
   scenario 'signing in' do
-    sign_in_with Factory(:confirmed_user)
+    sign_in_with Factory(:confirmed_user, :networks => [@network]), :subdomain => @network.subdomain
     page.should have_notice t('devise.sessions.signed_in')
   end
 
   scenario 'a teacher cannot sign in without being approved' do
-    sign_in_with Factory(:teacher, :state => 'inactive')
+    sign_in_with Factory(:teacher, :networks => [@network], :state => 'inactive'), :subdomain => @network.subdomain
     page.current_url.should match root_path
     page.should have_error t('flash.account_not_active')
   end
 
   scenario 'a teacher can sign in after being approved' do
-    sign_in_with Factory(:teacher, :state => 'active')
+    sign_in_with Factory(:teacher, :networks => [@network], :state => 'active'), :subdomain => @network.subdomain
     page.should have_notice t('devise.sessions.signed_in')
+  end
+
+  scenario 'trying to signing in to non belonging network' do
+    sign_in_with Factory(:confirmed_user, :networks => [@network]), :subdomain => Factory(:network).subdomain
+    page.should have_error t('flash.wrong_network')
+    page.current_url.should match root_path
   end
 end

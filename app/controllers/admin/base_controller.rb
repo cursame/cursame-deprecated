@@ -1,13 +1,10 @@
 module Admin
-
   class BaseController < ApplicationController
     layout 'admin'
-
     before_filter :require_admin
 
     def admin
     end
-
 
     private
 
@@ -17,5 +14,4 @@ module Admin
       end
     end
   end
-
 end
