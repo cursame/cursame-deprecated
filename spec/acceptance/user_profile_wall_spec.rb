@@ -79,7 +79,6 @@ feature 'Manage profile wall', %q{
     @user2  = Factory(:user, :networks => [@network])
     comment = Factory(:comment, :commentable => @user2)
     visit wall_for_user_url @user2, :subdomain => @network.subdomain
-    save_and_open_page
     page.should show_comment comment
   end
 end

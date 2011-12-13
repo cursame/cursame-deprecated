@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_filter :require_network
   set_tab :profile, :only => %w(show)
   set_tab :wall,    :only => %w(wall)
 

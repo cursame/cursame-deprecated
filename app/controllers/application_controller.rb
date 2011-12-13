@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :authenticate_active_user!
+  before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
 
   protected
@@ -14,10 +14,6 @@ class ApplicationController < ActionController::Base
 
   def authenticate_supervisor!
     current_user && current_user.supervisor? or throw(:warden)
-  end
-
-  def require_network
-    redirect_to root_path unless current_network
   end
 
   def uploaded_file
@@ -42,11 +38,15 @@ class ApplicationController < ActionController::Base
     @current_network ||= Network.find_by_subdomain(request.subdomain)
   end
 
-  def authenticate_active_user!
+  def authenticate_active_user_within_network!
     authenticate_user!
     if current_user && !current_user.active?
       sign_out
       flash[:error] = t('flash.account_not_active')
+      redirect_to root_path
+    elsif current_network && current_user && current_user.networks.where(:id => current_network.id).count == 0
+      sign_out
+      flash[:error] = t('flash.wrong_network')
       redirect_to root_path
     end
   end

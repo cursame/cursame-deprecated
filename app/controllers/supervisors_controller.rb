@@ -1,6 +1,5 @@
 class SupervisorsController < ApplicationController
   before_filter :authenticate_supervisor!
-  before_filter :require_network
 
   def show
   end
