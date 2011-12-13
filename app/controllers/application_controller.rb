@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for resource
     case resource.role
     when 'admin'      then admin_path
-    when 'supervisor' then supervisor_path
+    when 'supervisor' then supervisor_dashboard_path
     else 
       dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
     end

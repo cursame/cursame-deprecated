@@ -6,13 +6,13 @@
         <%= user.name %>
 
         <div>
-        <%= form_tag accept_user_supervisor_path(user.id), :method => :post do |form| %>
+        <%= form_tag supervisor_accept_user_path(user.id), :method => :post do |form| %>
           <%= submit_tag t('.approve') %>
         <% end %>
         </div>
 
         <div style="background-color:red;padding:3px;">
-        <%= form_tag reject_user_supervisor_path(user.id), :method => :post do |form| %>
+        <%= form_tag supervisor_reject_user_path(user.id), :method => :post do |form| %>
           <%= submit_tag t('.reject') %>
         <% end %>
         </div>

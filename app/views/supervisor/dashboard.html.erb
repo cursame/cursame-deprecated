@@ -1,0 +1,20 @@
+
+<h1>Supervisor control panel</h1>
+
+<p>content for sidebar:</p>
+
+<ul>
+  <li><%= link_to t('.courses'), courses_path %></li>
+  <li><%= link_to t('.teachers'), supervisor_teachers_path %></li>
+  <li><%= link_to t('.students'), supervisor_students_path %></li>
+  <li><%= link_to t('.pending_approvals'), supervisor_pending_approvals_path %></li>
+</ul>
+
+<ul class="networks">
+  <% @networks.each do |network| %>
+    <li>
+      <%= link_to network.name, supervisor_dashboard_url(:subdomain => network.subdomain) %>
+      | <%= link_to 'Edit', edit_supervisor_network_url(:subdomain => network.subdomain) %>
+    </li>
+  <% end %>
+</ul>

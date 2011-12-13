@@ -1,4 +1,8 @@
 Cursame::Application.routes.draw do
+  get "networks/edit"
+
+  get "networks/update"
+
   devise_for :users, :skip => [:registrations]
 
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
@@ -39,15 +43,15 @@ Cursame::Application.routes.draw do
     put :password
   end
 
-
-  resource :supervisor, :only => [:show] do
+  namespace :supervisor do
+    resource :network, :only => [:edit, :update]
+    get :dashboard
     get :teachers
     get :students
     get :pending_approvals
-    match '/pending_approvals/:user_id/accept', :via => :post, :to => 'supervisors#accept_user', :as => :accept_user
-    match '/pending_approvals/:user_id/reject', :via => :post, :to => 'supervisors#reject_user', :as => :reject_user
+    match '/pending_approvals/:user_id/accept', :as => :accept_user, :action => :accept_user
+    match '/pending_approvals/:user_id/reject', :as => :reject_user, :action => :reject_user
   end
-
 
   namespace :admin do
     resources :networks
