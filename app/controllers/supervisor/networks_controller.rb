@@ -1,5 +1,6 @@
 class Supervisor::NetworksController < ApplicationController
   before_filter :authenticate_supervisor!
+  set_tab :configuration
 
   def edit
     @network = current_network

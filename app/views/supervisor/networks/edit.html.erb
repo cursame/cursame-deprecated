@@ -1,25 +1,44 @@
-<h1>Edit Network</h1>
+<div class="container">
+  
+  <div class="row">
+    <div class="span16">
+      <ul class="breadcrumb">
+        <li><%= link_to(t('supervisor.dashboard.admin'), supervisor_dashboard_path) %> <span class="divider">/</span></li>
+        <li><%= t('.configuration') %></li>
+      </ul>  
+    </div>
+  </div>
+  
+  <div class="dashboard">  
 
-<%= semantic_form_for [:supervisor, @network] do |form| %>
-  <%= form.inputs :file do %>
-    <li class='preview'>
-      <img src="<%= @network.logo_file.thumb.url %>"/>
-    </li>
-    <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_supervisor_network_path} %>
-    <%= form.input :logo_file_cache, :as => :hidden %>
-  <% end %>
+    <div class="row">
+      <div class="span5">
+        <%= render :partial => "supervisor/shared/admin_menu" %>
+      </div>
+      
+      <div class="span9">
+    
+        <%= semantic_form_for [:supervisor, @network] do |form| %>
+          <%= form.inputs :file do %>
+            <li class='preview'><img src="<%= @network.logo_file.thumb.url %>"/></li>
+            <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_supervisor_network_path} %>
+            <%= form.input :logo_file_cache, :as => :hidden %>
+          <% end %>
 
-  <%= form.inputs do %>
-    <%= form.input :slogan %>
-    <%= form.input :welcome_message %>
-    <%= form.input :time_zone, :as => :time_zone %>
-  <% end %>
+          <%= form.inputs do %>
+            <%= form.input :slogan, :input_html => {:class => "span6"} %>
+            <%= form.input :welcome_message, :as => :text, :input_html => {:class => "span6", :rows => 6} %>
+            <%= form.input :time_zone, :as => :time_zone, :input_html => {:class => "large"} %>
+          <% end %>
 
-  <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit} %>
-  <% end %>
+          <%= form.buttons do %>
+            <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>
+          <% end %>
+        <% end %>
+        
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer"%>
+</div>
 
-<% end %>
-
-
-<%= link_to 'cancel', admin_network_path(@network) %>

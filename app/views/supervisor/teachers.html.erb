@@ -1,10 +1,34 @@
+<div class="container">
+  
+  <div class="row">
+    <div class="span16">
+      <ul class="breadcrumb">
+        <li><%= link_to(t('.admin'), supervisor_dashboard_path) %></li>
+      </ul>  
+    </div>
+  </div>
+  
+  <div class="dashboard">  
 
-<div class="users teachers">
-  <% @teachers.each do |teacher| %>
-    <div class="user padding-all <%= cycle('odd', 'even') %>">
-      <div class="row teacher">
-        <%= link_to teacher.name, user_path(teacher) %>
+    <div class="row">
+      <div class="span5">
+        <%= render :partial => "supervisor/shared/admin_menu" %>
+      </div>
+      
+      <div class="span9">
+        <div class="users teachers">
+          <% @teachers.each do |teacher| %>
+            <div class="user padding-all <%= cycle('odd', 'even') %>">
+              <div class="row teacher">
+                <%= link_to teacher.name, user_path(teacher) %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  <% end %>
+    <!-- Contexts or Networks should be in a drop-down or the way Github does Contexts -->
+  </div>
+  <%= render :partial => "shared/footer"%>
 </div>
+
