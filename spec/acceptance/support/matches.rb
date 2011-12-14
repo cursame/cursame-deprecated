@@ -32,11 +32,11 @@ RSpec::Matchers.define :show_assignment_preview do |assignment|
   match do |page|
     page.should have_content assignment.course.name
     page.should have_content assignment.name
-    page.should have_content assignment.value
-    page.should have_content assignment.period
+    page.should have_content assignment.value.to_s
+    page.should have_content assignment.period.to_s
     page.should have_content I18n.l(assignment.due_to, :format => :short) 
 
-    page.should have_css "a[href='#{assignment_path assignment}']"
+    # page.should have_css "a[href='#{assignment_path assignment}']"
   end
 end
 
@@ -76,5 +76,13 @@ RSpec::Matchers.define :show_user do |user|
     page.should have_content user.about_me
     page.should have_content user.studies
     page.should have_content user.occupation
+  end
+end
+
+RSpec::Matchers.define :show_delivery do |delivery|
+  match do |page|
+    page.should have_content Sanitize.clean(delivery.content).strip
+    page.should have_content I18n.l(delivery.updated_at, :format => :short) 
+    page.should show_assignment_preview delivery.assignment
   end
 end

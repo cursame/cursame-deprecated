@@ -31,6 +31,8 @@ es:
     network_updated: La red fue actualizada
     discussion_created: Discusion creada 
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
+    delivery_created: Tu tarea fue entregada
+    delivery_updated: Tu tarea fue actualizada
 
   activerecord:
     models:
@@ -159,6 +161,20 @@ es:
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
+
+  assignments:
+    show:
+      deliver: "Entregar tarea"
+      edit_delivery: "Editar tarea"
+  deliveries:
+    new:
+      header: Entregar tarea
+    edit:
+      header: Editar entrega de tarea
+    show:
+      header: Entrega de tarea
+      delivered: Entrega
+      comment: Comentar entrega
 
   profile:
     edit_profile: 'Editar perfil'

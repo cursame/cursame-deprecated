@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   has_many :comments
   # TODO: refactor commentable models to homogenize access to comments (below)
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
+  has_many :deliveries
 
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)

@@ -1,0 +1,6 @@
+<h1><%= t('.header') %></h1>
+<%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
+
+<%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
+  <%= render :partial => 'form_fields', :locals => {:form => form} %>
+<% end %>
