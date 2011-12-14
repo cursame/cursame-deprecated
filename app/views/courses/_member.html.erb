@@ -3,7 +3,7 @@
 <div class="<%= member.role %> <%= request.state %>">
   <div class="row bottom-margin <%= cycle("odd", "even") %>">
     <div class="span1" style="margin-left:20px;">
-      <%= image_tag(member.avatar_file.xsmall.url) %>
+      <%= avatar(member, :xsmall) %>
     </div>
     <div class="span5-5">
       <%= link_to(member.name, user_path(member)) %><br />
