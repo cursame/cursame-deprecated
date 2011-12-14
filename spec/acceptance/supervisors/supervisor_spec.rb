@@ -38,7 +38,7 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:teacher) } # Other networks
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
-      click_link t('supervisor.dashboard.teachers')
+      click_link t('supervisor.shared.admin_menu.teachers')
 
       page.should have_css('.teacher', :count => 3)
     end
@@ -58,7 +58,7 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student, :networks => [@network]) }
 
       #sign_in_with @supervisor, :subdomain => @network.subdomain
-      click_link t('supervisor.dashboard.pending_approvals')
+      click_link t('supervisor.shared.admin_menu.pending_approvals')
       page.should have_css('.pending', :count => 3)
     end
 
@@ -93,7 +93,7 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student) } # Other networks
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
-      click_link t('supervisor.dashboard.students') 
+      click_link t('supervisor.shared.admin_menu.students') 
       page.should have_css('.student', :count => 3)
     end
 
@@ -136,7 +136,7 @@ feature 'Supervisor', %q{
       Factory(:course)
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
-      click_link t('supervisor.dashboard.courses')
+      click_link t('supervisor.shared.admin_menu.courses')
       page.should have_css('.course', :count => 1)
     end
 
