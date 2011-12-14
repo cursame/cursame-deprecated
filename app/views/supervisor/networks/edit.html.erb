@@ -31,9 +31,10 @@
             <%= form.input :time_zone, :as => :time_zone, :input_html => {:class => "large"} %>
           <% end %>
 
-          <%= form.buttons do %>
-            <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>
+          <%= form.buttons :class => "fieldset-admin" do %>
+            <%= form.commit_button :label => "Guardar Cambios", :button_html => {:id => :submit, :class => 'btn right'} %>
           <% end %>
+           <span class="fieldset-admin-txt"><%= link_to("Cancelar", edit_supervisor_network_path) %></span>
         <% end %>
         
       </div>

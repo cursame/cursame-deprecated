@@ -848,3 +848,19 @@ display: block;
   color: #fff;
 }
 
+.dashboard .fieldset-admin {
+  width: 400px;
+  float: left;
+  margin-right: 20px;
+}
+
+.dashboard .fieldset-admin ol {
+  list-style: none;
+}
+
+.dashboard .fieldset-admin-txt {
+  margin-top: 25px;
+  display:block;
+  overflow:hidden;
+}
+
