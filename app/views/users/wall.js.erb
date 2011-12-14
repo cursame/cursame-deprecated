@@ -1,0 +1,1 @@
+$("#comments").append("<div class='page'><%= escape_javascript(render :partial => 'comments/comments', :locals => {:commentable => @user, :comments => @comments}) %></div>");
