@@ -19,6 +19,9 @@ feature 'Manage assignments', %q{
     visit assignment_url @assignment, :subdomain => @network.subdomain
     click_link t('assignments.show.deliver')
 
+    page.should_not link_to assignment_delivery_path(@assignment)
+    page.should_not link_to edit_assignment_delivery_path(@assignment)
+
     lambda do
       fill_in 'delivery[content]', :with => 'This is my delivery'
       click_button 'submit'
@@ -46,6 +49,17 @@ feature 'Manage assignments', %q{
     page.should show_delivery Delivery.last
   end
 
+  scenario 'viewing a delivery for an assignment' do
+    delivery = Factory(:delivery, :assignment => @assignment, :user => @user)
+    visit assignment_url @assignment, :subdomain => @network.subdomain
+
+    page.should_not link_to new_assignment_delivery_path(@assignment)
+
+    click_link t('assignments.show.show_delivery')
+
+    page.should show_delivery delivery
+  end
+
   scenario 'trying to make a delivery after the assignment is due' do
     Timecop.freeze(Date.today + 30) do
       visit assignment_url @assignment, :subdomain => @network.subdomain
@@ -54,7 +68,7 @@ feature 'Manage assignments', %q{
       lambda do
         fill_in 'delivery[content]', :with => 'This is my delivery'
         click_button 'submit'
-      end.should_not change(Deliver, :count)
+      end.should_not change(Delivery, :count)
     end
   end
 
