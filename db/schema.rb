@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213043858) do
+ActiveRecord::Schema.define(:version => 20111213215925) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(:version => 20111213043858) do
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
 
+  create_table "deliveries", :force => true do |t|
+    t.text     "content"
+    t.integer  "assignment_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "discussions", :force => true do |t|
     t.integer  "course_id"
     t.integer  "user_id"
@@ -113,6 +121,7 @@ ActiveRecord::Schema.define(:version => 20111213043858) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
+    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"

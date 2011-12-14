@@ -36,6 +36,8 @@ class CommentsController < ApplicationController
         current_user.discussions.find params[:commentable_id]
       when :user
         current_network.users.find params[:commentable_id]
+      when :delivery
+        current_user.deliveries.find params[:commentable_id]
       when :comment
         comment = Comment.find params[:commentable_id]
         raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)
@@ -50,6 +52,8 @@ class CommentsController < ApplicationController
       wall_for_course_path commentable
     when User
       wall_for_user_path commentable
+    when Delivery
+      assignment_delivery_path commentable.assignment
     else
       Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
     end

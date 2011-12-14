@@ -16,7 +16,10 @@ Cursame::Application.routes.draw do
       get  'muro',     :as => :wall_for,    :to => 'courses#wall'
     end
 
-    resources :assignments
+    resources :assignments, :shallow => true do
+      resource :delivery, :only => [:show, :new, :create, :edit, :update], :module => 'students'
+    end
+
     resources :discussions
     resources :requests, :only => [:create, :index], :controller => 'course_requests' do
       member do
@@ -64,6 +67,7 @@ Cursame::Application.routes.draw do
   match '/courses/:commentable_id/comment',     :to => 'comments#create', :as => :comment_course,     :conditions => {:commentable => :course}
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
   match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
+  match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

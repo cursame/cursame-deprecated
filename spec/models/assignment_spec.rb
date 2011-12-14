@@ -9,6 +9,7 @@ describe Assignment do
     it { should have_many :comments }
     it { should validate_presence_of :course }
     it { should have_many :assets }
+    it { should have_many :deliveries }
   end
   
   describe 'validations' do
