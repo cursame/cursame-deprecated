@@ -1,0 +1,21 @@
+<% if @comment.commentable_type === 'Comment' %>
+    var node = $('#comment_<%= @comment.commentable.id %>').closest('.comment').find('.comment-form'),
+        txtarea = $('textarea', node),
+        options,removeoption;
+        $('<%= escape_javascript(render(:partial => 'comments/comment_tpl', :locals => {:comment => @comment}))%>').insertBefore(node);
+        txtarea.val(' ');
+        /*quitamos el remove de los que ya tienen comentarios*/
+        options = $('#comment_options_<%= @comment.commentable.id %>'),
+        removeoption = options.children(':last-child');
+        options.html(removeoption);
+        removeoption.click(function(){
+            txtarea.focus();
+            return false;
+        });
+<%else%>
+    var node = $('div.comments');
+    $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
+    $('textarea', $('div.actions')).val(' ');
+<%end%>
+$('#comment_<%= @comment.id %>').fadeOut();
+$('#comment_<%= @comment.id %>').fadeIn();

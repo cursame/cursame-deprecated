@@ -57,12 +57,13 @@ $(function(){
     userCollapsePrefix: ''
   });
 
-  $('a.toggle_comment_box').click(function(){
-    $(this).closest('.comment').find('.comment-form').toggle(400, function(){
+  $('a.toggle_comment_box').live('click', function(){
+    $(this).closest('.comment').find('.comment-form').fadeIn(400, function(){
       $('textarea', $(this)).focus();
     });
     return false;
-  })
+  });
+
   
   $("span.tip").twipsy({
     live: true

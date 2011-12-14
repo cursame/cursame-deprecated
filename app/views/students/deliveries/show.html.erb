@@ -3,6 +3,7 @@
 <%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
 <%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
 <%= @delivery.content %>
+<%= link_to @delivery.user.name, @delivery.user %>
 <%= render :partial => 'shared/assets_table', :locals => {:record => @delivery} %>
 
 <div class="actions">

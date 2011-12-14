@@ -1,0 +1,36 @@
+<div class="comment comment-box" id="<%= "comment_#{comment.id}" %>">
+  <div class="row">
+    <div class="span1"><%= link_to(image_tag(comment.user.avatar_file.xsmall.url), user_path(comment.user)) %></div>
+    <div class="span8">
+      <h6><%= link_to comment.user.name, user_path(comment.user) %></h6>
+      <blockquote>
+        <p><%= comment.text %></p>
+        <small><%= time_ago_in_words(comment.created_at) %></small>
+      </blockquote>
+      <p id="<%= "comment_options_#{comment.id}" %>">
+        <% if current_user.can_destroy_comment? comment %>
+            <%= link_to t('.remove'), comment, :method => :delete, :remote => true,:confirm => t('confirm_delete'), :html => {:title => 'delete comment'} %>
+            <a href="#" id="<%= "comment_separator_#{comment.id}" %>">|</a>
+        <% end %>
+        <% unless Comment === comment.commentable %>
+            <%= link_to t('comment'), '#', :class => "toggle_comment_box" %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <div class="comment-comments">
+    <%= render :partial => 'comments/comment_comments', :locals => {:commentable => comment} unless comment.comments.blank? %>
+
+    <% unless Comment === comment.commentable %>
+        <div class="comment-form"
+             <%if comment.comments.empty? %>
+                style="display:none;"
+             <%end%>
+        >
+          <div class="comment body" id="<%= "comment_#{comment.id}" %>">
+            <%= render :partial => 'comments/comment_form', :locals => {:commentable => comment} %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>

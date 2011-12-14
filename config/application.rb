@@ -27,7 +27,7 @@ module Cursame
 
     config.generators do |gen|
       gen.orm :active_record
-      gen.test_framework :rspec, :fixture_replacement => :factory_girl   
+      gen.test_framework :rspec, :fixture_replacement => :factory_girl, :views => false, :controllers => false  
       gen.helper = false
     end
   end

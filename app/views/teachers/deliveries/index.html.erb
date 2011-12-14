@@ -1,0 +1,11 @@
+<h1><%= t('.header') %></h1>
+
+<%= render :partial => 'assignments/assignment', :locals => {:assignment => @assignment} %>
+
+<% @deliveries.each do |delivery| %>
+  <div class="delivery">
+    <%= delivery.user.name %>
+    <%= l delivery.updated_at, :format => :short %>
+    <%= link_to t('.show'), delivery %> 
+  </div>
+<% end %>
