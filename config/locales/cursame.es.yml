@@ -72,7 +72,7 @@ es:
         password: Contraseña
         password_confirmation: Confirmación de contraseña
       network:
-        slogan: Lema
+        slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
       delivery:

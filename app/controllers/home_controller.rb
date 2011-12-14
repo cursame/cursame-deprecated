@@ -14,6 +14,7 @@ class HomeController < ApplicationController
       end
     else
       @user = User.new
+      @network = current_network
     end
   end
 

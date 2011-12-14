@@ -469,6 +469,26 @@ ul.nav-member-avatars li {
 
 /* @end */
 
+/* Network info */
+
+.network-info {
+  height: 354px;
+}
+
+.network-info h3 {
+  color: #808080;
+  line-height: 24px;
+}
+
+.network-info span {
+  border-bottom: solid 1px #ddd;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  color: #808080;
+}
+
 /* @group Forms */
 
 .register-box {
