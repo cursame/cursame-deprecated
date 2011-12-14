@@ -37,7 +37,6 @@ feature 'Manage assignments', %q{
       click_link t('teachers.deliveries.index.show')
     end
      
-    save_and_open_page
     page.should show_delivery @delivery
   end
 
@@ -47,7 +46,7 @@ feature 'Manage assignments', %q{
     lambda do
       fill_in 'comment[text]', :with => 'Test Comment'
       click_button 'submit'
-    end.should change(delivery.comments, :count).by(1)
+    end.should change(@delivery.comments, :count).by(1)
     
     page.should have_notice t('flash.comment_added')
 
