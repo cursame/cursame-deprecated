@@ -1,7 +1,5 @@
 <div class="underline">
-  <% unless @user.avatar_file.blank? %>
-    <%= image_tag @user.avatar_file.small.url %>
-  <% end %>
+  <%= avatar(@user, 180) %>
 </div>
 
 <div class="underline">	

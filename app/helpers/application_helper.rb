@@ -8,8 +8,13 @@ module ApplicationHelper
   
   def avatar(user, size=nil)
     case size
-      when 180 then image_tag(user.has_avatar? ? user.avatar_file.size.url : 'professor.jpg')
-      when 40 then image_tag(user.has_avatar? ? user.avatar_file.size.url : 'professor_small.jpg')
+      when 180
+        # FIXME: We need a fallback image for supervisors.
+        fallback = user.teacher? ? 'profesor.png' : 'alumno.png'
+        image_tag(user.avatar_file.blank? ? fallback : user.avatar_file.small.url)
+      when 40
+        fallback = user.teacher? ? 'profesor_small.png' : 'alumno_small.png'
+        image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xsmall.url)
     end
   end
   
