@@ -40,7 +40,10 @@ feature 'Manage assignments', %q{
       click_button 'submit'
     end.should_not change(Delivery, :count)
 
-    Network.should exist_with :content => 'This is my edited delivery', :user_id => @user.id, :course_id => @course.id
+    Delivery.should exist_with :content => ActiveRecord::HTMLSanitization.sanitize('This is my edited delivery'), 
+                               :user_id => @user.id, :assignment_id => @assignment.id
+    page.should have_notice t('flash.delivery_updated')
+    page.should show_delivery Delivery.last
   end
 
   scenario 'trying to make a delivery after the assignment is due' do

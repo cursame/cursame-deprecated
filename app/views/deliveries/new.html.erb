@@ -1,13 +1,6 @@
+<h1><%= t('.header') %></h1>
+<%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
+
 <%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
-  <%= form.inputs do %>
-    <%= form.input :content %>
-  <% end %>
-
-  <div class="well">
-    <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
-  </div>
-
-  <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit, :class => "btn"} %>
-  <% end %>
+  <%= render :partial => 'form_fields', :locals => {:form => form} %>
 <% end %>

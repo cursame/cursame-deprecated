@@ -1,2 +1,6 @@
-<h1>Deliveries#edit</h1>
-<p>Find me in app/views/deliveries/edit.html.erb</p>
+<h1><%= t('.header') %></h1>
+<%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
+
+<%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
+  <%= render :partial => 'form_fields', :locals => {:form => form} %>
+<% end %>

@@ -31,7 +31,7 @@
               <%= link_to t('formtastic.actions.edit'), edit_assignment_path(@assignment), :id => 'edit', :class => 'btn info right' %>
             <% else %>
               <%= link_to t('.deliver'), new_assignment_delivery_path(@assignment), :id => 'edit', :class => 'btn info right' %>
-              <%= link_to t('.edit_delivery'), '#', :id => 'edit', :class => 'btn info right' %>
+              <%= link_to t('.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit', :class => 'btn info right' %>
             <% end %>
           </div>
         </div>

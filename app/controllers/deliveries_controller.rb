@@ -1,4 +1,8 @@
 class DeliveriesController < ApplicationController
+  def show
+    @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+  end
+
   def new
     @assignment = current_user.assignments.find params[:assignment_id]
     @delivery   = @assignment.deliveries.build
@@ -17,9 +21,15 @@ class DeliveriesController < ApplicationController
   end
 
   def edit
+    @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
   end
-
-  def show
-    @delivery = Delivery.where(:user_id => current_user, :assignment_id => params[:assignment_id]).first
+  
+  def update
+    @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+    if @delivery.update_attributes params[:delivery]
+      redirect_to assignment_delivery_path(@delivery.assignment), :notice => t('flash.delivery_updated')
+    else
+      render :new
+    end
   end
 end
