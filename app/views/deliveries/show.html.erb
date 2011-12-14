@@ -4,3 +4,14 @@
 <%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
 <%= @delivery.content %>
 <%= render :partial => 'shared/assets_table', :locals => {:record => @delivery} %>
+
+<div class="actions">
+  <h2><%= t('.comment') %></h2>
+  <%= render :partial => 'comments/form', :locals => {:commentable => @delivery} %>
+</div>
+
+<div id="comments">
+  <div class="page">
+    <%= render :partial => 'comments/comments', :locals => {:commentable => @delivery, :comments => @comments} %>
+  </div>
+</div>

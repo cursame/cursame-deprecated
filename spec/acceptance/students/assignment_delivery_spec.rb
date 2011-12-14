@@ -57,4 +57,21 @@ feature 'Manage assignments', %q{
       end.should_not change(Deliver, :count)
     end
   end
+
+  scenario 'commenting on the delivery' do
+    delivery = Factory(:delivery, :assignment => @assignment, :user => @user)
+    visit assignment_delivery_path @assignment, :subdomain => @network.subdomain
+    
+    lambda do
+      fill_in 'comment[text]', :with => 'Test Comment'
+      click_button 'submit'
+    end.should change(delivery.comments, :count).by(1)
+    
+    page.should have_notice t('flash.comment_added')
+
+    comment = Comment.last
+    comment.user.should == @user
+    page.should show_comment comment
+    page.current_url.should match assignment_delivery_path(@assignment)
+  end
 end
