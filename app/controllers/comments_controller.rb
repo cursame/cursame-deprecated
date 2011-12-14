@@ -1,25 +1,32 @@
 class CommentsController < ApplicationController
   def create
-    comment      = (User === commentable ? commentable.profile_comments : commentable.comments).build params[:comment]
-    comment.user = current_user
-    if comment.save
-      redirect_to commentable_path_for(comment) + "#comment_#{comment.id}", :notice => I18n.t('flash.comment_added')
-    else
-      redirect_to commentable_path_for(comment)
+    @comment = (User === commentable ? commentable.profile_comments : commentable.comments).build params[:comment]
+    @comment.user = current_user
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
+        format.js
+      else
+        format.html { redirect_to commentable_path_for(@comment) }
+      end
     end
   end
 
   def destroy
-    comment = Comment.find params[:id]
-    if current_user.can_destroy_comment? comment
-      comment.destroy
-      redirect_to commentable_path_for(comment), :notice => t('flash.comment_deleted')
+    @comment = Comment.find params[:id]
+    if current_user.can_destroy_comment? @comment
+      respond_to do |format|
+        if @comment.destroy
+          format.html {redirect_to commentable_path_for(@comment), :notice => t('flash.comment_deleted')}
+          format.js
+        end
+      end
     end
   end
 
   private
   def commentable
-    @commentable ||= 
+    @commentable ||=
       case params[:conditions][:commentable]
       when :assignment
         current_user.assignments.find params[:commentable_id]
