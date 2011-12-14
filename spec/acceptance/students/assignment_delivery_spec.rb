@@ -61,15 +61,32 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'trying to make a delivery after the assignment is due' do
-    Timecop.freeze(Date.today + 30) do
+    Timecop.freeze(6.months.from_now) do
       visit assignment_url @assignment, :subdomain => @network.subdomain
-      click_link t('assignments.show.deliver')
+
+      page.should_not link_to assignment_delivery_path(@assignment)
+      page.should_not link_to edit_assignment_delivery_path(@assignment)
+      page.should_not link_to new_assignment_delivery_path(@assignment)
+      
+      page.should have_content t('assignments.show.failed_delivery')
 
       lambda do
-        fill_in 'delivery[content]', :with => 'This is my delivery'
-        click_button 'submit'
+        page.driver.post assignment_delivery_path(@assignment), :delivery => {:content => 'nay nay!'}
       end.should_not change(Delivery, :count)
     end
+  end
+
+  scenario 'trying to make a delivery when I did one already' do
+    Factory(:delivery, :assignment => @assignment, :user => @user)
+    visit assignment_url @assignment, :subdomain => @network.subdomain
+
+    page.should     link_to assignment_delivery_path(@assignment)
+    page.should     link_to edit_assignment_delivery_path(@assignment)
+    page.should_not link_to new_assignment_delivery_path(@assignment)
+
+    lambda do
+      page.driver.post assignment_delivery_path(@assignment), :delivery => {:content => 'nay nay!'}
+    end.should_not change(Delivery, :count)
   end
 
   scenario 'commenting on the delivery' do
