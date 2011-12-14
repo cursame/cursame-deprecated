@@ -1,0 +1,6 @@
+<h1><%= t('.header') %></h1>
+
+<%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
+<%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
+<%= @delivery.content %>
+<%= render :partial => 'shared/assets_table', :locals => {:record => @delivery} %>

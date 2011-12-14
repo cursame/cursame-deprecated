@@ -160,6 +160,15 @@ es:
       period: 'Periodo'
       comments: 'Comentarios'
 
+  assignments:
+    show:
+      deliver: "Entregar tarea"
+      edit_delivery: "Editar tarea"
+  deliveries:
+    show:
+      header: Entrega de tarea
+      delivered: Entrega
+
   profile:
     edit_profile: 'Editar perfil'
     about_me: 'Acerca de mí'

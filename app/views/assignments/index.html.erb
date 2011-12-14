@@ -32,19 +32,7 @@
         </div>
 
         <div class="assignments">
-          <% @assignments.each do |assignment| %> 
-            <div class="assignment padding-all <%= cycle('odd', 'even') %>">
-            <h3><%= link_to assignment.name, assignment %></h3>
-            <%= assignment.course.name %>
-            <div class="row">
-              <div class="assignment-values">
-                <%= t('courses.assignments.value') %>: <b><%= assignment.value %></b> -
-                <%= t('courses.assignments.period') %>: <b><%= assignment.period %></b> -
-                <%= t('courses.assignments.date_time') %>: <b><%= l assignment.due_to, :format => :short %></b>
-              </div>
-            </div>
-            </div>
-          <% end %>
+          <%= render :partial => 'assignment', :collection => @assignments %>
         </div>
         
       </div>

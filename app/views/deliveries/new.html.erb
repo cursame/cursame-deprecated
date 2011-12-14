@@ -1,0 +1,13 @@
+<%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :content %>
+  <% end %>
+
+  <div class="well">
+    <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
+  </div>
+
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => "btn"} %>
+  <% end %>
+<% end %>

@@ -16,7 +16,10 @@ Cursame::Application.routes.draw do
       get  'muro',     :as => :wall_for,    :to => 'courses#wall'
     end
 
-    resources :assignments
+    resources :assignments, :shallow => true do
+      resource :delivery, :only => [:show, :new, :create, :edit, :update]
+    end
+
     resources :discussions
     resources :requests, :only => [:create, :index], :controller => 'course_requests' do
       member do
