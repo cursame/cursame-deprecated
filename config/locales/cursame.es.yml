@@ -112,7 +112,6 @@ es:
     edit: 'Editar'
     delete: 'Eliminar'
     courses: 'Cursos'
-    course: 'Curso'
     add_asset: Añadir archivo
     course_menu:
       wall: 'Muro'
@@ -144,6 +143,7 @@ es:
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
+    course:
       request_join: Solicitar unirse
       request_join_again: Solicitar unirse de nuevo
       join_requested: Solicitud pendiente
@@ -171,6 +171,7 @@ es:
       deliveries: Entregas
       show_delivery: Mostrar mi entrega
       failed_delivery: La fecha de entrega ya pasó
+      course: Curso
 
   students:
     deliveries:
@@ -221,15 +222,16 @@ es:
     dashboard: 'Dashboard'
 
   supervisor:
-    dashboard:
-      dashboard: 'Panel de control'
-      admin: 'Administración'
-      courses: Cursos
-      teachers: Maestros
-      students: Estudiantes
-      reoprts: 'Reportes'
-      pending_approvals: Registros de maestros pendientes
-      configuration: Configuración
+    shared:
+      admin_menu:
+        dashboard: 'Panel de control'
+        admin: 'Administración'
+        courses: Cursos
+        teachers: Maestros
+        students: Estudiantes
+        reports: 'Reportes'
+        pending_approvals: Registros de maestros pendientes
+        configuration: Configuración
     pending_approvals:
       approve: Aceptar
       reject: Rechazar

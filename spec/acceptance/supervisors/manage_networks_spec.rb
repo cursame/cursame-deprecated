@@ -21,6 +21,5 @@ feature 'Supervisor', %q{
 
     Network.should exist_with :slogan => 'Errare human est', :welcome_message => 'Bienvenida!!', :time_zone => 'Guadalajara'
     page.should have_notice I18n.t('flash.network_updated')
-    page.current_url.should match supervisor_dashboard_url(@assignment, :subdomain => @network.subdomain)
   end
 end
