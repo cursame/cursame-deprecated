@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213215925) do
+ActiveRecord::Schema.define(:version => 20111214202403) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20111213215925) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slogan"
-    t.string   "welcome_message"
+    t.text     "welcome_message", :limit => 255
     t.string   "logo_file"
     t.string   "time_zone"
   end
@@ -121,7 +121,6 @@ ActiveRecord::Schema.define(:version => 20111213215925) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"

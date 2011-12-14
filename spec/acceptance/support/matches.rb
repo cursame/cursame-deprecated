@@ -97,3 +97,9 @@ RSpec::Matchers.define :show_delivery_preview do |delivery|
     page.should have_content delivery.user.name # TODO: WTF, por que estoy no puede ir dentro de within block?
   end
 end
+
+RSpec::Matchers.define :link_to do |link|
+  match do |page|
+    page.should have_css %{a[href$="#{link}"]}
+  end
+end

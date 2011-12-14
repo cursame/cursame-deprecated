@@ -169,6 +169,8 @@ es:
       deliver: "Entregar tarea"
       edit_delivery: "Editar tarea"
       deliveries: Entregas
+      show_delivery: Mostrar mi entrega
+      failed_delivery: La fecha de entrega ya pasó
 
   students:
     deliveries:

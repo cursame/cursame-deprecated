@@ -6,10 +6,16 @@ class Delivery < ActiveRecord::Base
 
   belongs_to :assignment
   belongs_to :user
-  validates_presence_of :assignment
   has_many :comments, :as => :commentable
+
+  validates_presence_of :assignment
+  validates_uniqueness_of :assignment_id, :scope => [:user_id]
 
   can_haz_assets
 
   html_sanitized :content
+
+  validate do
+    errors.add(:base, 'Due date has passed') if assignment.due_to < DateTime.now
+  end
 end

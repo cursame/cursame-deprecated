@@ -26,13 +26,19 @@
             <h2><%= Assignment.model_name.human %>: <%= @assignment.name %></h2>
           </div>
           <div class="span3" style="margin-left:70px;">
-            <% if current_user.manageable_assignments.include? @assignment %>
+            <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
               <%= link_to t('formtastic.actions.delete'), @assignment, :id => 'delete', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete') %>
               <%= link_to t('formtastic.actions.edit'), edit_assignment_path(@assignment), :id => 'edit', :class => 'btn info right' %>
               <%= link_to t('.deliveries'), assignment_deliveries_path(@assignment), :id => 'edit', :class => 'btn info right' %>
+            <% elsif @assignment.due_to > DateTime.now %>
+              <% if current_user.deliveries.where(:assignment_id => @assignment).count == 0 %>
+                <%= link_to t('.deliver'), new_assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right' %>
+              <% else %>
+                <%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right' %>
+                <%= link_to t('.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right' %>
+              <% end %>
             <% else %>
-              <%= link_to t('.deliver'), new_assignment_delivery_path(@assignment), :id => 'edit', :class => 'btn info right' %>
-              <%= link_to t('.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit', :class => 'btn info right' %>
+              <span style="color: red; font-size: 20;"><%= t('.failed_delivery') %></span>
             <% end %>
           </div>
         </div>
