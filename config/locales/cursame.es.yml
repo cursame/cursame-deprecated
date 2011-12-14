@@ -75,6 +75,8 @@ es:
         slogan: Lema
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
+      delivery:
+        content: Contenido
 
   formtastic:
     actions:
@@ -166,15 +168,24 @@ es:
     show:
       deliver: "Entregar tarea"
       edit_delivery: "Editar tarea"
-  deliveries:
-    new:
-      header: Entregar tarea
-    edit:
-      header: Editar entrega de tarea
-    show:
-      header: Entrega de tarea
-      delivered: Entrega
-      comment: Comentar entrega
+      deliveries: Entregas
+
+  students:
+    deliveries:
+      new:
+        header: Entregar tarea
+      edit:
+        header: Editar entrega de tarea
+      show:
+        header: Entrega de tarea
+        delivered: Entrega
+        comment: Comentar entrega
+
+  teachers:
+    deliveries:
+      index:
+        heder: Entregas para tarea
+        show: Mostrar entrega
 
   profile:
     edit_profile: 'Editar perfil'

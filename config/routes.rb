@@ -18,6 +18,7 @@ Cursame::Application.routes.draw do
 
     resources :assignments, :shallow => true do
       resource :delivery, :only => [:show, :new, :create, :edit, :update], :module => 'students'
+      resources :deliveries, :only => [:index, :show], :module => 'teachers'
     end
 
     resources :discussions

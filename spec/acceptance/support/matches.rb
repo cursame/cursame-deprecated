@@ -83,6 +83,17 @@ RSpec::Matchers.define :show_delivery do |delivery|
   match do |page|
     page.should have_content Sanitize.clean(delivery.content).strip
     page.should have_content I18n.l(delivery.updated_at, :format => :short) 
+    page.should have_content delivery.user.name
     page.should show_assignment_preview delivery.assignment
+  end
+end
+
+RSpec::Matchers.define :show_delivery_preview do |delivery|
+  match do |page|
+    page.should have_css '.delivery'
+    within '.delivery' do
+      page.should have_content I18n.l(delivery.updated_at, :format => :short) 
+    end
+    page.should have_content delivery.user.name # TODO: WTF, por que estoy no puede ir dentro de within block?
   end
 end
