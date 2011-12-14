@@ -193,6 +193,8 @@ es:
 
   supervisor:
     dashboard:
+      dashboard: 'Panel de control'
+      admin: 'Administración'
       courses: Cursos
       teachers: Maestros
       students: Estudiantes

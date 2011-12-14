@@ -1,5 +1,9 @@
 class SupervisorController < ApplicationController
   before_filter :authenticate_supervisor!
+  set_tab :dashboard, :only => %w(dashboard)
+  set_tab :teachers, :only => %w(teachers)
+  set_tab :students, :only => %w(students)
+  set_tab :pending_approvals, :only => %w(pending_approvals)
 
   def dashboard
     @networks = current_user.networks
