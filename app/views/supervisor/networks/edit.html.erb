@@ -21,7 +21,7 @@
         <%= semantic_form_for [:supervisor, @network] do |form| %>
           <%= form.inputs :file do %>
             <li class='preview'><img src="<%= @network.logo_file.thumb.url %>"/></li>
-            <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_supervisor_network_path} %>
+            <%= form.input :logo_file, :as => :file, :hint => "Tamaño de imagen ideal 640 x 175", :input_html => {'data-upload-path' => upload_logo_for_supervisor_network_path} %>
             <%= form.input :logo_file_cache, :as => :hidden %>
           <% end %>
 

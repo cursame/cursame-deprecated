@@ -6,4 +6,5 @@
   <%= tab.teachers t('.teachers'), supervisor_teachers_path %>
   <%= tab.students t('.students'), supervisor_students_path %>
   <%= tab.pending_approvals t('.pending_approvals'), supervisor_pending_approvals_path %>
+  <li><%= link_to(t('supervisor.dashboard.reports'), "#") %></li>
 <% end %>

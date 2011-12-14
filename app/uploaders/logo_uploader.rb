@@ -4,7 +4,7 @@ class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   version :large do
-    process :resize_to_limit => [640, 354]
+    process :resize_to_limit => [640, 175]
   end
   
   version :thumb do

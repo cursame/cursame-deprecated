@@ -227,6 +227,7 @@ es:
       courses: Cursos
       teachers: Maestros
       students: Estudiantes
+      reoprts: 'Reportes'
       pending_approvals: Registros de maestros pendientes
       configuration: Configuración
     pending_approvals:

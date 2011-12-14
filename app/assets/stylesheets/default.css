@@ -472,7 +472,11 @@ ul.nav-member-avatars li {
 /* Network info */
 
 .network-info {
-  height: 354px;
+  min-height: 354px;
+}
+
+.network-info img {
+  margin-bottom: 10px;
 }
 
 .network-info h3 {
@@ -487,6 +491,7 @@ ul.nav-member-avatars li {
   font-weight: bold;
   padding-bottom: 5px;
   color: #808080;
+  margin-bottom: 20px;
 }
 
 /* @group Forms */
@@ -593,6 +598,11 @@ fieldset.checkbox label {
 
 fieldset.new ol {
 	list-style: none;
+}
+
+fieldset p.inline-hints {
+  font-size: 12px;
+  margin-left: 140px;
 }
 
 .remove-associated-record {
