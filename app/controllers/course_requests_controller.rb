@@ -14,7 +14,7 @@ class CourseRequestsController < ApplicationController
 
   def accept
     course_request = current_user.enrollment_requests.find params[:id]
-    course_request.update_attribute(:state, 'accepted')
+    course_request.accept!
     if request.xhr?
       head :ok
     else
@@ -24,7 +24,7 @@ class CourseRequestsController < ApplicationController
 
   def reject
     course_request = current_user.enrollment_requests.find params[:id]
-    course_request.update_attribute(:state, 'rejected')
+    course_request.reject!
     if request.xhr?
       head :ok
     else
