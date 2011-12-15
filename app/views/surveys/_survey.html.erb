@@ -1,0 +1,11 @@
+<div class="survey padding-all <%= cycle('odd', 'even') %>">
+  <h3><%= link_to survey.name, survey %></h3>
+  <%= survey.course.name %>
+  <div class="row">
+    <div class="survey-values">
+      <%= t('courses.surveys.value') %>: <b><%= survey.value %></b> -
+      <%= t('courses.surveys.period') %>: <b><%= survey.period %></b> -
+      <%= t('courses.surveys.date_time') %>: <b><%= l survey.due_to, :format => :short %></b>
+    </div>
+  </div>
+</div>

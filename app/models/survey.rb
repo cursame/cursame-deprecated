@@ -12,6 +12,11 @@ class Survey < ActiveRecord::Base
 
   html_sanitized :description
 
+  has_many :questions
+  accepts_nested_attributes_for :questions, 
+    :allow_destroy => true, 
+    :reject_if => lambda { |hash| hash[:text].blank? }
+
   after_create do
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_added'

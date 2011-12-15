@@ -16,9 +16,11 @@ class User < ActiveRecord::Base
   has_many :visible_courses,        :through => :enrollments,            :class_name => 'Course',     :source => :course,      :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
   has_many :manageable_courses,     :through => :enrollments,            :class_name => 'Course',     :source => :course,      :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
   has_many :manageable_assignments, :through => :manageable_courses,     :class_name => 'Assignment', :source => :assignments
+  has_many :manageable_surveys,     :through => :manageable_courses,     :class_name => 'Survey',     :source => :surveys
   has_many :manageable_discussions, :through => :manageable_courses,     :class_name => 'Discussion', :source => :discussions
   has_many :manageable_deliveries,  :through => :manageable_assignments, :class_name => 'Delivery',   :source => :deliveries
   has_many :assignments,            :through => :courses
+  has_many :surveys,                :through => :courses
   has_many :discussions,            :through => :courses
   has_many :manageable_discussions, :class_name => 'Discussion'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments

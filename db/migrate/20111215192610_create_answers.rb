@@ -1,8 +1,9 @@
 class CreateAnswers < ActiveRecord::Migration
   def change
-    create_table :answers do |t|
-      t.references :question
-      t.string :text
+    create_table :answers, :id => false do |t|
+      t.string :id, :limit => 36, :primary => true
+      t.references  :question
+      t.string      :text
       t.timestamps
     end
   end

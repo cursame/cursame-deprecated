@@ -35,6 +35,8 @@ es:
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
     delivery_created: Tu tarea fue entregada
     delivery_updated: Tu tarea fue actualizada
+    survey_created: El cuestionario fue creado
+    survey_updated: El cuestionario fue actualizado
 
   activerecord:
     models:
@@ -44,6 +46,9 @@ es:
       assignment:
         one: Tarea
         other: Tareas
+      survey:
+        one: Cuestionario
+        many: Cuestionarios
       user:
         one: Usuario
         other: Usuarios
@@ -131,6 +136,8 @@ es:
       courses: 'Cursos'
       my_courses: 'Mis Cursos'
       new_course: 'Crear Curso Nuevo'
+      surveys: 'Cuestionarios'
+      assignments: 'Tareas'
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este curso'
@@ -180,6 +187,23 @@ es:
       show_delivery: Mostrar entrega
       failed_delivery: La fecha de entrega ya pasó
       course: Curso
+  
+  surveys:
+    index:
+      header: Listado de cuestionarios
+      new_survey: Nuevo cuestionario
+    show:
+      header: Cuestionario 
+      edit_survey: Editar cuestionario
+    new:
+      header: Nuevo cuestionario
+    edit:
+      header: Editar cuestionario
+    answer_fields:
+      legend: Respuestas
+    question_fields:
+      legend: Preguntas para cuestionario 
+  
 
   students:
     deliveries:

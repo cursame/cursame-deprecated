@@ -4,6 +4,7 @@ require 'rails/all'
 require "#{File.dirname __FILE__}/../lib/active_record/html_sanitization"
 require "#{File.dirname __FILE__}/../lib/active_record/assets_owner"
 
+
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
   Bundler.require(*Rails.groups(:assets => %w(development test)))
@@ -13,6 +14,7 @@ end
 
 module Cursame
   class Application < Rails::Application
+    UUID.state_file = false
     # config.autoload_paths += %W(#{config.root}/extras)
     # config.autoload_paths += %W(#{config.root}/lib/tabs)
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]

@@ -1,0 +1,4 @@
+<h1><%= t('.header') %></h1>
+<%= semantic_form_for @survey do |form| %>
+  <%= render :partial => 'survey_fields', :locals => {:form => form} %>
+<% end %>

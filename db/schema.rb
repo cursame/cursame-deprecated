@@ -13,7 +13,8 @@
 
 ActiveRecord::Schema.define(:version => 20111215192610) do
 
-  create_table "answers", :force => true do |t|
+  create_table "answers", :id => false, :force => true do |t|
+    t.string   "id",          :limit => 36
     t.integer  "question_id"
     t.string   "text"
     t.datetime "created_at"
