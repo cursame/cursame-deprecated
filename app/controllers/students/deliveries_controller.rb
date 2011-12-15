@@ -1,8 +1,10 @@
 module Students
   class DeliveriesController < ApplicationController
     def show
-      @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
-      @comments = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
+      @delivery   = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+      @assignment = @delivery.assignment
+      @course     = @assignment.course
+      @comments   = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
     end
 
     def new

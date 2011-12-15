@@ -47,6 +47,9 @@ es:
       user:
         one: Usuario
         other: Usuarios
+      delivery:
+        one: Entrega
+        other: Entregas
     attributes:
       course:
         name: Nombre

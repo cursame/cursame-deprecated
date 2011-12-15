@@ -8,7 +8,8 @@
           <li><%= link_to("Courses", courses_path) %> <span class="divider">/</span></li>
           <li><%= link_to(@assignment.course.name, course_path(@assignment.course)) %> <span class="divider">/</span></li>
           <li><%= link_to(t('courses.assignments.assignments'), course_assignments_path(@assignment.course)) %> <span class="divider">/</span></li>
-          <li class="active"><%= @assignment.name %></li>
+          <li><%= link_to @assignment.name, @assignment %> <span class="divider">/</span></li>
+          <li class="active"><%= t('forms.send_delivery') %></li>
         </ul>
       </div>
     </div>
