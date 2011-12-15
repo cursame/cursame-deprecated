@@ -300,6 +300,8 @@ color: #BFBFBF;
 
 .delivery {
   padding: 10px;
+  margin-bottom: 10px;
+  display: block;
 }
 
 .delivery .assignment-values {
