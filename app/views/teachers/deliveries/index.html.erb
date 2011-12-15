@@ -65,10 +65,10 @@
         </div>
         
         <% @deliveries.each do |delivery| %>
-          <div class="delivery">
-            <%= delivery.user.name %>
-            <%= l delivery.updated_at, :format => :short %>
-            <%= link_to t('.show'), delivery %> 
+          <div class="delivery <%= cycle("odd", "even") %>">
+            <%= avatar(delivery.user, :xsmall) %>
+            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+            <%= link_to t('.show'), delivery, :class => "btn" %> 
           </div>
         <% end %>
         

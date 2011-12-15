@@ -1587,7 +1587,7 @@ a.menu:after, .dropdown-toggle:after {
 .tabs > li > a {
   padding: 0 15px;
   margin-right: 2px;
-  line-height: 36px;
+  line-height: 33px;
   border: 1px solid transparent;
   -webkit-border-radius: 4px 4px 0 0;
   -moz-border-radius: 4px 4px 0 0;
