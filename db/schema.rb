@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20111214204947) do
     t.integer  "notificator_id"
     t.string   "notificator_type"
     t.integer  "user_id"
-    t.text     "message"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
