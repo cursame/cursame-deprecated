@@ -21,9 +21,10 @@
       </div>
       
       <div class="span10 assignments">
-        <div class="row bottom-margin">
+        <div class="row">
           <div class="span5">
-            <h2><%= Assignment.model_name.human %>: <%= @assignment.name %></h2>
+            <h2 class="titles"><%= Assignment.model_name.human %>: <%= @assignment.name %></h2>
+            <div class="public-course"><%= t('.course') %>: <%= @assignment.course.name %></div>
           </div>
           <div class="span3" style="margin-left:70px;">
             <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
@@ -43,15 +44,17 @@
           </div>
         </div>
         
-        <h6><%= t('.course') %>: <%= @assignment.course.name %></h6>
-        <p><%= @assignment.description %></p>
-      
-        <div class="row">
-          <div class="assignment-values bottom-margin">
-            <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
+        <div class="row with line">
+          <div class="span6 description no-margin">
+            <p><%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
             <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b></p>
           </div>
+        </div>
+        
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <div class="expander"><p><%= @assignment.description %></p></div>
         </div>
 
         <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>

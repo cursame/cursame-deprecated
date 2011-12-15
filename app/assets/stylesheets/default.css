@@ -700,6 +700,11 @@ ul.auth-links {
 
 /* @end */
 
+.titles {
+  line-height: 26px;
+  margin-bottom: 10px;
+}
+
 .last {
 	margin: 0;
 }
