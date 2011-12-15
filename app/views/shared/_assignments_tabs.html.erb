@@ -1,0 +1,4 @@
+<%= tabs_tag(:builder => TabsBuilder, :open_tabs => { :class => "tabs" }) do |tab| %>
+  <%= tab.assignments t('courses.assignments.comments'), assignment_path(@assignment) %>
+  <%= tab.deliveries t('assignments.show.deliveries'), assignment_deliveries_path(@assignment) %>
+<% end %>

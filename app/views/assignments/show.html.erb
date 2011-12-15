@@ -29,7 +29,7 @@
             <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
               <%= link_to t('formtastic.actions.delete'), @assignment, :id => 'delete', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete') %>
               <%= link_to t('formtastic.actions.edit'), edit_assignment_path(@assignment), :id => 'edit', :class => 'btn info right' %>
-              <%= link_to t('.deliveries'), assignment_deliveries_path(@assignment), :id => 'edit', :class => 'btn info right' %>
+              
             <% elsif @assignment.due_to > DateTime.now %>
               <% if current_user.deliveries.where(:assignment_id => @assignment).count == 0 %>
                 <%= link_to t('.deliver'), new_assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right' %>
@@ -56,15 +56,21 @@
 
         <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>
       
+        <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
+          <%= render :partial => "shared/assignments_tabs" %>
+        <% end %>
+        
         <div class="actions">
           <h2><%= t('courses.assignments.comments') %></h2>
           <%= render :partial => 'comments/form', :locals => {:commentable => @assignment} %>
         </div>
+        
         <div id="comments">
           <div class="page">
             <%= render :partial => 'comments/comments', :locals => {:commentable => @assignment, :comments => @comments} %>
           </div>
         </div>
+        
         </div>
       
         <div class="span3" style="margin:0;">

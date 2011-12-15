@@ -1,7 +1,10 @@
 class Teachers::DeliveriesController < ApplicationController
+  set_tab :deliveries, :only => %w(index)
+  
   def index
     @assignment = current_user.manageable_assignments.find params[:assignment_id]
     @deliveries = @assignment.deliveries
+    @course     = @assignment.course
   end
 
   def show
