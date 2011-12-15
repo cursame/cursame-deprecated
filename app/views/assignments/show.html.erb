@@ -37,6 +37,8 @@
                 <%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right small' %>
                 <%= link_to t('.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small', :style => 'margin-right:10px;' %>
               <% end %>
+              <% elsif current_user.deliveries.where(:assignment_id => @assignment).count > 0 %>
+              <%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right small' %>
             <% else %>
               <span style="color: red; font-size: 20;"><%= t('.failed_delivery') %></span>
             <% end %>

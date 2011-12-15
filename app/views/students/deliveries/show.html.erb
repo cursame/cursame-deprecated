@@ -50,7 +50,9 @@
           </div>
 
           <div class="span3" style="width:170px;">
-            <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+            <% if @assignment.due_to > DateTime.now %>
+              <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+            <% end %>
           </div>
         </div>
 
