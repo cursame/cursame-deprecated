@@ -1,5 +1,5 @@
 <%= form.inputs do %>
-  <%= form.input :content %>
+  <%= form.input :content, :input_html => { :rows => 10, :class => 'span6' } %>
 <% end %>
 
 <div class="well">
@@ -7,5 +7,5 @@
 </div>
 
 <%= form.buttons do %>
-  <%= form.commit_button :button_html => {:id => :submit, :class => "btn"} %>
+  <%= form.commit_button t('forms.send_delivery'), :button_html => {:id => :submit, :class => 'btn right'} %>
 <% end %>

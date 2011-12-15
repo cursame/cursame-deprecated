@@ -8,6 +8,7 @@ module Students
     def new
       @assignment = current_user.assignments.find params[:assignment_id]
       @delivery   = @assignment.deliveries.build
+      @course = @assignment.course
     end
 
     def create

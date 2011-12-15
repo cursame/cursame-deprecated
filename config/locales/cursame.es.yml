@@ -17,6 +17,7 @@ es:
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
     leave_comment: 'Dejar comentario'
+    send_delivery: 'Entregar'
     
   footer:
     teacher_register: 'Registro como maestro'
