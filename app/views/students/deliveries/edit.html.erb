@@ -1,6 +1,49 @@
-<h1><%= t('.header') %></h1>
-<%= render :partial => 'assignments/assignment', :locals => {:assignment => @delivery.assignment} %>
+<div class="container">
+  <div class="content">
 
-<%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
-  <%= render :partial => 'form_fields', :locals => {:form => form} %>
-<% end %>
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to("Courses", courses_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(@assignment.course.name, course_path(@assignment.course)) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('courses.assignments.assignments'), course_assignments_path(@assignment.course)) %> <span class="divider">/</span></li>
+          <li class="active"><%= @assignment.name %></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
+      </div>
+
+      <div class="span10">
+        <div class="assignments">
+          <h1><%= link_to @assignment.name, @assignment %></h1>
+          <h6><%= t('assignments.show.course') %>: <%= @assignment.course.name %></h6>
+
+          <p><%= @assignment.description %></p>
+
+          <div class="row">
+            <div class="assignment-values bottom-margin">
+              <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
+              <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
+              <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+            </div>
+          </div>
+        </div>
+
+        <h3><%= t('.header') %></h3>
+        <%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
+          <%= render :partial => 'form_fields', :locals => {:form => form} %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
