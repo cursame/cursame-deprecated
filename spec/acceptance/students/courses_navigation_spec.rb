@@ -9,29 +9,39 @@ feature 'Course navigation', %q{
   background do
     @network = Factory(:network)
     @student = Factory(:student, :networks => [@network])
+    @teacher = Factory(:teacher)
     sign_in_with @student, :subdomain => @network.subdomain
   end
 
   scenario 'List all available courses' do
-    courses = (1..5).map { Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)]) }
+    courses = (1..5).map do
+      course = Factory(:course, :network => @network)
+      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    end
+
     visit courses_url(:subdomain => @network.subdomain)
     page.should have_css('.course', :count => 5)
   end
 
   scenario 'Join a course' do
-    course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
+    course = Factory(:course, :network => @network)
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.requests.request_join')
+    click_link I18n.t('courses.course.request_join')
 
     page.current_url.should match courses_path
 
     @student.enrollments.count.should == 1
+    Notification.should exist_with :user_id => @teacher, :notificator_id => Enrollment.last, :kind => 'student_course_enrollment'
   end
 
   scenario 'Cannot create two requests to join the same course' do
-    course = Factory(:course, :network => @network, :enrollments => [Factory(:admin_enrollment)])
+    course = Factory(:course, :network => @network)
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.requests.request_join')
+    click_link I18n.t('courses.course.request_join')
 
     @student.enrollments.count.should == 1
 

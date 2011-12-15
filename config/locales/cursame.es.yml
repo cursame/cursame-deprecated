@@ -17,6 +17,8 @@ es:
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
     leave_comment: 'Dejar comentario'
+    send_delivery: 'Entregar'
+    update_delivery: 'Editar entrega'
     
   footer:
     teacher_register: 'Registro como maestro'
@@ -45,6 +47,9 @@ es:
       user:
         one: Usuario
         other: Usuarios
+      delivery:
+        one: Entrega
+        other: Entregas
     attributes:
       course:
         name: Nombre
@@ -72,7 +77,7 @@ es:
         password: Contraseña
         password_confirmation: Confirmación de contraseña
       network:
-        slogan: Lema
+        slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
       delivery:
@@ -112,7 +117,6 @@ es:
     edit: 'Editar'
     delete: 'Eliminar'
     courses: 'Cursos'
-    course: 'Curso'
     add_asset: Añadir archivo
     course_menu:
       wall: 'Muro'
@@ -134,6 +138,9 @@ es:
       students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
+      count:
+        one:   '1 Miembro'
+        other: '%{count} Miembros'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
@@ -144,6 +151,7 @@ es:
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
+    course:
       request_join: Solicitar unirse
       request_join_again: Solicitar unirse de nuevo
       join_requested: Solicitud pendiente
@@ -167,8 +175,11 @@ es:
   assignments:
     show:
       deliver: "Entregar tarea"
-      edit_delivery: "Editar tarea"
+      edit_delivery: Editar entrega
       deliveries: Entregas
+      show_delivery: Mostrar entrega
+      failed_delivery: La fecha de entrega ya pasó
+      course: Curso
 
   students:
     deliveries:
@@ -219,14 +230,16 @@ es:
     dashboard: 'Dashboard'
 
   supervisor:
-    dashboard:
-      dashboard: 'Panel de control'
-      admin: 'Administración'
-      courses: Cursos
-      teachers: Maestros
-      students: Estudiantes
-      pending_approvals: Registros de maestros pendientes
-      configuration: Configuración
+    shared:
+      admin_menu:
+        dashboard: 'Panel de control'
+        admin: 'Administración'
+        courses: Cursos
+        teachers: Maestros
+        students: Estudiantes
+        reports: 'Reportes'
+        pending_approvals: Registros de maestros pendientes
+        configuration: Configuración
     pending_approvals:
       approve: Aceptar
       reject: Rechazar

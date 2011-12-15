@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111213215925) do
+ActiveRecord::Schema.define(:version => 20111214204947) do
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -106,7 +106,7 @@ ActiveRecord::Schema.define(:version => 20111213215925) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slogan"
-    t.string   "welcome_message"
+    t.text     "welcome_message", :limit => 255
     t.string   "logo_file"
     t.string   "time_zone"
   end
@@ -118,6 +118,15 @@ ActiveRecord::Schema.define(:version => 20111213215925) do
 
   add_index "networks_users", ["network_id"], :name => "index_networks_users_on_network_id"
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "notificator_id"
+    t.string   "notificator_type"
+    t.integer  "user_id"
+    t.string   "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "role"

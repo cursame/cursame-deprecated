@@ -13,6 +13,7 @@ describe User do
     it { should have_many(:comments) }
     it { should have_many(:profile_comments) }
     it { should have_many(:deliveries) }
+    it { should have_many(:notifications) }
   end
 
   describe 'validations' do

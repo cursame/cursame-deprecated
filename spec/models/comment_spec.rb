@@ -37,7 +37,7 @@ describe Comment do
 
       it 'should autolink youtube' do
         comment.text = 'http://www.youtube.com/watch?v=BwNrmYRiX_o'
-        comment.text.should == '<p><iframe width="400" height="250" src="http://www.youtube.com/embed/BwNrmYRiX_o" frameborder="0" allowfullscreen></iframe></p>'
+        comment.text.should == '<p><iframe width="400" height="250" src="http://www.youtube.com/embed/BwNrmYRiX_o?wmode=transparent" frameborder="0" allowfullscreen></iframe></p>'
       end
     end
   end

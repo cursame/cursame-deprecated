@@ -5,12 +5,10 @@
 <% end %>
 
 <div class="underline">	
-        
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
     <%= tab.course t('courses.information'), course_path(@course), :class => "informacion" %>
     <%= tab.wall t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones" %>
     <%= tab.assignments Assignment.model_name.human(:count => :many), course_assignments_path(@course), :class => "tareas" %>
     <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
   <% end %>
-  
 </div>

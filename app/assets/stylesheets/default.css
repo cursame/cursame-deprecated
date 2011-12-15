@@ -258,9 +258,11 @@ color: #BFBFBF;
 .wall .actions, 
 .assignments .actions,
 .discussions .actions {
-  	margin-top: 0;
+  margin-top: 0;
  	margin-bottom: 18px;
 	padding: 5px 20px 1px;
+	display: block;
+  overflow: hidden;
 }
 
 .wall .textarea-size, 
@@ -295,7 +297,62 @@ color: #BFBFBF;
 	margin-left: 20px;
 	color: #a9a9a9;
 }
+
+.delivery {
+  padding: 10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.delivery .assignment-values {
+  margin-left: 0;
+}
+
+.delivery img {
+  float: left;
+  margin-right: 20px;
+}
+
 /* @end */
+
+/* Tabs */
+
+.tabs {
+  margin-bottom: 0;
+  border-bottom: 0;
+}
+
+.tabs > li {
+  top: 2px;
+}
+
+.tabs > li > span {
+  padding: 10px 15px;
+  margin-right: 2px;
+  line-height: 36px;
+  border: 1px solid transparent;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+  cursor: default;
+}
+
+.tabs > li.active > span {
+  color: #808080;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-bottom-color: transparent;
+  background-color: #f5f5f5;
+  background-repeat: repeat-x;
+  background-image: -khtml-gradient(linear, left top, left bottom, from(#ffffff), to(#f5f5f5));
+  background-image: -moz-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -ms-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(100%, #f5f5f5));
+  background-image: -webkit-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: -o-linear-gradient(top, #ffffff, #f5f5f5);
+  background-image: linear-gradient(top, #ffffff, #f5f5f5);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0);
+}
 
 /* @group Standard */
 
@@ -469,6 +526,31 @@ ul.nav-member-avatars li {
 
 /* @end */
 
+/* Network info */
+
+.network-info {
+  min-height: 354px;
+}
+
+.network-info img {
+  margin-bottom: 10px;
+}
+
+.network-info h3 {
+  color: #808080;
+  line-height: 24px;
+}
+
+.network-info span {
+  border-bottom: solid 1px #ddd;
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  padding-bottom: 5px;
+  color: #808080;
+  margin-bottom: 20px;
+}
+
 /* @group Forms */
 
 .register-box {
@@ -573,6 +655,11 @@ fieldset.checkbox label {
 
 fieldset.new ol {
 	list-style: none;
+}
+
+fieldset p.inline-hints {
+  font-size: 12px;
+  margin-left: 140px;
 }
 
 .remove-associated-record {

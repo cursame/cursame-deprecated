@@ -8,7 +8,15 @@
 <div class="container">
   <div class="row">
     <div class="span11">
-      <p>Creamos <b>Redes Sociales</b> especialmente <b>diseñadas</b> para el <b>aprendizaje en línea.</b></p>
+      <%- if @network %>
+        <div class="network-info">
+          <%= image_tag(@network.logo_file.large.url) %>
+          <h1><%= @network.slogan %></h1>
+          <h3><%= @network.welcome_message %></h3>
+        </div>
+      <% else %>
+        <p>Creamos <b>Redes Sociales</b> especialmente <b>diseñadas</b> para el <b>aprendizaje en línea.</b></p>
+      <% end %>
     </div>
     <div class="span5">
       <%= render :partial => 'registrations/form', :locals => {:resource => @user, :resource_name => 'student_user', :url => student_user_registration_path} %>
