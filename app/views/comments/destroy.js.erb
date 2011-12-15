@@ -1,1 +1,8 @@
+<% if @comment.commentable_type === 'Comment' %>
+    <% if current_user.can_destroy_comment?  @comment.commentable %>
+        var options = $('#comment_options_<%= @comment.commentable.id %>');
+            options.prepend('<a href="#"> | </a>');
+            options.prepend('<%= link_to t('.remove'), @comment.commentable, :method => :delete, :remote => true,:confirm => t('confirm_delete'), :html => {:title => 'delete comment'} %>');
+    <% end %>
+<% end %>
 $('#comment_<%= @comment.id %>').fadeOut();
