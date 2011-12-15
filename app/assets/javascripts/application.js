@@ -163,7 +163,20 @@ $(function(){
       }
     }
   });
-})
+
+  /*elastic textareas*/
+  $('input[type=text], textarea').live('focus', function(){
+    if($(this).hasClass('textarea-size')) {
+       $(this).elasticate(77,300);
+       return;
+    }
+    if($(this).hasClass('span6')) {
+       $(this).elasticate(114,300);
+       return;
+    }
+    $(this).elasticate(40,200);
+  });
+});
 
 var setupAutoScroll = function() {
   

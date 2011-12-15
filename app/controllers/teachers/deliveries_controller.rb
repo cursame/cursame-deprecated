@@ -8,8 +8,10 @@ class Teachers::DeliveriesController < ApplicationController
   end
 
   def show
-    @delivery = current_user.manageable_deliveries.find params[:id]
-    @comments = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
+    @delivery   = current_user.manageable_deliveries.find params[:id]
+    @assignment = @delivery.assignment
+    @course     = @assignment.course
+    @comments   = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
     render 'students/deliveries/show'
   end
 end

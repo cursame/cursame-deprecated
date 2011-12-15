@@ -10,7 +10,7 @@ module ActiveRecord
         google_video :width => 400, :height => 250
         dailymotion  :width => 400, :height => 250
         metacafe     :width => 400, :height => 250
-        image
+        image_with_link # This is defined in config/initializers/auto_html.rb
         link :target => "_blank", :rel => "nofollow"
         simple_format
       end
