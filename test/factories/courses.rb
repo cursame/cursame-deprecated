@@ -1,5 +1,3 @@
-# Read about factories at http://github.com/thoughtbot/factory_girl
-
 FactoryGirl.define do
   factory :course do
     name { Faker::Lorem.words(5).join(' ') }
@@ -8,6 +6,6 @@ FactoryGirl.define do
     finish_date { 1.month.from_now }
     public false
     reference "MyString"
-    network { Factory(:network) }
+    network { Network.last || Factory(:network) }
   end
 end
