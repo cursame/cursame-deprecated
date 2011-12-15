@@ -1,6 +1,6 @@
 <div class="comment comment-box" id="<%= "comment_#{comment.id}" %>">
   <div class="row">
-    <div class="span1"><%= link_to(image_tag(comment.user.avatar_file.xsmall.url), user_path(comment.user)) %></div>
+    <div class="span1"><%= link_to(avatar(comment.user, :xsmall), user_path(comment.user)) %></div>
     <div class="span8">
       <h6><%= link_to comment.user.name, user_path(comment.user) %></h6>
       <blockquote>

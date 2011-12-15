@@ -8,6 +8,7 @@ module Students
     def new
       @assignment = current_user.assignments.find params[:assignment_id]
       @delivery   = @assignment.deliveries.build
+      @course     = @assignment.course
     end
 
     def create
@@ -18,12 +19,15 @@ module Students
       if @delivery.save
         redirect_to assignment_delivery_path(@assignment), :notice => t('flash.delivery_created')
       else
+        @course = @assignment.course
         render :new
       end
     end
 
     def edit
       @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+      @assignment = @delivery.assignment
+      @course = @assignment.course
     end
 
     def update

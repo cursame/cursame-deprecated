@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :enrollment do
+    course { Factory(:course) }
   end
 
   factory :teacher_enrollment, :parent => :enrollment do

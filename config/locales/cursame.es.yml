@@ -17,6 +17,8 @@ es:
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
     leave_comment: 'Dejar comentario'
+    send_delivery: 'Entregar'
+    update_delivery: 'Editar entrega'
     
   footer:
     teacher_register: 'Registro como maestro'
@@ -133,6 +135,9 @@ es:
       students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
+      count:
+        one:   '1 Miembro'
+        other: '%{count} Miembros'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'

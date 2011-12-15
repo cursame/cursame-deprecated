@@ -2,6 +2,8 @@ class Assignment < ActiveRecord::Base
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
 
+  default_scope includes(:course)
+
   belongs_to :course
   has_many   :deliveries
   has_many   :comments, :as => :commentable

@@ -123,14 +123,13 @@ ActiveRecord::Schema.define(:version => 20111214204947) do
     t.integer  "notificator_id"
     t.string   "notificator_type"
     t.integer  "user_id"
-    t.text     "message"
+    t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"

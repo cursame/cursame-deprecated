@@ -10,6 +10,7 @@ feature 'Manage profile wall', %q{
     @network = Factory(:network)
     @user    = Factory(:user, :networks => [@network])
     @user2   = Factory(:user, :networks => [@network])
+    @course  = Factory(:course)
     Enrollment.create(:course => @course, :user => @user, :admin => false, :role => 'student', :state => 'accepted')
     sign_in_with @user, :subdomain => @network.subdomain
   end

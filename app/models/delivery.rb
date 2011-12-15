@@ -18,4 +18,10 @@ class Delivery < ActiveRecord::Base
   validate do
     errors.add(:base, 'Due date has passed') if assignment.due_to < DateTime.now
   end
+
+  after_create do
+    assignment.course.teachers.select('users.id').each do |teacher|
+      Notification.create :user => teacher, :notificator => self, :kind => :student_assignment_delivery
+    end
+  end
 end

@@ -12,7 +12,7 @@
           <% @requests.each do |request| %>
             <div class="row bottom-margin <%= cycle("odd", "even") %>">
               <div class="span1" style="margin-left:20px;">
-                <%= image_tag(request.user.avatar_file.xsmall.url) %>
+                <%= avatar(request.user, :xsmall) %>
               </div>
               <div class="span4">
                 <%= link_to(request.user.name, user_path(request.user)) %><br />
