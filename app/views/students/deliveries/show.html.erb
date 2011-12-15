@@ -37,7 +37,8 @@
         <div class="row">
           <div class="span6">
             <h3><%= t('.header') %></h3>
-            <%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
+            <h4>Por: <%= link_to @delivery.user.name, user_path(@delivery.user) %></h4>
+            <blockquote><small><%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %></small></blockquote>
             <%= @delivery.content %>
           </div>
 
