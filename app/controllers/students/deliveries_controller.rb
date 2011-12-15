@@ -25,9 +25,9 @@ module Students
     end
 
     def edit
-      @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+      @delivery   = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
       @assignment = @delivery.assignment
-      @course = @assignment.course
+      @course     = @assignment.course
     end
 
     def update

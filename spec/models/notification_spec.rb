@@ -19,7 +19,7 @@ describe Notification do
       end.should change(Notification, :count).by(1)
     end
 
-    describe Enrollment do
+    describe 'for teacher when student enroles' do
       before do
         @notification = Notification.last
       end
@@ -29,7 +29,7 @@ describe Notification do
       it { @notification.notificator.should == @enrollment }
     end
 
-    describe Delivery do
+    describe 'for teacher when student delivers' do
       before do
         assignment = Factory(:assignment, :course => @course) 
         lambda do
