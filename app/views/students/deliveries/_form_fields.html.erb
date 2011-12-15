@@ -7,5 +7,5 @@
 </div>
 
 <%= form.buttons do %>
-  <%= form.commit_button t('forms.send_delivery'), :button_html => {:id => :submit, :class => 'btn right'} %>
+  <%= form.commit_button form.object.new_record? ? t('forms.send_delivery') : t('forms.update_delivery'), :button_html => {:id => :submit, :class => 'btn right'} %>
 <% end %>
