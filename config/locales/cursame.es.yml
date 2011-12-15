@@ -133,6 +133,9 @@ es:
       students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
+      count:
+        one:   '1 Miembro'
+        other: '%{count} Miembros'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'

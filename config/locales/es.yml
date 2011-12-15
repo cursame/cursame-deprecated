@@ -190,6 +190,7 @@ es:
     comment_added: 'Comment added with succes!'
     discussion_updated: 'Discusion Actualisada'
     wrong_network: 'Red equivocada'
+    assignment_updated: 'Tarea actualizada'
 
   errors:
     format: "%{attribute} %{message}"
