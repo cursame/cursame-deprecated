@@ -175,9 +175,9 @@ es:
   assignments:
     show:
       deliver: "Entregar tarea"
-      edit_delivery: "Editar tarea"
+      edit_delivery: Editar entrega
       deliveries: Entregas
-      show_delivery: Mostrar mi entrega
+      show_delivery: Mostrar entrega
       failed_delivery: La fecha de entrega ya pasó
       course: Curso
 

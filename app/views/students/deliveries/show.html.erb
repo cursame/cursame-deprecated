@@ -34,11 +34,18 @@
           </div>
         </div>
 
-        <h3><%= t('.header') %></h3>
+        <div class="row">
+          <div class="span6">
+            <h3><%= t('.header') %></h3>
+            <%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
+            <%= @delivery.content %>
+          </div>
 
-        <%= t('.delivered') %>: <%= l @delivery.updated_at, :format => :short %>
-        <%= @delivery.content %>
-        <%= link_to @delivery.user.name, @delivery.user %>
+          <div class="span3" style="width:170px;">
+            <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+          </div>
+        </div>
+
         <%= render :partial => 'shared/assets_table', :locals => {:record => @delivery} %>
 
         <div class="well">
