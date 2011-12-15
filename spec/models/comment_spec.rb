@@ -32,7 +32,7 @@ describe Comment do
     describe 'autolink' do
       it 'should autolink image' do
         comment.text = 'http://rors.org/images/rails.png'
-        comment.text.should == '<p><img src="http://rors.org/images/rails.png" alt=""/></p>'
+        comment.text.should == '<p><a href="http://rors.org/images/rails.png" target="_blank"><img alt="Rails" src="http://rors.org/images/rails.png" /></a></p>'
       end
 
       it 'should autolink youtube' do

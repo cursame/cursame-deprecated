@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :enrollment do
+    user   { Factory(:user) }
     course { Factory(:course) }
   end
 

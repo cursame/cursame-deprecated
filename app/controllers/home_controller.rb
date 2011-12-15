@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    # TODO: not specked visible courses scope
-    @courses = current_user.visible_courses.where(:network_id => current_network)
+    @courses       = current_user.visible_courses.where(:network_id => current_network)
+    @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
   end
 end

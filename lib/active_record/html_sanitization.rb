@@ -8,9 +8,10 @@ module ActiveRecord
         youtube      :width => 400, :height => 250, :wmode => "transparent"
         vimeo        :width => 400, :height => 250
         google_video :width => 400, :height => 250
-        dailymotion  :width => 400, :height => 250
         metacafe     :width => 400, :height => 250
-        image
+        # This is defined in config/initializers/auto_html.rb
+        dailymotion_with_wmode :width => 400, :height => 250
+        image_with_link
         link :target => "_blank", :rel => "nofollow"
         simple_format
       end
