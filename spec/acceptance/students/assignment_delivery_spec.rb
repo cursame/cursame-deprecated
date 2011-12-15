@@ -8,11 +8,13 @@ feature 'Manage assignments', %q{
 
   background do
     @network    = Factory(:network)
-    @user       = Factory(:user, :networks => [@network])
+    @student    = Factory(:student,    :networks => [@network])
     @course     = Factory(:course,  :network => @network)
+    @teacher    = Factory(:teacher, :networks => [@network])
     @assignment = Factory(:assignment, :course => @course)
-    Enrollment.create(:course => @course, :user => @user, :admin => false, :role => 'student', :state => 'accepted')
-    sign_in_with @user, :subdomain => @network.subdomain
+    @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    @course.enrollments.create(:user => @student, :role => 'student')
+    sign_in_with @student, :subdomain => @network.subdomain
   end
 
   scenario 'making a delivery for an assignment' do
@@ -28,13 +30,15 @@ feature 'Manage assignments', %q{
     end.should change(Delivery, :count).by(1)
 
     Delivery.should exist_with :content => ActiveRecord::HTMLSanitization.sanitize('This is my delivery'), 
-                               :user_id => @user.id, :assignment_id => @assignment.id
+                               :user_id => @student.id, :assignment_id => @assignment.id
     page.should have_notice t('flash.delivery_created')
     page.should show_delivery Delivery.last
+
+    Notification.should exist_with :user_id => @teacher, :notificator_id => Delivery.last, :kind => 'student_assignment_delivery'
   end
 
   scenario 'editing a delivery for an assignment' do
-    Factory(:delivery, :assignment => @assignment, :user => @user)
+    Factory(:delivery, :assignment => @assignment, :user => @student)
     visit assignment_url @assignment, :subdomain => @network.subdomain
     click_link t('assignments.show.edit_delivery')
 
@@ -44,13 +48,13 @@ feature 'Manage assignments', %q{
     end.should_not change(Delivery, :count)
 
     Delivery.should exist_with :content => ActiveRecord::HTMLSanitization.sanitize('This is my edited delivery'), 
-                               :user_id => @user.id, :assignment_id => @assignment.id
+                               :user_id => @student.id, :assignment_id => @assignment.id
     page.should have_notice t('flash.delivery_updated')
     page.should show_delivery Delivery.last
   end
 
   scenario 'viewing a delivery for an assignment' do
-    delivery = Factory(:delivery, :assignment => @assignment, :user => @user)
+    delivery = Factory(:delivery, :assignment => @assignment, :user => @student)
     visit assignment_url @assignment, :subdomain => @network.subdomain
 
     page.should_not link_to new_assignment_delivery_path(@assignment)
@@ -77,7 +81,7 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'trying to make a delivery when I did one already' do
-    Factory(:delivery, :assignment => @assignment, :user => @user)
+    Factory(:delivery, :assignment => @assignment, :user => @student)
     visit assignment_url @assignment, :subdomain => @network.subdomain
 
     page.should     link_to assignment_delivery_path(@assignment)
@@ -90,7 +94,7 @@ feature 'Manage assignments', %q{
   end
 
   scenario 'commenting on the delivery' do
-    delivery = Factory(:delivery, :assignment => @assignment, :user => @user)
+    delivery = Factory(:delivery, :assignment => @assignment, :user => @student)
     visit assignment_delivery_path @assignment, :subdomain => @network.subdomain
     
     lambda do
@@ -101,7 +105,7 @@ feature 'Manage assignments', %q{
     page.should have_notice t('flash.comment_added')
 
     comment = Comment.last
-    comment.user.should == @user
+    comment.user.should == @student
     page.should show_comment comment
     page.current_url.should match assignment_delivery_path(@assignment)
   end

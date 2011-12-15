@@ -33,7 +33,7 @@ feature 'Course navigation', %q{
     page.current_url.should match courses_path
 
     @student.enrollments.count.should == 1
-    Notification.should exist_with :user_id => @teacher, :notificator_id => Enrollment.last
+    Notification.should exist_with :user_id => @teacher, :notificator_id => Enrollment.last, :kind => 'student_course_enrollment'
   end
 
   scenario 'Cannot create two requests to join the same course' do

@@ -29,7 +29,8 @@ feature 'Manage courses', %q{
   end
 
   scenario 'accept a request to join a course' do
-    Factory(:student_enrollment, :course => @course, :state => 'pending', :user => Factory(:user))
+    student    = Factory(:student)
+    enrollment = Factory(:student_enrollment, :course => @course, :state => 'pending', :user => student)
 
     visit members_for_course_url(@course, :subdomain => @network.subdomain)
 
@@ -40,10 +41,13 @@ feature 'Manage courses', %q{
     page.current_url.should match members_for_course_url(@course, :subdomain => @network.subdomain)
     page.should have_css('.accepted.student', :count => 1)
     Enrollment.last.state.should == 'accepted'
+
+    Notification.should exist_with :user_id => student, :notificator_id => enrollment, :kind => 'student_course_accepted'
   end
 
   scenario 'reject a request to join a course' do
-    Factory(:student_enrollment, :course => @course, :state => 'pending', :user => Factory(:user))
+    student    = Factory(:user)
+    enrollment = Factory(:student_enrollment, :course => @course, :state => 'pending', :user => student)
 
     visit members_for_course_url(@course, :subdomain => @network.subdomain)
 
@@ -54,5 +58,7 @@ feature 'Manage courses', %q{
     page.current_url.should match members_for_course_url(@course, :subdomain => @network.subdomain)
     page.should have_no_css('.student')
     Enrollment.last.state = 'rejected'
+
+    Notification.should exist_with :user_id => student, :notificator_id => enrollment, :kind => 'student_course_rejected'
   end
 end

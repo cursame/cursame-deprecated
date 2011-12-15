@@ -21,7 +21,7 @@ class Delivery < ActiveRecord::Base
 
   after_create do
     assignment.course.teachers.select('users.id').each do |teacher|
-      Notification.create :user => teacher, :notificator => self, :kind => :student_assignment_delivery
+      Notification.create :user => teacher, :notificator => self, :kind => 'student_assignment_delivery'
     end
   end
 end
