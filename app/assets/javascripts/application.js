@@ -68,6 +68,11 @@ $(function(){
   $("span.tip").twipsy({
     live: true
   })
+  
+  $("a[rel=tip]").twipsy({
+    live: true,
+    offset: 20,
+  })
 
   $('textarea[data-editor]').wysiwyg({
     controls : {

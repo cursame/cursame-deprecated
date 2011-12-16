@@ -12,7 +12,7 @@
   <div class="total-members"><%= t('courses.members.count', :count => @course.users.count) %></div>
   <ul class="nav-member-avatars">
     <% @course.users.each do |avatars| %>
-      <li><%= link_to(avatar(avatars, :xsmall), user_path(avatars)) %></li>
+      <li><%= link_to(avatar(avatars, :xsmall), user_path(avatars), :rel => "tip", :title => avatars.name) %></li>
     <% end %>
   </ul>
 </div>
