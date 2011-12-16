@@ -9,6 +9,9 @@ module ApplicationHelper
       when :xsmall
         fallback = user.teacher? ? 'profesor_small.png' : 'alumno_small.png'
         image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xsmall.url)
+      when :xxsmall
+        fallback = user.teacher? ? 'profesor_xsmall.png' : 'alumno_xsmall.png'
+        image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xxsmall.url)
     end
   end
   
@@ -28,7 +31,7 @@ module ApplicationHelper
     student     = notificator.user 
 
     t notification.kind, :scope => 'notifications',
-      :student_image => link_to(avatar(student, :xsmall), user_url(student)),
+      :student_image => link_to(avatar(student, :xxsmall), user_url(student)),
       :student_link  => link_to(student.name, user_url(student)),
       :course_link   => link_to(course.name, course_url(course)),
       :requests_link => link_to(t('notifications.show_requests') + " >>", course_requests_url(notificator.course))
@@ -40,7 +43,7 @@ module ApplicationHelper
     assignment = delivery.assignment
 
     t notification.kind, :scope => 'notifications', 
-      :student_image    => link_to(avatar(student, :xsmall), user_url(student)),
+      :student_image    => link_to(avatar(student, :xxsmall), user_url(student)),
       :student_link     => link_to(student.name, user_url(student)),
       :assignment_link  => link_to(assignment.name, assignment_url(assignment)),
       :delivery_link    => link_to(t('notifications.show_delivery') + " >>", delivery_url(delivery))
