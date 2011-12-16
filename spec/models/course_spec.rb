@@ -10,6 +10,7 @@ describe Course do
     it { should have_many(:teachers).through(:enrollments) }
     it { should have_many(:students).through(:enrollments) }
     it { should have_many(:users).through(:enrollments) }
+    it { should have_many(:surveys) }
 
     describe '#users' do
       it 'does not include rejected users' do

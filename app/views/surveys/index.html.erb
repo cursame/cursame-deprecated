@@ -1,0 +1,12 @@
+<h1><%= t('.header') %></h1>
+
+<div class="span3">
+  <%= render :partial => "courses/course_menu" %>
+  <%= render :partial => "courses/members_menu" %>
+</div>
+
+<%= link_to t('.new_survey'), new_course_survey_path(@course) %>
+
+<div class="surveys">
+  <%= render :partial => 'survey', :collection => @surveys %>
+</div>

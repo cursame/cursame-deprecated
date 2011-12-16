@@ -1,0 +1,19 @@
+<fieldset class="nested_models answers input no-margin inputs" data-association="answers">
+  <legend><%= t('.legend') %></legend>
+  <%- form.object.answers.build %>
+  <%= form.semantic_fields_for :answers do |answer| %>
+    <%- record = answer.object %>
+    <fieldset class="<%= record.new_record? ? :new : nil %>">
+      <ol>
+        <li>
+          <%= form.radio_button :answer_uuid, record.uuid %>
+        </li>
+        <%= answer.input :uuid, :as => :hidden %>
+        <%= answer.input :text %>
+        <%= answer.input :_destroy, :as => :boolean %>
+      </ol>
+    </fieldset>
+
+  <% end %>
+  <%= link_to t('.add_answer'), '#', :class => 'btn small info add_record', :style => 'display:none' %>
+</fieldset>

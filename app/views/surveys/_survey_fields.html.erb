@@ -6,9 +6,7 @@
   <li><label><%= t('courses.assignments.date_time') %></label><%= form.datetime_select(:due_to) %></li>
 <% end %>
 
-<div class="well">
-  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
-</div>
+<%= render :partial => 'question_fields', :locals => {:form => form} %>
 
 <%= form.buttons do %>
   <%= form.commit_button :button_html => {:id => :submit, :class => 'btn right'} %>

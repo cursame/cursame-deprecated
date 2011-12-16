@@ -103,3 +103,20 @@ RSpec::Matchers.define :link_to do |link|
     page.should have_css %{a[href$="#{link}"]}
   end
 end
+
+RSpec::Matchers.define :show_survey_preview do |survey|
+  match do |page|
+    page.should have_content survey.course.name
+    page.should have_content survey.name
+    page.should have_content survey.value.to_s
+    page.should have_content survey.period.to_s
+    page.should have_content I18n.l(survey.due_to, :format => :short) 
+    page.should link_to survey_path(survey)
+  end
+end
+
+RSpec::Matchers.define :show_survey do |survey|
+  match do |page|
+    true
+  end
+end

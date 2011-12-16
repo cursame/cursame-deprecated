@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111214204947) do
+ActiveRecord::Schema.define(:version => 20111215192610) do
+
+  create_table "answers", :id => false, :force => true do |t|
+    t.string   "uuid",        :limit => 36
+    t.integer  "question_id"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "assets", :force => true do |t|
     t.string   "file"
@@ -128,9 +136,27 @@ ActiveRecord::Schema.define(:version => 20111214204947) do
     t.datetime "updated_at"
   end
 
+  create_table "questions", :force => true do |t|
+    t.integer  "survey_id"
+    t.string   "answer_uuid"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "surveys", :force => true do |t|
+    t.integer  "course_id"
+    t.string   "name"
+    t.text     "description"
+    t.integer  "value"
+    t.integer  "period"
+    t.datetime "due_to"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
