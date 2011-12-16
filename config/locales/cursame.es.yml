@@ -48,7 +48,7 @@ es:
         other: Tareas
       survey:
         one: Cuestionario
-        many: Cuestionarios
+        other: Cuestionarios
       user:
         one: Usuario
         other: Usuarios
@@ -184,6 +184,11 @@ es:
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
+    surveys:
+      date_time: Fecha Límite
+      value: Valor
+      period: Periodo
+      description: Descripción
 
   assignments:
     show:
@@ -201,6 +206,7 @@ es:
     show:
       header: Cuestionario 
       edit_survey: Editar cuestionario
+      course: Curso
     new:
       header: Nuevo cuestionario
     edit:

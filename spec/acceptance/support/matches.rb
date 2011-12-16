@@ -115,8 +115,27 @@ RSpec::Matchers.define :show_survey_preview do |survey|
   end
 end
 
-RSpec::Matchers.define :show_survey do |survey|
+RSpec::Matchers.define :show_survey_full_preview do |survey|
   match do |page|
-    true
+    page.should have_content survey.course.name
+    page.should have_content survey.name
+    page.should have_content survey.value.to_s
+    page.should have_content survey.period.to_s
+    page.should have_content I18n.l(survey.due_to, :format => :short)
+
+    survey.questions.each { |q| page.should show_question_preview q }
+  end
+end
+
+RSpec::Matchers.define :show_question_preview do |question|
+  match do |page|
+    page.should have_content question.text
+    question.answers.each { |a| page.should show_answer_preview a }
+  end
+end
+
+RSpec::Matchers.define :show_answer_preview do |answer|
+  match do |page|
+    page.should have_content answer.text
   end
 end

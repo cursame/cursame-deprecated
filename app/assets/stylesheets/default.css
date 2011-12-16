@@ -316,6 +316,17 @@ color: #BFBFBF;
   margin-right: 20px;
 }
 
+
+/* SURVEYS */
+
+.questions { margin-bottom: 50px; }
+.question { }
+
+.answers {}
+.answer { margin-bottom: 10px; }
+.answer input[type=radio] { margin-right: 10px; }
+
+
 /* @end */
 
 /* Tabs */
