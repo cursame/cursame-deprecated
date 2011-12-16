@@ -48,4 +48,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'steak'
   gem 'spork', '0.9.0.rc9'
+  gem 'hirb'
 end

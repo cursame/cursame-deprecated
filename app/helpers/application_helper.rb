@@ -9,6 +9,9 @@ module ApplicationHelper
       when :xsmall
         fallback = user.teacher? ? 'profesor_small.png' : 'alumno_small.png'
         image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xsmall.url)
+      when :xxsmall
+        fallback = user.teacher? ? 'profesor_xsmall.png' : 'alumno_xsmall.png'
+        image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xxsmall.url)
     end
   end
   
@@ -28,10 +31,10 @@ module ApplicationHelper
     student     = notificator.user 
 
     t notification.kind, :scope => 'notifications',
-      :student_image => avatar(student, :xsmall),
+      :student_image => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
       :student_link  => link_to(student.name, user_url(student)),
       :course_link   => link_to(course.name, course_url(course)),
-      :requests_link => link_to(t('notifications.show_requests'), course_requests_url(notificator.course))
+      :requests_link => link_to(t('notifications.show_requests') + " >>", course_requests_url(notificator.course))
   end
 
   def student_assignment_delivery notification
@@ -40,10 +43,10 @@ module ApplicationHelper
     assignment = delivery.assignment
 
     t notification.kind, :scope => 'notifications', 
-      :student_image => avatar(student, :xsmall),
+      :student_image    => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
       :student_link     => link_to(student.name, user_url(student)),
       :assignment_link  => link_to(assignment.name, assignment_url(assignment)),
-      :delivery_link    => link_to(t('notifications.show_delivery'), delivery_url(delivery))
+      :delivery_link    => link_to(t('notifications.show_delivery') + " >>", delivery_url(delivery))
   end
 
   def student_course_rejected notification
@@ -51,14 +54,14 @@ module ApplicationHelper
 
     t notification.kind, :scope => 'notifications', 
       :course_name  => course.name,
-      :courses_link => link_to(t('notifications.show_courses'), courses_url)
+      :courses_link => link_to(t('notifications.show_courses') + " >>", courses_url)
   end
 
   def student_course_accepted notification
     course = notification.notificator.course
 
     t notification.kind, :scope => 'notifications', 
-      :course_link => link_to(course.name, course_url(course))
+      :course_link => link_to(course.name + " >>", course_url(course))
   end
 
   def student_assignment_added notification
@@ -67,7 +70,7 @@ module ApplicationHelper
     t notification.kind, :scope => 'notifications', 
       :course_link => link_to(course.name, course_url(course)),
       :assignment_link => link_to(assignment.name, assignment_url(assignment)),
-      :show_assignment_link => link_to(t('notifications.show_assignment'), assignment_url(assignment))
+      :show_assignment_link => link_to(t('notifications.show_assignment') + " >>", assignment_url(assignment))
   end
 
   def student_assignment_updated notification
@@ -76,7 +79,7 @@ module ApplicationHelper
     t notification.kind, :scope => 'notifications', 
       :course_link => link_to(course.name, course_url(course)),
       :assignment_link => link_to(assignment.name, assignment_url(assignment)),
-      :show_assignment_link => link_to(t('notifications.show_assignment'), assignment_url(assignment))
+      :show_assignment_link => link_to(t('notifications.show_assignment') + " >>", assignment_url(assignment))
   end
 
   def student_survey_added notification

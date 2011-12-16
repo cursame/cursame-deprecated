@@ -12,7 +12,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
   
   version :xsmall do
-    process :resize_to_fit => [40, 40]
+    process :resize_to_fill => [40, 40]
+  end
+  
+  version :xxsmall do
+    process :resize_to_fill => [25, 25]
   end
 
   def extension_white_list

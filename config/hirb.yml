@@ -1,0 +1,14 @@
+# http://tagaholic.me/2009/03/13/hirb-irb-on-the-good-stuff.html
+# https://github.com/cldwalker/hirb
+:output:
+  User:
+    :options:
+      :fields:
+        - id
+        - email
+        - role
+        - first_name
+        - last_name
+        - about_me
+        - state
+        - avatar_file
