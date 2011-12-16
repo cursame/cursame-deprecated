@@ -9,8 +9,6 @@
 //= require_tree .
 
 $(function(){
-  $('fieldset[data-association]').nestedAssociations();
-
   $('input[type=file]').livequery(function(){
     if ($(this).data('upload-path')) {
       $(this).ajaxyUpload({
