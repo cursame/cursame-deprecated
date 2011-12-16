@@ -5,7 +5,9 @@
   <%= render :partial => "courses/members_menu" %>
 </div>
 
-<%= link_to t('.new_survey'), new_course_survey_path(@course) %>
+<%- if current_user.manageable_courses.where('courses.id' => @course).count > 0 %>
+  <%= link_to t('.new_survey'), new_course_survey_path(@course) %>
+<% end %>
 
 <div class="surveys">
   <%= render :partial => 'survey', :collection => @surveys %>

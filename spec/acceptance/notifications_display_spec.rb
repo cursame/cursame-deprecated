@@ -36,7 +36,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "#{student.name} ha creado una entrega en la tarea #{assignment.name}. Ver entrega."
+    page.should have_content "#{student.name} ha entregado la tarea #{assignment.name}. Ver entrega."
  
     within '.notification' do
       page.should link_to user_path(student)
@@ -101,6 +101,40 @@ feature 'Notifications display', %q{
     within '.notification' do
       page.should link_to course_path(course)
       page.should link_to assignment_path(assignment)
+    end
+  end
+
+  scenario 'viewing a notification for an survey added to a course' do
+    notification = Factory(:student_survey_added, :user => @user)
+    survey   = notification.notificator
+    course       = survey.course
+
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path
+    save_and_open_page
+    
+    page.should have_content "Se ha creado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
+    
+    within '.notification' do
+      page.should link_to course_path(course)
+      page.should link_to survey_path(survey)
+    end
+  end
+
+  scenario 'viewing a notification for an updated survey' do
+    notification = Factory(:student_survey_updated, :user => @user)
+    survey   = notification.notificator
+    course       = survey.course
+
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path
+    save_and_open_page
+    
+    page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
+    
+    within '.notification' do
+      page.should link_to course_path(course)
+      page.should link_to survey_path(survey)
     end
   end
 end
