@@ -65,7 +65,7 @@ feature 'Manage surveys', %q{
     Answer.should exist_with   :question_id => Question.last, :text => 'None of the above'
 
     page.current_url.should match survey_path(survey)
-    page.should show_survey survey
+    page.should show_survey_full_preview survey
     page.should have_notice t('flash.survey_created')
 
     Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_added'
@@ -91,13 +91,13 @@ feature 'Manage surveys', %q{
   end
 
   scenario 'viewing the detail of an survey' do
-    survey = factory(:survey, :course => @course)
+    survey = Factory(:survey_with_questions, :course => @course)
     visit course_surveys_path @course
 
     within('.survey:last') do
       click_link survey.name
     end
-    page.should show_survey survey
+    page.should show_survey_full_preview survey
   end
 
 

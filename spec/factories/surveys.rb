@@ -7,4 +7,11 @@ FactoryGirl.define do
     due_to { 1.month.from_now }
     course { Factory :course }
   end
+
+
+  factory :survey_with_questions, :parent => :survey do
+    after_create do |survey|
+      (1..3).map { Factory(:question_with_answers, :survey => survey) }
+    end
+  end
 end

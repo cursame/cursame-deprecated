@@ -1,0 +1,6 @@
+<div class="question padding-all <%= cycle('odd', 'even') %>">
+  <h3><%= question.text %></h3>
+  <div class="answers padding-all">
+    <%= render :partial => 'answer', :collection => question.answers %>
+  </div>
+</div>
