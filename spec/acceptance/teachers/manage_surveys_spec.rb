@@ -78,7 +78,11 @@ feature 'Manage surveys', %q{
     survey = Factory(:survey, :course => @course)
     visit survey_url(survey, :subdomain => @network.subdomain)
     click_link t('surveys.show.edit_survey')
+    
     fill_in 'survey[name]', :with => 'Edited survey'
+    fill_in 'survey[questions_attributes][0][text]', :with => 'What is the meaning of life?'
+    fill_in 'survey[questions_attributes][0][answers_attributes][0][text]', :with => 'None of the above'
+
     click_button 'submit'
     Survey.should exist_with :name => 'Edited survey'
     page.should have_notice t('flash.survey_updated')

@@ -9,4 +9,5 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :allow_destroy => true 
 
   validates_presence_of :text
+  validates_presence_of :correct_answer, :message => "Por favor indique cual es la respuesta correcta"
 end

@@ -9,6 +9,9 @@
         <%= question.input :_destroy, :as => :boolean %>
       </ol>
       <%= render :partial => 'answer_fields', :locals => {:form => question} %>
+      <% unless record.errors[:correct_answer].blank? %> 
+        <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
+      <% end %>
     </fieldset>
 
   <% end %>

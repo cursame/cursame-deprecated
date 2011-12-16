@@ -128,15 +128,19 @@ feature 'Supervisor', %q{
     background do
       @course  = Factory(:course, :network => @network, :assignments => [Factory(:assignment)], :discussions => [Factory(:discussion)], :comments => [Factory(:comment)])
       @teacher = Factory(:teacher, :networks => [@network])
-      Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'teacher')
+      @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
     end
 
     scenario 'view a list of courses' do
       # These course if from other networks, and shouldn't appear on the page.
-      Factory(:course)
+      # course = Factory(:course)
+      # course.enrollments.create(:user => Factory(:user), :admin => true, :role => 'teacher')
+      puts Course.count
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.courses')
+
+      save_and_open_page
       page.should have_css('.course', :count => 1)
     end
 
