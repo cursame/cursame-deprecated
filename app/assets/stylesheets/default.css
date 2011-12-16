@@ -295,7 +295,8 @@ color: #BFBFBF;
 	margin-bottom: 5px;
 }
 
-.assignment-values {
+.assignment-values,
+.survey-values {
 	display: block;
 	margin-left: 20px;
 	color: #a9a9a9;
@@ -307,7 +308,8 @@ color: #BFBFBF;
   display: block;
 }
 
-.delivery .assignment-values {
+.delivery .assignment-values,
+.delivery .survey-values {
   margin-left: 0;
 }
 
@@ -522,6 +524,23 @@ ul.left-nav-main-ul {
 	width: 150px;
 	color: #fff;
 }
+
+.left-nav-main-ul li a.surveys {
+	background: url(menu-survey.png) no-repeat 5px;
+	padding-left: 30px;
+}
+
+.left-nav-main-ul li a.surveys:hover {
+	background: #00afc9 url(menu-survey.png) no-repeat 5px;
+	width: 150px;
+}
+
+.left-nav-main-ul li a.surveys.active {
+	background: #00ccec url(menu-survey.png) no-repeat 5px;
+	width: 150px;
+	color: #fff;
+}
+
 
 .total-members {
 	font-size: 10px;

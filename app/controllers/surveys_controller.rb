@@ -1,4 +1,6 @@
 class SurveysController < ApplicationController
+  set_tab :surveys
+  
   def index
     @surveys = course.surveys.order("due_to DESC")
   end

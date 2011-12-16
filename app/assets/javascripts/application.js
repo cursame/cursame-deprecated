@@ -71,7 +71,7 @@ $(function(){
   
   $("a[rel=tip]").twipsy({
     live: true,
-    offset: 20,
+    offset: 30,
   })
 
   $('textarea[data-editor]').wysiwyg({
