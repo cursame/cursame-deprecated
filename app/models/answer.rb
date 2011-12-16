@@ -1,8 +1,10 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
-  attr_protected :id
+  attr_protected :uuid
 
   after_initialize do |answer|
-    answer.id ||= UUID.new.generate
+    answer.uuid ||= UUID.new.generate
   end
+
+  validates_presence_of :text
 end

@@ -87,6 +87,12 @@ es:
         time_zone: Zona horaria
       delivery:
         content: Contenido
+      question:
+        text: Pregunta
+        _destroy: Eliminar
+      answer:
+        text: Respuesta
+        _destroy: Eliminar
 
   formtastic:
     actions:
@@ -201,8 +207,10 @@ es:
       header: Editar cuestionario
     answer_fields:
       legend: Respuestas
+      add_answer: Añadir respuesta
     question_fields:
       legend: Preguntas para cuestionario 
+      add_question: Añadir pregunta
   
 
   students:

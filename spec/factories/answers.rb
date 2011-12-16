@@ -2,7 +2,6 @@
 
 FactoryGirl.define do
   factory :answer do
-    text { Lorem.words(5).join(' ') }
-    question { Factory(:question) }
+    text { Faker::Lorem.words(5).join(' ') }
   end
 end

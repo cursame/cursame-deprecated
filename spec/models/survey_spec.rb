@@ -7,6 +7,7 @@ describe Survey do
   describe 'associations' do
     it { should belong_to :course }
     it { should validate_presence_of :course }
+    it { should have_many(:questions) }
   end
   
   describe 'validations' do
