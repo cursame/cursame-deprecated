@@ -191,7 +191,7 @@ es:
       edit_delivery: Editar entrega
       deliveries: Entregas
       show_delivery: Mostrar entrega
-      failed_delivery: La fecha de entrega ya pasó
+      failed_delivery: Tarea no entregada
       course: Curso
   
   surveys:

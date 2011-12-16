@@ -21,9 +21,10 @@
       </div>
       
       <div class="span10 assignments">
-        <div class="row bottom-margin">
+        <div class="row">
           <div class="span5">
-            <h2><%= Assignment.model_name.human %>: <%= @assignment.name %></h2>
+            <h2 class="titles"><%= Assignment.model_name.human %>: <%= @assignment.name %></h2>
+            <div class="public-course"><%= t('.course') %>: <%= @assignment.course.name %></div>
           </div>
           <div class="span4">
             <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
@@ -36,21 +37,25 @@
                 <%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right small' %>
                 <%= link_to t('.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small', :style => 'margin-right:10px;' %>
               <% end %>
+              <% elsif current_user.deliveries.where(:assignment_id => @assignment).count > 0 %>
+              <%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right small' %>
             <% else %>
               <span style="color: red; font-size: 20;"><%= t('.failed_delivery') %></span>
             <% end %>
           </div>
         </div>
         
-        <h6><%= t('.course') %>: <%= @assignment.course.name %></h6>
-        <p><%= @assignment.description %></p>
-      
-        <div class="row">
-          <div class="assignment-values bottom-margin">
-            <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
+        <div class="row with line">
+          <div class="span6 description no-margin">
+            <p><%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
             <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b></p>
           </div>
+        </div>
+        
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <div class="expander"><p><%= @assignment.description %></p></div>
         </div>
 
         <%= render :partial => 'shared/assets_table', :locals => {:record => @assignment} %>

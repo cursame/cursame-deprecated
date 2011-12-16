@@ -174,9 +174,27 @@ $(function(){
        $(this).elasticate(114,300);
        return;
     }
-    $(this).elasticate(40,200);
   });
 });
+
+var toogleImageComment = function(textarea,url){
+        var txtarea = $(textarea),
+        parentNode = txtarea.parent();
+        //parentNode.prepend('<div class="span1"><a href="/users/1"><img src="/uploads/xsmall_che.jpg" alt="Xsmall_che"></a></div>');
+        parentNode.prepend('<div class="span1">'+url+'</div>');
+        txtarea.removeClass('span8');
+        txtarea.addClass('span7');
+        txtarea.elasticate(26,200);
+        /*retiramos los estilos cuando pierde el focus*/
+        txtarea.blur(function(){
+            var node = parentNode.children(':first-child');
+            if(node.hasClass('span1') && (txtarea.val() =='')){ //si se trata de la imagen  y el textarea no tiene texto
+                txtarea.removeClass('span7');
+                txtarea.addClass('span8');
+                node.remove();
+            }
+        });
+};
 
 var setupAutoScroll = function() {
   

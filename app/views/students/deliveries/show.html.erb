@@ -9,7 +9,7 @@
           <li><%= link_to(@assignment.course.name, course_path(@assignment.course)) %> <span class="divider">/</span></li>
           <li><%= link_to(t('courses.assignments.assignments'), course_assignments_path(@assignment.course)) %> <span class="divider">/</span></li>
           <li><%= link_to @assignment.name, @assignment %> <span class="divider">/</span></li>
-          <li class="active"><%= Delivery.model_name.human %></li>
+          <li class="active"><%= Delivery.model_name.human %> <%= @delivery.user.name %></li>
         </ul>
       </div>
     </div>
@@ -21,17 +21,24 @@
       </div>
 
       <div class="span10 assignments">
-        <h1><%= link_to @assignment.name, @assignment %></h1>
-        <h6><%= t('assignments.show.course') %>: <%= @assignment.course.name %></h6>
-
-        <p><%= @assignment.description %></p>
-
         <div class="row">
-          <div class="assignment-values bottom-margin">
-            <%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
-            <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b>
+          <div class="span9">
+            <h2 class="titles"><%= link_to @assignment.name, @assignment %></h2>
+            <div class="public-course"><%= t('assignments.show.course') %>: <%= @assignment.course.name %></div>
           </div>
+        </div>
+
+        <div class="row with line">
+          <div class="span6 description no-margin">
+            <p><%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
+            <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
+            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b></p>
+          </div>
+        </div>
+        
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <div class="expander"><p><%= @assignment.description %></p></div>
         </div>
 
         <div class="row">
@@ -43,7 +50,9 @@
           </div>
 
           <div class="span3" style="width:170px;">
-            <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+            <% if @assignment.due_to > DateTime.now %>
+              <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+            <% end %>
           </div>
         </div>
 
