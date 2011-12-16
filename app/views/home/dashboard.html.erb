@@ -40,28 +40,28 @@
           <p>Te invitamos a navegar entre los cursos disponibles y solicites participar en los que te corresponde.</p>
         <% end %>
       <% end %>
-      <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path) %></div>
+      <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path, :class => "btn") %></div>
     </div>
     
     <div class="span-two-thirds">
       <div class="dashboard-box">
-    
+        <div class="underline padding-top">
+          <h2><%= t('notifications.header') %></h2>
+        </div>
+        <div id="notifications">
+          <% @notifications.each do |notification| %>
+            <div class='notification'>
+              <div class="date-published"><%= time_ago_in_words(notification.created_at) %></div>
+              <%= raw notification_message notification %>
+            </div>
+          <% end %>
+          <%= paginate @notifications %>
+        </div>
       </div>
   
-      <div class="dashboard-box">
-    
-      </div>
     </div>
 
     </div>
-  </div>
-
-  <div id="notifications">
-    <% @notifications.each do |notification| %>
-      <div class='notification'>
-        <%= raw notification_message notification %>
-      </div>
-    <% end %>
   </div>
 
   <%= render :partial => "shared/footer" %>

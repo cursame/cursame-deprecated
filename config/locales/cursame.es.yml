@@ -285,12 +285,13 @@ es:
       next: "&gt;"
 
   notifications:
+    header: Notificaciones
     show_requests: Ver solicitudes
     show_delivery: Ver entrega
     show_courses: Ver cursos
     show_assignment: Ver tarea
-    student_course_enrollment: "%{student_link} quiere participar en el curso %{course_link}. %{requests_link}."
-    student_assignment_delivery: "%{student_link} ha creado una entrega en la tarea %{assignment_link}. %{delivery_link}."
+    student_course_enrollment: "<div class=\"img\">%{student_image}</div> %{student_link} quiere participar en el curso %{course_link}. %{requests_link}."
+    student_assignment_delivery: "<div class=\"img\">%{student_image}</div> %{student_link} ha entregado la tarea %{assignment_link}. %{delivery_link}."
     student_course_rejected: "Tu solicitud para participar en el curso \"%{course_name}\" fue rechazada. %{courses_link}."
     student_course_accepted: "Has sido aceptado para participar en el curso %{course_link}."
     student_assignment_added: "Se ha creado la tarea %{assignment_link} en %{course_link}. %{show_assignment_link}."
