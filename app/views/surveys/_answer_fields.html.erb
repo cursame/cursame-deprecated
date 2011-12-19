@@ -6,9 +6,9 @@
     <fieldset class="<%= record.new_record? ? :new : nil %>">
       <ol>
         <li>
-          <%= form.radio_button :answer_uuid, record.uuid %>
+          <%= form.radio_button :answer_uuid, record.uuid, :class => 'answer-uuid' %>
         </li>
-        <%= answer.input :uuid, :as => :hidden %>
+        <%= answer.input :uuid, :input_html => {:class => 'answer-uuid'} %>
         <%= answer.input :text %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>

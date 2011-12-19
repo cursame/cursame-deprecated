@@ -9,6 +9,10 @@
 //= require_tree .
 
 $(function(){
+  $('fieldset[data-association]').nestedAssociations(function(){
+    $(this).find('input.answer-uuid').val(new Date().getTime());
+  });
+
   $('input[type=file]').livequery(function(){
     if ($(this).data('upload-path')) {
       $(this).ajaxyUpload({
