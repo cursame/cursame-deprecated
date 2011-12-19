@@ -9,7 +9,7 @@
     <%= tab.course t('courses.information'), course_path(@course), :class => "informacion" %>
     <%= tab.wall t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones" %>
     <%= tab.assignments t('.assignments'), course_assignments_path(@course), :class => "tareas" %>
-    <%= tab.assignments t('.surveys'), course_surveys_path(@course), :class => "surveys" %>
+    <%= tab.surveys t('.surveys'), course_surveys_path(@course), :class => "surveys" %>
     <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
   <% end %>
 </div>

@@ -88,7 +88,7 @@ module ApplicationHelper
     t notification.kind, :scope => 'notifications', 
       :course_link => link_to(course.name, course_url(course)),
       :survey_link => link_to(survey.name, survey_url(survey)),
-      :show_survey_link => link_to(t('notifications.show_survey'), survey_url(survey))
+      :show_survey_link => link_to(t('notifications.show_survey') + " >>", survey_url(survey))
   end
 
   def student_survey_updated notification
@@ -97,6 +97,6 @@ module ApplicationHelper
     t notification.kind, :scope => 'notifications', 
       :course_link => link_to(course.name, course_url(course)),
       :survey_link => link_to(survey.name, survey_url(survey)),
-      :show_survey_link => link_to(t('notifications.show_survey'), survey_url(survey))
+      :show_survey_link => link_to(t('notifications.show_survey') + " >>", survey_url(survey))
   end
 end

@@ -1,18 +1,20 @@
-<fieldset class="nested_models questions input no-margin inputs" data-association="questions">
-  <legend><%= t('.legend') %></legend>
-  <%- form.object.questions.build %>
-  <%= form.semantic_fields_for :questions do |question| %>
-    <%- record = question.object %>
-    <fieldset class="<%= record.new_record? ? :new : nil %>">
-      <% unless record.errors[:correct_answer].blank? %> 
-        <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
-      <% end %>
-      <ol>
-        <%= question.input :text %>
-        <%= question.input :_destroy, :as => :boolean %>
-      </ol>
-      <%= render :partial => 'answer_fields', :locals => {:form => question} %>
-    </fieldset>
-  <% end %>
-  <%= link_to t('.add_question'), '#', :class => 'btn small info add_record', :style => 'display:none' %>
-</fieldset>
+<h2><%= t('.legend') %></h2>
+<div class="well">
+  <fieldset class="nested_models questions input no-margin inputs" data-association="questions">
+    <%- form.object.questions.build %>
+    <%= form.semantic_fields_for :questions do |question| %>
+      <%- record = question.object %>
+      <fieldset class="<%= record.new_record? ? :new : nil %>">
+        <% unless record.errors[:correct_answer].blank? %> 
+          <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
+        <% end %>
+        <ol>
+          <%= question.input :text %>
+          <%= question.input :_destroy, :as => :boolean %>
+        </ol>
+        <%= render :partial => 'answer_fields', :locals => {:form => question} %>
+      </fieldset>
+    <% end %>
+    <%= link_to t('.add_question'), '#', :class => 'btn small info add_record', :style => 'display:none' %>
+  </fieldset>
+</div>

@@ -201,7 +201,7 @@ es:
   
   surveys:
     index:
-      header: Listado de cuestionarios
+      header: Cuestionarios
       new_survey: Nuevo cuestionario
     show:
       header: Cuestionario 
