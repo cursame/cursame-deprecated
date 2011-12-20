@@ -23,7 +23,7 @@ feature 'Manage surveys', %q{
     end
   end
 
-  scenario 'creating a survey' do
+  scenario 'creating a survey', :js => true do
     student = Factory(:student)
     @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')
 
@@ -42,8 +42,9 @@ feature 'Manage surveys', %q{
     select '8',       :from => 'survey[due_to(4i)]'
     select '30',      :from => 'survey[due_to(5i)]'
 
-    fill_in 'survey[questions_attributes][0][text]', :with => 'What is the meaning of life?'
-    fill_in 'survey[questions_attributes][0][answers_attributes][0][text]', :with => 'None of the above'
+
+    add_question_with_answers 'A, B or C?'
+    add_question_with_answers 'A, B or C?'
 
     lambda do
       click_button 'submit'
@@ -51,7 +52,7 @@ feature 'Manage surveys', %q{
 
     expected_attrs = {
       :name => 'First survey', 
-      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'), 
+      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
       :value => 9, 
       :period => 1,
       :course_id => @course
@@ -60,18 +61,22 @@ feature 'Manage surveys', %q{
     Survey.should exist_with expected_attrs
 
     survey = Survey.last
+    survey.should have(2).questions
 
-    Question.should exist_with :survey_id => survey, :text => 'What is the meaning of life?'
-    Answer.should exist_with   :question_id => Question.last, :text => 'None of the above'
+    survey.questions.each do |question|
+      question.reload
+      question.text.should == 'A, B or C?'
+      question.should have(4).answers
+      question.answer_uuid.should === question.answers.last.uuid
+    end
 
-    page.current_url.should match survey_path(survey)
     page.should show_survey_full_preview survey
     page.should have_notice t('flash.survey_created')
 
     Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_added'
   end
 
-  scenario 'editing an existing survey' do
+  scenario 'editing an existing survey', :js => true do
     student = Factory(:student)
     @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')
 
@@ -79,11 +84,16 @@ feature 'Manage surveys', %q{
     visit survey_url(survey, :subdomain => @network.subdomain)
     click_link t('surveys.show.edit_survey')
     
+    sleep 5
+    page.should have_checked_field '3' # last question is selected as correct
+    
     fill_in 'survey[name]', :with => 'Edited survey'
-    fill_in 'survey[questions_attributes][0][text]', :with => 'What is the meaning of life?'
-    fill_in 'survey[questions_attributes][0][answers_attributes][0][text]', :with => 'None of the above'
 
-    click_button 'submit'
+    lambda do
+      click_button 'submit'
+    end.should_not change(Survey, :count)
+
+    survey.should have(1).question
     Survey.should exist_with :name => 'Edited survey'
     page.should have_notice t('flash.survey_updated')
 
@@ -91,7 +101,7 @@ feature 'Manage surveys', %q{
   end
 
   scenario 'viewing the detail of an survey' do
-    survey = Factory(:survey_with_questions, :course => @course)
+    survey = Factory(:survey, :course => @course)
     visit course_surveys_path @course
 
     within('.survey:last') do
@@ -107,7 +117,8 @@ feature 'Manage surveys', %q{
 
     lambda do
       click_link 'delete'
-    end.should change(survey, :count).by(-1)
+    end.should change(Survey, :count).by(-1)
+
     page.should have_notice t('flash.survey_deleted')
     page.current_url.should match course_surveys_path(@course)
   end

@@ -1,8 +1,14 @@
 require 'spec_helper'
 
 describe Question do
-  it { should validate_presence_of :text }
-  it { should validate_presence_of :correct_answer }
+  let(:question) { Factory.build(:question) }
+  it { question.valid? or raise question.errors.inspect }
+  it { question.save! }
+
+  describe 'validations' do
+    it { should validate_presence_of :text }
+    it { should validate_presence_of(:correct_answer).with_message(I18n.t('activerecord.errors.question.missing_correct_answer')) }
+  end
 
   describe 'associations' do
     it { should belong_to :survey }

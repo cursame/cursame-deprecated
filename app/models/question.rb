@@ -9,5 +9,15 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :allow_destroy => true 
 
   validates_presence_of :text
-  validates_presence_of :answer_uuid, :message => "Por favor indique cual es la respuesta correcta"
+  validates_presence_of :correct_answer, :message => I18n.t('activerecord.errors.question.missing_correct_answer')
+
+  attr_writer :answer_index
+
+  before_validation do
+    self.correct_answer = answers.find{ |answer| answer.index == answer_index.to_i }
+  end
+
+  def answer_index
+    @answer_index ||= correct_answer.try(:index)
+  end
 end

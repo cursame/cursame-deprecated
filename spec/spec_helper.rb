@@ -10,6 +10,8 @@ require 'shoulda/matchers/integrations/rspec'
 require 'carrierwave/test/matchers'
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/factories/*.rb")].each {|f| require f}
+
 
 Spork.prefork do
   RSpec.configure do |config|

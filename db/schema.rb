@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215192610) do
+ActiveRecord::Schema.define(:version => 20111220094133) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111215192610) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "index"
   end
 
   create_table "assets", :force => true do |t|
@@ -157,7 +158,6 @@ ActiveRecord::Schema.define(:version => 20111215192610) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"

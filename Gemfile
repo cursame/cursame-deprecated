@@ -32,6 +32,8 @@ group :test do
   gem 'fuubar'
   gem 'launchy'
   gem 'timecop'
+  gem 'capybara-webkit'
+  gem 'selenium'
 end
 
 group :staging, :production do
@@ -45,7 +47,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_girl', '2.0.4'
   gem 'steak'
   gem 'spork', '0.9.0.rc9'
   gem 'hirb'

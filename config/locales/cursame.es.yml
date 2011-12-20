@@ -55,6 +55,9 @@ es:
       delivery:
         one: Entrega
         other: Entregas
+    errors:
+      question:
+        missing_correct_answer: Por favor indique la respuesta correcta
     attributes:
       course:
         name: Nombre

@@ -4,7 +4,7 @@
     <%- form.object.questions.build %>
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
-      <fieldset class="<%= record.new_record? ? :new : nil %>">
+      <fieldset class="<%= record.new_record? ? :new : nil %> question">
         <% unless record.errors[:correct_answer].blank? %> 
           <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
         <% end %>

@@ -11,4 +11,3 @@ Cursame::Application.configure do
   config.assets.debug = true
   HOST = 'lvh.me'
 end
-
