@@ -6,10 +6,13 @@
     <fieldset class="<%= record.new_record? ? :new : nil %> answer">
       <ol>
         <li>
-          <%= form.object.answer_index %>
-          <%= form.radio_button :answer_index, record.index, :class => 'answer-index' %>
+          <% if record.new_record? %>
+            <%= form.radio_button :answer_index, record.index, :class => 'answer-index' %>
+          <% else %>
+            <%= form.radio_button :answer_uuid, record.uuid %>
+          <% end %>
         </li>
-        <%= answer.input :index, :input_html => {:class => 'answer-index'} %>
+        <%= answer.input :index, :input_html => {:class => 'answer-index'}, :as => :hidden %>
         <%= answer.input :text %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>

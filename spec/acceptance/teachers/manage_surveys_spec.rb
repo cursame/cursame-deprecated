@@ -80,13 +80,17 @@ feature 'Manage surveys', %q{
     student = Factory(:student)
     @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')
 
-    survey = Factory(:survey, :course => @course)
+    survey   = Factory(:survey, :course => @course)
+    question = survey.questions.first
+
     visit survey_url(survey, :subdomain => @network.subdomain)
     click_link t('surveys.show.edit_survey')
-    
-    sleep 5
-    page.should have_checked_field '3' # last question is selected as correct
-    
+    questions = survey.questions
+     
+    page.should have_xpath("//input[@value='#{question.answer_uuid}' and @checked='checked']")
+    new_answer_uuid = question.answers.first.uuid
+
+    find("input[value='#{new_answer_uuid}']").set(true)
     fill_in 'survey[name]', :with => 'Edited survey'
 
     lambda do
@@ -94,6 +98,10 @@ feature 'Manage surveys', %q{
     end.should_not change(Survey, :count)
 
     survey.should have(1).question
+    question = survey.questions.first
+    question.reload
+    question.answer_uuid.should === new_answer_uuid
+
     Survey.should exist_with :name => 'Edited survey'
     page.should have_notice t('flash.survey_updated')
 

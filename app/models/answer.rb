@@ -1,6 +1,4 @@
 class Answer < ActiveRecord::Base
-  default_scope :order => "'index' DESC"
-
   belongs_to :question
   set_primary_key :uuid
 
