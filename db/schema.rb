@@ -145,6 +145,21 @@ ActiveRecord::Schema.define(:version => 20111220094133) do
     t.datetime "updated_at"
   end
 
+  create_table "submitted_questions", :force => true do |t|
+    t.integer  "submitted_survey_id"
+    t.integer  "question_id"
+    t.string   "answer_uuid",         :limit => 36
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "submitted_surveys", :force => true do |t|
+    t.integer  "survey_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "surveys", :force => true do |t|
     t.integer  "course_id"
     t.string   "name"

@@ -15,6 +15,8 @@ class Survey < ActiveRecord::Base
   has_many :questions
   accepts_nested_attributes_for :questions, :allow_destroy => true 
 
+  has_many :submitted_surveys
+
   after_create do
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_added'

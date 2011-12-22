@@ -21,6 +21,7 @@ class SurveysController < ApplicationController
   def show
     @survey = accessible_surveys.find params[:id]
     @course = @survey.course
+    @submission = current_user.submitted_surveys.where(:survey_id => @survey).first
   end
 
   def edit

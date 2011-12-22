@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   has_many :manageable_deliveries,  :through => :manageable_assignments, :class_name => 'Delivery',   :source => :deliveries
   has_many :assignments,            :through => :courses
   has_many :surveys,                :through => :courses
+  has_many :submitted_surveys,      :through => :surveys
   has_many :discussions,            :through => :courses
   has_many :manageable_discussions, :class_name => 'Discussion'
   has_many :enrollment_requests,    :through => :courses, :class_name => 'Enrollment', :source => :enrollments

@@ -8,7 +8,8 @@
           <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
           <li><%= link_to(@course.name, @course) %> <span class="divider">/</span></li>
           <li><%= link_to(Survey.model_name.human(:count => :many), course_surveys_path(@course)) %> <span class="divider">/</span></li>
-          <li class="active"><%= @survey.name %></li>
+          <li><%= link_to @survey.name, @survey %> <span class="divider">/</span></li>
+          <li class="active"><%= t('forms.send_survey_submission') %></li>
         </ul>
       </div>
     </div>
@@ -22,14 +23,9 @@
 
       <div class="span10 surveys">
         <div class="row">
-          <div class="span5">
+          <div class="span9">
             <h2 class="titles"><%= t('.header') %>: <%= @survey.name %></h2>
             <div class="public-course"><%= t('.course') %>: <%= @course.name %></div>
-          </div>
-          <div class="span4">
-            <% if current_user.manageable_courses.include? @course %>
-              <%= link_to t('.edit_survey'), edit_survey_path(@survey), :class => 'btn info right small' %>
-            <% end %>
           </div>
         </div>
 
@@ -47,29 +43,27 @@
         </div>
 
         <div class="questions">
-          <% if current_user.teacher? %>
-            <h2><%= t('.preview') %></h2>
-            <%= render :partial => 'question', :collection => @survey.questions %>
 
-          <% elsif @submission %>
-            <h3><%= t('.survey_sent') %></h3>
+          <%= semantic_form_for @submitted_survey, :url => survey_submission_path(@survey) do |form| %>
+            <%= form.inputs :for => :submitted_questions do |form| %>
+              <%- question = form.object.question %>
 
-            <p>
-              <%= t('.survey_sent_at') %>
-              <%= l @submission.updated_at, :format => :short %>
+              <div class="question padding-all <%= cycle('odd', 'even') %>">
+                <h3><%= question.text %></h3>
+                <%= form.input :answer_uuid,
+                      :as => :radio,
+                      :collection => question.answers.all,
+                      :member_label => :text,
+                      :member_value => :uuid,
+                      :wrapper_html => { :class => 'answers' } %>
+              </div>
+            <% end %>
 
-              <% if @survey.due_to > DateTime.now %>
-                <%= link_to t('.update_answers'), edit_survey_submission_path(@survey), :class => 'btn info right small' %>
-              <% end %>
-            </p>
-
-          <% elsif @survey.due_to > DateTime.now %>
-            <h2><%= t('.not_answered') %></h2>
-            <%= link_to t('.new_answers'), new_survey_submission_path(@survey), :class => 'btn info right small' %>
-
-          <% else %>
-            <h2><%= t('.survey_expired') %></h2>
+            <%= form.buttons do %>
+              <%= form.commit_button form.object.new_record? ? t('forms.send_survey_submission') : t('forms.update_survey_submission'), :button_html => {:id => :submit, :class => 'btn right'} %>
+            <% end %>
           <% end %>
+
         </div>
 
       </div>

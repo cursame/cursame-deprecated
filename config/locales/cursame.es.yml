@@ -19,6 +19,8 @@ es:
     leave_comment: 'Dejar comentario'
     send_delivery: 'Entregar'
     update_delivery: 'Editar entrega'
+    send_survey_submission: 'Guardar mis respuestas'
+    update_survey_submission: 'Actualizar mis respuestas'
     
   footer:
     teacher_register: 'Registro como maestro'
@@ -37,6 +39,7 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
+    submitted_survey_updated: Tus respuestas fueron enviadas
 
   activerecord:
     models:
@@ -210,6 +213,14 @@ es:
       header: Cuestionario 
       edit_survey: Editar cuestionario
       course: Curso
+      preview: Vista previa del cuestionario
+      survey_sent: Ya enviaste tus respuestas
+      survey_sent_at: 'Respuestas enviadas el:'
+      new_answers: Enviar respuestas
+      update_answers: Modificar respuestas
+      not_answered: No has enviado tus respuestas
+      survey_expired: La fecha para contestar este cuestionario ha pasado
+
     new:
       header: Nuevo cuestionario
     edit:
