@@ -1,4 +1,5 @@
 require 'spec_helper'
+require "selenium-webdriver"
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 
@@ -7,7 +8,6 @@ Capybara.default_host = "subdomain.lvh.me"
 Capybara.server_port  = 7335
 
 RSpec.configure do |config|
-
   config.before :each, :type => :acceptance do
     Capybara.current_driver = :selenium if example.metadata[:js]
 
