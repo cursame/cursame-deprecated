@@ -7,12 +7,12 @@
       <ol>
         <li>
           <% if record.new_record? %>
-            <%= form.radio_button :answer_index, record.index, :class => 'answer-index' %>
+            <%= form.radio_button :answer_position, record.position, :class => 'answer-position' %>
           <% else %>
             <%= form.radio_button :answer_uuid, record.uuid %>
           <% end %>
         </li>
-        <%= answer.input :index, :input_html => {:class => 'answer-index'}, :as => :hidden %>
+        <%= answer.input :position, :input_html => {:class => 'answer-position'}, :as => :hidden %>
         <%= answer.input :text %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>

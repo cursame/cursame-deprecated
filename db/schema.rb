@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111222070656) do
+ActiveRecord::Schema.define(:version => 20111222230428) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20111222070656) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "index"
+    t.integer  "position"
   end
 
   create_table "assets", :force => true do |t|

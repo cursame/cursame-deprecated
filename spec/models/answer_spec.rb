@@ -6,8 +6,8 @@ describe Answer do
 
   describe 'validations' do
     it { should validate_presence_of :text }
-    it { should validate_presence_of :index }
-    it { answer.save! and should validate_uniqueness_of(:index) }
+    it { should validate_presence_of :position }
+    it { answer.save! and should validate_uniqueness_of(:position) }
   end
 
   describe 'associations' do

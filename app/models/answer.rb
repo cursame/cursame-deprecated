@@ -8,6 +8,6 @@ class Answer < ActiveRecord::Base
     answer.uuid ||= UUID.new.generate
   end
 
-  validates_presence_of :text, :index
-  validates_uniqueness_of :index, :scope => :question_id
+  validates_presence_of :text, :position
+  validates_uniqueness_of :position, :scope => :question_id
 end
