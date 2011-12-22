@@ -7,8 +7,6 @@ feature 'SuperAdmin', %q{
 } do
 
   background do
-    Network.destroy_all # TODO: shondn't need to do this
-
     @admin = Factory.build(:admin)
     @admin.save(:validate => false)
 
@@ -16,16 +14,16 @@ feature 'SuperAdmin', %q{
       :name => 'A brand new kick-ass network',
       :subdomain => 'foo-bar-baz'
     }
+
     @user_attrs = {
       :role       => 'supervisor',
       :first_name => 'Mr. Supervisor',
       :last_name  => 'of the School',
       :email      => 'supervisor@example.com'
     }
-
+    
     sign_in_with @admin
   end
-
 
   scenario 'redirect to /admin after signing in' do
     page.current_url.should match admin_path
@@ -34,7 +32,6 @@ feature 'SuperAdmin', %q{
     visit root_path
     page.current_url.should match admin_path
   end
-
 
   scenario 'create a new network (and its supervisor)' do
     visit admin_networks_path
@@ -46,7 +43,6 @@ feature 'SuperAdmin', %q{
     fill_in 'network[supervisors_attributes][0][email]',      :with => @user_attrs[:email]
     fill_in 'network[supervisors_attributes][0][password]',   :with => 'secretsecret'
     fill_in 'network[supervisors_attributes][0][password_confirmation]', :with => 'secretsecret'
-
     # click_button 'submit'
     # Network.should exist_with @network_attrs
     # User.should exist_with @user_attrs
@@ -54,9 +50,7 @@ feature 'SuperAdmin', %q{
     # page.should have_notice I18n.t('flash.network_created')
   end
 
-
   scenario 'view a list of existing networks' do
-
     network1 = Factory(:network)
     network2 = Factory(:network)
     network3 = Factory(:network)
@@ -67,7 +61,6 @@ feature 'SuperAdmin', %q{
     page.should have_css('.network', :count => 3)
   end
 
-
   scenario 'view the details of an existing network' do
     network = Factory(:network)
     visit admin_networks_path
@@ -77,7 +70,6 @@ feature 'SuperAdmin', %q{
     page.should have_content network.name
     page.should have_content network.subdomain
   end
-
 
   scenario 'edit an existing network' do
     network = Factory(:network)
@@ -96,12 +88,13 @@ feature 'SuperAdmin', %q{
     page.should have_notice I18n.t('flash.network_updated')
   end
 
-
   scenario 'a teacher cannot go to the admin panel' do
     sign_out
-    sign_in_with Factory(:teacher)
+    network = Factory(:network)
+    teacher = Factory(:teacher, :networks => [network])
+    sign_in_with teacher, :subdomain => network.subdomain
 
-    visit admin_path
+    visit admin_url(:subdomain => network.subdomain)
     page.current_url.should match dashboard_path
 
     visit admin_networks_path
@@ -110,9 +103,12 @@ feature 'SuperAdmin', %q{
 
   scenario 'a student cannot go to the admin panel' do
     sign_out
-    sign_in_with Factory(:student)
+    network = Factory(:network)
+    student = Factory(:student, :networks => [network])
+    sign_in_with student, :subdomain => network.subdomain
 
-    visit admin_path
+    visit admin_url(:subdomain => network.subdomain)
+
     page.current_url.should match dashboard_path
 
     visit admin_networks_path

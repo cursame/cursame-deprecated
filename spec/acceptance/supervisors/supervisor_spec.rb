@@ -135,7 +135,6 @@ feature 'Supervisor', %q{
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.courses')
 
-      save_and_open_page
       page.should have_css('.course', :count => Course.count)
     end
 

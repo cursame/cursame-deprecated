@@ -111,7 +111,6 @@ feature 'Notifications display', %q{
 
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
-    save_and_open_page
     
     page.should have_content "Se ha creado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario"
     
@@ -128,7 +127,6 @@ feature 'Notifications display', %q{
 
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
-    save_and_open_page
     
     page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario"
     
