@@ -34,7 +34,7 @@ module ApplicationHelper
       :student_image => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
       :student_link  => link_to(student.name, user_url(student)),
       :course_link   => link_to(course.name, course_url(course)),
-      :requests_link => link_to(t('notifications.show_requests') + " >>", course_requests_url(notificator.course))
+      :members_link => link_to(t('notifications.show_requests') + " >>", members_for_course_url(notificator.course))
   end
 
   def student_assignment_delivery notification

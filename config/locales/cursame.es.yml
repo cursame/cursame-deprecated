@@ -302,7 +302,7 @@ es:
     show_courses: Ver cursos
     show_assignment: Ver tarea
     show_survey: Ver cuestionario
-    student_course_enrollment: "<div class=\"img\">%{student_image}</div> %{student_link} quiere participar en el curso %{course_link}. %{requests_link}"
+    student_course_enrollment: "<div class=\"img\">%{student_image}</div> %{student_link} quiere participar en el curso %{course_link}. %{members_link}"
     student_assignment_delivery: "<div class=\"img\">%{student_image}</div> %{student_link} ha entregado la tarea %{assignment_link}. %{delivery_link}"
     student_course_rejected: "Tu solicitud para participar en el curso \"%{course_name}\" fue rechazada. %{courses_link}"
     student_course_accepted: "Has sido aceptado para participar en el curso %{course_link}"
