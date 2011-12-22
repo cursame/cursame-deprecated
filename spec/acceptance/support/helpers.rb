@@ -1,14 +1,20 @@
 module NavigationHelpers
   def sign_in_with user, opts = {}
     user.confirm!
+
     if opts[:subdomain]
-      visit root_url(:subdomain => opts[:subdomain])
+      visit new_user_session_url(:subdomain => opts[:subdomain])
     else
-      visit root_path
+      visit new_user_session_path
     end
-    fill_in 'user[email]', :with => user.email
-    fill_in 'user[password]', :with => opts[:password] || 'password'
-    click_button 'sign_in'
+
+    within '#user_new' do
+      fill_in 'user[email]',    :with => user.email
+      fill_in 'user[password]', :with => opts[:password] || 'password'
+      sleep 5
+      click_button I18n.t('forms.sign_in_btn')
+    end
+    sleep 5
   end
 
   def sign_out opts = {}
