@@ -37,6 +37,7 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
+    survey_reply_created: El cuestionario fue contestado
 
   activerecord:
     models:
@@ -187,11 +188,6 @@ es:
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
-    surveys:
-      date_time: Fecha Límite
-      value: Valor
-      period: Periodo
-      description: Descripción
 
   assignments:
     show:
@@ -203,6 +199,12 @@ es:
       course: Curso
   
   surveys:
+    survey:
+      date_time: Fecha Límite
+      value: Valor
+      period: Periodo
+      description: Descripción
+      answer: Contestar
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario

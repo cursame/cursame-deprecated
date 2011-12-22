@@ -1,0 +1,6 @@
+<%= semantic_form_for @survey_reply, :url => survey_reply_path(@survey) do |form| %>
+  <%= render :partial => 'fields', :locals => {:form => form} %>
+  <%= form.buttons do %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => "btn"} %>
+  <% end %>
+<% end %>

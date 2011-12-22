@@ -1,0 +1,5 @@
+<%= render :partial => 'surveys/survey', :locals => {:survey => @survey} %>
+
+<%= semantic_form_for @survey_reply, :url => nil do |form| %>
+  <%= render :partial => 'fields', :locals => {:form => form} %>
+<% end %>

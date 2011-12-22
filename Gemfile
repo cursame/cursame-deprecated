@@ -33,6 +33,7 @@ group :test do
   gem 'launchy'
   gem 'timecop'
   gem 'selenium'
+  gem 'growl-rspec'
 end
 
 group :staging, :production do

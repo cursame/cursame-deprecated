@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
   has_many :deliveries
   has_many :notifications
+  has_many :survey_replies
 
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)

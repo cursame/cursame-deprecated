@@ -1,6 +1,8 @@
 class Answer < ActiveRecord::Base
-  belongs_to :question
   set_primary_key :uuid
+
+  belongs_to :question
+  has_many   :survey_answers
 
   after_initialize do |answer|
     answer.uuid ||= UUID.new.generate
