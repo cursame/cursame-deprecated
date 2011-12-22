@@ -11,10 +11,8 @@ module NavigationHelpers
     within '#user_new' do
       fill_in 'user[email]',    :with => user.email
       fill_in 'user[password]', :with => opts[:password] || 'password'
-      sleep 5
       click_button I18n.t('forms.sign_in_btn')
     end
-    sleep 5
   end
 
   def sign_out opts = {}
