@@ -32,7 +32,6 @@ group :test do
   gem 'fuubar'
   gem 'launchy'
   gem 'timecop'
-  gem 'capybara-webkit'
   gem 'selenium'
 end
 

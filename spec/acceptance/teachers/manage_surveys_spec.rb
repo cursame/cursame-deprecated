@@ -42,7 +42,6 @@ feature 'Manage surveys', %q{
     select '8',       :from => 'survey[due_to(4i)]'
     select '30',      :from => 'survey[due_to(5i)]'
 
-
     add_question_with_answers 'A, B or C?'
     add_question_with_answers 'A, B or C?'
 
@@ -117,7 +116,6 @@ feature 'Manage surveys', %q{
     end
     page.should show_survey_full_preview survey
   end
-
 
   scenario 'removing an existing survey' do
     survey = Factory(:survey, :course => @course)
