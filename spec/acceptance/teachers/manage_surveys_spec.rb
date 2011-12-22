@@ -51,7 +51,7 @@ feature 'Manage surveys', %q{
 
     expected_attrs = {
       :name => 'First survey', 
-      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'), 
+      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
       :value => 9, 
       :period => 1,
       :course_id => @course

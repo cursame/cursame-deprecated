@@ -28,6 +28,21 @@ module HelperMethods
   def t *args
     I18n.t *args
   end
+
+  def add_question_with_answers text
+    click_link t('surveys.question_fields.add_question')
+
+    within 'fieldset.question:last' do
+      fill_in Question.human_attribute_name(:text), :with => text
+      %w(A B C None).each do |answer|
+        click_link t('surveys.answer_fields.add_answer')
+        within 'fieldset.answer:last' do
+          fill_in Answer.human_attribute_name(:text), :with => answer
+          find("input[type='radio']").set(true)
+        end
+      end
+    end
+  end
 end
 
 RSpec.configuration.include HelperMethods, :type => :acceptance

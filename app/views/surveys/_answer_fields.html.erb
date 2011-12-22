@@ -3,12 +3,16 @@
   <%- form.object.answers.build %>
   <%= form.semantic_fields_for :answers do |answer| %>
     <%- record = answer.object %>
-    <fieldset class="<%= record.new_record? ? :new : nil %>">
+    <fieldset class="<%= record.new_record? ? :new : nil %> answer">
       <ol>
         <li>
-          <%= form.radio_button :answer_uuid, record.uuid, :class => 'answer-uuid' %>
+          <% if record.new_record? %>
+            <%= form.radio_button :answer_index, record.index, :class => 'answer-index' %>
+          <% else %>
+            <%= form.radio_button :answer_uuid, record.uuid %>
+          <% end %>
         </li>
-        <%= answer.input :uuid, :input_html => {:class => 'answer-uuid'} %>
+        <%= answer.input :index, :input_html => {:class => 'answer-index'}, :as => :hidden %>
         <%= answer.input :text %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>

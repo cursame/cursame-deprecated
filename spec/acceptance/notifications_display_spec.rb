@@ -18,7 +18,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "#{student.name} quiere participar en el curso #{course.name}. Ver solicitudes."
+    page.should have_content "#{student.name} quiere participar en el curso #{course.name}. Ver solicitudes"
 
     within '.notification' do
       page.should link_to user_path(student)
@@ -36,7 +36,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "#{student.name} ha entregado la tarea #{assignment.name}. Ver entrega."
+    page.should have_content "#{student.name} ha entregado la tarea #{assignment.name}. Ver entrega"
  
     within '.notification' do
       page.should link_to user_path(student)
@@ -52,7 +52,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Tu solicitud para participar en el curso \"#{course.name}\" fue rechazada. Ver cursos."
+    page.should have_content "Tu solicitud para participar en el curso \"#{course.name}\" fue rechazada. Ver cursos"
 
     within '.notification' do
       page.should link_to courses_path
@@ -65,7 +65,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Has sido aceptado para participar en el curso #{course.name}."
+    page.should have_content "Has sido aceptado para participar en el curso #{course.name}"
 
     within '.notification' do
       page.should link_to course_path(course)
@@ -80,7 +80,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Se ha creado la tarea #{assignment.name} en #{course.name}. Ver tarea."
+    page.should have_content "Se ha creado la tarea #{assignment.name} en #{course.name}. Ver tarea"
     
     within '.notification' do
       page.should link_to course_path(course)
@@ -96,7 +96,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Se ha actualizado la tarea #{assignment.name} en #{course.name}. Ver tarea."
+    page.should have_content "Se ha actualizado la tarea #{assignment.name} en #{course.name}. Ver tarea"
     
     within '.notification' do
       page.should link_to course_path(course)
@@ -113,7 +113,7 @@ feature 'Notifications display', %q{
     visit dashboard_path
     save_and_open_page
     
-    page.should have_content "Se ha creado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
+    page.should have_content "Se ha creado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario"
     
     within '.notification' do
       page.should link_to course_path(course)
@@ -130,7 +130,7 @@ feature 'Notifications display', %q{
     visit dashboard_path
     save_and_open_page
     
-    page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
+    page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario"
     
     within '.notification' do
       page.should link_to course_path(course)

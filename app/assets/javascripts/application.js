@@ -10,7 +10,10 @@
 
 $(function(){
   $('fieldset[data-association]').nestedAssociations(function(){
-    $(this).find('input.answer-uuid').val(new Date().getTime());
+    // $(this).find('input.answer-uuid').val(new Date().getTime());
+    $(this).closest('fieldset.question').find('fieldset.answer').each(function(index){
+      $('input.answer-index', $(this)).val(index);
+    })
   });
 
   $('input[type=file]').livequery(function(){
