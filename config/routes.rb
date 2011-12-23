@@ -21,11 +21,12 @@ Cursame::Application.routes.draw do
       resources :deliveries, :only => [:index, :show], :module => 'teachers'
     end
 
-    resources :surveys do
+    resources :surveys, :shallow => true do
       resource :survey_reply, 
         :as => :reply, 
-        :module => 'students', 
-        :only => [:show, :new, :create, :edit, :update]
+        :only => [:show, :new, :create, :edit, :update],
+        :module => 'students'
+      resources :survey_replies, :as => :replies, :only => [:index, :show], :module => 'teachers'
     end
 
     resources :discussions

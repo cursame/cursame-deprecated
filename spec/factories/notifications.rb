@@ -41,4 +41,9 @@ FactoryGirl.define do
     kind 'student_survey_updated'
     notificator { Factory(:survey) }
   end
+
+  factory :teacher_survey_replied, :parent => :notification do
+    kind 'teacher_survey_replied'
+    notificator { Factory(:survey_reply) }
+  end
 end
