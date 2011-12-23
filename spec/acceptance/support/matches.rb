@@ -149,11 +149,19 @@ end
 
 RSpec::Matchers.define :show_survey_reply do |survey_reply|
   match do |page|
+    # show answered questions
     survey_reply.survey_answers.each do |survey_answer|
       question = survey_answer.question
       page.should have_content question.text
-      page.should have_checked_field survey_answer.answer.text
+      if survey_answer.answer
+        page.should have_checked_field survey_answer.answer.text
+      end
     end
+
+    survey_reply.survey.questions.each do |question|
+      page.should have_content question.text
+    end
+
     page.should show_survey_preview survey_reply.survey
   end
 end
