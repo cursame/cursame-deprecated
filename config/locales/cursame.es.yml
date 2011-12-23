@@ -1,8 +1,8 @@
 es:
-  confirm_delete: ¿Estas Seguro?  
+  confirm_delete: ¿Estas Seguro?
   comment: comentar
 
-  forms: 
+  forms:
     email: 'Email'
     first_name: 'Nombre'
     last_name: 'Apellido'
@@ -19,10 +19,12 @@ es:
     leave_comment: 'Dejar comentario'
     send_delivery: 'Entregar'
     update_delivery: 'Editar entrega'
-    
+    send_survey_reply: 'Guardar mis respuestas'
+    update_survey_reply: 'Actualizar mis respuestas'
+
   footer:
     teacher_register: 'Registro como maestro'
-        
+
   flash:
     course_created: Curso creado
     course_updated: El curso fue actualizado
@@ -37,7 +39,7 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
-    survey_reply_created: El cuestionario fue contestado
+    survey_reply_updated: Tus respuestas fueron enviadas
 
   activerecord:
     models:
@@ -110,13 +112,13 @@ es:
       logout: 'Salir'
       search: 'Buscar'
       settings: 'Configuración'
-      
+
   dashboard:
     view_all_courses: 'Ver todos los cursos disponibles'
     start: 'Inicio'
     profile: 'Perfil'
     account_settings: 'Configuración de la cuenta'
-  
+
   courses:
     archives: 'Archivos'
     description: 'Descripción'
@@ -197,7 +199,7 @@ es:
       show_delivery: Mostrar entrega
       failed_delivery: Tarea no entregada
       course: Curso
-  
+
   surveys:
     survey:
       date_time: Fecha Límite
@@ -212,6 +214,14 @@ es:
       header: Cuestionario 
       edit_survey: Editar cuestionario
       course: Curso
+      preview: Vista previa del cuestionario
+      survey_sent: Ya enviaste tus respuestas
+      survey_sent_at: 'Respuestas enviadas el:'
+      view_answers: Tus respuestas
+      new_answers: Enviar respuestas
+      update_answers: Modificar respuestas
+      not_answered: No has enviado tus respuestas
+      survey_expired: La fecha para contestar este cuestionario ha pasado
     new:
       header: Nuevo cuestionario
     edit:
@@ -222,7 +232,7 @@ es:
     question_fields:
       legend: Preguntas para cuestionario 
       add_question: Añadir pregunta
-  
+
 
   students:
     deliveries:
@@ -259,16 +269,16 @@ es:
     new_discussion: 'Nueva Discusion'
     ago: 'hace'
     by: 'por'
-  
+
   comments:
     comments:
       remove: eliminar comentario
-    
+
   settings:
     show:
       title:  'Configuraciones'
       change_password: 'Cambiar contraseña'
-      
+
   breadcrumb:
     dashboard: 'Dashboard'
 

@@ -1,6 +1,6 @@
 class SurveysController < ApplicationController
   set_tab :surveys
-  
+
   def index
     @surveys = course.surveys.order("due_to DESC")
   end
@@ -21,6 +21,7 @@ class SurveysController < ApplicationController
   def show
     @survey = accessible_surveys.find params[:id]
     @course = @survey.course
+    @survey_reply = current_user.survey_replies.where(:survey_id => @survey).first
   end
 
   def edit

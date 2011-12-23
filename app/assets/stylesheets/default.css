@@ -322,11 +322,14 @@ color: #BFBFBF;
 /* SURVEYS */
 
 .questions { margin-bottom: 50px; }
-.question { }
+.question li.answers { margin-bottom:0 !important; }
 
-.answers {}
-.answer { margin-bottom: 10px; }
-.answer input[type=radio] { margin-right: 10px; }
+.answers { padding:10px 10px 0 10px; }
+.answers legend { display:none; }
+.answers label { float:none; }
+.answers input[type=radio] { margin-right: 10px; }
+.answers fieldset { margin-bottom:0; }
+
 
 
 /* @end */

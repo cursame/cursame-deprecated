@@ -1,9 +1,15 @@
 <%= form.semantic_fields_for :survey_answers do |fields| %>
   <% question = fields.object.question %>
   <%= form.inputs :survey_answer do %>
-    <%= fields.input :answer_uuid, :as => :radio, 
-      :collection => question.answers.map { |a| [a.text, a.uuid] }, 
-      :label => question.text, 
-      :disabled => params[:action] == 'show' %>
+    <div class="question padding-all <%= cycle('odd', 'even') %>">
+      <h3><%= question.text %></h3>
+      <%= fields.input :answer_uuid,
+            :as => :radio,
+            :collection => question.answers.all,
+            :member_label => :text,
+            :member_value => :uuid,
+            :wrapper_html => { :class => 'answers' },
+            :disabled => params[:action] == 'show' %>
+      </div>
   <% end %>
 <% end %>

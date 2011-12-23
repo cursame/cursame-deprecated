@@ -48,10 +48,23 @@
 
         <div class="questions">
           <% if current_user.teacher? %>
+            <h2><%= t('.preview') %></h2>
             <%= render :partial => 'question', :collection => @survey.questions %>
+
+          <% elsif @survey_reply %>
+            <h3><%= t('.survey_sent') %></h3>
+            <p>
+              <%= t('.survey_sent_at') %>
+              <%= l @survey_reply.updated_at, :format => :short %>
+              <%= link_to t('.view_answers'), survey_reply_path(@survey), :class => 'btn info right small' %>
+            </p>
+          <% elsif @survey.due_to > DateTime.now %>
+            <h2><%= t('.not_answered') %></h2>
+            <%= link_to t('.new_answers'), new_survey_reply_path(@survey), :class => 'btn info right small' %>
           <% else %>
-            <h1>PENDING: Mostrar vista de cuestinario para estudiantes</h1>
-          <% end %>
+            <h2><%= t('.survey_expired') %></h2>
+           <% end %>
+
         </div>
 
       </div>

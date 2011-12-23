@@ -20,7 +20,7 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply.survey = @survey
 
     if @survey_reply.save
-      redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_created')
+      redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_updated')
     else
       @course = @survey.course
       render :new
