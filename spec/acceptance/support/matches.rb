@@ -162,6 +162,11 @@ RSpec::Matchers.define :show_survey_reply do |survey_reply|
       page.should have_content question.text
     end
 
+    # all radio should be disabled
+    page.driver.find("//input[@type='radio']").each do |node|
+      puts node['disabled'].should be_true
+    end
+
     page.should show_survey_preview survey_reply.survey
   end
 end

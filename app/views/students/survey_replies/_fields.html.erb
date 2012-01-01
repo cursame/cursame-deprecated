@@ -3,13 +3,15 @@
   <%= form.inputs :survey_answer do %>
     <div class="question padding-all <%= cycle('odd', 'even') %>">
       <h3><%= question.text %></h3>
+      <%= debug fields.object %>
+      <%= fields.input :question_id, :as => :hidden %>
       <%= fields.input :answer_uuid,
             :as => :radio,
             :collection => question.answers.all,
             :member_label => :text,
             :member_value => :uuid,
             :wrapper_html => { :class => 'answers' },
-            :disabled => params[:action] == 'show' %>
+            :input_html => {:disabled => params[:action] == 'show'} %>
       </div>
   <% end %>
 <% end %>
