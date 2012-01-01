@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Manage discussions', %q{
   In order to solve doubts and interact

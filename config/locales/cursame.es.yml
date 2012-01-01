@@ -39,7 +39,8 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
-    survey_reply_updated: Tus respuestas fueron enviadas
+    survey_reply_created: Tus respuestas fueron enviadas
+    survey_reply_updated: Tus respuestas fueron actualizadas
 
   activerecord:
     models:
@@ -95,6 +96,7 @@ es:
         content: Contenido
       question:
         text: Pregunta
+        value: Valor
         _destroy: Eliminar
       answer:
         text: Respuesta

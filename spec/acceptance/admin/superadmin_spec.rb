@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'SuperAdmin', %q{
   In order to manage networks

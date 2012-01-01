@@ -9,6 +9,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :answers, :allow_destroy => true 
 
   validates_presence_of :text
+  validates_presence_of :value
   validates_presence_of :correct_answer, :message => I18n.t('activerecord.errors.question.missing_correct_answer')
 
   attr_writer :answer_position

@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Manage assignments', %q{
   In order to accomplish my course work

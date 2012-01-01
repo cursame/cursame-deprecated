@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Surveys', %q{
   In order to acomplish course
@@ -29,14 +29,9 @@ feature 'Surveys', %q{
   end
 
   scenario 'answering a survey' do
-    # add a question that will not be answered
-    @survey.questions << Factory(:question)
-
     visit course_surveys_path @course
     question       = @survey.questions.first
     correct_answer = question.correct_answer
-
-    save_and_open_page
 
     within('.survey:last') do
       click_link I18n.t('surveys.survey.answer')
@@ -62,6 +57,7 @@ feature 'Surveys', %q{
 
   scenario 'viewing a survey reply' do
     survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
+
     visit survey_reply_path @survey
     save_and_open_page
     page.should show_survey_reply survey_reply

@@ -38,6 +38,7 @@ module HelperMethods
 
     within 'fieldset.question:last' do
       fill_in Question.human_attribute_name(:text), :with => text
+      fill_in Question.human_attribute_name(:value), :with => 2
       %w(A B C None).each do |answer|
         click_link t('surveys.answer_fields.add_answer')
         within 'fieldset.answer:last' do

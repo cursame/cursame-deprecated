@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'User Settings', %q{
   In order to manage my preferences on the site
