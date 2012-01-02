@@ -33,7 +33,7 @@
             <div class="teacher">
               <div class="row">
                 <div class="span1" style="margin-left:20px;">
-                  <%= avatar(teacher, :xsmall) %>
+                  <%= image_tag teacher.avatar_file.xsmall.url %>
                 </div>
                 <div class="span5">
                   <%= link_to(teacher.name, user_path(teacher)) %><br />

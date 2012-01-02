@@ -69,7 +69,7 @@
         
         <% @deliveries.each do |delivery| %>
           <div class="delivery <%= cycle("odd", "even") %>">
-            <%= avatar(delivery.user, :xsmall) %>
+            <%= image_tag delivery.user.avatar_file.xsmall.url %>
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
             <%= link_to t('.show'), delivery, :class => "btn" %> 
           </div>

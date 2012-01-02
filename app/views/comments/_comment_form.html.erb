@@ -1,6 +1,6 @@
 <%= semantic_form_for Comment.new, :remote => true, :url => polymorphic_path(commentable, :action => 'comment') do |form| %>
     <%= form.inputs :text do %>
-    <%= form.input :text, :input_html => {:rows => 1, :class => "span8", :style =>"height:18px;", :onfocus => "toogleImageComment(this,'"+link_to(avatar(current_user, :xsmall), user_path(current_user))+"')"} %>
+    <%= form.input :text, :input_html => {:rows => 1, :class => "span8", :style =>"height:18px;", :onfocus => "toogleImageComment(this,'"+link_to(image_tag(current_user.avatar_file.xsmall.url), user_path(current_user))+"')"} %>
   <% end %>
   <%= form.buttons do %>
     <%= form.commit_button :button_html => {:id => :submit, :class => "btn right"} %>

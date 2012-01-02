@@ -1,20 +1,4 @@
 module ApplicationHelper
-
-  def avatar(user, size=nil)
-    case size
-      when :small
-        # FIXME: We need a fallback image for supervisors.
-        fallback = user.teacher? ? 'profesor.png' : 'alumno.png'
-        image_tag(user.avatar_file.blank? ? fallback : user.avatar_file.small.url)
-      when :xsmall
-        fallback = user.teacher? ? 'profesor_small.png' : 'alumno_small.png'
-        image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xsmall.url)
-      when :xxsmall
-        fallback = user.teacher? ? 'profesor_xsmall.png' : 'alumno_xsmall.png'
-        image_tag(user.avatar_file.blank?  ? fallback : user.avatar_file.xxsmall.url)
-    end
-  end
-  
   def members_active
     if controller_name == "courses" && action_name == "members"
       "active"
@@ -31,7 +15,7 @@ module ApplicationHelper
     student     = notificator.user 
 
     t notification.kind, :scope => 'notifications',
-      :student_image => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
+      :student_image => link_to(image_tag(student.avatar_file.xxsmall.url), user_url(student), :rel => "tip", :title => student.name),
       :student_link  => link_to(student.name, user_url(student)),
       :course_link   => link_to(course.name, course_url(course)),
       :members_link => link_to(t('notifications.show_requests') + " >>", members_for_course_url(notificator.course))
@@ -43,7 +27,7 @@ module ApplicationHelper
     assignment = delivery.assignment
 
     t notification.kind, :scope => 'notifications', 
-      :student_image    => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
+      :student_image    => link_to(image_tag(student.avatar_file.xxsmall.url), user_url(student), :rel => "tip", :title => student.name),
       :student_link     => link_to(student.name, user_url(student)),
       :assignment_link  => link_to(assignment.name, assignment_url(assignment)),
       :delivery_link    => link_to(t('notifications.show_delivery') + " >>", delivery_url(delivery))
@@ -107,7 +91,7 @@ module ApplicationHelper
     course  = survey_reply.course
     student = survey_reply.user
     t notification.kind, :scope => 'notifications', 
-      :student_image     => link_to(avatar(student, :xxsmall), user_url(student), :rel => "tip", :title => student.name),
+      :student_image     => link_to(image_tag(student.avatar_file.xxsmall.url), user_url(student), :rel => "tip", :title => student.name),
       :student_link      => link_to(student.name, user_url(student)),
       :survey_link       => link_to(survey.name, survey_url(survey)),
       :course_link       => link_to(course.name, course_url(course)),
