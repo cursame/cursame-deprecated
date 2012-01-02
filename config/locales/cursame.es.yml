@@ -41,6 +41,9 @@ es:
     survey_updated: El cuestionario fue actualizado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
+    errors:
+      assignment_expired: La fecha de entrega ya pasó
+      survey_expired: La fecha de entrega ya pasó
 
   activerecord:
     models:

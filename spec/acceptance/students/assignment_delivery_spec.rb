@@ -93,6 +93,10 @@ feature 'Manage assignments', %q{
     end.should_not change(Delivery, :count)
   end
 
+  scenario 'trying to edit a delivery when it has expired' do
+    pending
+  end
+
   scenario 'commenting on the delivery' do
     delivery = Factory(:delivery, :assignment => @assignment, :user => @student)
     visit assignment_delivery_path @assignment, :subdomain => @network.subdomain

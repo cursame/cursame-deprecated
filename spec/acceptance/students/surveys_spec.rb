@@ -64,4 +64,17 @@ feature 'Surveys', %q{
     visit survey_reply_path @survey
     page.should show_survey_reply survey_reply
   end
+
+  scenario 'trying to answer a survey when it has expired' do
+    visit new_survey_reply_path @survey
+    Timecop.freeze(6.months.from_now) do
+      lambda do
+        page.driver.post survey_reply_path(@survey), :survey_reply => {}
+      end.should_not change(SurveyReply, :count)
+    end
+  end
+
+  scenario 'trying to edit answers for a survey when it has expired' do
+    pending
+  end
 end
