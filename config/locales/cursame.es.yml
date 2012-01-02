@@ -215,6 +215,7 @@ es:
     show:
       header: Cuestionario 
       edit_survey: Editar cuestionario
+      view_replies: Ver cuestionarios contestados
       course: Curso
       preview: Vista previa del cuestionario
       survey_sent: Ya enviaste tus respuestas
@@ -252,6 +253,10 @@ es:
       index:
         heder: Entregas para tarea
         show: Mostrar entrega
+    survey_replies:
+      index:
+        header: Cuestionarios respondidos para
+        show: Mostrar cuestionario respondido
 
   profile:
     edit_profile: 'Editar perfil'

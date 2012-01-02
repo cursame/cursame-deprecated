@@ -6,6 +6,8 @@ class SurveyReply < ActiveRecord::Base
 
   accepts_nested_attributes_for :survey_answers
 
+  # TODO: validate uniqueness of user_id within survey
+
   # before_validation do
   #   unanswered_questions = survey.questions - survey_answers.map(&:question)
   #   unanswered_questions.each { |question| survey_answers.build :question => question }

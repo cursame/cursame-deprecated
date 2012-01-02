@@ -50,7 +50,7 @@
           <% end %>
 
           <%= semantic_form_for @survey_reply, :url => nil do |form| %>
-            <%= render :partial => 'fields', :locals => {:form => form} %>
+            <%= render :partial => 'students/survey_replies/fields', :locals => {:form => form} %>
           <% end %>
         </div>
 

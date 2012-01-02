@@ -3,7 +3,7 @@ class Survey < ActiveRecord::Base
   extend ActiveRecord::AssetsOwner
 
   default_scope includes(:course)
-
+  has_many   :survey_replies
   belongs_to :course
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
@@ -11,6 +11,7 @@ class Survey < ActiveRecord::Base
   validates_inclusion_of :period, :in => (1..8)
 
   html_sanitized :description
+  # TODO: validate that all survey_answers and associated answers to survey_answers correspond to the same survey
 
   has_many :questions
   accepts_nested_attributes_for :questions, :allow_destroy => true 

@@ -170,3 +170,12 @@ RSpec::Matchers.define :show_survey_reply do |survey_reply|
     page.should show_survey_preview survey_reply.survey
   end
 end
+
+RSpec::Matchers.define :show_survey_reply_listing_for do |replies|
+  match do |page|
+    replies.each do |reply|
+      page.should have_css "a[href='#{user_path reply.user}']", :text => reply.user.name
+      page.should have_css "a[href='#{reply_path reply}']"
+    end
+  end
+end

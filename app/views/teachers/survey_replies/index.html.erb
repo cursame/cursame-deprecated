@@ -1,0 +1,9 @@
+<h1><%= t('.header') %> <%= @survey.name %></h1>
+<%= render :partial => 'courses/course', :locals => {:course => @course} %>
+<% @replies.each do |reply| %>
+  <div class="reply">
+    <%= link_to reply.user.name, reply.user %> - 
+    <%= link_to t('.show'), reply_path(reply) %>
+  </div>
+<% end %>
+

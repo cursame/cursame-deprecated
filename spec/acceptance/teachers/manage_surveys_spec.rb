@@ -128,4 +128,35 @@ feature 'Manage surveys', %q{
     page.should have_notice t('flash.survey_deleted')
     page.current_url.should match course_surveys_path(@course)
   end
+
+  context 'survey replies' do
+    before do
+    end
+
+    scenario 'viewing a list of survey replies' do
+      survey  = Factory(:survey, :course => @course)
+      replies = 3.times.map do
+        Factory(:survey_reply, :survey => survey)
+      end
+      
+      visit survey_path survey
+      click_link t('surveys.show.view_replies')
+
+      page.should have_content survey.name
+      page.should show_survey_reply_listing_for replies
+    end
+
+    scenario 'viewig a survey reply' do
+      survey = Factory(:survey, :course => @course)
+      reply  = Factory(:survey_reply, :survey => survey)
+
+      visit survey_path survey
+      click_link t('surveys.show.view_replies')
+      
+      within ('.reply:last') do
+        click_link t('teachers.survey_replies.index.show')
+      end
+      page.should show_survey_reply reply
+    end 
+  end
 end

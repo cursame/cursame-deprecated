@@ -8,6 +8,7 @@ describe Survey do
     it { should belong_to :course }
     it { should validate_presence_of :course }
     it { should have_many(:questions) }
+    it { should have_many(:survey_replies) }
   end
   
   describe 'validations' do
