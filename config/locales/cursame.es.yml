@@ -257,6 +257,8 @@ es:
       index:
         header: Cuestionarios respondidos para
         show: Mostrar cuestionario respondido
+        score: Calificación
+        updated: Actualizado
 
   profile:
     edit_profile: 'Editar perfil'

@@ -2,7 +2,10 @@
 <%= render :partial => 'courses/course', :locals => {:course => @course} %>
 <% @replies.each do |reply| %>
   <div class="reply">
+    <%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
     <%= link_to reply.user.name, reply.user %> - 
+    <%= t('.score') %>: <%= "%.2f" % reply.score %> -
+    <%= t('.updated') %>: <%= l(reply.updated_at, :format => :short) %> - 
     <%= link_to t('.show'), reply_path(reply) %>
   </div>
 <% end %>
