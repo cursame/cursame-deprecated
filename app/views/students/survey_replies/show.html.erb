@@ -43,10 +43,23 @@
         </div>
 
         <div class="questions">
-          <h2>Estas son tus respuetas:</h2>
-
-          <% if !@survey.expired? %>
-            <%= link_to t('surveys.show.update_answers'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
+          <h2><%= t('.answers') %></h2>
+          <% if params[:controller] == 'students/survey_replies' %>
+            <% if !@survey.expired? %>
+              <%= link_to t('surveys.show.update_answers'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
+            <% end %>
+          <% else %>
+            <div class="user">
+              <%= link_to image_tag(@survey_reply.user.avatar_file.xsmall.url), @survey_reply.user %>
+              <%= link_to @survey_reply.user.name, @survey_reply.user %>
+            </div>
+          <% end %>
+          
+          <% if @reveal_answers %>
+            <div>
+              <%= t('survey_reply.score') %>: <%= "%.2f" % @survey_reply.score %> -
+              <%= t('survey_reply.updated') %>: <%= l(@survey_reply.updated_at, :format => :short) %> - 
+            </div>
           <% end %>
 
           <%= semantic_form_for @survey_reply, :url => nil do |form| %>

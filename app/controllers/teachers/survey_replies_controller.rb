@@ -10,5 +10,6 @@ class Teachers::SurveyRepliesController < ApplicationController
     @survey = @survey_reply.survey
     @course = @survey_reply.course
     @reveal_answers = true 
+    render 'students/survey_replies/show'
   end
 end
