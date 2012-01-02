@@ -247,6 +247,14 @@ es:
         header: Entrega de tarea
         delivered: Entrega
         comment: Comentar entrega
+    survey_replies:
+      fields:
+        correct: Respuesta correcta
+        incorrect: Respuesta incorrecta
+
+  survey_reply:
+    score: Calificación del cuestionario
+    updated: Última edición
 
   teachers:
     deliveries:

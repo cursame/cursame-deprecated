@@ -1,8 +1,10 @@
 <%= form.semantic_fields_for :survey_answers do |fields| %>
-  <% question = fields.object.question %>
+  <% survey_answer = fields.object %>
+  <% question = survey_answer.question %>
   <%= form.inputs :survey_answer do %>
     <div class="question padding-all <%= cycle('odd', 'even') %>">
       <h3><%= question.text %></h3>
+      <%= t ".#{survey_answer.state}" if @reveal_answers %>
       <%= fields.input :question_id, :as => :hidden %>
       <%= fields.input :answer_uuid,
             :as           => :radio,

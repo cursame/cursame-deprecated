@@ -9,6 +9,6 @@ class Teachers::SurveyRepliesController < ApplicationController
     @survey_reply = current_user.manageable_survey_replies.find params[:id]
     @survey = @survey_reply.survey
     @course = @survey_reply.course
-    render 'students/survey_replies/show'
+    @reveal_answers = true 
   end
 end

@@ -10,4 +10,8 @@ class SurveyAnswer < ActiveRecord::Base
   def score
     correct? ? question.value : 0
   end
+
+  def state
+    correct? ? 'correct' : 'incorrect'
+  end
 end

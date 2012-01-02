@@ -16,6 +16,7 @@ describe SurveyAnswer do
       end
       it { @survey_reply.should be_correct }
       it { @survey_reply.score.should == @question.value }
+      it { @survey_reply.state.should == 'correct' }
     end
 
     describe 'is not correct' do
@@ -24,6 +25,7 @@ describe SurveyAnswer do
       end
       it { @survey_reply.should_not be_correct }
       it { @survey_reply.score.should == 0 }
+      it { @survey_reply.state.should == 'incorrect' }
     end
   end
 end

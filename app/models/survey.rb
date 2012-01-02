@@ -27,4 +27,8 @@ class Survey < ActiveRecord::Base
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_updated'
     end
   end
+
+  def expired?
+    @survey.due_to < DateTime.now
+  end
 end

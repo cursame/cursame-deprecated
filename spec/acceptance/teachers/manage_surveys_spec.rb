@@ -148,10 +148,12 @@ feature 'Manage surveys', %q{
 
     visit survey_path survey
     click_link t('surveys.show.view_replies')
+    # TODO: not testing if revealing correct or incorrect
 
     within ('.reply:last') do
       click_link t('teachers.survey_replies.index.show')
     end
-    page.should show_survey_reply reply
+    save_and_open_page
+    page.should show_managed_survey_reply reply
   end 
 end

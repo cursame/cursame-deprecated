@@ -164,7 +164,7 @@ RSpec::Matchers.define :show_survey_reply do |survey_reply|
 
     # all radio should be disabled
     page.driver.find("//input[@type='radio']").each do |node|
-      puts node['disabled'].should be_true
+      node['disabled'].should be_true
     end
 
     page.should show_survey_preview survey_reply.survey
@@ -180,5 +180,15 @@ RSpec::Matchers.define :show_survey_reply_listing_for do |replies|
       page.should have_css "a[href='#{user_path reply.user}']", :text => reply.user.name
       page.should have_css "a[href='#{reply_path reply}']"
     end
+  end
+end
+
+RSpec::Matchers.define :show_managed_survey_reply do |reply|
+  match do |page|
+    page.should have_content '%.2f' % reply.score
+    page.should have_content I18n.l(reply.updated_at, :format => :short)
+    page.should have_css "img[src='#{reply.user.avatar_file.xsmall.url}']"
+    page.should have_css "a[href='#{user_path reply.user}']", :text => reply.user.name
+    page.should show_survey_reply reply
   end
 end

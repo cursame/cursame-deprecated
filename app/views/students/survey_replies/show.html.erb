@@ -45,7 +45,7 @@
         <div class="questions">
           <h2>Estas son tus respuetas:</h2>
 
-          <% if @survey.due_to > DateTime.now %>
+          <% if !@survey.expired? %>
             <%= link_to t('surveys.show.update_answers'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
           <% end %>
 
