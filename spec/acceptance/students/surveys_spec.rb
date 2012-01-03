@@ -64,16 +64,55 @@ feature 'Surveys', %q{
     page.should show_survey_reply survey_reply
   end
 
+  scenario 'editing a survey reply' do
+    question = @survey.questions.first
+    survey_reply = Factory(:wrong_survey_reply, :user => @student, :survey => @survey)
+    puts survey_reply.survey_answers.count
+
+    visit survey_reply_path @survey
+    save_and_open_page
+    click_link t('students.survey_replies.show.edit')
+    save_and_open_page
+    correct_answer = @survey.questions.first.correct_answer
+
+    lambda do
+      choose correct_answer.text
+      click_button 'submit'
+    end.should_not change(SurveyReply, :count)
+
+    survey_reply = SurveyReply.last
+    SurveyReply.should exist_with :user_id => @student.id, :survey_id => @survey.id
+    SurveyAnswer.should exist_with :answer_uuid => correct_answer.uuid, 
+      :question_id => question.id,
+      :survey_reply_id => survey_reply.id
+
+    page.should have_notice t('flash.survey_reply_updated')
+
+    Notification.should exist_with :user_id => @teacher.id, :notificator_id => survey_reply.id, :kind => 'teacher_survey_updated'
+
+    page.should show_survey_reply survey_reply
+  end
+
+  scenario 'trying to reply to a surve when it has expired' do
+    Timecop.freeze(6.months.from_now) do
+      visit survey_reply_path @survey
+      page.should_not link_to new_survey_reply_path(survey)
+    end
+  end
+
   scenario 'trying to answer a survey when it has expired' do
-    visit new_survey_reply_path @survey
+    survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
+    Timecop.freeze(6.months.from_now) do
+      visit survey_reply_path @survey
+      page.should_not link_to edit_survey_reply_path(survey)
+    end
+  end
+
+  scenario 'trying to edit answers for a survey when it has expired' do
     Timecop.freeze(6.months.from_now) do
       lambda do
         page.driver.post survey_reply_path(@survey), :survey_reply => {}
       end.should_not change(SurveyReply, :count)
     end
-  end
-
-  scenario 'trying to edit answers for a survey when it has expired' do
-    pending
   end
 end

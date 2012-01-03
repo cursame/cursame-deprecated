@@ -1,2 +1,6 @@
-<h1>Students::SurveyReplies#edit</h1>
-<p>Find me in app/views/students/survey_replies/edit.html.erb</p>
+<%= semantic_form_for @survey_reply, :url => survey_reply_path(@survey), :method => :put do |form| %>
+  <%= render :partial => 'fields', :locals => {:form => form} %>
+  <%= form.buttons do %>
+    <%= form.commit_button form.object.new_record? ? t('forms.send_survey_reply') : t('forms.update_survey_reply'), :button_html => {:id => :submit, :class => 'btn right'} %>
+  <% end %>
+<% end %>

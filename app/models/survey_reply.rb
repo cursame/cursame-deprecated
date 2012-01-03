@@ -19,6 +19,12 @@ class SurveyReply < ActiveRecord::Base
     end
   end
 
+  after_update do
+    course.teachers.select('users.id').each do |teacher|
+      Notification.create :user => teacher, :notificator => self, :kind => 'teacher_survey_updated'
+    end
+  end
+
   def score
     total  = survey.questions.reduce(0) { |sum, question| sum + question.value }
     scored = survey_answers.reduce(0) { |sum, answer| sum + answer.score }

@@ -111,6 +111,8 @@ feature 'Manage surveys', %q{
     survey = Factory(:survey, :course => @course)
     visit course_surveys_path @course
 
+    page.should_not link_to edit_survey_reply_path(survey)
+
     within('.survey:last') do
       click_link survey.name
     end

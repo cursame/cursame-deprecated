@@ -28,5 +28,20 @@ class Students::SurveyRepliesController < ApplicationController
   end
 
   def edit
+    @survey_reply = current_user.survey_replies.where(:survey_id => params[:survey_id]).first
+    @survey = @survey_reply.survey
+    @course = @survey_reply.course
+  end
+
+  def update
+    @survey_reply = current_user.survey_replies.where(:survey_id => params[:survey_id]).first
+    @survey = @survey_reply.survey
+    @course = @survey_reply.course
+
+    if @survey_reply.update_attributes params[:survey_reply]
+      redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_updated')
+    else
+      render :edit
+    end
   end
 end
