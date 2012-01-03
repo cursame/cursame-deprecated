@@ -38,7 +38,6 @@ feature 'Surveys', %q{
 
     within('.survey:last') do
       click_link I18n.t('surveys.survey.answer')
-      save_and_open_page
     end
 
     lambda do

@@ -46,7 +46,7 @@
           <h2><%= t('.answers') %></h2>
           <% if params[:controller] == 'students/survey_replies' %>
             <% if !@survey.expired? %>
-              <%= link_to t('surveys.show.update_answers'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
+              <%= link_to t('.edit'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
             <% end %>
           <% else %>
             <div class="user">

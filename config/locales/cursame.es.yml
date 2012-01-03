@@ -225,7 +225,6 @@ es:
       survey_sent_at: 'Respuestas enviadas el:'
       view_answers: Tus respuestas
       new_answers: Enviar respuestas
-      update_answers: Modificar respuestas
       not_answered: No has enviado tus respuestas
       survey_expired: La fecha para contestar este cuestionario ha pasado
     new:
@@ -251,6 +250,8 @@ es:
         delivered: Entrega
         comment: Comentar entrega
     survey_replies:
+      show:
+        edit: Modificar respuestas
       fields:
         correct: Respuesta correcta
         incorrect: Respuesta incorrecta
