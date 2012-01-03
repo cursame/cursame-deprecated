@@ -3,6 +3,7 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply = current_user.survey_replies.where(:survey_id => params[:survey_id]).first
     @survey = @survey_reply.survey
     @course = @survey_reply.course
+    @reveal_answers = @survey.due_to < Time.now
   end
 
   def new

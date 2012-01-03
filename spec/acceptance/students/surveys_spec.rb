@@ -62,17 +62,24 @@ feature 'Surveys', %q{
     survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
     visit survey_reply_path @survey
     page.should show_survey_reply survey_reply
+    page.should_not have_content '%.2f' % survey_reply.score
+  end
+
+  scenario 'viewing a survey reply with score' do
+    survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
+    Timecop.freeze(6.months.from_now) do
+      visit survey_reply_path @survey
+      page.should show_survey_reply survey_reply
+      page.should have_content '%.2f' % survey_reply.score
+    end
   end
 
   scenario 'editing a survey reply' do
     question = @survey.questions.first
     survey_reply = Factory(:wrong_survey_reply, :user => @student, :survey => @survey)
-    puts survey_reply.survey_answers.count
 
     visit survey_reply_path @survey
-    save_and_open_page
     click_link t('students.survey_replies.show.edit')
-    save_and_open_page
     correct_answer = @survey.questions.first.correct_answer
 
     lambda do
@@ -95,8 +102,8 @@ feature 'Surveys', %q{
 
   scenario 'trying to reply to a surve when it has expired' do
     Timecop.freeze(6.months.from_now) do
-      visit survey_reply_path @survey
-      page.should_not link_to new_survey_reply_path(survey)
+      visit survey_path @survey
+      page.should_not link_to new_survey_reply_path(@survey)
     end
   end
 
@@ -104,7 +111,7 @@ feature 'Surveys', %q{
     survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
     Timecop.freeze(6.months.from_now) do
       visit survey_reply_path @survey
-      page.should_not link_to edit_survey_reply_path(survey)
+      page.should_not link_to edit_survey_reply_path(survey_reply)
     end
   end
 

@@ -65,6 +65,26 @@ feature 'Notifications display', %q{
     end
   end
 
+  scenario 'viewing a notification for an edited survey answers' do
+    notification = Factory(:teacher_survey_updated, :user => @user)
+    survey_reply = notification.notificator
+    survey       = survey_reply.survey
+    student      = survey_reply.user
+    course       = survey_reply.course
+
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path
+    
+    page.should have_content "#{student.name} ha actualizado sus respuestas para el cuestionario #{survey.name} en #{course.name}. Ver respuestas"
+    
+    within '.notification' do
+      page.should link_to user_path(student)
+      page.should link_to survey_path(survey)
+      page.should link_to course_path(course)
+      page.should link_to reply_path(survey_reply)
+    end
+  end
+
   # TODO: from here students, separate specs
   scenario 'viewing a notification for course rejection' do
     notification = Factory(:student_course_rejected, :user => @user)

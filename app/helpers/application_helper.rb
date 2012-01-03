@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def notification_message notification
-    self.send notification.kind, notification
+    send notification.kind, notification if respond_to? notification.kind
   end
 
   def student_course_enrollment notification
@@ -86,6 +86,19 @@ module ApplicationHelper
 
   # TODO: refactor student_image + student_link into helper
   def teacher_survey_replied notification
+    survey_reply = notification.notificator
+    survey  = survey_reply.survey
+    course  = survey_reply.course
+    student = survey_reply.user
+    t notification.kind, :scope => 'notifications', 
+      :student_image     => link_to(image_tag(student.avatar_file.xxsmall.url), user_url(student), :rel => "tip", :title => student.name),
+      :student_link      => link_to(student.name, user_url(student)),
+      :survey_link       => link_to(survey.name, survey_url(survey)),
+      :course_link       => link_to(course.name, course_url(course)),
+      :survey_reply_link => link_to(t('notifications.show_survey_reply') + " >>", reply_url(survey_reply))
+  end
+
+  def teacher_survey_updated notification
     survey_reply = notification.notificator
     survey  = survey_reply.survey
     course  = survey_reply.course

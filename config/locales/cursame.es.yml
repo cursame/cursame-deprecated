@@ -344,3 +344,4 @@ es:
     student_survey_added: "Se ha creado el cuestionario %{survey_link} en %{course_link}. %{show_survey_link}"
     student_survey_updated: "Se ha actualizado el cuestionario %{survey_link} en %{course_link}. %{show_survey_link}"
     teacher_survey_replied: "<div class=\"img\">%{student_image}</div> %{student_link} ha contestado el cuestionario %{survey_link} en %{course_link}. %{survey_reply_link}"
+    teacher_survey_updated: "<div class=\"img\">%{student_image}</div> %{student_link} ha actualizado sus respuestas para el cuestionario %{survey_link} en %{course_link}. %{survey_reply_link}"
