@@ -2,7 +2,7 @@ class SurveyReply < ActiveRecord::Base
   belongs_to :user
   belongs_to :survey
   has_one :course, :through => :survey
-  has_many :survey_answers
+  has_many :survey_answers, :dependent => :destroy
 
   accepts_nested_attributes_for :survey_answers
   validates_uniqueness_of :survey_id, :scope => :user_id

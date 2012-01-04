@@ -6,7 +6,7 @@ describe SurveyReply do
 
   it { should belong_to :survey }
   it { should belong_to :user }
-  it { should have_many :survey_answers }
+  it { should have_many(:survey_answers).dependent(:destroy) }
 
   it 'should provide a score' do
     question = Factory(:question, :value => 1)

@@ -39,6 +39,7 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
+    survey_deleted: El cuestionario fue eliminado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
     errors:
@@ -230,6 +231,9 @@ es:
       new_answers: Enviar respuestas
       not_answered: No has enviado tus respuestas
       survey_expired: La fecha para contestar este cuestionario ha pasado
+      delete: Eliminar cuestionario
+      confirm_delete: "¿Estás seguro que deseas eliminar el cuestionario?"
+      confirm_delete_with_replies: "El cuestionario tiene ya respuestas de los alumnos, al eliminarlo se eliminarán también estas respuestas. ¿Estás seguro que deseas eliminarlo?"
     new:
       header: Nuevo cuestionario
     edit:

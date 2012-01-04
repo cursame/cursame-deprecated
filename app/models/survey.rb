@@ -4,7 +4,8 @@ class Survey < ActiveRecord::Base
   include ActiveRecord::Transitions
 
   default_scope includes(:course).order("due_to DESC")
-  has_many   :survey_replies
+  has_many   :survey_replies, :dependent => :destroy
+  has_many   :questions, :dependent => :destroy
   belongs_to :course
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
@@ -24,7 +25,6 @@ class Survey < ActiveRecord::Base
   # TODO: validate that all survey_answers and associated answers to survey_answers correspond to the same survey
   # TODO: forbid published survey edition at model level
 
-  has_many :questions
   accepts_nested_attributes_for :questions, :allow_destroy => true 
 
   def survey_published

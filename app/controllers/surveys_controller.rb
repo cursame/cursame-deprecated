@@ -47,6 +47,12 @@ class SurveysController < ApplicationController
     end
   end
 
+  def destroy
+    survey = current_user.manageable_surveys.find(params[:id])
+    survey.destroy
+    redirect_to course_surveys_path(survey.course), :notice => I18n.t('flash.survey_deleted')
+  end
+
   def publish
     current_user.manageable_surveys.find(params[:id]).publish!
     head :ok

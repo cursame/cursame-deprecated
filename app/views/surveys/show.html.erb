@@ -14,7 +14,6 @@
     </div>
 
     <div class="row">
-
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
         <%= render :partial => "courses/members_menu" %>
@@ -51,6 +50,8 @@
           <% if current_user.teacher? %>
             <h2><%= t('.preview') %></h2>
             <%= render :partial => 'question', :collection => @survey.questions %>
+
+            <%= link_to t('.delete'), survey_path(@survey), :method => :delete, :confirm => @survey.survey_replies.count == 0 ? t('.confirm_delete') : t('.confirm_delete_with_replies') %>
 
           <% elsif @survey_reply %>
             <h3><%= t('.survey_sent') %></h3>

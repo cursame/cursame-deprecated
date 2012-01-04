@@ -166,7 +166,7 @@ feature 'Manage surveys', %q{
     visit course_surveys_path @course
 
     page.should_not link_to edit_survey_reply_path survey
-
+  
     within('.survey:last') do
       click_link survey.name
     end
@@ -177,8 +177,10 @@ feature 'Manage surveys', %q{
     survey = Factory(:survey, :course => @course)
     visit survey_url(survey, :subdomain => @network.subdomain)
 
+    save_and_open_page
+
     lambda do
-      click_link 'delete'
+      click_link t('surveys.show.delete')
     end.should change(Survey, :count).by(-1)
 
     page.should have_notice t('flash.survey_deleted')

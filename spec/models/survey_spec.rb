@@ -7,8 +7,8 @@ describe Survey do
   describe 'associations' do
     it { should belong_to :course }
     it { should validate_presence_of :course }
-    it { should have_many(:questions) }
-    it { should have_many(:survey_replies) }
+    it { should have_many(:questions).dependent(:destroy) }
+    it { should have_many(:survey_replies).dependent(:destroy) }
   end
   
   describe 'validations' do
@@ -19,9 +19,6 @@ describe Survey do
     it { should validate_presence_of :period }
     it { should ensure_inclusion_of(:period).in_range(1..8) }
     it { should validate_presence_of :due_to }
-    it 'should not allwo saving a published survey' do
-      Factory(:published_survey).should_not be_valid
-    end
   end
 
   describe 'html description sanitization' do
