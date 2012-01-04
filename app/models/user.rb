@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     role == 'supervisor'
   end
 
+  def role_for_course course
+    enrollments.where(:course_id => course).first.role
+  end
+
   def can_edit_comment? comment
     commentable = comment.commentable
     comments.include?(comment) || 

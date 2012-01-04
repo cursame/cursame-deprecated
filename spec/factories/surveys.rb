@@ -7,5 +7,10 @@ FactoryGirl.define do
     due_to { 1.month.from_now }
     course { Factory :course }
     questions { [Factory(:question)] }
+    state :unpublished
+  end
+
+  factory :published_survey, :parent => :survey do
+    state :published
   end
 end

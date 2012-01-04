@@ -15,6 +15,19 @@ $(function(){
     })
   });
 
+  $('a.publish-survey').click(function(){
+    var publishLink = $(this)
+    $.ajax({
+      type : 'POST',
+      url : publishLink.attr('href'),
+      data : {'_method' : 'PUT'},
+      success : function(){
+        publishLink.detach();
+      }
+    })
+    return false;
+  });
+
   $('input[type=file]').livequery(function(){
     if ($(this).data('upload-path')) {
       $(this).ajaxyUpload({

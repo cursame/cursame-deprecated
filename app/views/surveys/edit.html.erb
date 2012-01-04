@@ -24,6 +24,10 @@
         <h2><%= t('.header') %></h2>
         <%= semantic_form_for @survey do |form| %>
           <%= render :partial => 'survey_fields', :locals => {:form => form} %>
+          <%= form.buttons do %>
+            <%= form.commit_button :button_html => {:class => 'btn right'} %>
+            <%= form.commit_button :button_html => {:class => 'btn right'}, :label => t('formtastic.actions.update_and_publish') %>
+          <% end %>
         <% end %>
       </div>
       <div class="span3" style="margin:0;">

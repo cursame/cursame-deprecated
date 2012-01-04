@@ -19,6 +19,9 @@ describe Survey do
     it { should validate_presence_of :period }
     it { should ensure_inclusion_of(:period).in_range(1..8) }
     it { should validate_presence_of :due_to }
+    it 'should not allwo saving a published survey' do
+      Factory(:published_survey).should_not be_valid
+    end
   end
 
   describe 'html description sanitization' do
@@ -26,5 +29,15 @@ describe Survey do
     it { survey.description.should_not =~ /<script>/ }
     it { survey.description.should be_html_safe }
     it { survey.description.should =~ /hello/}
+  end
+
+  describe 'published scopes' do
+    before do
+      @unpublished = Factory(:survey)
+      @published   = Factory(:published_survey)
+    end
+
+    it { Survey.published.should == [@published] }
+    it { Survey.unpublished.should == [@unpublished] }
   end
 end

@@ -13,12 +13,13 @@ feature 'Surveys', %q{
     @course  = Factory(:course, :network => @network)
     @course.enrollments.create(:user => @student, :role => 'student', :state => 'accepted')
     @course.enrollments.create(:user => @teacher, :role => 'teacher', :admin => true)
-    @survey  = Factory(:survey, :course => @course)
+    @survey  = Factory(:published_survey, :course => @course)
     sign_in_with @student, :subdomain => @network.subdomain
   end
 
   scenario 'viewing a list of surveys' do
-    surveys = (1..2).map { Factory(:survey, :course => @course) }
+    surveys = (1..2).map { Factory(:published_survey, :course => @course) }
+    unpublished_survey = Factory(:survey, :course => @course)
     surveys << @survey
 
     visit course_surveys_url @course, :subdomain => @network.subdomain
@@ -26,6 +27,7 @@ feature 'Surveys', %q{
     surveys.each do |survey|
       page.should show_survey_preview survey
     end
+    page.should_not show_survey_preview unpublished_survey
   end
 
   scenario 'answering a survey' do
@@ -56,6 +58,12 @@ feature 'Surveys', %q{
     Notification.should exist_with :user_id => @teacher.id, :notificator_id => survey_reply.id, :kind => 'teacher_survey_replied'
 
     page.should show_survey_reply survey_reply
+  end
+
+  scenario 'trying to view an unanswered survey' do
+    lambda do
+      visit survey_path Factory(:survey, :course => @course)
+    end.should raise_error ActiveRecord::RecordNotFound
   end
 
   scenario 'viewing a survey reply' do
@@ -100,7 +108,7 @@ feature 'Surveys', %q{
     page.should show_survey_reply survey_reply
   end
 
-  scenario 'trying to reply to a surve when it has expired' do
+  scenario 'trying to reply to a survey when it has expired' do
     Timecop.freeze(6.months.from_now) do
       visit survey_path @survey
       page.should_not link_to new_survey_reply_path(@survey)

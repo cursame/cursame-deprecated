@@ -22,6 +22,9 @@ Cursame::Application.routes.draw do
     end
 
     resources :surveys, :shallow => true do
+      member do
+        put :publish
+      end
       resource :survey_reply, 
         :as => :reply, 
         :only => [:show, :new, :create, :edit, :update],

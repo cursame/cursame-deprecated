@@ -7,7 +7,7 @@ class Students::SurveyRepliesController < ApplicationController
   end
 
   def new
-    @survey = current_user.surveys.find params[:survey_id]
+    @survey = current_user.surveys.published.find params[:survey_id]
     @course = @survey.course
     @survey_reply = current_user.survey_replies.build(:survey => @survey)
     @survey.questions.each do |question|
@@ -16,7 +16,7 @@ class Students::SurveyRepliesController < ApplicationController
   end
 
   def create
-    @survey = current_user.surveys.find params[:survey_id]
+    @survey = current_user.surveys.published.find params[:survey_id]
     @survey_reply = current_user.survey_replies.build(params[:survey_reply])
     @survey_reply.survey = @survey
 

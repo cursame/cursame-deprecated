@@ -108,9 +108,11 @@ es:
   formtastic:
     actions:
       update: Actualizar
+      update_and_publish: Actualizar y publicar
       create: Crear
-      edit: 'Editar'
-      delete: 'Eliminar'
+      create_and_publish: Crear y publicar
+      edit: Editar
+      delete: Eliminar
 
   shared:
     toolbar:
@@ -212,6 +214,7 @@ es:
       period: Periodo
       description: Descripción
       answer: Contestar
+      publish: Publicar
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario
