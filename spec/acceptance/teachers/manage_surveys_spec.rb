@@ -170,6 +170,7 @@ feature 'Manage surveys', %q{
     within('.survey:last') do
       click_link survey.name
     end
+    save_and_open_page
     page.should show_survey_full_preview survey
   end
 
