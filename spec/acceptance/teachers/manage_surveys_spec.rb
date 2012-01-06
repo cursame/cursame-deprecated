@@ -155,6 +155,8 @@ feature 'Manage surveys', %q{
 
   scenario 'trying to edit a published survey' do
     survey = Factory(:published_survey, :course => @course)
+    visit survey_path(survey)
+    page.should_not link_to edit_survey_path(survey)
     visit edit_survey_path survey
     current_url.should_not =~ /#{edit_survey_path(survey)}/
     put survey_path(survey), :survey => {:name => 'Edited survey'}
