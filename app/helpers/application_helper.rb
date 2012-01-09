@@ -75,15 +75,6 @@ module ApplicationHelper
       :show_survey_link => link_to(t('notifications.show_survey') + " >>", survey_url(survey))
   end
 
-  def student_survey_updated notification
-    survey  = notification.notificator
-    course  = survey.course
-    t notification.kind, :scope => 'notifications', 
-      :course_link => link_to(course.name, course_url(course)),
-      :survey_link => link_to(survey.name, survey_url(survey)),
-      :show_survey_link => link_to(t('notifications.show_survey') + " >>", survey_url(survey))
-  end
-
   # TODO: refactor student_image + student_link into helper
   def teacher_survey_replied notification
     survey_reply = notification.notificator

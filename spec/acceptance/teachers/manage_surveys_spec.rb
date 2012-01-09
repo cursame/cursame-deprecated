@@ -176,8 +176,6 @@ feature 'Manage surveys', %q{
 
     Survey.should exist_with :name => 'Edited survey'
     page.should have_notice t('flash.survey_updated')
-
-    Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_updated'
   end
 
   scenario 'trying to edit an existing survey with not passing validation' do
@@ -187,6 +185,9 @@ feature 'Manage surveys', %q{
     visit edit_survey_url(survey, :subdomain => @network.subdomain)
     fill_in 'survey[name]', :with => ''
     click_button t('formtastic.actions.update')
+    within '#survey_name_input' do
+      page.should have_content t('errors.messages.blank')
+    end
     Survey.should_not exist_with :name => ''
   end
 
@@ -210,18 +211,12 @@ feature 'Manage surveys', %q{
       click_link survey.name
     end
 
-    within '#survey_name_input' do
-      page.should have_content t('errors.messabes.blank')
-    end
-    save_and_open_page
     page.should show_survey_full_preview survey
   end
 
   scenario 'removing an existing survey' do
     survey = Factory(:survey, :course => @course)
     visit survey_url(survey, :subdomain => @network.subdomain)
-
-    save_and_open_page
 
     lambda do
       click_link t('surveys.show.delete')
@@ -255,7 +250,6 @@ feature 'Manage surveys', %q{
     within ('.reply:last') do
       click_link t('teachers.survey_replies.index.show')
     end
-    save_and_open_page
     page.should show_managed_survey_reply reply
   end 
 

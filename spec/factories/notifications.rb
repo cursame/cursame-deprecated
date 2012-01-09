@@ -37,11 +37,6 @@ FactoryGirl.define do
     notificator { Factory(:survey) }
   end
 
-  factory :student_survey_updated, :parent => :notification do
-    kind 'student_survey_updated'
-    notificator { Factory(:survey) }
-  end
-
   factory :teacher_survey_replied, :parent => :notification do
     kind 'teacher_survey_replied'
     notificator { Factory(:survey_reply) }

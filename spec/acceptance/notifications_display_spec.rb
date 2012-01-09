@@ -159,20 +159,4 @@ feature 'Notifications display', %q{
       page.should link_to survey_path(survey)
     end
   end
-
-  scenario 'viewing a notification for an updated survey' do
-    notification = Factory(:student_survey_updated, :user => @user)
-    survey   = notification.notificator
-    course       = survey.course
-
-    sign_in_with notification.user, :subdomain => @network.subdomain
-    visit dashboard_path
-    
-    page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario"
-    
-    within '.notification' do
-      page.should link_to course_path(course)
-      page.should link_to survey_path(survey)
-    end
-  end
 end

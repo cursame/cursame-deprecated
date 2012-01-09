@@ -33,12 +33,6 @@ class Survey < ActiveRecord::Base
     end
   end
 
-  after_update do
-    course.students.select('users.id').each do |student|
-      Notification.create :user => student, :notificator => self, :kind => 'student_survey_updated'
-    end
-  end
-
   def expired?
     due_to < DateTime.now
   end
