@@ -76,6 +76,33 @@ feature 'Manage surveys', %q{
     Notification.should_not exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_added'
   end
 
+  scenario 'trying to create a survey without setting a correct answer for a question', :js => true do
+    visit new_course_survey_url(@course, :subdomain => @network.subdomain)
+
+    fill_in 'survey[name]',        :with => 'First survey'
+    fill_in 'survey[description]', :with => 'This is a test survey'
+    fill_in 'survey[value]',       :with => 9
+    fill_in 'survey[period]',      :with => 1
+
+    # TODO: we need a select_date helper
+    select '2011',    :from => 'survey[due_to(1i)]'
+    select 'enero',   :from => 'survey[due_to(2i)]'
+    select '20',      :from => 'survey[due_to(3i)]'
+    select '8',       :from => 'survey[due_to(4i)]'
+    select '30',      :from => 'survey[due_to(5i)]'
+
+    add_question_with_answers 'A, B or C?'
+    within 'fieldset.answer' do
+      find("input[type='radio']").set(false)
+    end
+
+    sleep 5
+
+    lambda do
+      click_button t('formtastic.actions.create')
+    end.should_not change(Survey, :count)
+  end
+
   scenario 'creating a survey with publishing', :js => true do
     student = Factory(:student)
     @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')

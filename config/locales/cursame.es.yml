@@ -105,6 +105,11 @@ es:
       answer:
         text: Respuesta
         _destroy: Eliminar
+      survey:
+        name: Nombre
+        description: Descripción
+        value: Valor
+        period: Periodo
 
   formtastic:
     actions:
