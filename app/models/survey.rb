@@ -5,7 +5,7 @@ class Survey < ActiveRecord::Base
 
   default_scope includes(:course).order("due_to DESC")
   has_many   :survey_replies, :dependent => :destroy
-  has_many   :questions, :dependent => :destroy
+  has_many   :questions, :dependent => :destroy, :order => "position ASC"
   belongs_to :course
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course

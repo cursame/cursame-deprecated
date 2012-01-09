@@ -9,6 +9,7 @@
           <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
         <% end %>
         <ol>
+          <%= question.input :position, :input_html => {:class => 'question-position'}, :as => :hidden %>
           <%= question.input :text %>
           <%= question.input :value %>
           <%= question.input :_destroy, :as => :boolean %>

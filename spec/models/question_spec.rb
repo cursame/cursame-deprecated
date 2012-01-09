@@ -13,7 +13,7 @@ describe Question do
 
   describe 'associations' do
     it { should belong_to :survey }
-    it { should have_many :answers }
+    it { should have_many(:answers).dependent(:destroy) }
     it { should belong_to :correct_answer }
   end
 end

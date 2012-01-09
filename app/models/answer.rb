@@ -9,5 +9,4 @@ class Answer < ActiveRecord::Base
   end
 
   validates_presence_of :text, :position
-  validates_uniqueness_of :position, :scope => :question_id
 end

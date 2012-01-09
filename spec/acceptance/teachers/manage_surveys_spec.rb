@@ -153,6 +153,16 @@ feature 'Manage surveys', %q{
     Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_updated'
   end
 
+  scenario 'trying to edit an existing survey with not passing validation' do
+    survey   = Factory(:survey, :course => @course)
+    question = survey.questions.first
+
+    visit edit_survey_url(survey, :subdomain => @network.subdomain)
+    fill_in 'survey[name]', :with => ''
+    click_button t('formtastic.actions.update')
+    Survey.should_not exist_with :name => ''
+  end
+
   scenario 'trying to edit a published survey' do
     survey = Factory(:published_survey, :course => @course)
     visit survey_path(survey)
@@ -171,6 +181,10 @@ feature 'Manage surveys', %q{
   
     within('.survey:last') do
       click_link survey.name
+    end
+
+    within '#survey_name_input' do
+      page.should have_content t('errors.messabes.blank')
     end
     save_and_open_page
     page.should show_survey_full_preview survey

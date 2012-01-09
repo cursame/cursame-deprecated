@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   belongs_to :survey
-  has_many   :answers, :order => "position ASC"
+  has_many   :answers, :dependent => :destroy, :order => "position ASC"
   belongs_to :correct_answer, 
     :class_name  => 'Answer', 
     :foreign_key => :answer_uuid, 

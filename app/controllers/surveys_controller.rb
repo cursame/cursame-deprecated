@@ -43,6 +43,7 @@ class SurveysController < ApplicationController
     if @survey.update_attributes params[:survey]
       redirect_to @survey, :notice => I18n.t('flash.survey_updated')
     else
+      @course = @survey.course
       render 'edit'
     end
   end
