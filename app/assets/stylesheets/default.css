@@ -330,7 +330,13 @@ color: #BFBFBF;
 .answers input[type=radio] { margin-right: 10px; }
 .answers fieldset { margin-bottom:0; }
 
+form.survey .questions {
+  cursor: move;
+}
 
+form.survey .answers {
+  cursor: move;
+}
 
 /* @end */
 
