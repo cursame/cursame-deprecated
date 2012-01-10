@@ -92,15 +92,19 @@ feature 'Manage surveys', %q{
     select '30',      :from => 'survey[due_to(5i)]'
 
     add_question_with_answers 'A, B or C?'
-    within 'fieldset.answer' do
-      find("input[type='radio']").set(false)
-    end
 
-    sleep 5
+    within 'fieldset.answer:last' do
+      # remove last answer for question, the only way I could find
+      # to simulate no radio chosen
+      click_link 'Eliminar'
+    end
 
     lambda do
       click_button t('formtastic.actions.create')
+      save_and_open_page
     end.should_not change(Survey, :count)
+
+    page.should have_content I18n.t('activerecord.errors.question.missing_correct_answer')
   end
 
   scenario 'creating a survey with publishing', :js => true do
@@ -189,6 +193,22 @@ feature 'Manage surveys', %q{
       page.should have_content t('errors.messages.blank')
     end
     Survey.should_not exist_with :name => ''
+  end
+
+  scenario 'trying to edit a survey removing a correct answer for a question', :js => true do
+    survey   = Factory(:survey, :course => @course)
+    question = survey.questions.first
+
+    visit edit_survey_url(survey, :subdomain => @network.subdomain)
+    fill_in 'survey[name]', :with => 'Edited'
+    within 'fieldset.answer:last' do
+      click_link 'Eliminar'
+    end
+
+    click_button t('formtastic.actions.update')
+
+    Survey.should_not exist_with :name => 'Edited'
+    page.should have_content I18n.t('activerecord.errors.question.missing_correct_answer')
   end
 
   scenario 'trying to edit a published survey' do

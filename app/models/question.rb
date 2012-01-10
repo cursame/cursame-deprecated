@@ -10,15 +10,8 @@ class Question < ActiveRecord::Base
 
   validates_presence_of :text
   validates_presence_of :value
-  validates_presence_of :correct_answer, :message => I18n.t('activerecord.errors.question.missing_correct_answer')
 
-  attr_writer :answer_position
-
-  before_validation do
-    self.correct_answer = answers.find{ |answer| answer.position == answer_position.to_i }
-  end
-
-  def answer_position
-    @answer_position ||= correct_answer.try(:position)
+  validate do
+    errors.add(:answer_uuid, I18n.t('activerecord.errors.question.missing_correct_answer')) if answer_uuid.blank?
   end
 end

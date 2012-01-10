@@ -132,7 +132,6 @@ feature 'Notifications display', %q{
     notification = Factory(:student_assignment_updated, :user => @user)
     assignment   = notification.notificator
     course       = assignment.course
-
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     

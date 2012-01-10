@@ -9,17 +9,15 @@
 //= require_tree .
 
 $(function(){
+  $('fieldset[data-association="questions"]').bind('setOrder', function(){
+    $(this).closest('fieldset.questions').find('fieldset.question').each(function(index){
+      $('input.question-position', $(this)).val(index);
+    })
+  });
   
   $('fieldset[data-association="answers"]').bind('setOrder', function(){
     $(this).closest('fieldset.question').find('fieldset.answer').each(function(index){
       $('input.answer-position', $(this)).val(index);
-    })
-  });
-
-  $('fieldset[data-association="questions"]').bind('setOrder', function(){
-    $(this).closest('fieldset.questions').find('fieldset.question').each(function(index){
-      console.log(index);
-      $('input.question-position', $(this)).val(index);
     })
   });
 
@@ -28,13 +26,19 @@ $(function(){
     disableSelection().
     sortable({
       stop : function(){
-        console.log($(this));
         $(this).trigger('setOrder');
       }
     });
 
-  $('fieldset[data-association]').nestedAssociations(function(){
-    $(this).trigger('setOrder');
+  $('fieldset[data-association]').nestedAssociations({
+    add : function(){
+      var fields = $(this);
+      fields.trigger('setOrder');
+      $('input.answer-uuid', fields).val(UUIDjs.create().toString());
+    },
+    remove : function(){
+      $('input.answer-uuid[type=radio]', $(this)).removeAttr('checked');
+    }
   });
 
   $('a.publish-survey').click(function(){

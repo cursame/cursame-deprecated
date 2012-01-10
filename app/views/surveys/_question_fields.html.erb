@@ -5,9 +5,10 @@
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
       <fieldset class="<%= record.new_record? ? :new : nil %> question">
-        <% unless record.errors[:correct_answer].blank? %> 
-          <p class="inline-errors"><%= record.errors[:correct_answer].to_sentence %></p>
+        <% unless record.errors[:answer_uuid].blank? %> 
+          <p class="inline-errors"><%= record.errors[:answer_uuid].to_sentence %></p>
         <% end %>
+        <%= question.hidden_field :answer_uuid, :value => '' %>
         <ol>
           <%= question.input :position, :input_html => {:class => 'question-position'}, :as => :hidden %>
           <%= question.input :text %>

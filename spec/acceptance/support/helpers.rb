@@ -33,7 +33,7 @@ module HelperMethods
     I18n.t *args
   end
 
-  def add_question_with_answers text
+  def add_question_with_answers text, opts = {}
     click_link t('surveys.question_fields.add_question')
 
     within 'fieldset.question:last' do
@@ -43,7 +43,7 @@ module HelperMethods
         click_link t('surveys.answer_fields.add_answer')
         within 'fieldset.answer:last' do
           fill_in Answer.human_attribute_name(:text), :with => answer
-          find("input[type='radio']").set(true)
+          # find("input[type='radio']").set(true)
         end
       end
     end
