@@ -6,9 +6,11 @@
   $.fn.nestedAssociations = function(opts){
     var self = $(this);
     var nested = self.find('[data-association]').filter(function(){
-      return $(this).children('fieldset').size() == 1;
+      return $(this).children('fieldset.new').size() == 1;
     });
     var associationFieldset = self.not(nested);
+    associationFieldset = self;
+    
     var settings = {
       add    : $.noop,
       remove : $.noop
