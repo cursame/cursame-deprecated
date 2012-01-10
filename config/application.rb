@@ -14,7 +14,6 @@ end
 
 module Cursame
   class Application < Rails::Application
-    UUID.state_file = false
     # config.autoload_paths += %W(#{config.root}/extras)
     # config.autoload_paths += %W(#{config.root}/lib/tabs)
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
