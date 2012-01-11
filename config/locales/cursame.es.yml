@@ -346,13 +346,14 @@ es:
     show_assignment: Ver tarea
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
-    
-    student_course_enrollment: "<div class=\"img\">%{student_image}</div> %{student_link} quiere participar en el curso %{course_link}. %{members_link}"
-    student_assignment_delivery: "<div class=\"img\">%{student_image}</div> %{student_link} ha entregado la tarea %{assignment_link}. %{delivery_link}"
-    student_course_rejected: "Tu solicitud para participar en el curso \"%{course_name}\" fue rechazada. %{courses_link}"
-    student_course_accepted: "Has sido aceptado para participar en el curso %{course_link}"
-    student_assignment_added: "Se ha creado la tarea %{assignment_link} en %{course_link}. %{show_assignment_link}"
-    student_assignment_updated: "Se ha actualizado la tarea %{assignment_link} en %{course_link}. %{show_assignment_link}"
-    student_survey_added: "Se ha creado el cuestionario %{survey_link} en %{course_link}. %{show_survey_link}"
-    teacher_survey_replied: "<div class=\"img\">%{student_image}</div> %{student_link} ha contestado el cuestionario %{survey_link} en %{course_link}. %{survey_reply_link}"
-    teacher_survey_updated: "<div class=\"img\">%{student_image}</div> %{student_link} ha actualizado sus respuestas para el cuestionario %{survey_link} en %{course_link}. %{survey_reply_link}"
+    wants_to_participate_in_course: quiere participar en el curso
+    has_delived_assignment: ha entregado la tarea
+    has_answered_the_survey: ha contestado el cuestionario
+    for_the_course: para el curso
+    has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
+    your_course_request: Tu solicitud para participar en el curso
+    was_rejected: fue rechazada
+    you_where_accepted_for_course: Has sido aceptado para participar en el curso
+    assignment_added: Se ha creado la tarea
+    assignment_updated: Se ha actualizado la tarea
+    survey_added: Se ha creado el cuestionario

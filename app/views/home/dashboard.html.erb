@@ -52,7 +52,7 @@
           <% @notifications.each do |notification| %>
             <div class='notification'>
               <div class="date-published"><%= time_ago_in_words(notification.created_at) %></div>
-              <%= raw notification_message notification %>
+              <%= raw notification.text %>
             </div>
           <% end %>
           <%= paginate @notifications %>
