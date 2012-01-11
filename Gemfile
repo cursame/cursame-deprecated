@@ -15,7 +15,6 @@ gem "breadcrumbs_on_rails", "~> 2.1.0"
 gem "tabs_on_rails",        "~> 2.0.2"
 gem "auto_html"
 gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem "uuid"
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,12 +25,15 @@ group :assets do
 end
 
 group :test do
+  gem "uuid"
   gem 'shoulda-matchers'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'fuubar'
   gem 'launchy'
   gem 'timecop'
+  gem 'selenium'
+  gem 'growl-rspec'
 end
 
 group :staging, :production do
@@ -45,8 +47,9 @@ group :development, :test do
   gem 'ffaker'
   gem 'sqlite3'
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_girl', '2.0.4'
   gem 'steak'
   gem 'spork', '0.9.0.rc9'
   gem 'hirb'
+  gem "parallel_tests"
 end

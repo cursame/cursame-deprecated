@@ -24,7 +24,7 @@
           <div class="span5">
             <h2><%= @discussion.title %></h2>
             <div class="row">
-              <div class="span1"><%= link_to(avatar(@discussion.starter, :xsmall), user_path(@discussion.starter)) %></div>
+              <div class="span1"><%= link_to(image_tag(@discussion.starter.avatar_file.xsmall.url), user_path(@discussion.starter)) %></div>
               <div class="span4 left-margin author"><%= t('discussions.ago')%> <%= time_ago_in_words(@discussion.created_at) %> <%= t('discussions.by')%> <%= link_to(@discussion.starter.name, user_path(@discussion.starter)) %></div>
             </div>
           </div>

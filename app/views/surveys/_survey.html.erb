@@ -3,9 +3,17 @@
   <%= survey.course.name %>
   <div class="row">
     <div class="survey-values">
-      <%= t('courses.surveys.value') %>: <b><%= survey.value %></b> -
-      <%= t('courses.surveys.period') %>: <b><%= survey.period %></b> -
-      <%= t('courses.surveys.date_time') %>: <b><%= l survey.due_to, :format => :short %></b>
+      <%= t('.value') %>: <b><%= survey.value %></b> -
+      <%= t('.period') %>: <b><%= survey.period %></b> -
+      <%= t('.date_time') %>: <b><%= l survey.due_to, :format => :short %></b>
+      <%= current_user.role_for_course(@course) %>
+      <% if current_user.role_for_course(@course) == 'teacher' %>
+        <% if survey.unpublished? %>
+          <%= link_to t('.publish'), publish_survey_path(survey), :class => 'publish-survey' %>
+        <% end %>
+      <% else %>
+        <%= link_to t('.answer'), new_survey_reply_path(survey) %>
+      <% end %>
     </div>
   </div>
 </div>

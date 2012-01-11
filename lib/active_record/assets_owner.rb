@@ -1,7 +1,7 @@
 module ActiveRecord
   module AssetsOwner
     def can_haz_assets
-      has_many :assets, :as => :owner
+      has_many :assets, :as => :owner, :dependent => :destroy
       accepts_nested_attributes_for :assets, :allow_destroy => true, :reject_if => lambda { |hash| hash[:file_cache].blank? }
 
       # hack to save carrierwave assets from cache

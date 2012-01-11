@@ -1,14 +1,18 @@
 module NavigationHelpers
   def sign_in_with user, opts = {}
     user.confirm!
+
     if opts[:subdomain]
-      visit root_url(:subdomain => opts[:subdomain])
+      visit new_user_session_url(:subdomain => opts[:subdomain])
     else
-      visit root_path
+      visit new_user_session_path
     end
-    fill_in 'user[email]', :with => user.email
-    fill_in 'user[password]', :with => opts[:password] || 'password'
-    click_button 'sign_in'
+
+    within '#user_new' do
+      fill_in 'user[email]',    :with => user.email
+      fill_in 'user[password]', :with => opts[:password] || 'password'
+      click_button I18n.t('forms.sign_in_btn')
+    end
   end
 
   def sign_out opts = {}
@@ -27,6 +31,22 @@ module HelperMethods
 
   def t *args
     I18n.t *args
+  end
+
+  def add_question_with_answers text, opts = {}
+    click_link t('surveys.question_fields.add_question')
+
+    within 'fieldset.question:last' do
+      fill_in Question.human_attribute_name(:text), :with => text
+      fill_in Question.human_attribute_name(:value), :with => 2
+      %w(A B C None).each do |answer|
+        click_link t('surveys.answer_fields.add_answer')
+        within 'fieldset.answer:last' do
+          fill_in Answer.human_attribute_name(:text), :with => answer
+          # find("input[type='radio']").set(true)
+        end
+      end
+    end
   end
 end
 

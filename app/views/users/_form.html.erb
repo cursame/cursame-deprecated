@@ -1,7 +1,7 @@
 <%= semantic_form_for @user do |form| %>
   <%= form.inputs :file do %>
     <li class='preview'>
-      <%= avatar(@user, :small) %>
+      <%= image_tag @user.avatar_file.small.url %>
     </li>
     <%= form.input :avatar_file, :as => :file, :input_html => {'data-upload-path' => upload_avatar_for_users_path} %>
     <%= form.input :avatar_file_cache, :as => :hidden %>

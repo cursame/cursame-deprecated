@@ -2,22 +2,15 @@
 // github.com/maca
 // mit licence
 
-
 (function($){
-  $('a.remove-associated-record').livequery('click', function(){
-    $(this).siblings('input').attr('value', '1');
-    $(this).closest('fieldset').slideUp();
-    return false;
-  });
-  
-  $.fn.nestedAssociations = function(){
+  $.fn.nestedAssociations = function(opts){
     var self = $(this);
-    var nested = self.find('[data-association]').filter(function(){
-      return $(this).children('fieldset').size() == 1;
-    });
-    var associationFieldset = self.not(nested);
-
-    // console.log(associationFieldset)
+    var associationFieldset = self;
+    var settings = {
+      add    : $.noop,
+      remove : $.noop
+    }
+    if (opts) { $.extend(settings, opts); }
 
     return associationFieldset.each(function(){
       var container    = $(this);
@@ -25,6 +18,14 @@
       var destroyLink  = $('<a href="#" class="btn danger small remove-associated-record">').text(destroyLi.first().text());
       var template     = container.children('fieldset.new').last().detach();
       var association  = container.attr('data-association');
+
+      destroyLink.click(function(){
+        var fieldset = $(this).closest('fieldset'); 
+        $(this).siblings('input').attr('value', '1');
+        fieldset.slideUp();
+        settings.remove.apply(fieldset);
+        return false;
+      });
 
       destroyLi.append(destroyLink);
       destroyLi.children('label').hide();
@@ -49,18 +50,14 @@
       container.children('a.add_record').show().click(function(){
         var cleanTemplate = template.clone(true);
         cleanTemplate.trigger('changeId', [association, new Date().getTime()]);
-        cleanTemplate.find('[data-association]').nestedAssociations();
+        cleanTemplate.find('[data-association]').nestedAssociations(opts);
 
         $(this).before(cleanTemplate.hide());
         container.children().removeClass('last');
+        settings.add.apply(cleanTemplate[0]);
         cleanTemplate.addClass('last').slideDown();
         return false;
       });
     });
   };
-
-  $(function(){
-    $('fieldset[data-association]').nestedAssociations();
-  });
 })(jQuery);
-

@@ -14,6 +14,14 @@ RSpec::Matchers.define :exist_with do |attributes|
   match do |model|
     model.where(attributes).count.should be > 0
   end
+
+ failure_message_for_should do |model|
+    "expected a #{model} with:\n\n#{attributes.inspect}\n\nto exist within\n\n#{model.all.map { |m| m.attributes }.inspect}"
+  end
+
+  failure_message_for_should_not do |model|
+    "expected a #{model.class} with #{attributes.inspect} not to exist"
+  end
 end
 
 RSpec::Matchers.define :show_assignment do |assignment|
@@ -111,7 +119,6 @@ RSpec::Matchers.define :show_survey_preview do |survey|
     page.should have_content survey.value.to_s
     page.should have_content survey.period.to_s
     page.should have_content I18n.l(survey.due_to, :format => :short) 
-    page.should link_to survey_path(survey)
   end
 end
 
@@ -137,5 +144,51 @@ end
 RSpec::Matchers.define :show_answer_preview do |answer|
   match do |page|
     page.should have_content answer.text
+  end
+end
+
+RSpec::Matchers.define :show_survey_reply do |survey_reply|
+  match do |page|
+    # show answered questions
+    survey_reply.survey_answers.each do |survey_answer|
+      question = survey_answer.question
+      page.should have_content question.text
+      if survey_answer.answer
+        page.should have_checked_field survey_answer.answer.text
+      end
+    end
+
+    survey_reply.survey.questions.each do |question|
+      page.should have_content question.text
+    end
+
+    # all radio should be disabled
+    page.driver.find("//input[@type='radio']").each do |node|
+      node['disabled'].should be_true
+    end
+
+    page.should show_survey_preview survey_reply.survey
+  end
+end
+
+RSpec::Matchers.define :show_survey_reply_listing_for do |replies|
+  match do |page|
+    replies.each do |reply|
+      page.should have_content '%.2f' % reply.score
+      page.should have_content I18n.l(reply.updated_at, :format => :short)
+      page.should have_css "img[src='#{reply.user.avatar_file.xsmall.url}']"
+      page.should have_css "a[href='#{user_path reply.user}']", :text => reply.user.name
+      page.should have_css "a[href='#{reply_path reply}']"
+    end
+  end
+end
+
+RSpec::Matchers.define :show_managed_survey_reply do |reply|
+  match do |page|
+    page.should have_content '%.2f' % reply.score
+    page.should have_content I18n.l(reply.updated_at, :format => :short)
+    page.should have_css "img[src='#{reply.user.avatar_file.xsmall.url}']"
+    page.should have_css "a[href='#{user_path reply.user}']", :text => reply.user.name
+    page.should show_survey_reply reply
   end
 end

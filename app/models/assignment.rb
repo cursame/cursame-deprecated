@@ -5,8 +5,8 @@ class Assignment < ActiveRecord::Base
   default_scope includes(:course)
 
   belongs_to :course
-  has_many   :deliveries
-  has_many   :comments, :as => :commentable
+  has_many   :deliveries, :dependent => :destroy
+  has_many   :comments, :as => :commentable, :dependent => :destroy
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)

@@ -1,8 +1,8 @@
 es:
-  confirm_delete: ¿Estas Seguro?  
+  confirm_delete: ¿Estas Seguro?
   comment: comentar
 
-  forms: 
+  forms:
     email: 'Email'
     first_name: 'Nombre'
     last_name: 'Apellido'
@@ -19,10 +19,12 @@ es:
     leave_comment: 'Dejar comentario'
     send_delivery: 'Entregar'
     update_delivery: 'Editar entrega'
-    
+    send_survey_reply: 'Guardar mis respuestas'
+    update_survey_reply: 'Actualizar mis respuestas'
+
   footer:
     teacher_register: 'Registro como maestro'
-        
+
   flash:
     course_created: Curso creado
     course_updated: El curso fue actualizado
@@ -37,6 +39,12 @@ es:
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_updated: El cuestionario fue actualizado
+    survey_deleted: El cuestionario fue eliminado
+    survey_reply_created: Tus respuestas fueron enviadas
+    survey_reply_updated: Tus respuestas fueron actualizadas
+    errors:
+      assignment_expired: La fecha de entrega ya pasó
+      survey_expired: La fecha de entrega ya pasó
 
   activerecord:
     models:
@@ -55,6 +63,9 @@ es:
       delivery:
         one: Entrega
         other: Entregas
+    errors:
+      question:
+        missing_correct_answer: Por favor indique la respuesta correcta
     attributes:
       course:
         name: Nombre
@@ -89,30 +100,38 @@ es:
         content: Contenido
       question:
         text: Pregunta
+        value: Valor
         _destroy: Eliminar
       answer:
         text: Respuesta
         _destroy: Eliminar
+      survey:
+        name: Nombre
+        description: Descripción
+        value: Valor
+        period: Periodo
 
   formtastic:
     actions:
       update: Actualizar
+      update_and_publish: Actualizar y publicar
       create: Crear
-      edit: 'Editar'
-      delete: 'Eliminar'
+      create_and_publish: Crear y publicar
+      edit: Editar
+      delete: Eliminar
 
   shared:
     toolbar:
       logout: 'Salir'
       search: 'Buscar'
       settings: 'Configuración'
-      
+
   dashboard:
     view_all_courses: 'Ver todos los cursos disponibles'
     start: 'Inicio'
     profile: 'Perfil'
     account_settings: 'Configuración de la cuenta'
-  
+
   courses:
     archives: 'Archivos'
     description: 'Descripción'
@@ -184,11 +203,6 @@ es:
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
-    surveys:
-      date_time: Fecha Límite
-      value: Valor
-      period: Periodo
-      description: Descripción
 
   assignments:
     show:
@@ -198,15 +212,33 @@ es:
       show_delivery: Mostrar entrega
       failed_delivery: Tarea no entregada
       course: Curso
-  
+
   surveys:
+    survey:
+      date_time: Fecha Límite
+      value: Valor
+      period: Periodo
+      description: Descripción
+      answer: Contestar
+      publish: Publicar
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario
     show:
       header: Cuestionario 
       edit_survey: Editar cuestionario
+      view_replies: Ver cuestionarios contestados
       course: Curso
+      preview: Vista previa del cuestionario
+      survey_sent: Ya enviaste tus respuestas
+      survey_sent_at: 'Respuestas enviadas el:'
+      view_answers: Tus respuestas
+      new_answers: Enviar respuestas
+      not_answered: No has enviado tus respuestas
+      survey_expired: La fecha para contestar este cuestionario ha pasado
+      delete: Eliminar cuestionario
+      confirm_delete: "¿Estás seguro que deseas eliminar el cuestionario?"
+      confirm_delete_with_replies: "El cuestionario tiene ya respuestas de los alumnos, al eliminarlo se eliminarán también estas respuestas. ¿Estás seguro que deseas eliminarlo?"
     new:
       header: Nuevo cuestionario
     edit:
@@ -217,7 +249,7 @@ es:
     question_fields:
       legend: Preguntas para cuestionario 
       add_question: Añadir pregunta
-  
+
 
   students:
     deliveries:
@@ -229,12 +261,28 @@ es:
         header: Entrega de tarea
         delivered: Entrega
         comment: Comentar entrega
+    survey_replies:
+      show:
+        edit: Modificar respuestas
+      fields:
+        correct: Respuesta correcta
+        incorrect: Respuesta incorrecta
+
+  survey_reply:
+    score: Calificación del cuestionario
+    updated: Última edición
 
   teachers:
     deliveries:
       index:
         heder: Entregas para tarea
         show: Mostrar entrega
+    survey_replies:
+      index:
+        header: Cuestionarios respondidos para
+        show: Mostrar cuestionario respondido
+        score: Calificación
+        updated: Actualizado
 
   profile:
     edit_profile: 'Editar perfil'
@@ -254,16 +302,16 @@ es:
     new_discussion: 'Nueva Discusion'
     ago: 'hace'
     by: 'por'
-  
+
   comments:
     comments:
       remove: eliminar comentario
-    
+
   settings:
     show:
       title:  'Configuraciones'
       change_password: 'Cambiar contraseña'
-      
+
   breadcrumb:
     dashboard: 'Dashboard'
 
@@ -297,11 +345,15 @@ es:
     show_courses: Ver cursos
     show_assignment: Ver tarea
     show_survey: Ver cuestionario
-    student_course_enrollment: "<div class=\"img\">%{student_image}</div> %{student_link} quiere participar en el curso %{course_link}. %{requests_link}"
-    student_assignment_delivery: "<div class=\"img\">%{student_image}</div> %{student_link} ha entregado la tarea %{assignment_link}. %{delivery_link}"
-    student_course_rejected: "Tu solicitud para participar en el curso \"%{course_name}\" fue rechazada. %{courses_link}"
-    student_course_accepted: "Has sido aceptado para participar en el curso %{course_link}"
-    student_assignment_added: "Se ha creado la tarea %{assignment_link} en %{course_link}. %{show_assignment_link}"
-    student_assignment_updated: "Se ha actualizado la tarea %{assignment_link} en %{course_link}. %{show_assignment_link}"
-    student_survey_added: "Se ha creado el cuestionario %{survey_link} en %{course_link}. %{show_survey_link}"
-    student_survey_updated: "Se ha actualizado el cuestionario %{survey_link} en %{course_link}. %{show_survey_link}"
+    show_survey_reply: Ver respuestas
+    wants_to_participate_in_course: quiere participar en el curso
+    has_delived_assignment: ha entregado la tarea
+    has_answered_the_survey: ha contestado el cuestionario
+    for_the_course: para el curso
+    has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
+    your_course_request: Tu solicitud para participar en el curso
+    was_rejected: fue rechazada
+    you_where_accepted_for_course: Has sido aceptado para participar en el curso
+    assignment_added: Se ha creado la tarea
+    assignment_updated: Se ha actualizado la tarea
+    survey_added: Se ha creado el cuestionario

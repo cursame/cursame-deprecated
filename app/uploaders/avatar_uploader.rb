@@ -22,4 +22,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
+  def default_url 
+    "/assets/#{model.role}_#{version_name}.png"
+  end 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215192610) do
+ActiveRecord::Schema.define(:version => 20120110225420) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20111215192610) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "assets", :force => true do |t|
@@ -134,12 +135,30 @@ ActiveRecord::Schema.define(:version => 20111215192610) do
     t.string   "kind"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "text"
   end
 
   create_table "questions", :force => true do |t|
     t.integer  "survey_id"
     t.string   "answer_uuid"
     t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "value"
+    t.integer  "position"
+  end
+
+  create_table "survey_answers", :force => true do |t|
+    t.integer  "survey_reply_id"
+    t.integer  "question_id"
+    t.string   "answer_uuid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "survey_replies", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "survey_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -153,11 +172,11 @@ ActiveRecord::Schema.define(:version => 20111215192610) do
     t.datetime "due_to"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.integer  "network_id"
     t.string   "email",                                 :default => "",       :null => false
     t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"

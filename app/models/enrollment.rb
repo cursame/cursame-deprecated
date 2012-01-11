@@ -37,15 +37,19 @@ class Enrollment < ActiveRecord::Base
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
   end
 
+  def student?
+    role == 'student'
+  end
+
   def pending?
-    state == 'pending'
+    student? && state == 'pending'
   end
 
   def rejected?
-    state == 'rejected'
+    student? && state == 'rejected'
   end
 
   def accepted?
-    state == 'accepted'
+    student? && state == 'accepted'
   end
 end

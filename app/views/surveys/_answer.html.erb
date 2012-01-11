@@ -1,3 +1,3 @@
 <div class="answer">
-  <input type="radio" disabled="disabled" /> <%= answer.text %>
+  <input type="radio" disabled="disabled" <%= 'checked="checked"' if current_user.role_for_course(@course) == 'teacher' && answer == question.correct_answer %>/> <%= answer.text %>
 </div>

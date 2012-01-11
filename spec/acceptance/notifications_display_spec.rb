@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Notifications display', %q{
   In order to keep up to date
@@ -17,13 +17,13 @@ feature 'Notifications display', %q{
     course       = notification.notificator.course
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
-    
-    page.should have_content "#{student.name} quiere participar en el curso #{course.name}. Ver solicitudes."
+
+    page.should have_content "#{student.name} quiere participar en el curso #{course.name}. Ver solicitudes"
 
     within '.notification' do
       page.should link_to user_path(student)
       page.should link_to course_path(course)
-      page.should link_to course_requests_path(course)
+      page.should link_to members_for_course_path(course)
     end
   end
 
@@ -36,7 +36,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "#{student.name} ha entregado la tarea #{assignment.name}. Ver entrega."
+    page.should have_content "#{student.name} ha entregado la tarea #{assignment.name}. Ver entrega"
  
     within '.notification' do
       page.should link_to user_path(student)
@@ -45,27 +45,67 @@ feature 'Notifications display', %q{
     end
   end
 
-  # TODO: from here students
+  scenario 'viewing a notification for an answered survey' do
+    notification = Factory(:teacher_survey_replied, :user => @user)
+    survey_reply = notification.notificator
+    survey       = survey_reply.survey
+    student      = survey_reply.user
+    course       = survey_reply.course
+
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path
+    
+    page.should have_content "#{student.name} ha contestado el cuestionario #{survey.name} para el curso #{course.name}. Ver respuestas"
+    
+    within '.notification' do
+      page.should link_to user_path(student)
+      page.should link_to survey_path(survey)
+      page.should link_to course_path(course)
+      page.should link_to reply_path(survey_reply)
+    end
+  end
+
+  scenario 'viewing a notification for an edited survey answers' do
+    notification = Factory(:teacher_survey_updated, :user => @user)
+    survey_reply = notification.notificator
+    survey       = survey_reply.survey
+    student      = survey_reply.user
+    course       = survey_reply.course
+
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path
+    
+    page.should have_content "#{student.name} ha actualizado sus respuestas para el cuestionario #{survey.name} para el curso #{course.name}. Ver respuestas"
+    
+    within '.notification' do
+      page.should link_to user_path(student)
+      page.should link_to survey_path(survey)
+      page.should link_to course_path(course)
+      page.should link_to reply_path(survey_reply)
+    end
+  end
+
+  # TODO: from here students, separate specs
   scenario 'viewing a notification for course rejection' do
     notification = Factory(:student_course_rejected, :user => @user)
     course       = notification.notificator.course
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Tu solicitud para participar en el curso \"#{course.name}\" fue rechazada. Ver cursos."
+    page.should have_content "Tu solicitud para participar en el curso \"#{course.name}\" fue rechazada. Ver cursos"
 
     within '.notification' do
       page.should link_to courses_path
     end
   end
 
-  scenario 'viewing a notification for course rejection' do
+  scenario 'viewing a notification for course acceptance' do
     notification = Factory(:student_course_accepted, :user => @user)
     course       = notification.notificator.course
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Has sido aceptado para participar en el curso #{course.name}."
+    page.should have_content "Has sido aceptado para participar en el curso #{course.name}"
 
     within '.notification' do
       page.should link_to course_path(course)
@@ -80,7 +120,7 @@ feature 'Notifications display', %q{
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Se ha creado la tarea #{assignment.name} en #{course.name}. Ver tarea."
+    page.should have_content "Se ha creado la tarea #{assignment.name} para el curso #{course.name}. Ver tarea"
     
     within '.notification' do
       page.should link_to course_path(course)
@@ -92,11 +132,10 @@ feature 'Notifications display', %q{
     notification = Factory(:student_assignment_updated, :user => @user)
     assignment   = notification.notificator
     course       = assignment.course
-
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
     
-    page.should have_content "Se ha actualizado la tarea #{assignment.name} en #{course.name}. Ver tarea."
+    page.should have_content "Se ha actualizado la tarea #{assignment.name} para el curso #{course.name}. Ver tarea"
     
     within '.notification' do
       page.should link_to course_path(course)
@@ -111,26 +150,8 @@ feature 'Notifications display', %q{
 
     sign_in_with notification.user, :subdomain => @network.subdomain
     visit dashboard_path
-    save_and_open_page
     
-    page.should have_content "Se ha creado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
-    
-    within '.notification' do
-      page.should link_to course_path(course)
-      page.should link_to survey_path(survey)
-    end
-  end
-
-  scenario 'viewing a notification for an updated survey' do
-    notification = Factory(:student_survey_updated, :user => @user)
-    survey   = notification.notificator
-    course       = survey.course
-
-    sign_in_with notification.user, :subdomain => @network.subdomain
-    visit dashboard_path
-    save_and_open_page
-    
-    page.should have_content "Se ha actualizado el cuestionario #{survey.name} en #{course.name}. Ver cuestionario."
+    page.should have_content "Se ha creado el cuestionario #{survey.name} para el curso #{course.name}. Ver cuestionario"
     
     within '.notification' do
       page.should link_to course_path(course)

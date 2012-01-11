@@ -1,0 +1,9 @@
+<div class="img">
+  <a href="<%= user_path(student) %>">
+    <img src="<%= student.avatar_file.xxsmall.url %>" rel="tip" title="<% student.name %>">
+  </a>
+</div>
+
+<a href="<%= user_path(student) %>"><%= student.name %></a> <%= I18n.t('notifications.wants_to_participate_in_course') %>
+<a href="<%= course_path(course) %>"><%= course.name %></a>.
+<a href="<%= members_for_course_path(course) %>"><%= I18n.t('notifications.show_requests') %> &gt;&gt;</a>.

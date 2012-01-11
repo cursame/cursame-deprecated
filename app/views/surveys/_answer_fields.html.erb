@@ -1,14 +1,15 @@
 <fieldset class="nested_models answers input no-margin inputs" data-association="answers">
   <legend><%= t('.legend') %></legend>
-  <%- form.object.answers.build %>
+  <%- template_record = form.object.answers.build %>
   <%= form.semantic_fields_for :answers do |answer| %>
     <%- record = answer.object %>
-    <fieldset class="<%= record.new_record? ? :new : nil %>">
+    <fieldset class="<%= record == template_record ? :new : nil %> associated answer">
       <ol>
         <li>
-          <%= form.radio_button :answer_uuid, record.uuid %>
+          <%= form.radio_button :answer_uuid, record.uuid, :class => 'answer-uuid' %>
         </li>
-        <%= answer.input :uuid, :as => :hidden %>
+        <%= answer.input :uuid, :input_html => {:class => 'answer-uuid'}, :as => :hidden %>
+        <%= answer.input :position, :input_html => {:class => 'answer-position'}, :as => :hidden %>
         <%= answer.input :text %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>

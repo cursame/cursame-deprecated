@@ -7,7 +7,8 @@ describe Survey do
   describe 'associations' do
     it { should belong_to :course }
     it { should validate_presence_of :course }
-    it { should have_many(:questions) }
+    it { should have_many(:questions).dependent(:destroy) }
+    it { should have_many(:survey_replies).dependent(:destroy) }
   end
   
   describe 'validations' do
@@ -25,5 +26,15 @@ describe Survey do
     it { survey.description.should_not =~ /<script>/ }
     it { survey.description.should be_html_safe }
     it { survey.description.should =~ /hello/}
+  end
+
+  describe 'published scopes' do
+    before do
+      @unpublished = Factory(:survey)
+      @published   = Factory(:published_survey)
+    end
+
+    it { Survey.published.should == [@published] }
+    it { Survey.unpublished.should == [@unpublished] }
   end
 end

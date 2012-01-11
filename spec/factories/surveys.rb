@@ -6,12 +6,11 @@ FactoryGirl.define do
     period { rand(7) + 1 }
     due_to { 1.month.from_now }
     course { Factory :course }
+    questions { [Factory(:question)] }
+    state :unpublished
   end
 
-
-  factory :survey_with_questions, :parent => :survey do
-    after_create do |survey|
-      (1..3).map { Factory(:question_with_answers, :survey => survey) }
-    end
+  factory :published_survey, :parent => :survey do
+    state :published
   end
 end

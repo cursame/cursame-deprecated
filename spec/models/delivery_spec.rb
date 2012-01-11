@@ -7,7 +7,7 @@ describe Delivery do
   describe 'associations' do
     it { should belong_to :assignment }
     it { should have_many :comments }
-    it { should have_many :assets }
+    it { should have_many(:assets).dependent(:destroy) }
     it { should belong_to :user }
   end
 

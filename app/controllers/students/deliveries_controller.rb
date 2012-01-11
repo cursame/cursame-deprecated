@@ -34,10 +34,13 @@ module Students
 
     def update
       @delivery = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
+      @assignment = @delivery.assignment
+      @course     = @assignment.course
+
       if @delivery.update_attributes params[:delivery]
         redirect_to assignment_delivery_path(@delivery.assignment), :notice => t('flash.delivery_updated')
       else
-        render :new
+        render :edit
       end
     end
   end

@@ -8,37 +8,50 @@ require 'rspec/autorun'
 require 'database_cleaner'
 require 'shoulda/matchers/integrations/rspec'
 require 'carrierwave/test/matchers'
+require "selenium-webdriver"
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/factories/*.rb")].each {|f| require f}
+Dir[Rails.root.join("spec/acceptance/support/**/*.rb")].each {|f| require f}
+
+Capybara.app_host     = "lvh.me"
+Capybara.default_host = "subdomain.lvh.me"
+Capybara.server_port  = 8888 + ENV['TEST_ENV_NUMBER'].to_i
 
 Spork.prefork do
   RSpec.configure do |config|
+    config.formatter = 'Growl::RSpec::Formatter'
     config.mock_with :rspec
-    config.use_transactional_fixtures = true
+    config.use_transactional_fixtures = false
     config.infer_base_class_for_anonymous_controllers = false
     config.include Devise::TestHelpers, :type => :controller
-    # config.before(:suite) do
-    #   DatabaseCleaner.strategy = :transaction
-    #   DatabaseCleaner.clean_with :truncation
-    # end
 
-    # config.before(:each) do
-    #   Capybara.current_driver = :webkit   if example.metadata[:js]
-    #   Capybara.current_driver = :selenium if example.metadata[:selenium]
-    #   DatabaseCleaner.start
-    # end
+    config.before :suite do
+      DatabaseCleaner.clean_with :deletion
+    end
 
-    # config.after(:each) do
-    #   Capybara.use_default_driver if example.metadata[:js] || example.metadata[:selenium]
-    #   DatabaseCleaner.clean
-    # end
+    config.before do
+      DatabaseCleaner.strategy = :deletion
+      DatabaseCleaner.start
+    end
+
+    config.after do
+      DatabaseCleaner.clean
+      Capybara.use_default_driver if example.metadata[:js]
+    end
+
+    config.before :type => :acceptance do
+      Capybara.current_driver = :selenium if example.metadata[:js]
+
+      if Capybara.current_driver == :rack_test
+        host! 'lvh.me'
+        Capybara.app_host = "http://lvh.me"
+      else
+        host! "lvh.me:#{Capybara.server_port}"
+      end
+    end
   end
 end
 
 Spork.each_run do
 end
-
-
-
-
-

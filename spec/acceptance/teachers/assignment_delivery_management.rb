@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Manage assignments', %q{
   In order to evaluate students
@@ -54,5 +54,26 @@ feature 'Manage assignments', %q{
     comment.user.should == @teacher
     page.should show_comment comment
     page.current_url.should match delivery_path(@delivery)
+  end
+
+  scenario 'commenting on an delivery comment' do
+    comment = Factory(:comment, :commentable => @delivery)
+    visit delivery_url @delivery, :subdomain => @subdomain
+
+    save_and_open_page
+
+    within('.comment-box:last') do
+      click_link t('comment')
+      fill_in 'comment[text]', :with => 'Comment of a comment'
+      lambda do
+        click_button 'submit'
+      end.should change(comment.comments, :count).by(1)
+    end
+
+    comments_comment = Comment.last
+    comments_comment.commentable.should == comment
+
+    page.should show_comment comments_comment
+    page.should have_notice t('flash.comment_added')
   end
 end

@@ -1,4 +1,4 @@
-require 'acceptance/acceptance_helper'
+require 'spec_helper'
 
 feature 'Manage assignments', %q{
   In order to accomplish my course work
@@ -91,6 +91,10 @@ feature 'Manage assignments', %q{
     lambda do
       page.driver.post assignment_delivery_path(@assignment), :delivery => {:content => 'nay nay!'}
     end.should_not change(Delivery, :count)
+  end
+
+  scenario 'trying to edit a delivery when it has expired' do
+    pending
   end
 
   scenario 'commenting on the delivery' do

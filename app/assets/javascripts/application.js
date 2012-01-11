@@ -9,6 +9,51 @@
 //= require_tree .
 
 $(function(){
+  $('fieldset[data-association="questions"]').bind('setOrder', function(){
+    $(this).closest('fieldset.questions').find('fieldset.question').each(function(index){
+      $('input.question-position', $(this)).val(index);
+    })
+  });
+  
+  $('fieldset[data-association="answers"]').bind('setOrder', function(){
+    $(this).closest('fieldset.question').find('fieldset.answer').each(function(index){
+      $('input.answer-position', $(this)).val(index);
+    })
+  });
+
+  $('fieldset[data-association="answers"]').
+    add('fieldset[data-association="questions"]').
+    disableSelection().
+    sortable({
+      stop : function(){
+        $(this).trigger('setOrder');
+      }
+    });
+
+  $('fieldset[data-association]').nestedAssociations({
+    add : function(){
+      var fields = $(this);
+      fields.trigger('setOrder');
+      $('input.answer-uuid', fields).val(UUIDjs.create().toString());
+    },
+    remove : function(){
+      $('input.answer-uuid[type=radio]', $(this)).removeAttr('checked');
+    }
+  });
+
+  $('a.publish-survey').click(function(){
+    var publishLink = $(this)
+    $.ajax({
+      type : 'POST',
+      url : publishLink.attr('href'),
+      data : {'_method' : 'PUT'},
+      success : function(){
+        publishLink.detach();
+      }
+    })
+    return false;
+  });
+
   $('input[type=file]').livequery(function(){
     if ($(this).data('upload-path')) {
       $(this).ajaxyUpload({
