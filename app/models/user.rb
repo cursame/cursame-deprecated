@@ -74,6 +74,8 @@ class User < ActiveRecord::Base
         manageable_discussions.include? commentable
       when User
         profile_comments.include? comment
+      when Delivery
+        deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
       when Comment # TODO: no integration test to test deleting comment of comment
         can_edit_comment? commentable
       end
@@ -92,6 +94,8 @@ class User < ActiveRecord::Base
       courses.include? commentable
     when Discussion # TODO: no integration test
       discussions.include? commentable
+    when Delivery
+      deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
     when User
       true
     end
