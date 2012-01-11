@@ -244,6 +244,32 @@ width: 300px;
   max-width: 460px;
 }
 
+.comment form {
+  margin: 0;
+}
+
+.comment form fieldset {
+  margin: 0;
+}
+
+.comment form fieldset ol li {
+  margin-bottom: 5px;
+}
+
+.comment form fieldset ol li .comment-img {
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin-right: 5px;
+}
+
+.comment form fieldset ol li textarea.span7 {
+display: inline-block;
+float: none;
+width: 420px;
+margin-left: 0;
+}
+
 .author {
 display: block;
 font-size: 12px;
