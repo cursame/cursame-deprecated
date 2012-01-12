@@ -42,7 +42,7 @@ $(function(){
   });
 
   $('a.publish-survey').click(function(){
-    var publishLink = $(this)
+    var publishLink = $(this);
     $.ajax({
       type : 'POST',
       url : publishLink.attr('href'),

@@ -1,10 +1,10 @@
 <h2><%= t('.legend') %></h2>
 <div class="well">
   <fieldset class="nested_models questions input no-margin inputs" data-association="questions">
-    <%- template_record = form.object.questions.build %>
+    <%- form.object.questions.build %>
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
-      <fieldset class="<%= record == template_record ? :new : nil %> associated question">
+      <fieldset class="<%= record.new_record? ? :new : nil %> associated question">
         <% unless record.errors[:answer_uuid].blank? %> 
           <p class="inline-errors"><%= record.errors[:answer_uuid].to_sentence %></p>
         <% end %>
