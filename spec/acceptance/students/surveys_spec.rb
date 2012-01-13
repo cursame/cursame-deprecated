@@ -70,7 +70,7 @@ feature 'Surveys', %q{
     survey_reply = Factory(:survey_reply, :user => @student, :survey => @survey)
     visit survey_reply_path @survey
     page.should show_survey_reply survey_reply
-    page.should_not have_content '%.2f' % survey_reply.score
+    page.should_not have_content "#{survey_reply.score}%"
   end
 
   scenario 'viewing a survey reply with score' do
@@ -78,7 +78,7 @@ feature 'Surveys', %q{
     Timecop.freeze(6.months.from_now) do
       visit survey_reply_path @survey
       page.should show_survey_reply survey_reply
-      page.should have_content '%.2f' % survey_reply.score
+      page.should have_content "#{survey_reply.score}%"
     end
   end
 
