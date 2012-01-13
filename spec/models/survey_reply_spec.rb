@@ -16,7 +16,7 @@ describe SurveyReply do
     survey_reply.survey.questions.each { |q| q.value.should == 1}
     survey_reply.should have(2).survey_answers
     survey_reply.save!
-    survey_reply.score.should == 5.0
+    survey_reply.score.should == 50
   end
 
   describe 'validations' do

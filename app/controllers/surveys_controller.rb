@@ -11,7 +11,6 @@ class SurveysController < ApplicationController
   end
 
   def create
-    # puts params.inspect
     @survey = manageable_course.surveys.build(params[:survey])
     if @survey.save
       if params[:commit] == t('formtastic.actions.create_and_publish')

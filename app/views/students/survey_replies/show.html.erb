@@ -57,7 +57,7 @@
           
           <% if @reveal_answers %>
             <div>
-              <%= t('survey_reply.score') %>: <%= "%.2f" % @survey_reply.score %> -
+              <%= t('survey_reply.score') %>: <%= @survey_reply.score %>% -
               <%= t('survey_reply.updated') %>: <%= l(@survey_reply.updated_at, :format => :short) %> - 
             </div>
           <% end %>

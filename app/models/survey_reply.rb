@@ -28,6 +28,6 @@ class SurveyReply < ActiveRecord::Base
   def score
     total  = survey.questions.reduce(0) { |sum, question| sum + question.value }
     scored = survey_answers.reduce(0) { |sum, answer| sum + answer.score }
-    10.0 * scored / total
+    (100 * scored / total).to_i
   end
 end
