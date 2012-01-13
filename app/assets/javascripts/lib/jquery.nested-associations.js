@@ -30,7 +30,7 @@
     if (opts) { $.extend(settings, opts); }
 
     $(this).find('input[id$=_destroy]').closest('label').each(function(){
-      var destroyLink  = $('<a href="#" class="btn danger small remove-associated-record">').text($(this).text());
+      var destroyLink  = $('<a href="#" class="remove-associated-record">').text($(this).text());
     
       destroyLink.click(function(){
         $(this).siblings('input').attr('value', '1');

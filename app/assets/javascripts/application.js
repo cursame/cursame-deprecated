@@ -27,13 +27,16 @@ $(function(){
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
       var fields = $(this).trigger('setOrder').css('cursor', 'move');
-      var association = fields.data('association')
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
     remove : function(){
       $('input.answer-uuid[type=radio]', $(this)).removeAttr('checked');
     }
   });
+
+  $('a.remove-associated-record').livequery(function(){
+    $(this).addClass('btn danger small');
+  })
 
   questionAndAnswersFieldsets.livequery(function(){
     var sortableSettings = {
