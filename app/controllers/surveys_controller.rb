@@ -14,8 +14,13 @@ class SurveysController < ApplicationController
     # puts params.inspect
     @survey = manageable_course.surveys.build(params[:survey])
     if @survey.save
-      @survey.publish! if params[:commit] == t('formtastic.actions.create_and_publish')
-      redirect_to @survey, :notice => I18n.t('flash.survey_created')
+      if params[:commit] == t('formtastic.actions.create_and_publish')
+        @survey.publish! 
+        flash[:notice] = I18n.t('flash.survey_created_and_published')
+      else
+        flash[:notice] = I18n.t('flash.survey_created')
+      end
+      redirect_to @survey
     else
       render 'new'
     end
@@ -42,7 +47,13 @@ class SurveysController < ApplicationController
   def update
     @survey = current_user.manageable_surveys.find params[:id]
     if @survey.update_attributes params[:survey]
-      redirect_to @survey, :notice => I18n.t('flash.survey_updated')
+      if params[:commit] == t('formtastic.actions.update_and_publish')
+        @survey.publish! 
+        flash[:notice] = I18n.t('flash.survey_updated_and_published')
+      else
+        flash[:notice] = I18n.t('flash.survey_updated')
+      end
+      redirect_to @survey
     else
       @course = @survey.course
       render 'edit'

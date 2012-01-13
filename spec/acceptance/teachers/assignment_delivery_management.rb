@@ -60,8 +60,6 @@ feature 'Manage assignments', %q{
     comment = Factory(:comment, :commentable => @delivery)
     visit delivery_url @delivery, :subdomain => @subdomain
 
-    save_and_open_page
-
     within('.comment-box:last') do
       click_link t('comment')
       fill_in 'comment[text]', :with => 'Comment of a comment'

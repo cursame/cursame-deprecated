@@ -101,7 +101,6 @@ feature 'Manage surveys', %q{
 
     lambda do
       click_button t('formtastic.actions.create')
-      save_and_open_page
     end.should_not change(Survey, :count)
 
     page.should have_content I18n.t('activerecord.errors.question.missing_correct_answer')
@@ -147,7 +146,7 @@ feature 'Manage surveys', %q{
     survey.should have(1).questions
 
     page.should show_survey_full_preview survey
-    page.should have_notice t('flash.survey_created')
+    page.should have_notice t('flash.survey_created_and_published')
 
     Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_added'
   end
@@ -180,6 +179,20 @@ feature 'Manage surveys', %q{
 
     Survey.should exist_with :name => 'Edited survey'
     page.should have_notice t('flash.survey_updated')
+  end
+
+  scenario 'editing an existing survey with publishing', :js => true do
+    survey   = Factory(:survey, :course => @course)
+    visit edit_survey_url(survey, :subdomain => @network.subdomain)
+     
+    fill_in 'survey[name]', :with => 'Edited survey'
+
+    lambda do
+      click_button t('formtastic.actions.update_and_publish')
+    end.should_not change(Survey, :count)
+
+    Survey.should exist_with :name => 'Edited survey', :state => :published
+    page.should have_notice t('flash.survey_updated_and_published')
   end
 
   scenario 'trying to edit an existing survey with not passing validation' do

@@ -38,7 +38,9 @@ es:
     delivery_created: Tu tarea fue entregada
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
+    survey_created_and_published: El cuestionario fue creado y publicado
     survey_updated: El cuestionario fue actualizado
+    survey_updated_and_published: El cuestionario fue actualizado y publicado
     survey_deleted: El cuestionario fue eliminado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
