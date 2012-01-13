@@ -45,7 +45,7 @@ $(function(){
       tolerance   : 'pointer',
       scrollSpeed : 40,
       items       : 'fieldset',
-      cancel      : 'a' 
+      /* cancel      : 'a'  */
     } 
     $(this).sortable(sortableSettings).children('.associated').css('cursor', 'move');
   });
