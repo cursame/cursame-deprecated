@@ -223,6 +223,7 @@ es:
       description: Descripción
       answer: Contestar
       publish: Publicar
+      published: Publicado
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario

@@ -62,7 +62,11 @@ $(function(){
       url : publishLink.attr('href'),
       data : {'_method' : 'PUT'},
       success : function(){
-        publishLink.detach();
+        var newState = $('<span>').text(publishLink.data('new-state'));
+        console.log(newState);
+        publishLink.closest('.survey').addClass('published');
+        publishLink.before(newState).detach();
+      
       }
     })
     return false;

@@ -9,7 +9,7 @@
       <%= current_user.role_for_course(@course) %>
       <% if current_user.role_for_course(@course) == 'teacher' %>
         <% if survey.unpublished? %>
-          <%= link_to t('.publish'), publish_survey_path(survey), :class => 'publish-survey' %>
+          <%= link_to t('.publish'), publish_survey_path(survey), 'data-new-state' => t('.published'), :class => 'publish-survey' %>
         <% end %>
       <% else %>
         <%= link_to t('.answer'), new_survey_reply_path(survey) %>

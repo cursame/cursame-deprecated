@@ -291,8 +291,9 @@ feature 'Manage surveys', %q{
     visit course_surveys_url @course, :subdomain => @network.subdomain
     within('.survey:last') do
       click_link t('surveys.survey.publish')
-      sleep 10
+      page.should have_content t('surveys.survey.published')
     end
+
     Survey.should exist_with :state => :published
   end
 end
