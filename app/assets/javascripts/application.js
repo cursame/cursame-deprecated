@@ -63,10 +63,7 @@ $(function(){
       data : {'_method' : 'PUT'},
       success : function(){
         var newState = $('<span>').text(publishLink.data('new-state'));
-        console.log(newState);
-        publishLink.closest('.survey').addClass('published');
         publishLink.before(newState).detach();
-      
       }
     })
     return false;
