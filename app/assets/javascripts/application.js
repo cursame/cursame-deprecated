@@ -9,6 +9,9 @@
 //= require_tree .
 
 $(function(){
+  // Survey form
+  var questionAndAnswersFieldsets = $('fieldset[data-association="questions"], fieldset[data-association="answers"]');
+
   $('fieldset[data-association="questions"]').bind('setOrder', function(){
     $(this).closest('fieldset.questions').find('fieldset.question').each(function(index){
       $('input.question-position', $(this)).val(index);
@@ -21,25 +24,33 @@ $(function(){
     })
   });
 
-  $('fieldset[data-association="answers"]').
-    add('fieldset[data-association="questions"]').
-    disableSelection().
-    sortable({
-      stop : function(){
-        $(this).trigger('setOrder');
-      }
-    });
-
-  $('fieldset[data-association]').nestedAssociations({
+  questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
-      var fields = $(this);
-      fields.trigger('setOrder');
+      var fields = $(this).trigger('setOrder').css('cursor', 'move');
+      var association = fields.data('association')
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
     remove : function(){
       $('input.answer-uuid[type=radio]', $(this)).removeAttr('checked');
     }
   });
+
+  questionAndAnswersFieldsets.livequery(function(){
+    var sortableSettings = {
+      stop        : function(){ $(this).trigger('setOrder') },
+      axis        : 'y',
+      tolerance   : 'pointer',
+      scrollSpeed : 40,
+      items       : 'fieldset',
+      cancel      : 'a' 
+    } 
+    $(this).sortable(sortableSettings).children('.associated').css('cursor', 'move');
+  });
+  // Survey Form
+  
+  // Assets
+  $('fieldset[data-association="assets"]').nestedAssociations();
+  // Assets 
 
   $('a.publish-survey').click(function(){
     var publishLink = $(this);

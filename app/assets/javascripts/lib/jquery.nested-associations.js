@@ -29,23 +29,22 @@
     }
     if (opts) { $.extend(settings, opts); }
 
-    return associationFieldset.each(function(){
-      var container    = $(this);
-      var destroyLi    = container.children('fieldset').children('ol').children('li[id$=destroy_input]');
-      var destroyLink  = $('<a href="#" class="btn danger small remove-associated-record">').text(destroyLi.first().text());
-      var association  = container.attr('data-association');
-      var template     = container.children('fieldset.new').last().detach();
-
+    $(this).find('input[id$=_destroy]').closest('label').each(function(){
+      var destroyLink  = $('<a href="#" class="btn danger small remove-associated-record">').text($(this).text());
+    
       destroyLink.click(function(){
-        var fieldset = $(this).closest('fieldset'); 
         $(this).siblings('input').attr('value', '1');
-        fieldset.slideUp();
-        settings.remove.apply(fieldset);
+        settings.remove.apply($(this).closest('fieldset').slideUp());
         return false;
       });
 
-      destroyLi.append(destroyLink);
-      destroyLi.children('label').hide();
+      $(this).hide().after(destroyLink);
+    });
+
+    return associationFieldset.each(function(){
+      var container    = $(this);
+      var association  = container.attr('data-association');
+      var template     = container.children('fieldset.new').last().detach();
 
       container.children('a.add_record').show().click(function(){
         var cleanTemplate = template.clone(true);
@@ -58,9 +57,9 @@
           })
         });
 
-        container.children().removeClass('last');
-        settings.add.apply(cleanTemplate[0]);
-        cleanTemplate.addClass('last').slideDown();
+        cleanTemplate.slideDown(function(){
+          settings.add.apply(this);
+        });
         return false;
       });
     });
