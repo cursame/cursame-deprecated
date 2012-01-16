@@ -347,14 +347,139 @@ color: #BFBFBF;
 
 /* SURVEYS */
 
-.questions { margin-bottom: 50px; }
-.question li.answers { margin-bottom:0 !important; }
+.questions { 
+  margin-bottom: 50px; 
+}
 
-.answers { padding:10px 10px 0 10px; }
-.answers legend { display:none; }
-.answers label { float:none; }
-.answers input[type=radio] { margin-right: 10px; }
-.answers fieldset { margin-bottom:0; }
+/*.questions form, .questions fieldset {
+  margin: 0;
+}*/
+
+ol.choices-group li.choice {
+  background-color: #fff;
+  padding:10px 10px 10px 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #EAEAEA;
+}
+
+fieldset.questions a.delete-survey {
+  margin-top: 20px;
+  display: block;
+  color: red;
+}
+
+fieldset.questions .question { 
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EAEAEA;
+}
+
+/*.questions .question ol li { 
+  width: 400px;
+  margin-right: 0;
+}*/
+
+fieldset.questions .question ol li.string,
+fieldset.questions .question ol li.number  { 
+  float: left;
+  width: 400px;
+  margin-right: 0;
+}
+
+fieldset.questions .question ol li.boolean  { 
+  float: right;
+  width: 80px;
+  margin-right: 0;
+  padding-left: 0;
+}
+
+fieldset.questions .question ol li label { 
+  width: 50px;
+}
+
+fieldset.question li.answers { 
+  margin-bottom:0 !important; 
+}
+
+.answers { 
+/*  padding:10px 10px 0 10px;*/
+  width: 400px;
+  margin-left: 62px !important;
+}
+
+.answers .answer {
+  background-color: #fff;
+  padding:10px 10px 0 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #EAEAEA;
+}
+
+.answers .answer span {
+  margin-bottom: 10px; 
+  display: inline-block;
+}
+/*
+.answers .answer input[type="radio"] {
+  float: left;
+}*/
+
+.answers .answer ol li.string {
+  width: 280px !important;
+  float: left;
+}
+
+.answers .answer ol li.boolean {
+  width: 60px !important;
+/*  float: left;
+*/}
+
+.answers .answer ol li.string label {
+  display: none;
+}
+
+.answers .answer ol li.hidden {
+  display: none;
+}
+
+.answers .answer ol li {
+  width: 24px;
+  float: left;
+}
+
+.answers .answer ol li input[type="radio"] {
+  margin-top: 8px;
+}
+
+.answers legend { 
+  display:none; 
+}
+
+.answers label { 
+  float:none; 
+}
+
+.answers input[type=radio] { 
+  margin-right: 10px; 
+}
+
+.answers fieldset { 
+  margin-bottom:0; 
+}
+
+.reply {
+  padding: 10px;
+}
+
+.reply img {
+/*  vertical-align: top;*/
+  float: left;
+  margin-right: 10px;
+}
 /* @end */
 
 /* Tabs */
@@ -722,8 +847,8 @@ fieldset p.inline-hints {
 }
 
 .remove-associated-record {
-	margin-left: 190px;
-}
+/*  margin-left: 190px;
+*/}
 
 .remove-associated-record {
 	

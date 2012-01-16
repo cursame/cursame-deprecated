@@ -24,8 +24,8 @@
         <%= semantic_form_for [@course, @survey] do |form| %>
           <%= render :partial => 'survey_fields', :locals => {:form => form} %>
           <%= form.buttons do %>
-            <%= form.commit_button :button_html => {:class => 'btn right'} %>
-            <%= form.commit_button :button_html => {:class => 'btn right'}, :label => t('formtastic.actions.create_and_publish') %>
+            <%= form.commit_button :button_html => {:class => 'btn right'}, :label => t('formtastic.actions.create_and_save') %>
+            <%= form.commit_button :button_html => {:class => 'btn right', :style => "margin-right:10px;"}, :label => t('formtastic.actions.create_and_publish') %>
           <% end %>
         <% end %>
       </div>

@@ -10,7 +10,7 @@
         </li>
         <%= answer.input :uuid, :input_html => {:class => 'answer-uuid'}, :as => :hidden %>
         <%= answer.input :position, :input_html => {:class => 'answer-position'}, :as => :hidden %>
-        <%= answer.input :text %>
+        <%= answer.input :text, :input_html => {:placeholder => t('activerecord.attributes.answer.text'), :class => "span5"} %>
         <%= answer.input :_destroy, :as => :boolean %>
       </ol>
     </fieldset>

@@ -11,8 +11,8 @@
         <%= question.hidden_field :answer_uuid, :value => '' %>
         <ol>
           <%= question.input :position, :input_html => {:class => 'question-position'}, :as => :hidden %>
-          <%= question.input :text %>
-          <%= question.input :value %>
+          <%= question.input :text, :input_html => { :class => "span5" } %>
+          <%= question.input :value, :input_html => { :class => "span5" } %>
           <%= question.input :_destroy, :as => :boolean %>
         </ol>
         <%= render :partial => 'answer_fields', :locals => {:form => question} %>

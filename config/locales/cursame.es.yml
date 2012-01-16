@@ -119,8 +119,10 @@ es:
       update_and_publish: Actualizar y publicar
       create: Crear
       create_and_publish: Crear y publicar
+      create_and_save: "Crear y salvar"
       edit: Editar
       delete: Eliminar
+      x: "X"
 
   shared:
     toolbar:
@@ -229,13 +231,14 @@ es:
       new_survey: Nuevo cuestionario
     show:
       header: Cuestionario 
-      edit_survey: Editar cuestionario
-      view_replies: Ver cuestionarios contestados
+      edit_survey: Editar
+      view_replies: Cuestionarios contestados
       course: Curso
       preview: Vista previa del cuestionario
       survey_sent: Ya enviaste tus respuestas
       survey_sent_at: 'Respuestas enviadas el:'
       view_answers: Tus respuestas
+      student_answers: Las respuestas de
       new_answers: Enviar respuestas
       not_answered: No has enviado tus respuestas
       survey_expired: La fecha para contestar este cuestionario ha pasado
