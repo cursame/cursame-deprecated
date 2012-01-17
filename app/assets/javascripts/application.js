@@ -35,7 +35,7 @@ $(function(){
   });
 
   $('a.remove-associated-record').livequery(function(){
-    $(this).addClass('btn danger small');
+    $(this).addClass('delete-survey');
   })
 
   questionAndAnswersFieldsets.livequery(function(){
@@ -123,12 +123,19 @@ $(function(){
   
   $("span.tip").twipsy({
     live: true
-  })
+  });
   
   $("a[rel=tip]").twipsy({
     live: true,
     offset: 30,
-  })
+  });
+  
+  $("span[rel=drag_tip]").twipsy({
+    live: true,
+    placement: 'right',
+    offset: 24,
+    delayOut: 4
+  });
 
   $('textarea[data-editor]').wysiwyg({
     controls : {

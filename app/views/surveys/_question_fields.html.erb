@@ -1,6 +1,6 @@
 <h2><%= t('.legend') %></h2>
-<div class="well">
-  <fieldset class="nested_models questions input no-margin inputs" data-association="questions">
+<div class="">
+  <fieldset class="nested_models questions input no-margin inputs" data-association="questions" rel="tip">
     <%- form.object.questions.build %>
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
@@ -11,9 +11,10 @@
         <%= question.hidden_field :answer_uuid, :value => '' %>
         <ol>
           <%= question.input :position, :input_html => {:class => 'question-position'}, :as => :hidden %>
-          <%= question.input :text, :input_html => { :class => "span5" } %>
-          <%= question.input :value, :input_html => { :class => "span5" } %>
+          <%= question.input :text, :as => :text, :input_html => { :class => "span6 textarea-size", :rows => 5 } %>
+          <li class="dragable"><span class="drag" rel="drag_tip" title="<%= t('surveys.drag') %>"><%= t('surveys.drag') %></span></li>
           <%= question.input :_destroy, :as => :boolean %>
+          <%= question.input :value, :input_html => { :class => "span2" } %>
         </ol>
         <%= render :partial => 'answer_fields', :locals => {:form => question} %>
       </fieldset>

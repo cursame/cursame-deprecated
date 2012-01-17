@@ -348,6 +348,26 @@ color: #BFBFBF;
 
 /* SURVEYS */
 
+.survey h2 {
+  margin-bottom: 10px;
+}
+
+.drag {
+  background: transparent url(drag_selector.png) no-repeat 0 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  float: right;
+  text-indent: -120000px;
+  cursor: move;
+}
+
+.dragable {
+  float: right !important;
+  width: 20px;
+  margin: 4px 0 0 0 !important;
+}
+
 .questions { 
   margin-bottom: 50px; 
 }
@@ -367,14 +387,21 @@ ol.choices-group li.choice {
 }
 
 fieldset.questions a.delete-survey {
-  margin-top: 20px;
+  margin-top: 4px;
   display: block;
   color: red;
+  text-decoration: underline;
+/*  width: 18px;
+  height: 18px;
+  background: transparent url(trash.png) no-repeat 0 0;
+  text-indent: -10000000px;*/
 }
 
 fieldset.questions .question { 
-  padding-bottom: 10px;
-  border-bottom: 1px solid #EAEAEA;
+  border-bottom: 1px solid #eee;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  padding: 19px;
 }
 
 /*.questions .question ol li { 
@@ -389,9 +416,15 @@ fieldset.questions .question ol li.number  {
   margin-right: 0;
 }
 
+fieldset.questions .question ol li.text  { 
+  float: left;
+  width: 400px;
+  margin-right: 0;
+}
+
 fieldset.questions .question ol li.boolean  { 
   float: right;
-  width: 80px;
+  width: 60px;
   margin-right: 0;
   padding-left: 0;
 }
@@ -405,9 +438,9 @@ fieldset.question li.answers {
 }
 
 .answers { 
-/*  padding:10px 10px 0 10px;*/
-  width: 400px;
-  margin-left: 62px !important;
+  width: 430px;
+  margin: 0 0 0 62px !important;
+  display: inline-block;
 }
 
 .answers .answer {
@@ -429,7 +462,8 @@ fieldset.question li.answers {
   float: left;
 }*/
 
-.answers .answer ol li.string {
+.answers .answer ol li.string,
+.answers .answer ol li.text {
   width: 280px !important;
   float: left;
 }
@@ -439,7 +473,8 @@ fieldset.question li.answers {
 /*  float: left;
 */}
 
-.answers .answer ol li.string label {
+.answers .answer ol li.string label,
+.answers .answer ol li.text label {
   display: none;
 }
 
