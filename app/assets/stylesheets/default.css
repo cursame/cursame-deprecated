@@ -257,10 +257,11 @@ width: 300px;
 }
 
 .comment form fieldset ol li .comment-img {
-  display: inline-block;
-  height: 25px;
+/*  display: inline-block;*/
+  height: 20px;
   width: 25px;
   margin-right: 5px;
+  float: left;
 }
 
 .comment form fieldset ol li textarea.span7 {

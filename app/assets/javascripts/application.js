@@ -116,9 +116,7 @@ $(function(){
   });
 
   $('a.toggle_comment_box').live('click', function(){
-    $(this).closest('.comment').find('.comment-form').fadeIn(400, function(){
-      $('textarea', $(this)).focus();
-    });
+    $(this).closest('.comment').find('.comment-form').fadeIn(400);
     return false;
   });
 
@@ -227,31 +225,25 @@ $(function(){
     }
   });
 
-  /* Elastic textareas */
-  $('input[type=text], textarea').live('focus', function(){
-    if($(this).hasClass('textarea-size')) {
-       $(this).elasticate(77,300);
-       return;
-    }
-    if($(this).hasClass('span6')) {
-       $(this).elasticate(114,300);
-       return;
-    }
-  });
-  // End of elastic areas.
+  /* TextAreaExpander textareas */
+  
+  $("textarea.textarea-size").TextAreaExpander(77, 300);
+  
+  // End of TextAreaExpander areas.
 });
 
-var toogleImageComment = function(textarea,url){
+var toggleImageComment = function(textarea, url){
         var txtarea = $(textarea),
         parentNode = txtarea.parent();
-        parentNode.prepend('<div class="comment-img">'+url+'</div>');
+        parentNode.prepend('<div class="comment-img">' + url + '</div>');
         txtarea.removeClass('span8');
         txtarea.addClass('span7');
-        txtarea.elasticate(18,200);
-        /*retiramos los estilos cuando pierde el focus*/
+        txtarea.TextAreaExpander(26,200);
+        
+        /* Removes styles when out of focus */
         txtarea.blur(function(){
             var node = parentNode.children(':first-child');
-            if(node.hasClass('comment-img') && (txtarea.val() =='')){
+            if(node.hasClass('comment-img')){
                 txtarea.removeClass('span7');
                 txtarea.addClass('span8');
                 node.remove();
