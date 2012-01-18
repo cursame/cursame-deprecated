@@ -1203,3 +1203,12 @@ display: block;
   overflow:hidden;
 }
 
+.dashboard .teacher_aproval {
+  width: 260px;
+}
+
+.dashboard .teacher_aproval form {
+  float: left;
+  margin: 0 10px 0 0;
+}
+
