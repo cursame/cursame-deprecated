@@ -26,7 +26,7 @@ $(function(){
 
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
-      var fields = $(this).trigger('setOrder').css('cursor', 'move');
+      var fields = $(this).trigger('setOrder');
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
     remove : function(){
@@ -47,7 +47,7 @@ $(function(){
       items       : 'fieldset',
       /* cancel      : 'a'  */
     } 
-    $(this).sortable(sortableSettings).children('.associated').css('cursor', 'move');
+    $(this).sortable(sortableSettings).children('.associated');
   });
   // Survey Form
   
