@@ -58,7 +58,7 @@
 
         <%= render :partial => 'shared/assets_table', :locals => {:record => @delivery} %>
 
-        <div class="well">
+        <div class="actions">
           <h2><%= t('.comment') %></h2>
           <%= render :partial => 'comments/form', :locals => {:commentable => @delivery} %>
         </div>
