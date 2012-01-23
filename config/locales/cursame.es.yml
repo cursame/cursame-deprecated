@@ -122,6 +122,7 @@ es:
       create_and_save: "Crear y salvar"
       edit: Editar
       delete: Eliminar
+      select_one: Seleccione uno 
       x: "X"
 
   shared:
