@@ -1,0 +1,36 @@
+<div class="dashboard">  
+
+  <div class="row">
+    <div class="span5">
+      <%= render :partial => "supervisor/shared/admin_menu" %>
+    </div>
+    
+    <div class="span9">
+      
+      <div class="row">
+         <div class="span13">
+
+           <div class="row bottom-margin">
+             <div class="span9">
+               <h2><%= t('courses.courses') %></h2>
+             </div>
+             <div class="span3">
+               <% if current_user.teacher? %>
+                 <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small right") %>
+               <% end %>
+             </div>
+           </div>
+
+           <div class="courses">
+             <%= render :partial => 'course', :collection => @courses %>
+           </div>
+         </div>
+         <div class="span3" style="margin:0;">
+           <%= render :partial => "shared/adds" %>
+         </div>
+       </div>
+      
+    </div>
+  </div>
+  <!-- Contexts or Networks should be in a drop-down or the way Github does Contexts -->
+</div>

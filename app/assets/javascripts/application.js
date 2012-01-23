@@ -26,7 +26,7 @@ $(function(){
 
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
-      var fields = $(this).trigger('setOrder').css('cursor', 'move');
+      var fields = $(this).trigger('setOrder');
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
     remove : function(){
@@ -35,7 +35,7 @@ $(function(){
   });
 
   $('a.remove-associated-record').livequery(function(){
-    $(this).addClass('btn danger small');
+    $(this).addClass('delete-survey');
   })
 
   questionAndAnswersFieldsets.livequery(function(){
@@ -47,7 +47,7 @@ $(function(){
       items       : 'fieldset',
       /* cancel      : 'a'  */
     } 
-    $(this).sortable(sortableSettings).children('.associated').css('cursor', 'move');
+    $(this).sortable(sortableSettings).children('.associated');
   });
   // Survey Form
   
@@ -116,21 +116,26 @@ $(function(){
   });
 
   $('a.toggle_comment_box').live('click', function(){
-    $(this).closest('.comment').find('.comment-form').fadeIn(400, function(){
-      $('textarea', $(this)).focus();
-    });
+    $(this).closest('.comment').find('.comment-form').fadeIn(400);
     return false;
   });
 
   
   $("span.tip").twipsy({
     live: true
-  })
+  });
   
   $("a[rel=tip]").twipsy({
     live: true,
     offset: 30,
-  })
+  });
+  
+  $("span[rel=drag_tip]").twipsy({
+    live: true,
+    placement: 'right',
+    offset: 24,
+    delayOut: 4
+  });
 
   $('textarea[data-editor]').wysiwyg({
     controls : {
@@ -227,31 +232,25 @@ $(function(){
     }
   });
 
-  /* Elastic textareas */
-  $('input[type=text], textarea').live('focus', function(){
-    if($(this).hasClass('textarea-size')) {
-       $(this).elasticate(77,300);
-       return;
-    }
-    if($(this).hasClass('span6')) {
-       $(this).elasticate(114,300);
-       return;
-    }
-  });
-  // End of elastic areas.
+  /* TextAreaExpander textareas */
+  
+  $("textarea.textarea-size").TextAreaExpander(77, 300);
+  
+  // End of TextAreaExpander areas.
 });
 
-var toogleImageComment = function(textarea,url){
+var toggleImageComment = function(textarea, url){
         var txtarea = $(textarea),
         parentNode = txtarea.parent();
-        parentNode.prepend('<div class="comment-img">'+url+'</div>');
+        parentNode.prepend('<div class="comment-img">' + url + '</div>');
         txtarea.removeClass('span8');
         txtarea.addClass('span7');
-        txtarea.elasticate(18,200);
-        /*retiramos los estilos cuando pierde el focus*/
+        txtarea.TextAreaExpander(26,200);
+        
+        /* Removes styles when out of focus */
         txtarea.blur(function(){
             var node = parentNode.children(':first-child');
-            if(node.hasClass('comment-img') && (txtarea.val() =='')){
+            if(node.hasClass('comment-img')){
                 txtarea.removeClass('span7');
                 txtarea.addClass('span8');
                 node.remove();

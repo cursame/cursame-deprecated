@@ -1,6 +1,63 @@
-<%= semantic_form_for @survey_reply, :url => survey_reply_path(@survey), :method => :put do |form| %>
-  <%= render :partial => 'fields', :locals => {:form => form} %>
-  <%= form.buttons do %>
-    <%= form.commit_button form.object.new_record? ? t('forms.send_survey_reply') : t('forms.update_survey_reply'), :button_html => {:id => :submit, :class => 'btn right'} %>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="content">
+
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li>... <span class="divider">/</span></li>
+          <li><%= link_to(@course.name, @course) %> <span class="divider">/</span></li>
+          <li><%= link_to(Survey.model_name.human(:count => :many), course_surveys_path(@course)) %> <span class="divider">/</span></li>
+          <li><%= link_to @survey.name, @survey %> <span class="divider">/</span></li>
+          <% if current_user.teacher? %>
+            <li class="active"><%= t('surveys.show.student_answers') %> <%= @survey_reply.user.name %></li>
+          <% else %>
+            <li class="active"><%= t('surveys.show.view_answers') %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+        <%= render :partial => "courses/members_menu" %>
+      </div>
+
+      <div class="span10 surveys">
+        <div class="row">
+          <div class="span9">
+            <h2 class="titles"><%= t('surveys.edit.header') %>: <%= @survey.name %></h2>
+            <div class="public-course"><%= t('.course') %>: <%= @course.name %></div>
+          </div>
+        </div>
+
+        <div class="row with line">
+          <div class="span6 description no-margin">
+            <p><%= t('courses.surveys.value') %>: <b><%= @survey.value %></b> -
+            <%= t('courses.surveys.period') %>: <b><%= @survey.period %></b> -
+            <%= t('courses.surveys.date_time') %>: <b><%= l @survey.due_to, :format => :short %></b></p>
+          </div>
+        </div>
+
+        <div class="row with line">
+          <div class="description"><%= t('courses.surveys.description') %></div>
+          <div class="expander"><p><%= @survey.description %></p></div>
+        </div>
+
+        <div class="questions">
+
+          <div class="questions">
+            <%= semantic_form_for @survey_reply, :url => survey_reply_path(@survey), :method => :put do |form| %>
+              <%= render :partial => 'fields', :locals => {:form => form} %>
+              <%= form.buttons do %>
+                <%= form.commit_button form.object.new_record? ? t('forms.send_survey_reply') : t('forms.update_survey_reply'), :button_html => {:id => :submit, :class => 'btn right'} %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -257,10 +257,11 @@ width: 300px;
 }
 
 .comment form fieldset ol li .comment-img {
-  display: inline-block;
-  height: 25px;
+/*  display: inline-block;*/
+  height: 20px;
   width: 25px;
   margin-right: 5px;
+  float: left;
 }
 
 .comment form fieldset ol li textarea.span7 {
@@ -347,14 +348,174 @@ color: #BFBFBF;
 
 /* SURVEYS */
 
-.questions { margin-bottom: 50px; }
-.question li.answers { margin-bottom:0 !important; }
+.survey h2 {
+  margin-bottom: 10px;
+}
 
-.answers { padding:10px 10px 0 10px; }
-.answers legend { display:none; }
-.answers label { float:none; }
-.answers input[type=radio] { margin-right: 10px; }
-.answers fieldset { margin-bottom:0; }
+.drag {
+  background: transparent url(drag_selector.png) no-repeat 0 0;
+  width: 20px;
+  height: 20px;
+  display: block;
+  float: right;
+  text-indent: -120000px;
+  cursor: move;
+}
+
+.dragable {
+  float: right !important;
+  width: 20px;
+  margin: 4px 0 0 0 !important;
+}
+
+.questions { 
+  margin-bottom: 50px; 
+}
+
+/*.questions form, .questions fieldset {
+  margin: 0;
+}*/
+
+ol.choices-group li.choice {
+  background-color: #fff;
+  padding:10px 10px 10px 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #EAEAEA;
+}
+
+fieldset.questions a.delete-survey {
+  margin-top: 4px;
+  display: block;
+  color: red;
+  text-decoration: underline;
+/*  width: 18px;
+  height: 18px;
+  background: transparent url(trash.png) no-repeat 0 0;
+  text-indent: -10000000px;*/
+}
+
+fieldset.questions .question { 
+  border-bottom: 1px solid #eee;
+  background-color: #f5f5f5;
+  margin-bottom: 20px;
+  padding: 19px;
+}
+
+/*.questions .question ol li { 
+  width: 400px;
+  margin-right: 0;
+}*/
+
+fieldset.questions .question ol li.string,
+fieldset.questions .question ol li.number  { 
+  float: left;
+  width: 400px;
+  margin-right: 0;
+}
+
+fieldset.questions .question ol li.text  { 
+  float: left;
+  width: 400px;
+  margin-right: 0;
+}
+
+fieldset.questions .question ol li.boolean  { 
+  float: right;
+  width: 60px;
+  margin-right: 0;
+  padding-left: 0;
+}
+
+fieldset.questions .question ol li label { 
+  width: 50px;
+}
+
+fieldset.question li.answers { 
+  margin-bottom:0 !important; 
+}
+
+.answers { 
+  width: 430px;
+  margin: 0 0 0 62px !important;
+  display: inline-block;
+}
+
+.answers .answer {
+  background-color: #fff;
+  padding:10px 10px 0 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #EAEAEA;
+}
+
+.answers .answer span {
+  margin-bottom: 10px; 
+  display: inline-block;
+}
+/*
+.answers .answer input[type="radio"] {
+  float: left;
+}*/
+
+.answers .answer ol li.string,
+.answers .answer ol li.text {
+  width: 280px !important;
+  float: left;
+}
+
+.answers .answer ol li.boolean {
+  width: 60px !important;
+/*  float: left;
+*/}
+
+.answers .answer ol li.string label,
+.answers .answer ol li.text label {
+  display: none;
+}
+
+.answers .answer ol li.hidden {
+  display: none;
+}
+
+.answers .answer ol li {
+  width: 24px;
+  float: left;
+}
+
+.answers .answer ol li input[type="radio"] {
+  margin-top: 8px;
+}
+
+.answers legend { 
+  display:none; 
+}
+
+.answers label { 
+  float:none; 
+}
+
+.answers input[type=radio] { 
+  margin-right: 10px; 
+}
+
+.answers fieldset { 
+  margin-bottom:0; 
+}
+
+.reply {
+  padding: 10px;
+}
+
+.reply img {
+/*  vertical-align: top;*/
+  float: left;
+  margin-right: 10px;
+}
 /* @end */
 
 /* Tabs */
@@ -722,8 +883,8 @@ fieldset p.inline-hints {
 }
 
 .remove-associated-record {
-	margin-left: 190px;
-}
+/*  margin-left: 190px;
+*/}
 
 .remove-associated-record {
 	
@@ -1040,5 +1201,14 @@ display: block;
   margin-top: 25px;
   display:block;
   overflow:hidden;
+}
+
+.dashboard .teacher_aproval {
+  width: 260px;
+}
+
+.dashboard .teacher_aproval form {
+  float: left;
+  margin: 0 10px 0 0;
 }
 

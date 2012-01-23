@@ -27,10 +27,10 @@
           </div>
           <div class="span4">
             <% if current_user.manageable_courses.include? @course %>
-              <% unless @survey.published? %>
-                <%= link_to t('.edit_survey'), edit_survey_path(@survey), :class => 'btn info right small' %> - 
-              <% end %>
               <%= link_to t('.view_replies'), survey_replies_path(@survey), :class => 'btn info right small' %>
+              <% unless @survey.published? %>
+                <%= link_to t('.edit_survey'), edit_survey_path(@survey), :class => 'btn info right small', :style => "margin-right: 10px;" %>
+              <% end %>
             <% end %>
           </div>
         </div>
@@ -53,7 +53,7 @@
             <h2><%= t('.preview') %></h2>
             <%= render :partial => 'question', :collection => @survey.questions %>
 
-            <%= link_to t('.delete'), survey_path(@survey), :method => :delete, :confirm => @survey.survey_replies.count == 0 ? t('.confirm_delete') : t('.confirm_delete_with_replies') %>
+            <%= link_to t('.delete'), survey_path(@survey), :method => :delete, :class => "delete-survey", :confirm => @survey.survey_replies.count == 0 ? t('.confirm_delete') : t('.confirm_delete_with_replies') %>
 
           <% elsif @survey_reply %>
             <h3><%= t('.survey_sent') %></h3>

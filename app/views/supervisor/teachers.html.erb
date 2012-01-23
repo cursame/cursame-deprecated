@@ -3,7 +3,8 @@
   <div class="row">
     <div class="span16">
       <ul class="breadcrumb">
-        <li><%= link_to(t('.admin'), supervisor_dashboard_path) %></li>
+        <li><%= link_to(t('.admin'), supervisor_dashboard_path) %> <span class="divider">/</span></li>
+        <li><%= t('courses.members.teachers') %></li>
       </ul>  
     </div>
   </div>
@@ -16,11 +17,21 @@
       </div>
       
       <div class="span9">
+        <h2><%= t('courses.members.teachers') %></h2>
+        
         <div class="users teachers">
           <% @teachers.each do |teacher| %>
             <div class="user padding-all <%= cycle('odd', 'even') %>">
-              <div class="row teacher">
-                <%= link_to teacher.name, user_path(teacher) %>
+              <div class="teacher">
+                <div class="row">
+                  <div class="span1" style="margin-left:20px;">
+                    <%= image_tag teacher.avatar_file.xsmall.url %>
+                  </div>
+                  <div class="span5">
+                    <%= link_to(teacher.name, user_path(teacher)) %><br />
+                    <%= mail_to teacher.email %>
+                  </div>
+                </div>
               </div>
             </div>
           <% end %>

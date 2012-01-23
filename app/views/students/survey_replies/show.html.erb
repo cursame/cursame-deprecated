@@ -4,12 +4,15 @@
     <div class="row">
       <div class="span16">
         <ul class="breadcrumb">
-          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
-          <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
+          <li>... <span class="divider">/</span></li>
           <li><%= link_to(@course.name, @course) %> <span class="divider">/</span></li>
           <li><%= link_to(Survey.model_name.human(:count => :many), course_surveys_path(@course)) %> <span class="divider">/</span></li>
           <li><%= link_to @survey.name, @survey %> <span class="divider">/</span></li>
-          <li class="active"><%= t('surveys.show.view_answers') %></li>
+          <% if current_user.teacher? %>
+            <li class="active"><%= t('surveys.show.student_answers') %> <%= @survey_reply.user.name %></li>
+          <% else %>
+            <li class="active"><%= t('surveys.show.view_answers') %></li>
+          <% end %>
         </ul>
       </div>
     </div>
@@ -24,7 +27,7 @@
       <div class="span10 surveys">
         <div class="row">
           <div class="span9">
-            <h2 class="titles"><%= t('.header') %>: <%= @survey.name %></h2>
+            <h2 class="titles"><%= t('surveys.show.header') %>: <%= @survey.name %></h2>
             <div class="public-course"><%= t('.course') %>: <%= @course.name %></div>
           </div>
         </div>
@@ -43,28 +46,33 @@
         </div>
 
         <div class="questions">
-          <h2><%= t('.answers') %></h2>
+          <h2><%= t('surveys.answer_fields.legend') %></h2>
           <% if params[:controller] == 'students/survey_replies' %>
             <% if !@survey.expired? %>
               <%= link_to t('.edit'), edit_survey_reply_path(@survey), :class => 'btn info small' %>
             <% end %>
           <% else %>
-            <div class="user">
+            <div class="reply">
               <%= link_to image_tag(@survey_reply.user.avatar_file.xsmall.url), @survey_reply.user %>
-              <%= link_to @survey_reply.user.name, @survey_reply.user %>
+              <p><%= link_to @survey_reply.user.name, @survey_reply.user %> -
+              <% if @reveal_answers %>
+                <%= t('survey_reply.score') %>: <%= @survey_reply.score %>% -
+                <%= t('survey_reply.updated') %>: <%= l(@survey_reply.updated_at, :format => :short) %>
+              <% end %>
+              </p>
             </div>
           <% end %>
           
-          <% if @reveal_answers %>
-            <div>
-              <%= t('survey_reply.score') %>: <%= @survey_reply.score %>% -
-              <%= t('survey_reply.updated') %>: <%= l(@survey_reply.updated_at, :format => :short) %> - 
-            </div>
+          <% if @reveal_answers && current_user.student? %>
+            <%= t('survey_reply.score') %>: <%= @survey_reply.score %>% -
+            <%= t('survey_reply.updated') %>: <%= l(@survey_reply.updated_at, :format => :short) %>
           <% end %>
 
-          <%= semantic_form_for @survey_reply, :url => nil do |form| %>
-            <%= render :partial => 'students/survey_replies/fields', :locals => {:form => form} %>
-          <% end %>
+          <div class="questions">
+            <%= semantic_form_for @survey_reply, :url => nil do |form| %>
+              <%= render :partial => 'students/survey_replies/fields', :locals => {:form => form} %>
+            <% end %>
+          </div>
         </div>
 
       </div>

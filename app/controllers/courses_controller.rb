@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   set_tab :course,  :only => %w(index show new create edit update)
+  set_tab :courses, :only => %w(index)
   set_tab :wall,    :only => %w(wall)
   set_tab :members, :only => %w(members)
 
