@@ -10,7 +10,9 @@ class SupervisorController < ApplicationController
   end
 
   def teachers
-    @teachers = current_network.teachers
+    teachers = current_network.teachers
+    @approved = teachers.where(:state => 'active')
+    @pending = teachers.where(:state => 'inactive')
   end
 
   def students

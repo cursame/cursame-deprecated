@@ -32,14 +32,16 @@ feature 'Supervisor', %q{
   end
 
   context 'teacher listing and aproval/rejecting' do
-    scenario 'view a list of teachers' do
+    scenario 'view a list of teachers with tabs for approved and pending' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
       (1..3).map { Factory(:teacher) } # Other networks
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.teachers')
-
+      
+      page.should have_css('#approved')
+      page.should have_css('#pending')
       page.should have_css('.teacher', :count => 3)
     end
 
