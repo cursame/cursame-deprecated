@@ -44,6 +44,7 @@ group :staging, :production do
 end
 
 group :development, :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ffaker'
   gem 'sqlite3'
   gem 'rspec-rails'

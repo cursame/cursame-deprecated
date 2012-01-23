@@ -121,6 +121,7 @@ es:
       create_and_publish: Crear y publicar
       edit: Editar
       delete: Eliminar
+      select_one: Seleccione uno 
 
   shared:
     toolbar:
