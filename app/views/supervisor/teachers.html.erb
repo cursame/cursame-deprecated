@@ -22,7 +22,7 @@
         <h2><%= t('courses.members.teachers') %></h2>
         <ul class="tabs">
           <li class="active"><%= link_to t('courses.teachers.approved'), '#approved' %></li>
-          <li><%= link_to t('courses.teachers.pending'), '#pending' %></li>
+          <li><%= link_to_pending_teachers(@pending_teachers_total) %></li>
         </ul>
         <div class="pill-content">
           <div id="approved" class="users teachers active">

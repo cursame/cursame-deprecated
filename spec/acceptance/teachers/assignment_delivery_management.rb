@@ -38,6 +38,7 @@ feature 'Manage assignments', %q{
     end
      
     page.should show_delivery @delivery
+    page.should_not have_content t('assignments.show.edit_delivery')
   end
 
   scenario 'commenting on the delivery' do

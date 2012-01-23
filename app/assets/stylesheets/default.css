@@ -1118,7 +1118,7 @@ display: block;
 
 .dashboard ul.menu {
   list-style: none;
-  min-height: 300px;
+/*  min-height: 300px;*/
   margin: 0;
   background-color: #eaeaea;
   -moz-border-radius: 4px;
