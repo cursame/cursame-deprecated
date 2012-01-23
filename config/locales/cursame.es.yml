@@ -179,7 +179,7 @@ es:
         one:   '1 Miembro'
         other: '%{count} Miembros'
     teachers:
-      approved: 'Aprovados'
+      approved: 'Aprobados'
       pending: 'Pendientes'
     member: 
       pending: 'Aceptar'

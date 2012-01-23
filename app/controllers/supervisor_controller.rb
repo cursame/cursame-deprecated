@@ -1,6 +1,5 @@
 class SupervisorController < ApplicationController
   before_filter :authenticate_supervisor!
-  before_filter :current_network_pending_teachers
   set_tab :dashboard, :only => %w(dashboard)
   set_tab :teachers, :only => %w(teachers)
   set_tab :students, :only => %w(students)
@@ -36,9 +35,4 @@ class SupervisorController < ApplicationController
     redirect_to supervisor_teachers_path, :notice => t('flash.user_registration_rejected')
   end
   
-  private
-  
-  def current_network_pending_teachers
-    @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count
-  end
 end
