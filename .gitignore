@@ -11,3 +11,4 @@ pickle-email*
 .sass-cache
 bin
 *.sqlite3-journal
+*~
