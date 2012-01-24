@@ -8,7 +8,6 @@ class SurveyReply < ActiveRecord::Base
   validates_uniqueness_of :survey_id, :scope => :user_id
 
   # TODO: validate that each survey.question has a survey_answer and each survey_answer corresponds to a survey.question
-  
   validate do
     errors.add(:base, 'Due date has passed') if survey.due_to < DateTime.now
   end
