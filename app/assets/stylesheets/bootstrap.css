@@ -604,7 +604,7 @@ form .clearfix:after {
 label,
 input,
 select,
-textarea {
+textarea, .wysiwyg p {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 13px;
   font-weight: normal;
@@ -694,7 +694,7 @@ textarea {
 ::-webkit-input-placeholder {
   color: #bfbfbf;
 }
-input, textarea {
+input, textarea, body.wysiwyg {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -ms-transition: border linear 0.2s, box-shadow linear 0.2s;

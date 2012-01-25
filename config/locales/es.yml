@@ -187,10 +187,11 @@ es:
       submit: 'Guardar %{model}'
       
   flash:
-    comment_added: 'Comment added with succes!'
-    discussion_updated: 'Discusion Actualisada'
+    comment_added: 'Comment added with success!'
+    discussion_updated: 'Discusión Actualizada'
     wrong_network: 'Red equivocada'
     assignment_updated: 'Tarea actualizada'
+    user_registration_accepted: 'Maestro autorizado correctamente'
 
   errors:
     format: "%{attribute} %{message}"
