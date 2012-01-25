@@ -1223,3 +1223,8 @@ display: block;
   border-left: 1px solid #ddd !important;
   border-bottom: 1px solid #ddd !important;
 }
+
+.tabs_fix{
+  float: none !important;
+  border-bottom: 1px solid #ddd !important;
+}
