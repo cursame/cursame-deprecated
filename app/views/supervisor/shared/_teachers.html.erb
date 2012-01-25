@@ -1,0 +1,28 @@
+<% teachers.each do |teacher| %>
+  <div class="user padding-all <%= cycle('odd', 'even') %>">
+    <div class="teacher">
+      <div class="row">
+        <div class="span1" style="margin-left:20px;">
+          <%= image_tag teacher.avatar_file.xsmall.url %>
+        </div>
+        <div class="span5">
+          <%= link_to(teacher.name, user_path(teacher)) %><br />
+          <%= mail_to teacher.email %>
+        </div>
+        <% if teacher.state == 'inactive'%>
+          <div class="span3-5">
+            <div class="teacher_aproval">
+              <%= form_tag supervisor_accept_user_path(teacher.id), :method => :post do |form| %>
+                <%= submit_tag t('.approve'), :class => "accept btn success small" %>
+              <% end %>
+
+              <%= form_tag supervisor_reject_user_path(teacher.id), :method => :post do |form| %>
+                <%= submit_tag t('.reject'), :class => "reject btn small danger" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

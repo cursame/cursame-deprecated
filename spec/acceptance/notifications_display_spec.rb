@@ -24,6 +24,7 @@ feature 'Notifications display', %q{
       page.should link_to user_path(student)
       page.should link_to course_path(course)
       page.should link_to members_for_course_path(course)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -42,6 +43,7 @@ feature 'Notifications display', %q{
       page.should link_to user_path(student)
       page.should link_to assignment_path(assignment)
       page.should link_to delivery_path(delivery)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -62,6 +64,7 @@ feature 'Notifications display', %q{
       page.should link_to survey_path(survey)
       page.should link_to course_path(course)
       page.should link_to reply_path(survey_reply)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -82,6 +85,7 @@ feature 'Notifications display', %q{
       page.should link_to survey_path(survey)
       page.should link_to course_path(course)
       page.should link_to reply_path(survey_reply)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -96,6 +100,7 @@ feature 'Notifications display', %q{
 
     within '.notification' do
       page.should link_to courses_path
+      page.should have_css(".notification-link")
     end
   end
 
@@ -125,6 +130,7 @@ feature 'Notifications display', %q{
     within '.notification' do
       page.should link_to course_path(course)
       page.should link_to assignment_path(assignment)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -140,6 +146,7 @@ feature 'Notifications display', %q{
     within '.notification' do
       page.should link_to course_path(course)
       page.should link_to assignment_path(assignment)
+      page.should have_css(".notification-link")
     end
   end
 
@@ -156,6 +163,7 @@ feature 'Notifications display', %q{
     within '.notification' do
       page.should link_to course_path(course)
       page.should link_to survey_path(survey)
+      page.should have_css(".notification-link")
     end
   end
 end

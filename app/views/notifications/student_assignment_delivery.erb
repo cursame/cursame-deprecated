@@ -6,4 +6,4 @@
 
 <a href="<%= user_path(student) %>"><%= student.name %></a> <%= I18n.t('notifications.has_delived_assignment') %>
 <a href="<%= assignment_path(assignment) %>"><%= assignment.name %></a>.
-<a href="<%= delivery_path(delivery) %>"><%= I18n.t('notifications.show_delivery') %> &gt;&gt;</a>.
+<a href="<%= delivery_path(delivery) %>"  class="notification-link"><%= I18n.t('notifications.show_delivery') %> &gt;&gt;</a>
