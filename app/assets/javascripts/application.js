@@ -27,6 +27,11 @@ $(function(){
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
       var fields = $(this).trigger('setOrder');
+
+      $('html, body').animate({
+        scrollTop: fields.offset().top
+      }, 200);
+
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
     remove : function(){
