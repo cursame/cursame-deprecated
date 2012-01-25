@@ -227,6 +227,7 @@ es:
       answer: Contestar
       publish: Publicar
       published: Publicado
+      select_correct_answer: Selecciona la respuesta correcta
     drag: Arrastra y Ordena
     index:
       header: Cuestionarios
