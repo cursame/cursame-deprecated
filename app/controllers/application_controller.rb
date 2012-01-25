@@ -57,9 +57,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_network_pending_teachers
-    if current_user and current_user.supervisor?
-      @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count
-    end
+    @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count if current_user and current_user.supervisor?
   end
   
 end
