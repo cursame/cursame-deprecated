@@ -1094,6 +1094,11 @@ display: block;
   margin: 0 0 2px 10px;
 }
 
+.notification a.notification-link{
+  font-size: 10px;
+  color: #117487;
+}
+
 /* Admin Dashboard Classes */
 
 .dashboard {
@@ -1216,5 +1221,10 @@ display: block;
 .pill-content{
   border-right: 1px solid #ddd !important;
   border-left: 1px solid #ddd !important;
+  border-bottom: 1px solid #ddd !important;
+}
+
+.tabs_fix{
+  float: none !important;
   border-bottom: 1px solid #ddd !important;
 }

@@ -1576,9 +1576,9 @@ a.menu:after, .dropdown-toggle:after {
   display: block;
 }
 .tabs {
-/*  float: left; /* cervera commented this for the teachers tabs*/
+  float: left;
   width: 100%;
-  border-bottom: 1px solid #ddd !important;
+  border-bottom: 1px solid #ddd;
   background-color: white;
 }
 .tabs > li {
