@@ -138,6 +138,7 @@ $(function(){
   });
 
   $('textarea[data-editor]').wysiwyg({
+    css: '/assets/bootstrap.css',
     controls : {
       bold: {
         visible: true
@@ -162,6 +163,9 @@ $(function(){
           return $('#link-to-upload').click();
         },
         tooltip: "Insert image"
+      },
+      removeFormat: {
+        visible: true
       },
       underline: {
         visible: false

@@ -7,8 +7,7 @@
 
   <%= form.inputs do %>
     <%= form.input :name, :input_html => {:class => "span6"}  %>
-    <!--<%= form.input :description, :input_html => {'data-editor' => true, :class => 'span6'} %>-->
-    <%= form.input :description, :input_html => {:rows => 5, :class => "span6"} %>
+    <%= form.input :description, :input_html => {'data-editor' => true, :rows => 5, :class => "span6 textarea-size"} %>
     <%= form.input :start_date, :as => :string, :input_html => {:placeholder => "dd-mm-yy", :class => 'span6 datepicker'} %>
     <%= form.input :finish_date, :as => :string, :input_html => {:placeholder => "dd-mm-yy", :class => 'span6 datepicker'} %>
     <%= form.input :reference, :label => t('courses.details'), :input_html => {:class => "span6"} %>

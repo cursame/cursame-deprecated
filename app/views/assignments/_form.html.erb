@@ -1,6 +1,6 @@
 <%= form.inputs :basic do %>
   <%= form.input :name, :input_html => {:class => "span6"} %>
-  <%= form.input :description, :input_html => {:rows => 5, :class => "span6"} %>
+  <%= form.input :description, :input_html => {'data-editor' => true, :rows => 5, :class => "span6"} %>
   <%= form.input :value, :input_html => {:class => "span6"} %>
   <%= form.input :period, :input_html => {:class => "span6"} %>
   <li><label><%= t('courses.assignments.date_time') %></label><%= form.datetime_select(:due_to) %></li>
