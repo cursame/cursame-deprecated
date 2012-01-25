@@ -32,14 +32,16 @@ feature 'Supervisor', %q{
   end
 
   context 'teacher listing and aproval/rejecting' do
-    scenario 'view a list of teachers' do
+    scenario 'view a list of teachers with tabs for approved and pending' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
       (1..3).map { Factory(:teacher) } # Other networks
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.teachers')
-
+      
+      page.should have_css('#approved')
+      page.should have_css('#pending')
       page.should have_css('.teacher', :count => 3)
     end
 
@@ -58,16 +60,16 @@ feature 'Supervisor', %q{
       (1..3).map { Factory(:student, :networks => [@network]) }
 
       #sign_in_with @supervisor, :subdomain => @network.subdomain
-      click_link t('supervisor.shared.admin_menu.pending_approvals')
-      page.should have_css('.pending', :count => 3)
+      click_link t('supervisor.shared.admin_menu.teachers')
+      page.should have_css('.teacher_aproval', :count => 3)
     end
 
     scenario 'accept a teacher registration' do
       pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
-      visit supervisor_pending_approvals_url(:subdomain => @network.subdomain)
-      click_button t('supervisor.pending_approvals.approve')
+      visit supervisor_teachers_url(:subdomain => @network.subdomain)
+      click_button t('supervisor.shared.teachers.approve')
 
-      page.current_url.should match supervisor_pending_approvals_path
+      page.current_url.should match supervisor_teachers_path
       page.should have_notice t('flash.user_registration_accepted')
 
       pending.reload
@@ -76,10 +78,10 @@ feature 'Supervisor', %q{
 
     scenario 'reject a teacher registration' do
       pending = Factory(:teacher, :networks => [@network], :state => 'inactive')
-      visit supervisor_pending_approvals_url(:subdomain => @network.subdomain)
-      click_button t('supervisor.pending_approvals.reject')
+      visit supervisor_teachers_url(:subdomain => @network.subdomain)
+      click_button t('supervisor.shared.teachers.reject')
 
-      page.current_url.should match supervisor_pending_approvals_path
+      page.current_url.should match supervisor_teachers_path
       page.should have_notice t('flash.user_registration_rejected')
 
       User.unscoped.where(:id => pending.id).should be_empty

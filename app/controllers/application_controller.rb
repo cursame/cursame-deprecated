@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
+  before_filter :current_network_pending_teachers
 
   protected
   def authenticate_teacher!
@@ -54,4 +55,11 @@ class ApplicationController < ActionController::Base
   def accessible_courses
     current_user.supervisor? ? current_network.courses : current_user.visible_courses
   end
+  
+  def current_network_pending_teachers
+    if current_user and current_user.supervisor?
+      @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count
+    end
+  end
+  
 end

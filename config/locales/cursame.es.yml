@@ -178,6 +178,9 @@ es:
       count:
         one:   '1 Miembro'
         other: '%{count} Miembros'
+    teachers:
+      approved: 'Aprobados'
+      pending: 'Pendientes'
     member: 
       pending: 'Aceptar'
       rejected: 'Rechazado'
@@ -334,6 +337,9 @@ es:
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
         configuration: Configuración
+      teachers:
+        approve: Aceptar
+        reject: Rechazar
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
