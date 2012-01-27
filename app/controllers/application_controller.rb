@@ -60,7 +60,7 @@ class ApplicationController < ActionController::Base
     begin
       @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count if current_user and current_user.supervisor?
     rescue
-      @pendint_teachers_total = 0
+      @pending_teachers_total = 0
     end
   end
   
