@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_network
-    debugger
     @current_network ||= Network.find_by_subdomain(request.subdomain.chomp(".cursame"))
   end
 
@@ -58,8 +57,11 @@ class ApplicationController < ActionController::Base
   end
   
   def current_network_pending_teachers
-    @current_network = current_network
-    @pending_teachers_total = @current_network.teachers.where(:state => 'inactive').count if current_user and current_user.supervisor?
+    begin
+      @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count if current_user and current_user.supervisor?
+    rescue
+      @pending_teachers_total = 0
+    end
   end
   
 end
