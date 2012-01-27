@@ -2,6 +2,7 @@
   <legend><%= t('.legend') %></legend>
   <%- form.object.answers.build %>
   <%= form.semantic_fields_for :answers do |answer| %>
+  <h3><%= t('surveys.survey.select_correct_answer') %></h3>
     <%- record = answer.object %>
     <fieldset class="<%= record.new_record? ? :new : nil %> associated answer">
       <ol>

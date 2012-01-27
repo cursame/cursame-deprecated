@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource.networks << current_network 
     resource.role    = role
     resource.state   = role == 'student' ? 'active' : 'inactive'
+    @network = current_network
   end
 
   protected
