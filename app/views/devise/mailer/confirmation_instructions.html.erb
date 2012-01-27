@@ -1,18 +1,36 @@
 <p>Bienvenido <%= @resource.first_name %>!</p>
 
-<p>
-A partir de ahora, puedes disfrutar de Cúrsame y todas las herramientas que te ofrece como:
-<ul>
-  <li>Perfil en tu red social privada</li>
-  <li>Interactuar con tus compañeros</li>
-  <li>Acceso a cursos</li>
-  <li>Tareas</li>
-  <li>Cuestionarios</li>
-  <li>Discusiones</li>
-  <li>Compartir archivos</li>
-  <li>¡Entre muchas otras!</li>
-</ul>
-</p>
+<% if @resource.student?%>
+  <p>
+  A partir de ahora, puedes disfrutar de Cúrsame y todas las herramientas que te ofrece como:
+  <ul>
+    <li>Perfil en tu red social privada</li>
+    <li>Interactuar con tus compañeros y maestros</li>
+    <li>Acceso a cursos</li>
+    <li>Tareas</li>
+    <li>Cuestionarios</li>
+    <li>Discusiones</li>
+    <li>Compartir archivos</li>
+    <li>¡Entre muchas otras!</li>
+  </ul>
+  </p>
+<%elsif @resource.teacher?%>
+  <p>
+  El proceso para tu acceso al sistema consta de 2 pasos, tu correo debe de ser confirmado y tu cuenta debe de ser aprobada por el administrador de tu red.
+  <br />
+  Una vez que tu cuenta este confirmada y aprobada podrás disfrutar de Cúrsame y todas las herramientas que te ofrece como:
+  <ul>
+    <li>Perfil en tu red social privada</li>
+    <li>Interactuar con tus compañeros y alumnos</li>
+    <li>Acceso a cursos</li>
+    <li>Tareas</li>
+    <li>Cuestionarios</li>
+    <li>Discusiones</li>
+    <li>Compartir archivos</li>
+    <li>¡Entre muchas otras!</li>
+  </ul>
+  </p>
+<%end%>
 
 <p>Es necesario <%= link_to 'confirmar tu cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> para poder accesar al sistema.</p>
 
