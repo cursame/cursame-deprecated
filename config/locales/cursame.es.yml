@@ -230,6 +230,7 @@ es:
       answer: Contestar
       publish: Publicar
       published: Publicado
+      select_correct_answer: Selecciona la respuesta correcta
     drag: Arrastra y Ordena
     index:
       header: Cuestionarios
@@ -259,7 +260,7 @@ es:
       add_answer: Añadir respuesta
     question_fields:
       legend: Preguntas para cuestionario 
-      add_question: Añadir pregunta
+      add_question: + Añadir pregunta
 
 
   students:
