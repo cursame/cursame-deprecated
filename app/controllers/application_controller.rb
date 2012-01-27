@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
     when 'admin'      then admin_path
     when 'supervisor' then supervisor_dashboard_path
     else 
-      dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
+      dashboard_url(:subdomain => request.subdomain.chomp(".cursame").blank? ? current_user.networks.first.subdomain : request.subdomain)
     end
   end
 
