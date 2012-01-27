@@ -31,12 +31,12 @@ class ApplicationController < ActionController::Base
     when 'admin'      then admin_path
     when 'supervisor' then supervisor_dashboard_path
     else 
-      dashboard_url(:subdomain => request.subdomain.blank? ? current_user.networks.first.subdomain : request.subdomain)
+      dashboard_url(:subdomain => request.subdomain.chomp(".cursame").blank? ? current_user.networks.first.subdomain : request.subdomain.chomp(".cursame"))
     end
   end
 
   def current_network
-    @current_network ||= Network.find_by_subdomain(request.subdomain)
+    @current_network ||= Network.find_by_subdomain(request.subdomain.chomp(".cursame"))
   end
 
   def authenticate_active_user_within_network!
