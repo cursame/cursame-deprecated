@@ -1,5 +1,5 @@
 require 'csv'
-
+ActiveRecord::Base.connection.reset_pk_sequence!('users')
 puts "Creando maestros"
 
 CSV.open("ese_profesores.csv", "r").each do |row|
