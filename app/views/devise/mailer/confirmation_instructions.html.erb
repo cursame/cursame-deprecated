@@ -13,6 +13,7 @@ Tu nueva contraseña es: <strong><%= "#{@resource.first_name.gsub(" ", "_").down
 <%rescue%>
 <%subdomain = nil%>
 <%end%>
+<br />
 Link de <%= link_to 'acceso', root_url(:subdomain=>subdomain) %> a tu red.
 <br />
 <br />
