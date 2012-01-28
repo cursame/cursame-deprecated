@@ -27,7 +27,8 @@ es:
       updated: 'Tu contraseña fue cambiada exitosamente y has sido ingresado al sistema.'
       updated_not_active: 'Tu contraseña se cambió exitosamente.'
       send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para reiniciar tu contraseña en unos minutos."
-      change_password: 'Actualiza tu contraseña'
+      edit:
+        change_password: 'Actualiza tu contraseña'
     confirmations:
       send_instructions: 'Recibirás un correo electrónico con instrucciones sobre cómo confirmar tu cuenta en unos minutos.'
       send_paranoid_instructions: 'Si tu correo electrónico existe en nuestra base de datos, recibirás un correo con instrucciones sobre cómo confirmar tu cuenta en unos minutos.'
