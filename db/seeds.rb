@@ -1,5 +1,4 @@
 require 'csv'
-
 puts "Creando maestros"
 
 CSV.open("ese_profesores.csv", "r").each do |row|
