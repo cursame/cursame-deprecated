@@ -52,7 +52,7 @@ es:
       failure: 'No te pudimos autorizar en %{kind} debido a "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Bienvenido a Cursa.me'
+        subject: 'Ya está lista la nueva plataforma Cúrsame, ¡empieza ahora!'
       reset_password_instructions:
         subject: 'Instrucciones para reiniciar tu contraseña'
       unlock_instructions:

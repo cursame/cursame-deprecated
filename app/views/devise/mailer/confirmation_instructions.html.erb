@@ -3,18 +3,20 @@
 <p>
 Como te hicimos saber hace unos d&iacute;as, Cúrsame se ha actualizado para ofrecerte mejores herramientas y experiencia.
 <br />
-Por el mismo motivo te pedimos que crees una nueva contraseña para acceder a la nueva plataforma.
+<br />
+Por el mismo motivo hemos tenido que crearte una nueva contraseña para acceder a la nueva plataforma, sin embargo te sugerimos ampliamente cambiar la contraseña tan pronto accedas al sistema.
 <br />
 <br />
-¡Esperamos disfrutes del nuevo sistema y te invitamos a empezar tus cursos!
-</p>
-<p>
+Tu nueva contraseña es: <strong><%= "#{@resource.first_name.gsub(" ", "_").downcase}#{@resource.id}" %></strong>
 <%begin%>
 <%subdomain = @resource.networks.first.subdomain%>
 <%rescue%>
 <%subdomain = nil%>
 <%end%>
-Para poder ingresar será necesario que <%= link_to 'actualices tu contraseña', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token, :subdomain => subdomain) %>.
+Link de <%= link_to 'acceso', root_url(:subdomain=>subdomain) %> a tu red.
+<br />
+<br />
+¡Esperamos disfrutes del nuevo sistema y te invitamos a empezar tus cursos!
 </p>
 <p>
 Cualquier duda, siempre puedes contactarnos al mail <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.
