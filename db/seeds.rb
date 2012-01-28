@@ -28,6 +28,7 @@ CSV.open("ese_profesores.csv", "r").each do |row|
   u.networks = [Network.find(5)]
   u.save
   u.password = u.first_name.gsub(" ", "_").downcase + u.id.to_s
+  u.password_confirmation = u.first_name.gsub(" ", "_").downcase + u.id.to_s
   u.save
   u.confirm!
 
