@@ -9,7 +9,12 @@ Por el mismo motivo te pedimos que crees una nueva contraseña para acceder a la
 ¡Esperamos disfrutes del nuevo sistema y te invitamos a empezar tus cursos!
 </p>
 <p>
-Para poder ingresar será necesario que <%= link_to 'actualices tu contraseña', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token, :subdomain => @resource.networks.first.subdomain) %>.
+<%begin%>
+<%subdomain = @resource.networks.first.subdomain%>
+<%rescue%>
+<%subdomain = nil%>
+<%end%>
+Para poder ingresar será necesario que <%= link_to 'actualices tu contraseña', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token, :subdomain => subdomain) %>.
 </p>
 <p>
 Cualquier duda, siempre puedes contactarnos al mail <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.

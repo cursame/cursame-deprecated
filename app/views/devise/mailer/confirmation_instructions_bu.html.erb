@@ -31,7 +31,11 @@
   </ul>
   </p>
 <%end%>
-
-<p>Es necesario <%= link_to 'confirmar tu cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.networks.first.subdomain) %> para poder accesar al sistema.</p>
+<%begin%>
+<%subdomain = @resource.networks.first.subdomain%>
+<%rescue%>
+<%subdomain = nil%>
+<%end%>
+<p>Es necesario <%= link_to 'confirmar tu cuenta', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => subdomain) %> para poder accesar al sistema.</p>
 
 <p>Si tienes alguna duda, puedes escribirnos a <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.</p>
