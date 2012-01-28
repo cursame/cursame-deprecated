@@ -400,8 +400,27 @@ fieldset.questions a.delete-survey {
 fieldset.questions .question { 
   border-bottom: 1px solid #eee;
   background-color: #f5f5f5;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
   padding: 19px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+fieldset.questions .question:hover { 
+  border: 1px dashed #424242;
+  padding: 18px;
+  margin-bottom: 3px;
+/*  background-color: #eaeaea;
+*/}
+
+fieldset.questions .question-select { 
+  border: 1px solid #049CDB;
+  padding: 18px;
+  margin-bottom: 3px;
+  background-color: #ADE6FE;
+}
+
+fieldset.questions .question:focus { 
+  background-color: #fff;
 }
 
 /*.questions .question ol li { 
@@ -412,14 +431,18 @@ fieldset.questions .question {
 fieldset.questions .question ol li.string,
 fieldset.questions .question ol li.number  { 
   float: left;
-  width: 400px;
+  width: 300px;
   margin-right: 0;
 }
 
 fieldset.questions .question ol li.text  { 
   float: left;
-  width: 400px;
+  width: 492px;
   margin-right: 0;
+}
+
+fieldset.questions .question ol li.text textarea.span7 { 
+  width: 420px;
 }
 
 fieldset.questions .question ol li.boolean  { 
@@ -453,6 +476,14 @@ fieldset.question li.answers {
   border: 1px solid #EAEAEA;
 }
 
+.answers .answer:hover {
+  border: 1px dashed #424242;
+}
+
+fieldset.answer ol li textarea.span6 {
+  width: 370px;
+}
+
 .answers .answer span {
   margin-bottom: 10px; 
   display: inline-block;
@@ -464,7 +495,7 @@ fieldset.question li.answers {
 
 .answers .answer ol li.string,
 .answers .answer ol li.text {
-  width: 280px !important;
+  width: 380px !important;
   float: left;
 }
 
