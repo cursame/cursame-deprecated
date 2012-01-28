@@ -2188,7 +2188,8 @@ button.btn::-moz-focus-inner, input[type=submit].btn::-moz-focus-inner {
   border-right: 5px solid transparent;
   border-bottom: 5px solid #000000;
 }
-.twipsy.right .twipsy-arrow {
+.twipsy.right .twipsy-arrow,
+.twipsy.top-right .twipsy-arrow {
   top: 50%;
   left: 0;
   margin-top: -5px;

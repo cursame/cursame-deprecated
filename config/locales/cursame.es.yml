@@ -260,7 +260,7 @@ es:
       add_answer: Añadir respuesta
     question_fields:
       legend: Preguntas para cuestionario 
-      add_question: Añadir pregunta
+      add_question: + Añadir pregunta
 
 
   students:

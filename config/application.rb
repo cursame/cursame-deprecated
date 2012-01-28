@@ -25,7 +25,8 @@ module Cursame
     config.filter_parameters += [:password]
     config.assets.enabled = true
     config.assets.version = '1.0'
-
+    
+    
     config.generators do |gen|
       gen.orm :active_record
       gen.test_framework :rspec, :fixture_replacement => :factory_girl, :views => false, :controllers => false  
