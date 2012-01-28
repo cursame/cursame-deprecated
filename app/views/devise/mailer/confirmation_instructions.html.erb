@@ -4,7 +4,7 @@
 Como te hicimos saber hace unos d&iacute;as, Cúrsame se ha actualizado para ofrecerte mejores herramientas y experiencia.
 <br />
 <br />
-Por el mismo motivo hemos tenido que crearte una nueva contraseña para acceder a la nueva plataforma, sin embargo te sugerimos ampliamente cambiar la contraseña tan pronto accedas al sistema.
+Por el mismo motivo hemos, creamos una nueva contraseña para que accedas a la nueva plataforma, sin embargo, te sugerimos ampliamente cambiarla a tu gusto una vez dentro del sistema.
 <br />
 <br />
 Tu nueva contraseña es: <strong><%= "#{@resource.first_name.gsub(" ", "_").downcase}#{@resource.id}" %></strong>
@@ -14,7 +14,7 @@ Tu nueva contraseña es: <strong><%= "#{@resource.first_name.gsub(" ", "_").down
 <%subdomain = nil%>
 <%end%>
 <br />
-Link de <%= link_to 'acceso', root_url(:subdomain=>subdomain) %> a tu red.
+Ingresa con tu e-mail (<strong><%= "#{@resource.email}" %></strong>) y tu nueva contraseña: link de <%= link_to 'acceso', root_url(:subdomain=>subdomain) %> a tu red.
 <br />
 <br />
 ¡Esperamos disfrutes del nuevo sistema y te invitamos a empezar tus cursos!
