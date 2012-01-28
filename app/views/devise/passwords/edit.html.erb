@@ -22,7 +22,7 @@
             <%= form.hidden_field :reset_password_token %>
             <%= form.inputs :password, :password_confirmation %>
             <%= form.buttons do %>
-              <%= form.commit_button t('.change_password') %>
+              <%= form.commit_button t('.change_password_button') %>
             <% end %>
           <% end %>
           <%= render :partial => "devise/shared/links" %>

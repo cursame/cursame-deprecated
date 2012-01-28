@@ -29,6 +29,7 @@ es:
       send_paranoid_instructions: "Si tu correo electrónico existe en nuestra base de datos, recibirás un enlace para reiniciar tu contraseña en unos minutos."
       edit:
         change_password: 'Actualiza tu contraseña'
+        change_password_button: 'Actualizar'
     confirmations:
       send_instructions: 'Recibirás un correo electrónico con instrucciones sobre cómo confirmar tu cuenta en unos minutos.'
       send_paranoid_instructions: 'Si tu correo electrónico existe en nuestra base de datos, recibirás un correo con instrucciones sobre cómo confirmar tu cuenta en unos minutos.'
