@@ -85,6 +85,9 @@
           case 'right':
             tp = {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width + this.options.offset}
             break
+          case 'top-right':
+            tp = {top: pos.top + pos.height / 14 - actualHeight / 2, left: pos.left + pos.width + this.options.offset}
+            break
         }
 
         $tip

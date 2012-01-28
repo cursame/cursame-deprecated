@@ -4,15 +4,15 @@
     <%- form.object.questions.build %>
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
-      <fieldset class="<%= record.new_record? ? :new : nil %> associated question">
+      <fieldset class="<%= record.new_record? ? :new : nil %> associated question" rel="drag_tip" title="<%= t('surveys.drag') %>">
         <% unless record.errors[:answer_uuid].blank? %> 
           <p class="inline-errors"><%= record.errors[:answer_uuid].to_sentence %></p>
         <% end %>
         <%= question.hidden_field :answer_uuid, :value => '' %>
         <ol>
           <%= question.input :position, :input_html => {:class => 'question-position'}, :as => :hidden %>
-          <%= question.input :text, :as => :text, :input_html => { :class => "span6 textarea-size", :rows => 5 } %>
-          <li class="dragable"><span class="drag" rel="drag_tip" title="<%= t('surveys.drag') %>"><%= t('surveys.drag') %></span></li>
+          <%= question.input :text, :as => :text, :input_html => { :class => "span7 textarea-size", :rows => 5 } %>
+          <!--<li class="dragable"><span class="drag" rel="drag_tip" title="<%= t('surveys.drag') %>"><%= t('surveys.drag') %></span></li>-->
           <%= question.input :_destroy, :as => :boolean %>
           <%= question.input :value, :input_html => { :class => "span2" } %>
         </ol>

@@ -18,6 +18,10 @@ $(function(){
     })
   });
   
+  $('fieldset.new.question').click(function(){  
+    $(this).addClass('question-select').siblings().removeClass('question-select'); 
+  });
+  
   $('fieldset[data-association="answers"]').bind('setOrder', function(){
     $(this).closest('fieldset.question').find('fieldset.answer').each(function(index){
       $('input.answer-position', $(this)).val(index);
@@ -26,7 +30,8 @@ $(function(){
 
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
-      var fields = $(this).trigger('setOrder');
+      var fields = $(this).trigger('setOrder').css('cursor', 'move');
+      // var fields = $(this).trigger('setOrder');
 
       $('html, body').animate({
         scrollTop: fields.offset().top
@@ -52,7 +57,8 @@ $(function(){
       items       : 'fieldset',
       /* cancel      : 'a'  */
     } 
-    $(this).sortable(sortableSettings).children('.associated');
+    $(this).sortable(sortableSettings).children('associated').css('cursor', 'move');
+    // $(this).sortable(sortableSettings).children('.associated');
   });
   // Survey Form
   
@@ -135,10 +141,10 @@ $(function(){
     offset: 30,
   });
   
-  $("span[rel=drag_tip]").twipsy({
+  $("fieldset[rel=drag_tip]").twipsy({
     live: true,
     placement: 'right',
-    offset: 24,
+    offset: 10,
     delayOut: 4
   });
 
