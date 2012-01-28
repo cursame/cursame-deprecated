@@ -14,7 +14,7 @@ Tu nueva contraseña es: <strong><%= "#{@resource.first_name.gsub(" ", "_").down
 <%subdomain = nil%>
 <%end%>
 <br />
-Ingresa con tu e-mail (<strong><%= "#{@resource.email}" %></strong>) y tu nueva contraseña: link de <%= link_to 'acceso', root_url(:subdomain=>subdomain) %> a tu red.
+Ingresa con tu e-mail (<%= "#{@resource.email}" %>) y tu nueva contraseña: acceso a <%= link_to 'red ESE', root_url(:subdomain=>subdomain) %>.
 <br />
 <br />
 ¡Esperamos disfrutes del nuevo sistema y te invitamos a empezar tus cursos!
