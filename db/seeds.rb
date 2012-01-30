@@ -1,8 +1,9 @@
 require 'csv'
-puts "Creando maestros"
+puts "Creando estudiantes"
 
-CSV.open("ese_profesores.csv", "r").each do |row|
-  first_name = "Maestro"
+
+CSV.open("ese_alumnos.csv", "r").each do |row|
+  first_name = "Estudiante"
   last_name = "ESE"
   name = row[0].split(' ')
   if name.length == 1
@@ -21,15 +22,19 @@ CSV.open("ese_profesores.csv", "r").each do |row|
   u = User.new(:email => row[1],
                :password => "cursame2012",
                :password_confirmation => "cursame2012", 
-               :role => "teacher", 
+               :role => "student", 
                :state => "active", 
                :first_name => first_name.strip, 
                :last_name => last_name.strip)
   u.networks = [Network.find(5)]
-  u.save
-  u.password = u.first_name.gsub(" ", "_").downcase + u.id.to_s
-  u.password_confirmation = u.first_name.gsub(" ", "_").downcase + u.id.to_s
-  u.save
-  u.confirm!
+  if u.valid?
+    u.save
+    u.password = u.first_name.gsub(" ", "_").downcase + u.id.to_s
+    u.password_confirmation = u.first_name.gsub(" ", "_").downcase + u.id.to_s
+    u.save
+    u.confirm!
+  else
+      puts u.email
+  end
 
 end
