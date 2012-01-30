@@ -14,6 +14,14 @@
   <%= yield :head %>
 </head>
 <body>
+<script type="text/javascript">
+  var uvOptions = {};
+(function() {
+ var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+ uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/Yi7IyM5C4wwxKnchHN3htA.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+ })();
+</script>
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
   <%= yield %>
