@@ -52,8 +52,8 @@ es:
       failure: 'No te pudimos autorizar en %{kind} debido a "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Ya está lista la nueva plataforma Cúrsame, ¡empieza ahora!'
+        subject: '¡Bienvenido a Cúrsame!'
       reset_password_instructions:
-        subject: 'Instrucciones para reiniciar tu contraseña'
+        subject: 'Instrucciones para reestablecer tu contraseña'
       unlock_instructions:
         subject: 'Instrucciones para desbloquear'
