@@ -41,6 +41,7 @@ group :staging, :production do
   gem 'heroku'
   gem "pg"
   gem 'therubyracer'
+  gem 'airbrake'
 end
 
 group :development, :test do
