@@ -28,15 +28,15 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for resource
     case resource.role
-    when 'admin'      then admin_path
-    when 'supervisor' then supervisor_dashboard_path
+    when 'admin'      then admin_path(:subdomain => nil)
+    when 'supervisor' then supervisor_dashboard_path(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     else 
-      dashboard_url(:subdomain => request.subdomain.chomp.blank? ? current_user.networks.first.subdomain : request.subdomain)
+      dashboard_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     end
   end
 
   def current_network
-    @current_network ||= Network.find_by_subdomain(request.subdomain.chomp(".cursame"))
+    @current_network ||= Network.find_by_subdomain(request.subdomain.downcase.chomp(".cursame"))
   end
 
   def authenticate_active_user_within_network!
