@@ -14,6 +14,7 @@ class CourseRequestsController < ApplicationController
   def accept
     course_request = current_user.enrollment_requests.find params[:id]
     course_request.accept!
+    StudentMailer.accepted_on_course(current_user, course_request.user, course_request.course, current_network).deliver
     if request.xhr?
       head :ok
     else
