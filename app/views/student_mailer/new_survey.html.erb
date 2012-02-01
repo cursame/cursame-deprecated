@@ -1,0 +1,10 @@
+<p>
+Hola!
+</p>
+<p>
+Tu profesor del curso <%=@course.name%> ha publicado el cuestionario <%=@survey.name%>!
+</p>
+<p>
+Visita la p&acute;gina de <%= link_to 'cuestionarios', course_surveys_url(@course, :subdomain => @subdomain) %> de tu curso para revisar los detalles.
+</p>
+

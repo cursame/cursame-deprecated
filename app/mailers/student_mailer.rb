@@ -34,9 +34,12 @@ class StudentMailer < ActionMailer::Base
   #
   #   en.student.new_survey.subject
   #
-  def new_survey
-    @greeting = "Hi"
+  def new_survey(students, course, survey, network)
+    @subdomain = network.subdomain
+    @course = course
+    @survey = survey
 
-    mail to: "to@example.org"
+    mail to: students.all.map(&:email).join(", "),
+         subject: "Nuevo cuestionario en uno de tus cursos"
   end
 end

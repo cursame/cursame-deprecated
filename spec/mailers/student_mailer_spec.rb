@@ -37,16 +37,17 @@ describe StudentMailer do
   end
 
   describe "new_survey" do
-    let(:mail) { StudentMailer.new_survey }
+    survey = Factory(:published_survey)
+    let(:mail) { StudentMailer.new_survey(User.where("role = 'student'"), @course, survey, @network) }
 
     it "renders the headers" do
-      mail.subject.should eq("New survey")
-      mail.to.should eq(["to@example.org"])
+      mail.subject.should eq("Nuevo cuestionario en uno de tus cursos")
+      mail.to.should eq([@student.email])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Tu profesor del curso #{course.name} ha publicado una nueva tarea!")
+      mail.body.encoded.should match("Tu profesor del curso #{@course.name} ha publicado el cuestionario #{survey.name}!")
     end
   end
 
