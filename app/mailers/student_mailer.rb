@@ -21,10 +21,12 @@ class StudentMailer < ActionMailer::Base
   #
   #   en.student.new_homework.subject
   #
-  def new_homework
-    @greeting = "Hi"
+  def new_homework(students, course, network)
+    @subdomain = network.subdomain
+    @course = course
 
-    mail to: "to@example.org"
+    mail to: students.all.map(&:email).join(", "),
+         subject: "Nueva tarea en uno de tus cursos"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
