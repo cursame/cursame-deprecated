@@ -372,3 +372,13 @@ es:
     assignment_added: Se ha creado la tarea
     assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
+    
+  user_mailer:
+    new_comment_on_user:
+      subject: Nuevo comentario en tu muro
+    new_comment_on_discussion:
+      subject: Nuevo comentario en una de tus discusiones
+    new_comment_on_course:
+      subject:
+    new_discussion:
+      subject:

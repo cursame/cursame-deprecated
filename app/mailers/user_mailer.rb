@@ -11,8 +11,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail to: commented.email,
-         subject: "Nuevo comentario en tu muro"
+    mail to: commented.email
   end
   
     # Subject can be set in your I18n file at config/locales/en.yml
@@ -25,8 +24,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail bcc: discussion.participants_emails,
-         subject: "Nuevo comentario en una de tus discusiones"
+    mail bcc: discussion.participants_emails
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
