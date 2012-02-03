@@ -6,14 +6,13 @@ class StudentMailer < ActionMailer::Base
   #
   #   en.student.accepted_on_course.subject
   #
-  def accepted_on_course(teacher, student, course, network)
-    @teacher = teacher
+  def accepted_on_course(student, course, network)
     @student = student
     @subdomain = network.subdomain
     @course = course
 
     mail to: student.email,
-         subject: "Solicitud de ingreso al curso #{course.name} aceptada"
+         subject: t('student_mailer.accepted_on_course.subject', :course_name => course.name)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -25,8 +24,7 @@ class StudentMailer < ActionMailer::Base
     @subdomain = network.subdomain
     @course = course
 
-    mail to: students.all.map(&:email).join(", "),
-         subject: "Nueva tarea en uno de tus cursos"
+    mail to: students.all.map(&:email).join(", ")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -39,7 +37,6 @@ class StudentMailer < ActionMailer::Base
     @course = course
     @survey = survey
 
-    mail to: students.all.map(&:email).join(", "),
-         subject: "Nuevo cuestionario en uno de tus cursos"
+    mail to: students.all.map(&:email).join(", ")
   end
 end
