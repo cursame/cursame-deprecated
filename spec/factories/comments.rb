@@ -8,4 +8,8 @@ FactoryGirl.define do
   factory :comment_on_user, :parent => :comment do
     commentable { Factory :student}
   end
+  
+  factory :comment_on_discussion, :parent => :comment do
+    commentable { Factory :discussion}
+  end
 end

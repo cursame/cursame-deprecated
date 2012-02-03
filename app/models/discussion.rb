@@ -11,4 +11,10 @@ class Discussion < ActiveRecord::Base
   can_haz_assets
 
   html_sanitized :description
+  
+  def participants_emails
+    emails = [starter.email]
+    self.comments.each{|c| emails << c.user.email }
+    emails.uniq.join(", ")
+  end
 end
