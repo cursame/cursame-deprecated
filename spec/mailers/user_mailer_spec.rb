@@ -4,12 +4,6 @@ require "spec_helper"
 
 describe UserMailer do
 
-  before(:each) do
-    @student = Factory(:student)
-    @teacher = Factory(:teacher)
-    @supervisor = Factory(:supervisor)
-  end
-  
   describe "new_comment_on_user" do
     comment = Factory(:comment_on_user)
     let(:mail) { UserMailer.new_comment_on_user(comment.commentable, comment.user, "tec") }
@@ -46,16 +40,20 @@ describe UserMailer do
   end
 
   describe "new_comment_on_course" do
-    let(:mail) { UserMailer.new_comment_on_course }
+    comment = Factory(:comment_on_course)
+    course = comment.commentable
+    let(:mail) { UserMailer.new_comment_on_course(course, comment.user, "tec") }
 
     it "renders the headers" do
-      mail.subject.should eq("New comment on course wall")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+      mail.subject.should eq("Nuevo comentario en el muro de uno de tus cursos")
+      mail.bcc.should eq([course.all_emails])
+      mail.from.should eq(["noreply@cursa.me"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should match("Hola!")
+      mail.body.encoded.should match("El usuario #{comment.user.name} ha publicado un nuevo comentario en el muro del curso #{course.name}")
+      mail.body.encoded.should match("Visita la #{/.+/x} para ver el comentario.")
     end
   end
 
