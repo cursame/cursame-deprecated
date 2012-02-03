@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   html_sanitized :text
   
   after_create do
-    UserMailer.send("new_comment_on_#{commentable_type.downcase}".to_sym, commentable, user).deliver
+    UserMailer.send("new_comment_on_#{commentable_type.downcase}".to_sym, commentable, user, user.networks.first.subdomain).deliver
   end
   
 end
