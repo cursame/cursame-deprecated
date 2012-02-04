@@ -11,4 +11,14 @@ class Discussion < ActiveRecord::Base
   can_haz_assets
 
   html_sanitized :description
+
+  after_create do
+    UserMailer.new_discussion(self, self.course.network.subdomain).deliver
+  end
+  
+  def participants_emails
+    emails = [starter.email]
+    self.comments.each{|c| emails << c.user.email }
+    emails.uniq.join(", ")
+  end
 end

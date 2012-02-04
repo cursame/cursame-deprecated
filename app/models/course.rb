@@ -29,5 +29,10 @@ class Course < ActiveRecord::Base
   def owner
     teachers.where("enrollments.admin" => true).first or Eater.new
   end
+
+  #Metodo que regresa en un string separado por comas los emails de los usuarios del curso
+  def all_emails
+    self.users.map{ |u| u.email }.join(", ")
+  end
 end
 

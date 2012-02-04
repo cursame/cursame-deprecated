@@ -372,3 +372,29 @@ es:
     assignment_added: Se ha creado la tarea
     assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
+    
+  user_mailer:
+    new_comment_on_user:
+      subject: Nuevo comentario en tu muro
+    new_comment_on_discussion:
+      subject: Nuevo comentario en una de tus discusiones
+    new_comment_on_course:
+      subject: Nuevo comentario en el muro de uno de tus cursos
+    new_discussion:
+      subject: Nueva discusión en uno de tus cursos
+      
+  teacher_mailer:
+    pending_student_on_course:
+      subject: Un alumno ha solicitado acceso a uno de tus cursos
+      
+  supervisor_mailer:
+    new_teacher_registered:
+      subject: Un maestro ha solicitado acceso a tu red
+      
+  student_mailer:
+    accepted_on_course:
+      subject: Solicitud de ingreso al curso %{course_name} aceptada
+    new_homework:
+      subject: Nueva tarea en uno de tus cursos
+    new_survey:
+      subject: Nuevo cuestionario en uno de tus cursos

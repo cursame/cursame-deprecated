@@ -15,11 +15,12 @@ class Assignment < ActiveRecord::Base
   can_haz_assets
 
   html_sanitized :description
-
+  
   after_create do
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_added'
     end
+    StudentMailer.new_homework(course.students, course, course.network).deliver
   end
 
   after_update do

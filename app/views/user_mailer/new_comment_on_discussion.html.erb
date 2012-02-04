@@ -1,0 +1,9 @@
+<p>
+  Hola!
+</p>
+<p>
+  ¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en la discusión <%= @discussion.title%>!
+</p>
+<p>
+  Visita la <%= link_to 'discusión', discussion_url(@discussion, :subdomain=>@subdomain) %> para ver el comentario.
+</p>

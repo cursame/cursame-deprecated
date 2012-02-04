@@ -1,0 +1,10 @@
+<p>
+Hola!
+</p>
+<p>
+El alumno <%= @student.name%> ha solicitado ingresar a tu curso <%= @course.name%>, es necesario que lo apruebes para que tenga acceso a el.
+</p>
+<p>
+Visita la p&aacute;gina de <%= link_to 'miembros', members_for_course_url(@course, :subdomain => @subdomain) %> de tu curso para aceptar o rechazar al alumno.
+</p>
+

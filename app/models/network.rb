@@ -13,6 +13,14 @@ class Network < ActiveRecord::Base
   validates_presence_of   :name, :subdomain
   validates_uniqueness_of :subdomain
   validates_format_of     :subdomain, :with => /^[\-a-z0-9]+$/i
+  
+  before_save :downcase_subdomain
 
   mount_uploader :logo_file, LogoUploader
+  
+  private
+  
+  def downcase_subdomain
+    self.subdomain.downcase! unless self.subdomain.blank?
+  end
 end

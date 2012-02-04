@@ -1,0 +1,9 @@
+<p>
+  Hola <%= @commented.name%>
+</p>
+<p>
+  ¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en tu muro!
+</p>
+<p>
+  Visita tu <%= link_to 'muro', wall_for_user_url(@commented, :subdomain=>@subdomain) %> para ver el comentario.
+</p>

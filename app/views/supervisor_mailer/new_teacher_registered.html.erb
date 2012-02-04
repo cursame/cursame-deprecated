@@ -1,0 +1,10 @@
+<p>
+Hola!
+</p>
+<p>
+El maestro <%= @teacher.name%> ha solicitado ingresar a la red <%= @network.name%> en la cual tu eres Administrador, es necesario que lo apruebes para que tenga acceso a la red.
+</p>
+<p>
+Visita la p&aacute;gina de <%= link_to "administración de maestros", supervisor_teachers_url(:subdomain => @network.subdomain) %> para aceptar o rechazar al maestro.
+</p>
+

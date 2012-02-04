@@ -27,6 +27,7 @@ class Enrollment < ActiveRecord::Base
     course.teachers.select('users.id').each do |teacher|
       Notification.create :user => teacher, :notificator => self, :kind => 'student_course_enrollment'
     end
+    TeacherMailer.pending_student_on_course(course.teachers, user, course, course.network).deliver
   end
 
   def enrollment_rejected
@@ -35,6 +36,7 @@ class Enrollment < ActiveRecord::Base
 
   def enrollment_accepted
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
+    StudentMailer.accepted_on_course(self.user, self.course, course.network).deliver
   end
 
   def student?
