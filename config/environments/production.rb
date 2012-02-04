@@ -24,6 +24,7 @@ Cursame::Application.configure do
   # config.assets.precompile += %w( search.js )
   # config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default_url_options = { :host => HOST }
+
   # config.threadsafe!
 
   # the I18n.default_locale when a translation can not be found)
@@ -39,4 +40,5 @@ Cursame::Application.configure do
     :domain         => 'cursa.me'
   }
   ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default :from => "Cursame <noreply@cursa.me>"
 end

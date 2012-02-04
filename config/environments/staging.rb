@@ -32,4 +32,5 @@ Cursame::Application.configure do
     :domain         => 'heroku.com'
   }
   ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.default :from => "Cursame <noreply@cursa.me>"
 end
