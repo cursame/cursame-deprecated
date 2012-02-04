@@ -379,6 +379,6 @@ es:
     new_comment_on_discussion:
       subject: Nuevo comentario en una de tus discusiones
     new_comment_on_course:
-      subject:
+      subject: Nuevo comentario en el muro de uno de tus cursos
     new_discussion:
       subject:

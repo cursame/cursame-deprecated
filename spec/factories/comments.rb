@@ -14,6 +14,6 @@ FactoryGirl.define do
   end
 
   factory :comment_on_course, :parent => :comment do
-    commentable { Factory :course}
+    commentable { Factory :course }
   end
 end

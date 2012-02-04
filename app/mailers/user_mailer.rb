@@ -32,10 +32,12 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.new_comment_on_course_wall.subject
   #
-  def new_comment_on_course
-    @greeting = "Hi"
+  def new_comment_on_course(course, commenter, subdomain)
+    @course = course
+    @commenter = commenter
+    @subdomain = subdomain
 
-    mail to: "to@example.org"
+    mail bcc: course.all_emails
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

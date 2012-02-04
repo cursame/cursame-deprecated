@@ -39,21 +39,28 @@ describe UserMailer do
     end
   end
 
+
   describe "new_comment_on_course" do
-    comment = Factory(:comment_on_course)
-    course = comment.commentable
-    let(:mail) { UserMailer.new_comment_on_course(course, comment.user, "tec") }
+    before do
+      @comment = Factory(:comment_on_course)
+      @course = @comment.commentable
+      student = Factory(:student)
+      @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')
+      @course.reload
+    end
+
+    let(:mail) { UserMailer.new_comment_on_course(@course, @comment.user, "tec") }
 
     it "renders the headers" do
       mail.subject.should eq("Nuevo comentario en el muro de uno de tus cursos")
-      mail.bcc.should eq([course.all_emails])
+      mail.bcc.should eq([@course.all_emails])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
     it "renders the body" do
       mail.body.encoded.should match("Hola!")
-      mail.body.encoded.should match("El usuario #{comment.user.name} ha publicado un nuevo comentario en el muro del curso #{course.name}")
-      mail.body.encoded.should match("Visita la #{/.+/x} para ver el comentario.")
+      mail.body.encoded.should match("El usuario #{@comment.user.name} ha publicado un nuevo comentario en el muro del curso #{@course.name}")
+      mail.body.encoded.should match("Visita el #{/.+/x} para ver el comentario.")
     end
   end
 

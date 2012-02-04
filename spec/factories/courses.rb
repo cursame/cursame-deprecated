@@ -8,4 +8,5 @@ FactoryGirl.define do
     reference "MyString"
     network { Network.last || Factory(:network) }
   end
+
 end
