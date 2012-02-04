@@ -381,7 +381,7 @@ es:
     new_comment_on_course:
       subject: Nuevo comentario en el muro de uno de tus cursos
     new_discussion:
-      subject:
+      subject: Nueva discusión en uno de tus cursos
       
   teacher_mailer:
     pending_student_on_course:

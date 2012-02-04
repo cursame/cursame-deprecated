@@ -45,9 +45,10 @@ class UserMailer < ActionMailer::Base
   #
   #   en.user_mailer.new_discussion.subject
   #
-  def new_discussion
-    @greeting = "Hi"
+  def new_discussion(discussion, subdomain)
+    @discussion = discussion
+    @subdomain = subdomain
 
-    mail to: "to@example.org"
+    mail bcc: discussion.course.all_emails
   end
 end

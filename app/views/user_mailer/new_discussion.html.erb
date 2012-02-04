@@ -1,0 +1,9 @@
+<p>
+  Hola!
+</p>
+<p>
+¡El usuario <%= @discussion.starter.name %> ha iniciado la discusión <%= @discussion.title %> en tu curso <%= @discussion.course.name %>!
+</p>
+<p>
+ Ir a la <%= link_to 'discusión', discussion_url(@discussion, :subdomain=>@subdomain) %>.
+</p>

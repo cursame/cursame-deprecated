@@ -65,16 +65,25 @@ describe UserMailer do
   end
 
   describe "new_discussion" do
-    let(:mail) { UserMailer.new_discussion }
+    before do
+      @discussion = Factory(:discussion)
+      @course = @discussion.course
+      student = Factory(:student)
+      @course.enrollments.create(:user => student, :role => 'student', :state => 'accepted')
+    end
+
+    let(:mail) { UserMailer.new_discussion(@discussion, "tec") }
 
     it "renders the headers" do
-      mail.subject.should eq("New discussion")
-      mail.to.should eq(["to@example.org"])
-      mail.from.should eq(["from@example.com"])
+      mail.subject.should eq("Nueva discusión en uno de tus cursos")
+      mail.bcc.should eq([@course.all_emails])
+      mail.from.should eq(["noreply@cursa.me"])
     end
 
     it "renders the body" do
-      mail.body.encoded.should match("Hi")
+      mail.body.encoded.should match("Hola!")
+      mail.body.encoded.should match("El usuario #{@discussion.starter.name} ha iniciado la discusión #{@discussion.title} en tu curso #{@discussion.course.name}")
+      mail.body.encoded.should match("Ir a la #{/.+/x}.")
     end
   end
 
