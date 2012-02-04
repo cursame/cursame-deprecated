@@ -11,7 +11,6 @@ class TeacherMailer < ActionMailer::Base
     @course = course
     @subdomain = network.subdomain
 
-    mail to: teachers.all.map(&:email).join(", "),
-         subject: "Un alumno ha solicitado acceso a uno de tus cursos"
+    mail to: teachers.all.map(&:email).join(", ")
   end
 end

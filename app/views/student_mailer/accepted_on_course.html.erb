@@ -2,7 +2,7 @@
   Hola <%=@student.name%>!
 </p>
 <p>
-El profesor <%= "#{@teacher.first_name} #{@teacher.last_name}"%> ha aprobado tu ingreso al curso <%= @course.name%>!
+Tu profesor ha aprobado tu ingreso al curso <%= @course.name%>!
 </p>
 <p>
 Visita la p&acute;gina del <%= link_to 'curso', course_url(@course, :subdomain => @subdomain) %> 

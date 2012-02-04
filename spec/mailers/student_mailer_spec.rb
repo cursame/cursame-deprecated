@@ -9,7 +9,7 @@ describe StudentMailer do
   end
 
   describe "accepted_on_course" do
-    let(:mail) { StudentMailer.accepted_on_course(@teacher, @student, @course, @network) }
+    let(:mail) { StudentMailer.accepted_on_course(@student, @course, @network) }
 
     it "renders the headers" do
       mail.subject.should eq("Solicitud de ingreso al curso #{@course.name} aceptada")

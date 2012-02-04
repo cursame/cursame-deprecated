@@ -36,7 +36,7 @@ class Enrollment < ActiveRecord::Base
 
   def enrollment_accepted
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
-    StudentMailer.accepted_on_course(current_user, course_request.user, course_request.course, current_network).deliver
+    StudentMailer.accepted_on_course(self.user, self.course, course.network).deliver
   end
 
   def student?
