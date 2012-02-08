@@ -66,7 +66,7 @@ describe UserMailer do
       @comment = Factory(:comment_on_comment)
     end
 
-    let(:mail) { UserMailer.new_comment_on_comment(@comment.commentable, @comment, "tec") }
+    let(:mail) { UserMailer.new_comment_on_comment(@comment.commentable, @comment.user, "tec") }
 
     it "renders the headers" do
       mail.subject.should eq("Nueva respuesta sobre tu comentario")
@@ -76,7 +76,7 @@ describe UserMailer do
 
     it "renders the body" do
       mail.body.encoded.should match("Hola #{@comment.commentable.user.name}!")
-      mail.body.encoded.should match("El usuario #{@comment.user.name} ha publicado una respuesta a tu comentario.")
+      mail.body.encoded.should match("El usuario #{@comment.name} ha publicado una respuesta a tu comentario.")
     end
   end
 

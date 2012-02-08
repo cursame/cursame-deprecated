@@ -30,9 +30,9 @@ class UserMailer < ActionMailer::Base
     mail bcc: course.all_emails
   end
   
-  def new_comment_on_comment(parent_comment, comment, subdomain)
+  def new_comment_on_comment(parent_comment, commenter, subdomain)
     @parent = parent_comment
-    @comment = comment
+    @commenter = commenter
     @subdomain = subdomain
 
     mail to: @parent.user.email
