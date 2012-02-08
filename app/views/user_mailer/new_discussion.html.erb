@@ -1,9 +1,5 @@
-<p>
-  Hola!
-</p>
-<p>
-¡El usuario <%= @discussion.starter.name %> ha iniciado la discusión <%= @discussion.title %> en tu curso <%= @discussion.course.name %>!
-</p>
-<p>
- Ir a la <%= link_to 'discusión', discussion_url(@discussion, :subdomain=>@subdomain) %>.
-</p>
+<h2 class="h2">Hola!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>¡El usuario <%= @discussion.starter.name %> ha iniciado la discusión <%= @discussion.title %> en tu curso <%= @discussion.course.name %>!</strong>
+<br>
+<h1><%= link_to 'Ver Discusión >>', discussion_url(@discussion, :subdomain=>@subdomain) %></h1>

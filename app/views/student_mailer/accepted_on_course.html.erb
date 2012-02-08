@@ -1,10 +1,5 @@
-<p>
-  Hola <%=@student.name%>!
-</p>
-<p>
-Tu profesor ha aprobado tu ingreso al curso <%= @course.name%>!
-</p>
-<p>
-Visita la p&aacute;gina del <%= link_to 'curso', course_url(@course, :subdomain => @subdomain) %> 
-</p>
-
+<h2 class="h2">Hola <%=@student.name%>!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>Tu profesor ha aprobado tu ingreso al curso <%= @course.name%>!</strong>
+<br>
+<h1> <%= link_to 'Ver Curso >>', course_url(@course, :subdomain => @subdomain) %></h1>

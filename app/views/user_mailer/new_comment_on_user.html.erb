@@ -1,9 +1,5 @@
-<p>
-  Hola <%= @commented.name%>
-</p>
-<p>
-  ¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en tu muro!
-</p>
-<p>
-  Visita tu <%= link_to 'muro', wall_for_user_url(@commented, :subdomain=>@subdomain) %> para ver el comentario.
-</p>
+<h2 class="h2">Hola <%= @commented.name%>!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en tu muro!</strong>
+<br>
+<h1><%= link_to 'Ir a tu Muro >>', wall_for_user_url(@commented, :subdomain=>@subdomain) %></h1>

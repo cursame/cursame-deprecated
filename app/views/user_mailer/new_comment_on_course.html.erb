@@ -1,9 +1,5 @@
-<p>
-  Hola!
-</p>
-<p>
-  ¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en el muro del curso <%= @course.name %>!
-</p>
-<p>
-  Visita el <%= link_to 'curso', course_url(@course, :subdomain=>@subdomain) %> para ver el comentario.
-</p>
+<h2 class="h2">Hola!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en el muro del curso <%= @course.name %>!</strong>
+<br>
+<h1> <%= link_to 'Ver Curso >>', course_url(@course, :subdomain=>@subdomain) %></h1>

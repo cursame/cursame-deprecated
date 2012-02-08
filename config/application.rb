@@ -32,5 +32,10 @@ module Cursame
       gen.test_framework :rspec, :fixture_replacement => :factory_girl, :views => false, :controllers => false  
       gen.helper = false
     end
+    
+    #layout for Devise mailers
+    config.to_prepare do
+      Devise::Mailer.layout "mailer"
+    end
   end
 end

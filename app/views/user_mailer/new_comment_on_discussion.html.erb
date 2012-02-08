@@ -1,9 +1,5 @@
-<p>
-  Hola!
-</p>
-<p>
-  ¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en la discusión <%= @discussion.title%>!
-</p>
-<p>
-  Visita la <%= link_to 'discusión', discussion_url(@discussion, :subdomain=>@subdomain) %> para ver el comentario.
-</p>
+<h2 class="h2">Hola!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>¡El usuario <%= @commenter.name%> ha publicado un nuevo comentario en la discusión <%= @discussion.title%>!</strong>
+<br>
+<h1> <%= link_to 'Ver Discusión >>', discussion_url(@discussion, :subdomain=>@subdomain) %></h1>
