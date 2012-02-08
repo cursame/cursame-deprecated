@@ -40,5 +40,4 @@ Cursame::Application.configure do
     :domain         => 'cursa.me'
   }
   ActionMailer::Base.delivery_method = :smtp
-  ActionMailer::Base.default :from => "Cursame <noreply@cursa.me>"
 end

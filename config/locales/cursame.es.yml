@@ -380,6 +380,8 @@ es:
       subject: Nuevo comentario en una de tus discusiones
     new_comment_on_course:
       subject: Nuevo comentario en el muro de uno de tus cursos
+    new_comment_on_comment:
+      subject: Nueva respuesta sobre tu comentario
     new_discussion:
       subject: Nueva discusión en uno de tus cursos
       

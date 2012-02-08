@@ -1,5 +1,6 @@
 class UserMailer < ActionMailer::Base
   layout 'mailer'
+  helper UserMailerHelper
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -13,11 +14,6 @@ class UserMailer < ActionMailer::Base
     mail to: commented.email
   end
   
-    # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.new_comment_on_discussion.subject
-  #
   def new_comment_on_discussion(discussion, commenter, subdomain)
     @discussion = discussion
     @commenter = commenter
@@ -26,11 +22,6 @@ class UserMailer < ActionMailer::Base
     mail bcc: discussion.participants_emails
   end
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.new_comment_on_course_wall.subject
-  #
   def new_comment_on_course(course, commenter, subdomain)
     @course = course
     @commenter = commenter
@@ -38,12 +29,15 @@ class UserMailer < ActionMailer::Base
 
     mail bcc: course.all_emails
   end
+  
+  def new_comment_on_comment(parent_comment, comment, subdomain)
+    @parent = parent_comment
+    @comment = comment
+    @subdomain = subdomain
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.new_discussion.subject
-  #
+    mail to: @parent.user.email
+  end
+
   def new_discussion(discussion, subdomain)
     @discussion = discussion
     @subdomain = subdomain

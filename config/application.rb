@@ -37,5 +37,8 @@ module Cursame
     config.to_prepare do
       Devise::Mailer.layout "mailer"
     end
+    
+    ActionMailer::Base.default :from => "Cursame <noreply@cursa.me>"
+    
   end
 end

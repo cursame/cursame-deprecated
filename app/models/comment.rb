@@ -12,7 +12,7 @@ class Comment < ActiveRecord::Base
   html_sanitized :text
   
   after_create do
-    if ["User", "Discussion", "Course"].include?(commentable_type)
+    if ["User", "Discussion", "Course", "Comment"].include?(commentable_type)
       subdomain = user.networks.first.subdomain if user.networks.first
       UserMailer.send("new_comment_on_#{commentable_type.downcase}", commentable, user, subdomain).deliver
     end

@@ -1,0 +1,5 @@
+<h2 class="h2">Hola <%= @parent.user.name%>!</h2>
+<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
+<strong>¡El usuario <%=@comment.user.name%> ha publicado una respuesta a tu comentario<%= comment_receiver(@parent)%>!</strong>
+<br>
+<%= link_to_receiver(@parent, @subdomain)%>
