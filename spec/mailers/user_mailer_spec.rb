@@ -17,7 +17,6 @@ describe UserMailer do
     it "renders the body" do
       mail.body.encoded.should match("Hola #{/[a-zA-Z]+/x}")
       mail.body.encoded.should match("ha publicado un nuevo comentario en tu muro!")
-      mail.body.encoded.should match("Visita tu #{/.+/x} para ver el comentario.")
     end
   end
   
@@ -35,7 +34,6 @@ describe UserMailer do
     it "renders the body" do
       mail.body.encoded.should match("Hola!")
       mail.body.encoded.should match("El usuario #{comment.user.name} ha publicado un nuevo comentario en la discusión #{discussion.title}")
-      mail.body.encoded.should match("Visita la #{/.+/x} para ver el comentario.")
     end
   end
 
@@ -60,7 +58,25 @@ describe UserMailer do
     it "renders the body" do
       mail.body.encoded.should match("Hola!")
       mail.body.encoded.should match("El usuario #{@comment.user.name} ha publicado un nuevo comentario en el muro del curso #{@course.name}")
-      mail.body.encoded.should match("Visita el #{/.+/x} para ver el comentario.")
+    end
+  end
+  
+  describe "new_comment_on_comment" do
+    before do
+      @comment = Factory(:comment_on_comment)
+    end
+
+    let(:mail) { UserMailer.new_comment_on_comment(@comment.commentable, @comment.user, "tec") }
+
+    it "renders the headers" do
+      mail.subject.should eq("Nueva respuesta sobre tu comentario")
+      mail.to.should eq([@comment.commentable.user.email])
+      mail.from.should eq(["noreply@cursa.me"])
+    end
+
+    it "renders the body" do
+      mail.body.encoded.should match("Hola #{@comment.commentable.user.name}!")
+      mail.body.encoded.should match("El usuario #{@comment.name} ha publicado una respuesta a tu comentario.")
     end
   end
 
@@ -76,14 +92,13 @@ describe UserMailer do
 
     it "renders the headers" do
       mail.subject.should eq("Nueva discusión en uno de tus cursos")
-      mail.bcc.should eq([@course.all_emails])
+      mail.bcc.should eq([(@course.all_emails||"")])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
     it "renders the body" do
       mail.body.encoded.should match("Hola!")
       mail.body.encoded.should match("El usuario #{@discussion.starter.name} ha iniciado la discusión #{@discussion.title} en tu curso #{@discussion.course.name}")
-      mail.body.encoded.should match("Ir a la #{/.+/x}.")
     end
   end
 
