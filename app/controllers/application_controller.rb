@@ -69,6 +69,8 @@ class ApplicationController < ActionController::Base
   def filter_subdomain(subdomain)
     if subdomain.match(/\Awww\..+/)
       return subdomain[4..-1]
+    else
+      return subdomain
     end
   end
   
