@@ -16,6 +16,11 @@ class Comment < ActiveRecord::Base
       subdomain = user.networks.first.subdomain if user.networks.first
       UserMailer.send("new_comment_on_#{commentable_type.downcase}", commentable, user, subdomain).deliver
     end
+    
+    case commentable_type
+    when "Comment"
+      Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
+    end
   end
   
 end

@@ -2,4 +2,4 @@
 <h3 class="h3">¡Tienes una nueva notificación!</h3><br>
 <strong>¡El usuario <%=@commenter.name%> ha publicado una respuesta a tu comentario<%= comment_receiver(@parent)%>!</strong>
 <br>
-<%= link_to_receiver(@parent, @subdomain)%>
+<h1><%= link_to "Ver Comentario >>", comment_url(@parent, :subdomain => @subdomain)%></h1>

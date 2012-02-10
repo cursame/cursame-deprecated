@@ -361,6 +361,7 @@ es:
     show_assignment: Ver tarea
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
+    show_comment: Ver comentario
     wants_to_participate_in_course: quiere participar en el curso
     has_delived_assignment: ha entregado la tarea
     has_answered_the_survey: ha contestado el cuestionario
@@ -372,6 +373,8 @@ es:
     assignment_added: Se ha creado la tarea
     assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
+    has_posted_a_comment_on_comment: ha hecho un comentario en uno de tus comentarios
+    
     
   user_mailer:
     new_comment_on_user:

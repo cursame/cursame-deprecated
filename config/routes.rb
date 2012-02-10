@@ -73,7 +73,7 @@ Cursame::Application.routes.draw do
   end
   match '/admin' => 'admin/base#admin'
 
-  resources :comments, :only => [:update, :destroy]
+  resources :comments, :only => [:update, :destroy, :show]
   match '/assignments/:commentable_id/comment', :to => 'comments#create', :as => :comment_assignment, :conditions => {:commentable => :assignment}
   match '/comments/:commentable_id/comment',    :to => 'comments#create', :as => :comment_comment,    :conditions => {:commentable => :comment}
   match '/courses/:commentable_id/comment',     :to => 'comments#create', :as => :comment_course,     :conditions => {:commentable => :course}

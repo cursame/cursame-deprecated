@@ -23,6 +23,11 @@ class CommentsController < ApplicationController
       end
     end
   end
+  
+  def show
+    @comment = Comment.find params[:id]
+    @user = current_user
+  end
 
   private
   def commentable
