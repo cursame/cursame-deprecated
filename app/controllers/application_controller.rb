@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_network
-    @current_network ||= Network.find_by_subdomain(request.subdomain.downcase.chomp(".cursame"))
+    @current_network ||= Network.find_by_subdomain(request.subdomain.downcase.chomp(".cursame").chomp("www."))
   end
 
   def authenticate_active_user_within_network!
