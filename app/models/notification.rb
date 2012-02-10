@@ -21,6 +21,8 @@ class Notification < ActiveRecord::Base
         render survey: notificator, course: notificator.course
       when 'user_comment_on_comment'
         render comment: notificator.commentable, user: notificator.user
+      when 'user_comment_on_discussion'
+        render discussion: notificator.commentable, user: notificator.user
       end
   end
 
