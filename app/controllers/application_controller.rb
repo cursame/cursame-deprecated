@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_network
-    @current_network ||= Network.find_by_subdomain(request.subdomain.downcase.chomp(".cursame").chomp("www."))
+    @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
 
   def authenticate_active_user_within_network!
@@ -61,6 +61,14 @@ class ApplicationController < ActionController::Base
       @pending_teachers_total = current_network.teachers.where(:state => 'inactive').count if current_user and current_user.supervisor?
     rescue
       @pending_teachers_total = 0
+    end
+  end
+  
+  private
+  
+  def filter_subdomain(subdomain)
+    if subdomain.match(/\Awww\..+/)
+      return subdomain[4..-1]
     end
   end
   
