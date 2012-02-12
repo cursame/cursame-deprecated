@@ -376,6 +376,7 @@ es:
     survey_added: Se ha creado el cuestionario
     has_posted_a_comment_on_comment: ha hecho un comentario en uno de tus comentarios
     has_posted_a_comment_on_discussion: ha hecho un comentario en la discusión
+    has_posted_a_comment_on_user: ha hecho un comentario en tu muro
     
     
   user_mailer:

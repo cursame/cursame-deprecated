@@ -23,6 +23,8 @@ class Notification < ActiveRecord::Base
         render comment: notificator.commentable, user: notificator.user
       when 'user_comment_on_discussion'
         render discussion: notificator.commentable, user: notificator.user
+      when 'user_comment_on_user'
+        render comment: notificator, user: notificator.user
       end
   end
 
