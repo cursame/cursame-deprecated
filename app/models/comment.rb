@@ -14,7 +14,6 @@ class Comment < ActiveRecord::Base
   after_create do
     if ["User", "Discussion", "Course", "Comment"].include?(commentable_type)
       subdomain = user.networks.first.subdomain if user.networks.first
-      debugger
       unless commentable_id == self.user.id  # Si el comentario es del mismo usuario que el del creador no se debe enviar correo.
         UserMailer.send("new_comment_on_#{commentable_type.downcase}", commentable, user, subdomain).deliver
       end
