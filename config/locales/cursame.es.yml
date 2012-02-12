@@ -33,7 +33,7 @@ es:
     assignment_created: La tarea fue creada
     network_created: La red fue creada
     network_updated: La red fue actualizada
-    discussion_created: Discusion creada 
+    discussion_created: Discusión creada 
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
     delivery_created: Tu tarea fue entregada
     delivery_updated: Tu tarea fue actualizada
@@ -307,11 +307,11 @@ es:
 
   discussions:
     title: 'Discusiones'
-    edit_discussion: 'Editar Discusion'
-    new_discussion: 'Nueva Discusion'
+    edit_discussion: 'Editar Discusión'
+    new_discussion: 'Nueva Discusión'
     form_title: 'Título'
     form_description: 'Descripción'
-    new_discussion: 'Nueva Discusion'
+    new_discussion: 'Nueva Discusión'
     ago: 'hace'
     by: 'por'
 
@@ -374,9 +374,11 @@ es:
     assignment_added: Se ha creado la tarea
     assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
-    has_posted_a_comment_on_comment: ha hecho un comentario en uno de tus comentarios
-    has_posted_a_comment_on_discussion: ha hecho un comentario en la discusión
-    has_posted_a_comment_on_user: ha hecho un comentario en tu muro
+    discussion_added: Se ha creado la discusión
+    has_posted_a_comment_on_comment: ha comentado en uno de tus comentarios
+    has_posted_a_comment_on_discussion: ha comentado en la discusión
+    has_posted_a_comment_on_user: ha comentado en tu muro
+    has_posted_a_comment_on_course: ha comentado en el muro del curso
     
     
   user_mailer:

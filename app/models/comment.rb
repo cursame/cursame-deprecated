@@ -14,6 +14,7 @@ class Comment < ActiveRecord::Base
   after_create do
     if ["User", "Discussion", "Course", "Comment"].include?(commentable_type)
       subdomain = user.networks.first.subdomain if user.networks.first
+      debugger
       unless commentable_id == self.user.id  # Si el comentario es del mismo usuario que el del creador no se debe enviar correo.
         UserMailer.send("new_comment_on_#{commentable_type.downcase}", commentable, user, subdomain).deliver
       end
@@ -32,6 +33,10 @@ class Comment < ActiveRecord::Base
       unless commentable_id == self.user.id
         Notification.create :user => commentable, :notificator => self, :kind => 'user_comment_on_user'
       end
+    when "Course"
+      commentable.users.reject { |us| us.id == self.user.id }.each do |u|
+        Notification.create :user => u, :notificator => self, :kind => 'user_comment_on_course'
+      end
     end
   end
   
@@ -41,9 +46,11 @@ class Comment < ActiveRecord::Base
   def commentable_id
     case commentable_type
     when "User"
-      commentable.id
-    when "Discussion" || "Comment" 
-      commentable.user.id
+      return commentable.id
+    when "Comment" 
+      return commentable.user.id
+    when "Discussion"
+      return commentable.starter.id
     end
     nil
   end
