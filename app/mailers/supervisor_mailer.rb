@@ -6,6 +6,7 @@ class SupervisorMailer < ActionMailer::Base
   #   en.supervisor_mailer.new_teacher_registered.subject
   #
   def new_teacher_registered(teacher, network)
+    headers["X-SMTPAPI"] = '{"category": "new teacher registered"}'
     @teacher = teacher
     @network = network
 

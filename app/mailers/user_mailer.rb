@@ -7,6 +7,7 @@ class UserMailer < ActionMailer::Base
   #   en.user_mailer.new_comment_on_wall.subject
   #
   def new_comment_on_user(commented, commenter, subdomain)
+    headers["X-SMTPAPI"] = '{"category": "user wall comment"}'
     @commented = commented
     @commenter = commenter
     @subdomain = subdomain
@@ -15,6 +16,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def new_comment_on_discussion(discussion, commenter, subdomain)
+    headers["X-SMTPAPI"] = '{"category": "discussion wall comment"}'
     @discussion = discussion
     @commenter = commenter
     @subdomain = subdomain
@@ -23,6 +25,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def new_comment_on_course(course, commenter, subdomain)
+    headers["X-SMTPAPI"] = '{"category": "course wall comment"}'
     @course = course
     @commenter = commenter
     @subdomain = subdomain
@@ -31,6 +34,7 @@ class UserMailer < ActionMailer::Base
   end
   
   def new_comment_on_comment(parent_comment, commenter, subdomain)
+    headers["X-SMTPAPI"] = '{"category": "comment on comment"}'
     @parent = parent_comment
     @commenter = commenter
     @subdomain = subdomain
@@ -39,6 +43,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def new_discussion(discussion, subdomain)
+    headers["X-SMTPAPI"] = '{"category": "new discussion"}'
     @discussion = discussion
     @subdomain = subdomain
 
