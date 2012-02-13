@@ -49,22 +49,22 @@ FactoryGirl.define do
 
   factory :user_comment_on_comment, :parent => :notification do
     kind 'user_comment_on_comment'
-    notificator { Factory(:comment) }
+    notificator { Factory(:comment_on_comment) }
   end
 
   factory :user_comment_on_discussion, :parent => :notification do
-    kind 'user_comment_on_comment'
-    notificator { Factory(:discussion) }
+    kind 'user_comment_on_discussion'
+    notificator { Factory(:comment_on_discussion) }
   end
 
   factory :user_comment_on_user, :parent => :notification do
-    kind 'user_comment_on_comment'
-    notificator { Factory(:user) }
+    kind 'user_comment_on_user'
+    notificator { Factory(:comment_on_user) }
   end
 
   factory :user_comment_on_course, :parent => :notification do
-    kind 'user_comment_on_comment'
-    notificator { Factory(:user) }
+    kind 'user_comment_on_course'
+    notificator { Factory(:comment_on_course) }
   end
 
   factory :course_discussion_added, :parent => :notification do

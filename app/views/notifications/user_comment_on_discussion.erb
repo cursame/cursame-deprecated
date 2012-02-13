@@ -4,5 +4,5 @@
   </a>
 </div>
 
-<a href="<%= user_path(user) %>"><%= user.name %></a> <%= I18n.t('notifications.has_posted_a_comment_on_discussion') %> "<%= discussion.title%>".
+<a href="<%= user_path(user) %>"><%= user.name %></a> <%= I18n.t('notifications.has_posted_a_comment_on_discussion') %> <%= discussion.title%>.
 <a href="<%= discussion_path(discussion) %>"  class="notification-link"><%= I18n.t('notifications.show_discussion') %> &gt;&gt;</a>
