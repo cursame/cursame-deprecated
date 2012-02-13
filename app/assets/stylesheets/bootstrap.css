@@ -694,7 +694,7 @@ textarea {
 ::-webkit-input-placeholder {
   color: #bfbfbf;
 }
-input, textarea, body.wysiwyg {
+input, textarea {
   -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
   -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
   -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
