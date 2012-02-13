@@ -19,7 +19,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail bcc: discussion.participants_emails
+    mail bcc: discussion.participants_emails(commenter)
   end
 
   def new_comment_on_course(course, commenter, subdomain)
@@ -27,7 +27,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail bcc: course.all_emails
+    mail bcc: course.all_emails(commenter)
   end
   
   def new_comment_on_comment(parent_comment, commenter, subdomain)
@@ -42,6 +42,6 @@ class UserMailer < ActionMailer::Base
     @discussion = discussion
     @subdomain = subdomain
 
-    mail bcc: discussion.course.all_emails
+    mail bcc: discussion.course.all_emails(discussion.starter)
   end
 end
