@@ -166,4 +166,20 @@ feature 'Notifications display', %q{
       page.should have_css(".notification-link")
     end
   end
+
+  scenario 'viewing a notification for a comment on one of my comments' do
+    notification = Factory(:user_comment_on_comment, :user => @user)
+    commenter = notification.notificator.user
+    
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path 
+
+    page.should have_content "#{commenter.name} ha comentado en uno de tus comentarios. Ver comentario"
+    
+    within '.notification' do
+      page.should link_to user_path(commenter)
+      page.should have_css(".notification-link")
+    end
+  end
+
 end

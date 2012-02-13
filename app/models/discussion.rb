@@ -14,6 +14,11 @@ class Discussion < ActiveRecord::Base
 
   after_create do
     UserMailer.new_discussion(self, self.course.network.subdomain).deliver
+
+    # Se crea una notificación para todos los usuarios del curso excepto al creador de la discusión
+    self.course.users.reject { |us| us.id == self.starter.id }.each do |u|
+      Notification.create :user => u, :notificator => self, :kind => "course_discussion_added"
+    end
   end
   
   def participants_emails(current_user)

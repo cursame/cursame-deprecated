@@ -36,9 +36,9 @@ es:
       confirmed: 'Tu cuenta fue confirmada exitosamente, has sido ingresado al sistema.'
     registrations:
       signed_up: '¡Bienvenido! Has ingresado al sistema exitosamente.'
-      inactive_signed_up: 'Te has registrado exitosamente; sin embargo, no te hemos podido ingresar debido a que tu cuenta está %{reason}.'
+      inactive_signed_up: '¡Te has registrado exitosamente! Revisa tu correo y confirma tu cuenta para comenzar a utilizar Cúrsame.'
       updated: 'Actualizaste tu cuenta exitosamente.'
-      destroyed: '¡Hasta luego! Tu cuenta fue cancelada con éxito, esperamos verte de nuevo pronto. Gracias.'
+      destroyed: 'Tu cuenta fue cancelada con éxito, esperamos verte de nuevo pronto. Gracias, ¡hasta luego!'
       reasons:
         inactive: 'inactiva'
         unconfirmed: 'sin confirmar'

@@ -46,4 +46,29 @@ FactoryGirl.define do
     kind 'teacher_survey_updated'
     notificator { Factory(:survey_reply) }
   end
+
+  factory :user_comment_on_comment, :parent => :notification do
+    kind 'user_comment_on_comment'
+    notificator { Factory(:comment) }
+  end
+
+  factory :user_comment_on_discussion, :parent => :notification do
+    kind 'user_comment_on_comment'
+    notificator { Factory(:discussion) }
+  end
+
+  factory :user_comment_on_user, :parent => :notification do
+    kind 'user_comment_on_comment'
+    notificator { Factory(:user) }
+  end
+
+  factory :user_comment_on_course, :parent => :notification do
+    kind 'user_comment_on_comment'
+    notificator { Factory(:user) }
+  end
+
+  factory :course_discussion_added, :parent => :notification do
+    kind 'course_discussion_added'
+    notificator { Factory(:discussion) }
+  end
 end
