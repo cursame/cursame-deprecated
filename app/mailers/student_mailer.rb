@@ -7,6 +7,7 @@ class StudentMailer < ActionMailer::Base
   #   en.student.accepted_on_course.subject
   #
   def accepted_on_course(student, course, network)
+    headers["X-SMTPAPI"] = '{"category": "student accepted on course"}'
     @student = student
     @subdomain = network.subdomain
     @course = course
@@ -21,6 +22,7 @@ class StudentMailer < ActionMailer::Base
   #   en.student.new_homework.subject
   #
   def new_homework(students, course, network)
+    headers["X-SMTPAPI"] = '{"category": "student has new homework"}'
     @subdomain = network.subdomain
     @course = course
 
@@ -33,6 +35,7 @@ class StudentMailer < ActionMailer::Base
   #   en.student.new_survey.subject
   #
   def new_survey(students, course, survey, network)
+    headers["X-SMTPAPI"] = '{"category": "student has new survey"}'
     @subdomain = network.subdomain
     @course = course
     @survey = survey
