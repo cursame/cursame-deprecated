@@ -11,6 +11,7 @@ module Admin
 
     def create
       @network = Network.new params[:network]
+      debugger
       if @network.save
         redirect_to [:admin, @network], :notice => t('flash.network_created')
       else
