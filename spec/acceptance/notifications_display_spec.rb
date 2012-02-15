@@ -1,4 +1,6 @@
+#encoding: utf-8
 require 'spec_helper'
+
 
 feature 'Notifications display', %q{
   In order to keep up to date
@@ -178,6 +180,77 @@ feature 'Notifications display', %q{
     
     within '.notification' do
       page.should link_to user_path(commenter)
+      page.should have_css(".notification-link")
+    end
+  end
+
+  scenario 'viewing a notification for a new discussion created on one of my courses' do
+    notification = Factory(:course_discussion_added, :user => @user)
+    discussion = notification.notificator
+    course = discussion.course
+    
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path 
+
+    page.should have_content "#{I18n.t 'notifications.discussion_added'} #{discussion.title} #{I18n.t 'notifications.for_the_course'} #{course.name}. #{I18n.t('notifications.show_discussion')}"
+    
+    within '.notification' do
+      page.should link_to discussion_path(discussion)
+      page.should link_to course_path(course)
+      page.should have_css(".notification-link")
+    end
+  end
+
+  scenario 'viewing a notification for a new comment on a discussion of my groups' do
+    notification = Factory(:user_comment_on_discussion, :user => @user)
+    comment = notification.notificator
+    discussion = comment.commentable
+    user = comment.user
+    
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path 
+
+    page.should have_content "#{user.name} #{I18n.t('notifications.has_posted_a_comment_on_discussion')} #{discussion.title}. #{I18n.t('notifications.show_discussion')}"
+    
+    within '.notification' do
+      page.should link_to user_path(user)
+      page.should link_to discussion_path(discussion)
+      page.should have_css(".notification-link")
+    end
+  end
+
+  scenario 'viewing a notification for a new comment on the wall of one of my courses' do
+    notification = Factory(:user_comment_on_course, :user => @user)
+    comment = notification.notificator
+    course = comment.commentable
+    user = comment.user
+    
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path 
+
+    page.should have_content "#{user.name} #{I18n.t('notifications.has_posted_a_comment_on_course')} #{course.name}. #{I18n.t('notifications.show_comment')}"
+    
+    within '.notification' do
+      page.should link_to user_path(user)
+      page.should link_to wall_for_course_path(course)
+      page.should link_to comment_path(comment)
+      page.should have_css(".notification-link")
+    end
+  end
+
+  scenario 'viewing a notification for a new comment on my wall' do
+    notification = Factory(:user_comment_on_user, :user => @user)
+    comment = notification.notificator
+    user = comment.user
+    
+    sign_in_with notification.user, :subdomain => @network.subdomain
+    visit dashboard_path 
+
+    page.should have_content "#{user.name} #{I18n.t('notifications.has_posted_a_comment_on_user')}. #{I18n.t('notifications.show_comment')}"
+    
+    within '.notification' do
+      page.should link_to user_path(user)
+      page.should link_to comment_path(comment)
       page.should have_css(".notification-link")
     end
   end
