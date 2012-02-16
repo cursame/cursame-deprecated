@@ -10,4 +10,5 @@ Cursame::Application.configure do
   config.assets.compress = false
   config.assets.debug = true
   HOST = 'lvh.me'
+  HEROKU_HOST = 'lvh.me'
 end

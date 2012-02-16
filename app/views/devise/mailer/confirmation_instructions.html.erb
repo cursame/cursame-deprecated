@@ -28,10 +28,5 @@
     <li>¡Entre muchas otras!</li>
   </ul>
 <%end%>
-<%begin%>
-<%subdomain = @resource.networks.first.subdomain%>
-<%rescue%>
-<%subdomain = nil%>
-<%end%>
-<h1> <%= link_to 'Confirmar tu Cuenta >>', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => subdomain) %></h1>
+<h1> <%= link_to 'Confirmar tu Cuenta >>', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.devise_mailer_subdomain) %></h1>
 <p>Si tienes alguna duda, puedes escribirnos a <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.</p>

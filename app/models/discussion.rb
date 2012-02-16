@@ -21,9 +21,9 @@ class Discussion < ActiveRecord::Base
     end
   end
   
-  def participants_emails
+  def participants_emails(current_user)
     emails = [starter.email]
-    self.comments.each{|c| emails << c.user.email }
+    self.comments.each{|c| emails << c.user.email unless c.user == current_user }
     emails.uniq.join(", ")
   end
 end

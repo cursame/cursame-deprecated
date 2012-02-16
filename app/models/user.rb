@@ -57,6 +57,10 @@ class User < ActiveRecord::Base
   def supervisor?
     role == 'supervisor'
   end
+  
+  def admin?
+    role == 'admin'
+  end
 
   def role_for_course course
     enrollments.where(:course_id => course).first.role
@@ -100,4 +104,13 @@ class User < ActiveRecord::Base
       true
     end
   end
+
+  def devise_mailer_subdomain
+    if self.networks.blank? and self.supervisor?
+      Network.last.subdomain
+    elsif !self.networks.blank?
+      self.networks.first.subdomain
+    end
+  end
+
 end

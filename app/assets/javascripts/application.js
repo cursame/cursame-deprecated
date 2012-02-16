@@ -151,99 +151,41 @@ $(function(){
   $('textarea[data-editor]').wysiwyg({
     css: '/assets/bootstrap.css',
     controls : {
-      bold: {
-        visible: true
-      },
-      italic: {
-        visible: true
-      },
-      insertOrderedList: {
-        visible: true
-      },
-      insertUnorderedList: {
-        visible: true
-      },
-      html: {
-        visible: true
-      },
-      createLink: {
-        tooltip: "Create Link"
-      },
+      bold: { visible: true },
+      italic: { visible: true },
+      insertOrderedList: { visible: true },
+      insertUnorderedList: { visible: true },
+      createLink: { tooltip: "Crear Link" },
       insertImage: {
+        visible: false,
         exec: function() {
           return $('#link-to-upload').click();
         },
         tooltip: "Insert image"
       },
-      removeFormat: {
-        visible: true
-      },
-      underline: {
-        visible: false
-      },
-      strikeThrough: {
-        visible: false
-      },
-      justifyLeft: {
-        visible: false
-      },
-      justifyCenter: {
-        visible: false
-      },
-      justifyRight: {
-        visible: false
-      },
-      justifyFull: {
-        visible: false
-      },
-      indent: {
-        visible: false
-      },
-      outdent: {
-        visible: false
-      },
-      subscript: {
-        visible: false
-      },
-      superscript: {
-        visible: false
-      },
-      undo: {
-        visible: false
-      },
-      redo: {
-        visible: false
-      },
-      insertHorizontalRule: {
-        visible: false
-      },
-      h1: {
-        visible: false
-      },
-      h4: {
-        visible: false
-      },
-      h5: {
-        visible: false
-      },
-      h6: {
-        visible: false
-      },
-      cut: {
-        visible: false
-      },
-      copy: {
-        visible: false
-      },
-      paste: {
-        visible: false
-      },
-      increaseFontSize: {
-        visible: false
-      },
-      decreaseFontSize: {
-        visible: false
-      }
+      removeFormat: { visible: true },
+      underline: { visible: false },
+      strikeThrough: { visible: false },
+      justifyLeft: { visible: false },
+      justifyCenter: { visible: false },
+      justifyRight: { visible: false },
+      justifyFull: { visible: false },
+      indent: { visible: false },
+      outdent: { visible: false },
+      subscript: { visible: false },
+      superscript: { visible: false },
+      undo: { visible: false },
+      redo: { visible: false },
+      insertHorizontalRule: { visible: false },
+      h1: { visible: false },
+      h4: { visible: false },
+      h5: { visible: false },
+      h6: { visible: false },
+      cut: { visible: false },
+      copy: { visible: false },
+      paste: { visible: false },
+      increaseFontSize: { visible: false },
+      decreaseFontSize: { visible: false }      
     }
   });
 

@@ -11,4 +11,5 @@ Cursame::Application.configure do
   config.action_mailer.delivery_method = :test
   config.active_support.deprecation = :stderr
   HOST = 'lvh.me'
+  HEROKU_HOST = 'lvh.me'
 end

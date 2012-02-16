@@ -6,6 +6,7 @@ class TeacherMailer < ActionMailer::Base
   #   en.teacher_mailer.pending_student_on_course.subject
   #
   def pending_student_on_course(teachers, student, course, network)
+    headers["X-SMTPAPI"] = '{"category": "pending student on course"}'
     @student = student
     @course = course
     @subdomain = network.subdomain

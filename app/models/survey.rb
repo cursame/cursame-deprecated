@@ -30,7 +30,7 @@ class Survey < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_added'
     end
-    StudentMailer.new_survey(course.students, course, self, course.network).deliver
+    StudentMailer.new_survey(course.students, course, self, course.network).deliver if course.students.count > 0
   end
 
   def expired?

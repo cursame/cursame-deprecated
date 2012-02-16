@@ -20,7 +20,7 @@ class Assignment < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_added'
     end
-    StudentMailer.new_homework(course.students, course, course.network).deliver
+    StudentMailer.new_homework(course.students, course, course.network).deliver if course.students.count > 0
   end
 
   after_update do
