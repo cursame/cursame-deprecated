@@ -341,9 +341,16 @@ es:
       teachers:
         approve: Aceptar
         reject: Rechazar
+        teacher: Maestro
+        student: Estudiante
+        update: Actualizar
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
+    students:
+      student: Estudiante
+      teacher: Maestro
+      update: Actualizar
 
   views:
     pagination:

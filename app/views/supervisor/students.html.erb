@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'supervisor' %>
 <div class="container">
   
   <div class="row">
@@ -30,6 +31,20 @@
                   <div class="span5">
                     <%= link_to(student.name, user_path(student)) %><br />
                     <%= mail_to student.email %>
+                  </div>
+                  <div class="span3-5">
+                    <div class="user_options">
+                      <div class="edit_role">
+                        <%= link_to 'Cambiar Rol', '#', :class=>"accept btn success small change_role_button" %>
+                        <%= link_to 'Eliminar', '#', :class=>"reject btn small danger" %>
+                      </div>
+                      <div id="edit_role_form" style="display:none;">
+                        <%= form_for student do |f|%>
+                          <%= f.select :role, options_for_select([[t('.student'), "student"], [t('.teacher'), "teacher"]])%>
+                          <%= f.submit t('.update'), :class => "accept btn success small"%>
+                        <%end%>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

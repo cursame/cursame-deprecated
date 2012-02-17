@@ -1239,11 +1239,11 @@ display: block;
   overflow:hidden;
 }
 
-.dashboard .teacher_aproval {
+.dashboard .teacher_aproval, .dashboard .user_options {
   width: 260px;
 }
 
-.dashboard .teacher_aproval form {
+.dashboard .teacher_aproval form, .dashboard .user_options form {
   float: left;
   margin: 0 10px 0 0;
 }

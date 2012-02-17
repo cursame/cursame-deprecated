@@ -9,9 +9,9 @@
           <%= link_to(teacher.name, user_path(teacher)) %><br />
           <%= mail_to teacher.email %>
         </div>
-        <% if teacher.state == 'inactive'%>
-          <div class="span3-5">
-            <div class="teacher_aproval">
+        <div class="span3-5">
+          <div class="teacher_aproval">
+            <% if teacher.state == 'inactive'%>
               <%= form_tag supervisor_accept_user_path(teacher.id), :method => :post do |form| %>
                 <%= submit_tag t('.approve'), :class => "accept btn success small" %>
               <% end %>
@@ -19,9 +19,20 @@
               <%= form_tag supervisor_reject_user_path(teacher.id), :method => :post do |form| %>
                 <%= submit_tag t('.reject'), :class => "reject btn small danger" %>
               <% end %>
-            </div>
+            <% else %>
+              <div class="edit_role">
+                <%= link_to 'Cambiar Rol', '#', :class=>"accept btn success small change_role_button" %>
+                <%= link_to 'Eliminar', '#', :class=>"reject btn small danger" %>
+              </div>
+              <div id="edit_role_form" style="display:none;">
+                <%= form_for teacher do |f|%>
+                  <%= f.select :role, options_for_select([[t('.teacher'), "teacher"], [t('.student'), "student"]])%>
+                  <%= f.submit t('.update'), :class => "accept btn success small"%>
+                <%end%>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
