@@ -14,7 +14,7 @@
           <%= t('.published') %>
         <% end %>
       <% else %>
-        <%= link_to t('.answer'), new_survey_reply_path(survey) %>
+        <%= link_to t('.answer'), new_survey_reply_path(survey) unless !current_user.student? %>
       <% end %>
     </div>
   </div>
