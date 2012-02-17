@@ -63,7 +63,11 @@ class User < ActiveRecord::Base
   end
 
   def role_for_course course
-    enrollments.where(:course_id => course).first.role
+    if self.supervisor?
+      "supervisor"
+    else
+      enrollments.where(:course_id => course).first.role
+    end
   end
 
   def can_edit_comment? comment
