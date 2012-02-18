@@ -43,6 +43,9 @@ feature 'Supervisor', %q{
       page.should have_css('#approved')
       page.should have_css('#pending')
       page.should have_css('.teacher', :count => 3)
+      page.should have_css('.teacher_aproval', :count => 3)
+      page.should have_css('.accept')
+      page.should have_css('.reject')
     end
 
     scenario 'view the details of a teacher' do
@@ -61,7 +64,8 @@ feature 'Supervisor', %q{
 
       #sign_in_with @supervisor, :subdomain => @network.subdomain
       click_link t('supervisor.shared.admin_menu.teachers')
-      page.should have_css('.teacher_aproval', :count => 3)
+      click_link t('courses.teachers.pending')
+      page.should have_css('.teacher_aproval')
     end
 
     scenario 'accept a teacher registration' do
@@ -97,6 +101,9 @@ feature 'Supervisor', %q{
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.students') 
       page.should have_css('.student', :count => 3)
+      page.should have_css('.edit_role', :count => 3)
+      page.should have_css('.accept')
+      page.should have_css('.reject')
     end
 
     scenario 'view the details of a student' do

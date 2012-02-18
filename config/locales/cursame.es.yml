@@ -344,6 +344,8 @@ es:
         teacher: Maestro
         student: Estudiante
         update: Actualizar
+        change_role: Cambiar rol
+        destroy: Eliminar
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
@@ -351,6 +353,8 @@ es:
       student: Estudiante
       teacher: Maestro
       update: Actualizar
+      change_role: Cambiar rol
+      destroy: Eliminar
 
   views:
     pagination:

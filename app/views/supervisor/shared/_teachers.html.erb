@@ -21,8 +21,8 @@
               <% end %>
             <% else %>
               <div class="edit_role">
-                <%= link_to 'Cambiar Rol', '#', :class=>"accept btn success small change_role_button" %>
-                <%= link_to 'Eliminar', '#', :class=>"reject btn small danger" %>
+                <%= link_to t('.change_role'), 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
+                <%= link_to t('.destroy'), '#', :class=>"reject btn small danger" %>
               </div>
               <div id="edit_role_form" style="display:none;">
                 <%= form_for teacher do |f|%>
