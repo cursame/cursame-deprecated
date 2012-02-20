@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_active_user_within_network!, :only => :index
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms]
   set_tab :dashboard
 
   def index
@@ -22,4 +22,8 @@ class HomeController < ApplicationController
     @courses       = current_user.visible_courses.where(:network_id => current_network)
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
   end
+
+  def terms
+  end
+
 end

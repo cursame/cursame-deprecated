@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :about_me, :studies, :birth_date,
                   :occupation, :twitter_link, :facebook_link, :linkedin_link,
-                  :avatar_file, :avatar_file_cache, :role, :state
+                  :avatar_file, :avatar_file_cache, :role, :state, :terms_of_service
 
   has_and_belongs_to_many :networks
   has_many :enrollments
@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)
+
+  validates_acceptance_of :terms_of_service
 
   mount_uploader :avatar_file, AvatarUploader
 

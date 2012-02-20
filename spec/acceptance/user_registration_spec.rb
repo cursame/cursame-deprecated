@@ -17,6 +17,7 @@ feature 'User registration', %q{
     fill_in 'student_user[email]',      :with => 'user@example.com'
     fill_in 'student_user[password]',   :with => 'password'
     fill_in 'student_user[password_confirmation]', :with => 'password'
+    check 'student_user[terms_of_service]'
 
     click_button 'register'
 
@@ -34,6 +35,7 @@ feature 'User registration', %q{
     fill_in 'teacher_user[email]', :with => 'user@example.com'
     fill_in 'teacher_user[password]', :with => 'password'
     fill_in 'teacher_user[password_confirmation]', :with => 'password'
+    check 'teacher_user[terms_of_service]'
     click_button 'register'
 
     user = User.unscoped.last

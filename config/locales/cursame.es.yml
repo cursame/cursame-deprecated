@@ -21,6 +21,7 @@ es:
     update_delivery: 'Editar entrega'
     send_survey_reply: 'Guardar mis respuestas'
     update_survey_reply: 'Actualizar mis respuestas'
+    terms: 'Acepto los términos y condiciones'
 
   footer:
     teacher_register: 'Registro como maestro'
