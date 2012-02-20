@@ -10,12 +10,12 @@ class SupervisorController < ApplicationController
 
   def teachers
     teachers = current_network.teachers
-    @approved = teachers.where(:state => 'active')
-    @pending = teachers.where(:state => 'inactive')
+    @approved = teachers.where(:state => 'active').page(params[:a_page])
+    @pending = teachers.where(:state => 'inactive').page(params[:p_page])
   end
 
   def students
-    @students = current_network.students
+    @students = current_network.students.page(params[:page])
   end
 
   def accept_user

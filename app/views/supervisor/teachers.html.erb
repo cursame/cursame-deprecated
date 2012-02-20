@@ -21,15 +21,17 @@
       <div class="span9">
         <h2><%= t('courses.members.teachers') %></h2>
         <ul class="tabs tabs_fix">
-          <li class="active"><%= link_to t('courses.teachers.approved'), '#approved' %></li>
-          <li><%= link_to_pending_teachers(@pending_teachers_total) %></li>
+          <li class=<%= class_for_active_li(params[:type], "approved")%>><%= link_to t('courses.teachers.approved'), '#approved' %></li>
+          <li class=<%= class_for_active_li(params[:type], "pending")%>><%= link_to_pending_teachers(@pending_teachers_total) %></li>
         </ul>
         <div class="pill-content">
-          <div id="approved" class="users teachers active">
+          <div id="approved" class="users teachers <%= class_for_active_li(params[:type], "approved")%>">
             <%= render :partial => "supervisor/shared/teachers", :locals => {:teachers => @approved}%>
+            <%= paginate @approved, :param_name => :a_page, :params=>{:type=>"approved"} %>
           </div>
-          <div id="pending" class="users teachers">
+          <div id="pending" class="users teachers <%= class_for_active_li(params[:type], "pending")%>">
             <%= render :partial => "supervisor/shared/teachers", :locals => {:teachers => @pending}%>
+            <%= paginate @pending, :param_name => :p_page, :params=>{:type=>"pending"} %>
           </div>
         </div>
       </div>
