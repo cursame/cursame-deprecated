@@ -9,13 +9,13 @@ class SupervisorController < ApplicationController
   end
 
   def teachers
-    teachers = current_network.teachers.order("first_name, last_name asc")
+    teachers = current_network.teachers.order("upper(first_name), upper(last_name) asc")
     @approved = teachers.where(:state => 'active').page(params[:a_page])
     @pending = teachers.where(:state => 'inactive').page(params[:p_page])
   end
 
   def students
-    @students = current_network.students.page(params[:page])
+    @students = current_network.students.page(params[:page]).order("upper(first_name), upper(last_name) asc")
   end
 
   def accept_user
