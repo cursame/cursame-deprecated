@@ -350,12 +350,15 @@ es:
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
+    teachers:
+      registered_teachers: Maestros registrados
     students:
       student: Estudiante
       teacher: Maestro
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
+      registered_students: Estudiantes inscritos
 
   views:
     pagination:

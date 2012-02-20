@@ -18,7 +18,7 @@
       </div>
       
       <div class="span9">
-        <h2><%= t('courses.members.students') %></h2>
+        <h2><%= @students.count%> <%= t('.registered_students') %></h2>
         
         <div class="users students">
           <% @students.each do |student| %>
