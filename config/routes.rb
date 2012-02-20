@@ -82,6 +82,7 @@ Cursame::Application.routes.draw do
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
+  match '/terminos', :to => 'home#terms', :as => :terms
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
 
   root :to => "home#index"
