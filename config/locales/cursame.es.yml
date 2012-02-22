@@ -359,6 +359,7 @@ es:
       change_role: Cambiar rol
       destroy: Eliminar
       registered_students: Estudiantes inscritos
+    export_csv: "Exportar CSV"
 
   views:
     pagination:

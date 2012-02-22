@@ -15,6 +15,8 @@ gem "breadcrumbs_on_rails", "~> 2.1.0"
 gem "tabs_on_rails",        "~> 2.0.2"
 gem "auto_html"
 gem "transitions", :require => ["transitions", "active_record/transitions"]
+gem "csv_builder"
+gem "fastercsv"
 
 # Gems used only for assets and not required
 # in production environments by default.

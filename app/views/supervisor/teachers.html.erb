@@ -17,9 +17,15 @@
       <div class="span5">
         <%= render :partial => "supervisor/shared/admin_menu" %>
       </div>
+
+      <div class="span5">
+        <h2><%= pluralize @approved.size+@pending_teachers_total, t('.registered_teachers') %></h2>
+      </div>
+      <div class="span4" style="margin-left:15px;">
+        <%= link_to t('supervisor.export_csv'), supervisor_teachers_path(:format => :csv), :class => "btn info small right" %>
+      </div>
       
       <div class="span9">
-        <h2><%= @approved.count + @pending_teachers_total%> <%= t('.registered_teachers') %></h2>
         <ul class="tabs tabs_fix">
           <li class=<%= class_for_active_li(params[:type], "approved")%>><%= link_to t('courses.teachers.approved'), '#approved' %></li>
           <li class=<%= class_for_active_li(params[:type], "pending")%>><%= link_to_pending_teachers(@pending_teachers_total) %></li>
