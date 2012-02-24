@@ -26,6 +26,13 @@ class SupervisorController < ApplicationController
     end
   end
 
+  def import_users
+  end
+
+  def import_csv
+    csv_file = params[:csv_file]
+  end
+
   def accept_user
     @user = User.unscoped.find params[:user_id]
 

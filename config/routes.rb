@@ -64,6 +64,8 @@ Cursame::Application.routes.draw do
     get :teachers
     get :students
     get :pending_approvals
+    get :import_users
+    post :import_csv
     match '/pending_approvals/:user_id/accept', :as => :accept_user, :action => :accept_user
     match '/pending_approvals/:user_id/reject', :as => :reject_user, :action => :reject_user
   end

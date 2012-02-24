@@ -1,0 +1,32 @@
+<%= javascript_include_tag 'supervisor' %>
+<div class="container">
+  
+  <div class="row">
+    <div class="span16">
+      <ul class="breadcrumb">
+        <li><%= link_to(t('.admin'), supervisor_dashboard_path) %> <span class="divider">/</span></li>
+        <li><%= t('supervisor.import_csv') %></li>
+      </ul>  
+    </div>
+  </div>
+  
+  <div class="dashboard">  
+
+    <div class="row">
+      <div class="span5">
+        <%= render :partial => "supervisor/shared/admin_menu" %>
+      </div>
+      
+      <div class="span9">
+        <%= form_tag supervisor_import_csv_path, :method => 'post' do %>
+          <%= label_tag "Archivo CSV"%>
+          <%= file_field_tag :file %>
+          <%= submit_tag "Cargar CSV", :class => "btn" %>
+        <% end %> 
+        
+      </div>
+    </div>
+    <!-- Contexts or Networks should be in a drop-down or the way Github does Contexts -->
+  </div>
+  <%= render :partial => "shared/footer"%>
+</div>

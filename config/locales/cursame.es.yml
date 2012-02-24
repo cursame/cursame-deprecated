@@ -360,6 +360,7 @@ es:
       destroy: Eliminar
       registered_students: Estudiantes inscritos
     export_csv: "Exportar CSV"
+    import_csv: "Importar CSV"
 
   views:
     pagination:
