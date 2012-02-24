@@ -5,7 +5,7 @@ require "spec_helper"
 describe UserMailer do
 
   describe "new_comment_on_user" do
-    comment = Factory(:comment_on_user)
+    let(:comment) { Factory(:comment_on_user) }
     let(:mail) { UserMailer.new_comment_on_user(comment.commentable, comment.user, "tec") }
 
     it "renders the headers" do
@@ -21,13 +21,13 @@ describe UserMailer do
   end
   
   describe "new_comment_on_discussion" do
-    comment = Factory(:comment_on_discussion)
-    discussion = comment.commentable
+    let(:comment) {Factory(:comment_on_discussion)}
+    let(:discussion) {comment.commentable}
     let(:mail) { UserMailer.new_comment_on_discussion(discussion, comment.user, "tec") }
 
     it "renders the headers" do
       mail.subject.should eq("Nuevo comentario en una de tus discusiones")
-      mail.bcc.should eq([discussion.starter.email, comment.user.email])
+      mail.bcc.should eq([discussion.starter.email])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
@@ -51,7 +51,7 @@ describe UserMailer do
 
     it "renders the headers" do
       mail.subject.should eq("Nuevo comentario en el muro de uno de tus cursos")
-      mail.bcc.should eq([@course.all_emails])
+      mail.bcc.should eq([@course.all_emails(@comment.user)])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
@@ -76,7 +76,7 @@ describe UserMailer do
 
     it "renders the body" do
       mail.body.encoded.should match("Hola #{@comment.commentable.user.name}!")
-      mail.body.encoded.should match("El usuario #{@comment.name} ha publicado una respuesta a tu comentario.")
+      mail.body.encoded.should match("El usuario #{@comment.  user.name} ha publicado una respuesta a tu comentario.")
     end
   end
 
@@ -89,10 +89,11 @@ describe UserMailer do
     end
 
     let(:mail) { UserMailer.new_discussion(@discussion, "tec") }
-
+    
     it "renders the headers" do
+      @course.reload
       mail.subject.should eq("Nueva discusión en uno de tus cursos")
-      mail.bcc.should eq([(@course.all_emails||"")])
+      mail.bcc.should eq([(@course.all_emails(@discussion.starter))])
       mail.from.should eq(["noreply@cursa.me"])
     end
 

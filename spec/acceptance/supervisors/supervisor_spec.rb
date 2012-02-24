@@ -32,6 +32,17 @@ feature 'Supervisor', %q{
   end
 
   context 'teacher listing and aproval/rejecting' do
+    scenario 'view the total number of teachers registered' do
+      (1..3).map { Factory(:teacher, :networks => [@network]) }
+      (1..3).map { Factory(:student, :networks => [@network]) }
+      (1..3).map { Factory(:teacher) } # Other networks
+      
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.shared.admin_menu.teachers')
+      
+      page.should have_content("3 #{t('.supervisor.teachers.registered_teachers')}")
+    end
+    
     scenario 'view a list of teachers with tabs for approved and pending' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
@@ -93,6 +104,17 @@ feature 'Supervisor', %q{
   end
 
   context 'student listing' do
+    scenario 'view the total number of students registered' do
+      (1..3).map { Factory(:teacher, :networks => [@network]) }
+      (1..3).map { Factory(:student, :networks => [@network]) }
+      (1..3).map { Factory(:teacher) } # Other networks
+      
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.shared.admin_menu.students')
+      
+      page.should have_content("3 #{t('.supervisor.students.registered_students')}")
+    end
+  
     scenario 'view a list of students' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
