@@ -19,6 +19,10 @@ Capybara.default_host = "subdomain.lvh.me"
 Capybara.server_port  = 8888 + ENV['TEST_ENV_NUMBER'].to_i
 
 Spork.prefork do
+  Devise.stretches = Rails.env.test? ? 1 : 10
+
+  Rails.logger.level = 4
+
   RSpec.configure do |config|
     config.formatter = 'Growl::RSpec::Formatter'
     config.mock_with :rspec
