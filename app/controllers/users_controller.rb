@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def update
     find_user and check_edit_permissions!
     if @user.update_attributes(params[:user])
-      redirect_to @user, :notice => t('flash.user_updated')
+      redirect_after_update
     else
       render :edit
     end
@@ -35,7 +35,15 @@ class UsersController < ApplicationController
   end
 
   def check_edit_permissions!
-    raise ActiveRecord::RecordNotFound unless current_user == @user
+    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.supervisor?
     true
+  end
+  
+  def redirect_after_update
+    if @user != current_user
+      redirect_to send("supervisor_#{@user.role}s_path"), :notice => t('flash.user_updated') 
+    else
+      redirect_to @user, :notice => t('flash.user_updated')
+    end
   end
 end

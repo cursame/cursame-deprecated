@@ -11,8 +11,8 @@ es:
     sign_in_btn: 'Iniciar Sesión'
     register_btn: 'Regístrate'
     register_slogun: '¡Regístrate, es gratis!'
-    register_student: 'Regístro de Estudiantes'
-    register_teacher: 'Regístro de Maestros'
+    register_student: 'Registro de Estudiantes'
+    register_teacher: 'Registro de Maestros'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -21,6 +21,7 @@ es:
     update_delivery: 'Editar entrega'
     send_survey_reply: 'Guardar mis respuestas'
     update_survey_reply: 'Actualizar mis respuestas'
+    terms: 'Acepto los términos y condiciones'
 
   footer:
     teacher_register: 'Registro como maestro'
@@ -341,9 +342,25 @@ es:
       teachers:
         approve: Aceptar
         reject: Rechazar
+        teacher: Maestro
+        student: Estudiante
+        update: Actualizar
+        change_role: Cambiar rol
+        destroy: Eliminar
     pending_approvals:
       approve: Aceptar
       reject: Rechazar
+    teachers:
+      registered_teachers: Maestros registrados
+    students:
+      student: Estudiante
+      teacher: Maestro
+      update: Actualizar
+      change_role: Cambiar rol
+      destroy: Eliminar
+      registered_students: Estudiantes inscritos
+    export_csv: "Exportar CSV"
+    import_csv: "Importar CSV"
 
   views:
     pagination:

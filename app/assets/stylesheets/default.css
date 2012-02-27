@@ -824,9 +824,13 @@ ul.nav-member-avatars li {
 	color: #fffeff;
 }
 
-.register-box a {
+.register-box a.switch_user {
 	color: #fffeff;
 	float: right;
+}
+
+.register-box a.terms {
+	color: #fffeff;
 }
 
 .register-box label {
@@ -944,6 +948,27 @@ ul.auth-links {
 	margin-bottom: 0;
 	margin-left: 75px;
 }
+
+fieldset ol li#teacher_user_terms_of_service_input,
+fieldset ol li#student_user_terms_of_service_input{
+	padding-left: 0px;
+  text-align: left;
+}
+
+li#teacher_user_terms_of_service_input label,
+li#student_user_terms_of_service_input label{
+  text-align: left;
+  width: 90%;
+  color: #fffeff;
+  font-size: 11px;
+}
+
+li#teacher_user_terms_of_service_input input[type="checkbox"], 
+li#student_user_terms_of_service_input input[type="checkbox"] {
+  width: 10px;
+  margin-right: 8px;
+}
+
 
 /* @end */
 
@@ -1239,11 +1264,11 @@ display: block;
   overflow:hidden;
 }
 
-.dashboard .teacher_aproval {
+.dashboard .teacher_aproval, .dashboard .user_options {
   width: 260px;
 }
 
-.dashboard .teacher_aproval form {
+.dashboard .teacher_aproval form, .dashboard .user_options form {
   float: left;
   margin: 0 10px 0 0;
 }

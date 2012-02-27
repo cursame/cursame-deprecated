@@ -189,6 +189,13 @@ $(function(){
     }
   });
 
+ /* Fancybox */
+
+ $('.terms').fancybox({
+   maxHeight: 500,
+   maxWidth: 800
+ });
+
   /* TextAreaExpander textareas */
   
   $("textarea.textarea-size").TextAreaExpander(77, 300);

@@ -13,7 +13,7 @@ class Discussion < ActiveRecord::Base
   html_sanitized :description
 
   after_create do
-    UserMailer.new_discussion(self, self.course.network.subdomain).deliver
+    UserMailer.new_discussion(self, self.course.network.subdomain).deliver if self.course.users.count > 1
 
     # Se crea una notificación para todos los usuarios del curso excepto al creador de la discusión
     self.course.users.reject { |us| us.id == self.starter.id }.each do |u|

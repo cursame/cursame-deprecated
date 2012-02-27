@@ -64,6 +64,8 @@ Cursame::Application.routes.draw do
     get :teachers
     get :students
     get :pending_approvals
+    get :import_users
+    post :import_csv
     match '/pending_approvals/:user_id/accept', :as => :accept_user, :action => :accept_user
     match '/pending_approvals/:user_id/reject', :as => :reject_user, :action => :reject_user
   end
@@ -82,6 +84,7 @@ Cursame::Application.routes.draw do
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
+  match '/terminos', :to => 'home#terms', :as => :terms
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
 
   root :to => "home#index"

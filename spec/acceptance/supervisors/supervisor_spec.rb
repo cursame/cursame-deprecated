@@ -32,6 +32,17 @@ feature 'Supervisor', %q{
   end
 
   context 'teacher listing and aproval/rejecting' do
+    scenario 'view the total number of teachers registered' do
+      (1..3).map { Factory(:teacher, :networks => [@network]) }
+      (1..3).map { Factory(:student, :networks => [@network]) }
+      (1..3).map { Factory(:teacher) } # Other networks
+      
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.shared.admin_menu.teachers')
+      
+      page.should have_content("3 #{t('.supervisor.teachers.registered_teachers')}")
+    end
+    
     scenario 'view a list of teachers with tabs for approved and pending' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
@@ -43,6 +54,9 @@ feature 'Supervisor', %q{
       page.should have_css('#approved')
       page.should have_css('#pending')
       page.should have_css('.teacher', :count => 3)
+      page.should have_css('.teacher_aproval', :count => 3)
+      page.should have_css('.accept')
+      page.should have_css('.reject')
     end
 
     scenario 'view the details of a teacher' do
@@ -61,7 +75,8 @@ feature 'Supervisor', %q{
 
       #sign_in_with @supervisor, :subdomain => @network.subdomain
       click_link t('supervisor.shared.admin_menu.teachers')
-      page.should have_css('.teacher_aproval', :count => 3)
+      click_link t('courses.teachers.pending')
+      page.should have_css('.teacher_aproval')
     end
 
     scenario 'accept a teacher registration' do
@@ -89,6 +104,17 @@ feature 'Supervisor', %q{
   end
 
   context 'student listing' do
+    scenario 'view the total number of students registered' do
+      (1..3).map { Factory(:teacher, :networks => [@network]) }
+      (1..3).map { Factory(:student, :networks => [@network]) }
+      (1..3).map { Factory(:teacher) } # Other networks
+      
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.shared.admin_menu.students')
+      
+      page.should have_content("3 #{t('.supervisor.students.registered_students')}")
+    end
+  
     scenario 'view a list of students' do
       (1..3).map { Factory(:teacher, :networks => [@network]) }
       (1..3).map { Factory(:student, :networks => [@network]) }
@@ -97,6 +123,9 @@ feature 'Supervisor', %q{
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.students') 
       page.should have_css('.student', :count => 3)
+      page.should have_css('.edit_role', :count => 3)
+      page.should have_css('.accept')
+      page.should have_css('.reject')
     end
 
     scenario 'view the details of a student' do
