@@ -338,6 +338,7 @@ es:
         students: Estudiantes
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
+        new_user: Nuevo usuario
         configuration: Configuración
       teachers:
         approve: Aceptar

@@ -42,6 +42,10 @@ class SupervisorController < ApplicationController
     @user.destroy if @user.networks.include? current_network
     redirect_to supervisor_teachers_path, :notice => t('flash.user_registration_rejected')
   end
+  
+  def new_user
+    @user = User.new
+  end
 
 
 

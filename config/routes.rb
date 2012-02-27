@@ -60,6 +60,7 @@ Cursame::Application.routes.draw do
         post :upload_logo,  :as => :upload_logo_for
       end
     end
+    get :new_user
     get :dashboard
     get :teachers
     get :students
