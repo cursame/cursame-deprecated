@@ -17,6 +17,7 @@ gem "auto_html"
 gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem "csv_builder"
 gem "fastercsv"
+gem 'delayed_job_active_record'
 
 # Gems used only for assets and not required
 # in production environments by default.

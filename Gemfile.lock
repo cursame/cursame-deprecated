@@ -64,6 +64,11 @@ GEM
       actionpack (>= 3.0.0)
     daemons (1.1.4)
     database_cleaner (0.6.7)
+    delayed_job (3.0.1)
+      activesupport (~> 3.0)
+    delayed_job_active_record (0.3.2)
+      activerecord (> 2.1.0)
+      delayed_job (~> 3.0.0)
     devise (1.4.9)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -278,6 +283,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   csv_builder
   database_cleaner
+  delayed_job_active_record
   devise
   factory_girl (= 2.0.4)
   fastercsv
