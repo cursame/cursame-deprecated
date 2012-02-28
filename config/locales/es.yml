@@ -192,6 +192,7 @@ es:
     wrong_network: 'Red equivocada'
     assignment_updated: 'Tarea actualizada'
     user_registration_accepted: 'Maestro autorizado correctamente'
+    user_created: 'Usuario creado correctamente. Recibirá un correo con su contraseña.'
 
   errors:
     format: "%{attribute} %{message}"

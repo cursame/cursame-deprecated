@@ -49,4 +49,14 @@ class UserMailer < ActionMailer::Base
 
     mail bcc: discussion.course.all_emails(discussion.starter)
   end
+
+  def new_user_by_supervisor(user, subdomain, password)
+    headers["X-SMTPAPI"] = '{"category": "new discussion"}'
+    @user = user
+    @subdomain = subdomain
+    @password = password
+
+    mail to: @user.email
+  end
+
 end

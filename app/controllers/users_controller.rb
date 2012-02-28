@@ -2,12 +2,27 @@ class UsersController < ApplicationController
   set_tab :profile, :only => %w(show)
   set_tab :wall,    :only => %w(wall)
 
+  before_filter :authenticate_supervisor!, :only => [:create]
+
   def show
     find_user
   end
 
   def edit
     find_user and check_edit_permissions!
+  end
+
+  def create
+    @user = User.new params[:user]
+    password = Devise.friendly_token[0,20]
+    build_user(password)
+    debugger
+    if @user.save
+      UserMailer.new_user_by_supervisor(@user, current_network.subdomain, password).deliver
+      redirect_to @user, :notice => I18n.t('flash.user_created')
+    else
+      render 'supervisor/new_user'
+    end
   end
 
   def update
@@ -32,6 +47,12 @@ class UsersController < ApplicationController
   private
   def find_user
     @user ||= current_network.users.find params[:id]
+  end
+
+  def build_user(password)
+    @user.password = password
+    @user.confirmed_at = DateTime.now
+    @user.networks = [current_network]
   end
 
   def check_edit_permissions!
