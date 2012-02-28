@@ -411,6 +411,8 @@ es:
       subject: Nueva respuesta sobre tu comentario
     new_discussion:
       subject: Nueva discusión en uno de tus cursos
+    new_user_by_supervisor:
+      subject: Bienvenido a Cúrsame
       
   teacher_mailer:
     pending_student_on_course:

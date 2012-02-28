@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     password = Devise.friendly_token[0,20]
     build_user(password)
     if @user.save
-      UserMailer.new_user_by_supervisor(@user, current_network.subdomain, password).deliver
+      UserMailer.new_user_by_supervisor(@user, current_network, password).deliver
       redirect_to @user, :notice => I18n.t('flash.user_created')
     else
       render 'supervisor/new_user'
