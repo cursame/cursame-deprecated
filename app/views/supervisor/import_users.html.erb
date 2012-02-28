@@ -18,11 +18,13 @@
       </div>
       
       <div class="span9">
-        <%= form_tag supervisor_import_csv_path, :method => 'post' do %>
-          <%= label_tag "Archivo CSV"%>
-          <%= file_field_tag :file %>
-          <%= submit_tag "Cargar CSV", :class => "btn" %>
-        <% end %> 
+        <br />
+        <%= form_for @asset, url: create_asset_path(:html => {:class => "well", :multipart => true}) do |f| %>
+            <%= f.label :file, "Archivo" %>
+              <%= f.file_field :file %>
+
+            <%= f.submit "Cargar", :class => "btn" %>
+        <% end %>
         
       </div>
     </div>

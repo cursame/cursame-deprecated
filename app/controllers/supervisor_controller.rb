@@ -27,10 +27,7 @@ class SupervisorController < ApplicationController
   end
 
   def import_users
-  end
-
-  def import_csv
-    csv_file = params[:csv_file]
+    @asset = Asset.new
   end
 
   def accept_user

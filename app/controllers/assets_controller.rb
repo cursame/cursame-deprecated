@@ -5,4 +5,15 @@ class AssetsController < ApplicationController
     
     render :json => as_json
   end
+
+  def create
+    debugger
+    @asset_file = Asset.new(params[:asset])
+    if @asset_file.save
+      Asset.delay.import_csv(@asset_file.id, params[:role], current_network.id)
+      redirect_to supervisor_dashboard_path, flash: {success: "Importando usuarios. Espera a recibir la notificacion."}
+    else
+      render 'supervisor/import_users'
+    end
+  end
 end

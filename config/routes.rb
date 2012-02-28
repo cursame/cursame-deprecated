@@ -86,6 +86,7 @@ Cursame::Application.routes.draw do
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
+  post '/create', :to => 'assets#create', :as => :create_asset
 
   root :to => "home#index"
 end
