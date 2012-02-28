@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Supervisor', %q{
   In order to manage my network
   As a supervisor
-  I want to manage teachers/students/courses
+  I want to manage teachers/students/users/courses
 } do
 
   background do
@@ -152,6 +152,15 @@ feature 'Supervisor', %q{
 
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       page.current_url.should match dashboard_path
+    end
+  end
+  
+  context 'creating user' do
+    scenario 'the form for creating a new user is show' do
+      visit supervisor_dashboard_url(:subdomain => @network.subdomain)
+      click_link t('supervisor.shared.admin_menu.new_user')
+      
+      page.should have_css('.register-box')
     end
   end
 

@@ -10,6 +10,7 @@ es:
     password_confirmation: 'Confirmar Contraseña'
     sign_in_btn: 'Iniciar Sesión'
     register_btn: 'Regístrate'
+    register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
     register_student: 'Registro de Estudiantes'
     register_teacher: 'Registro de Maestros'
@@ -338,6 +339,7 @@ es:
         students: Estudiantes
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
+        new_user: Nuevo usuario
         configuration: Configuración
       teachers:
         approve: Aceptar
@@ -409,6 +411,8 @@ es:
       subject: Nueva respuesta sobre tu comentario
     new_discussion:
       subject: Nueva discusión en uno de tus cursos
+    new_user_by_supervisor:
+      subject: Bienvenido a Cúrsame
       
   teacher_mailer:
     pending_student_on_course:

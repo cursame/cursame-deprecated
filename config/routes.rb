@@ -60,6 +60,7 @@ Cursame::Application.routes.draw do
         post :upload_logo,  :as => :upload_logo_for
       end
     end
+    get :new_user
     get :dashboard
     get :teachers
     get :students
@@ -86,6 +87,7 @@ Cursame::Application.routes.draw do
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
+  post '/create', :to => 'assets#create', :as => :create_asset
 
   root :to => "home#index"
 end

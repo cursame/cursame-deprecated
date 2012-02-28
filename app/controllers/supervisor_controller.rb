@@ -27,10 +27,7 @@ class SupervisorController < ApplicationController
   end
 
   def import_users
-  end
-
-  def import_csv
-    csv_file = params[:csv_file]
+    @asset = Asset.new
   end
 
   def accept_user
@@ -48,6 +45,10 @@ class SupervisorController < ApplicationController
     @user = User.unscoped.find params[:user_id]
     @user.destroy if @user.networks.include? current_network
     redirect_to supervisor_teachers_path, :notice => t('flash.user_registration_rejected')
+  end
+  
+  def new_user
+    @user = User.new
   end
 
 
