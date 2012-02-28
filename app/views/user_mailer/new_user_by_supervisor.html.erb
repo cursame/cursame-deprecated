@@ -1,0 +1,30 @@
+<h2 class="h2">Bienvenido <%= @user.name %>!</h2>
+<% if @user.student?%>
+<strong>A partir de ahora, puedes disfrutar de Cúrsame y todas las herramientas que te ofrece como:</strong>
+  <ul>
+    <li>Perfil en tu red social privada</li>
+    <li>Interactuar con tus compañeros y maestros</li>
+    <li>Acceso a cursos</li>
+    <li>Tareas</li>
+    <li>Cuestionarios</li>
+    <li>Discusiones</li>
+    <li>Compartir archivos</li>
+    <li>¡Entre muchas otras!</li>
+  </ul>
+<%elsif @user.teacher?%>
+<strong>A partir de ahora, puedes disfrutar de Cúrsame y todas las herramientas que te ofrece como:</strong>
+  <ul>
+    <li>Perfil en tu red social privada</li>
+    <li>Interactuar con tus compañeros y alumnos</li>
+    <li>Acceso a cursos</li>
+    <li>Tareas</li>
+    <li>Cuestionarios</li>
+    <li>Discusiones</li>
+    <li>Compartir archivos</li>
+    <li>¡Entre muchas otras!</li>
+  </ul>
+<%end%>
+<strong>Tu contraseña para ingresar es: <%= @password %></strong>
+<h1><%= link_to 'Ir a Cúrsame >>', new_user_session_url(:subdomain=>@subdomain) %></h1>
+<br>
+<p>Si tienes alguna duda, puedes escribirnos a <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.</p>
