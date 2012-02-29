@@ -22,10 +22,10 @@
         <h2><%= pluralize @approved.count+@pending_teachers_total, t('.registered_teachers') %></h2>
       </div>
       <div class="span2" style="margin-left:20px;">
-        <%= link_to t('supervisor.import_csv'), supervisor_import_users_path(:role => :teacher), :class => "btn small" %>
+        <%= link_to t('supervisor.import_teachers'), supervisor_import_users_path(:role => :teacher), :class => "btn small" %>
       </div>
       <div class="span2" style="margin-left:10px;">
-        <%= link_to t('supervisor.export_csv'), supervisor_teachers_path(:format => :csv), :class => "btn info small right" %>
+        <%= link_to t('supervisor.export_teachers'), supervisor_teachers_path(:format => :csv), :class => "btn info small right" %>
       </div>
       
       <div class="span9">

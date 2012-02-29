@@ -361,8 +361,10 @@ es:
       change_role: Cambiar rol
       destroy: Eliminar
       registered_students: Estudiantes inscritos
-    export_csv: "Exportar CSV"
-    import_csv: "Importar CSV"
+    export_students: "Exportar estudiantes"
+    import_students: "Importar estudiantes"
+    export_teachers: "Exportar maestros"
+    import_teachers: "Importar maestros"
 
   views:
     pagination:
