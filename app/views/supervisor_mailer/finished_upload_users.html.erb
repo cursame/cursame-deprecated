@@ -1,0 +1,4 @@
+<h2 class="h2">Hola <%= @supervisor.first_name %>,</h2>
+<h3 class="h3">Tienes una nueva notificación</h3><br>
+<strong>Ha terminado la importación de usuarios en tu red, es importante que verifiques los usuarios inválidos que se encontraron en el proceso, los cuales adjuntamos a este correo.<br>
+<h1> <%= link_to "Ir a Administración >>", supervisor_dashboard_url(:subdomain => @subdomain) %></h1>

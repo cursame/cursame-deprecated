@@ -13,4 +13,17 @@ class SupervisorMailer < ActionMailer::Base
     mail to: network.supervisors.all.map(&:email).join(", "),
          subject: "Un maestro ha solicitado acceso a tu red"
   end
+
+  def finished_upload_users(supervisor, subdomain, csv)
+    headers["X-SMTPAPI"] = '{"category": "new teacher registered"}'
+    @supervisor = supervisor
+    @subdomain = subdomain
+
+    attachments['invalid_users.csv'] = csv
+
+    mail to: @supervisor.email
+  end
+
+  
+
 end

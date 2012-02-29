@@ -20,7 +20,10 @@
       <div class="span5">
         <h2><%= pluralize @students.size, t('.registered_students') %></h2>
       </div>
-      <div class="span4" style="margin-left:5px;">
+      <div class="span2" style="margin-left:20px;">
+        <%= link_to t('supervisor.import_csv'), supervisor_import_users_path(:role => :student), :class => "btn small" %>
+      </div>
+      <div class="span2" style="margin-left:10px;">
         <%= link_to t('supervisor.export_csv'), supervisor_students_path(:format => :csv), :class => "btn info small right" %>
       </div>
       

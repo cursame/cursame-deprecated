@@ -3,6 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 require "#{File.dirname __FILE__}/../lib/active_record/html_sanitization"
 require "#{File.dirname __FILE__}/../lib/active_record/assets_owner"
+require "#{File.dirname __FILE__}/../lib/export_to_csv"
 
 
 if defined?(Bundler)
