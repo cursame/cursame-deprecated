@@ -1,3 +1,6 @@
+#encoding: utf-8
+require 'open-uri'
+
 class Asset < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true
   mount_uploader :file, AssetUploader
@@ -10,6 +13,7 @@ class Asset < ActiveRecord::Base
     invalid_users = []
     network = Network.find network_id
 
+    debugger
     open(file.url) do |lines|
       CSV.parse(lines.read) do |row|
 
