@@ -3,6 +3,7 @@ require 'open-uri'
 
 class Asset < ActiveRecord::Base
   belongs_to :owner, :polymorphic => true
+  attr_accessible :file
   mount_uploader :file, AssetUploader
 
   def self.import_csv(id, role = 'teacher', network_id)
@@ -13,7 +14,6 @@ class Asset < ActiveRecord::Base
     invalid_users = []
     network = Network.find network_id
 
-    debugger
     open(file.url) do |lines|
       CSV.parse(lines.read) do |row|
 
