@@ -7,7 +7,6 @@ class AssetsController < ApplicationController
   end
 
   def create
-    debugger
     @asset_file = Asset.new(params[:asset])
     if @asset_file.save
       Asset.delay.import_csv(@asset_file.id, params[:role], current_network.id)

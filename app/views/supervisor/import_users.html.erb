@@ -20,10 +20,11 @@
       <div class="span9">
         <br />
         <%= form_for @asset, url: create_asset_path(:html => {:class => "well", :multipart => true}) do |f| %>
-            <%= f.label :file, "Archivo" %>
-              <%= f.file_field :file %>
+          <%= f.label :file, "Archivo" %>
+          <%= f.file_field :file %>
+          <%= hidden_field_tag :role, "#{params[:role]}" %>
 
-            <%= f.submit "Cargar", :class => "btn" %>
+          <%= f.submit "Cargar", :class => "btn" %>
         <% end %>
         
       </div>

@@ -10,28 +10,26 @@ class Asset < ActiveRecord::Base
     invalid_users = []
     network = Network.find network_id
 
-    debugger
     CSV.open(file.url, "r").each do |row|
-      u = User.new(:email => row[2],
-                   :password => "cursame2012",
-                   :password_confirmation => "cursame2012", 
+      user = User.new(:email => row[2],
                    :role => role, 
                    :state => "active", 
                    :first_name => row[0].strip.capitalize, 
-                   :last_name => row[1].strip.capitalize)
-      u.networks = [network]
-      if u.valid?
-        u.save
-        u.password = u.first_name.gsub(" ", "_").downcase + u.id.to_s
-        u.password_confirmation = u.first_name.gsub(" ", "_").downcase + u.id.to_s
-        u.save
-        u.confirm!
+                   :last_name => row[1].strip.capitalize,
+                   :terms_of_service => "1")
+      if user.valid?
+        user.networks = [network]
+        password = Devise.friendly_token[0,20]
+        user.password = password
+        user.confirmed_at = DateTime.now
+        if user.save
+          UserMailer.new_user_by_supervisor(user, network, password).deliver
+        end
       else
-        invalid_users << u
+        puts user.errors.full_messages
+        invalid_users << user
       end
-
     end
-
   end
 
   
