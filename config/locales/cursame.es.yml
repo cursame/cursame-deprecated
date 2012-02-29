@@ -361,8 +361,10 @@ es:
       change_role: Cambiar rol
       destroy: Eliminar
       registered_students: Estudiantes inscritos
-    export_csv: "Exportar CSV"
-    import_csv: "Importar CSV"
+    export_students: "Exportar estudiantes"
+    import_students: "Importar estudiantes"
+    export_teachers: "Exportar maestros"
+    import_teachers: "Importar maestros"
 
   views:
     pagination:
@@ -393,12 +395,12 @@ es:
     assignment_added: Se ha creado la tarea
     assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
+    users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión
     has_posted_a_comment_on_comment: ha comentado en uno de tus comentarios
     has_posted_a_comment_on_discussion: ha comentado en la discusión
     has_posted_a_comment_on_user: ha comentado en tu muro
     has_posted_a_comment_on_course: ha comentado en el muro del curso
-    
     
   user_mailer:
     new_comment_on_user:
@@ -421,6 +423,8 @@ es:
   supervisor_mailer:
     new_teacher_registered:
       subject: Un maestro ha solicitado acceso a tu red
+    finished_upload_users:
+      subject: Importación de usuarios completa
       
   student_mailer:
     accepted_on_course:

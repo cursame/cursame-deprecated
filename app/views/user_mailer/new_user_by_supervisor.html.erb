@@ -26,6 +26,7 @@
   </ul>
 <%end%>
 <strong>Tu contraseña para ingresar es: <%= @password %></strong>
+<p>Te recomendamos modificar esta contraseña una vez que ingreses a la plataforma.</p>
 <h1><%= link_to 'Ir a Cúrsame >>', new_user_session_url(:subdomain=>@network.subdomain) %></h1>
 <br>
 <p>Si tienes alguna duda, puedes escribirnos a <%= link_to 'hola@cursa.me', 'mailto:hola@cursa.me' %>.</p>

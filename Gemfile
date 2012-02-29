@@ -57,4 +57,5 @@ group :development, :test do
   gem 'spork', '0.9.0.rc9'
   gem 'hirb'
   gem "parallel_tests"
+  gem 'foreman'
 end

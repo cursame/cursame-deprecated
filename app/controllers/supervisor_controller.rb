@@ -1,4 +1,8 @@
+require 'export_to_csv'
+
 class SupervisorController < ApplicationController
+  include ExportToCsv
+
   before_filter :authenticate_supervisor!
   set_tab :dashboard, :only => %w(dashboard)
   set_tab :teachers, :only => %w(teachers)
@@ -6,6 +10,7 @@ class SupervisorController < ApplicationController
 
   def dashboard
     @networks = current_user.networks
+    @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def teachers
@@ -52,19 +57,13 @@ class SupervisorController < ApplicationController
   end
 
 
-
   protected
 
   def export_csv(users)
-    csv_string = CSV.generate do |csv|
-      csv << ["first name", "last name", "email"]
-      users.each do |user|
-        csv << [user.first_name, user.last_name, user.email]
-      end
-    end
+    csv = export_users_to_csv(users)
     user_type = users.first.role.pluralize.capitalize
     filename = Time.now.strftime("%d-%m-%Y") + "_#{user_type}_#{current_network.name}"
-    send_data csv_string,
+    send_data csv,
       :type => 'text/csv; charset=iso-8859-1; header=present',
       :disposition => "attachment; filename=#{filename}.csv"
   end

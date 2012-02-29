@@ -15,9 +15,23 @@
         <%= render :partial => "supervisor/shared/admin_menu" %>
       </div>
       
-      <div class="span6">
-        
+    <div class="span-two-thirds">
+      <div class="dashboard-box">
+        <div class="underline padding-top">
+          <h2><%= t('notifications.header') %></h2>
+        </div>
+        <div id="notifications">
+          <% @notifications.each do |notification| %>
+            <div class='notification'>
+              <div class="date-published"><%= time_ago_in_words(notification.created_at) %></div>
+              <%= raw notification.text %>
+            </div>
+          <% end %>
+          <%= paginate @notifications %>
+        </div>
       </div>
+  
+    </div>
     </div>
     <!-- Contexts or Networks should be in a drop-down or the way Github does Contexts -->
   </div>

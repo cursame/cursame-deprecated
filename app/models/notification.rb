@@ -29,6 +29,8 @@ class Notification < ActiveRecord::Base
         render comment: notificator , user: notificator.user, course: notificator.commentable
       when 'course_discussion_added'
         render discussion: notificator, course: notificator.course
+      when 'finished_uploading_users'
+        render asset: notificator.file
       end
   end
 
