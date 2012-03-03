@@ -2,7 +2,6 @@ class Asset < ActiveRecord::Base
   include ExportToCsv
 
   belongs_to :owner, :polymorphic => true
-  attr_accessible :file
   mount_uploader :file, AssetUploader
 
   def self.import_csv(id, role = 'teacher', network_id)
