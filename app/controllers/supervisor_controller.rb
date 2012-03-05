@@ -7,6 +7,8 @@ class SupervisorController < ApplicationController
   set_tab :dashboard, :only => %w(dashboard)
   set_tab :teachers, :only => %w(teachers)
   set_tab :students, :only => %w(students)
+  set_tab :supervisors, :only => %w(supervisors)
+  set_tab :new_user, :only => %w(new_user)
 
   def dashboard
     @networks = current_user.networks
@@ -30,6 +32,14 @@ class SupervisorController < ApplicationController
     respond_to do |format|
       format.html
       format.csv { export_csv(@students) }
+    end
+  end
+  
+  def supervisors
+    @supervisors = current_network.supervisors.order("upper(first_name), upper(last_name) asc").page(params[:page]).per(15)
+    respond_to do |format|
+      format.html
+      format.csv { export_csv(@supervisors) }
     end
   end
 

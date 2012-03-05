@@ -26,7 +26,7 @@
               </div>
               <div id="edit_role_form" style="display:none;">
                 <%= form_for teacher do |f|%>
-                  <%= f.select :role, options_for_select([[t('.teacher'), "teacher"], [t('.student'), "student"]])%>
+                  <%= f.select :role, options_for_select([[t('.teacher'), "teacher"], [t('.student'), "student"], [t('.supervisor'), "supervisor"]])%>
                   <%= f.submit t('.update'), :class => "accept btn success small"%>
                 <%end%>
               </div>

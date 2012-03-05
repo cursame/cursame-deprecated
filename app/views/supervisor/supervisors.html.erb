@@ -5,7 +5,7 @@
     <div class="span16">
       <ul class="breadcrumb">
         <li><%= link_to(t('.admin'), supervisor_dashboard_path) %> <span class="divider">/</span></li>
-        <li><%= t('courses.members.students') %></li>
+        <li><%= t('courses.members.supervisors') %></li>
       </ul>  
     </div>
   </div>
@@ -18,48 +18,45 @@
       </div>
 
       <div class="span5">
-        <h2><%= pluralize @students_count, t('.registered_students') %></h2>
-      </div>
-      <div class="span2" style="margin-left:20px;">
-        <%= link_to t('supervisor.import_students'), supervisor_import_users_path(:role => :student), :class => "btn small" %>
-      </div>
-      <div class="span2" style="margin-left:10px;">
-        <%= link_to t('supervisor.export_students'), supervisor_students_path(:format => :csv), :class => "btn info small right" %>
+        <h2><%= pluralize @supervisors.count, t('.singular_supervisor'), t('.plural_supervisor') %></h2>
       </div>
       
       <div class="span9">
 
         <div class="users students">
-          <% @students.each do |student| %>
+          <% @supervisors.each do |supervisor| %>
             <div class="user padding-all <%= cycle('odd', 'even') %>">
-              <div class="student">
+              <div class="supervisor">
                 <div class="row">
                   <div class="span1" style="margin-left:20px;">
-                    <%= image_tag student.avatar_file.xsmall.url %>
+                    <%= image_tag supervisor.avatar_file.xsmall.url %>
                   </div>
                   <div class="span5">
-                    <%= link_to(student.name, user_path(student)) %><br />
-                    <%= mail_to student.email %>
+                    <%= link_to(supervisor.name, user_path(supervisor)) %><br />
+                    <%= mail_to supervisor.email %>
                   </div>
+                  <% if current_user.email != supervisor.email %>
                   <div class="span3-5">
                     <div class="user_options">
                       <div class="edit_role">
                         <%= link_to t('.change_role'), 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
                         <%= link_to t('.destroy'), '#', :class=>"reject btn small danger" %>
                       </div>
+                      
                       <div id="edit_role_form" style="display:none;">
-                        <%= form_for student do |f|%>
-                          <%= f.select :role, options_for_select([[t('.student'), "student"], [t('.teacher'), "teacher"], [t('.supervisor'), "supervisor"]])%>
+                        <%= form_for supervisor do |f|%>
+                          <%= f.select :role, options_for_select([[t('.supervisor'), "supervisor"], [t('.teacher'), "teacher"], [t('.student'), "student"]])%>
                           <%= f.submit t('.update'), :class => "accept btn success small"%>
                         <%end%>
                       </div>
                     </div>
                   </div>
+                  <% end %>
                 </div>
               </div>
             </div>
           <% end %>
-          <%= paginate @students%>
+          <%= paginate @supervisors%>
         </div>
       </div>
     </div>
