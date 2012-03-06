@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227230803) do
+ActiveRecord::Schema.define(:version => 20120305235028) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -134,6 +134,7 @@ ActiveRecord::Schema.define(:version => 20120227230803) do
     t.text     "welcome_message", :limit => 255
     t.string   "logo_file"
     t.string   "time_zone"
+    t.boolean  "public_registry",                :default => true
   end
 
   create_table "networks_users", :id => false, :force => true do |t|

@@ -100,6 +100,7 @@ es:
         slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
+        public_registry: '¿Registro público?'
       delivery:
         content: Contenido
       question:
