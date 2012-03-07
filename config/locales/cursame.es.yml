@@ -1,4 +1,12 @@
 es:
+
+  super_admin:
+    shared:
+      networks: 'Redes'
+      existing_networks: 'Redes actuales'
+      statistics: 'Estadísticas'
+
+
   confirm_delete: ¿Estas Seguro?
   comment: comentar
 

@@ -6,6 +6,9 @@ module Admin
     def admin
     end
 
+    def statistics
+    end
+
     private
 
     def require_admin

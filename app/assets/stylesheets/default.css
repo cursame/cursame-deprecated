@@ -130,6 +130,14 @@ width: 300px;
 	border-left: 1px solid #eaeaea;
 }
 
+.content .span12 {
+	margin-left: 0;
+	width: 690px;
+	padding: 10px 20px 0;
+	border-right: 1px solid #eaeaea;
+	border-left: 1px solid #eaeaea;
+}
+
 .content .span13 {
 	border-right: 1px solid #eaeaea;
 	width: 759px;

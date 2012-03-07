@@ -74,7 +74,9 @@ Cursame::Application.routes.draw do
 
   namespace :admin do
     resources :networks
+    get '/statistics', :to => 'base#statistics', :as => :statistics
   end
+
   match '/admin' => 'admin/base#admin'
 
   resources :comments, :only => [:update, :destroy, :show]
