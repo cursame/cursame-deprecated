@@ -20,7 +20,7 @@
       <% end %>
     </div>
     <div class="span5">
-      <%if @network.public_registry?%>
+      <%if @network and @network.public_registry?%>
       <%= render :partial => 'form', :locals => {:resource => resource, :resource_name => resource_name, :url => registration_path(resource_name)} %>
       <%end%>
     </div>
