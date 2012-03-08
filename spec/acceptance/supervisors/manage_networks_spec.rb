@@ -31,10 +31,16 @@ feature 'Supervisor', %q{
     Network.should exist_with :public_registry => false
     page.should have_notice I18n.t('flash.network_updated')
     
-    sign_out :subdomain => @network.subdomain
-    page.should_not have_css '.register-box'
-    visit new_teacher_user_registration_url :subdomain => @network.subdomain
-    page.should_not have_css '.register-box'
+  end
+  
+  scenario 'restricting registration for an specific email' do
+    visit edit_supervisor_network_url :subdomain => @network.subdomain
+    check 'network[private_registry]'
+    fill_in 'network[registry_domain]', :with => 'innku.com'
+    click_button 'submit'
+    
+    Network.should exist_with :private_registry => true, :registry_domain => 'innku.com'
+    page.should have_notice I18n.t('flash.network_updated')
     
   end
 end

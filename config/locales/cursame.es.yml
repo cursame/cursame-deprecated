@@ -100,7 +100,7 @@ es:
         slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
-        public_registry: '¿Registro público?'
+        public_registry: '¿Registro abierto?'
       delivery:
         content: Contenido
       question:
@@ -446,3 +446,7 @@ es:
       subject: Nueva tarea en uno de tus cursos
     new_survey:
       subject: Nuevo cuestionario en uno de tus cursos
+      
+  user:
+    errors:
+      email_not_allowed: Dirección de correo no permitida
