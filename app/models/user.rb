@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                   :through => :enrollments # may go away
-  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
+  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted'"
   has_many :manageable_courses,        :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
   has_many :manageable_assignments,    :through => :manageable_courses,     :class_name => 'Assignment',  :source => :assignments
   has_many :manageable_surveys,        :through => :manageable_courses,     :class_name => 'Survey',      :source => :surveys

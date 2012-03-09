@@ -10,7 +10,8 @@ class Course < ActiveRecord::Base
   has_many :enrollments
   has_many :pending_students, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'pending' AND enrollments.role = 'student'", :source => :user
   has_many :students,         :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'student'",  :source => :user
-  has_many :teachers,         :through => :enrollments, :class_name => 'User', :conditions => {'enrollments.role' => 'teacher'}, :source => :user
+  has_many :teachers,         :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'teacher'", :source => :user
+  has_many :pending_teachers, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'pending' AND enrollments.role = 'teacher'", :source => :user
   has_many :users,            :through => :enrollments, :conditions => "(enrollments.state = 'accepted' AND enrollments.role = 'student') OR enrollments.role  = 'teacher'", :source => :user
   has_many :assignments
   has_many :surveys

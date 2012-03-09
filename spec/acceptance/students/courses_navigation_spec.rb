@@ -28,7 +28,7 @@ feature 'Course navigation', %q{
     course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
 
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.course.request_join_student')
 
     page.current_url.should match courses_path
 
@@ -41,13 +41,13 @@ feature 'Course navigation', %q{
     course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
 
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.course.request_join_student')
 
     @student.enrollments.count.should == 1
 
     # Since the view does not have a link to request again,
     # we must manually fire a post request
-    page.driver.post(course_requests_url(course, :subdomain => @network.subdomain))
+    page.driver.post(course_requests_url(course,:role => "student", :subdomain => @network.subdomain))
     page.current_url.should match course_path(course)
 
     @student.enrollments.count.should == 1
