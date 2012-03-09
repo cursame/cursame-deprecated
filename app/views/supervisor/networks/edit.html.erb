@@ -29,6 +29,9 @@
             <%= form.input :slogan, :input_html => {:class => "span6"} %>
             <%= form.input :welcome_message, :as => :text, :input_html => {:class => "span6", :rows => 6} %>
             <%= form.input :time_zone, :as => :time_zone, :input_html => {:class => "large"} %>
+            <%= form.input :public_registry, :as => :boolean%>
+            <%= form.input :private_registry, :as => :boolean %>
+            <%= form.input :registry_domain, :input_html => {:class => "span6"}%>
           <% end %>
 
           <%= form.buttons :class => "fieldset-admin" do %>

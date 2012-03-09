@@ -16,7 +16,7 @@ feature 'Course navigation', %q{
   scenario 'List all available courses' do
     courses = (1..5).map do
       course = Factory(:course, :network => @network)
-      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     end
 
     visit courses_url(:subdomain => @network.subdomain)
@@ -25,10 +25,10 @@ feature 'Course navigation', %q{
 
   scenario 'Join a course' do
     course = Factory(:course, :network => @network)
-    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
 
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.course.request_join_student')
 
     page.current_url.should match courses_path
 
@@ -38,16 +38,16 @@ feature 'Course navigation', %q{
 
   scenario 'Cannot create two requests to join the same course' do
     course = Factory(:course, :network => @network)
-    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
 
     visit courses_url(:subdomain => @network.subdomain)
-    click_link I18n.t('courses.course.request_join')
+    click_link I18n.t('courses.course.request_join_student')
 
     @student.enrollments.count.should == 1
 
     # Since the view does not have a link to request again,
     # we must manually fire a post request
-    page.driver.post(course_requests_url(course, :subdomain => @network.subdomain))
+    page.driver.post(course_requests_url(course,:role => "student", :subdomain => @network.subdomain))
     page.current_url.should match course_path(course)
 
     @student.enrollments.count.should == 1

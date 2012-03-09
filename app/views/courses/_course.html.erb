@@ -10,16 +10,28 @@
       <% if !enrollment %>
         <span class="label-tag notice course-notification">
           <% unless accessible_courses.include? course %>
-            <%= link_to t(".request_join"), course_requests_path(course), :method => :post %>
+            <%= link_to t(".request_join_student"), course_requests_path(course, :role => 'student'), :method => :post %>
           <% end %>
         </span>
+        <%if current_user.teacher?%>
+          <br />
+          <span class="label-tag notice course-notification">
+            <%= link_to t(".request_join_teacher"), course_requests_path(course, :role => 'teacher'), :method => :post %>
+          </span>
+        <%end%>
         <% elsif enrollment.pending? %>
           <span class="label-tag important"><%= t('.join_requested') %></em>
 
         <% elsif enrollment.rejected? %>
           <span class="label-tag important"><%= t('.join_rejected') %></span>
-          <%= link_to t(".request_join_again"), course_requests_path(course), :method => :post %>
-
+          <br />
+          <%= link_to t(".request_join_again"), course_requests_path(course, :role => 'student'), :method => :post %>
+          <%if current_user.teacher?%>
+          <br />
+          <span class="label-tag notice course-notification">
+            <%= link_to t(".request_join_teacher"), course_requests_path(course, :role => 'teacher'), :method => :post %>
+          </span>
+        <%end%>
         <% elsif enrollment.accepted? %>
           <span class="label-tag success"><%= t('.join_accepted') %></span>
 

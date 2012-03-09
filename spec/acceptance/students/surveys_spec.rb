@@ -12,7 +12,7 @@ feature 'Surveys', %q{
     @teacher = Factory(:teacher, :networks => [@network])
     @course  = Factory(:course, :network => @network)
     @course.enrollments.create(:user => @student, :role => 'student', :state => 'accepted')
-    @course.enrollments.create(:user => @teacher, :role => 'teacher', :admin => true)
+    @course.enrollments.create(:user => @teacher, :role => 'teacher', :admin => true, :state => "accepted")
     @survey  = Factory(:published_survey, :course => @course)
     sign_in_with @student, :subdomain => @network.subdomain
   end

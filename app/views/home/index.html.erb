@@ -19,7 +19,9 @@
       <% end %>
     </div>
     <div class="span5">
+      <%if @network and @network.public_registry?%>
       <%= render :partial => 'registrations/form', :locals => {:resource => @user, :resource_name => 'student_user', :url => student_user_registration_path} %>
+      <%end%>
     </div>
   </div>
   <%= render :partial => "shared/footer" %>

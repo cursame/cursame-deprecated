@@ -44,6 +44,7 @@ class CoursesController < ApplicationController
     @course = accessible_course
     if current_user.manageable_courses.include? @course
       @pending_students = @course.pending_students
+      @pending_teachers = @course.pending_teachers
     end
     @students = @course.students
     @teachers = @course.teachers

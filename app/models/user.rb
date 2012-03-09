@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                   :through => :enrollments # may go away
-  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
+  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted'"
   has_many :manageable_courses,        :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
   has_many :manageable_assignments,    :through => :manageable_courses,     :class_name => 'Assignment',  :source => :assignments
   has_many :manageable_surveys,        :through => :manageable_courses,     :class_name => 'Survey',      :source => :surveys
@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)
+  
+  validate :correct_email_if_private_registration
 
   validates_acceptance_of :terms_of_service
 
@@ -116,6 +118,17 @@ class User < ActiveRecord::Base
       Network.last.subdomain
     elsif !self.networks.blank?
       self.networks.first.subdomain
+    end
+  end
+
+  private
+  def correct_email_if_private_registration
+    network = self.networks.first
+    if network
+      permitted_email = network.registry_domain.downcase if network.private_registry
+      if self.new_record? and network.private_registry and !self.email.downcase[permitted_email]
+        errors.add(:email, I18n.t('.user.errors.email_not_allowed'))
+      end
     end
   end
 

@@ -7,7 +7,8 @@
     </div>
     <div class="span5-5">
       <%= link_to(member.name, user_path(member)) %><br />
-      <%= mail_to member.email %>
+      <%= mail_to member.email %><br />
+      <%= t('.role')%>: <%= t(".#{request.role}")%>
     </div>
     <div class="span3-5">
       <% if current_user.manageable_courses.include? @course %>

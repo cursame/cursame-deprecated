@@ -10,7 +10,7 @@ feature 'Manage discussions', %q{
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
     @course  = Factory(:course, :network => @network)
-    @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     @discussion = Factory(:discussion, :course => @course, :starter => @teacher, :comments => (1..3).map { Factory(:comment, :user => @teacher)})
     sign_in_with @teacher, :subdomain => @network.subdomain
   end

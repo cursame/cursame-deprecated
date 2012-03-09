@@ -10,7 +10,7 @@ feature 'Manage course wall', %q{
     @network = Factory(:network)
     @teacher = Factory(:teacher, :networks => [@network])
     @course  = Factory(:course, :network => @network)
-    Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'teacher')
+    Enrollment.create(:course => @course, :user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
