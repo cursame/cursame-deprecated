@@ -13,7 +13,7 @@ feature 'Course interactions', %q{
     @teacher = Factory(:teacher, :networks => [@network])
 
     @student.enrollments.create(:course => @course, :state => 'accepted', :role => 'student')
-    @teacher.enrollments.create(:course => @course, :admin => true, :role => 'teacher')
+    @teacher.enrollments.create(:course => @course, :admin => true, :role => 'teacher', :state => "accepted")
 
     sign_in_with @student, :subdomain => @network.subdomain
   end
@@ -30,7 +30,7 @@ feature 'Course interactions', %q{
 
   scenario 'view teachers on this course' do
     other_teacher = Factory(:teacher, :networks => [@network])
-    @course.enrollments.create(:user => other_teacher, :admin => 'true', :role => 'teacher')
+    @course.enrollments.create(:user => other_teacher, :admin => 'true', :role => 'teacher', :state => "accepted")
 
     visit members_for_course_url(@course, :subdomain => @network.subdomain)
     page.should have_css('.teacher', :count => 2)

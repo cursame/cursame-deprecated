@@ -16,7 +16,7 @@ feature 'Course navigation', %q{
   scenario 'List all available courses' do
     courses = (1..5).map do
       course = Factory(:course, :network => @network)
-      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     end
 
     visit courses_url(:subdomain => @network.subdomain)
@@ -25,7 +25,7 @@ feature 'Course navigation', %q{
 
   scenario 'Join a course' do
     course = Factory(:course, :network => @network)
-    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
 
     visit courses_url(:subdomain => @network.subdomain)
     click_link I18n.t('courses.course.request_join_student')
@@ -38,7 +38,7 @@ feature 'Course navigation', %q{
 
   scenario 'Cannot create two requests to join the same course' do
     course = Factory(:course, :network => @network)
-    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+    course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
 
     visit courses_url(:subdomain => @network.subdomain)
     click_link I18n.t('courses.course.request_join_student')
