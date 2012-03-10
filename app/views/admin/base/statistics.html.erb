@@ -1,6 +1,101 @@
-<h1><%= t('.super_admin.shared.existing_networks') %></h1>
+<h1><%= t('super_admin.shared.platform_statistics') %></h1>
 
-<p>
-<%= link_to 'New Network', new_admin_network_path %>
-</p>
+<h2><%= t('super_admin.statistics.networks_users') %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= t('super_admin.statistics.data') %></th>
+      <th><%= t('super_admin.statistics.registry') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= t('super_admin.statistics.total_networks') %></td>
+      <td><%= Network.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_users') %></td>
+      <td><%= User.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_supervisors') %></td>
+      <td><%= User.total_supervisors %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_teachers') %></td>
+      <td><%= User.total_teachers %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_students') %></td>
+      <td><%= User.total_students %></td>
+    </tr>
+  </tbody>
+</table>
 
+<h2><%= t('super_admin.statistics.courses') %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= t('super_admin.statistics.data') %></th>
+      <th><%= t('super_admin.statistics.registry') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= t('super_admin.statistics.total_courses') %></td>
+      <td><%= Course.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_open_courses') %></td>
+      <td><%= Course.total_open_courses %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_private_courses') %></td>
+      <td><%= Course.total_private_courses %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_assignments') %></td>
+      <td><%= Assignment.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_discussions') %></td>
+      <td><%= Discussion.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_surveys') %></td>
+      <td><%= Survey.count %></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><%= t('super_admin.statistics.comments') %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= t('super_admin.statistics.data') %></th>
+      <th><%= t('super_admin.statistics.registry') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= t('super_admin.statistics.total_comments') %></td>
+      <td><%= Comment.count %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_comments_assignments') %></td>
+      <td><%= Comment.total_comments_assignments %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_comments_discussions') %></td>
+      <td><%= Comment.total_comments_discussions %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_comments_user_walls') %></td>
+      <td><%= Comment.total_comments_user_walls %></td>
+    </tr>
+    <tr>
+      <td><%= t('super_admin.statistics.total_comments_course_walls') %></td>
+      <td><%= Comment.total_comments_course_walls %></td>
+    </tr>
+  </tbody>
+</table>

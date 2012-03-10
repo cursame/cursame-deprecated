@@ -31,6 +31,14 @@ class Course < ActiveRecord::Base
     teachers.where("enrollments.admin" => true).first or Eater.new
   end
 
+  def self.total_open_courses
+    self.where(:public => true).count
+  end
+
+  def self.total_private_courses
+    self.where(:public => false).count
+  end
+
   #Metodo que regresa en un string separado por comas los emails de los usuarios del curso
   def all_emails(current_user)
     mails = []

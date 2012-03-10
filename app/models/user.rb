@@ -66,6 +66,18 @@ class User < ActiveRecord::Base
     role == 'admin'
   end
 
+  def self.total_supervisors
+    self.where(:role => "supervisor").count
+  end
+
+  def self.total_teachers
+    self.where(:role => "teacher").count
+  end
+
+  def self.total_students
+    self.where(:role => "student").count
+  end
+
   def role_for_course course
     if self.supervisor?
       "supervisor"

@@ -28,4 +28,5 @@ class Assignment < ActiveRecord::Base
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_updated'
     end
   end
+
 end
