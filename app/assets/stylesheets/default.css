@@ -896,6 +896,14 @@ fieldset ol li.boolean {
 	padding-left: 98px;
 }
 
+fieldset ol li.registry_li label {
+  width: auto !important;
+}
+
+fieldset ol li.boolean_li label {
+  width: auto !important;
+}
+
 fieldset.inputs {
 	
 }
