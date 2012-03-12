@@ -132,6 +132,8 @@ es:
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
         public_registry: '¿Registro abierto?'
+        registry_domain: 'Dominio de correo'
+        private_registry: 'Registro privado?'
       delivery:
         content: Contenido
       question:
@@ -370,14 +372,14 @@ es:
       admin_menu:
         dashboard: 'Panel de control'
         admin: 'Administración'
+        configuration: "Configuración"
         courses: Cursos
         teachers: Maestros
         students: Estudiantes
         supervisors: Administradores
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
-        new_user: Nuevo usuario
-        configuration: Configuración
+        new_user: "Crear nuevo usuario"
       teachers:
         approve: Aceptar
         reject: Rechazar
@@ -387,6 +389,9 @@ es:
         update: Actualizar
         change_role: Cambiar rol
         destroy: Eliminar
+    config: 
+      configuration: "Configuración"
+      registry: 'Registro de usuarios'
     pending_approvals:
       approve: Aceptar
       reject: Rechazar

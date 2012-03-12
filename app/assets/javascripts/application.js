@@ -201,6 +201,24 @@ $(function(){
   $("textarea.textarea-size").TextAreaExpander(77, 300);
   
   // End of TextAreaExpander areas.
+
+  /* Toggle domain registry on supervisor config form */
+
+  if ($("#network_registry_domain").val() !== "") {
+    $("#network_private_registry").attr('checked', 'true');
+  } else {
+    $("#network_registry_domain_input").hide();
+  }
+
+  $("#network_private_registry").click(function() {
+    if ($("#network_registry_domain_input").is(':visible')) {
+      $("#network_registry_domain").val("");
+      return $("#network_registry_domain_input").slideUp();
+    } else {
+      return $("#network_registry_domain_input").slideDown();
+    }
+  });
+
 });
 
 var toggleImageComment = function(textarea, url){

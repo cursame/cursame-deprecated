@@ -17,7 +17,7 @@
       </div>
 
       <div class="span9">
-        <div class="register-box">
+        <h2><%= t('supervisor.shared.admin_menu.new_user') %></h2>
         <%= semantic_form_for @user, :url => users_path, :method => :post  do |form| %>
           <%= form.inputs :basic do %>
             <%= form.input :email, :input_html => { :placeholder => t('forms.email') + " *", :class => "span4" } %>
@@ -33,7 +33,6 @@
           <% end %>
            <span class="fieldset-admin-txt"><%= link_to("Cancelar", supervisor_new_user_path) %></span>
         <% end %>
-        </div>
       </div>
     </div>
     <!-- Contexts or Networks should be in a drop-down or the way Github does Contexts -->

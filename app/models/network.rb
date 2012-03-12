@@ -16,7 +16,7 @@ class Network < ActiveRecord::Base
   
   before_save :downcase_subdomain
   
-  validates_presence_of :registry_domain, :if => :registry_is_private
+  validates_presence_of :registry_domain, :if => :registry_is_private, :on => :update
 
   mount_uploader :logo_file, LogoUploader
   
