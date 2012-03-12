@@ -55,7 +55,6 @@ class Comment < ActiveRecord::Base
   def self.total_comments_course_walls
     self.where(:commentable_type => "Course").count
   end
-  
 
   private
 

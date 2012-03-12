@@ -111,6 +111,7 @@ class User < ActiveRecord::Base
 
   def can_view_comment? comment
     commentable = comment.commentable
+    return true if self.supervisor? #In case is a supervisor can always post comments
     case commentable
     when Assignment
       assignments.include? commentable
@@ -122,7 +123,13 @@ class User < ActiveRecord::Base
       deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
     when User
       true
+    when Comment
+      self.supervisor?
     end
+  end
+
+  def can_manage_course? course
+    (self.supervisor? and !course.network.users.find(self.id).nil?) || self.manageable_courses.where('courses.id' => course).count > 0
   end
 
   def devise_mailer_subdomain

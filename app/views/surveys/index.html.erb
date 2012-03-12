@@ -25,7 +25,7 @@
             <h2><%= t('.header') %></h2>
           </div>
           <div class="span3" style="margin-left:45px;">
-            <%- if current_user.manageable_courses.where('courses.id' => @course).count > 0 %>
+            <%- if current_user.can_manage_course? @course %>
               <%= link_to t('.new_survey'), new_course_survey_path(@course), :class => "btn small right" %>
             <% end %>
           </div>
