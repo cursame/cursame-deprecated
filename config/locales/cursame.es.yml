@@ -131,9 +131,9 @@ es:
         slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
-        public_registry: '¿Registro abierto?'
+        public_registry: '¿Mostrar forma de registro?'
         registry_domain: 'Dominio de correo'
-        private_registry: 'Registro privado?'
+        private_registry: 'Solo aceptar registros de un dominio de correo'
       delivery:
         content: Contenido
       question:
@@ -418,6 +418,9 @@ es:
     import_students: "Importar estudiantes"
     export_teachers: "Exportar maestros"
     import_teachers: "Importar maestros"
+    networks:
+      edit:
+        example: 'Ejemplo:'
 
   views:
     pagination:
