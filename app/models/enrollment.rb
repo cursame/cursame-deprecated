@@ -35,6 +35,7 @@ class Enrollment < ActiveRecord::Base
   end
 
   def enrollment_accepted
+    self.update_attribute(:admin, true) if self.role == "teacher"
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
     StudentMailer.accepted_on_course(self.user, self.course, course.network).deliver
   end
@@ -42,16 +43,20 @@ class Enrollment < ActiveRecord::Base
   def student?
     role == 'student'
   end
+  
+  def new_teacher?
+    role == 'teacher' and self.course.teachers.count >= 1
+  end
 
   def pending?
-    student? && state == 'pending'
+    student? or new_teacher? && state == 'pending'
   end
 
   def rejected?
-    student? && state == 'rejected'
+    student? or new_teacher? && state == 'rejected'
   end
 
   def accepted?
-    student? && state == 'accepted'
+    student? or new_teacher? && state == 'accepted'
   end
 end

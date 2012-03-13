@@ -64,6 +64,7 @@ Cursame::Application.routes.draw do
     get :dashboard
     get :teachers
     get :students
+    get :supervisors
     get :pending_approvals
     get :import_users
     post :import_csv
@@ -73,7 +74,9 @@ Cursame::Application.routes.draw do
 
   namespace :admin do
     resources :networks
+    get '/statistics', :to => 'base#statistics', :as => :statistics
   end
+
   match '/admin' => 'admin/base#admin'
 
   resources :comments, :only => [:update, :destroy, :show]

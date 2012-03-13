@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                   :through => :enrollments # may go away
-  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted' OR enrollments.role = 'teacher'"
+  has_many :visible_courses,           :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => "enrollments.state = 'accepted'"
   has_many :manageable_courses,        :through => :enrollments,            :class_name => 'Course',      :source => :course,      :conditions => {'enrollments.admin' => true, 'enrollments.role' => 'teacher'}
   has_many :manageable_assignments,    :through => :manageable_courses,     :class_name => 'Assignment',  :source => :assignments
   has_many :manageable_surveys,        :through => :manageable_courses,     :class_name => 'Survey',      :source => :surveys
@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)
+  
+  validate :correct_email_if_private_registration
 
   validates_acceptance_of :terms_of_service
 
@@ -62,6 +64,18 @@ class User < ActiveRecord::Base
   
   def admin?
     role == 'admin'
+  end
+
+  def self.total_supervisors
+    self.where(:role => "supervisor").count
+  end
+
+  def self.total_teachers
+    self.where(:role => "teacher").count
+  end
+
+  def self.total_students
+    self.where(:role => "student").count
   end
 
   def role_for_course course
@@ -97,6 +111,7 @@ class User < ActiveRecord::Base
 
   def can_view_comment? comment
     commentable = comment.commentable
+    return true if self.supervisor? #In case is a supervisor can always post comments
     case commentable
     when Assignment
       assignments.include? commentable
@@ -108,7 +123,13 @@ class User < ActiveRecord::Base
       deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
     when User
       true
+    when Comment
+      self.supervisor?
     end
+  end
+
+  def can_manage_course? course
+    (self.supervisor? and !course.network.users.find(self.id).nil?) || self.manageable_courses.where('courses.id' => course).count > 0
   end
 
   def devise_mailer_subdomain
@@ -116,6 +137,17 @@ class User < ActiveRecord::Base
       Network.last.subdomain
     elsif !self.networks.blank?
       self.networks.first.subdomain
+    end
+  end
+
+  private
+  def correct_email_if_private_registration
+    network = self.networks.first
+    if network
+      permitted_email = network.registry_domain.downcase if network.private_registry
+      if self.new_record? and network.private_registry and !self.email.downcase[permitted_email]
+        errors.add(:email, I18n.t('.user.errors.email_not_allowed'))
+      end
     end
   end
 

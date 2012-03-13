@@ -51,7 +51,7 @@ class AssignmentsController < ApplicationController
   end
 
   def manageable_course
-    @course ||= current_user.manageable_courses.find params[:course_id]
+    @course ||= (current_user.supervisor? ? current_network.courses.find(params[:course_id]) : current_user.manageable_courses.find(params[:course_id]))
   end
 
   def accessible_assignments

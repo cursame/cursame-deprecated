@@ -3,6 +3,7 @@
   <%= tab.dashboard t('.dashboard'), supervisor_dashboard_path %>
   <%= tab.configuration t('.configuration'), edit_supervisor_network_path %>
   <%= tab.courses t('.courses'), courses_path %>
+  <%= tab.supervisors t('.supervisors'), supervisor_supervisors_path %>
   <%= teachers_notification_tab(@pending_teachers_total, tab) %>
   <%= tab.students t('.students'), supervisor_students_path %>
   <%= tab.new_user t('.new_user'), supervisor_new_user_path %>

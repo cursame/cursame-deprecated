@@ -34,11 +34,11 @@ class CommentsController < ApplicationController
     @commentable ||=
       case params[:conditions][:commentable]
       when :assignment
-        current_user.assignments.find params[:commentable_id]
+        (current_user.supervisor? ? current_network.assignments.find(params[:commentable_id]) : current_user.assignments.find(params[:commentable_id]))
       when :course
-        current_user.courses.order.find params[:commentable_id]
+        (current_user.supervisor? ? current_network.courses.find(params[:commentable_id]) : current_user.courses.order.find(params[:commentable_id]))
       when :discussion
-        current_user.discussions.find params[:commentable_id]
+        (current_user.supervisor? ? current_network.discussions.find(params[:commentable_id]) : current_user.discussions.find(params[:commentable_id]))
       when :user
         current_network.users.find params[:commentable_id]
       when :delivery

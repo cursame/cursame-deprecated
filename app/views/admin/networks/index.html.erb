@@ -8,8 +8,10 @@
 <div class="networks">
   <% @networks.each do |network| %>
     <div class="network">
+    	<hr />
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
-      <strong>Subdomain:</strong> <%= network.subdomain %>
+      <strong>Subdomain:</strong> <%= network.subdomain %><br />
+      <strong>Users count:</strong> <%= network.users.count%>
     </div>
   <% end %>
 </div>

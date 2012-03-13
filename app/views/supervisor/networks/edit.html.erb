@@ -4,7 +4,7 @@
     <div class="span16">
       <ul class="breadcrumb">
         <li><%= link_to(t('supervisor.dashboard.admin'), supervisor_dashboard_path) %> <span class="divider">/</span></li>
-        <li><%= t('.configuration') %></li>
+        <li><%= t('supervisor.config.configuration') %></li>
       </ul>  
     </div>
   </div>
@@ -16,8 +16,8 @@
         <%= render :partial => "supervisor/shared/admin_menu" %>
       </div>
       
-      <div class="span9">
-    
+      <div class="span11">
+        <h2><%= t('supervisor.config.configuration') %></h2>
         <%= semantic_form_for [:supervisor, @network] do |form| %>
           <%= form.inputs :file do %>
             <li class='preview'><img src="<%= @network.logo_file.thumb.url %>"/></li>
@@ -30,6 +30,15 @@
             <%= form.input :welcome_message, :as => :text, :input_html => {:class => "span6", :rows => 6} %>
             <%= form.input :time_zone, :as => :time_zone, :input_html => {:class => "large"} %>
           <% end %>
+          
+          <%= form.inputs do%>
+            <h3><%= t('supervisor.config.registry') %></h3>
+            <%= form.input :public_registry, :as => :boolean, :wrapper_html => {:class => "boolean_li"}%>
+          <% end %>
+          <%= form.inputs do%>
+            <%= form.input :private_registry, :as => :boolean, :wrapper_html => {:class => "boolean_li"} %>
+            <%= form.input :registry_domain, :label => "", :wrapper_html => {:class => "registry_li"}, :input_html => {:class => "span3", :rows => 3, :placeholder => "#{t('.example')} gmail.com"} %>
+          <%end%>
 
           <%= form.buttons :class => "fieldset-admin" do %>
             <%= form.commit_button :label => "Guardar Cambios", :button_html => {:id => :submit, :class => 'btn right'} %>

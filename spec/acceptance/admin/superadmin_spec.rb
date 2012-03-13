@@ -69,6 +69,7 @@ feature 'SuperAdmin', %q{
     page.current_url.should match admin_network_path(network)
     page.should have_content network.name
     page.should have_content network.subdomain
+    page.should have_content network.users.count
   end
 
   scenario 'edit an existing network' do

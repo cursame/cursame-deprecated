@@ -193,6 +193,7 @@ es:
     assignment_updated: 'Tarea actualizada'
     user_registration_accepted: 'Maestro autorizado correctamente'
     user_created: 'Usuario creado correctamente. Recibirá un correo con su contraseña.'
+    assignment_deleted: 'Tarea eliminada'
 
   errors:
     format: "%{attribute} %{message}"

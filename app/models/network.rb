@@ -15,6 +15,8 @@ class Network < ActiveRecord::Base
   validates_format_of     :subdomain, :with => /^[\-a-z0-9]+$/i
   
   before_save :downcase_subdomain
+  
+  validates_presence_of :registry_domain, :if => :registry_is_private, :on => :update
 
   mount_uploader :logo_file, LogoUploader
   
@@ -22,5 +24,9 @@ class Network < ActiveRecord::Base
   
   def downcase_subdomain
     self.subdomain.downcase! unless self.subdomain.blank?
+  end
+  
+  def registry_is_private
+    self.private_registry
   end
 end

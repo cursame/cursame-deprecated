@@ -13,8 +13,8 @@ feature 'Manage assignments', %q{
     @course     = Factory(:course,  :network => @network)
     @assignment = Factory(:assignment, :course => @course)
     @delivery   = Factory(:delivery, :assignment => @assignment, :user => @student)
-    @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
-    @course.enrollments.create(:user => @student, :admin => true, :role => 'student')
+    @course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
+    @course.enrollments.create(:user => @student, :admin => true, :role => 'student', :state => "accepted")
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
