@@ -131,9 +131,9 @@ es:
         slogan: Frase corta
         welcome_message: Mensaje de bienvenida
         time_zone: Zona horaria
-        public_registry: '¿Mostrar forma de registro?'
+        public_registry: "¿Permitir registro público en la red?"
         registry_domain: 'Dominio de correo'
-        private_registry: 'Solo aceptar registros de un dominio de correo'
+        private_registry: "Dominio de correo privado en nuevos usuarios"
       delivery:
         content: Contenido
       question:
