@@ -1,4 +1,4 @@
-var textarea;
+var txtarea;
 <% if @comment.commentable_type === 'Comment' %>
     var node = $('#comment_<%= @comment.commentable.id %>').closest('.comment').find('.comment-form'),
         options,commnet_link;
@@ -10,7 +10,7 @@ var textarea;
         options.html(commnet_link);
 <%else%>
     var node = $('div.comments');
-        txtarea =$('textarea', $('div.actions')) ;
+        txtarea =$('textarea', $('div.actions'));
         $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
 <%end%>
 txtarea.val('');

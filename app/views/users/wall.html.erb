@@ -20,7 +20,7 @@
         <div class="actions">
           <%= render :partial => 'comments/form',  :locals => {:commentable => @user} %>
         </div>
-        <div id="comments">
+        <div id="user_comments">
           <div class="page">
             <%= render :partial => 'comments/comments', :locals => {:commentable => @user, :comments => @comments} %>
           </div>
