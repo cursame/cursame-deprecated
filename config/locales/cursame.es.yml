@@ -61,6 +61,7 @@ es:
   flash:
     course_created: Curso creado
     course_updated: El curso fue actualizado
+    course_destroyed: El curso fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
     assignment_created: La tarea fue creada
@@ -237,6 +238,7 @@ es:
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
+      confirm_delete: Esta acción eliminará todos los recursos del curso ¿Estás seguro de querer eliminarlo?
 
     index:
       title: Todos los cursos disponibles
@@ -356,7 +358,11 @@ es:
     by: 'por'
 
   comments:
+    destroy:
+      remove: eliminar comentario
     comments:
+      remove: eliminar comentario
+    comment_tpl:
       remove: eliminar comentario
 
   settings:

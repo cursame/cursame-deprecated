@@ -39,7 +39,9 @@
       
     <% if current_user.manageable_courses.include? course %>
       <span class="label-tag notice course-notification"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
-      <!--<span class="label-tag important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('confirm_delete'), :method => :delete) %></span>-->
+      <% if course.can_be_destroyed_by? current_user %>
+        <span class="label-tag important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('.confirm_delete'), :method => :delete) %></span>
+      <% end %>
     <% end %>
     </div>
   </div>
