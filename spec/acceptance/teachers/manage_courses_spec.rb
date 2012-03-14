@@ -56,7 +56,7 @@ feature 'Manage courses', %q{
   scenario 'view my courses' do
     courses = (1..3).map do
       course = Factory(:course, :network => @network)
-      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     end
 
     (1..2).map { Factory(:course, :network => @network) }
