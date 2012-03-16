@@ -31,7 +31,7 @@ es:
 
 
   confirm_delete: ¿Estas Seguro?
-  comment: comentar
+  comment: responder
 
   forms:
     email: 'Email'
