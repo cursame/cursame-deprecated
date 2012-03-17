@@ -11,6 +11,9 @@ module ActiveRecord
         metacafe     :width => 400, :height => 250
         # This is defined in config/initializers/auto_html.rb
         dailymotion_with_wmode :width => 400, :height => 250
+        slideshare_support :width => 400
+        ustream_support :width => 400
+        prezi_with_wmode :width => 400, :height => 360
         image_with_link
         link :target => "_blank", :rel => "nofollow"
         simple_format
