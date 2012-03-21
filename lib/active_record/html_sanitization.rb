@@ -14,6 +14,7 @@ module ActiveRecord
         slideshare_support :width => 400
         ustream_support :width => 400
         prezi_with_wmode :width => 400, :height => 360
+        livestrem_support :width => 400, :height => 360
         image_with_link
         link :target => "_blank", :rel => "nofollow"
         simple_format
