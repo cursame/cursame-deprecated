@@ -15,7 +15,9 @@
         
       </div>
       <div class="span10">
-        <h2><%= t('.title') %></h2>
+        <div class="underline padding-top">
+          <h2><%= t('.title') %></h2>
+        </div>
       
           <h3><%= t('.change_password') %></h3>
           <%= semantic_form_for current_user, :url => password_settings_path do |form| %>
@@ -28,6 +30,15 @@
             <% end %>
           <% end %>
 
+          <h3><%= t('.notifications') %></h3>
+          <%= semantic_form_for current_user, :url => notifications_settings_path do |form| %>
+            <%= form.inputs do %>
+              <%= form.input :accepting_emails, :as => :boolean, :label => t('forms.accepting_emails'), :wrapper_html => { :class => "boolean_li" }%>
+            <% end %>
+            <%= form.buttons do %>
+              <%= form.commit_button :button_html => {:id => :submit, :class => "btn", :style => "margin-left:205px;"} %>
+            <% end %>
+          <% end %>
       </div>
     </div>
 

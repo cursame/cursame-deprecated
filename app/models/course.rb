@@ -42,7 +42,7 @@ class Course < ActiveRecord::Base
   #Metodo que regresa en un string separado por comas los emails de los usuarios del curso
   def all_emails(current_user)
     mails = []
-    self.users.map{ |u| mails << u.email unless u == current_user }.join(", ")
+    self.users.map{ |u| mails << u.email unless u == current_user || !u.accepting_emails }.join(", ")
   end
 end
 
