@@ -239,7 +239,6 @@ es:
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
       confirm_delete: Esta acción eliminará todos los recursos del curso ¿Estás seguro de querer eliminarlo?
-
     index:
       title: Todos los cursos disponibles
     wall:
@@ -250,6 +249,7 @@ es:
       new_assignment: 'Nueva Tarea'
       edit_assignment: 'Editar Tarea'
       date_time: 'Fecha Límite'
+      start_at: 'Fecha de Inicio'
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
