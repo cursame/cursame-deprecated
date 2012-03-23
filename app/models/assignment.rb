@@ -28,6 +28,10 @@ class Assignment < ActiveRecord::Base
 
   html_sanitized :description
   
+  before_create do
+    self.start_at ||= DateTime.now
+  end
+  
   after_create do
     if self.start_at <= DateTime.now
       self.publish
