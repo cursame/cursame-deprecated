@@ -224,6 +224,7 @@ ActiveRecord::Schema.define(:version => 20120321230731) do
     t.string   "linkedin_link"
     t.string   "avatar_file"
     t.string   "state",                                 :default => "active"
+    t.boolean  "accepting_emails",                      :default => true
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

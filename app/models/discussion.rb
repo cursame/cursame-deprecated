@@ -23,7 +23,7 @@ class Discussion < ActiveRecord::Base
   
   def participants_emails(current_user)
     emails = [starter.email]
-    self.comments.each{|c| emails << c.user.email unless c.user == current_user }
+    self.comments.each{|c| emails << c.user.email unless c.user == current_user || !c.user.accepting_emails }
     emails.uniq.join(", ")
   end
 end

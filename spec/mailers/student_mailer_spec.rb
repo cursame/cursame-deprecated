@@ -6,6 +6,7 @@ describe StudentMailer do
     @student = Factory(:student)
     @network = Factory(:network)
     @course = Factory(:course)
+    Enrollment.create(:course => @course, :user => @student, :admin => false, :role => 'student', :state => 'accepted')
   end
 
   describe "accepted_on_course" do
@@ -23,11 +24,11 @@ describe StudentMailer do
   end
 
   describe "new_homework" do
-    let(:mail) { StudentMailer.new_homework(User.where("role = 'student'"), @course, @network) }
+    let(:mail) { StudentMailer.new_homework(@course.students, @course, @network) }
 
     it "renders the headers" do
       mail.subject.should eq("Nueva tarea en uno de tus cursos")
-      mail.to.should eq([@student.email])
+      mail.to.should eq([@course.all_emails(nil)])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
@@ -38,11 +39,11 @@ describe StudentMailer do
 
   describe "new_survey" do
     survey = Factory(:published_survey)
-    let(:mail) { StudentMailer.new_survey(User.where("role = 'student'"), @course, survey, @network) }
+    let(:mail) { StudentMailer.new_survey(@course.students, @course, survey, @network) }
 
     it "renders the headers" do
       mail.subject.should eq("Nuevo cuestionario en uno de tus cursos")
-      mail.to.should eq([@student.email])
+      mail.to.should eq([@course.all_emails(nil)])
       mail.from.should eq(["noreply@cursa.me"])
     end
 

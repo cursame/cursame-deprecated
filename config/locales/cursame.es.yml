@@ -54,6 +54,7 @@ es:
     send_survey_reply: 'Guardar mis respuestas'
     update_survey_reply: 'Actualizar mis respuestas'
     terms: 'Acepto los términos y condiciones'
+    accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
     teacher_register: 'Registro como maestro'
@@ -78,6 +79,8 @@ es:
     survey_deleted: El cuestionario fue eliminado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
+    emails_true: 'Se ha activado la recepción de emails en notificaciones'
+    emails_false: 'Se ha desactivado la recepción de emails en notificaciones'
     errors:
       assignment_expired: La fecha de entrega ya pasó
       survey_expired: La fecha de entrega ya pasó
@@ -367,8 +370,9 @@ es:
 
   settings:
     show:
-      title:  'Configuraciones'
+      title:  'Configuración de la cuenta'
       change_password: 'Cambiar contraseña'
+      notifications: 'Notificaciones'
 
   breadcrumb:
     dashboard: 'Dashboard'

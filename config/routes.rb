@@ -52,6 +52,7 @@ Cursame::Application.routes.draw do
 
   resource :settings, :only => [:show] do
     put :password
+    put :notifications
   end
 
   namespace :supervisor do

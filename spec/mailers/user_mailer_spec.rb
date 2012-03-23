@@ -103,4 +103,29 @@ describe UserMailer do
     end
   end
 
+  describe "new_user_by_supervisor" do
+    before do
+      @password = Devise.friendly_token[0,20]
+      @user = Factory(:user)
+      @network = Factory(:network)
+      @user.password = @password
+      @user.networks = [@network]
+      @user.save
+    end
+
+    let(:mail) { UserMailer.new_user_by_supervisor(@user, @network, @password) }
+
+    it "renders the headers" do
+      mail.subject.should eq("Bienvenido a Cúrsame")
+      mail.to.should eq([(@user.email)])
+      mail.from.should eq(["noreply@cursa.me"])
+    end
+
+    it "renders the body" do
+      mail.body.encoded.should match("Bienvenido #{@user.name}")
+      mail.body.encoded.should match("Has sido dado de alta en Cúrsame por el administrador de la red #{@network.name}")
+      mail.body.encoded.should match("Tu contraseña para ingresar es: #{@password}")
+    end
+  end
+
 end
