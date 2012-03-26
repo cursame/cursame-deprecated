@@ -11,7 +11,6 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = manageable_course.assignments.build
-    @assignment.start_at = DateTime.now
   end
 
   def create
