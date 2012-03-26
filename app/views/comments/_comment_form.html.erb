@@ -2,8 +2,7 @@
     <%= form.inputs :text do %>
     <%= form.input :text, :label => false, :input_html => {:rows => 1, :class => "span8", :onfocus => "toggleImageComment(this,'" + link_to(image_tag(current_user.avatar_file.xxsmall.url), user_path(current_user)) + "')"} %>
     <% end %>
-  <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
   <%= form.buttons do %>
-    <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :submit, :class => "btn right"} %>
+    <%= render :partial => 'shared/assets_fields_for_comment', :locals => {:form => form} %>
   <% end %>
 <% end %>
