@@ -64,6 +64,15 @@ class CoursesController < ApplicationController
     course = Course.new :logo_file => uploaded_file
     render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
   end
+  
+  def destroy
+    course = Course.find(params[:id])
+    if course.can_be_destroyed_by? current_user
+      course.destroy
+      flash[:notice] = t('flash.course_destroyed')
+    end
+    redirect_to courses_path
+  end
 
   protected
   def accessible_course

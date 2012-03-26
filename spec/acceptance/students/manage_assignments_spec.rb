@@ -15,4 +15,6 @@ feature 'Manage assignments', %q{
   end
 
   it_should_behave_like 'has basic actions for assignments'
+  
+  
 end

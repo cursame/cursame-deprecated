@@ -23,4 +23,10 @@ class SettingsController < ApplicationController
     end
   end
 
+  def notifications
+    current_user.update_attributes(:accepting_emails => params[:user][:accepting_emails].to_i)
+    redirect_to dashboard_path, :notice =>  I18n.t("flash.emails_#{current_user.accepting_emails}")
+  end
+
+
 end

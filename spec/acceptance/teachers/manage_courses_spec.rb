@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'Manage courses', %q{
   In order to teach my course
   As a teacher
-  I want to create and manage courses
+  I want to create, manage and join courses
 } do
 
   background do
@@ -56,12 +56,58 @@ feature 'Manage courses', %q{
   scenario 'view my courses' do
     courses = (1..3).map do
       course = Factory(:course, :network => @network)
-      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher')
+      course.enrollments.create(:user => @teacher, :admin => true, :role => 'teacher', :state => "accepted")
     end
 
     (1..2).map { Factory(:course, :network => @network) }
 
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.course-detail', :count => 4)
+  end
+  
+  scenario 'view all the courses' do
+    (1..2).map { Factory(:course, :network => @network) }
+    
+    visit courses_url(:subdomain => @network.subdomain)
+    page.should have_css('.course', :count => 3)
+    page.should have_css('.success', :count => 1)
+    page.should have_content('Ser maestro del curso')
+  end
+  
+  scenario 'request to join a course as teacher' do
+    (1..2).map { Factory(:course, :network => @network) }
+    
+    visit courses_url(:subdomain => @network.subdomain)
+    click_link('Ser maestro del curso')
+    page.should have_css('.important', :count => 1)
+  end
+  
+  context "I'm the owner of the course" do
+    scenario 'I can delete the course I created' do
+      (1..2).map { Factory(:course, :network => @network) }
+      
+      visit courses_url(:subdomain => @network.subdomain)
+      page.should have_css('.destroy_course', :count => 1)
+      
+      click_link('Eliminar')
+      page.should_not have_css('.destroy_course')
+      page.should_not have_content(@course.name)
+    end
+  end
+  
+  context "I'm NOT the owner of the course" do
+    background do
+      @teacher2 = Factory(:teacher, :networks => [@network])
+      @course.enrollments.create(:user => @teacher2, :admin => true, :role => 'teacher', :state => "accepted")
+      sign_out
+      sign_in_with @teacher2, :subdomain => @network.subdomain
+    end
+    
+    scenario 'I cant delete the course I created' do
+      (1..2).map { Factory(:course, :network => @network) }
+      
+      visit courses_url(:subdomain => @network.subdomain)
+      page.should_not have_css('.destroy_course')
+    end
   end
 end

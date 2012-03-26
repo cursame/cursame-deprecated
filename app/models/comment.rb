@@ -2,12 +2,15 @@ class Comment < ActiveRecord::Base
   default_scope :include => [:commentable]
 
   extend ActiveRecord::HTMLSanitization
+  extend ActiveRecord::AssetsOwner
 
   belongs_to :commentable, :polymorphic => true
   belongs_to :user
   has_many :comments, :as => :commentable
 
   validates_presence_of :text, :commentable, :user
+  
+  can_haz_assets
 
   html_sanitized :text
   

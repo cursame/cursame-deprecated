@@ -2,7 +2,7 @@ class Discussion < ActiveRecord::Base
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
 
-  has_many   :comments,  :as => :commentable
+  has_many   :comments,  :as => :commentable, :dependent => :destroy
   belongs_to :starter, :class_name => 'User', :foreign_key => 'user_id'
   belongs_to :course
 
@@ -23,7 +23,7 @@ class Discussion < ActiveRecord::Base
   
   def participants_emails(current_user)
     emails = [starter.email]
-    self.comments.each{|c| emails << c.user.email unless c.user == current_user }
+    self.comments.each{|c| emails << c.user.email unless c.user == current_user || !c.user.accepting_emails }
     emails.uniq.join(", ")
   end
 end

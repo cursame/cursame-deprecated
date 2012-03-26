@@ -2,7 +2,11 @@ class AssignmentsController < ApplicationController
   set_tab :assignments
 
   def index
-    @assignments = course.assignments.order("due_to DESC")
+    if current_user.student?
+      @assignments = course.assignments.published.order("due_to DESC")
+    else
+      @assignments = course.assignments.order("due_to DESC")
+    end
   end
 
   def new

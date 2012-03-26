@@ -9,6 +9,12 @@
 //= require_tree .
 
 $(function(){
+  // disabling buttons to avoid double posting
+  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').click(function(){
+    $(this).attr('disabled', 'disabled');
+    $(this).parents('form').submit()
+  });
+
   // Survey form
   var questionAndAnswersFieldsets = $('fieldset[data-association="questions"], fieldset[data-association="answers"]');
 

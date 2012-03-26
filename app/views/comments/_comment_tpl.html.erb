@@ -5,6 +5,14 @@
       <h6><%= link_to comment.user.name, user_path(comment.user) %></h6>
       <blockquote>
         <p><%= comment.text %></p>
+        <% if comment.assets.any? %>
+        <p>
+        <% comment.assets.each do |asset| %>
+          <%= image_tag asset.file.thumb_url %>
+          <%= link_to asset.name, asset.file.url %><br />
+        <% end %>
+        </p>
+        <% end %>
         <small>
           <%= time_ago_in_words(comment.created_at) %>
           <% if current_user.can_destroy_comment? comment %>

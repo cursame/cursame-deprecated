@@ -31,7 +31,7 @@ es:
 
 
   confirm_delete: ¿Estas Seguro?
-  comment: comentar
+  comment: responder
 
   forms:
     email: 'Email'
@@ -54,6 +54,7 @@ es:
     send_survey_reply: 'Guardar mis respuestas'
     update_survey_reply: 'Actualizar mis respuestas'
     terms: 'Acepto los términos y condiciones'
+    accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
     teacher_register: 'Registro como maestro'
@@ -61,6 +62,7 @@ es:
   flash:
     course_created: Curso creado
     course_updated: El curso fue actualizado
+    course_destroyed: El curso fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
     assignment_created: La tarea fue creada
@@ -77,6 +79,8 @@ es:
     survey_deleted: El cuestionario fue eliminado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
+    emails_true: 'Se ha activado la recepción de emails en notificaciones'
+    emails_false: 'Se ha desactivado la recepción de emails en notificaciones'
     errors:
       assignment_expired: La fecha de entrega ya pasó
       survey_expired: La fecha de entrega ya pasó
@@ -237,7 +241,7 @@ es:
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
-
+      confirm_delete: Esta acción eliminará todos los recursos del curso ¿Estás seguro de querer eliminarlo?
     index:
       title: Todos los cursos disponibles
     wall:
@@ -248,6 +252,7 @@ es:
       new_assignment: 'Nueva Tarea'
       edit_assignment: 'Editar Tarea'
       date_time: 'Fecha Límite'
+      start_at: 'Fecha de Inicio'
       value: 'Valor'
       period: 'Periodo'
       comments: 'Comentarios'
@@ -356,13 +361,18 @@ es:
     by: 'por'
 
   comments:
+    destroy:
+      remove: eliminar comentario
     comments:
+      remove: eliminar comentario
+    comment_tpl:
       remove: eliminar comentario
 
   settings:
     show:
-      title:  'Configuraciones'
+      title:  'Configuración de la cuenta'
       change_password: 'Cambiar contraseña'
+      notifications: 'Notificaciones'
 
   breadcrumb:
     dashboard: 'Dashboard'
@@ -473,8 +483,10 @@ es:
       subject: Bienvenido a Cúrsame
       
   teacher_mailer:
-    pending_student_on_course:
-      subject: Un alumno ha solicitado acceso a uno de tus cursos
+    pending_user_on_course:
+      subject: Un usuario ha solicitado acceso a uno de tus cursos
+      teacher: maestro
+      student: alumno
       
   supervisor_mailer:
     new_teacher_registered:

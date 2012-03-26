@@ -7,16 +7,16 @@ class Course < ActiveRecord::Base
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
 
-  has_many :enrollments
+  has_many :enrollments, :dependent => :destroy
   has_many :pending_students, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'pending' AND enrollments.role = 'student'", :source => :user
   has_many :students,         :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'student'",  :source => :user
   has_many :teachers,         :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'teacher'", :source => :user
   has_many :pending_teachers, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'pending' AND enrollments.role = 'teacher'", :source => :user
   has_many :users,            :through => :enrollments, :conditions => "(enrollments.state = 'accepted' AND enrollments.role = 'student') OR enrollments.role  = 'teacher'", :source => :user
-  has_many :assignments
-  has_many :surveys
-  has_many :discussions
-  has_many :comments, :as => :commentable
+  has_many :assignments, :dependent => :destroy
+  has_many :surveys, :dependent => :destroy
+  has_many :discussions, :dependent => :destroy
+  has_many :comments, :as => :commentable, :dependent => :destroy
 
   can_haz_assets
 
@@ -28,7 +28,7 @@ class Course < ActiveRecord::Base
   html_sanitized :description
   
   def owner
-    teachers.where("enrollments.admin" => true).first or Eater.new
+    teachers.where("enrollments.admin" => true).order("created_at asc").first or Eater.new
   end
 
   def self.total_open_courses
@@ -38,11 +38,15 @@ class Course < ActiveRecord::Base
   def self.total_private_courses
     self.where(:public => false).count
   end
+  
+  def can_be_destroyed_by?(user)
+    return true if user == owner or user.supervisor?
+  end
 
   #Metodo que regresa en un string separado por comas los emails de los usuarios del curso
   def all_emails(current_user)
     mails = []
-    self.users.map{ |u| mails << u.email unless u == current_user }.join(", ")
+    self.users.map{ |u| mails << u.email unless u == current_user || !u.accepting_emails }.join(", ")
   end
 end
 

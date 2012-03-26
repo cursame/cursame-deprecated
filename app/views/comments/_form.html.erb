@@ -1,8 +1,10 @@
 <%= semantic_form_for Comment.new, :remote => true, :url => polymorphic_path(commentable, :action => 'comment') do |form| %>
   <%= form.inputs :text do %>
-    <%= form.input :text, :input_html => {:rows => 3, :class => "textarea-size"} %>
+    <%= form.input :text, :label => false, :input_html => {:rows => 3, :class => "textarea-size"} %>
   <% end %>
+  
   <%= form.buttons do %>
+
     <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :submit, :class => "btn right"} %>
   <% end %>
 <% end %>

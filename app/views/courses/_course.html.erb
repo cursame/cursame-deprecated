@@ -8,27 +8,27 @@
     <div class="span4" style="margin-top: 5px;">
       <% enrollment = current_user.enrollments.where(:course_id => course).first %>
       <% if !enrollment %>
-        <span class="label-tag notice course-notification">
+        <span class="label-tag notice course-notification student_request">
           <% unless accessible_courses.include? course %>
             <%= link_to t(".request_join_student"), course_requests_path(course, :role => 'student'), :method => :post %>
           <% end %>
         </span>
         <%if current_user.teacher?%>
           <br />
-          <span class="label-tag notice course-notification">
+          <span class="label-tag notice course-notification teacher_request">
             <%= link_to t(".request_join_teacher"), course_requests_path(course, :role => 'teacher'), :method => :post %>
           </span>
         <%end%>
         <% elsif enrollment.pending? %>
-          <span class="label-tag important"><%= t('.join_requested') %></em>
+          <span class="label-tag important requested"><%= t('.join_requested') %></em>
 
         <% elsif enrollment.rejected? %>
-          <span class="label-tag important"><%= t('.join_rejected') %></span>
+          <span class="label-tag important rejected"><%= t('.join_rejected') %></span>
           <br />
           <%= link_to t(".request_join_again"), course_requests_path(course, :role => 'student'), :method => :post %>
           <%if current_user.teacher?%>
           <br />
-          <span class="label-tag notice course-notification">
+          <span class="label-tag notice course-notification teacher_request">
             <%= link_to t(".request_join_teacher"), course_requests_path(course, :role => 'teacher'), :method => :post %>
           </span>
         <%end%>
@@ -38,8 +38,10 @@
         <% end %>
       
     <% if current_user.manageable_courses.include? course %>
-      <span class="label-tag notice course-notification"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
-      <!--<span class="label-tag important course-notification"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('confirm_delete'), :method => :delete) %></span>-->
+      <span class="label-tag notice course-notification edit_course"><%= link_to(t('courses.edit'), edit_course_path(course)) %></span> 
+      <% if course.can_be_destroyed_by? current_user %>
+        <span class="label-tag important course-notification destroy_course"><%= link_to(t('courses.delete'), course_path(course), :confirm => t('.confirm_delete'), :method => :delete) %></span>
+      <% end %>
     <% end %>
     </div>
   </div>
