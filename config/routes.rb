@@ -1,4 +1,5 @@
 Cursame::Application.routes.draw do
+
   devise_for :users, :skip => [:registrations]
 
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
@@ -93,4 +94,12 @@ Cursame::Application.routes.draw do
   post '/create', :to => 'assets#create', :as => :create_asset
 
   root :to => "home#index"
+  
+  #this is for api for the mobile app
+  namespace :api do
+    resources :tokens,:only => [:create, :destroy]
+  end  
+  match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
+  match '/api/api/user', :to => 'api/api#user', :as => :userjson
+  match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
 end

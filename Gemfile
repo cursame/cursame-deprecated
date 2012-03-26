@@ -59,3 +59,6 @@ group :development, :test do
   gem "parallel_tests"
   gem 'foreman'
 end
+
+#Gem for exporting data between databases
+gem 'yaml_db'
