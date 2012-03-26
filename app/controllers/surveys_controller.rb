@@ -2,8 +2,10 @@ class SurveysController < ApplicationController
   set_tab :surveys
 
   def index
-    @surveys = course.surveys
-    @surveys = @surveys.published unless current_user.role_for_course(course) == 'teacher'
+    surveys = course.surveys
+    surveys = surveys.published unless current_user.role_for_course(course) == 'teacher'
+    @current_surveys = surveys.where("due_to >= ?", DateTime.now).order("due_to DESC")
+    @previous_surveys = surveys.where("due_to <= ?", DateTime.now).order("due_to DESC")
   end
 
   def new

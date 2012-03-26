@@ -266,7 +266,7 @@ es:
       failed_delivery: Tarea no entregada
       course: Curso
     index:
-      current: Pendientes
+      current: Actuales
       previous: Pasadas
 
   surveys:
@@ -283,6 +283,8 @@ es:
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario
+      current: Actuales
+      previous: Pasados
     show:
       header: Cuestionario 
       edit_survey: Editar

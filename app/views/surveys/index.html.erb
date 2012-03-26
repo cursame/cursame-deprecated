@@ -32,7 +32,18 @@
         </div>
 
         <div class="surveys">
-          <%= render :partial => 'survey', :collection => @surveys %>
+          <ul class="tabs tabs_fix">
+            <li class="active"><%= link_to t('.current'), '#current' %></li>
+            <li><%= link_to t('.previous'), '#previous' %></li>
+          </ul>
+          <div class="pill-content">
+            <div id="current" class="users teachers active">
+              <%= render :partial => 'survey', :collection => @current_surveys %>
+            </div>
+            <div id="previous" class="users teachers">
+              <%= render :partial => 'survey', :collection => @previous_surveys %>
+            </div>
+          </div>
         </div>
         
       </div>

@@ -2,11 +2,8 @@ class AssignmentsController < ApplicationController
   set_tab :assignments
 
   def index
-    if current_user.student?
-      assignments_query=course.assignments.published
-    else
-      assignments_query= course.assignments
-    end
+    assignments_query= course.assignments
+    assignments_query=course.assignments.published if current_user.student?
     @current_assignments = assignments_query.where("due_to >= ?", DateTime.now).order("due_to DESC")
     @previous_assignments = assignments_query.where("due_to <= ?", DateTime.now).order("due_to DESC")
   end
