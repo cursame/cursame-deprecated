@@ -10,7 +10,7 @@
 
 $(function(){
   // disabling buttons to avoid double posting
-  $('input[type=submit]').click(function(){
+  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').click(function(){
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit()
   });
