@@ -8,10 +8,12 @@ var txtarea;
         options = $('#comment_options_<%= @comment.commentable.id %>');
         commnet_link = options.children(':last-child');
         options.html(commnet_link);
+    $('.comment input[type=submit]').removeAttr('disabled');
 <%else%>
     var node = $('div.comments');
         txtarea =$('textarea', $('div.actions'));
         $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
+    $('.actions input[type=submit]').removeAttr('disabled');
 <%end%>
 txtarea.val('');
 $('#comment_<%= @comment.id %>').fadeOut();
