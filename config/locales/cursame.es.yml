@@ -265,6 +265,9 @@ es:
       show_delivery: Mostrar entrega
       failed_delivery: Tarea no entregada
       course: Curso
+    index:
+      current: Pendientes
+      previous: Pasadas
 
   surveys:
     survey:

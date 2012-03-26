@@ -3,10 +3,12 @@ class AssignmentsController < ApplicationController
 
   def index
     if current_user.student?
-      @assignments = course.assignments.published.order("due_to DESC")
+      assignments_query=course.assignments.published
     else
-      @assignments = course.assignments.order("due_to DESC")
+      assignments_query= course.assignments
     end
+    @current_assignments = assignments_query.where("due_to >= ?", DateTime.now).order("due_to DESC")
+    @previous_assignments = assignments_query.where("due_to <= ?", DateTime.now).order("due_to DESC")
   end
 
   def new
