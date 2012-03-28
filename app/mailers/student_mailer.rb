@@ -12,10 +12,8 @@ class StudentMailer < ActionMailer::Base
     @subdomain = network.subdomain
     @course = course
 
-    if student.accepting_emails
-      mail to: student.email,
-        subject: t('student_mailer.accepted_on_course.subject', :course_name => course.name)
-    end
+    mail to: student.email,
+      subject: t('student_mailer.accepted_on_course.subject', :course_name => course.name)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
