@@ -56,7 +56,7 @@ class UserMailer < ActionMailer::Base
     @network = network
     @password = password
 
-    mail to: @user.email if @user.accepting_emails
+    mail to: @user.email
   end
 
 end
