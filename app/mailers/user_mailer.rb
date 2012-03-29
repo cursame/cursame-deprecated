@@ -12,7 +12,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail to: commented.email
+    mail to: commented.email if commented.accepting_emails
   end
   
   def new_comment_on_discussion(discussion, commenter, subdomain)
@@ -39,7 +39,7 @@ class UserMailer < ActionMailer::Base
     @commenter = commenter
     @subdomain = subdomain
 
-    mail to: @parent.user.email 
+    mail to: @parent.user.email if @parent.user.accepting_emails
   end
 
   def new_discussion(discussion, subdomain)
