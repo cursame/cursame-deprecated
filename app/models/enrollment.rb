@@ -49,14 +49,14 @@ class Enrollment < ActiveRecord::Base
   end
 
   def pending?
-    student? or new_teacher? && state == 'pending'
+    (student? or new_teacher?) && state == 'pending'
   end
 
   def rejected?
-    student? or new_teacher? && state == 'rejected'
+    (student? or new_teacher?) && state == 'rejected'
   end
 
   def accepted?
-    student? or new_teacher? && state == 'accepted'
+    (student? or new_teacher?) && state == 'accepted'
   end
 end
