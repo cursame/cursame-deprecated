@@ -33,7 +33,7 @@ class Asset < ActiveRecord::Base
     Notification.create :user => self.owner, :notificator => self, :kind => 'finished_uploading_users'
     if !invalid_users.blank?
       invalid_users_csv = export_users_to_csv(invalid_users)
-      SupervisorMailer.finished_upload_users(self.owner, network.subdomain, invalid_users_csv).deliver
+      SupervisorMailer.delay.finished_upload_users(self.owner, network.subdomain, invalid_users_csv)
     end
   end
 
