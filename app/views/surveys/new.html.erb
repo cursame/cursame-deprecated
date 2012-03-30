@@ -25,6 +25,7 @@
           <%= render :partial => 'survey_fields', :locals => {:form => form} %>
           <div class="actions">
           <%= form.buttons do %>
+            <%= form.input :commit_info, :as => :hidden%>
             <%= form.commit_button :button_html => {:class => 'btn primary right'}, :label => t('formtastic.actions.create_and_save') %>
             <%= form.commit_button :button_html => {:class => 'btn primary right', :style => "margin-right:10px;"}, :label => t('formtastic.actions.create_and_publish') %>
           <% end %>

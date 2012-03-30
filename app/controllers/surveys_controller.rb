@@ -15,8 +15,8 @@ class SurveysController < ApplicationController
   def create
     @survey = manageable_course.surveys.build(params[:survey])
     if @survey.save
-      if params[:commit] == t('formtastic.actions.create_and_publish')
-        @survey.publish! 
+      if @survey.commit_info == t('formtastic.actions.create_and_publish')
+        @survey.publish!
         flash[:notice] = I18n.t('flash.survey_created_and_published')
       else
         flash[:notice] = I18n.t('flash.survey_created')

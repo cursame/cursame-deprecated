@@ -7,6 +7,7 @@ class Survey < ActiveRecord::Base
   has_many   :survey_replies, :dependent => :destroy
   has_many   :questions, :dependent => :destroy, :order => "position ASC"
   belongs_to :course
+  attr_accessor :commit_info
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
