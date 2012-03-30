@@ -50,7 +50,7 @@ class Assignment < ActiveRecord::Base
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_added'
     end
     if course.students.count > 0 and !course.all_emails(nil).blank?
-      StudentMailer.new_homework(course.students, course, course.network).deliver
+      StudentMailer.delay.new_homework(course.students, course, course.network)
     end
   end
   
