@@ -37,7 +37,7 @@ class Enrollment < ActiveRecord::Base
   def enrollment_accepted
     self.update_attribute(:admin, true) if self.role == "teacher"
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
-    StudentMailer.accepted_on_course(self.user, self.course, course.network).deliver
+    StudentMailer.delay.accepted_on_course(self.user, self.course, course.network) if self.user.accepting_emails
   end
 
   def student?

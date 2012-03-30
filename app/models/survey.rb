@@ -30,9 +30,8 @@ class Survey < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_added'
     end
-    if course.students.count > 0 and !course.all_emails(nil).blank?
-      StudentMailer.new_survey(course.students, course, self, course.network).deliver
-    end
+    emails = course.student_emails
+    StudentMailer.delay.new_survey(emails, course, self, course.network) unless emails.blank?
   end
 
   def expired?
