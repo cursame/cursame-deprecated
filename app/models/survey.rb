@@ -7,7 +7,6 @@ class Survey < ActiveRecord::Base
   has_many   :survey_replies, :dependent => :destroy
   has_many   :questions, :dependent => :destroy, :order => "position ASC"
   belongs_to :course
-  attr_accessor :commit_info
 
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
@@ -24,6 +23,16 @@ class Survey < ActiveRecord::Base
   html_sanitized :description
   # TODO: validate that all survey_answers and associated answers to survey_answers correspond to the same survey
   # TODO: forbid published survey edition at model level
+  
+  before_create do
+    self.start_at ||= DateTime.now
+  end
+  
+  after_create do
+    if self.start_at <= DateTime.now
+      self.publish!
+    end
+  end
 
   accepts_nested_attributes_for :questions, :allow_destroy => true 
 
@@ -37,6 +46,14 @@ class Survey < ActiveRecord::Base
 
   def expired?
     due_to < DateTime.now
+  end
+  
+  def self.publish_new_surveys
+    Survey.unpublished.each do |survey|
+      if survey.start_at <= DateTime.now
+        survey.publish!
+      end
+    end
   end
 
   class << self

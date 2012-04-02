@@ -35,6 +35,9 @@
           <ul class="tabs tabs_fix">
             <li class="active"><%= link_to t('.current'), '#current' %></li>
             <li><%= link_to t('.previous'), '#previous' %></li>
+            <% if @unpublished_surveys%>
+            <li><%= link_to t('.unpublished'), '#unpublished' %></li>
+            <% end%>
           </ul>
           <div class="pill-content">
             <div id="current" class="users teachers active">
@@ -42,6 +45,9 @@
             </div>
             <div id="previous" class="users teachers">
               <%= render :partial => 'survey', :collection => @previous_surveys %>
+            </div>
+            <div id="unpublished" class="users teachers">
+              <%= render :partial => 'survey', :collection => @unpublished_surveys %>
             </div>
           </div>
         </div>

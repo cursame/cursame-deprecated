@@ -34,8 +34,7 @@ class Assignment < ActiveRecord::Base
   
   after_create do
     if self.start_at <= DateTime.now
-      self.publish
-      self.update_attribute(:state, "published")
+      self.publish!
     end
   end
   
@@ -56,8 +55,7 @@ class Assignment < ActiveRecord::Base
   def self.publish_new_assignments
     Assignment.created.each do |assignment|
       if assignment.start_at <= DateTime.now
-        assignment.publish 
-        assignment.update_attribute(:state, "published")
+        assignment.publish!
       end
     end
   end

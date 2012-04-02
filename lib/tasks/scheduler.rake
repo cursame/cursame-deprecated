@@ -4,3 +4,9 @@ task :publish_assignments => :environment do
     Assignment.publish_new_assignments
     puts "done."
 end
+
+task :publish_surveys => :environment do
+    puts "Publishing new surveys"
+    Survey.publish_new_surveys
+    puts "done."
+end

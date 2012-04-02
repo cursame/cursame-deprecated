@@ -266,8 +266,8 @@ es:
       failed_delivery: Tarea no entregada
       course: Curso
     index:
-      current: Actuales
-      previous: Pasadas
+      current: Abiertas
+      previous: Cerradas
       unpublished: No publicadas
 
   surveys:
@@ -279,13 +279,15 @@ es:
       answer: Contestar
       publish: Publicar
       published: Publicado
+      unpublished: No publicado
+      start_at: Fecha de publicación
       select_correct_answer: Selecciona la respuesta correcta
     drag: Arrastra y Ordena
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario
-      current: Actuales
-      previous: Pasados
+      current: Abiertos
+      previous: Cerrados
       unpublished: No publicados
     show:
       header: Cuestionario 
