@@ -41,6 +41,7 @@
         <% end %>
       <% end %>
       <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path, :class => "btn") %></div>
+      <%= render :partial => "members" %>
     </div>
     
     <div class="span-two-thirds">

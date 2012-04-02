@@ -510,3 +510,7 @@ es:
   user:
     errors:
       email_not_allowed: Dirección de correo no permitida
+      
+  home:
+    members:
+      members: Miembros de la red

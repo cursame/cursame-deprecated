@@ -1,0 +1,9 @@
+<div class="underline padding-top">
+  <h2><%= t(".members")%></h2>
+</div>
+  <ul class="nav-member-avatars">
+    <% @users.each do |user| %>
+      <li><%= link_to(image_tag(user.avatar_file.xxsmall.url), user_path(user), :rel => "tip", :title => user.name) %></li>
+    <% end %>
+  </ul>
+
