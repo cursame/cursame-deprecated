@@ -1,2 +1,10 @@
+<% if course.logo_file.xxsmall.url %>
+<div class="img">
+  <a href="<%= course_path(course) %>">
+    <img src="<%= course.logo_file.xxsmall.url %>" rel="tip" title="<% course.name %>">
+  </a>
+</div>
+<% end %>
+
 <%= I18n.t 'notifications.your_course_request' %> "<%= course.name %>" <%= I18n.t 'notifications.was_rejected' %>.
 <a href="<%= courses_path %>"  class="notification-link"><%= I18n.t('notifications.show_courses') %> &gt;&gt;</a>
