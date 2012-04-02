@@ -15,6 +15,11 @@ $(function(){
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit();
   });
+  
+  //lazy loading the members for the network
+  $("img.network-members").lazyload({
+    effect : "fadeIn"
+  });
 
   // Survey form
   var questionAndAnswersFieldsets = $('fieldset[data-association="questions"], fieldset[data-association="answers"]');
@@ -141,6 +146,11 @@ $(function(){
   
   $("span.tip").twipsy({
     live: true
+  });
+  
+  $("a[rel=member-tip]").twipsy({
+    live: true,
+    offset: 170,
   });
   
   $("a[rel=tip]").twipsy({

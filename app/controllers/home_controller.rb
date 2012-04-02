@@ -26,5 +26,8 @@ class HomeController < ApplicationController
 
   def terms
   end
-
+  
+  def members
+    @users = current_network.users
+  end
 end
