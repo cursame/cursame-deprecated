@@ -27,7 +27,7 @@ class Enrollment < ActiveRecord::Base
     course.teachers.select('users.id').each do |teacher|
       Notification.create :user => teacher, :notificator => self, :kind => 'student_course_enrollment'
     end
-    TeacherMailer.pending_user_on_course(course.teachers, user, course, course.network).deliver
+    TeacherMailer.delay.pending_user_on_course(course.teachers, user, course, course.network)
   end
 
   def enrollment_rejected
@@ -37,7 +37,7 @@ class Enrollment < ActiveRecord::Base
   def enrollment_accepted
     self.update_attribute(:admin, true) if self.role == "teacher"
     Notification.create :user => user, :notificator => self, :kind => 'student_course_accepted'
-    StudentMailer.accepted_on_course(self.user, self.course, course.network).deliver
+    StudentMailer.delay.accepted_on_course(self.user, self.course, course.network) if self.user.accepting_emails
   end
 
   def student?
@@ -49,14 +49,14 @@ class Enrollment < ActiveRecord::Base
   end
 
   def pending?
-    student? or new_teacher? && state == 'pending'
+    (student? or new_teacher?) && state == 'pending'
   end
 
   def rejected?
-    student? or new_teacher? && state == 'rejected'
+    (student? or new_teacher?) && state == 'rejected'
   end
 
   def accepted?
-    student? or new_teacher? && state == 'accepted'
+    (student? or new_teacher?) && state == 'accepted'
   end
 end

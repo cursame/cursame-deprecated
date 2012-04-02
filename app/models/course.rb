@@ -42,11 +42,16 @@ class Course < ActiveRecord::Base
   def can_be_destroyed_by?(user)
     return true if user == owner or user.supervisor?
   end
+  
+  def student_emails
+    mails = []
+    self.students.map{ |u| mails << u.email if u.accepting_emails }.compact.join(", ")
+  end
 
   #Metodo que regresa en un string separado por comas los emails de los usuarios del curso
   def all_emails(current_user)
     mails = []
-    self.users.map{ |u| mails << u.email unless u == current_user || !u.accepting_emails }.join(", ")
+    self.users.map{ |u| mails << u.email unless u == current_user || !u.accepting_emails }.compact.join(", ")
   end
 end
 
