@@ -20,14 +20,14 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Course avatars"
     Course.all.each do |u|
       puts "Updating avatar file for course #{u.id}"
-      file = u.logo_file.url
+      file = u.course_logo_file.url
       if file
         dir = file.split("/")
         if dir.count > 3
           begin
-          u.remote_logo_file_url = args[:arg1] + "/"+dir[1]+"/"+dir.last
+          u.remote_course_logo_file_url = args[:arg1] + "/"+dir[1]+"/"+dir.last
           rescue
-          u.remove_logo_file!
+          u.remove_course_logo_file!
           end
           u.save!
         end
@@ -58,14 +58,17 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Assets"
     Asset.all.each do |u|
       puts "Updating asset #{u.id}"
-      dir = u.file.url.split("/")
-      if dir.count > 3
-      begin
-      u.remote_file_url = args[:arg1] + "/"+dir[1]+"/"+dir.last
-      rescue
-      u.remove_file!
-      end
-      u.save!
+      dir = u.file.url
+      if dir
+        dir = dir.split("/")
+        if dir.count > 3
+          begin
+            u.remote_file_url = args[:arg1] + "/"+dir[1]+"/"+dir.last
+          rescue
+            u.remove_file!
+          end
+          u.save!
+        end
       end
       puts "updated."
     end
