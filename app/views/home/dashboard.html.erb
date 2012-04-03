@@ -27,8 +27,15 @@
         <% @courses.each do |course| %>
          <div class="course-detail <%= cycle("odd", "even")%>">
            <div class="span4">
-            <h4><%= link_to(course.name, course_path(course)) %></h4>
-            <p><%= course.reference %></p>
+            <% if course.course_logo_file.xxsmall.url%>
+            <div class="left" style="padding-right: 2px;">
+              <%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
+            </div>
+            <% end %>
+            <div class="left">
+              <h4><%= link_to(course.name, course_path(course)) %></h4>
+              <p><%= course.reference %></p>
+            </div>
            </div>
            <div class="span1"><span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span></div>
          </div>
@@ -41,6 +48,7 @@
         <% end %>
       <% end %>
       <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path, :class => "btn") %></div>
+      <%= render :partial => "members" %>
     </div>
     
     <div class="span-two-thirds">

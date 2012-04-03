@@ -23,7 +23,7 @@
         <div class="actions">
           <%= render :partial => 'comments/form',  :locals => {:commentable => @course} %>
         </div>
-        <div id="comments">
+        <div id="course_comments">
           <div class="page">
             <%= render :partial => 'comments/comments', :locals => {:commentable => @course, :comments => @comments} %>
           </div>

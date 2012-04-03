@@ -15,6 +15,7 @@ feature 'Manage assignments', %q{
   end
 
   it_should_behave_like 'has basic actions for assignments'
+  
 
   scenario 'creating an assignment' do
     student = Factory(:student)
@@ -25,7 +26,7 @@ feature 'Manage assignments', %q{
     fill_in 'assignment[name]',        :with => 'First assignment'
     fill_in 'assignment[description]', :with => 'This is a test assignment'
     fill_in 'assignment[value]',       :with => 9
-    fill_in 'assignment[period]',      :with => 1
+    select '1', :from => 'assignment[period]'
 
     # TODO: we need a select_date helper
     select '2011',    :from => 'assignment[due_to(1i)]'
@@ -33,6 +34,14 @@ feature 'Manage assignments', %q{
     select '20',      :from => 'assignment[due_to(3i)]'
     select '8',       :from => 'assignment[due_to(4i)]'
     select '30',      :from => 'assignment[due_to(5i)]'
+    
+    dt = DateTime.now
+    #Start at
+    select dt.year.to_s,    :from => 'assignment[start_at(1i)]'
+    select month_number_to_name(dt.month),   :from => 'assignment[start_at(2i)]'
+    select dt.day.to_s,      :from => 'assignment[start_at(3i)]'
+    select dt.hour.to_s,       :from => 'assignment[start_at(4i)]'
+    select dt.minute.to_s,      :from => 'assignment[start_at(5i)]'
 
     lambda do
       click_button 'submit'

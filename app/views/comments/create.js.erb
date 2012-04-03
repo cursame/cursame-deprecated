@@ -1,19 +1,28 @@
 var txtarea;
 <% if @comment.commentable_type === 'Comment' %>
     var node = $('#comment_<%= @comment.commentable.id %>').closest('.comment').find('.comment-form'),
-        options,commnet_link;
+        options,comment_link;
         txtarea = $('textarea', node);
         $('<%= escape_javascript(render(:partial => 'comments/comment_tpl', :locals => {:comment => @comment}))%>').insertBefore(node);
         /*quitamos el remove de los que ya tienen comentarios*/
         options = $('#comment_options_<%= @comment.commentable.id %>');
-        commnet_link = options.children(':last-child');
-        options.html(commnet_link);
+        comment_link = options.children(':last-child');
+        options.html(comment_link);
+    $('.comment input[type=submit]').removeAttr('disabled');
+    $('.comment fieldset.new').slideUp('slow', function(){
+      $(this).remove();
+    });
 <%else%>
     var node = $('div.comments');
         txtarea =$('textarea', $('div.actions'));
         $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
+    $('.actions input[type=submit]').removeAttr('disabled');
+    $('.actions fieldset.new').slideUp('slow', function(){
+      $(this).remove();
+    });
 <%end%>
 txtarea.val('');
+$('fieldset[data-association="assets"]').nestedAssociations();
 $('#comment_<%= @comment.id %>').fadeOut();
 $('#comment_<%= @comment.id %>').fadeIn();
 txtarea.blur();

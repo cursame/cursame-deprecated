@@ -13,7 +13,7 @@ class StudentMailer < ActionMailer::Base
     @course = course
 
     mail to: student.email,
-         subject: t('student_mailer.accepted_on_course.subject', :course_name => course.name)
+      subject: t('student_mailer.accepted_on_course.subject', :course_name => course.name)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -21,12 +21,12 @@ class StudentMailer < ActionMailer::Base
   #
   #   en.student.new_homework.subject
   #
-  def new_homework(students, course, network)
+  def new_homework(students_emails, course, network)
     headers["X-SMTPAPI"] = '{"category": "student has new homework"}'
     @subdomain = network.subdomain
     @course = course
 
-    mail to: students.all.map(&:email).join(", ")
+    mail to: students_emails 
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -34,12 +34,12 @@ class StudentMailer < ActionMailer::Base
   #
   #   en.student.new_survey.subject
   #
-  def new_survey(students, course, survey, network)
+  def new_survey(students_emails, course, survey, network)
     headers["X-SMTPAPI"] = '{"category": "student has new survey"}'
     @subdomain = network.subdomain
     @course = course
     @survey = survey
 
-    mail to: students.all.map(&:email).join(", ")
+    mail to: students_emails
   end
 end

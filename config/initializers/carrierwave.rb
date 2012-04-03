@@ -8,7 +8,7 @@ end
 
 CarrierWave.configure do |config|
   config.root      = Rails.root.join('tmp')
-  config.cache_dir = 'uploads'
+  config.cache_dir = 'cached-carrierwave'
 end
 
 Rails.configuration.middleware.delete('Sass::Plugin::Rack')

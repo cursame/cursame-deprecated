@@ -53,6 +53,7 @@ Cursame::Application.routes.draw do
 
   resource :settings, :only => [:show] do
     put :password
+    put :notifications
   end
 
   namespace :supervisor do
@@ -90,6 +91,7 @@ Cursame::Application.routes.draw do
 
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
+  get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
 

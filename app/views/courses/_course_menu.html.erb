@@ -1,8 +1,6 @@
-<% unless @course.logo_file.blank? %>
-  <div class="underline">
-    <%= image_tag @course.logo_file.small.url %>
-  </div>
-<% end %>
+<div class="underline">
+  <%= image_tag @course.course_logo_file.small.url %>
+</div>
 
 <div class="underline">	
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>

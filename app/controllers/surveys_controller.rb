@@ -2,8 +2,11 @@ class SurveysController < ApplicationController
   set_tab :surveys
 
   def index
-    @surveys = course.surveys
-    @surveys = @surveys.published unless current_user.role_for_course(course) == 'teacher'
+    @current_surveys = course.surveys.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
+    @previous_surveys = course.surveys.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
+    unless current_user.role_for_course(course) == "student"
+      @unpublished_surveys = course.surveys.unpublished.order("due_to DESC")
+    end
   end
 
   def new
@@ -13,12 +16,7 @@ class SurveysController < ApplicationController
   def create
     @survey = manageable_course.surveys.build(params[:survey])
     if @survey.save
-      if params[:commit] == t('formtastic.actions.create_and_publish')
-        @survey.publish! 
-        flash[:notice] = I18n.t('flash.survey_created_and_published')
-      else
-        flash[:notice] = I18n.t('flash.survey_created')
-      end
+      flash[:notice] = I18n.t('flash.survey_created')
       redirect_to @survey
     else
       render 'new'
@@ -46,12 +44,7 @@ class SurveysController < ApplicationController
   def update
     @survey = current_user.manageable_surveys.find params[:id]
     if @survey.update_attributes params[:survey]
-      if params[:commit] == t('formtastic.actions.update_and_publish')
-        @survey.publish! 
-        flash[:notice] = I18n.t('flash.survey_updated_and_published')
-      else
-        flash[:notice] = I18n.t('flash.survey_updated')
-      end
+      flash[:notice] = I18n.t('flash.survey_updated')
       redirect_to @survey
     else
       @course = @survey.course

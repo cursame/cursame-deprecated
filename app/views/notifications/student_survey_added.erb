@@ -1,3 +1,9 @@
+<div class="img">
+  <a href="<%= course_path(course) %>">
+    <img src="<%= course.course_logo_file.xxsmall.url %>" rel="tip" title="<% course.name %>">
+  </a>
+</div>
+
 <%= I18n.t 'notifications.survey_added'%> <a href="<%= survey_path(survey) %>"><%= survey.name %></a> 
 <%= I18n.t 'notifications.for_the_course'%> <a href="<%= course_path(course) %>"><%= course.name %></a>.
 <a href="<%= survey_path(survey) %>"  class="notification-link"><%= I18n.t('notifications.show_survey') %> &gt;&gt;</a>

@@ -160,7 +160,11 @@ feature 'Supervisor', %q{
       visit supervisor_dashboard_url(:subdomain => @network.subdomain)
       click_link t('supervisor.shared.admin_menu.new_user')
       
-      page.should have_css('.register-box')
+      page.should have_field('user_email')
+      page.should have_field('user_first_name')
+      page.should have_field('user_last_name')
+      page.should have_select('user_role')
+      have_button('commit')
     end
   end
 

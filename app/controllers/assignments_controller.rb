@@ -2,7 +2,11 @@ class AssignmentsController < ApplicationController
   set_tab :assignments
 
   def index
-    @assignments = course.assignments.order("due_to DESC")
+    @current_assignments = course.assignments.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
+    @previous_assignments = course.assignments.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
+    unless current_user.student?
+      @unpublished_assignments = course.assignments.created.order("due_to DESC")
+    end
   end
 
   def new

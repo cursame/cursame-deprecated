@@ -1,1 +1,7 @@
+<div class="img">
+  <a href="<%= course_path(course) %>">
+    <img src="<%= course.course_logo_file.xxsmall.url %>" rel="tip" title="<% course.name %>">
+  </a>
+</div>
+
 <%= I18n.t 'notifications.you_where_accepted_for_course' %> <a href="<%= course_path(course) %>"><%= course.name %></a>.

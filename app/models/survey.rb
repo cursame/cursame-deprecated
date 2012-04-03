@@ -23,6 +23,16 @@ class Survey < ActiveRecord::Base
   html_sanitized :description
   # TODO: validate that all survey_answers and associated answers to survey_answers correspond to the same survey
   # TODO: forbid published survey edition at model level
+  
+  before_create do
+    self.start_at ||= DateTime.now
+  end
+  
+  after_create do
+    if self.start_at <= DateTime.now
+      self.publish!
+    end
+  end
 
   accepts_nested_attributes_for :questions, :allow_destroy => true 
 
@@ -30,11 +40,20 @@ class Survey < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_survey_added'
     end
-    StudentMailer.new_survey(course.students, course, self, course.network).deliver if course.students.count > 0
+    emails = course.student_emails
+    StudentMailer.delay.new_survey(emails, course, self, course.network) unless emails.blank?
   end
 
   def expired?
     due_to < DateTime.now
+  end
+  
+  def self.publish_new_surveys
+    Survey.unpublished.each do |survey|
+      if survey.start_at <= DateTime.now
+        survey.publish!
+      end
+    end
   end
 
   class << self

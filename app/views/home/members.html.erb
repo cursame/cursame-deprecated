@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= t('.members')%> </li>
+        </ul>  
+      </div>
+    </div>
+    <div class="members-grid">
+      <ul class="nav-member-avatars">
+        <% @users.each do |user| %>
+          <li><%= link_to(image_tag('grey.gif', "data-original".to_sym => user.avatar_file.small.url, :class => "network-members", :width => 180, :height=>180), user_path(user), :rel => "member-tip", :title => user.name) %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

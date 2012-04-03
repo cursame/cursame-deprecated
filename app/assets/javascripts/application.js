@@ -9,6 +9,18 @@
 //= require_tree .
 
 $(function(){
+  // disabling buttons to avoid double posting
+  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
+    $(this).attr('disabled', 'disabled');
+    $(this).parents('form').submit();
+    return false;
+  });
+  
+  //lazy loading the members for the network
+  $("img.network-members").lazyload({
+    effect : "fadeIn"
+  });
+
   // Survey form
   var questionAndAnswersFieldsets = $('fieldset[data-association="questions"], fieldset[data-association="answers"]');
 
@@ -134,6 +146,11 @@ $(function(){
   
   $("span.tip").twipsy({
     live: true
+  });
+  
+  $("a[rel=member-tip]").twipsy({
+    live: true,
+    offset: 170,
   });
   
   $("a[rel=tip]").twipsy({
