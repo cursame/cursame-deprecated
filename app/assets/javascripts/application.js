@@ -11,7 +11,6 @@
 $(function(){
   // disabling buttons to avoid double posting
   $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').click(function(){
-    $('#survey_commit_info').val($(this).val());
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit();
   });

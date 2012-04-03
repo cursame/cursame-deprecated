@@ -4,10 +4,11 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
+#        format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
         format.js
       else
-        format.html { redirect_to commentable_path_for(@comment) }
+#        format.html { redirect_to commentable_path_for(@comment) }
+        format.js {render :action => "rollback.js.erb"}
       end
     end
   end
