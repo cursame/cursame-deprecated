@@ -9,15 +9,20 @@ var txtarea;
         comment_link = options.children(':last-child');
         options.html(comment_link);
     $('.comment input[type=submit]').removeAttr('disabled');
-    $('.comment fieldset.new').remove();
+    $('.comment fieldset.new').slideUp('slow', function(){
+      $(this).remove();
+    });
 <%else%>
     var node = $('div.comments');
         txtarea =$('textarea', $('div.actions'));
         $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
     $('.actions input[type=submit]').removeAttr('disabled');
-    $('.actions fieldset.new').remove();
+    $('.actions fieldset.new').slideUp('slow', function(){
+      $(this).remove();
+    });
 <%end%>
 txtarea.val('');
+$('fieldset[data-association="assets"]').nestedAssociations();
 $('#comment_<%= @comment.id %>').fadeOut();
 $('#comment_<%= @comment.id %>').fadeIn();
 txtarea.blur();
