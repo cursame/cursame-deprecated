@@ -10,6 +10,10 @@ class CourseLogoUploader < CarrierWave::Uploader::Base
   version :small do
     process :resize_to_fit => [180, 180]
   end
+
+  version :xsmall do
+    process :resize_to_fit => [40, 40]
+  end
   
   version :xxsmall do
     process :resize_to_fill => [25, 25]
@@ -18,4 +22,8 @@ class CourseLogoUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
+  def default_url 
+    "/assets/course_#{version_name}.png"
+  end 
 end

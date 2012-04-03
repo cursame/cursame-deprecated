@@ -24,7 +24,7 @@ class Course < ActiveRecord::Base
 
   belongs_to :network
 
-  mount_uploader :logo_file, CourseLogoUploader
+  mount_uploader :course_logo_file, CourseLogoUploader
   html_sanitized :description
   
   def owner

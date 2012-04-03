@@ -10,9 +10,10 @@
 
 $(function(){
   // disabling buttons to avoid double posting
-  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').click(function(){
+  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit();
+    return false;
   });
   
   //lazy loading the members for the network
