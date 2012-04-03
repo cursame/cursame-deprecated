@@ -43,6 +43,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar_file, AvatarUploader
 
+  scope :ordered, order('id DESC')  
+
   def name
     "#{first_name} #{last_name}".strip
   end
@@ -65,6 +67,10 @@ class User < ActiveRecord::Base
   
   def admin?
     role == 'admin'
+  end
+
+  def self.search(search="", network)
+    search ? select("(first_name || last_name) as name, *").where("name LIKE ?", "%#{search}%") : network.users.scoped
   end
 
   def self.total_supervisors
