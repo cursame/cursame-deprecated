@@ -3,6 +3,10 @@
 class CourseLogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  def store_dir
+    "uploads/course_logo/#{model.id}"
+  end
+
   version :thumb do
     process :resize_to_fit => [250, 100]
   end

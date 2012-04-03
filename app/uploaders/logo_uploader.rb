@@ -2,6 +2,10 @@
 
 class LogoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
+  
+  def store_dir
+    "uploads/network_logo/#{model.id}"
+  end
 
   version :large do
     process :resize_to_limit => [640, 175]

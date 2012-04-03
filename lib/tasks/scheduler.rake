@@ -10,3 +10,10 @@ task :publish_surveys => :environment do
     Survey.publish_new_surveys
     puts "done."
 end
+
+task :remove_temporal_carrierwave_folders do
+  puts "Deleting Temporal Folders"
+    path_to_be_deleted = "#{Rails.root}/tmp/cached-carrierwave"
+    FileUtils.remove_dir(path_to_be_deleted, :force => true)
+  puts "done."
+end
