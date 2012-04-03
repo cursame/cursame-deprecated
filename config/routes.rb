@@ -102,4 +102,10 @@ Cursame::Application.routes.draw do
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
   match '/api/api/user', :to => 'api/api#user', :as => :userjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
+  match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
+  
+  
+  match '/api/api/course_requests', :to => 'api/api#course_requests', :as => :course_requestsjson
+  match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
+  match '/api/api/update_course', :to => 'api/api#update_course', :as => :update_course
 end
