@@ -7,7 +7,11 @@ class AssetUploader < CarrierWave::Uploader::Base
   # def extension_white_list
   #   %w(jpg jpeg gif png)
   # end
-
+  
+  def store_dir
+    "uploads/asset/#{model.id}"
+  end
+  
   def thumb
     {:url => thumb_url}
   end
@@ -32,4 +36,5 @@ class AssetUploader < CarrierWave::Uploader::Base
   def to_hash
     {:thumb => thumb, :url => url}
   end
+
 end
