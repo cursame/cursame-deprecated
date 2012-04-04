@@ -6,7 +6,7 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       puts "Updating avatar file for user #{u.id}"
       dir = u.avatar_file.url.split("/")
       if dir.count > 3
-        dir = args[:arg1] + "/"+dir[1]+"/"+dir.last
+        dir = args[:arg1] + "/uploads/"+dir.last
         begin
           u.remote_avatar_file_url = dir
           u.save!
@@ -27,7 +27,7 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       if file
         dir = file.split("/")
         if dir.count > 3
-          dir = args[:arg1] + "/"+dir[1]+"/"+dir.last
+          dir = args[:arg1] + "/uploads/"+dir.last
           begin
             u.remote_course_logo_file_url = dir
             u.save!
@@ -50,7 +50,7 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       if dir
         dir = dir.split("/")
         if dir.count > 3
-          dir = args[:arg1] + "/"+dir[1]+"/"+dir.last
+          dir = args[:arg1] + "/uploads/"+dir.last
           begin
             u.remote_logo_file_url = dir
             u.save!
@@ -72,7 +72,7 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       if dir
         dir = dir.split("/")
         if dir.count > 3
-          dir = args[:arg1] + "/"+dir[1]+"/"+dir.last
+          dir = args[:arg1] + "/uploads/"+dir.last
           begin
             u.remote_file_url = dir
             u.save!
