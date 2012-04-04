@@ -101,8 +101,8 @@ $(function(){
           var preview  = $('.preview img', fieldset);
           var file;
 
-          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache);
-          file = data.file || data.logo_file || data.avatar_file;
+          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache || data.course_logo_file_cache);
+          file = data.file || data.logo_file || data.avatar_file || data.course_logo_file;
 
           if (file && file.thumb) {
             $('.preview img', fieldset).attr('src', file.thumb.url);

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402214541) do
+ActiveRecord::Schema.define(:version => 20120404160651) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20120402214541) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_id"
-    t.string   "logo_file"
+    t.string   "course_logo_file"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
