@@ -1,5 +1,5 @@
 desc "This task is called by the Heroku scheduler add-on"
-task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
+  task :move_user_avatar_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Updating on #{args[:arg1]}"
     puts "Moving the user avatars"
     User.all.each do |u|
@@ -19,7 +19,9 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       end
     end
     puts "done."
-    
+  end
+
+  task :move_course_avatar_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Course avatars"
     Course.all.each do |u|
       puts "Updating avatar file for course #{u.id}"
@@ -42,7 +44,9 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       puts "updated."
     end
     puts "done."
-    
+  end
+  
+  task :move_network_avatar_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Network avatars"
     Network.all.each do |u|
       puts "Updating avatar file for network #{u.id}"
@@ -64,7 +68,9 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
       end
     end
     puts "done."
-    
+  end
+  
+  task :move_assets_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Assets"
     Asset.all.each do |u|
       puts "Updating asset #{u.id}"
@@ -87,4 +93,4 @@ task :move_uploads_to_correct_folders, [:arg1] => :environment do |t, args|
     end
     CarrierWave.clean_cached_files!
     puts "done."
-end
+  end
