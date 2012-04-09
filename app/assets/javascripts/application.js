@@ -13,7 +13,7 @@ $(function(){
   $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit();
-    return false;
+    return false; //to disable double request in Firefox for the click
   });
   
   //lazy loading the members for the network
@@ -143,9 +143,12 @@ $(function(){
     return false;
   });
 
+  $("a[rel=tooltip]").twipsy({
+    live: true,
+    placement: "right"
+  });
   
   $("span.tip").twipsy({
-    live: true
   });
   
   $("a[rel=member-tip]").twipsy({
@@ -153,6 +156,11 @@ $(function(){
     offset: 170,
   });
   
+  $("a[rel=dashboard-tip]").twipsy({
+    live: true,
+    offset: 15,
+  });
+
   $("a[rel=tip]").twipsy({
     live: true,
     offset: 30,
