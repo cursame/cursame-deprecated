@@ -34,8 +34,7 @@ class Assignment < ActiveRecord::Base
   
   after_create do
     if self.start_at <= DateTime.now
-      self.publish
-      self.update_attribute(:state, "published")
+      self.publish!
     end
   end
   
@@ -49,16 +48,14 @@ class Assignment < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_added'
     end
-    if course.students.count > 0 and !course.all_emails(nil).blank?
-      StudentMailer.new_homework(course.students, course, course.network).deliver
-    end
+    emails = course.student_emails
+    StudentMailer.delay.new_homework(emails, course, course.network) unless emails.blank?
   end
   
   def self.publish_new_assignments
     Assignment.created.each do |assignment|
       if assignment.start_at <= DateTime.now
-        assignment.publish 
-        assignment.update_attribute(:state, "published")
+        assignment.publish!
       end
     end
   end

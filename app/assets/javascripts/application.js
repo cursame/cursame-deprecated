@@ -10,9 +10,15 @@
 
 $(function(){
   // disabling buttons to avoid double posting
-  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').click(function(){
+  $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
     $(this).attr('disabled', 'disabled');
-    $(this).parents('form').submit()
+    $(this).parents('form').submit();
+    return false; //to disable double request in Firefox for the click
+  });
+  
+  //lazy loading the members for the network
+  $("img.network-members").lazyload({
+    effect : "fadeIn"
   });
 
   // Survey form
@@ -95,8 +101,8 @@ $(function(){
           var preview  = $('.preview img', fieldset);
           var file;
 
-          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache);
-          file = data.file || data.logo_file || data.avatar_file;
+          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache || data.course_logo_file_cache);
+          file = data.file || data.logo_file || data.avatar_file || data.course_logo_file;
 
           if (file && file.thumb) {
             $('.preview img', fieldset).attr('src', file.thumb.url);
@@ -137,11 +143,24 @@ $(function(){
     return false;
   });
 
-  
-  $("span.tip").twipsy({
-    live: true
+  $("a[rel=tooltip]").twipsy({
+    live: true,
+    placement: "right"
   });
   
+  $("span.tip").twipsy({
+  });
+  
+  $("a[rel=member-tip]").twipsy({
+    live: true,
+    offset: 170,
+  });
+  
+  $("a[rel=dashboard-tip]").twipsy({
+    live: true,
+    offset: 15,
+  });
+
   $("a[rel=tip]").twipsy({
     live: true,
     offset: 30,

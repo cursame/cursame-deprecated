@@ -265,6 +265,10 @@ es:
       show_delivery: Mostrar entrega
       failed_delivery: Tarea no entregada
       course: Curso
+    index:
+      current: Abiertas
+      previous: Cerradas
+      unpublished: No publicadas
 
   surveys:
     survey:
@@ -275,11 +279,16 @@ es:
       answer: Contestar
       publish: Publicar
       published: Publicado
+      unpublished: No publicado
+      start_at: Fecha de publicación
       select_correct_answer: Selecciona la respuesta correcta
     drag: Arrastra y Ordena
     index:
       header: Cuestionarios
       new_survey: Nuevo cuestionario
+      current: Abiertos
+      previous: Cerrados
+      unpublished: No publicados
     show:
       header: Cuestionario 
       edit_survey: Editar
@@ -361,6 +370,8 @@ es:
     by: 'por'
 
   comments:
+    insert_multimedia: 'Insertar multimedia'
+    tooltip: "Sólo pega el link en el cuerpo del comentario.  Links compatibles: Youtube, Vimeo, Ustream, LiveStream, Prezi, SlideShare, Google Video."
     destroy:
       remove: eliminar comentario
     comments:
@@ -505,3 +516,8 @@ es:
   user:
     errors:
       email_not_allowed: Dirección de correo no permitida
+      
+  home:
+    members:
+      members: Miembros de la red
+      all_members: Ver todos

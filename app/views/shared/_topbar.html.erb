@@ -4,9 +4,6 @@
       <div class="logo-container">
         <%= link_to image_tag("logo.png"), root_path, :class => "brand" %>
       </div>
-      <form class="pull-left" action="">
-        <input type="text" placeholder="<%= t('shared.toolbar.search') %>" />
-      </form>
       
       <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
         <%= tab.dashboard t('dashboard.start'), root_path %>

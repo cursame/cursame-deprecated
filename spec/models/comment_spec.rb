@@ -8,6 +8,7 @@ describe Comment do
     it { should belong_to :commentable }
     it { should belong_to :user }
     it { should have_many :comments }
+    it { should have_many(:assets).dependent(:destroy) }
   end
 
   describe 'validations' do

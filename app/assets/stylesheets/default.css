@@ -187,8 +187,8 @@ width: 300px;
 }
 
 .course-detail {
-	height: 60px;
-	padding-top: 20px;
+	height: 50px;
+	padding-top: 10px;
 }
 
 .course-detail h4 {
@@ -288,10 +288,10 @@ color: #BFBFBF;
 }
 
 /*.wall label, */
-.assignments label,
-.discussions label {
-	display: none;
-}
+/*.assignments label,*/
+/*.discussions label {*/
+/*	display: none;*/
+/*}*/
 
 .wall .actions, 
 .assignments .actions,
