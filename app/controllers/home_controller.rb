@@ -28,6 +28,6 @@ class HomeController < ApplicationController
   end
   
   def members
-    @users = current_network.users
+    @users = current_network.users.search(params[:search])
   end
 end
