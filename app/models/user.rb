@@ -70,7 +70,9 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search="")
-    search ? select("(first_name || last_name) as name, *").where("name #{LIKE} ?", "%#{search}%") : self.ordered
+    search ? where("((users.first_name || users.last_name) #{LIKE} ?) OR 
+                   (users.first_name #{LIKE}  ?) OR (users.last_name #{LIKE} ?)",
+                   "%#{search}%", "%#{search}%", "%#{search}%") : self.ordered
   end
 
   def self.total_supervisors
