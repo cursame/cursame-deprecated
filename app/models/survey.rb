@@ -11,7 +11,7 @@ class Survey < ActiveRecord::Base
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
 
-  state_machine do
+  state_machine :initial => :unpublished do
     state :unpublished
     state :published, :enter => :survey_published
 
