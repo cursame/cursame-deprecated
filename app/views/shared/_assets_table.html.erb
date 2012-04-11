@@ -12,7 +12,8 @@
       <% record.assets.each do |asset| %>
         <tr class='asset'>
           <td><%= image_tag asset.file.thumb_url %></td>
-          <td><%= link_to asset.name, asset.file.url %></td>
+		  <%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
+		  <td><a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %></a></td>
           <td><%= asset.description %></td>
           <td><%= l asset.created_at, :format => :short %></td>
         </tr>

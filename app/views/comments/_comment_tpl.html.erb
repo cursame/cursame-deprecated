@@ -9,7 +9,8 @@
         <p>
         <% comment.assets.each do |asset| %>
           <%= image_tag asset.file.thumb_url %>
-          <%= link_to asset.name, asset.file.url %><br />
+		  <%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
+		  <a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %></a><br />
         <% end %>
         </p>
         <% end %>

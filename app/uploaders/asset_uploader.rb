@@ -28,6 +28,8 @@ class AssetUploader < CarrierWave::Uploader::Base
       '/assets/file_icons/access.png'
     when /\.pdf/i
       '/assets/file_icons/pdf.png'
+    when /\.swf/i
+      '/assets/file_icons/page_white_flash.png'
     else
       '/assets/file_icons/text.png'
     end
