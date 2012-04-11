@@ -6,5 +6,10 @@ FactoryGirl.define do
     period { rand(7) + 1 }
     due_to { 1.month.from_now }
     course { Factory :course }
+    start_at { 1.day.from_now }
+  end
+  
+  factory :published_assignment, :parent => :assignment do
+    start_at { DateTime.now }
   end
 end

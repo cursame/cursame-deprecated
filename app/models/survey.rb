@@ -11,12 +11,12 @@ class Survey < ActiveRecord::Base
   validates_presence_of :name, :description, :value, :period, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
 
-  state_machine :initial => :unpublished do
+  state_machine do
     state :unpublished
     state :published, :enter => :survey_published
 
     event :publish do
-      transitions :to => :published, :from => :unpublished
+      transitions :to => :published, :from => [:unpublished]
     end
   end
 
@@ -28,8 +28,8 @@ class Survey < ActiveRecord::Base
     self.start_at ||= DateTime.now
   end
   
-  after_create do
-    if self.start_at <= DateTime.now
+  after_save do
+    if self.start_at <= DateTime.now and self.unpublished?
       self.publish!
     end
   end

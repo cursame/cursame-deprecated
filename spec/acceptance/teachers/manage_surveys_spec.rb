@@ -14,10 +14,17 @@ feature 'Manage surveys', %q{
     sign_in_with @teacher, :subdomain => @network.subdomain
   end
 
-  scenario 'viewing a list of surveys' do
+  scenario 'viewing a list of surveys', :js => true do
+    published_surveys = (1..3).map { Factory(:published_survey, :course => @course) }
     surveys = (1..3).map { Factory(:survey, :course => @course) }
     visit course_surveys_url @course, :subdomain => @network.subdomain
 
+    published_surveys.each do |survey|
+      page.should show_survey_preview survey
+    end
+    
+    click_link 'No publicados'
+    
     surveys.each do |survey|
       page.should show_survey_preview survey
     end
@@ -31,16 +38,25 @@ feature 'Manage surveys', %q{
     click_link t('surveys.index.new_survey')
 
     fill_in 'survey[name]',        :with => 'First survey'
-    fill_in 'survey[description]', :with => 'This is a test survey'
+#    fill_in 'survey[description]', :with => 'This is a test survey'
     fill_in 'survey[value]',       :with => 9
-    fill_in 'survey[period]',      :with => 1
-
+    select '1', :from => 'survey[period]'
+    
+    time_start_at = 1.day.from_now
+    time_due_to = time_start_at+1.month
     # TODO: we need a select_date helper
-    select '2011',    :from => 'survey[due_to(1i)]'
-    select 'enero',   :from => 'survey[due_to(2i)]'
-    select '20',      :from => 'survey[due_to(3i)]'
-    select '8',       :from => 'survey[due_to(4i)]'
-    select '30',      :from => 'survey[due_to(5i)]'
+    select time_due_to.year.to_s,    :from => 'survey[due_to(1i)]'
+    select month_number_to_name(time_due_to.month),   :from => 'survey[due_to(2i)]'
+    select time_due_to.day.to_s,      :from => 'survey[due_to(3i)]'
+    select time_due_to.hour.to_s,       :from => 'survey[due_to(4i)]'
+    select time_due_to.minute.to_s,      :from => 'survey[due_to(5i)]'
+    
+    # TODO: we need a select_date helper
+    select time_start_at.year.to_s,    :from => 'survey[start_at(1i)]'
+    select month_number_to_name(time_start_at.month),   :from => 'survey[start_at(2i)]'
+    select time_start_at.day.to_s,      :from => 'survey[start_at(3i)]'
+    select time_start_at.hour.to_s,       :from => 'survey[start_at(4i)]'
+    select time_start_at.minute.to_s,      :from => 'survey[start_at(5i)]'
 
     add_question_with_answers 'A, B or C?'
     add_question_with_answers 'A, B or C?'
@@ -51,11 +67,11 @@ feature 'Manage surveys', %q{
 
     expected_attrs = {
       :name => 'First survey', 
-      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
+#      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
       :value => 9, 
       :period => 1,
       :course_id => @course,
-      :state => :unpublished
+      :state => "unpublished"
     }
 
     Survey.should exist_with expected_attrs
@@ -80,9 +96,9 @@ feature 'Manage surveys', %q{
     visit new_course_survey_url(@course, :subdomain => @network.subdomain)
 
     fill_in 'survey[name]',        :with => 'First survey'
-    fill_in 'survey[description]', :with => 'This is a test survey'
+#    fill_in 'survey[description]', :with => 'This is a test survey'
     fill_in 'survey[value]',       :with => 9
-    fill_in 'survey[period]',      :with => 1
+    select '1', :from => 'survey[period]'
 
     # TODO: we need a select_date helper
     select '2011',    :from => 'survey[due_to(1i)]'
@@ -114,30 +130,39 @@ feature 'Manage surveys', %q{
     click_link t('surveys.index.new_survey')
 
     fill_in 'survey[name]',        :with => 'First survey'
-    fill_in 'survey[description]', :with => 'This is a test survey'
+#    fill_in 'survey[description]', :with => 'This is a test survey'
     fill_in 'survey[value]',       :with => 9
-    fill_in 'survey[period]',      :with => 1
+    select '1', :from => 'survey[period]'
 
+    time_start_at = DateTime.now
+    time_due_to = time_start_at+1.month
     # TODO: we need a select_date helper
-    select '2011',    :from => 'survey[due_to(1i)]'
-    select 'enero',   :from => 'survey[due_to(2i)]'
-    select '20',      :from => 'survey[due_to(3i)]'
-    select '8',       :from => 'survey[due_to(4i)]'
-    select '30',      :from => 'survey[due_to(5i)]'
+    select time_due_to.year.to_s,    :from => 'survey[due_to(1i)]'
+    select month_number_to_name(time_due_to.month),   :from => 'survey[due_to(2i)]'
+    select time_due_to.day.to_s,      :from => 'survey[due_to(3i)]'
+    select time_due_to.hour.to_s,       :from => 'survey[due_to(4i)]'
+    select time_due_to.minute.to_s,      :from => 'survey[due_to(5i)]'
+    
+    # TODO: we need a select_date helper
+    select time_start_at.year.to_s,    :from => 'survey[start_at(1i)]'
+    select month_number_to_name(time_start_at.month),   :from => 'survey[start_at(2i)]'
+    select time_start_at.day.to_s,      :from => 'survey[start_at(3i)]'
+    select time_start_at.hour.to_s,       :from => 'survey[start_at(4i)]'
+    select time_start_at.minute.to_s,      :from => 'survey[start_at(5i)]'
 
     add_question_with_answers 'A, B or C?'
 
     lambda do
-      click_button t('formtastic.actions.create_and_publish')
+      click_button t('formtastic.actions.create')
     end.should change(Survey, :count).by(1)
 
     expected_attrs = {
       :name => 'First survey', 
-      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
+#      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
       :value => 9, 
       :period => 1,
       :course_id => @course,
-      :state => :published
+      :state => "published"
     }
 
     Survey.should exist_with expected_attrs
@@ -146,7 +171,7 @@ feature 'Manage surveys', %q{
     survey.should have(1).questions
 
     page.should show_survey_full_preview survey
-    page.should have_notice t('flash.survey_created_and_published')
+    page.should have_notice t('flash.survey_created')
 
     Notification.should exist_with :user_id => student, :notificator_id => survey, :kind => 'student_survey_added'
   end
@@ -181,18 +206,26 @@ feature 'Manage surveys', %q{
     page.should have_notice t('flash.survey_updated')
   end
 
-  scenario 'editing an existing survey with publishing', :js => true do
+  scenario 'editing an existing survey and publish it', :js => true do
     survey   = Factory(:survey, :course => @course)
     visit edit_survey_url(survey, :subdomain => @network.subdomain)
      
     fill_in 'survey[name]', :with => 'Edited survey'
+    
+    time_start_at = DateTime.now
+    # TODO: we need a select_date helper
+    select time_start_at.year.to_s,    :from => 'survey[start_at(1i)]'
+    select month_number_to_name(time_start_at.month),   :from => 'survey[start_at(2i)]'
+    select time_start_at.day.to_s,      :from => 'survey[start_at(3i)]'
+    select time_start_at.hour.to_s,       :from => 'survey[start_at(4i)]'
+    select time_start_at.minute.to_s,      :from => 'survey[start_at(5i)]'
 
     lambda do
-      click_button t('formtastic.actions.update_and_publish')
+      click_button t('formtastic.actions.update')
     end.should_not change(Survey, :count)
 
-    Survey.should exist_with :name => 'Edited survey', :state => :published
-    page.should have_notice t('flash.survey_updated_and_published')
+    Survey.should exist_with :name => 'Edited survey', :state => "published"
+    page.should have_notice t('flash.survey_updated')
   end
 
   scenario 'trying to edit an existing survey with not passing validation' do
@@ -286,14 +319,14 @@ feature 'Manage surveys', %q{
     page.should show_managed_survey_reply reply
   end 
 
-  scenario 'publishing a survey with ajax', :js => true do
-    survey = Factory(:survey, :course => @course)
-    visit course_surveys_url @course, :subdomain => @network.subdomain
-    within('.survey:last') do
-      click_link t('surveys.survey.publish')
-      page.should have_content t('surveys.survey.published')
-    end
+#  scenario 'publishing a survey with ajax', :js => true do
+#    survey = Factory(:survey, :course => @course)
+#    visit course_surveys_url @course, :subdomain => @network.subdomain
+#    within('.survey:last') do
+#      click_link t('surveys.survey.publish')
+#      page.should have_content t('surveys.survey.published')
+#    end
 
-    Survey.should exist_with :state => :published
-  end
+#    Survey.should exist_with :state => :published
+#  end
 end

@@ -28,4 +28,14 @@ describe Assignment do
     it { assignment.description.should be_html_safe }
     it { assignment.description.should =~ /hello/}
   end
+  
+  describe 'states of the assignment' do
+    before do
+      @created = Factory(:assignment)
+      @published   = Factory(:published_assignment)
+    end
+    
+    it { Assignment.published.should == [@published] }
+    it { Assignment.created.should == [@created] }
+  end
 end
