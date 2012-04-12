@@ -1,6 +1,6 @@
 Cursame::Application.configure do
-  HOST = 'cursa.me'
-  HEROKU_HOST = 'cursame.heroku.com'
+  HOST = 'labbbs.net'
+  HEROKU_HOST = 'stark-mist-6540.herokuapp.com'
 
   config.cache_classes = true
   config.consider_all_requests_local       = false
