@@ -1,6 +1,6 @@
 Cursame::Application.configure do
-  HOST = 'cursa.me'
-  HEROKU_HOST = 'cursame.heroku.com'
+  HOST = 'labbbs.net'
+  HEROKU_HOST = 'blooming-meadow-7206.herokuapp.com'
 
   config.cache_classes = true
   config.consider_all_requests_local       = false
@@ -38,7 +38,7 @@ Cursame::Application.configure do
     :authentication => :plain,
     :user_name      => ENV['SENDGRID_USERNAME'],
     :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'cursa.me'
+    :domain         => 'herokuapp.com'
   }
   ActionMailer::Base.delivery_method = :smtp
 end
