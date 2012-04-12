@@ -1,6 +1,6 @@
 Cursame::Application.configure do
   HOST = 'labbbs.net'
-  HEROKU_HOST = 'floating-cloud-2650.herokuapp.com'
+  HEROKU_HOST = 'stark-mist-6540.herokuapp.com'
   config.cache_classes = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
