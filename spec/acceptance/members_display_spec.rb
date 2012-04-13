@@ -25,7 +25,7 @@ feature 'Network members interaction', %q{
 
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.nav-member-avatars')
-    page.should have_css('a[rel=tip]', :count => 9)
+    page.should have_css('.nav-member-avatars li a', :count => 9)
   end
   
   scenario 'view at most 30 users of this network on the dashboard' do
@@ -35,7 +35,7 @@ feature 'Network members interaction', %q{
     
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.nav-member-avatars')
-    page.should have_css('a[rel=tip]', :count => 30)
+    page.should have_css('.nav-member-avatars li a', :count => 30)
     @network.users.count.should equal 36
   end
   
@@ -48,5 +48,22 @@ feature 'Network members interaction', %q{
     click_link "Ver todos"
     page.should have_css(".members-grid")
     page.should have_css(".network-members", :count => 36)
+  end
+
+  scenario 'search for a user member on the members grid view', :js => true do
+    (1..29).map do
+      student = Factory(:student, :networks => [@network])
+    end
+    student = Factory(:student, :networks => [@network], :first_name => "David", :last_name =>"Test One")
+
+    visit dashboard_url(:subdomain => @network.subdomain)
+    click_link "Ver todos"
+    page.should have_css(".network-members", :count => 36)
+
+    fill_in 'search', :with => "David Test"
+    click_button 'Buscar usuario'
+
+    page.should have_css(".members-grid")
+    page.should have_css(".network-members", :count => 1)
   end
 end

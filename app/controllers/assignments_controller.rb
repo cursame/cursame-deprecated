@@ -11,6 +11,7 @@ class AssignmentsController < ApplicationController
 
   def new
     @assignment = manageable_course.assignments.build
+    @assignment.due_to = DateTime.now+1.week
   end
 
   def create

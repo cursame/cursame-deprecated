@@ -7,10 +7,15 @@ FactoryGirl.define do
     due_to { 1.month.from_now }
     course { Factory :course }
     questions { [Factory(:question)] }
-    state :unpublished
+    start_at { 1.day.from_now }
   end
 
   factory :published_survey, :parent => :survey do
-    state :published
+    start_at { DateTime.now }
+  end
+  
+  factory :published_finished_survey, :parent => :survey do
+    start_at { DateTime.yesterday }
+    due_to { DateTime.now-1.hour}
   end
 end

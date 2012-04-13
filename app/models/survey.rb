@@ -8,15 +8,16 @@ class Survey < ActiveRecord::Base
   has_many   :questions, :dependent => :destroy, :order => "position ASC"
   belongs_to :course
 
-  validates_presence_of :name, :description, :value, :period, :due_to, :course
+  validates_presence_of :name, :description, :value, :period, :start_at, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
+  before_save :start_at_less_than_due_to
 
-  state_machine :initial => :unpublished do
+  state_machine do
     state :unpublished
     state :published, :enter => :survey_published
 
     event :publish do
-      transitions :to => :published, :from => :unpublished
+      transitions :to => :published, :from => [:unpublished]
     end
   end
 
@@ -28,8 +29,8 @@ class Survey < ActiveRecord::Base
     self.start_at ||= DateTime.now
   end
   
-  after_create do
-    if self.start_at <= DateTime.now
+  after_save do
+    if self.start_at <= DateTime.now and self.unpublished?
       self.publish!
     end
   end
@@ -68,5 +69,15 @@ class Survey < ActiveRecord::Base
     def all_states
       where(:state => "*")
     end
+  end
+  
+  private
+  
+  def start_at_less_than_due_to
+    if due_to <= start_at
+      errors.add(:due_to, I18n.t('.survey.errors.due_to_after_start_at'))
+      false
+    end
+    
   end
 end

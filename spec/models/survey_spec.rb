@@ -18,6 +18,7 @@ describe Survey do
     it { should ensure_inclusion_of(:value).in_range(0..100) }
     it { should validate_presence_of :period }
     it { should validate_presence_of :due_to }
+    it { should validate_presence_of :start_at }
   end
 
   describe 'html description sanitization' do

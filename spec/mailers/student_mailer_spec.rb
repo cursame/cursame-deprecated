@@ -24,11 +24,11 @@ describe StudentMailer do
   end
 
   describe "new_homework" do
-    let(:mail) { StudentMailer.new_homework(@course.students, @course, @network) }
+    let(:mail) { StudentMailer.new_homework(@course.student_emails, @course, @network) }
 
     it "renders the headers" do
       mail.subject.should eq("Nueva tarea en uno de tus cursos")
-      mail.to.should eq([@course.all_emails(nil)])
+      mail.to.should eq([@student.email])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
@@ -39,11 +39,11 @@ describe StudentMailer do
 
   describe "new_survey" do
     survey = Factory(:published_survey)
-    let(:mail) { StudentMailer.new_survey(@course.students, @course, survey, @network) }
+    let(:mail) { StudentMailer.new_survey(@course.student_emails, @course, survey, @network) }
 
     it "renders the headers" do
       mail.subject.should eq("Nuevo cuestionario en uno de tus cursos")
-      mail.to.should eq([@course.all_emails(nil)])
+      mail.to.should eq([@student.email])
       mail.from.should eq(["noreply@cursa.me"])
     end
 
