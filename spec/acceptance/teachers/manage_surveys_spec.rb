@@ -33,7 +33,7 @@ feature 'Manage surveys', %q{
     click_link 'No publicados'
     
     surveys.each do |survey|
-      page.should show_survey_preview survey unless survey.published?
+      page.should show_survey_preview survey if survey.unpublished?
     end
   end
 
