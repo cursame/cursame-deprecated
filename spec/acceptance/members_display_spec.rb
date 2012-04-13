@@ -25,7 +25,7 @@ feature 'Network members interaction', %q{
 
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.nav-member-avatars')
-    page.should have_css('a[rel=tip]', :count => 9)
+    page.should have_css('.nav-member-avatars li a', :count => 9)
   end
   
   scenario 'view at most 30 users of this network on the dashboard' do
@@ -35,7 +35,7 @@ feature 'Network members interaction', %q{
     
     visit dashboard_url(:subdomain => @network.subdomain)
     page.should have_css('.nav-member-avatars')
-    page.should have_css('a[rel=tip]', :count => 30)
+    page.should have_css('.nav-member-avatars li a', :count => 30)
     @network.users.count.should equal 36
   end
   

@@ -28,9 +28,9 @@ shared_examples_for 'has basic actions for assignments' do
     
   end
 
-  scenario 'viewing the detail of an assignment' do
-    assignment = Factory(:assignment, :course => @course)
-    visit course_assignments_path @course
+  scenario 'viewing the detail of an assignment', :js => true do
+    assignment = Factory(:published_assignment, :course => @course)
+    visit course_assignments_url(@course, :subdomain => @network.subdomain)
 
     within('.assignment:last') do
       click_link assignment.name
@@ -39,8 +39,8 @@ shared_examples_for 'has basic actions for assignments' do
   end
   
   scenario 'only teachers can see assignments not yet started' do
-    assignments = (1..3).map { Factory(:assignment, :course => @course) }
-    @assignment = Factory(:assignment, :course => @course, :start_at => 1.day.from_now)
+    assignments = (1..3).map { Factory(:published_assignment, :course => @course) }
+    @assignment = Factory(:assignment, :course => @course)
     visit course_assignments_url @course, :subdomain => @network.subdomain
     
     assignments.each do |assignment|

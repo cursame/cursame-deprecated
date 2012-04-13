@@ -14,7 +14,7 @@ class Assignment < ActiveRecord::Base
   validates_presence_of :name, :description, :value, :period, :due_to, :start_at, :course
   validates_inclusion_of :value,  :in => (0..100)
   validates_inclusion_of :period, :in => (1..8)
-  validate :start_at_less_than_due_to
+  before_save :start_at_less_than_due_to
   
   state_machine :initial => :created do
     state :created
@@ -68,7 +68,10 @@ class Assignment < ActiveRecord::Base
   private
   
   def start_at_less_than_due_to
-    errors.add(:due_to, I18n.t('.survey.errors.due_to_after_start_at')) if due_to <= start_at
+    if due_to <= start_at
+      errors.add(:due_to, I18n.t('.assignment.errors.due_to_after_start_at')) 
+      false
+    end
   end
   
 end
