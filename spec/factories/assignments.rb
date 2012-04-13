@@ -12,4 +12,9 @@ FactoryGirl.define do
   factory :published_assignment, :parent => :assignment do
     start_at { DateTime.now }
   end
+  
+  factory :published_finished_assignment, :parent => :assignment do
+    start_at { DateTime.yesterday }
+    due_to { DateTime.now - 1.hour }
+  end
 end

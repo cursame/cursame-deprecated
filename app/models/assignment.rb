@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
   has_many   :deliveries, :dependent => :destroy
   has_many   :comments, :as => :commentable, :dependent => :destroy
 
-  validates_presence_of :name, :description, :value, :period, :due_to, :course
+  validates_presence_of :name, :description, :value, :period, :due_to, :start_at, :course
   validates_inclusion_of :value,  :in => (0..100)
   validates_inclusion_of :period, :in => (1..8)
   
@@ -42,6 +42,10 @@ class Assignment < ActiveRecord::Base
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_updated'
     end
+  end
+  
+  def expired?
+    due_to < DateTime.now
   end
   
   def notificate_user_about_new_assignment

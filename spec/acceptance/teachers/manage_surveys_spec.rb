@@ -15,18 +15,25 @@ feature 'Manage surveys', %q{
   end
 
   scenario 'viewing a list of surveys', :js => true do
-    published_surveys = (1..3).map { Factory(:published_survey, :course => @course) }
-    surveys = (1..3).map { Factory(:survey, :course => @course) }
+    surveys = (1..3).map { Factory(:published_survey, :course => @course) }
+    (1..3).map { surveys << Factory(:survey, :course => @course) }
+    (1..3).map { surveys << Factory(:published_finished_survey, :course => @course) }
     visit course_surveys_url @course, :subdomain => @network.subdomain
 
-    published_surveys.each do |survey|
-      page.should show_survey_preview survey
+    surveys.each do |survey|
+      page.should show_survey_preview survey if survey.published? and !survey.expired?
+    end
+    
+    click_link 'Cerrados'
+    
+    surveys.each do |survey|
+      page.should show_survey_preview survey if survey.published? and survey.expired?
     end
     
     click_link 'No publicados'
     
     surveys.each do |survey|
-      page.should show_survey_preview survey
+      page.should show_survey_preview survey unless survey.published?
     end
   end
 
@@ -42,7 +49,7 @@ feature 'Manage surveys', %q{
     fill_in 'survey[value]',       :with => 9
     select '1', :from => 'survey[period]'
     
-    time_start_at = 1.day.from_now
+    time_start_at = DateTime.now + 1.day
     time_due_to = time_start_at+1.month
     # TODO: we need a select_date helper
     select time_due_to.year.to_s,    :from => 'survey[due_to(1i)]'

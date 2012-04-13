@@ -13,4 +13,9 @@ FactoryGirl.define do
   factory :published_survey, :parent => :survey do
     start_at { DateTime.now }
   end
+  
+  factory :published_finished_survey, :parent => :survey do
+    start_at { DateTime.yesterday }
+    due_to { DateTime.now-1.hour}
+  end
 end

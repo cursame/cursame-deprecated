@@ -8,7 +8,7 @@ class Survey < ActiveRecord::Base
   has_many   :questions, :dependent => :destroy, :order => "position ASC"
   belongs_to :course
 
-  validates_presence_of :name, :description, :value, :period, :due_to, :course
+  validates_presence_of :name, :description, :value, :period, :start_at, :due_to, :course
   validates_inclusion_of :value,  :in => (0..100)
 
   state_machine do
