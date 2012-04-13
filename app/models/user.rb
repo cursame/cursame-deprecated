@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(search="")
-    search ? where("((users.first_name || users.last_name) #{LIKE} ?) OR 
+    search ? where("((users.first_name || ' ' || users.last_name) #{LIKE} ?) OR 
                    (users.first_name #{LIKE}  ?) OR (users.last_name #{LIKE} ?)",
                    "%#{search}%", "%#{search}%", "%#{search}%") : self.ordered
   end
