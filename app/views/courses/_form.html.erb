@@ -2,7 +2,7 @@
   <%= form.inputs :file do %>
     <li class='preview'><img src="<%= @course.course_logo_file.thumb.url %>" /></li>
     <%= form.input :logo_file, :as => :file, :input_html => {'data-upload-path' => upload_logo_for_courses_path} %>
-    <%= form.input :logo_file_cache, :as => :hidden %>
+    <% #form.input :logo_file_cache, :as => :hidden %>
   <% end %>
 
   <%= form.inputs do %>

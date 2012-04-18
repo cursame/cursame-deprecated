@@ -1,272 +1,298 @@
 
 --- 
-users: 
+answers: 
   columns: 
-  - id
-  - role
-  - email
-  - encrypted_password
-  - reset_password_token
-  - reset_password_sent_at
-  - remember_created_at
-  - sign_in_count
-  - current_sign_in_at
-  - last_sign_in_at
-  - current_sign_in_ip
-  - last_sign_in_ip
-  - confirmation_token
-  - confirmed_at
-  - confirmation_sent_at
+  - uuid
+  - question_id
+  - text
   - created_at
   - updated_at
-  - first_name
-  - last_name
-  - about_me
-  - studies
-  - birth_date
-  - occupation
-  - twitter_link
-  - facebook_link
-  - linkedin_link
-  - avatar_file
-  - state
+  - position
   records: 
-  - - 1
-    - teacher
-    - iam@armando.mx
-    - $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
-    - 
-    - 
-    - 
-    - 131
-    - 2012-03-23 01:17:56.229222
-    - 2012-03-23 01:16:43.514287
-    - 127.0.0.1
-    - 127.0.0.1
-    - 
-    - 2011-11-03 00:39:47.963458
-    - 2011-11-03 00:38:54.200173
-    - 2011-11-03 00:38:54.221567
-    - 2012-03-23 01:17:56.230275
-    - Jose Armando
-    - Gonzalez
-    - developer
-    - UTM
-    - "2011-12-28"
-    - desarrollador de cursame
-    - manduks
-    - armando_gonzalez
-    - armando_gonzalez
-    - android.png
-    - active
-  - - 2
-    - student
-    - mando@mando.com
-    - $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
-    - 
-    - 
-    - 
-    - 1
-    - 2011-11-03 00:45:08.806314
-    - 2011-11-03 00:45:08.806314
-    - 127.0.0.1
-    - 127.0.0.1
-    - 
-    - 2011-11-03 00:45:08.802290
-    - 2011-11-03 00:44:09.226175
-    - 2011-11-03 00:44:09.226394
-    - 2011-11-03 00:45:08.806652
-    - Felipe
-    - jejeje
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - active
-  - - 3
-    - student
-    - joagolo@hotmail.com
-    - $2a$10$8OzDxSWVhon5dBzbvx5tLe6YkrH9KCeDxjDC0Ib1nS5NIje7mBURe
-    - 
-    - 
-    - 
-    - 1
-    - 
-    - 
-    - 
-    - 
-    - icGntihfD1eqJFg3udZh
-    - 
-    - 2011-12-16 00:17:35.948513
-    - 2011-12-16 00:17:35.961918
-    - 2011-12-16 00:25:11.682964
-    - Estudiante
-    - Gonzalez
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - active
-  - - 4
-    - student
-    - mono@hotmail.com
-    - $2a$10$lNKZYanJFyumg/bfXWd7n.3G/rOtlqtSC.c1ToI3zTORacQduEVgK
-    - 
-    - 
-    - 
-    - 4
-    - 2012-02-02 20:38:07.692238
-    - 2012-02-02 19:23:05.049619
-    - 127.0.0.1
-    - 127.0.0.1
-    - 
-    - 2011-12-23 01:35:24.030783
-    - 2011-12-23 01:34:23.222929
-    - 2011-12-23 01:34:23.235512
-    - 2012-02-02 20:38:07.694344
-    - mono
-    - mm
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - active
-  - - 5
-    - student
-    - juan@mo.com
-    - $2a$10$DGTV5apj/Cu0BIcNqpl.CuCOsMoyH5/Gfy/pcVQ18sdOiOEhgJb2S
-    - 
-    - 
-    - 
-    - 1
-    - 2011-12-30 00:11:28.276387
-    - 2011-12-30 00:11:28.276387
-    - 127.0.0.1
-    - 127.0.0.1
-    - 
-    - 2011-12-30 00:11:28.269369
-    - 2011-12-30 00:10:48.420903
-    - 2011-12-30 00:10:48.436374
-    - 2011-12-30 00:11:28.277203
-    - Juan
-    - Gonxa
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 
-    - active
-  - - 6
-    - student
-    - koko@meme.com
-    - $2a$10$scx6NAJ8bLd/Tw7OhuUL2O8oYTK7lpwojSNhLeNVpH.Z65T8e68vS
-    - 
-    - 
-    - 
-    - 4
-    - 2012-02-01 07:03:57.870655
-    - 2012-01-31 23:23:03.200045
-    - 127.0.0.1
-    - 127.0.0.1
-    - 
-    - 2012-01-18 04:18:57.535131
-    - 2012-01-18 04:17:45.749553
-    - 2012-01-18 04:17:45.763264
-    - 2012-02-01 07:03:57.871495
-    - Armando
-    - Gonzalez Lopez
-    - ""
-    - ""
-    - 
-    - ""
-    - ""
-    - ""
-    - ""
-    - 
-    - active
-
---- 
-networks_users: 
-  columns: 
-  - network_id
-  - user_id
-  records: 
-  - - 1
-    - 1
-  - - 1
+  - - 38381340-154d-012f-0b79-482a14108e62
     - 2
-  - - 1
+    - "32"
+    - 2011-12-30 19:48:50.583998
+    - 2011-12-30 19:48:50.586971
+    - 0
+  - - 38381d30-154d-012f-bc82-482a14108e62
+    - 2
+    - "67"
+    - 2011-12-30 19:48:50.587774
+    - 2011-12-30 19:48:50.587774
+    - 1
+  - - 38382660-154d-012f-c2e1-482a14108e62
+    - 2
+    - "33"
+    - 2011-12-30 19:48:50.588663
+    - 2011-12-30 19:48:50.588663
+    - 2
+  - - 383847a0-154d-012f-951b-482a14108e62
     - 3
-  - - 1
+    - "24"
+    - 2011-12-30 19:48:50.590148
+    - 2011-12-30 19:48:50.592103
+    - 0
+  - - 383851c0-154d-012f-756f-482a14108e62
+    - 3
+    - "56"
+    - 2011-12-30 19:48:50.592954
+    - 2011-12-30 19:48:50.592954
+    - 1
+  - - 38385bc0-154d-012f-151a-482a14108e62
+    - 3
+    - "65"
+    - 2011-12-30 19:48:50.593678
+    - 2011-12-30 19:48:50.593678
+    - 2
+  - - 571c227d-0eb8-4a85-81e7-8d74133dc44c
     - 4
-  - - 1
-    - 5
-  - - 1
-    - 6
+    - asddasd
+    - 2012-01-23 07:20:48.313737
+    - 2012-01-23 07:20:48.313737
+    - 0
+  - - 9e948960-154c-012f-9296-482a14108e62
+    - 1
+    - "4"
+    - 2011-12-30 19:44:32.839837
+    - 2011-12-30 19:44:32.842879
+    - 0
+  - - 9e949890-154c-012f-8a8d-482a14108e62
+    - 1
+    - "6"
+    - 2011-12-30 19:44:32.844114
+    - 2011-12-30 19:44:32.844114
+    - 1
+  - - 9e94a380-154c-012f-90da-482a14108e62
+    - 1
+    - "6"
+    - 2011-12-30 19:44:32.845241
+    - 2011-12-30 19:44:32.845241
+    - 2
+  - - b9d18c30-307e-461e-b9dd-deb788372b65
+    - 4
+    - asdasd
+    - 2012-01-23 07:20:48.315460
+    - 2012-01-23 07:20:48.315460
+    - 2
+  - - ed27e31a-f091-498b-8515-558fcfda6fa2
+    - 4
+    - asd
+    - 2012-01-23 07:20:48.314688
+    - 2012-01-23 07:20:48.314688
+    - 1
 
 --- 
-courses: 
+assets: 
   columns: 
   - id
+  - file
+  - content_type
+  - created_at
+  - updated_at
   - name
   - description
-  - start_date
-  - finish_date
-  - public
-  - reference
-  - created_at
-  - updated_at
-  - network_id
-  - logo_file
+  - owner_id
+  - owner_type
   records: 
   - - 1
-    - mono
-    - "<p>\xC2\xA0asm,dnsa,md nasdansdnam,sndm,asn d,mans,mdasd</p>"
-    - "2009-03-03"
-    - "2012-05-06"
-    - true
-    - asdasd
-    - 2011-11-03 00:43:01.091698
-    - 2011-11-03 00:43:01.091698
-    - 1
+    - 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
     - 
+    - 2012-04-03 00:33:26.031937
+    - 2012-04-03 00:33:26.031937
+    - discussion de archivos
+    - "esta es la descripcion del archivo "
+    - 1
+    - Assignment
   - - 2
-    - Sencha Touch
-    - <p><p></p><p></p><p></p><p>Sencha Touch Course</p></p>
-    - "2011-12-07"
-    - "2012-03-09"
-    - true
-    - "23"
-    - 2011-12-12 19:39:04.182657
-    - 2012-01-24 23:01:14.822053
-    - 1
-    - ext-brew-april-fools.jpg
-  - - 3
-    - Curso de Rails
-    - <p>esto es un curso de ruby on rails</p>
-    - "2011-12-27"
-    - "2011-12-30"
-    - true
-    - "12"
-    - 2011-12-13 01:34:27.665310
-    - 2012-02-29 19:24:31.816071
-    - 1
+    - 68.01.37Signals.pdf
     - 
+    - 2012-04-03 22:31:53.109749
+    - 2012-04-03 22:31:53.109749
+    - hola
+    - este es un ...
+    - 744
+    - Comment
+  - - 4
+    - ejercicio2.swf
+    - 
+    - 2012-04-10 18:59:19.001058
+    - 2012-04-10 18:59:19.001058
+    - Archivo swf
+    - esta es una prueba
+    - 2
+    - Assignment
+  - - 5
+    - 68.01.37Signals.pdf
+    - 
+    - 2012-04-11 03:46:53.525850
+    - 2012-04-11 03:46:53.525850
+    - pdf
+    - este es un pdf
+    - 2
+    - Assignment
+  - - 6
+    - Slideology.pdf
+    - 
+    - 2012-04-11 04:19:05.004395
+    - 2012-04-11 04:19:05.004395
+    - archivo
+    - este es un archivo
+    - 745
+    - Comment
+  - - 8
+    - 68.01.37Signals.pdf
+    - 
+    - 2012-04-11 04:55:33.793991
+    - 2012-04-11 04:55:33.793991
+    - asdas
+    - adssa
+    - 749
+    - Comment
+  - - 9
+    - Tapworthy.pdf
+    - 
+    - 2012-04-11 04:56:27.393355
+    - 2012-04-11 04:56:27.393355
+    - asd
+    - asdasd
+    - 750
+    - Comment
+  - - 10
+    - dummyetica.swf
+    - 
+    - 2012-04-12 19:43:36.961774
+    - 2012-04-12 19:43:36.961774
+    - "\xC3\x89tica General"
+    - "curso de \xC3\xA9tica general"
+    - 4
+    - Course
+  - - 11
+    - eticaemp.swf
+    - 
+    - 2012-04-12 19:43:37.076223
+    - 2012-04-12 19:43:37.076223
+    - "\xC3\x89tica de la Empresa"
+    - "curso de \xC3\xA9tica de la empresa"
+    - 4
+    - Course
+  - - 12
+    - eticaemybur.swf
+    - 
+    - 2012-04-12 19:43:37.080886
+    - 2012-04-12 19:43:37.080886
+    - "\xC3\x89tica Burs\xC3\xA1til"
+    - "curso de \xC3\xA9tica burs\xC3\xA1til"
+    - 4
+    - Course
+  - - 13
+    - codigofinalCNBV.swf
+    - 
+    - 2012-04-12 19:43:37.085873
+    - 2012-04-12 19:43:37.085873
+    - "C\xC3\xB3digo de \xC3\x89tica "
+    - "curso de c\xC3\xB3digo de \xC3\xA9tica"
+    - 4
+    - Course
+  - - 14
+    - dummyetica.swf
+    - 
+    - 2012-04-12 19:46:32.335835
+    - 2012-04-12 19:46:32.335835
+    - "\xC3\x89tica General"
+    - "\xC3\x89tica General"
+    - 751
+    - Comment
+  - - 15
+    - eticaemp.swf
+    - 
+    - 2012-04-12 19:46:32.366380
+    - 2012-04-12 19:46:32.366380
+    - "\xC3\x89tica de la Empresa"
+    - "\xC3\x89tica de la Empresa"
+    - 751
+    - Comment
+  - - 16
+    - eticaemybur.swf
+    - 
+    - 2012-04-12 19:46:32.371174
+    - 2012-04-12 19:46:32.371174
+    - "\xC3\x89tica Burs\xC3\xA1til"
+    - "\xC3\x89tica Burs\xC3\xA1til"
+    - 751
+    - Comment
+  - - 17
+    - codigofinalCNBV.swf
+    - 
+    - 2012-04-12 19:46:32.376211
+    - 2012-04-12 19:46:32.376211
+    - "C\xC3\xB3digo de \xC3\x89tica"
+    - "C\xC3\xB3digo de \xC3\x89tica"
+    - 751
+    - Comment
+  - - 18
+    - 68.01.37Signals.pdf
+    - 
+    - 2012-04-12 19:48:45.750600
+    - 2012-04-12 19:49:41.323424
+    - Archivo del material
+    - Este es un archivo de prueba
+    - 3
+    - Assignment
+  - - 19
+    - Slideology.pdf
+    - 
+    - 2012-04-12 19:52:00.183240
+    - 2012-04-12 19:52:00.183240
+    - Segundo material del curso
+    - Este es el segundo material del curso
+    - 3
+    - Assignment
+  - - 20
+    - ejercicio.swf
+    - 
+    - 2012-04-12 19:53:12.729427
+    - 2012-04-12 19:53:12.729427
+    - "Animaci\xC3\xB3n"
+    - "Esta es una animaci\xC3\xB3n del curso "
+    - 3
+    - Assignment
+  - - 21
+    - ejercicio.swf
+    - 
+    - 2012-04-12 21:31:16.767675
+    - 2012-04-12 21:31:16.767675
+    - hola
+    - hola
+    - 752
+    - Comment
+  - - 22
+    - 6846-07-first_draft.docx
+    - 
+    - 2012-04-12 21:33:27.332227
+    - 2012-04-12 21:33:27.332227
+    - este es un commnet
+    - qwe
+    - 753
+    - Comment
+  - - 23
+    - informe_anual_2008.png
+    - 
+    - 2012-04-12 22:05:13.149340
+    - 2012-04-12 22:05:13.149340
+    - Archivo
+    - "Descripci\xC3\xB3n de un archivo"
+    - 755
+    - Comment
+  - - 24
+    - informe_anual_2008.png
+    - 
+    - 2012-04-12 22:09:11.223784
+    - 2012-04-12 22:09:11.223784
+    - Contenido
+    - contenido
+    - 1
+    - Discussion
 
 --- 
 assignations: 
@@ -286,121 +312,53 @@ assignations:
     - 2011-11-03 00:43:01.093342
 
 --- 
-enrollments: 
+assignments: 
   columns: 
   - id
-  - user_id
   - course_id
-  - state
+  - name
+  - description
+  - value
+  - period
+  - due_to
   - created_at
   - updated_at
-  - admin
-  - role
+  - start_at
+  - state
   records: 
   - - 1
     - 2
-    - 1
-    - pending
-    - 2011-11-03 00:45:20.712775
-    - 2011-11-03 00:45:20.712775
-    - false
+    - Tare de matematicas
+    - <p><p></p><p>algoritmos</p><p></p></p>
+    - 7
+    - 2
+    - 2012-04-03 00:32:00.000000
+    - 2012-04-03 00:33:26.016140
+    - 2012-04-03 00:33:26.016140
+    - 
     - 
   - - 2
-    - 1
     - 2
-    - accepted
-    - 2011-12-12 19:39:04.380436
-    - 2011-12-12 19:39:04.380436
-    - true
-    - teacher
+    - Curso de amib en swf
+    - "<p><p></p><p></p><p></p><p>\xC2\xA0este es un curso de amib en swf</p><p></p><p></p><p></p></p>"
+    - 3
+    - 2
+    - 2012-08-10 18:27:00.000000
+    - 2012-04-10 18:28:49.291065
+    - 2012-04-11 04:57:15.939704
+    - 2012-04-10 18:27:00.000000
+    - published
   - - 3
-    - 1
-    - 3
-    - accepted
-    - 2011-12-13 01:34:27.667038
-    - 2011-12-13 01:34:27.667038
-    - true
-    - teacher
-  - - 4
     - 4
+    - Material
+    - "<p><p></p><p></p><p></p><p>\xC2\xA0Material del curso</p><p></p><p></p><p></p></p>"
     - 2
-    - rejected
-    - 2011-12-23 01:35:36.989257
-    - 2012-02-03 18:21:17.590098
-    - false
-    - student
-  - - 5
-    - 5
     - 2
-    - rejected
-    - 2011-12-30 00:11:38.118420
-    - 2012-02-02 19:22:28.698685
-    - false
-    - student
-  - - 6
-    - 5
-    - 1
-    - pending
-    - 2011-12-30 00:11:43.925534
-    - 2011-12-30 00:11:43.925534
-    - false
-    - student
-  - - 7
-    - 5
-    - 3
-    - rejected
-    - 2011-12-30 00:11:46.743938
-    - 2012-01-31 23:22:29.718930
-    - false
-    - student
-  - - 8
-    - 6
-    - 2
-    - rejected
-    - 2012-01-18 04:19:14.079308
-    - 2012-02-02 18:24:16.910564
-    - false
-    - student
-  - - 9
-    - 6
-    - 3
-    - rejected
-    - 2012-01-18 04:19:17.660635
-    - 2012-02-02 19:21:57.617385
-    - false
-    - student
-  - - 10
-    - 6
-    - 1
-    - pending
-    - 2012-01-18 04:19:19.625589
-    - 2012-01-18 04:19:19.625589
-    - false
-    - student
-  - - 11
-    - 1
-    - 1
-    - pending
-    - 2012-01-23 07:41:23.045965
-    - 2012-01-23 07:41:23.045965
-    - false
-    - student
-  - - 12
-    - 4
-    - 3
-    - rejected
-    - 2012-02-02 19:23:23.689716
-    - 2012-02-03 18:21:49.636753
-    - false
-    - student
-  - - 13
-    - 4
-    - 1
-    - pending
-    - 2012-02-02 19:24:59.265265
-    - 2012-02-02 19:24:59.265265
-    - false
-    - student
+    - 2012-06-12 19:46:00.000000
+    - 2012-04-12 19:48:45.748767
+    - 2012-04-12 19:53:12.727981
+    - 2012-04-12 19:46:00.000000
+    - published
 
 --- 
 comments: 
@@ -2523,6 +2481,1438 @@ comments:
     - <p>cvbcb</p>
     - 2012-01-18 04:25:55.087996
     - 2012-01-18 04:25:55.087996
+  - - 744
+    - 2
+    - Course
+    - 1
+    - <p>pdf</p>
+    - 2012-04-03 22:31:53.108000
+    - 2012-04-03 22:31:53.108000
+  - - 745
+    - 2
+    - Assignment
+    - 1
+    - "<p>hola vamos a a\xC3\xB1adir archivo</p>"
+    - 2012-04-11 04:19:05.002739
+    - 2012-04-11 04:19:05.002739
+  - - 749
+    - 739
+    - Comment
+    - 1
+    - <p>hola</p>
+    - 2012-04-11 04:55:33.792531
+    - 2012-04-11 04:55:33.792531
+  - - 750
+    - 739
+    - Comment
+    - 1
+    - <p>dasdasd</p>
+    - 2012-04-11 04:56:27.390924
+    - 2012-04-11 04:56:27.390924
+  - - 751
+    - 4
+    - Course
+    - 12
+    - "<p>Curso de Certificaci\xC3\xB3n</p>"
+    - 2012-04-12 19:46:32.334117
+    - 2012-04-12 19:46:32.334117
+  - - 752
+    - 744
+    - Comment
+    - 1
+    - <p>comentario</p>
+    - 2012-04-12 21:31:16.766216
+    - 2012-04-12 21:31:16.766216
+  - - 753
+    - 2
+    - Course
+    - 1
+    - <p>comentario de un archivo de word</p>
+    - 2012-04-12 21:33:27.297743
+    - 2012-04-12 21:33:27.297743
+  - - 754
+    - 4
+    - Course
+    - 14
+    - <p>Este es un comentario en el muro</p>
+    - 2012-04-12 22:04:28.437532
+    - 2012-04-12 22:04:28.437532
+  - - 755
+    - 754
+    - Comment
+    - 14
+    - <p>esta es mi respuesta</p>
+    - 2012-04-12 22:05:13.147422
+    - 2012-04-12 22:05:13.147422
+  - - 756
+    - 3
+    - Assignment
+    - 14
+    - <p>Este es un comentario sobre el material</p>
+    - 2012-04-12 22:06:43.304023
+    - 2012-04-12 22:06:43.304023
+  - - 757
+    - 1
+    - Discussion
+    - 14
+    - <p>muy interesante contenido</p>
+    - 2012-04-12 22:09:25.890759
+    - 2012-04-12 22:09:25.890759
+  - - 760
+    - 418
+    - Comment
+    - 1
+    - <p>sdasd</p>
+    - 2012-04-16 19:39:39.980497
+    - 2012-04-16 19:39:39.980497
+  - - 761
+    - 418
+    - Comment
+    - 1
+    - <p>sdasdsd</p>
+    - 2012-04-16 19:43:20.801089
+    - 2012-04-16 19:43:20.801089
+
+--- 
+courses: 
+  columns: 
+  - id
+  - name
+  - description
+  - start_date
+  - finish_date
+  - public
+  - reference
+  - created_at
+  - updated_at
+  - network_id
+  - logo_file
+  records: 
+  - - 1
+    - mono
+    - "<p>\xC2\xA0asm,dnsa,md nasdansdnam,sndm,asn d,mans,mdasd</p>"
+    - "2009-03-03"
+    - "2012-05-06"
+    - true
+    - asdasd
+    - 2011-11-03 00:43:01.091698
+    - 2011-11-03 00:43:01.091698
+    - 1
+    - 
+  - - 2
+    - Sencha Touch
+    - <p><p></p><p></p><p></p><p>Sencha Touch Course</p></p>
+    - "2011-12-07"
+    - "2012-03-09"
+    - true
+    - "23"
+    - 2011-12-12 19:39:04.182657
+    - 2012-01-24 23:01:14.822053
+    - 1
+    - ext-brew-april-fools.jpg
+  - - 3
+    - Curso de Rails
+    - <p>esto es un curso de ruby on rails</p>
+    - "2011-12-27"
+    - "2011-12-30"
+    - true
+    - "12"
+    - 2011-12-13 01:34:27.665310
+    - 2012-02-29 19:24:31.816071
+    - 1
+    - 
+  - - 4
+    - "Certificaci\xC3\xB3n"
+    - "<p><p>\xC2\xA0Curso de certificaci\xC3\xB3n</p></p>"
+    - "2012-04-02"
+    - "2012-06-14"
+    - true
+    - "10"
+    - 2012-04-12 19:43:36.932487
+    - 2012-04-12 19:43:36.932487
+    - 4
+    - 
+  - - 5
+    - curso
+    - "<p><p>\xC2\xA0Este es un curso de css3</p></p>"
+    - "2012-04-17"
+    - "2012-04-26"
+    - true
+    - "12"
+    - 2012-04-13 22:36:55.102573
+    - 2012-04-13 22:36:55.102573
+    - 1
+    - 
+
+--- 
+delayed_jobs: 
+  columns: 
+  - id
+  - priority
+  - attempts
+  - handler
+  - last_error
+  - run_at
+  - locked_at
+  - failed_at
+  - locked_by
+  - queue
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 1
+            role: teacher
+            email: iam@armando.mx
+            encrypted_password: $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 2012-04-03 23:37:52.639831
+            sign_in_count: 518
+            current_sign_in_at: 2012-04-09 18:36:00.751875
+            last_sign_in_at: 2012-04-04 06:50:01.134451
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2011-11-03 00:39:47.963458
+            confirmation_sent_at: 2011-11-03 00:38:54.200173
+            created_at: 2011-11-03 00:38:54.221567
+            updated_at: 2012-04-09 18:36:00.808914
+            first_name: Jose Armando
+            last_name: Gonzalez
+            about_me: developer
+            studies: UTM
+            birth_date: "2011-12-28"
+            occupation: desarrollador de cursame
+            twitter_link: manduks
+            facebook_link: armando_gonzalez
+            linkedin_link: armando_gonzalez
+            avatar_file: 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+            state: active
+            authentication_token: 4M3xAZT9N1HevMmntsxS
+            accepting_emails: t
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 2
+          role: student
+          email: mando@mando.com
+          encrypted_password: $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 2
+          current_sign_in_at: 2012-04-09 18:36:38.687963
+          last_sign_in_at: 2011-11-03 00:45:08.806314
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2011-11-03 00:45:08.802290
+          confirmation_sent_at: 2011-11-03 00:44:09.226175
+          created_at: 2011-11-03 00:44:09.226394
+          updated_at: 2012-04-09 18:36:38.688660
+          first_name: Felipe
+          last_name: jejeje
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: t
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 2
+          name: Sencha Touch
+          description: <p><p></p><p></p><p></p><p>Sencha Touch Course</p></p>
+          start_date: "2011-12-07"
+          finish_date: "2012-03-09"
+          public: t
+          reference: "23"
+          created_at: 2011-12-12 19:39:04.182657
+          updated_at: 2012-01-24 23:01:14.822053
+          network_id: 1
+          logo_file: ext-brew-april-fools.jpg
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 1
+          subdomain: mando
+          name: 
+          created_at: 2011-11-03 00:38:28.538581
+          updated_at: 2011-11-03 00:38:28.538581
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-09 18:36:48.729745
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-09 18:36:48.730023
+    - 2012-04-09 18:36:48.730023
+  - - 2
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 1
+            role: teacher
+            email: iam@armando.mx
+            encrypted_password: $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 2012-04-03 23:37:52.639831
+            sign_in_count: 518
+            current_sign_in_at: 2012-04-09 18:36:00.751875
+            last_sign_in_at: 2012-04-04 06:50:01.134451
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2011-11-03 00:39:47.963458
+            confirmation_sent_at: 2011-11-03 00:38:54.200173
+            created_at: 2011-11-03 00:38:54.221567
+            updated_at: 2012-04-09 18:36:00.808914
+            first_name: Jose Armando
+            last_name: Gonzalez
+            about_me: developer
+            studies: UTM
+            birth_date: "2011-12-28"
+            occupation: desarrollador de cursame
+            twitter_link: manduks
+            facebook_link: armando_gonzalez
+            linkedin_link: armando_gonzalez
+            avatar_file: 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+            state: active
+            authentication_token: 4M3xAZT9N1HevMmntsxS
+            accepting_emails: t
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 2
+          role: student
+          email: mando@mando.com
+          encrypted_password: $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 2
+          current_sign_in_at: 2012-04-09 18:36:38.687963
+          last_sign_in_at: 2011-11-03 00:45:08.806314
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2011-11-03 00:45:08.802290
+          confirmation_sent_at: 2011-11-03 00:44:09.226175
+          created_at: 2011-11-03 00:44:09.226394
+          updated_at: 2012-04-09 18:36:38.688660
+          first_name: Felipe
+          last_name: jejeje
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: t
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 3
+          name: Curso de Rails
+          description: <p>esto es un curso de ruby on rails</p>
+          start_date: "2011-12-27"
+          finish_date: "2011-12-30"
+          public: t
+          reference: "12"
+          created_at: 2011-12-13 01:34:27.665310
+          updated_at: 2012-02-29 19:24:31.816071
+          network_id: 1
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 1
+          subdomain: mando
+          name: 
+          created_at: 2011-11-03 00:38:28.538581
+          updated_at: 2011-11-03 00:38:28.538581
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-09 18:36:54.606582
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-09 18:36:54.606882
+    - 2012-04-09 18:36:54.606882
+  - - 3
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 7
+          role: teacher
+          email: armando@cursa.me
+          encrypted_password: $2a$10$kCm9FBjaH0IDCAO4RLkQM.wdM0pDnO9SJoTFNIuOEqUZLbsVJvShy
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 0
+          current_sign_in_at: 
+          last_sign_in_at: 
+          current_sign_in_ip: 
+          last_sign_in_ip: 
+          confirmation_token: 94QsYt3fixKGsp6duRrE
+          confirmed_at: 
+          confirmation_sent_at: 2012-04-12 18:45:13.105321 Z
+          created_at: &id001 2012-04-12 18:45:13.105590 Z
+          updated_at: *id001
+          first_name: Armando
+          last_name: Gonzalez Lopez
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: inactive
+          authentication_token: 
+          accepting_emails: false
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 2
+          subdomain: amib
+          name: amib
+          created_at: 2012-04-11 23:35:50.470604
+          updated_at: 2012-04-11 23:35:50.470604
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :new_teacher_registered
+      object: !ruby/class SupervisorMailer
+
+    - 
+    - 2012-04-12 18:45:13.148119
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-12 18:45:13.148434
+    - 2012-04-12 18:45:13.148434
+  - - 4
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 8
+          role: teacher
+          email: holala@hola.com
+          encrypted_password: $2a$10$3MmGHVfM4ItFDTP1KXhRRuh5pDxrD9RRxUuPVEKTehMcUD7GvITTe
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 0
+          current_sign_in_at: 
+          last_sign_in_at: 
+          current_sign_in_ip: 
+          last_sign_in_ip: 
+          confirmation_token: YPSdpXaBitWEuMbDH9pU
+          confirmed_at: 
+          confirmation_sent_at: 2012-04-12 18:55:15.532400 Z
+          created_at: &id001 2012-04-12 18:55:15.532616 Z
+          updated_at: *id001
+          first_name: Armando
+          last_name: Gonzalez Lopez
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: inactive
+          authentication_token: 
+          accepting_emails: false
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 2
+          subdomain: amib
+          name: amib
+          created_at: 2012-04-11 23:35:50.470604
+          updated_at: 2012-04-11 23:35:50.470604
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :new_teacher_registered
+      object: !ruby/class SupervisorMailer
+
+    - 
+    - 2012-04-12 18:55:15.615642
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-12 18:55:15.616063
+    - 2012-04-12 18:55:15.616063
+  - - 5
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 12
+          role: teacher
+          email: instructor@amib.com
+          encrypted_password: $2a$10$ENqx6W1xXTsV2v.soYeGUeimJoLLUG/cgPTkhcpttr.dMx7wrNOTG
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 0
+          current_sign_in_at: 
+          last_sign_in_at: 
+          current_sign_in_ip: 
+          last_sign_in_ip: 
+          confirmation_token: rWzyzzDqRyvKtsmmDup4
+          confirmed_at: 
+          confirmation_sent_at: 2012-04-12 19:24:39.859218 Z
+          created_at: &id001 2012-04-12 19:24:39.859437 Z
+          updated_at: *id001
+          first_name: Instructor
+          last_name: Amib
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: inactive
+          authentication_token: 
+          accepting_emails: false
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 4
+          subdomain: amib
+          name: AMIB
+          created_at: 2012-04-12 19:18:17.819814
+          updated_at: 2012-04-12 19:18:17.819814
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :new_teacher_registered
+      object: !ruby/class SupervisorMailer
+
+    - 
+    - 2012-04-12 19:24:39.901526
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-12 19:24:39.901801
+    - 2012-04-12 19:24:39.901801
+  - - 6
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 12
+            role: teacher
+            email: instructor@amib.com
+            encrypted_password: $2a$10$ENqx6W1xXTsV2v.soYeGUeimJoLLUG/cgPTkhcpttr.dMx7wrNOTG
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 1
+            current_sign_in_at: 2012-04-12 19:27:23.341484
+            last_sign_in_at: 2012-04-12 19:27:23.341484
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2012-04-12 19:27:23.335973
+            confirmation_sent_at: 2012-04-12 19:24:39.859218
+            created_at: 2012-04-12 19:24:39.859437
+            updated_at: 2012-04-12 19:27:23.341920
+            first_name: Instructor
+            last_name: Amib
+            about_me: 
+            studies: 
+            birth_date: 
+            occupation: 
+            twitter_link: 
+            facebook_link: 
+            linkedin_link: 
+            avatar_file: 
+            state: active
+            authentication_token: 
+            accepting_emails: f
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 13
+          role: student
+          email: cursamte@amib.com
+          encrypted_password: $2a$10$Prhni8.tCPiEmoIr5QJicey2vZYAtGwHfrGGYKSZD6P9UeNcRJwJ.
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 1
+          current_sign_in_at: 2012-04-12 19:55:12.116725
+          last_sign_in_at: 2012-04-12 19:55:12.116725
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2012-04-12 19:55:12.087278
+          confirmation_sent_at: 2012-04-12 19:54:23.374229
+          created_at: 2012-04-12 19:54:23.374509
+          updated_at: 2012-04-12 19:55:12.117532
+          first_name: Cursante
+          last_name: Amib
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: f
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 4
+          name: "Certificaci\xC3\xB3n"
+          description: "<p><p>\xC2\xA0Curso de certificaci\xC3\xB3n</p></p>"
+          start_date: "2012-04-02"
+          finish_date: "2012-06-14"
+          public: t
+          reference: "10"
+          created_at: 2012-04-12 19:43:36.932487
+          updated_at: 2012-04-12 19:43:36.932487
+          network_id: 4
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 4
+          subdomain: amib
+          name: AMIB
+          created_at: 2012-04-12 19:18:17.819814
+          updated_at: 2012-04-12 19:18:17.819814
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-12 19:55:26.342761
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-12 19:55:26.343057
+    - 2012-04-12 19:55:26.343057
+  - - 7
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 12
+            role: teacher
+            email: instructor@amib.com
+            encrypted_password: $2a$10$ENqx6W1xXTsV2v.soYeGUeimJoLLUG/cgPTkhcpttr.dMx7wrNOTG
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 2
+            current_sign_in_at: 2012-04-12 19:55:54.873179
+            last_sign_in_at: 2012-04-12 19:27:23.341484
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2012-04-12 19:27:23.335973
+            confirmation_sent_at: 2012-04-12 19:24:39.859218
+            created_at: 2012-04-12 19:24:39.859437
+            updated_at: 2012-04-12 19:55:54.873906
+            first_name: Instructor
+            last_name: Amib
+            about_me: 
+            studies: 
+            birth_date: 
+            occupation: 
+            twitter_link: 
+            facebook_link: 
+            linkedin_link: 
+            avatar_file: 
+            state: active
+            authentication_token: 
+            accepting_emails: f
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 14
+          role: student
+          email: cursante2@amib.com
+          encrypted_password: $2a$10$ZBG3KvJ7E3hIT.8Lu.fwDOR2ksyemtpgjE.jcedeQfJ7Ry9jas66e
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 1
+          current_sign_in_at: 2012-04-12 19:57:54.286373
+          last_sign_in_at: 2012-04-12 19:57:54.286373
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2012-04-12 19:57:54.280056
+          confirmation_sent_at: 2012-04-12 19:57:26.864516
+          created_at: 2012-04-12 19:57:26.864880
+          updated_at: 2012-04-12 19:57:54.287175
+          first_name: Cursante2
+          last_name: Amib
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: f
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 4
+          name: "Certificaci\xC3\xB3n"
+          description: "<p><p>\xC2\xA0Curso de certificaci\xC3\xB3n</p></p>"
+          start_date: "2012-04-02"
+          finish_date: "2012-06-14"
+          public: t
+          reference: "10"
+          created_at: 2012-04-12 19:43:36.932487
+          updated_at: 2012-04-12 19:43:36.932487
+          network_id: 4
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 4
+          subdomain: amib
+          name: AMIB
+          created_at: 2012-04-12 19:18:17.819814
+          updated_at: 2012-04-12 19:18:17.819814
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-12 19:58:00.846203
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-12 19:58:00.846478
+    - 2012-04-12 19:58:00.846478
+  - - 8
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 12
+            role: teacher
+            email: instructor@amib.com
+            encrypted_password: $2a$10$ENqx6W1xXTsV2v.soYeGUeimJoLLUG/cgPTkhcpttr.dMx7wrNOTG
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 3
+            current_sign_in_at: 2012-04-12 20:00:09.982345
+            last_sign_in_at: 2012-04-12 19:55:54.873179
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2012-04-12 19:27:23.335973
+            confirmation_sent_at: 2012-04-12 19:24:39.859218
+            created_at: 2012-04-12 19:24:39.859437
+            updated_at: 2012-04-12 20:00:09.983109
+            first_name: Instructor
+            last_name: Amib
+            about_me: 
+            studies: 
+            birth_date: 
+            occupation: 
+            twitter_link: 
+            facebook_link: 
+            linkedin_link: 
+            avatar_file: 
+            state: active
+            authentication_token: 
+            accepting_emails: f
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 15
+          role: student
+          email: cursante1@amib.com
+          encrypted_password: $2a$10$YN.SBqaDdO/257d/or747edZ7gzWSrnO80AN9a7MpD1YfIfx7gpUK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 2
+          current_sign_in_at: 2012-04-13 18:34:40.901292
+          last_sign_in_at: 2012-04-12 19:59:38.050573
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2012-04-12 19:59:38.044855
+          confirmation_sent_at: 2012-04-12 19:59:15.320173
+          created_at: 2012-04-12 19:59:15.320420
+          updated_at: 2012-04-13 18:34:40.902068
+          first_name: Cursante1
+          last_name: Amib
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: f
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 4
+          name: "Certificaci\xC3\xB3n"
+          description: "<p><p>\xC2\xA0Curso de certificaci\xC3\xB3n</p></p>"
+          start_date: "2012-04-02"
+          finish_date: "2012-06-14"
+          public: t
+          reference: "10"
+          created_at: 2012-04-12 19:43:36.932487
+          updated_at: 2012-04-12 19:43:36.932487
+          network_id: 4
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 4
+          subdomain: amib
+          name: AMIB
+          created_at: 2012-04-12 19:18:17.819814
+          updated_at: 2012-04-12 21:37:43.275855
+          slogan: "Asociaci\xC3\xB3n Mexicana de Intermediarios Burs\xC3\xA1tiles"
+          welcome_message: "La misi\xC3\xB3n de la AMIB es promover el crecimiento, desarrollo y consolidaci\xC3\xB3n del Mercado de Valores, como el medio por excelencia para la canalizaci\xC3\xB3n del ahorro hacia el sector productivo, tanto del sistema financiero nacional como a nivel internacional, para propiciar las condiciones que favorezcan su sano y eficaz desempe\xC3\xB1o."
+          logo_file: informe_anual_2008.png
+          time_zone: International Date Line West
+          public_registry: t
+          private_registry: f
+          registry_domain: ""
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-13 18:34:58.715801
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-13 18:34:58.730180
+    - 2012-04-13 18:34:58.730180
+  - - 9
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 1
+            role: teacher
+            email: iam@armando.mx
+            encrypted_password: $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 569
+            current_sign_in_at: 2012-04-13 22:35:57.997632
+            last_sign_in_at: 2012-04-13 22:25:22.358871
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2011-11-03 00:39:47.963458
+            confirmation_sent_at: 2011-11-03 00:38:54.200173
+            created_at: 2011-11-03 00:38:54.221567
+            updated_at: 2012-04-13 22:37:07.092712
+            first_name: Jose Armando
+            last_name: Gonzalez
+            about_me: developer
+            studies: UTM
+            birth_date: "2011-12-28"
+            occupation: desarrollador de cursame
+            twitter_link: manduks
+            facebook_link: armando_gonzalez
+            linkedin_link: armando_gonzalez
+            avatar_file: 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+            state: active
+            authentication_token: 4M3xAZT9N1HevMmntsxS
+            accepting_emails: t
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 2
+          role: student
+          email: mando@mando.com
+          encrypted_password: $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 3
+          current_sign_in_at: 2012-04-13 22:39:02.644269
+          last_sign_in_at: 2012-04-09 18:36:38.687963
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2011-11-03 00:45:08.802290
+          confirmation_sent_at: 2011-11-03 00:44:09.226175
+          created_at: 2011-11-03 00:44:09.226394
+          updated_at: 2012-04-13 22:39:02.645024
+          first_name: Felipe
+          last_name: jejeje
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: t
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 3
+          name: Curso de Rails
+          description: <p>esto es un curso de ruby on rails</p>
+          start_date: "2011-12-27"
+          finish_date: "2011-12-30"
+          public: t
+          reference: "12"
+          created_at: 2011-12-13 01:34:27.665310
+          updated_at: 2012-02-29 19:24:31.816071
+          network_id: 1
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 1
+          subdomain: mando
+          name: 
+          created_at: 2011-11-03 00:38:28.538581
+          updated_at: 2011-11-03 00:38:28.538581
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-13 22:39:11.942435
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-13 22:39:11.942722
+    - 2012-04-13 22:39:11.942722
+  - - 10
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 1
+            role: teacher
+            email: iam@armando.mx
+            encrypted_password: $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 569
+            current_sign_in_at: 2012-04-13 22:35:57.997632
+            last_sign_in_at: 2012-04-13 22:25:22.358871
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2011-11-03 00:39:47.963458
+            confirmation_sent_at: 2011-11-03 00:38:54.200173
+            created_at: 2011-11-03 00:38:54.221567
+            updated_at: 2012-04-13 22:37:07.092712
+            first_name: Jose Armando
+            last_name: Gonzalez
+            about_me: developer
+            studies: UTM
+            birth_date: "2011-12-28"
+            occupation: desarrollador de cursame
+            twitter_link: manduks
+            facebook_link: armando_gonzalez
+            linkedin_link: armando_gonzalez
+            avatar_file: 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+            state: active
+            authentication_token: 4M3xAZT9N1HevMmntsxS
+            accepting_emails: t
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 2
+          role: student
+          email: mando@mando.com
+          encrypted_password: $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 3
+          current_sign_in_at: 2012-04-13 22:39:02.644269
+          last_sign_in_at: 2012-04-09 18:36:38.687963
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2011-11-03 00:45:08.802290
+          confirmation_sent_at: 2011-11-03 00:44:09.226175
+          created_at: 2011-11-03 00:44:09.226394
+          updated_at: 2012-04-13 22:39:02.645024
+          first_name: Felipe
+          last_name: jejeje
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: t
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 2
+          name: Sencha Touch
+          description: <p><p></p><p></p><p></p><p>Sencha Touch Course</p></p>
+          start_date: "2011-12-07"
+          finish_date: "2012-03-09"
+          public: t
+          reference: "23"
+          created_at: 2011-12-12 19:39:04.182657
+          updated_at: 2012-01-24 23:01:14.822053
+          network_id: 1
+          logo_file: ext-brew-april-fools.jpg
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 1
+          subdomain: mando
+          name: 
+          created_at: 2011-11-03 00:38:28.538581
+          updated_at: 2011-11-03 00:38:28.538581
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-13 22:39:15.161433
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-13 22:39:15.161726
+    - 2012-04-13 22:39:15.161726
+  - - 11
+    - 0
+    - 0
+    - |
+      --- !ruby/object:Delayed::PerformableMailer 
+      args: 
+      - - !ruby/ActiveRecord:User 
+          attributes: 
+            id: 1
+            role: teacher
+            email: iam@armando.mx
+            encrypted_password: $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+            reset_password_token: 
+            reset_password_sent_at: 
+            remember_created_at: 
+            sign_in_count: 569
+            current_sign_in_at: 2012-04-13 22:35:57.997632
+            last_sign_in_at: 2012-04-13 22:25:22.358871
+            current_sign_in_ip: 127.0.0.1
+            last_sign_in_ip: 127.0.0.1
+            confirmation_token: 
+            confirmed_at: 2011-11-03 00:39:47.963458
+            confirmation_sent_at: 2011-11-03 00:38:54.200173
+            created_at: 2011-11-03 00:38:54.221567
+            updated_at: 2012-04-13 22:37:07.092712
+            first_name: Jose Armando
+            last_name: Gonzalez
+            about_me: developer
+            studies: UTM
+            birth_date: "2011-12-28"
+            occupation: desarrollador de cursame
+            twitter_link: manduks
+            facebook_link: armando_gonzalez
+            linkedin_link: armando_gonzalez
+            avatar_file: 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+            state: active
+            authentication_token: 4M3xAZT9N1HevMmntsxS
+            accepting_emails: t
+      - !ruby/ActiveRecord:User 
+        attributes: 
+          id: 2
+          role: student
+          email: mando@mando.com
+          encrypted_password: $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+          reset_password_token: 
+          reset_password_sent_at: 
+          remember_created_at: 
+          sign_in_count: 3
+          current_sign_in_at: 2012-04-13 22:39:02.644269
+          last_sign_in_at: 2012-04-09 18:36:38.687963
+          current_sign_in_ip: 127.0.0.1
+          last_sign_in_ip: 127.0.0.1
+          confirmation_token: 
+          confirmed_at: 2011-11-03 00:45:08.802290
+          confirmation_sent_at: 2011-11-03 00:44:09.226175
+          created_at: 2011-11-03 00:44:09.226394
+          updated_at: 2012-04-13 22:39:02.645024
+          first_name: Felipe
+          last_name: jejeje
+          about_me: 
+          studies: 
+          birth_date: 
+          occupation: 
+          twitter_link: 
+          facebook_link: 
+          linkedin_link: 
+          avatar_file: 
+          state: active
+          authentication_token: 
+          accepting_emails: t
+      - !ruby/ActiveRecord:Course 
+        attributes: 
+          id: 5
+          name: curso
+          description: "<p><p>\xC2\xA0Este es un curso de css3</p></p>"
+          start_date: "2012-04-17"
+          finish_date: "2012-04-26"
+          public: t
+          reference: "12"
+          created_at: 2012-04-13 22:36:55.102573
+          updated_at: 2012-04-13 22:36:55.102573
+          network_id: 1
+          logo_file: 
+      - !ruby/ActiveRecord:Network 
+        attributes: 
+          id: 1
+          subdomain: mando
+          name: 
+          created_at: 2011-11-03 00:38:28.538581
+          updated_at: 2011-11-03 00:38:28.538581
+          slogan: 
+          welcome_message: 
+          logo_file: 
+          time_zone: 
+          public_registry: t
+          private_registry: f
+          registry_domain: 
+      method_name: :pending_user_on_course
+      object: !ruby/class TeacherMailer
+
+    - 
+    - 2012-04-13 22:39:18.325678
+    - 
+    - 
+    - 
+    - 
+    - 2012-04-13 22:39:18.325986
+    - 2012-04-13 22:39:18.325986
+
+--- 
+discussions: 
+  columns: 
+  - id
+  - course_id
+  - user_id
+  - title
+  - description
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 4
+    - 14
+    - "Discusi\xC3\xB3n sobre la certificaci\xC3\xB3n"
+    - "<p><p>\xC2\xA0Esta es una discusi\xC3\xB3n sobre el siguiente contenido</p></p>"
+    - 2012-04-12 22:09:11.222218
+    - 2012-04-12 22:09:11.222218
+
+--- 
+enrollments: 
+  columns: 
+  - id
+  - user_id
+  - course_id
+  - state
+  - created_at
+  - updated_at
+  - admin
+  - role
+  records: 
+  - - 1
+    - 2
+    - 1
+    - pending
+    - 2011-11-03 00:45:20.712775
+    - 2011-11-03 00:45:20.712775
+    - false
+    - 
+  - - 2
+    - 1
+    - 2
+    - accepted
+    - 2011-12-12 19:39:04.380436
+    - 2011-12-12 19:39:04.380436
+    - true
+    - teacher
+  - - 3
+    - 1
+    - 3
+    - accepted
+    - 2011-12-13 01:34:27.667038
+    - 2011-12-13 01:34:27.667038
+    - true
+    - teacher
+  - - 4
+    - 4
+    - 2
+    - rejected
+    - 2011-12-23 01:35:36.989257
+    - 2012-02-03 18:21:17.590098
+    - false
+    - student
+  - - 5
+    - 5
+    - 2
+    - rejected
+    - 2011-12-30 00:11:38.118420
+    - 2012-02-02 19:22:28.698685
+    - false
+    - student
+  - - 6
+    - 5
+    - 1
+    - pending
+    - 2011-12-30 00:11:43.925534
+    - 2011-12-30 00:11:43.925534
+    - false
+    - student
+  - - 7
+    - 5
+    - 3
+    - rejected
+    - 2011-12-30 00:11:46.743938
+    - 2012-01-31 23:22:29.718930
+    - false
+    - student
+  - - 8
+    - 6
+    - 2
+    - rejected
+    - 2012-01-18 04:19:14.079308
+    - 2012-02-02 18:24:16.910564
+    - false
+    - student
+  - - 9
+    - 6
+    - 3
+    - rejected
+    - 2012-01-18 04:19:17.660635
+    - 2012-02-02 19:21:57.617385
+    - false
+    - student
+  - - 10
+    - 6
+    - 1
+    - pending
+    - 2012-01-18 04:19:19.625589
+    - 2012-01-18 04:19:19.625589
+    - false
+    - student
+  - - 11
+    - 1
+    - 1
+    - pending
+    - 2012-01-23 07:41:23.045965
+    - 2012-01-23 07:41:23.045965
+    - false
+    - student
+  - - 12
+    - 4
+    - 3
+    - rejected
+    - 2012-02-02 19:23:23.689716
+    - 2012-02-03 18:21:49.636753
+    - false
+    - student
+  - - 13
+    - 4
+    - 1
+    - pending
+    - 2012-02-02 19:24:59.265265
+    - 2012-02-02 19:24:59.265265
+    - false
+    - student
+  - - 14
+    - 2
+    - 2
+    - rejected
+    - 2012-04-09 18:36:48.627424
+    - 2012-04-16 19:25:05.173497
+    - false
+    - student
+  - - 15
+    - 2
+    - 3
+    - rejected
+    - 2012-04-09 18:36:54.528364
+    - 2012-04-16 19:25:16.931187
+    - false
+    - student
+  - - 16
+    - 12
+    - 4
+    - accepted
+    - 2012-04-12 19:43:36.959967
+    - 2012-04-12 19:43:36.959967
+    - true
+    - teacher
+  - - 17
+    - 13
+    - 4
+    - accepted
+    - 2012-04-12 19:55:26.167197
+    - 2012-04-12 19:56:08.544968
+    - false
+    - student
+  - - 18
+    - 14
+    - 4
+    - accepted
+    - 2012-04-12 19:58:00.817533
+    - 2012-04-12 20:00:27.148525
+    - false
+    - student
+  - - 19
+    - 15
+    - 4
+    - pending
+    - 2012-04-13 18:34:58.446824
+    - 2012-04-13 18:34:58.446824
+    - false
+    - student
+  - - 20
+    - 1
+    - 5
+    - accepted
+    - 2012-04-13 22:36:55.104796
+    - 2012-04-13 22:36:55.104796
+    - true
+    - teacher
+  - - 21
+    - 2
+    - 5
+    - rejected
+    - 2012-04-13 22:39:18.292519
+    - 2012-04-13 22:40:30.761356
+    - false
+    - student
 
 --- 
 networks: 
@@ -2552,6 +3942,51 @@ networks:
     - true
     - false
     - 
+  - - 4
+    - amib
+    - AMIB
+    - 2012-04-12 19:18:17.819814
+    - 2012-04-12 21:37:43.275855
+    - "Asociaci\xC3\xB3n Mexicana de Intermediarios Burs\xC3\xA1tiles"
+    - "La misi\xC3\xB3n de la AMIB es promover el crecimiento, desarrollo y consolidaci\xC3\xB3n del Mercado de Valores, como el medio por excelencia para la canalizaci\xC3\xB3n del ahorro hacia el sector productivo, tanto del sistema financiero nacional como a nivel internacional, para propiciar las condiciones que favorezcan su sano y eficaz desempe\xC3\xB1o."
+    - informe_anual_2008.png
+    - International Date Line West
+    - true
+    - false
+    - ""
+
+--- 
+networks_users: 
+  columns: 
+  - network_id
+  - user_id
+  records: 
+  - - 1
+    - 1
+  - - 1
+    - 2
+  - - 1
+    - 3
+  - - 1
+    - 4
+  - - 1
+    - 5
+  - - 1
+    - 6
+  - - 1
+    - 9
+  - - 1
+    - 16
+  - - 4
+    - 11
+  - - 4
+    - 12
+  - - 4
+    - 13
+  - - 4
+    - 14
+  - - 4
+    - 15
 
 --- 
 notifications: 
@@ -3001,41 +4436,305 @@ notifications:
       Tu solicitud para participar en el curso "Curso de Rails" fue rechazada.
       <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
 
+  - - 34
+    - 14
+    - Enrollment
+    - 1
+    - student_course_enrollment
+    - 2012-04-09 18:36:48.674273
+    - 2012-04-09 18:36:48.674273
+    - |
+      <div class="img">
+        <a href="/users/2">
+          <img src="/assets/student_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      <a href="/users/2">Felipe jejeje</a> quiere participar en el curso
+      <a href="/courses/2">Sencha Touch</a>.
+      <a href="/courses/2/miembros"  class="notification-link">Ver solicitudes &gt;&gt;</a>
 
---- 
-surveys: 
-  columns: 
-  - id
-  - course_id
-  - name
-  - description
-  - value
-  - period
-  - due_to
-  - created_at
-  - updated_at
-  - state
-  records: 
-  - - 1
-    - 2
-    - Matematicas
-    - <p><p>examen de matematicas</p></p>
-    - 10
-    - 3
-    - 2011-12-30 19:43:00.000000
-    - 2011-12-30 19:44:32.810941
-    - 2011-12-30 19:48:50.532936
-    - 
-  - - 2
-    - 2
-    - Prueba
-    - <p><p>asd</p></p>
+  - - 35
+    - 15
+    - Enrollment
     - 1
+    - student_course_enrollment
+    - 2012-04-09 18:36:54.536335
+    - 2012-04-09 18:36:54.536335
+    - |
+      <div class="img">
+        <a href="/users/2">
+          <img src="/assets/student_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      <a href="/users/2">Felipe jejeje</a> quiere participar en el curso
+      <a href="/courses/3">Curso de Rails</a>.
+      <a href="/courses/3/miembros"  class="notification-link">Ver solicitudes &gt;&gt;</a>
+
+  - - 36
+    - 17
+    - Enrollment
+    - 12
+    - student_course_enrollment
+    - 2012-04-12 19:55:26.176447
+    - 2012-04-12 19:55:26.176447
+    - "<div class=\"img\">\n  <a href=\"/users/13\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/13\">Cursante Amib</a> quiere participar en el curso\n\
+      <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/courses/4/miembros\"  class=\"notification-link\">Ver solicitudes &gt;&gt;</a>\n"
+  - - 37
+    - 17
+    - Enrollment
+    - 13
+    - student_course_accepted
+    - 2012-04-12 19:56:08.539521
+    - 2012-04-12 19:56:08.539521
+    - "<div class=\"img\">\n  <a href=\"/courses/4\">\n    <img src=\"/assets/course_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      Has sido aceptado para participar en el curso <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n"
+  - - 38
+    - 18
+    - Enrollment
+    - 12
+    - student_course_enrollment
+    - 2012-04-12 19:58:00.824238
+    - 2012-04-12 19:58:00.824238
+    - "<div class=\"img\">\n  <a href=\"/users/14\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/14\">Cursante2 Amib</a> quiere participar en el curso\n\
+      <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/courses/4/miembros\"  class=\"notification-link\">Ver solicitudes &gt;&gt;</a>\n"
+  - - 39
+    - 18
+    - Enrollment
+    - 14
+    - student_course_accepted
+    - 2012-04-12 20:00:27.142915
+    - 2012-04-12 20:00:27.142915
+    - "<div class=\"img\">\n  <a href=\"/courses/4\">\n    <img src=\"/assets/course_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      Has sido aceptado para participar en el curso <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n"
+  - - 40
+    - 754
+    - Comment
+    - 12
+    - user_comment_on_course
+    - 2012-04-12 22:04:28.488320
+    - 2012-04-12 22:04:28.488320
+    - "<div class=\"img\">\n  <a href=\"/users/14\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/14\">Cursante2 Amib</a> ha comentado en el muro del curso <a href=\"/courses/4/muro\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/comments/754\"  class=\"notification-link\">Ver comentario &gt;&gt;</a>\n\n"
+  - - 41
+    - 754
+    - Comment
+    - 13
+    - user_comment_on_course
+    - 2012-04-12 22:04:28.493586
+    - 2012-04-12 22:04:28.493586
+    - "<div class=\"img\">\n  <a href=\"/users/14\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/14\">Cursante2 Amib</a> ha comentado en el muro del curso <a href=\"/courses/4/muro\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/comments/754\"  class=\"notification-link\">Ver comentario &gt;&gt;</a>\n\n"
+  - - 42
     - 1
-    - 2012-01-23 07:19:00.000000
-    - 2012-01-23 07:20:48.282232
-    - 2012-01-23 07:20:48.517547
-    - published
+    - Discussion
+    - 12
+    - course_discussion_added
+    - 2012-04-12 22:09:11.261696
+    - 2012-04-12 22:09:11.261696
+    - "<div class=\"img\">\n  <a href=\"/courses/4\">\n    <img src=\"/assets/course_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      Se ha creado la discusi\xC3\xB3n <a href=\"/discussions/1\">Discusi\xC3\xB3n sobre la certificaci\xC3\xB3n</a> \n\
+      para el curso <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/discussions/1\"  class=\"notification-link\">Ver discusi\xC3\xB3n &gt;&gt;</a>\n"
+  - - 43
+    - 1
+    - Discussion
+    - 13
+    - course_discussion_added
+    - 2012-04-12 22:09:11.265296
+    - 2012-04-12 22:09:11.265296
+    - "<div class=\"img\">\n  <a href=\"/courses/4\">\n    <img src=\"/assets/course_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      Se ha creado la discusi\xC3\xB3n <a href=\"/discussions/1\">Discusi\xC3\xB3n sobre la certificaci\xC3\xB3n</a> \n\
+      para el curso <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/discussions/1\"  class=\"notification-link\">Ver discusi\xC3\xB3n &gt;&gt;</a>\n"
+  - - 44
+    - 757
+    - Comment
+    - 12
+    - user_comment_on_discussion
+    - 2012-04-12 22:09:25.945828
+    - 2012-04-12 22:09:25.945828
+    - "<div class=\"img\">\n  <a href=\"/users/14\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/14\">Cursante2 Amib</a> ha comentado en la discusi\xC3\xB3n Discusi\xC3\xB3n sobre la certificaci\xC3\xB3n.\n\
+      <a href=\"/discussions/1\"  class=\"notification-link\">Ver discusi\xC3\xB3n &gt;&gt;</a>\n"
+  - - 45
+    - 757
+    - Comment
+    - 13
+    - user_comment_on_discussion
+    - 2012-04-12 22:09:25.950913
+    - 2012-04-12 22:09:25.950913
+    - "<div class=\"img\">\n  <a href=\"/users/14\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/14\">Cursante2 Amib</a> ha comentado en la discusi\xC3\xB3n Discusi\xC3\xB3n sobre la certificaci\xC3\xB3n.\n\
+      <a href=\"/discussions/1\"  class=\"notification-link\">Ver discusi\xC3\xB3n &gt;&gt;</a>\n"
+  - - 46
+    - 19
+    - Enrollment
+    - 12
+    - student_course_enrollment
+    - 2012-04-13 18:34:58.488237
+    - 2012-04-13 18:34:58.488237
+    - "<div class=\"img\">\n  <a href=\"/users/15\">\n    <img src=\"/assets/student_xxsmall.png\" rel=\"tip\" title=\"\">\n  </a>\n\
+      </div>\n\n\
+      <a href=\"/users/15\">Cursante1 Amib</a> quiere participar en el curso\n\
+      <a href=\"/courses/4\">Certificaci\xC3\xB3n</a>.\n\
+      <a href=\"/courses/4/miembros\"  class=\"notification-link\">Ver solicitudes &gt;&gt;</a>\n"
+  - - 47
+    - 14
+    - Enrollment
+    - 2
+    - student_course_rejected
+    - 2012-04-13 22:22:22.026435
+    - 2012-04-13 22:22:22.026435
+    - |
+      <div class="img">
+        <a href="/courses/2">
+          <img src="/assets/course_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      Tu solicitud para participar en el curso "Sencha Touch" fue rechazada.
+      <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
+
+  - - 48
+    - 15
+    - Enrollment
+    - 2
+    - student_course_rejected
+    - 2012-04-13 22:25:05.020546
+    - 2012-04-13 22:25:05.020546
+    - |
+      <div class="img">
+        <a href="/courses/3">
+          <img src="/assets/course_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      Tu solicitud para participar en el curso "Curso de Rails" fue rechazada.
+      <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
+
+  - - 49
+    - 15
+    - Enrollment
+    - 1
+    - student_course_enrollment
+    - 2012-04-13 22:39:11.825284
+    - 2012-04-13 22:39:11.825284
+    - |
+      <div class="img">
+        <a href="/users/2">
+          <img src="/assets/student_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      <a href="/users/2">Felipe jejeje</a> quiere participar en el curso
+      <a href="/courses/3">Curso de Rails</a>.
+      <a href="/courses/3/miembros"  class="notification-link">Ver solicitudes &gt;&gt;</a>
+
+  - - 50
+    - 14
+    - Enrollment
+    - 1
+    - student_course_enrollment
+    - 2012-04-13 22:39:15.135400
+    - 2012-04-13 22:39:15.135400
+    - |
+      <div class="img">
+        <a href="/users/2">
+          <img src="/assets/student_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      <a href="/users/2">Felipe jejeje</a> quiere participar en el curso
+      <a href="/courses/2">Sencha Touch</a>.
+      <a href="/courses/2/miembros"  class="notification-link">Ver solicitudes &gt;&gt;</a>
+
+  - - 51
+    - 21
+    - Enrollment
+    - 1
+    - student_course_enrollment
+    - 2012-04-13 22:39:18.299392
+    - 2012-04-13 22:39:18.299392
+    - |
+      <div class="img">
+        <a href="/users/2">
+          <img src="/assets/student_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      <a href="/users/2">Felipe jejeje</a> quiere participar en el curso
+      <a href="/courses/5">curso</a>.
+      <a href="/courses/5/miembros"  class="notification-link">Ver solicitudes &gt;&gt;</a>
+
+  - - 52
+    - 21
+    - Enrollment
+    - 2
+    - student_course_rejected
+    - 2012-04-13 22:40:30.757296
+    - 2012-04-13 22:40:30.757296
+    - |
+      <div class="img">
+        <a href="/courses/5">
+          <img src="/assets/course_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      Tu solicitud para participar en el curso "curso" fue rechazada.
+      <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
+
+  - - 53
+    - 14
+    - Enrollment
+    - 2
+    - student_course_rejected
+    - 2012-04-16 19:25:05.158396
+    - 2012-04-16 19:25:05.158396
+    - |
+      <div class="img">
+        <a href="/courses/2">
+          <img src="/assets/course_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      Tu solicitud para participar en el curso "Sencha Touch" fue rechazada.
+      <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
+
+  - - 54
+    - 15
+    - Enrollment
+    - 2
+    - student_course_rejected
+    - 2012-04-16 19:25:16.926521
+    - 2012-04-16 19:25:16.926521
+    - |
+      <div class="img">
+        <a href="/courses/3">
+          <img src="/assets/course_xxsmall.png" rel="tip" title="">
+        </a>
+      </div>
+      
+      Tu solicitud para participar en el curso "Curso de Rails" fue rechazada.
+      <a href="/courses"  class="notification-link">Ver cursos &gt;&gt;</a>
+
 
 --- 
 questions: 
@@ -3081,21 +4780,6 @@ questions:
     - 2012-01-23 07:20:48.312288
     - 2
     - 0
-
---- 
-survey_replies: 
-  columns: 
-  - id
-  - user_id
-  - survey_id
-  - created_at
-  - updated_at
-  records: 
-  - - 1
-    - 4
-    - 1
-    - 2011-12-30 19:50:31.364097
-    - 2011-12-30 19:50:31.364097
 
 --- 
 survey_answers: 
@@ -3145,84 +4829,569 @@ survey_answers:
     - 2011-12-30 19:50:31.369844
 
 --- 
-answers: 
+survey_replies: 
   columns: 
-  - uuid
-  - question_id
-  - text
+  - id
+  - user_id
+  - survey_id
   - created_at
   - updated_at
-  - position
   records: 
-  - - 38381340-154d-012f-0b79-482a14108e62
-    - 2
-    - "32"
-    - 2011-12-30 19:48:50.583998
-    - 2011-12-30 19:48:50.586971
-    - 0
-  - - 38381d30-154d-012f-bc82-482a14108e62
-    - 2
-    - "67"
-    - 2011-12-30 19:48:50.587774
-    - 2011-12-30 19:48:50.587774
-    - 1
-  - - 38382660-154d-012f-c2e1-482a14108e62
-    - 2
-    - "33"
-    - 2011-12-30 19:48:50.588663
-    - 2011-12-30 19:48:50.588663
-    - 2
-  - - 383847a0-154d-012f-951b-482a14108e62
-    - 3
-    - "24"
-    - 2011-12-30 19:48:50.590148
-    - 2011-12-30 19:48:50.592103
-    - 0
-  - - 383851c0-154d-012f-756f-482a14108e62
-    - 3
-    - "56"
-    - 2011-12-30 19:48:50.592954
-    - 2011-12-30 19:48:50.592954
-    - 1
-  - - 38385bc0-154d-012f-151a-482a14108e62
-    - 3
-    - "65"
-    - 2011-12-30 19:48:50.593678
-    - 2011-12-30 19:48:50.593678
-    - 2
-  - - 571c227d-0eb8-4a85-81e7-8d74133dc44c
+  - - 1
     - 4
-    - asddasd
-    - 2012-01-23 07:20:48.313737
-    - 2012-01-23 07:20:48.313737
-    - 0
-  - - 9e948960-154c-012f-9296-482a14108e62
     - 1
-    - "4"
-    - 2011-12-30 19:44:32.839837
-    - 2011-12-30 19:44:32.842879
-    - 0
-  - - 9e949890-154c-012f-8a8d-482a14108e62
-    - 1
-    - "6"
-    - 2011-12-30 19:44:32.844114
-    - 2011-12-30 19:44:32.844114
-    - 1
-  - - 9e94a380-154c-012f-90da-482a14108e62
-    - 1
-    - "6"
-    - 2011-12-30 19:44:32.845241
-    - 2011-12-30 19:44:32.845241
+    - 2011-12-30 19:50:31.364097
+    - 2011-12-30 19:50:31.364097
+
+--- 
+surveys: 
+  columns: 
+  - id
+  - course_id
+  - name
+  - description
+  - value
+  - period
+  - due_to
+  - created_at
+  - updated_at
+  - state
+  - start_at
+  records: 
+  - - 1
     - 2
-  - - b9d18c30-307e-461e-b9dd-deb788372b65
-    - 4
-    - asdasd
-    - 2012-01-23 07:20:48.315460
-    - 2012-01-23 07:20:48.315460
+    - Matematicas
+    - <p><p>examen de matematicas</p></p>
+    - 10
+    - 3
+    - 2011-12-30 19:43:00.000000
+    - 2011-12-30 19:44:32.810941
+    - 2011-12-30 19:48:50.532936
+    - 
+    - 
+  - - 2
     - 2
-  - - ed27e31a-f091-498b-8515-558fcfda6fa2
-    - 4
-    - asd
-    - 2012-01-23 07:20:48.314688
-    - 2012-01-23 07:20:48.314688
+    - Prueba
+    - <p><p>asd</p></p>
     - 1
+    - 1
+    - 2012-01-23 07:19:00.000000
+    - 2012-01-23 07:20:48.282232
+    - 2012-01-23 07:20:48.517547
+    - published
+    - 
+
+--- 
+users: 
+  columns: 
+  - id
+  - role
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - confirmation_token
+  - confirmed_at
+  - confirmation_sent_at
+  - created_at
+  - updated_at
+  - first_name
+  - last_name
+  - about_me
+  - studies
+  - birth_date
+  - occupation
+  - twitter_link
+  - facebook_link
+  - linkedin_link
+  - avatar_file
+  - state
+  - authentication_token
+  - accepting_emails
+  records: 
+  - - 1
+    - teacher
+    - iam@armando.mx
+    - $2a$10$qz6zG2FnWsU1qV2eW6taV.JYR8Q/Mv66syTQcNaA8U2TDjMPezVvS
+    - 
+    - 
+    - 
+    - 586
+    - 2012-04-17 01:51:19.097149
+    - 2012-04-16 19:37:35.718085
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2011-11-03 00:39:47.963458
+    - 2011-11-03 00:38:54.200173
+    - 2011-11-03 00:38:54.221567
+    - 2012-04-17 01:51:19.183664
+    - Jose Armando
+    - Gonzalez
+    - developer
+    - UTM
+    - "2011-12-28"
+    - desarrollador de cursame
+    - manduks
+    - armando_gonzalez
+    - armando_gonzalez
+    - 066fd61f-a8b5-4bfb-ae57-40762d5d2928_normal.png
+    - active
+    - 4M3xAZT9N1HevMmntsxS
+    - true
+  - - 2
+    - student
+    - mando@mando.com
+    - $2a$10$Srhbiazp/gOlRUJOZqFbaeYiUIS6UmmmZTtud0B.zbWISN1M.HuEK
+    - 
+    - 
+    - 
+    - 3
+    - 2012-04-13 22:39:02.644269
+    - 2012-04-09 18:36:38.687963
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2011-11-03 00:45:08.802290
+    - 2011-11-03 00:44:09.226175
+    - 2011-11-03 00:44:09.226394
+    - 2012-04-13 22:39:02.645024
+    - Felipe
+    - jejeje
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - true
+  - - 3
+    - student
+    - joagolo@hotmail.com
+    - $2a$10$8OzDxSWVhon5dBzbvx5tLe6YkrH9KCeDxjDC0Ib1nS5NIje7mBURe
+    - 
+    - 
+    - 
+    - 1
+    - 
+    - 
+    - 
+    - 
+    - icGntihfD1eqJFg3udZh
+    - 
+    - 2011-12-16 00:17:35.948513
+    - 2011-12-16 00:17:35.961918
+    - 2011-12-16 00:25:11.682964
+    - Estudiante
+    - Gonzalez
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - true
+  - - 4
+    - student
+    - mono@hotmail.com
+    - $2a$10$lNKZYanJFyumg/bfXWd7n.3G/rOtlqtSC.c1ToI3zTORacQduEVgK
+    - 
+    - 
+    - 
+    - 4
+    - 2012-02-02 20:38:07.692238
+    - 2012-02-02 19:23:05.049619
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2011-12-23 01:35:24.030783
+    - 2011-12-23 01:34:23.222929
+    - 2011-12-23 01:34:23.235512
+    - 2012-02-02 20:38:07.694344
+    - mono
+    - mm
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - true
+  - - 5
+    - student
+    - juan@mo.com
+    - $2a$10$DGTV5apj/Cu0BIcNqpl.CuCOsMoyH5/Gfy/pcVQ18sdOiOEhgJb2S
+    - 
+    - 
+    - 
+    - 1
+    - 2011-12-30 00:11:28.276387
+    - 2011-12-30 00:11:28.276387
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2011-12-30 00:11:28.269369
+    - 2011-12-30 00:10:48.420903
+    - 2011-12-30 00:10:48.436374
+    - 2011-12-30 00:11:28.277203
+    - Juan
+    - Gonxa
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - true
+  - - 6
+    - student
+    - koko@meme.com
+    - $2a$10$scx6NAJ8bLd/Tw7OhuUL2O8oYTK7lpwojSNhLeNVpH.Z65T8e68vS
+    - 
+    - 
+    - 
+    - 4
+    - 2012-02-01 07:03:57.870655
+    - 2012-01-31 23:23:03.200045
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-01-18 04:18:57.535131
+    - 2012-01-18 04:17:45.749553
+    - 2012-01-18 04:17:45.763264
+    - 2012-02-01 07:03:57.871495
+    - Armando
+    - Gonzalez Lopez
+    - ""
+    - ""
+    - 
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - active
+    - 
+    - true
+  - - 7
+    - teacher
+    - armando@cursa.me
+    - $2a$10$kCm9FBjaH0IDCAO4RLkQM.wdM0pDnO9SJoTFNIuOEqUZLbsVJvShy
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 94QsYt3fixKGsp6duRrE
+    - 
+    - 2012-04-12 18:45:13.105321
+    - 2012-04-12 18:45:13.105590
+    - 2012-04-12 18:45:13.105590
+    - Armando
+    - Gonzalez Lopez
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - inactive
+    - 
+    - false
+  - - 8
+    - teacher
+    - holala@hola.com
+    - $2a$10$3MmGHVfM4ItFDTP1KXhRRuh5pDxrD9RRxUuPVEKTehMcUD7GvITTe
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - YPSdpXaBitWEuMbDH9pU
+    - 
+    - 2012-04-12 18:55:15.532400
+    - 2012-04-12 18:55:15.532616
+    - 2012-04-12 18:55:15.532616
+    - Armando
+    - Gonzalez Lopez
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - inactive
+    - 
+    - false
+  - - 9
+    - admin
+    - admin@me.com
+    - $2a$10$.rF9oiufdIYR7yXfpVyKTOQ3XqkblofkY46S2KJYQjodHbpmZWXLW
+    - 
+    - 
+    - 
+    - 2
+    - 2012-04-17 01:46:12.237677
+    - 2012-04-12 19:06:11.355918
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:06:11.352016
+    - 2012-04-12 19:01:20.209177
+    - 2012-04-12 19:01:20.209465
+    - 2012-04-17 01:46:12.238478
+    - Admin
+    - Cursame
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 10
+    - supervisor
+    - amib@amib.com
+    - $2a$10$ib3W6CJuCYoO5zpb4PEqcOMGZ7S.9NaUNLzaB/9.RKYIuQrpJVtcq
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 9UMHUqqquLrQx3hznT2G
+    - 
+    - 2012-04-12 19:14:22.927737
+    - 2012-04-12 19:14:22.928025
+    - 2012-04-12 19:14:22.928025
+    - Admin
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 11
+    - supervisor
+    - admin@amib.com
+    - $2a$10$zTilyyDzF.iKkio.DbtDzOgWQ5CmbqrZB64bQeAZm3.lP.eH6WhCq
+    - 
+    - 
+    - 
+    - 2
+    - 2012-04-12 21:34:14.243859
+    - 2012-04-12 19:21:18.805026
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:21:18.798768
+    - 2012-04-12 19:18:17.822747
+    - 2012-04-12 19:18:17.822972
+    - 2012-04-12 21:34:14.244573
+    - Admin
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 12
+    - teacher
+    - instructor@amib.com
+    - $2a$10$ENqx6W1xXTsV2v.soYeGUeimJoLLUG/cgPTkhcpttr.dMx7wrNOTG
+    - 
+    - 
+    - 
+    - 4
+    - 2012-04-17 01:51:54.872836
+    - 2012-04-12 20:00:09.982345
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:27:23.335973
+    - 2012-04-12 19:24:39.859218
+    - 2012-04-12 19:24:39.859437
+    - 2012-04-17 01:51:54.873595
+    - Instructor
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 13
+    - student
+    - cursamte@amib.com
+    - $2a$10$Prhni8.tCPiEmoIr5QJicey2vZYAtGwHfrGGYKSZD6P9UeNcRJwJ.
+    - 
+    - 
+    - 
+    - 1
+    - 2012-04-12 19:55:12.116725
+    - 2012-04-12 19:55:12.116725
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:55:12.087278
+    - 2012-04-12 19:54:23.374229
+    - 2012-04-12 19:54:23.374509
+    - 2012-04-12 19:55:12.117532
+    - Cursante
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 14
+    - student
+    - cursante2@amib.com
+    - $2a$10$ZBG3KvJ7E3hIT.8Lu.fwDOR2ksyemtpgjE.jcedeQfJ7Ry9jas66e
+    - 
+    - 
+    - 
+    - 5
+    - 2012-04-12 21:55:19.496568
+    - 2012-04-12 21:45:40.738728
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:57:54.280056
+    - 2012-04-12 19:57:26.864516
+    - 2012-04-12 19:57:26.864880
+    - 2012-04-12 21:55:19.497275
+    - Cursante2
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 15
+    - student
+    - cursante1@amib.com
+    - $2a$10$YN.SBqaDdO/257d/or747edZ7gzWSrnO80AN9a7MpD1YfIfx7gpUK
+    - 
+    - 
+    - 
+    - 2
+    - 2012-04-13 18:34:40.901292
+    - 2012-04-12 19:59:38.050573
+    - 127.0.0.1
+    - 127.0.0.1
+    - 
+    - 2012-04-12 19:59:38.044855
+    - 2012-04-12 19:59:15.320173
+    - 2012-04-12 19:59:15.320420
+    - 2012-04-13 18:34:40.902068
+    - Cursante1
+    - Amib
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false
+  - - 16
+    - student
+    - mio@armando.com
+    - $2a$10$fAk0BUw4dWshzhS10TO3kuGvTUGBD4EhUtN/gzwh3oh5OpJPLhDl6
+    - 
+    - 
+    - 
+    - 0
+    - 
+    - 
+    - 
+    - 
+    - 9oUo5rLbxhhzAfBHNyD2
+    - 
+    - 2012-04-17 00:21:12.240715
+    - 2012-04-17 00:21:12.241066
+    - 2012-04-17 00:21:12.241066
+    - mando
+    - Gonzalez Lopez
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - 
+    - active
+    - 
+    - false

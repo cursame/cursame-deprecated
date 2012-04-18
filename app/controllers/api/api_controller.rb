@@ -5,17 +5,15 @@ class Api::ApiController < ApplicationController
   
   respond_to :json
   def course_requests
-    course_request = current_user.enrollment_requests.find params[:id]
-
+    course_request = @user.enrollment_requests.find params[:id]
+    
     if params[:accept] == true
       course_request.accept!
     else
       course_request.reject!
     end
-
-    respond_to do |format|
-      format.json { render :json => {:success => {:id => params[:id], :accept => params[:accept]}} }
-    end
+    
+    render :json => {:success => true}, :callback => params[:callback]    
   end
 
   def courses
@@ -87,7 +85,6 @@ class Api::ApiController < ApplicationController
     @course = Course.find params[:id]
     @comments = @course.comments
     render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments])), :count => @comments.count()}, :callback => params[:callback]
-
   end
   
   private 
