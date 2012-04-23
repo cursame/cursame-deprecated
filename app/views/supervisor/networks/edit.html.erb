@@ -1,3 +1,4 @@
+
 <div class="container">
   
   <div class="row">
@@ -8,7 +9,7 @@
       </ul>  
     </div>
   </div>
-  
+ 
   <div class="dashboard">  
 
     <div class="row">
@@ -39,13 +40,33 @@
             <%= form.input :private_registry, :as => :boolean, :wrapper_html => {:class => "boolean_li"} %>
             <%= form.input :registry_domain, :label => "", :wrapper_html => {:class => "registry_li"}, :input_html => {:class => "span3", :rows => 3, :placeholder => "#{t('.example')} gmail.com"} %>
           <%end%>
-
+     	
+           <%= form.inputs do%>
+              <h3><%= t('supervisor.config.lenguajes') %></h3>  
+           <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "cursame.en", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"}  %>         
+            <% end %>
+    
+ <!--
+       <div class="lenguajes">	
+	    	    
+	     Select languaje/Seleccione un lenguaje:
+		<select name="lenguajes">	
+		<option value="es">Spanish	
+        <option value="cursame.en">English 	   
+		<option value="es_corp" select="active">Spanish Corporative
+		<option value="cursame.en">English Corporative
+	     </select>
+         </div>
+         </br>
+         </br>
+   -->
           <%= form.buttons :class => "fieldset-admin" do %>
             <%= form.commit_button :label => "Guardar Cambios", :button_html => {:id => :submit, :class => 'btn right'} %>
           <% end %>
            <span class="fieldset-admin-txt"><%= link_to("Cancelar", edit_supervisor_network_path) %></span>
         <% end %>
-        
+           
+          
       </div>
     </div>
   </div>

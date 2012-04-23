@@ -1,5 +1,3 @@
-#este un archivo sustituto de la versión del archivo ubicado config/locales/cursame.es.yml este archivo ha sido adaptado para la versión de cúrsame enterprise
-
 es:
 
   super_admin:
@@ -17,8 +15,8 @@ es:
       total_networks: 'Total de redes'
       total_users: 'Total de usuarios'
       total_supervisors: 'Supervisores de red'
-      total_teachers: 'Instructores'
-      total_students: 'Cursantes'
+      total_teachers: 'Maestros'
+      total_students: 'Estudiantes'
       total_courses: 'Total de cursos'
       total_open_courses: 'Cursos públicos'
       total_private_courses: 'Cursos privados'
@@ -26,7 +24,7 @@ es:
       total_surveys: 'Total de cuestionarios'
       total_discussions: 'Total de discusiones'
       total_comments: 'Total de comentarios'
-      total_comments_assignments: 'Comentarios en modulos'
+      total_comments_assignments: 'Comentarios en tareas'
       total_comments_discussions: 'Comentarios en discusiones'
       total_comments_user_walls: 'En muro de usuarios'
       total_comments_course_walls: 'En muro de cursos'
@@ -34,8 +32,6 @@ es:
 
   confirm_delete: ¿Estas Seguro?
   comment: responder
-  download: Descargar
-  close: Cerrar
 
   forms:
     email: 'Email'
@@ -47,8 +43,8 @@ es:
     register_btn: 'Regístrate'
     register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
-    register_student: 'Registro de cursante'
-    register_teacher: 'Registro de instructor'
+    register_student: 'Registro de Estudiantes'
+    register_teacher: 'Registro de Maestros'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -61,7 +57,7 @@ es:
     accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
-    teacher_register: 'Registro como instructor'
+    teacher_register: 'Registro como maestro'
 
   flash:
     course_created: Curso creado
@@ -69,13 +65,13 @@ es:
     course_destroyed: El curso fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
-    assignment_created: El modulo fue creado
+    assignment_created: La tarea fue creada
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusión creada 
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
-    delivery_created: La actividad en el modulo fue entregada
-    delivery_updated: EL modulo fue actualizado
+    delivery_created: Tu tarea fue entregada
+    delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_created_and_published: El cuestionario fue creado y publicado
     survey_updated: El cuestionario fue actualizado
@@ -95,8 +91,8 @@ es:
         one: Curso
         other: Cursos
       assignment:
-        one: Modulo
-        other: Modulos
+        one: Tarea
+        other: Tareas
       survey:
         one: Cuestionario
         other: Cuestionarios
@@ -182,7 +178,7 @@ es:
     account_settings: 'Configuración de la cuenta'
 
   courses:
-    archives: 'Materiales'
+    archives: 'Archivos'
     description: 'Descripción'
     details: 'Horario/Grupo'
     time: 'Fecha'
@@ -196,13 +192,13 @@ es:
     edit: 'Editar'
     delete: 'Eliminar'
     courses: 'Cursos'
-    add_asset: Añadir material
+    add_asset: Añadir archivo
     course_menu:
       wall: 'Muro'
       new_discussion: 'Crear discusión'
       discussions: 'Discusiones'
       requests: 'Solicitudes'
-      tasks: 'Modulos'
+      tasks: 'Tareas'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
@@ -211,12 +207,12 @@ es:
       my_courses: 'Mis Cursos'
       new_course: 'Crear Curso Nuevo'
       surveys: 'Cuestionarios'
-      assignments: 'Modulos'
+      assignments: 'Tareas'
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este curso'
-      teachers: 'Instructores'
-      students: 'Cursantes'
+      teachers: 'Maestros'
+      students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
       count:
@@ -233,8 +229,8 @@ es:
       reject: 'Rechazar'
       remove: 'Quitar del curso'
       role: 'Rol'
-      student: 'Cursante'
-      teacher: 'Instructor'
+      student: 'Estudiante'
+      teacher: 'Maestro'
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
@@ -397,8 +393,8 @@ es:
         admin: 'Administración'
         configuration: "Configuración"
         courses: Cursos
-        teachers: Instructores
-        students: Cursantes
+        teachers: Maestros
+        students: Estudiantes
         supervisors: Administradores
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
@@ -406,8 +402,8 @@ es:
       teachers:
         approve: Aceptar
         reject: Rechazar
-        teacher: Instructor
-        student: Cursante
+        teacher: Maestro
+        student: Estudiante
         supervisor: Administrador
         update: Actualizar
         change_role: Cambiar rol
@@ -419,10 +415,10 @@ es:
       approve: Aceptar
       reject: Rechazar
     teachers:
-      registered_teachers: Instructores registrados
+      registered_teachers: Maestros registrados
     students:
-      student: Instructor
-      teacher: Cursante
+      student: Estudiante
+      teacher: Maestro
       supervisor: Administrador
       update: Actualizar
       change_role: Cambiar rol
@@ -434,8 +430,8 @@ es:
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      teacher: Instructor
-      student: Cursante
+      teacher: Maestro
+      student: Estudiante
       supervisor: Administrador
     export_students: "Exportar estudiantes"
     import_students: "Importar estudiantes"
@@ -458,13 +454,13 @@ es:
     show_requests: Ver solicitudes
     show_delivery: Ver entrega
     show_courses: Ver cursos
-    show_assignment: Ver actividad
+    show_assignment: Ver tarea
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
     show_comment: Ver comentario
     show_discussion: Ver discusión
     wants_to_participate_in_course: quiere participar en el curso
-    has_delived_assignment: ha entregado la actividad del modulo
+    has_delived_assignment: ha entregado la tarea
     has_answered_the_survey: ha contestado el cuestionario
     for_the_course: para el curso
     has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
@@ -472,7 +468,7 @@ es:
     was_rejected: fue rechazada
     you_where_accepted_for_course: Has sido aceptado para participar en el curso
     assignment_added: Se ha creado la tarea
-    assignment_updated: Se ha actualizado la actividad
+    assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
     users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión
