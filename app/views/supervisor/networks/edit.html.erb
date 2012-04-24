@@ -42,8 +42,12 @@
           <%end%>
      	
            <%= form.inputs do%>
-              <h3><%= t('supervisor.config.lenguajes') %></h3>  
-           <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "cursame.en", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"}  %>         
+              <h3><%= t('supervisor.config.version_plataform') %></h3>  
+               <%= t('supervisor.config.(_select_the_languaje_to_change_the_vesion_)') %> 
+           </br>
+           </br>
+           </br>
+           <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "cursame.en", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"} %>         
             <% end %>
     
  <!--

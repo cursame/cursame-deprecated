@@ -8,19 +8,22 @@ class Supervisor::NetworksController < ApplicationController
     
   end
   def save
-    update
+    update_or_edit
   end
   
   def update
    
-    @network = current_network
+    @network = current_network    
+    @network.lenguajes=params[:lenguajes]
+    @network.save
     if @network.update_attributes params[:network]      
+    
     redirect_to edit_supervisor_network_path, :notice => params[:lenguajes]    
     
-    I18n.locale = params[:lenguajes] if params[:lenguajes].present?
+    I18n.locale = @network.lenguajes if @network.lenguajes.present?
     
       def default_url_options(options = {})
-        {lenguajes: I18n.locale}
+      {lenguajes: I18n.locale}
       end
     else
       render :edit
