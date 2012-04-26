@@ -64,7 +64,7 @@
                     	<center>
                         <h2>
                             <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
-						    <%=h @date.strftime("%B de %Y") %>
+						    <%=h @date.strftime("%B / %Y") %>
 						    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
                         </h2>
                         </center>
