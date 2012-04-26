@@ -17,8 +17,8 @@ class Supervisor::NetworksController < ApplicationController
     @network.lenguajes=params[:lenguajes]
     @network.save
     if @network.update_attributes params[:network]      
-    
-    redirect_to edit_supervisor_network_path, :notice => params[:lenguajes]    
+
+    redirect_to edit_supervisor_network_path,:notice => params[:lenguajes]    
     
     I18n.locale = @network.lenguajes if @network.lenguajes.present?
     

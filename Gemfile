@@ -19,6 +19,7 @@ gem "csv_builder"
 gem "fastercsv"
 gem 'delayed_job_active_record'
 gem 'rails-i18n'
+gem "watu_table_builder", :require => "table_builder"
 
 # Gems used only for assets and not required
 # in production environments by default.
