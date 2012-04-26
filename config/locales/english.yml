@@ -1,0 +1,237 @@
+english:
+# Spanish translations for Rails
+# by Francisco Fernando García Nieto (ffgarcianieto@gmail.com)
+# contributors:
+#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
+# Corrected by Eloy Serra Labán: http://goo.gl/i9Kts, /nQ928, /XfKaX
+
+english:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"
+      medium: "%e %b %y"
+
+    day_names:
+      - sunday
+      - monday
+      - tuesday
+      - wedneday
+      - thurstay
+      - friday
+      - saturday
+    abbr_day_names:
+      - sun
+      - mon
+      - tus
+      - wed
+      - thu
+      - frd
+      - sat
+
+    month_names:
+      - ~
+      - january
+      - february
+      - march
+      - april
+      - may
+      - june
+      - july
+      - august
+      - september
+      - octuber
+      - november
+      - december
+    abbr_month_names:
+      - ~
+      - jan
+      - feb
+      - mar
+      - apr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d de %b %H:%M"
+      long: "%d de %B de %Y %H:%M"
+      medium: "%e %b %y"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " y "
+      last_word_connector: ", y "
+
+    select:
+      prompt: "Please select"
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%n %u"
+        unit: "€"
+        separator: ","
+        delimiter: "."
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "thousand"
+          million: "million"
+          billion: "billion"
+          trillion: "trillion"
+          quadrillion: "quadillion"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:  "one second"
+        other: "- %{count} second"
+      x_seconds:
+        one:  "1 second"
+        other: "%{count} second"
+      less_than_x_minutes:
+        one:  "- 1 minute"
+        other: "- %{count} minutes"
+      x_minutes:
+        one:  "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:  " 1 hour a go"
+        other: " %{count} hours a go"
+      x_days:
+        one:  "1 day"
+        other: "%{count} days"
+      about_x_months:
+        one:  " 1 mont a go"
+        other: " %{count} months a go"
+      x_months:
+        one:  "1 mont"
+        other: "%{count} months"
+      about_x_years:
+        one:  "1 year a go"
+        other: " %{count} years a go"
+      over_x_years:
+        one:  "more than 1 year"
+        other: "more than %{count} years"
+      almost_x_years:
+        one: "nearly 1 year"
+        other: "nearly %{count} years"
+    prompts:
+      year:   "Year"
+      month:  "Month"
+      day:    "Day"
+      hour:   "Hour"
+      minute: "Minute"
+      second: "Second"
+
+  helpers:
+    select:
+      prompt: "Please select"
+
+    submit:
+      create: 'create %{model}'
+      update: 'update %{model}'
+      submit: 'submit %{model}'
+      
+  flash:
+    comment_added: 'Comment added with success!'
+    discussion_updated: 'Discussion updated'
+    wrong_network: 'wrong network'
+    assignment_updated: 'assigment updated'
+    user_registration_accepted: 'user registration accepted'
+    user_created: 'User created successfully. You will receive an email with your password.'
+    assignment_deleted: 'assignment deleted'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "not listed"
+      exclusion: "is reserved"
+      invalid: "not is valid"
+      confirmation: "does not match the confirmation"
+      accepted: "must be accepted"
+      empty: "can not be empty"
+      blank: "can not be blank"
+      too_long: "is too long (%{count} characters maximum)"
+      too_short: "is too short (%{count} characters maximum)"
+      wrong_length: "not have the correct length (%{count} exact characters)"
+      not_a_number: "not is a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      taken: "already in use"
+
+    errors:
+      template:
+        header:
+          one:   "Could not save this %{model} because it found 1 error"
+          other:  "Could not save this %{model} because it found %{count} errors"
+        # The variable :count is also available
+        body: "Problems encountered with the following fields:"
+
+      messages:
+        taken: "already in use"
+        record_invalid: "Validation failed: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"

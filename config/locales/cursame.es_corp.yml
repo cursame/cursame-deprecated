@@ -1,0 +1,523 @@
+es_corp:
+
+  super_admin:
+    shared:
+      networks: 'Redes'
+      existing_networks: 'Redes actuales'
+      statistics: 'Estadísticas'
+      platform_statistics: 'Estadísticas de la plataforma'
+    statistics: 
+      networks_users: 'Redes - usuarios'
+      courses: 'Cursos'
+      comments: 'Comentarios'
+      data: 'Dato'
+      registry: 'Registro'
+      total_networks: 'Total de redes'
+      total_users: 'Total de usuarios'
+      total_supervisors: 'Supervisores de red'
+      total_teachers: 'Instructores'
+      total_students: 'Cursantes'
+      total_courses: 'Total de cursos'
+      total_open_courses: 'Cursos públicos'
+      total_private_courses: 'Cursos privados'
+      total_assignments: 'Total de tareas'
+      total_surveys: 'Total de cuestionarios'
+      total_discussions: 'Total de discusiones'
+      total_comments: 'Total de comentarios'
+      total_comments_assignments: 'Comentarios en modulos'
+      total_comments_discussions: 'Comentarios en discusiones'
+      total_comments_user_walls: 'En muro de usuarios'
+      total_comments_course_walls: 'En muro de cursos'
+
+
+  confirm_delete: ¿Estas Seguro?
+  comment: responder
+  download: Descargar
+  close: Cerrar
+
+  forms:
+    email: 'Email'
+    first_name: 'Nombre'
+    last_name: 'Apellido'
+    password: 'Contraseña'
+    password_confirmation: 'Confirmar Contraseña'
+    sign_in_btn: 'Iniciar Sesión'
+    register_btn: 'Regístrate'
+    register_btn_supervisor: 'Registrar usuario'
+    register_slogun: '¡Regístrate, es gratis!'
+    register_student: 'Registro de cursante'
+    register_teacher: 'Registro de instructor'
+    email_confirmation_text: 'Se enviará un mail de confirmación'
+    remember_me: 'Recuerdame'
+    lost_password_text: '¿Olvidaste tu contraseña?'
+    leave_comment: 'Dejar comentario'
+    send_delivery: 'Entregar'
+    update_delivery: 'Editar entrega'
+    send_survey_reply: 'Guardar mis respuestas'
+    update_survey_reply: 'Actualizar mis respuestas'
+    terms: 'Acepto los términos y condiciones'
+    accepting_emails: 'Deseo recibir notificaciones a mi correo'
+
+  footer:
+    teacher_register: 'Registro como instructor'
+
+  flash:
+    course_created: Curso creado
+    course_updated: El curso fue actualizado
+    course_destroyed: El curso fue eliminado
+    course_join_requested: Solicitud de unirse enviada
+    user_updated: Perfil actualizado
+    assignment_created: El modulo fue creado
+    network_created: La red fue creada
+    network_updated: La red fue actualizada
+    discussion_created: Discusión creada 
+    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
+    delivery_created: La actividad en el modulo fue entregada
+    delivery_updated: EL modulo fue actualizado
+    survey_created: El cuestionario fue creado
+    survey_created_and_published: El cuestionario fue creado y publicado
+    survey_updated: El cuestionario fue actualizado
+    survey_updated_and_published: El cuestionario fue actualizado y publicado
+    survey_deleted: El cuestionario fue eliminado
+    survey_reply_created: Tus respuestas fueron enviadas
+    survey_reply_updated: Tus respuestas fueron actualizadas
+    emails_true: 'Se ha activado la recepción de emails en notificaciones'
+    emails_false: 'Se ha desactivado la recepción de emails en notificaciones'
+    errors:
+      assignment_expired: La fecha de entrega ya pasó
+      survey_expired: La fecha de entrega ya pasó
+
+  activerecord:
+    models:
+      course:
+        one: Curso
+        other: Cursos
+      assignment:
+        one: Modulo
+        other: Modulos
+      survey:
+        one: Cuestionario
+        other: Cuestionarios
+      user:
+        one: Usuario
+        other: Usuarios
+      delivery:
+        one: Entrega
+        other: Entregas
+    errors:
+      question:
+        missing_correct_answer: Por favor indique la respuesta correcta
+    attributes:
+      course:
+        name: Nombre
+        description: Descripción
+        start_date: Fecha de inicio
+        finish_date: Fecha de término
+        logo_file: Logo del curso
+        reference: Referencia
+        public: ¿Es público?
+      asset:
+        name: Nombre
+        description: Descripción
+        file: Archivo
+        created_at: Añadido
+        _destroy: Eliminar
+        type: Tipo
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        about_me: Acerca de mí
+        studies: Mis estudios
+        birth_date: Fecha de nacimiento
+        occupation: Mi ocupación
+        current_password: Contraseña actual
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña
+      network:
+        slogan: Frase corta
+        welcome_message: Mensaje de bienvenida
+        time_zone: Zona horaria
+        public_registry: "¿Permitir registro público en la red?"
+        registry_domain: 'Dominio de correo'
+        private_registry: "Dominio de correo privado en nuevos usuarios"
+      delivery:
+        content: Contenido
+      question:
+        text: Pregunta
+        value: Valor
+        _destroy: Eliminar
+      answer:
+        text: Respuesta
+        _destroy: Eliminar
+      survey:
+        name: Nombre
+        description: Descripción
+        value: Valor
+        period: Periodo
+
+  formtastic:
+    actions:
+      update: Actualizar
+      update_and_publish: Actualizar y publicar
+      create: Crear
+      create_and_publish: Crear y publicar
+      create_and_save: "Crear y salvar"
+      edit: Editar
+      delete: Eliminar
+      select_one: Seleccione uno 
+      x: "X"
+
+  shared:
+    toolbar:
+      logout: 'Salir'
+      search: 'Buscar'
+      settings: 'Configuración'
+
+  dashboard:
+    view_all_courses: 'Ver todos los cursos disponibles'
+    start: 'Inicio'
+    profile: 'Perfil'
+    account_settings: 'Configuración de la cuenta'
+
+  courses:
+    archives: 'Materiales'
+    description: 'Descripción'
+    details: 'Horario/Grupo'
+    time: 'Fecha'
+    public: 'Curso Público'
+    private: 'Curso Privado'
+    my_courses: 'Mis Cursos'
+    create_course: 'Crear Curso'
+    edit_course: 'Editar Curso'
+    information: 'Información de Curso'
+    by: 'por'
+    edit: 'Editar'
+    delete: 'Eliminar'
+    courses: 'Cursos'
+    add_asset: Añadir material
+    course_menu:
+      wall: 'Muro'
+      new_discussion: 'Crear discusión'
+      discussions: 'Discusiones'
+      requests: 'Solicitudes'
+      tasks: 'Modulos'
+      docs: 'Documentos'
+      evaluations: 'Evaluaciones'
+      calendar: 'Calendario'
+      members: 'Miembros'
+      courses: 'Cursos'
+      my_courses: 'Mis Cursos'
+      new_course: 'Crear Curso Nuevo'
+      surveys: 'Cuestionarios'
+      assignments: 'Modulos'
+    members:
+      members_in_group: 'Miembros en este grupo'
+      members_in_course: 'Miembros en este curso'
+      teachers: 'Instructores'
+      students: 'Cursantes'
+      member: 'Miembro'
+      members: 'Miembros'
+      count:
+        one:   '1 Miembro'
+        other: '%{count} Miembros'
+    teachers:
+      approved: 'Aprobados'
+      pending: 'Pendientes'
+    member: 
+      pending: 'Aceptar'
+      rejected: 'Rechazado'
+      accepted: 'Aceptado'
+      accept: 'Aceptar'
+      reject: 'Rechazar'
+      remove: 'Quitar del curso'
+      role: 'Rol'
+      student: 'Cursante'
+      teacher: 'Instructor'
+    requests: &requests
+      requests: 'Solicitudes'
+      pending_requests: 'Solicitudes Pendientes'
+    course:
+      request_join_student: Solicitar unirse
+      request_join_teacher: Ser maestro del curso
+      request_join_again: Solicitar unirse de nuevo
+      join_requested: Solicitud pendiente
+      join_rejected: Solicitud rechazada
+      join_accepted: Cursando
+      confirm_delete: Esta acción eliminará todos los recursos del curso ¿Estás seguro de querer eliminarlo?
+    index:
+      title: Todos los cursos disponibles
+    wall:
+      header: Muro
+    assignments:
+      create_assignment: 'Crear tarea'
+      assignments: 'Tareas'
+      new_assignment: 'Nueva Tarea'
+      edit_assignment: 'Editar Tarea'
+      date_time: 'Fecha Límite'
+      start_at: 'Fecha de Inicio'
+      value: 'Valor'
+      period: 'Periodo'
+      comments: 'Comentarios'
+
+  assignments:
+    show:
+      deliver: "Entregar tarea"
+      edit_delivery: Editar entrega
+      deliveries: Entregas
+      show_delivery: Mostrar entrega
+      failed_delivery: Tarea no entregada
+      course: Curso
+    index:
+      current: Abiertas
+      previous: Cerradas
+      unpublished: No publicadas
+
+  surveys:
+    survey:
+      date_time: Fecha Límite
+      value: Valor
+      period: Periodo
+      description: Descripción
+      answer: Contestar
+      publish: Publicar
+      published: Publicado
+      unpublished: No publicado
+      start_at: Fecha de publicación
+      select_correct_answer: Selecciona la respuesta correcta
+    drag: Arrastra y Ordena
+    index:
+      header: Cuestionarios
+      new_survey: Nuevo cuestionario
+      current: Abiertos
+      previous: Cerrados
+      unpublished: No publicados
+    show:
+      header: Cuestionario 
+      edit_survey: Editar
+      view_replies: Cuestionarios contestados
+      course: Curso
+      preview: Vista previa del cuestionario
+      survey_sent: Ya enviaste tus respuestas
+      survey_sent_at: 'Respuestas enviadas el:'
+      view_answers: Tus respuestas
+      student_answers: Las respuestas de
+      new_answers: Enviar respuestas
+      not_answered: No has enviado tus respuestas
+      survey_expired: La fecha para contestar este cuestionario ha pasado
+      delete: Eliminar cuestionario
+      confirm_delete: "¿Estás seguro que deseas eliminar el cuestionario?"
+      confirm_delete_with_replies: "El cuestionario tiene ya respuestas de los alumnos, al eliminarlo se eliminarán también estas respuestas. ¿Estás seguro que deseas eliminarlo?"
+    new:
+      header: Nuevo cuestionario
+    edit:
+      header: Editar cuestionario
+    answer_fields:
+      legend: Respuestas
+      add_answer: Añadir respuesta
+    question_fields:
+      legend: Preguntas para cuestionario 
+      add_question: + Añadir pregunta
+
+
+  students:
+    deliveries:
+      new:
+        header: Entregar tarea
+      edit:
+        header: Editar entrega de tarea
+      show:
+        header: Entrega de tarea
+        delivered: Entrega
+        comment: Comentar entrega
+    survey_replies:
+      show:
+        edit: Modificar respuestas
+      fields:
+        correct: Respuesta correcta
+        incorrect: Respuesta incorrecta
+
+  survey_reply:
+    score: Calificación del cuestionario
+    updated: Última edición
+
+  teachers:
+    deliveries:
+      index:
+        heder: Entregas para tarea
+        show: Mostrar entrega
+    survey_replies:
+      index:
+        header: Cuestionarios respondidos para
+        show: Mostrar cuestionario respondido
+        score: Calificación
+        updated: Actualizado
+
+  profile:
+    edit_profile: 'Editar perfil'
+    about_me: 'Acerca de mí'
+    studies: 'Estudios'
+    birth_date: 'Fecha de nacimiento'
+    occupation: 'Ocupación'
+    social_networks: 'Redes sociales'
+    wall: 'Muro'
+
+  discussions:
+    title: 'Discusiones'
+    edit_discussion: 'Editar Discusión'
+    new_discussion: 'Nueva Discusión'
+    form_title: 'Título'
+    form_description: 'Descripción'
+    new_discussion: 'Nueva Discusión'
+    ago: 'hace'
+    by: 'por'
+
+  comments:
+    destroy:
+      remove: eliminar comentario
+    comments:
+      remove: eliminar comentario
+    comment_tpl:
+      remove: eliminar comentario
+
+  settings:
+    show:
+      title:  'Configuración de la cuenta'
+      change_password: 'Cambiar contraseña'
+      notifications: 'Notificaciones'
+
+  breadcrumb:
+    dashboard: 'Dashboard'
+
+  supervisor:
+    shared:
+      admin_menu:
+        dashboard: 'Panel de control'
+        admin: 'Administración'
+        configuration: "Configuración"
+        courses: Cursos
+        teachers: Instructores
+        students: Cursantes
+        supervisors: Administradores
+        reports: 'Reportes'
+        pending_approvals: Registros de maestros pendientes
+        new_user: "Crear nuevo usuario"
+      teachers:
+        approve: Aceptar
+        reject: Rechazar
+        teacher: Instructor
+        student: Cursante
+        supervisor: Administrador
+        update: Actualizar
+        change_role: Cambiar rol
+        destroy: Eliminar
+    config: 
+      configuration: "Configuración"
+      registry: 'Registro de usuarios'
+    pending_approvals:
+      approve: Aceptar
+      reject: Rechazar
+    teachers:
+      registered_teachers: Instructores registrados
+    students:
+      student: Instructor
+      teacher: Cursante
+      supervisor: Administrador
+      update: Actualizar
+      change_role: Cambiar rol
+      destroy: Eliminar
+      registered_students: Estudiantes inscritos
+    supervisors:
+      singular_supervisor: Administrador
+      plural_supervisor: Administradores
+      update: Actualizar
+      change_role: Cambiar rol
+      destroy: Eliminar
+      teacher: Instructor
+      student: Cursante
+      supervisor: Administrador
+    export_students: "Exportar estudiantes"
+    import_students: "Importar estudiantes"
+    export_teachers: "Exportar maestros"
+    import_teachers: "Importar maestros"
+    networks:
+      edit:
+        example: 'Ejemplo:'
+
+  views:
+    pagination:
+      previous: "&lt;"
+      first: "&laquo;"
+      last: "&raquo;"
+      truncate: "..."
+      next: "&gt;"
+
+  notifications:
+    header: Notificaciones
+    show_requests: Ver solicitudes
+    show_delivery: Ver entrega
+    show_courses: Ver cursos
+    show_assignment: Ver actividad
+    show_survey: Ver cuestionario
+    show_survey_reply: Ver respuestas
+    show_comment: Ver comentario
+    show_discussion: Ver discusión
+    wants_to_participate_in_course: quiere participar en el curso
+    has_delived_assignment: ha entregado la actividad del modulo
+    has_answered_the_survey: ha contestado el cuestionario
+    for_the_course: para el curso
+    has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
+    your_course_request: Tu solicitud para participar en el curso
+    was_rejected: fue rechazada
+    you_where_accepted_for_course: Has sido aceptado para participar en el curso
+    assignment_added: Se ha creado la tarea
+    assignment_updated: Se ha actualizado la actividad
+    survey_added: Se ha creado el cuestionario
+    users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
+    discussion_added: Se ha creado la discusión
+    has_posted_a_comment_on_comment: ha comentado en uno de tus comentarios
+    has_posted_a_comment_on_discussion: ha comentado en la discusión
+    has_posted_a_comment_on_user: ha comentado en tu muro
+    has_posted_a_comment_on_course: ha comentado en el muro del curso
+    
+  user_mailer:
+    new_comment_on_user:
+      subject: Nuevo comentario en tu muro
+    new_comment_on_discussion:
+      subject: Nuevo comentario en una de tus discusiones
+    new_comment_on_course:
+      subject: Nuevo comentario en el muro de uno de tus cursos
+    new_comment_on_comment:
+      subject: Nueva respuesta sobre tu comentario
+    new_discussion:
+      subject: Nueva discusión en uno de tus cursos
+    new_user_by_supervisor:
+      subject: Bienvenido a Cúrsame
+      
+  teacher_mailer:
+    pending_user_on_course:
+      subject: Un usuario ha solicitado acceso a uno de tus cursos
+      teacher: maestro
+      student: alumno
+      
+  supervisor_mailer:
+    new_teacher_registered:
+      subject: Un maestro ha solicitado acceso a tu red
+    finished_upload_users:
+      subject: Importación de usuarios completa
+      
+  student_mailer:
+    accepted_on_course:
+      subject: Solicitud de ingreso al curso %{course_name} aceptada
+    new_homework:
+      subject: Nueva tarea en uno de tus cursos
+    new_survey:
+      subject: Nuevo cuestionario en uno de tus cursos
+      
+  user:
+    errors:
+      email_not_allowed: Dirección de correo no permitida
+      
+  home:
+    members:
+      members: Miembros de la red
+      all_members: Ver todos
