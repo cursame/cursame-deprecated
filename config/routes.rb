@@ -110,4 +110,5 @@ Cursame::Application.routes.draw do
   match '/api/api/course_requests', :to => 'api/api#course_requests', :as => :course_requestsjson
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/update_course', :to => 'api/api#update_course', :as => :update_course
+  match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
 end
