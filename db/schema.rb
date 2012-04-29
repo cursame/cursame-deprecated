@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120402214541) do
+ActiveRecord::Schema.define(:version => 20120420081310) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20120402214541) do
     t.boolean  "public_registry",                 :default => true
     t.boolean  "private_registry",                :default => false
     t.string   "registry_domain"
+    t.string   "lenguajes"
   end
 
   create_table "networks_users", :id => false, :force => true do |t|
@@ -225,8 +226,8 @@ ActiveRecord::Schema.define(:version => 20120402214541) do
     t.string   "linkedin_link"
     t.string   "avatar_file"
     t.string   "state",                                 :default => "active"
-    t.string   "authentication_token"
     t.boolean  "accepting_emails",                      :default => false
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

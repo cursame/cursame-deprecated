@@ -1,5 +1,241 @@
-es:
 
+english:
+# English translations for Rails jose_alfredo@cursa.me
+english:
+ 
+  date:
+      
+    formats:
+      default: "%d/%m/%Y"
+      short: "%d de %b"
+      long: "%d de %B de %Y"
+      medium: "%e %b '%y"
+
+    day_names:
+      - sunday
+      - monday
+      - tuesday
+      - wedneday
+      - thurstay
+      - friday
+      - saturday
+    abbr_day_names:
+      - dom
+      - lun
+      - mar
+      - mié
+      - jue
+      - vie
+      - sáb
+
+    month_names:
+      - ~
+      - january
+      - february
+      - march
+      - april
+      - may
+      - june
+      - july
+      - august
+      - september
+      - octuber
+      - november
+      - december
+    abbr_month_names:
+      - ~
+      - ene
+      - feb
+      - mar
+      - abr
+      - may
+      - jun
+      - jul
+      - ago
+      - sep
+      - oct
+      - nov
+      - dic
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+      
+    formats:      
+      default: "%A, %d de %B de %Y %H:%M:%S %z"
+      short: "%d de %b %H:%M"
+      long: "%d de %B de %Y %H:%M"
+      medium: "%e %b '%y"
+    am: "am"
+    pm: "pm"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " y "
+      last_word_connector: ", y "
+
+    select:
+      prompt: "Please select"
+
+  number:
+    format:
+      separator: ","
+      delimiter: "."
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+
+    currency:
+      format:
+        format: "%n %u"
+        unit: "€"
+        separator: ","
+        delimiter: "."
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+
+    percentage:
+      format:
+        delimiter: ""
+
+    precision:
+      format:
+        delimiter: ""
+
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "thousand"
+          million: "million"
+          billion: "billion"
+          trillion: "trillion"
+          quadrillion: "quadillion"
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:  "one second"
+        other: "- %{count} second"
+      x_seconds:
+        one:  "1 second"
+        other: "%{count} second"
+      less_than_x_minutes:
+        one:  "- 1 minute"
+        other: "- %{count} minutes"
+      x_minutes:
+        one:  "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:  " 1 hour"
+        other: " %{count} hours"
+      x_days:
+        one:  "1 day"
+        other: "%{count} days"
+      about_x_months:
+        one:  " 1 mont"
+        other: " %{count} months"
+      x_months:
+        one:  "1 mont"
+        other: "%{count} months"
+      about_x_years:
+        one:  "1 year a go"
+        other: " %{count} years a go"
+      over_x_years:
+        one:  "more than 1 year"
+        other: "more than %{count} years"
+      almost_x_years:
+        one: "nearly 1 year"
+        other: "nearly %{count} years"
+    prompts:
+      year:   "Year"
+      month:  "Month"
+      day:    "Day"
+      hour:   "Hour"
+      minute: "Minute"
+      second: "Second"
+
+  helpers:
+    select:
+      prompt: "Please select"
+
+    submit:
+      create: 'create %{model}'
+      update: 'update %{model}'
+      submit: 'submit %{model}'
+      
+  flash:
+    comment_added: 'Comment added with success!'
+    discussion_updated: 'Discussion updated'
+    wrong_network: 'wrong network'
+    assignment_updated: 'assigment updated'
+    user_registration_accepted: 'user registration accepted'
+    user_created: 'User created successfully. You will receive an email with your password.'
+    assignment_deleted: 'assignment deleted'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "not listed"
+      exclusion: "is reserved"
+      invalid: "not is valid"
+      confirmation: "does not match the confirmation"
+      accepted: "must be accepted"
+      empty: "can not be empty"
+      blank: "can not be blank"
+      too_long: "is too long (%{count} characters maximum)"
+      too_short: "is too short (%{count} characters maximum)"
+      wrong_length: "not have the correct length (%{count} exact characters)"
+      not_a_number: "not is a number"
+      not_an_integer: "must be an integer"
+      greater_than: "must be greater than %{count}"
+      greater_than_or_equal_to: "must be greater than or equal to %{count}"
+      equal_to: "must be equal to %{count}"
+      less_than: "must be less than %{count}"
+      less_than_or_equal_to: "must be less than or equal to %{count}"
+      odd: "must be odd"
+      even: "must be even"
+      taken: "already in use"
+
+    errors:
+      template:
+        header:
+          one:   "Could not save this %{model} because it found 1 error"
+          other:  "Could not save this %{model} because it found %{count} errors"
+        # The variable :count is also available
+        body: "Problems encountered with the following fields:"
+
+      messages:
+        taken: "already in use"
+        record_invalid: "Validation failed: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
+
+    
   super_admin:
     shared:
       networks: 'Redes'
@@ -15,8 +251,8 @@ es:
       total_networks: 'Total de redes'
       total_users: 'Total de usuarios'
       total_supervisors: 'Supervisores de red'
-      total_teachers: 'Maestros'
-      total_students: 'Estudiantes'
+      total_teachers: 'Instructores'
+      total_students: 'Cursantes'
       total_courses: 'Total de cursos'
       total_open_courses: 'Cursos públicos'
       total_private_courses: 'Cursos privados'
@@ -24,7 +260,7 @@ es:
       total_surveys: 'Total de cuestionarios'
       total_discussions: 'Total de discusiones'
       total_comments: 'Total de comentarios'
-      total_comments_assignments: 'Comentarios en tareas'
+      total_comments_assignments: 'Comentarios en modulos'
       total_comments_discussions: 'Comentarios en discusiones'
       total_comments_user_walls: 'En muro de usuarios'
       total_comments_course_walls: 'En muro de cursos'
@@ -32,6 +268,8 @@ es:
 
   confirm_delete: ¿Estas Seguro?
   comment: responder
+  download: Descargar
+  close: Cerrar
 
   forms:
     email: 'Email'
@@ -43,8 +281,8 @@ es:
     register_btn: 'Regístrate'
     register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
-    register_student: 'Registro de Estudiantes'
-    register_teacher: 'Registro de Maestros'
+    register_student: 'Registro de cursante'
+    register_teacher: 'Registro de instructor'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -57,7 +295,7 @@ es:
     accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
-    teacher_register: 'Registro como maestro'
+    teacher_register: 'Registro como instructor'
 
   flash:
     course_created: Curso creado
@@ -65,13 +303,13 @@ es:
     course_destroyed: El curso fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
-    assignment_created: La tarea fue creada
+    assignment_created: El modulo fue creado
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusión creada 
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
-    delivery_created: Tu tarea fue entregada
-    delivery_updated: Tu tarea fue actualizada
+    delivery_created: La actividad en el modulo fue entregada
+    delivery_updated: EL modulo fue actualizado
     survey_created: El cuestionario fue creado
     survey_created_and_published: El cuestionario fue creado y publicado
     survey_updated: El cuestionario fue actualizado
@@ -91,8 +329,8 @@ es:
         one: Curso
         other: Cursos
       assignment:
-        one: Tarea
-        other: Tareas
+        one: Modulo
+        other: Modulos
       survey:
         one: Cuestionario
         other: Cuestionarios
@@ -178,7 +416,7 @@ es:
     account_settings: 'Configuración de la cuenta'
 
   courses:
-    archives: 'Archivos'
+    archives: 'Materiales'
     description: 'Descripción'
     details: 'Horario/Grupo'
     time: 'Fecha'
@@ -192,13 +430,13 @@ es:
     edit: 'Editar'
     delete: 'Eliminar'
     courses: 'Cursos'
-    add_asset: Añadir archivo
+    add_asset: Añadir material
     course_menu:
       wall: 'Muro'
       new_discussion: 'Crear discusión'
       discussions: 'Discusiones'
       requests: 'Solicitudes'
-      tasks: 'Tareas'
+      tasks: 'Modulos'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
@@ -207,12 +445,12 @@ es:
       my_courses: 'Mis Cursos'
       new_course: 'Crear Curso Nuevo'
       surveys: 'Cuestionarios'
-      assignments: 'Tareas'
+      assignments: 'Modulos'
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este curso'
-      teachers: 'Maestros'
-      students: 'Estudiantes'
+      teachers: 'Instructores'
+      students: 'Cursantes'
       member: 'Miembro'
       members: 'Miembros'
       count:
@@ -229,8 +467,8 @@ es:
       reject: 'Rechazar'
       remove: 'Quitar del curso'
       role: 'Rol'
-      student: 'Estudiante'
-      teacher: 'Maestro'
+      student: 'Cursante'
+      teacher: 'Instructor'
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
@@ -393,8 +631,8 @@ es:
         admin: 'Administración'
         configuration: "Configuración"
         courses: Cursos
-        teachers: Maestros
-        students: Estudiantes
+        teachers: Instructores
+        students: Cursantes
         supervisors: Administradores
         reports: 'Reportes'
         pending_approvals: Registros de maestros pendientes
@@ -402,8 +640,8 @@ es:
       teachers:
         approve: Aceptar
         reject: Rechazar
-        teacher: Maestro
-        student: Estudiante
+        teacher: Instructor
+        student: Cursante
         supervisor: Administrador
         update: Actualizar
         change_role: Cambiar rol
@@ -415,10 +653,10 @@ es:
       approve: Aceptar
       reject: Rechazar
     teachers:
-      registered_teachers: Maestros registrados
+      registered_teachers: Instructores registrados
     students:
-      student: Estudiante
-      teacher: Maestro
+      student: Instructor
+      teacher: Cursante
       supervisor: Administrador
       update: Actualizar
       change_role: Cambiar rol
@@ -430,8 +668,8 @@ es:
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      teacher: Maestro
-      student: Estudiante
+      teacher: Instructor
+      student: Cursante
       supervisor: Administrador
     export_students: "Exportar estudiantes"
     import_students: "Importar estudiantes"
@@ -454,13 +692,13 @@ es:
     show_requests: Ver solicitudes
     show_delivery: Ver entrega
     show_courses: Ver cursos
-    show_assignment: Ver tarea
+    show_assignment: Ver actividad
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
     show_comment: Ver comentario
     show_discussion: Ver discusión
     wants_to_participate_in_course: quiere participar en el curso
-    has_delived_assignment: ha entregado la tarea
+    has_delived_assignment: ha entregado la actividad del modulo
     has_answered_the_survey: ha contestado el cuestionario
     for_the_course: para el curso
     has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
@@ -468,7 +706,7 @@ es:
     was_rejected: fue rechazada
     you_where_accepted_for_course: Has sido aceptado para participar en el curso
     assignment_added: Se ha creado la tarea
-    assignment_updated: Se ha actualizado la tarea
+    assignment_updated: Se ha actualizado la actividad
     survey_added: Se ha creado el cuestionario
     users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión

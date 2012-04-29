@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
-
+  after_filter :current_languaje
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
@@ -38,7 +38,15 @@ class ApplicationController < ActionController::Base
   def current_network
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
-
+  
+  def current_languaje
+    
+    I18n.locale = current_network.lenguajes
+    
+      def default_url_options(options = {})
+       {lenguajes: I18n.locale}
+      end 
+  end
   def authenticate_active_user_within_network!
     authenticate_user!
     if current_user && !current_user.active?
