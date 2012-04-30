@@ -59,8 +59,8 @@ desc "This task is called by the Heroku scheduler add-on"
             u.remote_logo_file_url = dir
             u.save!
             puts "updated.\n\n"
-          rescue Exception => e
-            puts e.message
+          rescue Exception => e 
+            puts e.message  
             puts dir
             puts "failed.\n\n"
           end
@@ -69,7 +69,7 @@ desc "This task is called by the Heroku scheduler add-on"
     end
     puts "done."
   end
-
+  
   task :move_assets_to_correct_folders, [:arg1] => :environment do |t, args|
     puts "Moving the Assets"
     Asset.all.each do |u|
@@ -83,8 +83,8 @@ desc "This task is called by the Heroku scheduler add-on"
             u.remote_file_url = dir
             u.save!
             puts "updated.\n\n"
-          rescue Exception => e
-            puts e.message
+          rescue Exception => e 
+            puts e.message  
             puts dir
             puts "failed.\n\n"
           end

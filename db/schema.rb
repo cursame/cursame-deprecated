@@ -33,17 +33,6 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.string   "owner_type"
   end
 
-  create_table "assignations", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.boolean  "admin"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "assignations", ["course_id"], :name => "index_assignations_on_course_id"
-  add_index "assignations", ["user_id"], :name => "index_assignations_on_user_id"
-
   create_table "assignments", :force => true do |t|
     t.integer  "course_id"
     t.string   "name"
@@ -76,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_id"
-    t.string   "logo_file"
+    t.string   "course_logo_file"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
