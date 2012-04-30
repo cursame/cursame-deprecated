@@ -51,7 +51,7 @@ feature 'Manage surveys', %q{
 
     time_start_at = DateTime.now + 1.day
     time_due_to = time_start_at+1.month
-    # TODO: we need a select_date helper
+# TODO: we need a select_date helper
     select time_due_to.year.to_s,    :from => 'survey[due_to(1i)]'
     select month_number_to_name(time_due_to.month),   :from => 'survey[due_to(2i)]'
     select time_due_to.day.to_s,      :from => 'survey[due_to(3i)]'
@@ -73,12 +73,12 @@ feature 'Manage surveys', %q{
     end.should change(Survey, :count).by(1)
 
     expected_attrs = {
-      :name => 'First survey', 
-#      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
-      :value => 9, 
-      :period => 1,
-      :course_id => @course,
-      :state => "unpublished"
+        :name => 'First survey',
+        #      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
+        :value => 9,
+        :period => 1,
+        :course_id => @course,
+        :state => "unpublished"
     }
 
     Survey.should exist_with expected_attrs
@@ -143,7 +143,7 @@ feature 'Manage surveys', %q{
 
     time_start_at = DateTime.now
     time_due_to = time_start_at+1.month
-    # TODO: we need a select_date helper
+# TODO: we need a select_date helper
     select time_due_to.year.to_s,    :from => 'survey[due_to(1i)]'
     select month_number_to_name(time_due_to.month),   :from => 'survey[due_to(2i)]'
     select time_due_to.day.to_s,      :from => 'survey[due_to(3i)]'
@@ -164,12 +164,12 @@ feature 'Manage surveys', %q{
     end.should change(Survey, :count).by(1)
 
     expected_attrs = {
-      :name => 'First survey', 
-#      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
-      :value => 9, 
-      :period => 1,
-      :course_id => @course,
-      :state => "published"
+        :name => 'First survey',
+        #      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test survey'),
+        :value => 9,
+        :period => 1,
+        :course_id => @course,
+        :state => "published"
     }
 
     Survey.should exist_with expected_attrs
@@ -193,7 +193,7 @@ feature 'Manage surveys', %q{
     visit survey_url(survey, :subdomain => @network.subdomain)
     click_link t('surveys.show.edit_survey')
     questions = survey.questions
-     
+
     page.should have_xpath("//input[@value='#{question.answer_uuid}' and @checked='checked']")
     new_answer_uuid = question.answers.first.uuid
 
@@ -216,7 +216,7 @@ feature 'Manage surveys', %q{
   scenario 'editing an existing survey and publish it', :js => true do
     survey   = Factory(:survey, :course => @course)
     visit edit_survey_url(survey, :subdomain => @network.subdomain)
-     
+
     fill_in 'survey[name]', :with => 'Edited survey'
 
     time_start_at = DateTime.now
@@ -279,7 +279,7 @@ feature 'Manage surveys', %q{
     visit course_surveys_path @course
 
     page.should_not link_to edit_survey_reply_path survey
-  
+
     within('.survey:last') do
       click_link survey.name
     end
@@ -324,7 +324,7 @@ feature 'Manage surveys', %q{
       click_link t('teachers.survey_replies.index.show')
     end
     page.should show_managed_survey_reply reply
-  end 
+  end
 
 #  scenario 'publishing a survey with ajax', :js => true do
 #    survey = Factory(:survey, :course => @course)

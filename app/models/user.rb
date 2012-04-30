@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)
-  
+
   validate :correct_email_if_private_registration
 
   validates_acceptance_of :terms_of_service
@@ -65,7 +65,7 @@ class User < ActiveRecord::Base
   def supervisor?
     role == 'supervisor'
   end
-  
+
   def admin?
     role == 'admin'
   end
@@ -98,21 +98,21 @@ class User < ActiveRecord::Base
 
   def can_edit_comment? comment
     commentable = comment.commentable
-    comments.include?(comment) || 
-      case commentable
-      when Assignment
-        manageable_assignments.include? commentable
-      when Course
-        manageable_courses.include? commentable
-      when Discussion # TODO: no integration test
-        manageable_discussions.include? commentable
-      when User
-        profile_comments.include? comment
-      when Delivery
-        deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
-      when Comment # TODO: no integration test to test deleting comment of comment
-        can_edit_comment? commentable
-      end
+    comments.include?(comment) ||
+        case commentable
+          when Assignment
+            manageable_assignments.include? commentable
+          when Course
+            manageable_courses.include? commentable
+          when Discussion # TODO: no integration test
+            manageable_discussions.include? commentable
+          when User
+            profile_comments.include? comment
+          when Delivery
+            deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
+          when Comment # TODO: no integration test to test deleting comment of comment
+            can_edit_comment? commentable
+        end
   end
 
   def can_destroy_comment? comment
@@ -123,18 +123,18 @@ class User < ActiveRecord::Base
     commentable = comment.commentable
     return true if self.supervisor? #In case is a supervisor can always post comments
     case commentable
-    when Assignment
-      assignments.include? commentable
-    when Course
-      courses.include? commentable
-    when Discussion # TODO: no integration test
-      discussions.include? commentable
-    when Delivery
-      deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
-    when User
-      true
-    when Comment
-      self.supervisor?
+      when Assignment
+        assignments.include? commentable
+      when Course
+        courses.include? commentable
+      when Discussion # TODO: no integration test
+        discussions.include? commentable
+      when Delivery
+        deliveries.include?(commentable) || manageable_deliveries.include?(commentable)
+      when User
+        true
+      when Comment
+        self.supervisor?
     end
   end
 

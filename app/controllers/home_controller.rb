@@ -5,12 +5,12 @@ class HomeController < ApplicationController
   def index
     if current_user && current_user.active?
       case current_user.role
-      when 'admin'
-        redirect_to admin_path
-      when 'supervisor'
-        redirect_to supervisor_dashboard_path
-      else
-        redirect_to dashboard_url
+        when 'admin'
+          redirect_to admin_path
+        when 'supervisor'
+          redirect_to supervisor_dashboard_path
+        else
+          redirect_to dashboard_url
       end
     else
       @user = User.new
@@ -28,7 +28,7 @@ class HomeController < ApplicationController
 
   def terms
   end
-  
+
   def members
     @users = current_network.users.search(params[:search])
   end

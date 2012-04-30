@@ -19,7 +19,7 @@ class Assignment < ActiveRecord::Base
   state_machine :initial => :created do
     state :created
     state :published, :enter => :notificate_user_about_new_assignment
-    
+
     event :publish do
       transitions :to => :published, :from => :created
     end
@@ -28,23 +28,23 @@ class Assignment < ActiveRecord::Base
   can_haz_assets
 
   html_sanitized :description
-  
+
   before_create do
     self.start_at ||= DateTime.now
   end
-  
+
   after_create do
     if self.start_at <= DateTime.now
       self.publish!
     end
   end
-  
+
   after_update do
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_updated'
     end
   end
-  
+
   def expired?
     due_to < DateTime.now
   end
@@ -56,7 +56,7 @@ class Assignment < ActiveRecord::Base
     emails = course.student_emails
     StudentMailer.delay.new_homework(emails, course, course.network) unless emails.blank?
   end
-  
+
   def self.publish_new_assignments
     Assignment.created.each do |assignment|
       if assignment.start_at <= DateTime.now
@@ -64,7 +64,7 @@ class Assignment < ActiveRecord::Base
       end
     end
   end
-  
+
   private
 
   def start_at_less_than_due_to

@@ -15,7 +15,7 @@ feature 'Manage assignments', %q{
   end
 
   it_should_behave_like 'has basic actions for assignments'
-  
+
 
   scenario 'creating an assignment' do
     student = Factory(:student)
@@ -49,10 +49,10 @@ feature 'Manage assignments', %q{
     end.should change(Assignment, :count).by(1)
 
     expected_attrs = {
-      :name => 'First assignment', 
-      :description => ActiveRecord::HTMLSanitization.sanitize('This is a test assignment'), 
-      :value => 9, 
-      :period => 1,
+        :name => 'First assignment',
+        :description => ActiveRecord::HTMLSanitization.sanitize('This is a test assignment'),
+        :value => 9,
+        :period => 1,
     }
 
     Assignment.should exist_with expected_attrs

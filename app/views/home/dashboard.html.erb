@@ -81,7 +81,7 @@
                           <ul>
                             <% for task in tasks %>
                                 <li>
-                                    <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
+                                  <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
                                 </li>
                             <% end %>
                           </ul>

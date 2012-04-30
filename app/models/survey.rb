@@ -24,18 +24,18 @@ class Survey < ActiveRecord::Base
   html_sanitized :description
   # TODO: validate that all survey_answers and associated answers to survey_answers correspond to the same survey
   # TODO: forbid published survey edition at model level
-  
+
   before_create do
     self.start_at ||= DateTime.now
   end
-  
+
   after_save do
     if self.start_at <= DateTime.now and self.unpublished?
       self.publish!
     end
   end
 
-  accepts_nested_attributes_for :questions, :allow_destroy => true 
+  accepts_nested_attributes_for :questions, :allow_destroy => true
 
   def survey_published
     course.students.select('users.id').each do |student|
@@ -48,7 +48,7 @@ class Survey < ActiveRecord::Base
   def expired?
     due_to < DateTime.now
   end
-  
+
   def self.publish_new_surveys
     Survey.unpublished.each do |survey|
       if survey.start_at <= DateTime.now
