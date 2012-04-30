@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar_file, AvatarUploader
 
+  scope :ordered, order('created_at DESC')
+
   def name
     "#{first_name} #{last_name}".strip
   end
@@ -66,6 +68,12 @@ class User < ActiveRecord::Base
   
   def admin?
     role == 'admin'
+  end
+
+  def self.search(search="")
+    search ? where("((users.first_name || ' ' || users.last_name) #{LIKE} ?) OR
+                   (users.first_name #{LIKE}  ?) OR (users.last_name #{LIKE} ?)",
+                   "%#{search}%", "%#{search}%", "%#{search}%") : self.ordered
   end
 
   def self.total_supervisors

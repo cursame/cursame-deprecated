@@ -1,1 +1,1 @@
-Formtastic::FormBuilder.i18n_lookups_by_default = false
+Formtastic::FormBuilder.i18n_lookups_by_default = true

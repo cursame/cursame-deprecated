@@ -1,6 +1,6 @@
 Cursame::Application.configure do
-  HOST = 'labbbs.net'
-  HEROKU_HOST = 'young-samurai-3345.herokuapp.com'
+  HOST = 'cursatest.com'
+  HEROKU_HOST = 'cursatest.heroku.com'
   config.cache_classes = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

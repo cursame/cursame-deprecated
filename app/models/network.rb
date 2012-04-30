@@ -6,7 +6,8 @@ class Network < ActiveRecord::Base
   has_many :courses
   has_many :discussions, :through => :courses
   has_many :assignments, :through => :courses
-  has_many :surveys,     :through => :courses  
+  has_many :surveys,     :through => :courses
+
   accepts_nested_attributes_for :supervisors
 
   validates_presence_of   :name, :subdomain

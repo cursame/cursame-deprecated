@@ -11,6 +11,7 @@ class SurveysController < ApplicationController
 
   def new
     @survey = manageable_course.surveys.build
+    @survey.due_to = DateTime.now+1.week
   end
 
   def create

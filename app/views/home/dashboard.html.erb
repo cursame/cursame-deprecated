@@ -1,125 +1,118 @@
-
 <div class="container">
   <div class="content">
     <div class="row">
       <div class="span16">
         <ul class="breadcrumb">
           <li>Dashboard</li>
-        </ul>  
+        </ul>
       </div>
     </div>
     <div class="row">
-      
-    <div class="span-one-third verticle_line">
-      <div class="underline">
-        <div class="row">
-          <div class="span3">
-            <h2><%= t('courses.my_courses') %></h2>
+
+      <div class="span-one-third verticle_line">
+        <div class="underline">
+          <div class="row">
+            <div class="span3">
+              <h2><%= t('courses.my_courses') %></h2>
+            </div>
+            <div class="span2 padding-top">
+              <% if current_user.teacher? %>
+                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>
+              <% end %>
+            </div>
           </div>
-          <div class="span2 padding-top">
-            <% if current_user.teacher? %>
-              <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>
+        </div>
+
+        <% unless @courses.blank? %>
+            <% @courses.each do |course| %>
+                <div class="course-detail <%= cycle("odd", "even") %>">
+                  <div class="span4">
+                    <% if course.course_logo_file.xxsmall.url %>
+                        <div class="left" style="padding-right: 8px;">
+                          <%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
+                        </div>
+                    <% end %>
+                    <div class="left">
+                      <h4><%= link_to(course.name, course_path(course)) %></h4>
+
+                      <p><%= course.reference %></p>
+                    </div>
+                  </div>
+                  <div class="span1">
+                    <span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span>
+                  </div>
+                </div>
             <% end %>
+        <% else %>
+            <% if current_user.teacher? %>
+                <p>Te pedimos crees los cursos que impartes.</p>
+            <% else %>
+                <p>Te invitamos a navegar entre los cursos disponibles y solicites participar en los que te
+                  corresponde.</p>
+            <% end %>
+        <% end %>
+        <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path, :class => "btn") %></div>
+        <%= render :partial => "members" %>
+      </div>
+      <div class="span-two-thirds">
+        <div class="tabs">
+          <ul class="tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab"><%= t('calendar') %></a></li>
+            <li><a href="#tab2" data-toggle="tab"><%= t('notifications.header') %></a></li>
+
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+              <div class="row with line">
+                <center>
+                  <h2>
+                    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
+                    <%= h @date.strftime("%B / %Y") %>
+                    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
+                  </h2>
+                </center>
+                <div id="calendar">
+
+                  <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
+                      <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
+                      <%= t.day(:day_method => :due_to) do |day, tasks| %>
+                          <%= day.day %>
+                          <br/>
+                          <ul>
+                            <% for task in tasks %>
+                                <li>
+                                    <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
+                                </li>
+                            <% end %>
+                          </ul>
+                      <% end %>
+                  <% end %>
+                </div>
+
+              </div>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <div class="row with line">
+                <div class="dashboard-box">
+                  <div class="underline padding-top">
+                    <h2><%= t('notifications.header') %></h2>
+                  </div>
+                  <div id="notifications">
+                    <% @notifications.each do |notification| %>
+                        <div class='notification'>
+                          <div class="date-published"><%= time_ago_in_words(notification.created_at) %></div>
+                          <%= raw notification.text %>
+                        </div>
+                    <% end %>
+                    <%= paginate @notifications %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      
-      <% unless @courses.blank? %>
-        <% @courses.each do |course| %>
-         <div class="course-detail <%= cycle("odd", "even")%>">
-           <div class="span4">
-            <% if course.course_logo_file.xxsmall.url%>
-            <div class="left" style="padding-right: 2px;">
-              <%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
-            </div>
-            <% end %>
-            <div class="left">
-              <h4><%= link_to(course.name, course_path(course)) %></h4>
-              <p><%= course.reference %></p>
-            </div>
-           </div>
-           <div class="span1"><span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span></div>
-         </div>
-        <% end %>
-      <% else %>
-        <% if current_user.teacher? %>
-          <p>Te pedimos crees los cursos que impartes.</p>
-        <% else %>
-          <p>Te invitamos a navegar entre los cursos disponibles y solicites participar en los que te corresponde.</p>
-        <% end %>
-      <% end %>
-      <div class="all-courses"><%= link_to(t('dashboard.view_all_courses'), courses_path, :class => "btn") %></div>
-      <%= render :partial => "members" %>
-    </div>
-     <div class="span-two-thirds">
-    	<div class="tabs">   
-	    	<ul class="tabs">
-	    	   <li class="active"><a href="#tab1" data-toggle="tab"><%= t('calendar') %></a></li>
-	           <li ><a href="#tab2" data-toggle="tab"><%= t('notifications.header') %></a></li>
-	    		
-	    	</ul>
-	    		<div class="tab-content">
-					<div class="tab-pane active" id="tab1">
-	    			<div class="row with line">
-                    	<center>
-                        <h2>
-                            <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
-						    <%=h @date.strftime("%B / %Y") %>
-						    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
-                        </h2>
-                        </center>
-                        <div id="calendar">
-	                  
-						        <%= calendar_for(@tasks, :year => @date.year , :month => @date.month) do |t| %>				
-						        <%= t.head('sunday','monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday' )%>
-						        <%= t.day(:day_method => :due_to) do |day, tasks| %>
-						    
-						        <%= day.day %></br>
-						        
-						        <ul>
-								        <% for task in tasks %>
-							   	<div class="row with line">
-								       <li>  <a rel="tip" data-original-title='<%= sanitize task.description, :tags => %w(a)  %>'><%=link_to h(raw task.name), task %></a></li>
-								</div> 
-								        <% end %>
-								</ul>
-						       
-						  <% end %>
-						<% end %>
-	               </div>
-	              
-	             </div>
-	             </div>
-	    			<div class="tab-pane" id="tab2">
-		            <div class="row with line">
-	    	 			<div class="dashboard-box">
-		        			<div class="underline padding-top">
-		          				<h2><%= t('notifications.header') %></h2>
-		        			</div>
-		        			<div id="notifications">
-		          			<% @notifications.each do |notification| %>
-		            		<div class='notification'>
-		              			<div class="date-published"><%= time_ago_in_words(notification.created_at) %></div>
-		              			<%= raw notification.text %>
-		            		</div>
-		          			<% end %>
-		          			<%= paginate @notifications %>
-		        		</div>
-		      		</div>
-	    		</div>
-	          </div>
-	
-	    			
-	    </div>
-	   
-      
-     </a>
-   
- 
-    </div>
-     
     </div>
   </div>
- <div>
   <%= render :partial => "shared/footer" %>
 </div>
