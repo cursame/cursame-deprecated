@@ -5,8 +5,7 @@ class Api::ApiController < ApplicationController
   
   respond_to :json
   def course_requests
-    course_request = @user.enrollment_requests.find params[:id]
-    
+    course_request = @user.enrollment_requests.find params[:id]    
     if params[:accept] == true
       course_request.accept!
     else
@@ -18,7 +17,35 @@ class Api::ApiController < ApplicationController
   def courses
     @courses = @user.visible_courses.where(:network_id => current_network)    
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]      
-  end  
+  end
+  
+  def assignments
+     @course = Course.find params[:id]  
+     render :json => {:assignments => @course.assignments, :count => @course.assignments.count()}, :callback => params[:callback]      
+  end
+  
+  def discussions
+     @course = Course.find params[:id]  
+     render :json => {:discussions => @course.discussions, :count => @course.discussions.count()}, :callback => params[:callback]      
+  end
+  
+  def surveys
+     @course = Course.find params[:id]  
+     render :json => {:surveys => @course.surveys, :count => @course.surveys.count()}, :callback => params[:callback]      
+  end
+  
+  def users    
+    case params[:type]
+       when 'Course'
+         @course = Course.find params[:id]       
+         @users = @course.students + @course.teachers
+      when 'Profile'         
+         @users = [@user]
+      else
+         @users = @course.network.users
+    end    
+    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]      
+  end
 
   def notifications
     @notifications = @user.notifications.order("created_at DESC");
@@ -29,22 +56,26 @@ class Api::ApiController < ApplicationController
           text = I18n.t('notifications.wants_to_participate_in_course')
           image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
+          @course = notification.notificator.course
         when 'student_assignment_delivery'
           text = I18n.t('notifications.has_delived_assignment')
           image = notification.notificator.user.avatar_file.xxsmall.url
           assignment= notification.notificator.assignment
           user = notification.notificator.user
+          @course = assignment.course
         when 'teacher_survey_replied'
           text = I18n.t('notifications.has_answered_the_survey')
           survey = notification.notificator.survey
           image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
+          @course = survey.course
           text2 = I18n.t('notifications.for_the_course')
         when 'teacher_survey_updated'
           text = I18n.t('notifications.has_updated_survey_answers')
           survey = notification.notificator.survey
           image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
+          @course = survey.course
         when 'student_course_rejected'
           text = I18n.t 'notifications.was_rejected'
         when 'student_course_accepted'
@@ -55,6 +86,8 @@ class Api::ApiController < ApplicationController
           text = I18n.t 'notifications.assignment_updated'
         when 'student_survey_added'
           text = I18n.t 'notifications.survey_added'
+        when 'user_comment_on_course'
+          text = 'comentario en curso'
       end
       
       notification.text = {
@@ -64,10 +97,10 @@ class Api::ApiController < ApplicationController
           :user => user,
           :survey => survey,
           :assignment => assignment,
-          :course => notification.notificator.course,
-          :courseOwner => notification.notificator.course.owner,
-          :courseMembers => notification.notificator.course.users.count,
-          :courseComments => notification.notificator.course.comments.count,
+          :course => @course,
+          :courseOwner => @course ? @course.owner : nil,
+          :courseMembers => @course ? @course.users.count : nil,
+          :courseComments => @course ? @course.comments.count : nil,
           :text2 => text2
       }
     end
@@ -80,6 +113,13 @@ class Api::ApiController < ApplicationController
         @commentable = Course.find params[:id]
       when 'Comment'
         @commentable = Comment.find params[:id]
+      when 'Survey'
+        @survey = Survey.find params[:id]
+        @commentable = @survey.course
+      when 'Assignment'
+        @commentable = Assignment.find params[:id]
+      when 'Discussion'
+        @commentable = Discussion.find params[:id]
       else
         @commentable = Course.find params[:id]
     end
@@ -94,8 +134,7 @@ class Api::ApiController < ApplicationController
     @comment.text = params[:text]
     @comment.user = @user
     @comment.save
-    render :json => {:success => true}, :callback => params[:callback]    
-    
+    render :json => {:success => true}, :callback => params[:callback]        
   end
   
   private 

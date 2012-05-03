@@ -101,8 +101,11 @@ Cursame::Application.routes.draw do
     resources :tokens,:only => [:create, :destroy]
   end  
   match '/api/tokens/create', :to => 'api/tokens#create', :as => :login
-  match '/api/api/user', :to => 'api/api#user', :as => :userjson
+  match '/api/api/users', :to => 'api/api#users', :as => :usersjson
   match '/api/api/courses', :to => 'api/api#courses', :as => :coursesjson
+  match '/api/api/assignments', :to => 'api/api#assignments', :as => :assignmentsjson
+  match '/api/api/surveys', :to => 'api/api#surveys', :as => :surveysjson
+  match '/api/api/discussions', :to => 'api/api#discussions', :as => :discussionsjson
   match '/api/api/notifications', :to => 'api/api#notifications', :as => :notificationsjson
   
   
