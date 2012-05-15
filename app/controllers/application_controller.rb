@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  
+  
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
@@ -80,5 +82,8 @@ class ApplicationController < ActionController::Base
       return subdomain
     end
   end
+  def chat
+  @chat=current_user.chat
   
+  end
 end

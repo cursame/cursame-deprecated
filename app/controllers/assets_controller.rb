@@ -29,4 +29,7 @@ class AssetsController < ApplicationController
   def valid_role? role
     role == "teacher" or role == "student"
   end
+  def adds
+  @chats=Chat.all
+  end
 end

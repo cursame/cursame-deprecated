@@ -19,5 +19,5 @@
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
   <%= yield %>
-</body>
+
 </html>

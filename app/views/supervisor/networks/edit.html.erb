@@ -45,12 +45,11 @@
               <h3><%= t('supervisor.config.version_plataform') %></h3>  
                <%= t('supervisor.config.(_select_the_languaje_to_change_the_vesion_)') %>  </br> </br> </br>
                  <b> <%= t('supervisor.config.es => spanish school version') %>  </br>
-                   <%= t('supervisor.config.cursame_en =>english school version') %>  </br>
                   <%= t('supervisor.config.es_corp => spanish corporative version') %>     </br>    </b>  
            </br>
            </br>
            </br>
-           <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "cursame.en", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"} %>         
+           <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"} %>         
             <% end %>
           <%= form.buttons :class => "fieldset-admin" do %>
             <%= form.commit_button :label => "Guardar Cambios", :button_html => {:id => :submit, :class => 'btn right'} %>

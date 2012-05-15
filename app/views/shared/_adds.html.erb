@@ -1,0 +1,70 @@
+<meta http-equiv="chat_body" content="5" />
+<!DOCTYPE HTML>
+<HEAD>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", "aplication"%>
+<%= stylesheet_link_tag "animatedcollapse.js"%>
+
+<script type="text/javascript">
+
+//animatedcollapse.addDiv('chat', 'hide=1,speed=400,group=chat,persist=1,fade=0,height=80px')
+
+
+//animatedcollapse.ontoggle=function($, divobj, state){ //fires each time a DIV is expanded/contracted
+	//$: Access to jQuery
+	//divobj: DOM reference to DIV being expanded/ collapsed. Use "divobj.id" to get its ID
+	//state: "block" or "none", depending on state
+//}
+
+//animatedcollapse.init(1)
+
+</script>
+
+ <script>
+  $(document).ready(function() {
+    
+    
+   $("#btn-chat").click(function () {
+	  
+        $("#chat").fadeToggle("slow", "linear");
+   
+    });
+
+  });
+  </script>
+</HEAD>
+<body>
+<div id="containertor">
+	<div id="btn-chat" class="btn success">
+		 <%=image_tag("iChat1.png")  %>
+	</div>	
+
+<div id="chat">	
+	<div id="chat_title">
+		<center><h2><b>Chat</b></h2></center>
+    </div>
+	
+<div id="chat_body">
+	
+     	  <div id="sacura">
+	     	<%= render partial: 'chats/chats_groups' %>
+		  </div>    
+</div>
+<div id="chat_footer">
+	<div class="imput append">
+   <%= form_for Chat.new, remote: true do |f|%>
+    <%=f.text_field :text, :size => 25.8, :enter => :clear, :class => :chat%>
+    <%=f.hidden_field :course_id, :value => @course.id %>
+   <%-# submit_tag :msg, :class => "btn info medium right "#%> 
+  <center><p>ingresa tu texto en la casilla y presiona enter para enviar</p></center>
+   <%end%>
+   </div> 
+</div>
+</div>
+<%= subscribe_to "/chats/#{@course.id}" %>
+</div>
+<div id='publicity_chat'>
+		<%= render partial: 'shared/publicity' %>
+	
+</div>
+
+</body>

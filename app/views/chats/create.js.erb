@@ -1,0 +1,5 @@
+<% publish_to "/chats/#{@course.id}" do %>
+$("#sacura").html('<%= escape_javascript(render( partial: "chats/chats_groups" ))%>');
+$("#new_chat")[0].reset();
+<%end%>
+/* Ponemo en el canal el nombre/id del curso para lograr que este funcione */

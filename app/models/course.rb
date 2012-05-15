@@ -17,16 +17,15 @@ class Course < ActiveRecord::Base
   has_many :surveys, :dependent => :destroy
   has_many :discussions, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
-
+  has_many :chats
   can_haz_assets
 
   validates_presence_of :name, :description, :start_date, :finish_date, :network
 
   belongs_to :network
-
   mount_uploader :course_logo_file, CourseLogoUploader
   html_sanitized :description
-  
+ 
   def owner
     teachers.where("enrollments.admin" => true).order("created_at asc").first or Eater.new
   end

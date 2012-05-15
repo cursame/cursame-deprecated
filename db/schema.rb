@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420081310) do
+ActiveRecord::Schema.define(:version => 20120501035922) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.string   "state"
   end
 
+  create_table "chats", :force => true do |t|
+    t.string   "user"
+    t.string   "text"
+    t.time     "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "course"
+    t.string   "user_name"
+    t.integer  "course_id"
+  end
+
   create_table "comments", :force => true do |t|
     t.integer  "commentable_id"
     t.string   "commentable_type"
@@ -65,6 +76,8 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_id"
+    t.string   "logo_file"
+    t.integer  "chat_id"
     t.string   "course_logo_file"
   end
 
@@ -216,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.string   "avatar_file"
     t.string   "state",                                 :default => "active"
     t.string   "authentication_token"
+    t.integer  "chat_id"
     t.boolean  "accepting_emails",                      :default => false
   end
 

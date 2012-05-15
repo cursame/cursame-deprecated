@@ -33,3 +33,7 @@ class HomeController < ApplicationController
     @users = current_network.users.search(params[:search])
   end
 end
+
+def create_new_network
+
+end
