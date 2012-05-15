@@ -11,10 +11,11 @@ class Assignment < ActiveRecord::Base
   has_many   :deliveries, :dependent => :destroy
   has_many   :comments, :as => :commentable, :dependent => :destroy
 
-  validates_presence_of :name, :description, :value, :period, :due_to, :course
+  validates_presence_of :name, :description, :value, :period, :due_to, :start_at, :course
   validates_inclusion_of :value,  :in => (0..100)
   validates_inclusion_of :period, :in => (1..8)
-  
+  before_save :start_at_less_than_due_to
+
   state_machine :initial => :created do
     state :created
     state :published, :enter => :notificate_user_about_new_assignment
@@ -44,6 +45,10 @@ class Assignment < ActiveRecord::Base
     end
   end
   
+  def expired?
+    due_to < DateTime.now
+  end
+
   def notificate_user_about_new_assignment
     course.students.select('users.id').each do |student|
       Notification.create :user => student, :notificator => self, :kind => 'student_assignment_added'
@@ -60,4 +65,13 @@ class Assignment < ActiveRecord::Base
     end
   end
   
+  private
+
+  def start_at_less_than_due_to
+    if due_to <= start_at
+      errors.add(:due_to, I18n.t('.assignment.errors.due_to_after_start_at'))
+      false
+    end
+  end
+
 end

@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   def dashboard
     @courses       = current_user.visible_courses.where(:network_id => current_network).limit(4)
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
-    @users = current_network.users.limit(30)  
+    @users = current_network.users.limit(30) if current_network
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
@@ -30,7 +30,7 @@ class HomeController < ApplicationController
   end
   
   def members
-    @users = current_network.users
+    @users = current_network.users.search(params[:search])
   end
 end
 

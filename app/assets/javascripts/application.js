@@ -15,7 +15,7 @@ $(function(){
   $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
     $(this).attr('disabled', 'disabled');
     $(this).parents('form').submit();
-    return false;
+    return false; //to disable double request in Firefox for the click
   });
   
   //lazy loading the members for the network
@@ -68,7 +68,7 @@ $(function(){
       axis        : 'y',
       tolerance   : 'pointer',
       scrollSpeed : 40,
-      items       : 'fieldset',
+      items       : 'fieldset'
       /* cancel      : 'a'  */
     } 
     $(this).sortable(sortableSettings).children('associated').css('cursor', 'move');
@@ -103,8 +103,8 @@ $(function(){
           var preview  = $('.preview img', fieldset);
           var file;
 
-          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache);
-          file = data.file || data.logo_file || data.avatar_file;
+          $('input[id$=cache]', fieldset).val(data.file_cache || data.logo_file_cache || data.avatar_file_cache || data.course_logo_file_cache);
+          file = data.file || data.logo_file || data.avatar_file || data.course_logo_file;
 
           if (file && file.thumb) {
             $('.preview img', fieldset).attr('src', file.thumb.url);
@@ -145,19 +145,28 @@ $(function(){
     return false;
   });
 
-  
+  $("a[rel=tooltip]").twipsy({
+    live: true,
+    placement: "right"
+  });
+
   $("span.tip").twipsy({
     live: true
   });
   
   $("a[rel=member-tip]").twipsy({
     live: true,
-    offset: 170,
+    offset: 170
   });
-  
+
+  $("a[rel=dashboard-tip]").twipsy({
+    live: true,
+    offset: 15
+  });
+
   $("a[rel=tip]").twipsy({
     live: true,
-    offset: 30,
+    offset: 30
   });
   
   $("fieldset[rel=drag_tip]").twipsy({

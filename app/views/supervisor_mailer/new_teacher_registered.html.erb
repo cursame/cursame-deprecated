@@ -1,5 +1,4 @@
 <h2 class="h2">Hola!</h2>
-<h3 class="h3">¡Tienes una nueva notificación!</h3><br>
 <strong>El maestro <%= @teacher.name%> ha solicitado ingresar a la red <%= @network.name%> en la cual tu eres Administrador, es necesario que lo apruebes para que tenga acceso a la red.</strong>
 <br>
 <h1> <%= link_to "Ir a Administración de Maestros >>", supervisor_teachers_url(:subdomain => @network.subdomain) %></h1>

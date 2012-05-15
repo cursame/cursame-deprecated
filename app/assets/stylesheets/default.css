@@ -288,10 +288,10 @@ color: #BFBFBF;
 }
 
 /*.wall label, */
-.assignments label,
-.discussions label {
-	display: none;
-}
+/*.assignments label,*/
+/*.discussions label {*/
+/*	display: none;*/
+/*}*/
 
 .wall .actions, 
 .assignments .actions,

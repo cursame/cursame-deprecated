@@ -9,7 +9,7 @@
       </ul>  
     </div>
   </div>
- 
+
   <div class="dashboard">  
 
     <div class="row">
@@ -51,21 +51,6 @@
            </br>
            <%=  form.input :lenguajes,  :as => :select, :collection => ["es", "es_corp"], :input_html => { :class => "lenguajes", :name => "lenguajes", :id => "lenguajes"} %>         
             <% end %>
-    
- <!-- esta fue una prueba realizada para probar el funcionamiento de la aplicación
-       <div class="lenguajes">	
-	    	    
-	     Select languaje/Seleccione un lenguaje:
-		<select name="lenguajes">	
-		<option value="es">Spanish	
-        <option value="cursame.en">English 	   
-		<option value="es_corp" select="active">Spanish Corporative
-		<option value="cursame.en">English Corporative
-	     </select>
-         </div>
-         </br>
-         </br>
-   -->
           <%= form.buttons :class => "fieldset-admin" do %>
             <%= form.commit_button :label => "Guardar Cambios", :button_html => {:id => :submit, :class => 'btn right'} %>
           <% end %>

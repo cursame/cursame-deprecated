@@ -1,4 +1,4 @@
-class Assignation < ActiveRecord::Base
+class Chat < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
 end

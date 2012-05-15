@@ -20,6 +20,7 @@ describe Assignment do
     it { should validate_presence_of :period }
     it { should ensure_inclusion_of(:period).in_range(1..8) }
     it { should validate_presence_of :due_to }
+    it { should validate_presence_of :start_at }
   end
 
   describe 'html description sanitization' do
@@ -27,5 +28,15 @@ describe Assignment do
     it { assignment.description.should_not =~ /<script>/ }
     it { assignment.description.should be_html_safe }
     it { assignment.description.should =~ /hello/}
+  end
+
+  describe 'assignment scopes' do
+    before do
+      @created = Factory(:assignment)
+      @published   = Factory(:published_assignment)
+    end
+
+    it { Assignment.published.should == [@published] }
+    it { Assignment.created.should == [@created] }
   end
 end

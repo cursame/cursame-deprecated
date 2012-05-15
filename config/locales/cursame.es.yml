@@ -370,6 +370,8 @@ es:
     by: 'por'
 
   comments:
+    insert_multimedia: 'Insertar multimedia'
+    tooltip: "Sólo pega el link en el cuerpo del comentario.  Links compatibles: Youtube, Vimeo, Ustream, LiveStream, Prezi, SlideShare, Google Video."
     destroy:
       remove: eliminar comentario
     comments:

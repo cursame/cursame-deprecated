@@ -62,8 +62,8 @@ class CoursesController < ApplicationController
   end
 
   def upload_logo
-    course = Course.new :logo_file => uploaded_file
-    render :json => course.as_json(:methods => [:logo_file_cache], :only => [:logo_file, :logo_file_cache])
+    course = Course.new :course_logo_file => uploaded_file
+    render :json => course.as_json(:methods => [:course_logo_file_cache], :only => [:course_logo_file, :course_logo_file_cache])
   end
   
   def destroy
