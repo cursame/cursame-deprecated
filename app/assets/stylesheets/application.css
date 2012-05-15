@@ -25,7 +25,7 @@
 
 #calendar td,
 #calendar th {
-  font-family: helvetica,sans-serif;
+  font-family:sans-serif;
   font-size: 10px;
   padding: 6px;
   border-radius: 15px solid;
@@ -34,7 +34,7 @@
 }
 
 #calendar th {
-  background: #028190;
+  background: #00AFC9;
   color: #fff;
   text-align: center;
   width: 14.2857142857143%;
