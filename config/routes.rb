@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
 
+  resources :chats
+  
   devise_for :users, :skip => [:registrations]
 
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  

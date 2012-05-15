@@ -33,3 +33,7 @@ class HomeController < ApplicationController
     @users = current_network.users
   end
 end
+
+def create_new_network
+
+end

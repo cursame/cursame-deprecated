@@ -62,11 +62,11 @@
 					<div class="tab-pane active" id="tab1">
 	    			<div class="row with line">
                     	<center>
-                        <h2>
+                        <h3>
                             <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
 						    <%=h @date.strftime("%B / %Y") %>
 						    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
-                        </h2>
+                        </h3>
                         </center>
                         <div id="calendar">
 	                  
@@ -78,8 +78,10 @@
 						        
 						        <ul>
 								        <% for task in tasks %>
-							   	<div class="row with line">
-								       <li>  <a rel="tip" data-original-title='<%= sanitize task.description, :tags => %w(a)  %>'><%=link_to h(raw task.name), task %></a></li>
+							        	<div class="row with line">
+								       <li> 
+								<%= link_to(task.name, task, :rel => "tip", :title => sanitize(task.description, :tags => %w(a)))%>
+								       </li>
 								</div> 
 								        <% end %>
 								</ul>
@@ -87,7 +89,7 @@
 						  <% end %>
 						<% end %>
 	               </div>
-	              
+	         
 	             </div>
 	             </div>
 	    			<div class="tab-pane" id="tab2">
@@ -107,14 +109,9 @@
 		        		</div>
 		      		</div>
 	    		</div>
-	          </div>
-	
+	          </div>	
 	    			
-	    </div>
-	   
-      
-     </a>
-   
+	    </div>   
  
     </div>
      

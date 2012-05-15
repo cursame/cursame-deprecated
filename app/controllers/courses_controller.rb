@@ -38,6 +38,7 @@ class CoursesController < ApplicationController
 
   def show
     @course = accessible_course
+    
   end
 
   def members
@@ -78,4 +79,5 @@ class CoursesController < ApplicationController
   def accessible_course
     @accessible_course ||= accessible_courses.find params[:id]
   end
+  
 end
