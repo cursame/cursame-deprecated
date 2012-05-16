@@ -76,9 +76,8 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "network_id"
-    t.string   "logo_file"
-    t.integer  "chat_id"
     t.string   "course_logo_file"
+    t.integer  "chat_id"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
@@ -229,8 +228,8 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
     t.string   "avatar_file"
     t.string   "state",                                 :default => "active"
     t.string   "authentication_token"
-    t.integer  "chat_id"
     t.boolean  "accepting_emails",                      :default => false
+    t.integer  "chat_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
