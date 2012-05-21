@@ -105,6 +105,7 @@ group :staging, :production do
   gem "pg"
   gem 'therubyracer'
   gem 'airbrake'
+  gem 'foreman'
 end
 
 group :development, :test do
