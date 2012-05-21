@@ -8,10 +8,27 @@
 <div class="networks">
   <% @networks.each do |network| %>
     <div class="network">
-    	<hr />
+    <hr />
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
-      <strong>Users count:</strong> <%= network.users.count%>
+      <strong>Users count:</strong> <%= network.users.count%>	  
     </div>
+	<div id ="network_chart<%= network.id %>"></div>
+
+	<script type="text/javascript" charset="utf-8">
+		$(function () {
+	  		new Highcharts.Chart({
+	    		chart: { renderTo:'network_chart'+<%= network.id %> },
+	    		title: { text: 'Orders by Day' },
+	    		xAxis: { type: 'datetime' },
+	    		yAxis: {
+	      			title: { text: 'Dollars'}
+	    		},
+	    		series: [{
+	      			data: [1, 2, 5, 7, 3]
+	    		}]
+	  		});
+		});
+	</script>
   <% end %>
 </div>
