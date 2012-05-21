@@ -9,7 +9,7 @@ gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
 gem 'jquery-rails'
-gem 'formtastic'
+gem 'formtastic',  "~> 2.0.2"
 gem 'haml'
 gem 'sanitize'
 gem "breadcrumbs_on_rails", "~> 2.1.0"
