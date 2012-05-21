@@ -1,4 +1,4 @@
-class NetworksController < ApplicationController
+class NetworksController < BaseController
     def index
       @networks = Network.order('name ASC')
     end
