@@ -6,7 +6,7 @@ module ApplicationHelper
   end
   def broadcast(channel, &block)
       message = {:channel => channel, :data => capture(&block), :ext => {:auth_token => FAYE_TOKEN}}
-      uri = URI.parse("http://cursates.com/faye")
+      uri = URI.parse("http://cursatest.com/faye")
       Net::HTTP.post_form(uri, :message => message.to_json)
     end
 end
