@@ -304,7 +304,7 @@ $('.submittable').live('change', function() {
 
 
 /*highcharts*/
-function renderGraph(title, renderTo,subtitle,yText) {
+function renderUserGraph(title, renderTo,subtitle,yText,value) {
     new Highcharts.Chart({
         chart: {
             renderTo: renderTo ,
@@ -314,32 +314,26 @@ function renderGraph(title, renderTo,subtitle,yText) {
             text: title
         },
         subtitle: {
-            text: subtitle || 'Categorias'
+            text: subtitle || 'Tipos'
         },
         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            categories: ['Usuarios']
 
         },
         yAxis: {
             min: 0,
             title: {
-                text: yText || 'Uniddes'
+                text: yText || 'Unidades'
             }
         },
         legend: {
-            //layout: 'vertical',
             backgroundColor: '#FFFFFF',
-            //align: 'left',
-            //verticalAlign: 'top',
-            //x: 100,
-            //y: 70,
-            //floating: true,
             shadow: true
         },
 
         tooltip: {
             formatter: function () {
-                return '' + this.x + ': ' + this.y + ' mm';
+                return '' + this.x + ': ' + this.y + '';
             }
         },
         plotOptions: {
@@ -350,13 +344,183 @@ function renderGraph(title, renderTo,subtitle,yText) {
         },
         series: [{
             name: 'Usuarios',
-            data: [49.9, 70.5, 106.4, 129.2, 144.0, 176.0, 135.6, 148.5, 216.4, 194.1, 95.6, 54.4]
+            data: [value]
         }, {
             name: 'Estudiantes',
-            data: [83.6, 78.8, 98.5, 93.4, 106.0, 84.5, 105.0, 104.3, 91.2, 83.5, 106.6, 92.3]
+            data: [value - (parseInt(value/120) + 1) ]
         }, {
             name: 'Maestro',
-            data: [48.9, 38.8, 39.3, 41.4, 47.0, 48.3, 59.0, 59.6, 52.4, 65.2, 59.3, 51.2]
+            data: [parseInt(value/120) + 1]
         }]
+    });
+}
+
+function renderUsersGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Usuarios en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Redes',
+            data: [value[0]]
+        }, {
+            name: 'Usuarios',
+            data: [value[1]]
+        }, {
+            name: 'Supervisores',
+            data: [value[2]]
+        },{
+	       	name: 'Maestros',
+	        data: [value[3]]
+	    },{
+		    name: 'Estudiantes',
+		    data: [value[4]]
+		}]
+    });
+}
+function renderCoursesGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Cursos en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Cursos',
+            data: [value[0]]
+        }, {
+            name: 'Públicos',
+            data: [value[1]]
+        }, {
+            name: 'Privados',
+            data: [value[2]]
+        },{
+	       	name: 'Tareas',
+	        data: [value[3]]
+	    },{
+		    name: 'Discusiones',
+		    data: [value[4]]
+		},{
+			name: 'Cuestionarios',
+			data: [value[5]]
+		}]
+    });
+}
+
+function renderCommentsGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Comentarios en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Comentarios',
+            data: [value[0]]
+        }, {
+            name: 'Comentarios en tareas',
+            data: [value[1]]
+        }, {
+            name: 'Comentarios en iscusiones',
+            data: [value[2]]
+        },{
+	       	name: 'Comentarios en muro usuarios',
+	        data: [value[3]]
+	    },{
+		    name: 'Comentarios muro cursos',
+		    data: [value[4]]
+		}]
     });
 }
