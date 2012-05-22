@@ -9,13 +9,6 @@
 //= require private_pub
 //= require_tree
 
-
-$(function() {
-  var faye = new Faye.Client('http://cursatest.com/faye');
-  faye.subscribe("/chats/new", function(data) {
-    eval(data);
-  });
-});
 $(function(){
   // disabling buttons to avoid double posting
   $('.wall input[type=submit], .actions input[type=submit], .comments input[type=submit]').on("click", function(){
