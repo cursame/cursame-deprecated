@@ -42,10 +42,12 @@ class ApplicationController < ActionController::Base
   end
   
   def current_languaje
-    I18n.locale = current_network.lenguajes
-      def default_url_options(options = {})
-       {lenguajes: I18n.locale}
-      end 
+    if current_network
+      I18n.locale = current_network.lenguajes
+        def default_url_options(options = {})
+          {lenguajes: I18n.locale}
+        end       
+    end  
   end
 
   def authenticate_active_user_within_network!

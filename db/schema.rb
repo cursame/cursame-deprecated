@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120420081310) do
+ActiveRecord::Schema.define(:version => 20120501035922) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
   end
 
   create_table "chats", :force => true do |t|
-    t.string    "user"
-    t.string    "text"
-    t.time      "time"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "course"
-    t.string    "user_name"
-    t.integer   "course_id"
+    t.string   "user"
+    t.string   "text"
+    t.time     "time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "course"
+    t.string   "user_name"
+    t.integer  "course_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.datetime "updated_at"
     t.integer  "network_id"
     t.string   "course_logo_file"
+    t.integer  "chat_id"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
@@ -228,6 +229,7 @@ ActiveRecord::Schema.define(:version => 20120420081310) do
     t.string   "state",                                 :default => "active"
     t.boolean  "accepting_emails",                      :default => false
     t.string   "authentication_token"
+    t.integer  "chat_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
