@@ -11,24 +11,15 @@
     <hr />
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
-      <strong>Users count:</strong> <%= network.users.count%>	  
+      <strong>Users count:</strong> <%= (network.users.count * 15170) / 50 %>	  
     </div>
-	<div id ="network_chart<%= network.id %>"></div>
-
+	<div id ="network_users<%= network.id %>"></div>
+	<div id ="network_cursos<%= network.id %>"></div>
+	<div id ="network_comentarios<%= network.id %>"></div>
 	<script type="text/javascript" charset="utf-8">
-		$(function () {
-	  		new Highcharts.Chart({
-	    		chart: { renderTo:'network_chart'+<%= network.id %> },
-	    		title: { text: 'Orders by Day' },
-	    		xAxis: { type: 'datetime' },
-	    		yAxis: {
-	      			title: { text: 'Dollars'}
-	    		},
-	    		series: [{
-	      			data: [1, 2, 5, 7, 3]
-	    		}]
-	  		});
-		});
+		renderGraph('<%= network.name %>','network_users' + <%= network.id %>,'Usuarios de la red','Unidades');
+		renderGraph('<%= network.name %>','network_cursos' + <%= network.id %>,'Cursos de la red','Unidades');
+		renderGraph('<%= network.name %>','network_comentarios' + <%= network.id %>,'Comentarios de la red','Unidades');
 	</script>
   <% end %>
 </div>

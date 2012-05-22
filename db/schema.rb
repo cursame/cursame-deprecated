@@ -11,59 +11,59 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120501035922) do
+ActiveRecord::Schema.define(:version => 20120420081310) do
 
   create_table "answers", :id => false, :force => true do |t|
-    t.string   "uuid",        :limit => 36
-    t.integer  "question_id"
-    t.string   "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "position"
+    t.string    "uuid",        :limit => 36
+    t.integer   "question_id"
+    t.string    "text"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "position"
   end
 
   create_table "assets", :force => true do |t|
-    t.string   "file"
-    t.string   "content_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "name"
-    t.string   "description"
-    t.integer  "owner_id"
-    t.string   "owner_type"
+    t.string    "file"
+    t.string    "content_type"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "name"
+    t.string    "description"
+    t.integer   "owner_id"
+    t.string    "owner_type"
   end
 
   create_table "assignments", :force => true do |t|
-    t.integer  "course_id"
-    t.string   "name"
-    t.text     "description"
-    t.integer  "value"
-    t.integer  "period"
-    t.datetime "due_to"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "start_at"
-    t.string   "state"
+    t.integer   "course_id"
+    t.string    "name"
+    t.text      "description"
+    t.integer   "value"
+    t.integer   "period"
+    t.timestamp "due_to"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.timestamp "start_at"
+    t.string    "state"
   end
 
   create_table "chats", :force => true do |t|
-    t.string   "user"
-    t.string   "text"
-    t.time     "time"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "course"
-    t.string   "user_name"
-    t.integer  "course_id"
+    t.string    "user"
+    t.string    "text"
+    t.time      "time"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "course"
+    t.string    "user_name"
+    t.integer   "course_id"
   end
 
   create_table "comments", :force => true do |t|
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
-    t.integer  "user_id"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "commentable_id"
+    t.string    "commentable_type"
+    t.integer   "user_id"
+    t.text      "text"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "courses", :force => true do |t|
@@ -77,52 +77,51 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
     t.datetime "updated_at"
     t.integer  "network_id"
     t.string   "course_logo_file"
-    t.integer  "chat_id"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
 
   create_table "delayed_jobs", :force => true do |t|
-    t.integer  "priority",   :default => 0
-    t.integer  "attempts",   :default => 0
-    t.text     "handler"
-    t.text     "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
-    t.string   "locked_by"
-    t.string   "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "priority",   :default => 0
+    t.integer   "attempts",   :default => 0
+    t.text      "handler"
+    t.text      "last_error"
+    t.timestamp "run_at"
+    t.timestamp "locked_at"
+    t.timestamp "failed_at"
+    t.string    "locked_by"
+    t.string    "queue"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "deliveries", :force => true do |t|
-    t.text     "content"
-    t.integer  "assignment_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text      "content"
+    t.integer   "assignment_id"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "discussions", :force => true do |t|
-    t.integer  "course_id"
-    t.integer  "user_id"
-    t.string   "title"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "course_id"
+    t.integer   "user_id"
+    t.string    "title"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "enrollments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "course_id"
-    t.string   "state"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "admin"
-    t.string   "role"
+    t.integer   "user_id"
+    t.integer   "course_id"
+    t.string    "state"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.boolean   "admin"
+    t.string    "role"
   end
 
   add_index "enrollments", ["course_id"], :name => "index_enrollments_on_course_id"
@@ -134,11 +133,11 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slogan"
-    t.text     "welcome_message",  :limit => 255
+    t.text     "welcome_message"
     t.string   "logo_file"
     t.string   "time_zone"
-    t.boolean  "public_registry",                 :default => true
-    t.boolean  "private_registry",                :default => false
+    t.boolean  "public_registry",  :default => true
+    t.boolean  "private_registry", :default => false
     t.string   "registry_domain"
     t.string   "lenguajes"
   end
@@ -152,38 +151,38 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
 
   create_table "notifications", :force => true do |t|
-    t.integer  "notificator_id"
-    t.string   "notificator_type"
-    t.integer  "user_id"
-    t.string   "kind"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "text"
+    t.integer   "notificator_id"
+    t.string    "notificator_type"
+    t.integer   "user_id"
+    t.string    "kind"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.text      "text"
   end
 
   create_table "questions", :force => true do |t|
-    t.integer  "survey_id"
-    t.string   "answer_uuid"
-    t.string   "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "value"
-    t.integer  "position"
+    t.integer   "survey_id"
+    t.string    "answer_uuid"
+    t.string    "text"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "value"
+    t.integer   "position"
   end
 
   create_table "survey_answers", :force => true do |t|
-    t.integer  "survey_reply_id"
-    t.integer  "question_id"
-    t.string   "answer_uuid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "survey_reply_id"
+    t.integer   "question_id"
+    t.string    "answer_uuid"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "survey_replies", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "survey_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer   "user_id"
+    t.integer   "survey_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "surveys", :force => true do |t|
@@ -227,9 +226,8 @@ ActiveRecord::Schema.define(:version => 20120501035922) do
     t.string   "linkedin_link"
     t.string   "avatar_file"
     t.string   "state",                                 :default => "active"
-    t.string   "authentication_token"
     t.boolean  "accepting_emails",                      :default => false
-    t.integer  "chat_id"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
