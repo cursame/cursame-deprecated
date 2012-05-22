@@ -10,7 +10,7 @@
 //= require_tree
 
 $(function() {
-  var faye = new Faye.Client('http://fayeredis.herokuapp.com/faye');
+  var faye = new Faye.Client('http://cursatest.com/faye');
   faye.subscribe("/chats/new", function(data) {
     eval(data);
   });
