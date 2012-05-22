@@ -9,6 +9,12 @@
 //= require private_pub
 //= require_tree
 
+$(function() {
+  var faye = new Faye.Client('http://fayeredis.herokuapp.com/faye');
+  faye.subscribe("/chats/new", function(data) {
+    eval(data);
+  });
+});
 
 $(function(){
   // disabling buttons to avoid double posting
