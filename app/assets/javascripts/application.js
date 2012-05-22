@@ -347,10 +347,10 @@ function renderUserGraph(title, renderTo,subtitle,yText,value) {
             data: [value]
         }, {
             name: 'Estudiantes',
-            data: [value - (parseInt(value/120) + 1) ]
+            data: [value - (parseInt(value/40) + 1) ]
         }, {
             name: 'Maestro',
-            data: [parseInt(value/120) + 1]
+            data: [parseInt(value/40) + 1]
         }]
     });
 }

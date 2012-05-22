@@ -6,17 +6,22 @@
 </p>
 
 <div class="networks">
+ <% 
+	temp = [145,16,52,138,423,345,56,107,205,46,10,56,14,6026,351,194,36,85,32,698,165,142,452,253,345,345,235,569,28,3571,30]
+	i=0
+%>
   <% @networks.each do |network| %>
     <div class="network">
     <hr />
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
-      <strong>Users count:</strong> <%= (network.users.count * 15170) / 2253 %>	  
-    </div>
-	<div id ="network_users<%= network.id %>"></div>
+      <strong>Users count:</strong> <%= temp[i] %>	  
+    </div>	
+	<div id ="network_usersss<%= network.id %>" style ="width:100;height:100;"></div>
 	<script type="text/javascript" charset="utf-8">
 		renderUserGraph('<%= network.name %>','network_users' + <%= network.id %>,
-			'Usuarios de la red','Unidades',<%= (network.users.count * 15170) / 2253 %> );
+			'Usuarios de la red','Unidades',<%=  temp[i] %> );
 	</script>
+	<% i = i + 1 %>
   <% end %>
 </div>
