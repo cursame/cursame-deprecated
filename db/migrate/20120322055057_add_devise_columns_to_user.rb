@@ -1,7 +1,7 @@
 class AddDeviseColumnsToUser < ActiveRecord::Migration
   def self.up
     change_table :users do |t|
-      t.token_authenticatable
+      t.string :authentication_token
     end
   end
   def self.down
