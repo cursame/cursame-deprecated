@@ -5,7 +5,7 @@
 
 
  <script>
-  $(document).ready(function() {
+  /*$(document).ready(function() {
     
     
    $("#btn-chat").click(function () {
@@ -14,13 +14,13 @@
    
     });
 
-  });
+  });*/
   </script>
 </HEAD>
 <body>
-<div id="containertor">
+<!--<div id="containertor">
 	<div id="btn-chat" class="btn success">
-		 <%=image_tag("iChat1.png")  %>
+		 <%= #image_tag("iChat1.png")  %>
 	</div>	
 
 <div id="chat">	
@@ -31,25 +31,24 @@
 <div id="chat_body">
 	
      	  <div id="sacura">
-	     	<%= render partial: 'chats/chats_groups' %>
+	     	<%= #render partial: 'chats/chats_groups' %>
 		  </div>    
 </div>
 <div id="chat_footer">
 	<div class="imput append">
-   <%= form_for Chat.new, remote: true do |f|%>
-    <%=f.text_field :text, :size => 25.8, :enter => :clear, :class => :chat%>
-    <%=f.hidden_field :course_id, :value => @course.id %>
-   <%-# submit_tag :msg, :class => "btn info medium right "#%> 
+   <%= #form_for Chat.new, remote: true do |f|%>
+    <%=#f.text_field :text, :size => 25.8, :enter => :clear, :class => :chat%>
+    <%=#f.hidden_field :course_id, :value => @course.id %>
+   <%=# submit_tag :msg, :class => "btn info medium right "#%> 
   <center><p>ingresa tu texto en la casilla y presiona enter para enviar</p></center>
-   <%end%>
+   <%#end%>
    </div> 
 </div>
 </div>
-<%= subscribe_to "/chats/#{@course.id}" %>
-</div>
+<%= #subscribe_to "/chats/#{@course.id}" %>
+</div>-->
 <div id='publicity_chat'>
-		<%= render partial: 'shared/publicity' %>
-	
+		<%= render partial: 'shared/publicity' %>	
 </div>
 
 </body>
