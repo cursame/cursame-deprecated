@@ -17,7 +17,7 @@
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
       <strong>Users count:</strong> <%= temp[i] %>	  
     </div>	
-	<div id ="network_usersss<%= network.id %>" style ="width:100;height:100;"></div>
+	<div id ="network_users<%= network.id %>" style ="width:100;height:100;"></div>
 	<script type="text/javascript" charset="utf-8">
 		renderUserGraph('<%= network.name %>','network_users' + <%= network.id %>,
 			'Usuarios de la red','Unidades',<%=  temp[i] %> );
