@@ -21,63 +21,6 @@ gem "fastercsv"
 gem 'delayed_job_active_record'
 gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
-gem 'private_pub'
-
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.1.4'
-  gem 'coffee-rails', '~> 3.1.1'
-  gem 'uglifier',     '>= 1.0.3'
-end
-
-group :test do
-  gem "uuid"
-  gem 'shoulda-matchers'
-  gem 'capybara'
-  gem 'database_cleaner'
-  gem 'fuubar'
-  gem 'launchy'
-  gem 'timecop'
-  gem 'selenium'
-  gem 'growl-rspec'
-end
-
-group :staging, :production do
-  gem 'thin'
-  gem 'heroku'
-  gem "pg"
-  gem 'therubyracer'
-  gem 'airbrake'
-end
-
-group :development, :test do
-  gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ffaker'
-  gem 'sqlite3'
-  gem 'rspec-rails'
-  gem 'factory_girl', '2.0.4'
-  gem 'steak'
-  gem 'spork', '0.9.0.rc9'
-  gem 'hirb'
-  gem "parallel_tests"
-  gem 'foreman'
-end
-
-#Gem for exporting data between databases
-gem 'yaml_db'
-
-gem 'haml'
-gem 'sanitize'
-gem "breadcrumbs_on_rails", "~> 2.1.0"
-gem "tabs_on_rails",        "~> 2.0.2"
-gem "auto_html"
-gem "transitions", :require => ["transitions", "active_record/transitions"]
-gem "csv_builder"
-gem "fastercsv"
-gem 'delayed_job_active_record'
-gem 'rails-i18n'
-gem "watu_table_builder", :require => "table_builder"
 gem "faye"
 # Gems used only for assets and not required
 # in production environments by default.
@@ -99,7 +42,7 @@ group :test do
   gem 'growl-rspec'
 end
 
-group :staging, :production do
+group :development, :test do  #intercambiamos por que no supe como configurar el entorno
   gem 'thin'
   gem 'heroku'
   gem "pg"
@@ -108,7 +51,7 @@ group :staging, :production do
   gem 'foreman'
 end
 
-group :development, :test do
+group :staging, :production do #intercambiamos por que no supe como configurar el entorno
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ffaker'
   gem 'sqlite3'

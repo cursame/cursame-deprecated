@@ -6,7 +6,7 @@
  
 //= require jquery
 //= require jquery_ujs
-//= require private_pub
+//= #require private_pub
 //= require_tree
 
 $(function(){
@@ -303,8 +303,35 @@ $('.submittable').live('change', function() {
 });
 
 
+function generarVector(value,arraysize){
+	var randomnumber,aux=value,vector = [];
+	for (var i = 0; i < arraysize; i++){
+		randomnumber=Math.floor(Math.random()*aux+1);		
+		vector.push(randomnumber);
+		aux = aux - randomnumber;
+	}
+	return vector;
+}
+
 /*highcharts*/
-function renderUserGraph(title, renderTo,subtitle,yText,value) {
+function renderUserGraph(title, renderTo,subtitle,yText,value,fecha) {
+	var mes = fecha.split("/"),
+	 	meses = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
+		meses = meses.slice(mes[0]-1,12),
+	 	usuariosTotales = value,
+	 	estudiantesTotales = value - (parseInt(value/40) + 1),
+		maestrosTotales = parseInt(value/40) + 1 ;
+		
+		//$('#'+renderTo+'t').html('<strong>Teachers count:</strong>'+maestrosTotales*2)
+	
+	var aEstudiantes = generarVector(estudiantesTotales,mes[0]),
+		aMaestros = generarVector(maestrosTotales,mes[0]),
+		aUsuarios = [];
+		
+		for(var i = 0; i < mes[0];i++){			
+			aUsuarios .push(aEstudiantes[i]+aMaestros[i]);
+		}
+	 
     new Highcharts.Chart({
         chart: {
             renderTo: renderTo ,
@@ -317,8 +344,7 @@ function renderUserGraph(title, renderTo,subtitle,yText,value) {
             text: subtitle || 'Tipos'
         },
         xAxis: {
-            categories: ['Usuarios']
-
+            categories: meses
         },
         yAxis: {
             min: 0,
@@ -344,13 +370,13 @@ function renderUserGraph(title, renderTo,subtitle,yText,value) {
         },
         series: [{
             name: 'Usuarios',
-            data: [value]
+            data: aUsuarios
         }, {
             name: 'Estudiantes',
-            data: [value - (parseInt(value/40) + 1) ]
+            data: aEstudiantes
         }, {
             name: 'Maestro',
-            data: [parseInt(value/40) + 1]
+            data: aMaestros
         }]
     });
 }

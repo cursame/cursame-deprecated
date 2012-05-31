@@ -15,13 +15,15 @@
     <hr />
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
-      <strong>Users count:</strong> <%= temp[i] %>	  
+	  <strong>Created at:</strong> <%= network.created_at.strftime("%m/%d/%Y")  %><br />
+      <strong>Students count:</strong> <%= temp[i] %> 	  
     </div>	
-	<div id ="network_users<%= network.id %>" style ="width:100;height:100;"></div>
+	<div id ="network_users<%= network.id %>"></div>
 	<script type="text/javascript" charset="utf-8">
 		renderUserGraph('<%= network.name %>','network_users' + <%= network.id %>,
-			'Usuarios de la red','Unidades',<%=  temp[i] %> );
+			'Usuarios de la red','Unidades',<%=  temp[i] %>, '<%= network.created_at.strftime("%m/%d/%Y")  %>');
 	</script>
 	<% i = i + 1 %>
   <% end %>
 </div>
+ 
