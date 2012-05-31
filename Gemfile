@@ -42,7 +42,8 @@ group :test do
   gem 'growl-rspec'
 end
 
-group :development, :test do  #intercambiamos por que no supe como configurar el entorno
+#group :development, :test do  #intercambiamos por que no supe como configurar el entorno
+group :staging, :production do
   gem 'thin'
   gem 'heroku'
   gem "pg"
@@ -51,7 +52,8 @@ group :development, :test do  #intercambiamos por que no supe como configurar el
   gem 'foreman'
 end
 
-group :staging, :production do #intercambiamos por que no supe como configurar el entorno
+#group :staging, :production do #intercambiamos por que no supe como configurar el entorno
+group :development, :test do 
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ffaker'
   gem 'sqlite3'
