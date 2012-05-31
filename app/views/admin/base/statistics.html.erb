@@ -5,7 +5,7 @@
 
 <div id="users_resume"> </div>
 	<script type="text/javascript" charset="utf-8">
-		var usersResume = [<%= (Network.count * 15170)/2253 %>,<%= (User.count * 6.73324456).to_i %>,
+		var usersResume = [<%= Network.count %>,<%= (User.count * 6.73324456).to_i %>,
 		<%= (User.total_supervisors * 15170 / 2253) %>,<%= User.total_teachers * 15170 / 2253 %>,
 		<%= User.total_students * 15170 / 2253 %>];
 		renderUsersGraph('users_resume', usersResume);
