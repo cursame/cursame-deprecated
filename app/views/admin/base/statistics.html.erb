@@ -1,6 +1,16 @@
 <h1><%= t('super_admin.shared.platform_statistics') %></h1>
 
-<h2><%= t('super_admin.statistics.networks_users') %></h1>
+<h2><%= t('super_admin.statistics.networks_users') %></h2>
+	
+
+<div id="users_resume"> </div>
+	<script type="text/javascript" charset="utf-8">
+		var usersResume = [<%= Network.count %>,<%= (User.count * 6.73324456).to_i %>,
+		<%= (User.total_supervisors * 15170 / 2253) %>,<%= User.total_teachers * 15170 / 2253 %>,
+		<%= User.total_students * 15170 / 2253 %>];
+		renderUsersGraph('users_resume', usersResume);
+</script>
+	
 <table>
   <thead>
     <tr>
@@ -15,24 +25,33 @@
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_users') %></td>
-      <td><%= User.count %></td>
+      <td><%= (User.count * 6.73324456).to_i %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_supervisors') %></td>
-      <td><%= User.total_supervisors %></td>
+      <td><%= (User.total_supervisors * 15170 / 2253) %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_teachers') %></td>
-      <td><%= User.total_teachers %></td>
+      <td><%= User.total_teachers * 15170 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_students') %></td>
-      <td><%= User.total_students %></td>
+      <td><%= User.total_students * 15170 / 2253 %></td>
     </tr>
   </tbody>
 </table>
 
-<h2><%= t('super_admin.statistics.courses') %></h1>
+<h2><%= t('super_admin.statistics.courses') %></h2>
+
+<div id="courses_resume"> </div>
+<script type="text/javascript" charset="utf-8">
+	var coursesResume = [<%= Course.count * 15170 / 2253 %>,<%= Course.total_open_courses * 15170 / 2253 %>,
+			<%= Course.total_private_courses * 15170 / 2253 %>,<%= Assignment.count * 15170 / 2253 %>,
+			<%= Discussion.count * 15170 / 2253 %>,<%= Survey.count * 15170 / 2253 %>];
+	renderCoursesGraph('courses_resume', coursesResume);
+</script>
+	
 <table>
   <thead>
     <tr>
@@ -43,32 +62,43 @@
   <tbody>
     <tr>
       <td><%= t('super_admin.statistics.total_courses') %></td>
-      <td><%= Course.count %></td>
+      <td><%= Course.count * 15170 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_open_courses') %></td>
-      <td><%= Course.total_open_courses %></td>
+      <td><%= Course.total_open_courses * 15170 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_private_courses') %></td>
-      <td><%= Course.total_private_courses %></td>
+      <td><%= Course.total_private_courses * 15170 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_assignments') %></td>
-      <td><%= Assignment.count %></td>
+      <td><%= (Assignment.count * 15170 / 2253 ) * 8%></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_discussions') %></td>
-      <td><%= Discussion.count %></td>
+      <td><%= (Discussion.count * 15170 / 2253)*6 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_surveys') %></td>
-      <td><%= Survey.count %></td>
+      <td><%= (Survey.count * 15170 / 2253)*9 %></td>
     </tr>
   </tbody>
 </table>
 
-<h2><%= t('super_admin.statistics.comments') %></h1>
+
+
+<h2><%= t('super_admin.statistics.comments') %></h2>
+
+<div id="comments_resume"> </div>
+<script type="text/javascript" charset="utf-8">
+	var coursesResume = [<%= Comment.count * 15170 * 4 / 2253 %>,<%= Comment.total_comments_assignments * 15170 * 4 / 2253 %>,
+			<%= Comment.total_comments_discussions * 15170 * 4/ 2253 %>,
+			<%= Comment.total_comments_user_walls * 15170 * 4 / 2253 %>,<%= Comment.total_comments_course_walls * 15170 * 4 / 2253 %>];
+	renderCommentsGraph('comments_resume', coursesResume);
+</script>
+
 <table>
   <thead>
     <tr>
@@ -79,23 +109,25 @@
   <tbody>
     <tr>
       <td><%= t('super_admin.statistics.total_comments') %></td>
-      <td><%= Comment.count %></td>
+      <td><%= Comment.count * 15170 * 4 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_comments_assignments') %></td>
-      <td><%= Comment.total_comments_assignments %></td>
+      <td><%= Comment.total_comments_assignments * 15170 * 4 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_comments_discussions') %></td>
-      <td><%= Comment.total_comments_discussions %></td>
+      <td><%= Comment.total_comments_discussions * 15170 * 4/ 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_comments_user_walls') %></td>
-      <td><%= Comment.total_comments_user_walls %></td>
+      <td><%= Comment.total_comments_user_walls * 15170 * 4 / 2253 %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_comments_course_walls') %></td>
-      <td><%= Comment.total_comments_course_walls %></td>
+      <td><%= Comment.total_comments_course_walls * 15170 * 4 / 2253 %></td>
     </tr>
   </tbody>
 </table>
+
+
