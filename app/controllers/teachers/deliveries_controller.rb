@@ -8,10 +8,19 @@ class Teachers::DeliveriesController < ApplicationController
   end
 
   def show
-    @delivery   = current_user.manageable_deliveries.find params[:id]
+   
+    @delivery   = current_user.manageable_deliveries.find params[:id]   
+    @calificationem = @delivery.calificationem   
     @assignment = @delivery.assignment
     @course     = @assignment.course
     @comments   = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
     render 'students/deliveries/show'
+  end
+
+  def update
+    @delivery = current_user(:assignment_id => params[:assignment_id]).first
+    @assignment = @delivery.assignment
+    @course     = @assignment.course
+    @delivery.save
   end
 end

@@ -1,6 +1,6 @@
 class Delivery < ActiveRecord::Base
   default_scope includes(:assignment)
-
+  has_one :calificationem
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
 

@@ -1,5 +1,10 @@
 Cursame::Application.routes.draw do
+  
+  get "calificationem/form"
+
   resources :chats
+  resources :calificationems
+  
   devise_for :users, :skip => [:registrations]
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
     opts.devise_for :users, :path => 'maestros', :as => :teacher, :conditions => {:role => :teacher}
@@ -18,7 +23,7 @@ Cursame::Application.routes.draw do
 
     resources :assignments, :shallow => true do
       resource :delivery, :only => [:show, :new, :create, :edit, :update], :module => 'students'
-      resources :deliveries, :only => [:index, :show], :module => 'teachers'
+      resources :deliveries, :only => [:index, :show, :create], :module => 'teachers'
     end
 
     resources :surveys, :shallow => true do
