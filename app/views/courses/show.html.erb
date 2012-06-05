@@ -10,7 +10,6 @@
         </ul>  
       </div>
     </div>
-    
     <div class="row">
       <div class="span3">
         <%= render :partial => "course_menu" %>
@@ -32,9 +31,9 @@
             <% if current_user.manageable_courses.include? @course %>
               <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %>
             <% end %>
+
           </div>
         </div>
-        
         <div class="row with line">
           <div class="span2 description no-margin"><%= t('courses.time') %></div>
           <div class="span6"><p><%= l @course.start_date, :format => :medium %> - <%= l @course.finish_date, :format => :medium %></p></div>

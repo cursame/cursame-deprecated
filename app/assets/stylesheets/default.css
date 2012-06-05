@@ -655,6 +655,22 @@ ul.left-nav-main-ul {
 	width: 150px;
 	color: #fff;
 }
+.left-nav-main-ul li a.calification {
+	background: url(menu-datagroup.png) no-repeat 5px;
+	padding-left: 30px;
+}
+
+.left-nav-main-ul li a.calification:hover {
+	background: #00afc9 url(menu-datagroup.png) no-repeat 5px;
+	width: 150px;
+}
+
+.left-nav-main-ul li a.calification.active {
+	background: #00ccec url(menu-datagroup.png) no-repeat 5px;
+	width: 150px;
+	color: #fff;
+}
+
 
 .left-nav-main-ul li a.tareas {
 	background: url(menu-tareas.png) no-repeat 5px;

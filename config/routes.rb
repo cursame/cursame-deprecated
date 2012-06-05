@@ -1,7 +1,10 @@
 Cursame::Application.routes.draw do
   
-  get "calificationem/form"
+  get "calification/index"
 
+  get "calificationem/form"
+  get "calificationem/calification_group"
+  get "courses/calification"
   resources :chats
   resources :calificationems
   
@@ -19,6 +22,7 @@ Cursame::Application.routes.draw do
     member do
       get  'miembros', :as => :members_for, :to => 'courses#members'
       get  'muro',     :as => :wall_for,    :to => 'courses#wall'
+      get  'calification',     :as => :calification_for, :to => 'courses#calification'
     end
 
     resources :assignments, :shallow => true do

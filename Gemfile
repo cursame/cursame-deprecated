@@ -22,6 +22,8 @@ gem 'delayed_job_active_record'
 gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
 gem "faye"
+gem 'airbrake'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

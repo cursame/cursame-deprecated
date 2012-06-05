@@ -9,6 +9,6 @@
     <%= tab.assignments t('.assignments'), course_assignments_path(@course), :class => "tareas" %>
     <%= tab.surveys t('.surveys'), course_surveys_path(@course), :class => "surveys" %>
     <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
-   
+     <%= tab.calification t('courses.calification.calificaciones'), calification_for_course_path(@course), :class => "calification" %>
   <% end %>
 </div>

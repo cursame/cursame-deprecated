@@ -23,4 +23,9 @@ class Teachers::DeliveriesController < ApplicationController
     @course     = @assignment.course
     @delivery.save
   end
+  
+  def calification_group
+      @assignment = current_user.manageable_assignments.find params[:assignment_id]
+      @deliveries = @assignment.deliveries
+  end
 end

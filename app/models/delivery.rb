@@ -24,4 +24,12 @@ class Delivery < ActiveRecord::Base
       Notification.create :user => teacher, :notificator => self, :kind => 'student_assignment_delivery'
     end
   end
+  def score
+  value  = assignment.value
+  total = raiting
+  (100* value/total).to_i
+  end
+  def limit
+  assignment.value
+  end
 end

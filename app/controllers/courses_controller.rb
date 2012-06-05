@@ -3,7 +3,7 @@ class CoursesController < ApplicationController
   set_tab :courses, :only => %w(index)
   set_tab :wall,    :only => %w(wall)
   set_tab :members, :only => %w(members)
-
+  set_tab :calification, :only => %w(calification)
   def index
     @courses = current_network.courses
   end
@@ -35,12 +35,18 @@ class CoursesController < ApplicationController
       render :new
     end
   end
-
+  
   def show
-    @course = accessible_course
-    
+    @course = accessible_course 
   end
-
+  def calification
+    @course = accessible_course
+    @molto_course = @course.assignments
+    @bella_survey = @course.surveys  
+     @students = @course.students
+     @teachers = @course.teachers
+  end
+  
   def members
     @course = accessible_course
     if current_user.manageable_courses.include? @course
@@ -53,8 +59,7 @@ class CoursesController < ApplicationController
 
   def wall
     @course   = accessible_course
-    @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)
-    
+    @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)    
     respond_to do |format|
         format.js
         format.html # index.html.erb
@@ -74,7 +79,7 @@ class CoursesController < ApplicationController
     end
     redirect_to courses_path
   end
-
+  
   protected
   def accessible_course
     @accessible_course ||= accessible_courses.find params[:id]

@@ -31,13 +31,14 @@
               <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small right") %>
             <% end %>
           </div>
-        </div>
+        </div> 
+          
         
         <div class="courses">
           <%= render :partial => 'course', :collection => @courses %>
         </div>
       </div>
-     
+       
       <div class="span3" style="margin:0;">
 	    
         <%= render :partial => "shared/publicity" %>
