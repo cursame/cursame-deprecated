@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html>
+<HEAD>
+<%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", "aplication"%>
+	<script>
+	 $(document).ready(function() {
+
+
+	  $("#resumen").click(function () {
+
+	       $("#res").fadeToggle("slow", "linear");
+
+	   });
+
+	 });
+	 </script>
+    <script>
+	 $(document).ready(function() {
+
+
+	  $("#cuestionarios").click(function () {
+
+	       $("#cues").fadeToggle("slow", "linear");
+
+	   });
+
+	 });
+	 </script>
+	 <script>
+	 $(document).ready(function() {
+
+
+	  $("#total_user").click(function () {
+
+	       $("#total").fadeToggle("slow", "linear");
+
+	   });
+
+	 });
+	 </script>
+</HEAD>
+<center>
+<button class="btn" id="resumen">Resumen de <%= t('courses.assignments.assignments') %> </button> <div class="btn" id="cuestionarios"> Resumen de <%= t('surveys.index.header')%> </div> <div class="btn" id="total_user"> Resultado tentativo </div>
+</center>	
+<div id="res">	
+	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
+  <table class= "zebra-striped">
+	
+	<% @molto_course.each do |molto|%>
+    <thead>
+	<tr>
+	<th class="blue"><%=molto.name%></th>	
+	</tr>
+     <% molto.deliveries.each do |delivery|%>
+     </thead>
+     <tbody>
+	<tr class="asset">
+    <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
+        <%=  delivery.user.name%> / Porcentaje de la entrega: <b><%= delivery.score%>%</b></p></td>
+
+    </tr>
+     </tbody>
+     <%end%>
+	<%end%>
+    
+   </table>
+</div>
+
+<div id="cues">	
+	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
+  <table class= "zebra-striped">
+	
+	<% @bella_survey.each do |bella|%>
+    <thead>
+	<tr>
+	<th class="blue"><%=bella.name%></th>
+	 <% bella.survey_replies.each do |reply|%>
+		
+	</tr>
+       
+     </thead>
+     <tbody>
+	<tr class="asset">	<td><p><%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
+	         <%=reply.user.name %> /
+	          Porcentaje del examen: <b><%= reply.score %>%</b></p></td></tr>
+  
+     </tbody>
+     <%end%>
+	<%end%>
+    
+   </table>
+</div>
+<div id="total">
+	<h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
+	   	
+  <table class= "zebra-striped">
+
+    <thead>
+	<tr>
+
+	 <% @course.users.each do |user|%>
+	  	<th class="blue"> <%if user.role == "student" %>
+		<%= user.name %>
+		<%else%>
+		<%= 'Rol sin evaluación'%> 
+		<%end%></th>
+	                        
+	   <% total_deliveries= 0%>
+	   <% total_survey= 0%>
+	  <%user.deliveries.each do |delivery|%>
+	     
+	    <% delivery.score %>
+	    <% total_deliveries=total_deliveries+delivery.score %>
+	   
+	  <%end%>
+	   <%user.survey_replies.each do |survey|%>
+
+	    <% survey.score %>
+	    <% total_survey=total_survey+survey.score %>
+
+	  <%end%>
+	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
+	  
+	    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+	 	
+	</tr>
+       
+     </thead>
+     <tbody>
+	
+	<tr class="asset">	<td><p> <%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
+     	<%else%>
+		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
+		<%end%>
+	 </b></p></td></tr>
+     </tbody> 
+    <%end%>
+   </table>
+</div>
+</body>
+</html>

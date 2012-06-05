@@ -1,0 +1,13 @@
+<%= form_for(@calificationem = Calificationem.new) do |f| %>
+ 
+  <div class="field">
+    <%= f.label :califacación %><br />
+    <%= f.select :raiting, (1..@delivery.limit)  %>
+  </div>
+  <div class="field">
+    <%= f.label :anotaciones_finales %><br />
+    <%= f.text_area :anotation_coment,:rows =>5, :cols => 40 %>
+  </div>
+    <%= f.hidden_field :delivery_id, :value => @delivery.id %></br>
+    <%= f.submit "colocar calificación", :class => "btn info right" %>
+<% end %>
