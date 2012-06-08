@@ -1,16 +1,10 @@
 <%= form.inputs do %>
-<% if current_user.role == "student"%>
   <%= form.input :content, :input_html => { :rows => 10, :class => 'span6' } %>
-<%end%>
-<% if current_user.role == "teacher"%> 
-  <%= form.imput :rating %>
-<%end%>
 <% end %>
-<% if current_user.role == "student"%>
+
 <div class="well">
   <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
 </div>
-<% end %>
 
 <%= form.buttons do %>
   <%= form.commit_button form.object.new_record? ? t('forms.send_delivery') : t('forms.update_delivery'), :button_html => {:id => :submit, :class => 'btn right'} %>

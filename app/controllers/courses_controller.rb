@@ -42,9 +42,7 @@ class CoursesController < ApplicationController
   def calification
     @course = accessible_course
     @molto_course = @course.assignments
-    @bella_survey = @course.surveys  
-     @students = @course.students
-     @teachers = @course.teachers
+    @bella_survey = @course.surveys
   end
   
   def members

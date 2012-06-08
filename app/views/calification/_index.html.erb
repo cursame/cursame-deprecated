@@ -2,47 +2,21 @@
 <html>
 <HEAD>
 <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js", "aplication"%>
-	<script>
-	 $(document).ready(function() {
 
-
-	  $("#resumen").click(function () {
-
-	       $("#res").fadeToggle("slow", "linear");
-
-	   });
-
-	 });
-	 </script>
-    <script>
-	 $(document).ready(function() {
-
-
-	  $("#cuestionarios").click(function () {
-
-	       $("#cues").fadeToggle("slow", "linear");
-
-	   });
-
-	 });
-	 </script>
-	 <script>
-	 $(document).ready(function() {
-
-
-	  $("#total_user").click(function () {
-
-	       $("#total").fadeToggle("slow", "linear");
-
-	   });
-
-	 });
-	 </script>
 </HEAD>
-<center>
-<button class="btn" id="resumen">Resumen de <%= t('courses.assignments.assignments') %> </button> <div class="btn" id="cuestionarios"> Resumen de <%= t('surveys.index.header')%> </div> <div class="btn" id="total_user"> Resultado tentativo </div>
-</center>	
-<div id="res">	
+      
+<body>
+<div class="spam10">
+	<div class="span-two-thirds">
+	    <div class="tabs">
+	      <ul class="tabs">
+	        <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
+	        <li><a href="#tab2" data-toggle="tab"><%= t('surveys.index.header')%></a></li>
+	         <li><a href="#tab3" data-toggle="tab"><%=t('courses.calification.calificación')%></a></li>
+	         <li><a href="#tab4" data-toggle="tab"><%= t('courses.analítics') %></a></li>
+	      </ul>
+	<div class="tab-content">	
+<div class="tab-pane active" id="res">	
 	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
   <table class= "zebra-striped">
 	
@@ -56,7 +30,7 @@
      <tbody>
 	<tr class="asset">
     <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
-        <%=  delivery.user.name%> / Porcentaje de la entrega: <b><%= delivery.score%>%</b></p></td>
+        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= delivery.score if delivery.raiting > 0%> %</b></p></td>
 
     </tr>
      </tbody>
@@ -66,6 +40,7 @@
    </table>
 </div>
 
+<div class="tab-pane" id="tab2">	
 <div id="cues">	
 	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
   <table class= "zebra-striped">
@@ -90,6 +65,8 @@
     
    </table>
 </div>
+</div>
+<div class="tab-pane" id="tab3">	
 <div id="total">
 	<h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
 	   	
@@ -110,7 +87,7 @@
 	  <%user.deliveries.each do |delivery|%>
 	     
 	    <% delivery.score %>
-	    <% total_deliveries=total_deliveries+delivery.score %>
+	    <% total_deliveries=total_deliveries+delivery.score if delivery.raiting > 0%>
 	   
 	  <%end%>
 	   <%user.survey_replies.each do |survey|%>
@@ -131,11 +108,220 @@
 	<tr class="asset">	<td><p> <%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
      	<%else%>
 		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
-		<%end%>
-	 </b></p></td></tr>
+		 <%end%>
+</b></p></td></tr>
      </tbody> 
+   
+	
+    
     <%end%>
    </table>
+</div>
+</div>
+<div class="tab-pane" id="tab4">	
+<% totales = []%>
+<% totales2=[] %>
+<% @course.users.each do |user|%>                      
+   <% total_deliveries= 0%>
+   <% total_survey= 0%>
+  
+  <%user.deliveries.each do |delivery|%>
+     
+    <% delivery.score %>
+    <% total_deliveries=total_deliveries+delivery.score if delivery.raiting > 0%>
+    
+  <%end%>
+   <%user.survey_replies.each do |survey|%>
+
+    <% survey.score %>
+    <% total_survey=total_survey+survey.score %>
+    
+  <%end%>
+   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
+  
+    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+ 	<% (total_survey+total_deliveries)/2%>
+    <% totales.push(total_deliveries)%>
+    <% totales2.push(total_survey)%>
+<%end%>
+<div id="calificacion"></div>
+ <script type="text/javascript" charset="utf-8">
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'calificacion',
+			type: 'areaspline'
+		},
+		title: {
+			text: 'Relación actual de actividades'
+		},
+		legend: {
+			layout: 'vertical',
+			align: 'left',
+			verticalAlign: 'top',
+			x: 50,
+			y: 100,
+			floating: true,
+			borderWidth: 1,
+			backgroundColor: '#FFFFFF'
+		},
+		xAxis: {
+			
+			categories: ["Id de alumnos"]
+		},
+		yAxis: {
+			title: {
+				text: 'Movimiento temporal de los usuarios'
+			}
+		},
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name + this.y +"%";
+			}
+		},
+		credits: {
+			enabled: false
+		},
+		plotOptions: {
+			areaspline: {
+				fillOpacity: 0.5
+			}
+		},
+		series: [{
+			name: "<%= t('courses.assignments.assignments') %>",
+			data:<%= totales %>
+		}, {
+			name: "<%= t('surveys.index.header')%>",
+			data:<%= totales2 %> 
+		}]
+	});
+});
+
+ </script>   
+
+<% grafica_reprobacion =[]%>
+<% porcento_examenes =[]%>
+<% @course.surveys.each do |survey|%>
+
+  <% calif = 0%>
+  <% cod = 0%>
+   <%survey.survey_replies.each do |reply|%>
+        <%calif = calif + reply.score%>
+        <% cod = calif/@course.users.count%>
+        <% coda = cod-100%>
+        <% porcento_examenes.push(cod)%>
+        <% grafica_reprobacion.push(coda)%>
+   <%end%>
+<% end %>
+
+<div id="value"></div>
+   
+    <script type="text/javascript" charset="utf-8">
+	   var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'value',
+				type: 'column'
+			},
+			title: {
+				text: 'Porcentaje de aprobación de examenes'
+			},
+			xAxis: {
+				categories: ['Movimiento promedio de los examenes actuamente en el grupo']
+		
+			
+			},		
+			yAxis:{
+					 min: -100,
+			            title: {
+			                text: 'Porcentaje %'
+			            }
+			},
+					
+			tooltip: {
+				formatter: function() {
+					return ''+
+						this.series.name +' '+ this.y +'%';
+				}
+			},
+			credits: {
+				enabled: false
+			},
+			series: [{
+				name: 'Aprobados',
+				data: <%=porcento_examenes%>
+			}, {
+				name: 'Reprobados',
+				data: <%= grafica_reprobacion %>
+			}]
+		});
+	});
+	</script>
+<% grafica_reprobacion_delivery =[]%>
+<% porcento_delivery =[]%>
+<% @course.assignments.each do |assigment|%>
+  <% califn = 0%>
+  <% codn = 0%>
+ <%assigment.deliveries.each do |delivery|%>
+   	<% califn = califn + delivery.score if delivery.raiting > 0%>
+    <% codn = califn/@course.users.count%>
+    <% codan = codn-100%>
+    <% porcento_delivery.push(codn)%>
+    <% grafica_reprobacion_delivery.push(codan)%>
+ <div id="value2"></div> 
+ <%end%>
+<%end%>
+<script type="text/javascript" charset="utf-8">
+	   var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'value2',
+				type: 'areaspline'
+			},
+			title: {
+				text: "Porcentaje de aprobación en <%= t('courses.assignments.assignments') %>"
+			},
+			subtitle: {
+	            text: 'El porcentaje se encuentra entre el primer y ultimo punto de la gráfica'
+	        },
+			xAxis: {
+				categories: ["<%= t('courses.assignments.assignments') %>"]
+
+
+			},		
+			yAxis:{
+					 min: -100,
+			            title: {
+			                text: 'Porcentaje %'
+			            }
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+						this.series.name +' '+ this.y +'%';
+				}
+			},
+			credits: {
+				enabled: false
+			},
+			series: [{
+				name: 'Aprobadas',
+				data: <%=porcento_delivery%>
+			}, {
+				name: 'Reprobadas',
+				data: <%= grafica_reprobacion_delivery %>
+			}]
+		});
+	});
+	</script> 
+</div> 
+</div>
+</div>
 </div>
 </body>
 </html>

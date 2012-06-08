@@ -1,13 +1,7 @@
 Cursame::Application.routes.draw do
   
-  get "calification/index"
-
-  get "calificationem/form"
-  get "calificationem/calification_group"
-  get "courses/calification"
   resources :chats
   resources :calificationems
-  
   devise_for :users, :skip => [:registrations]
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
     opts.devise_for :users, :path => 'maestros', :as => :teacher, :conditions => {:role => :teacher}

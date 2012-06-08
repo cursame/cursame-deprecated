@@ -498,7 +498,7 @@ function renderCommentsGraph(renderTo, value) {
     new Highcharts.Chart({
         chart: {
             renderTo: renderTo ,
-            type: 'column'
+            type: 'line'
         },
         title: {
             text: 'Cúrsame'

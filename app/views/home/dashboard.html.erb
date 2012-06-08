@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="content">
     <div class="row">
@@ -17,7 +18,7 @@
             </div>
             <div class="span2 padding-top">
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>
+                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>                <div data-toggle="modal" href="#myCalendar"class="btn info"> Calendario </div>
               <% end %>
             </div>
           </div>
@@ -55,44 +56,7 @@
         <%= render :partial => "members" %>
       </div>
       <div class="span-two-thirds">
-        <div class="tabs">
-          <ul class="tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab"><%= t('calendar') %></a></li>
-            <li><a href="#tab2" data-toggle="tab"><%= t('notifications.header') %></a></li>
-
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-              <div class="row with line">
-                <center>
-                  <h2>
-                    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
-                    <%= h @date.strftime("%B / %Y") %>
-                    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
-                  </h2>
-                </center>
-                <div id="calendar">
-
-                  <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
-                      <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
-                      <%= t.day(:day_method => :due_to) do |day, tasks| %>
-                          <%= day.day %>
-                          <br/>
-                          <ul>
-                            <% for task in tasks %>
-                                <li>
-                                  <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
-                                </li>
-                            <% end %>
-                          </ul>
-                      <% end %>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-            <div class="tab-pane" id="tab2">
-              <div class="row with line">
+               <div class="row with line">
                 <div class="dashboard-box">
                   <div class="underline padding-top">
                     <h2><%= t('notifications.header') %></h2>
@@ -107,12 +71,45 @@
                     <%= paginate @notifications %>
                   </div>
                 </div>
-              </div>
             </div> 
           </div>
         </div>
       </div>
     </div>
   </div>
+ </div>
   <%= render :partial => "shared/footer" %>
+</div>
+<div class="modal hide" id="myCalendar" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <center>
+    <h2>
+      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
+      <%= h @date.strftime("%B / %Y") %>
+      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
+    </h2>
+  </center>
+   </p>   
+ </div>
+ <div class="modal-body">
+</div>
+ 
+  <div id="calendar">
+<center>
+    <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
+        <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
+        <%= t.day(:day_method => :due_to) do |day, tasks| %>
+            <%= day.day %>
+            <br/>
+            <ul>
+              <% for task in tasks %>
+                  <li>
+                    <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
+                  </li>
+              <% end %>
+            </ul>
+        <% end %>
+    <% end %>
+</center>
 </div>

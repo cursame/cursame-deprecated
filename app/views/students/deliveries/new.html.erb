@@ -37,9 +37,9 @@
         </div>
 
         <h3><%= t('.header') %></h3>
-        <%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
-          <%= render :partial => 'form_fields', :locals => {:form => form} %>
-        <% end %>
+         <%= semantic_form_for @delivery, :url => assignment_delivery_path(@assignment) do |form| %>
+	          <%= render :partial => 'form_fields', :locals => {:form => form} %>
+	     <% end %>
 
       </div>
 
