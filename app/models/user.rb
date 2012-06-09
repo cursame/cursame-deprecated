@@ -29,12 +29,14 @@ class User < ActiveRecord::Base
   has_many :enrollment_requests,       :through => :courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :comments
   has_many :chats
+  has_many :calendar_activities
   # TODO: refactor commentable models to homogenize access to comments (below)
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
   has_many :deliveries
   has_many :notifications
   has_many :survey_replies
  
+  
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)

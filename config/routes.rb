@@ -1,5 +1,6 @@
 Cursame::Application.routes.draw do
   
+  resources :calendar_activities
   resources :chats
   resources :calificationems
   devise_for :users, :skip => [:registrations]
@@ -90,9 +91,9 @@ Cursame::Application.routes.draw do
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
   match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
-
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
+  get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120529171656) do
+ActiveRecord::Schema.define(:version => 20120609020728) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(:version => 20120529171656) do
     t.datetime "updated_at"
     t.datetime "start_at"
     t.string   "state"
+  end
+
+  create_table "calendar_activities", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user"
+    t.integer  "user_id"
+    t.date     "date_activity"
+    t.datetime "due_to"
   end
 
   create_table "calificationems", :force => true do |t|
@@ -241,6 +252,7 @@ ActiveRecord::Schema.define(:version => 20120529171656) do
     t.boolean  "accepting_emails",                      :default => false
     t.string   "authentication_token"
     t.integer  "chat_id"
+    t.string   "calendar_activity"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

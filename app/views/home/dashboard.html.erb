@@ -18,7 +18,7 @@
             </div>
             <div class="span2 padding-top">
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>                <div data-toggle="modal" href="#myCalendar"class="btn info"> Calendario </div>
+                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>                <%= link_to "Calendario", calendar_path, :class => "btn info smal"%>
               <% end %>
             </div>
           </div>
@@ -79,37 +79,4 @@
   </div>
  </div>
   <%= render :partial => "shared/footer" %>
-</div>
-<div class="modal hide" id="myCalendar" style="display:none;">
- <div class="modal-header">
-   <a class="close" data-dismiss="modal" >×</a>
-   <center>
-    <h2>
-      <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
-      <%= h @date.strftime("%B / %Y") %>
-      <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
-    </h2>
-  </center>
-   </p>   
- </div>
- <div class="modal-body">
-</div>
- 
-  <div id="calendar">
-<center>
-    <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
-        <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
-        <%= t.day(:day_method => :due_to) do |day, tasks| %>
-            <%= day.day %>
-            <br/>
-            <ul>
-              <% for task in tasks %>
-                  <li>
-                    <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
-                  </li>
-              <% end %>
-            </ul>
-        <% end %>
-    <% end %>
-</center>
 </div>
