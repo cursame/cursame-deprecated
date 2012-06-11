@@ -64,7 +64,9 @@ class Assignment < ActiveRecord::Base
       end
     end
   end
-
+  def icon
+       'menu-tareas.png'
+  end
   private
 
   def start_at_less_than_due_to
@@ -73,5 +75,5 @@ class Assignment < ActiveRecord::Base
       false
     end
   end
-
+  
 end

@@ -18,7 +18,7 @@
             </div>
             <div class="span2 padding-top">
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>                <%= link_to "Calendario", calendar_path, :class => "btn info smal"%>
+                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>        
               <% end %>
             </div>
           </div>
@@ -56,10 +56,12 @@
         <%= render :partial => "members" %>
       </div>
       <div class="span-two-thirds">
+	              <%= link_to image_tag("kontact-date.png"),calendar_path, :class => "btn info small  right"%>
                <div class="row with line">
                 <div class="dashboard-box">
                   <div class="underline padding-top">
-                    <h2><%= t('notifications.header') %></h2>
+                    <h2><%= t('notifications.header') %> </h2>
+		             
                   </div>
                   <div id="notifications">
                     <% @notifications.each do |notification| %>

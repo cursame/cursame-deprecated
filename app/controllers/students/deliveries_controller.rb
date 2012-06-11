@@ -17,7 +17,7 @@ module Students
       @assignment    = current_user.assignments.find params[:assignment_id]
       @delivery      = @assignment.deliveries.build params[:delivery]
       @delivery.user = current_user
-
+       @delivery.raiting = 0
       if @delivery.save
         redirect_to assignment_delivery_path(@assignment), :notice => t('flash.delivery_created')
       else

@@ -16,7 +16,7 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = manageable_course.assignments.build(params[:assignment])
-
+   
     if @assignment.save
       redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
