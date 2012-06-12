@@ -1,0 +1,112 @@
+ <div class="container">
+  <div class="content">
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to "Dashboard", dashboard_path %><span class="divider">/</span></li>
+          <li>Calendar</li>
+        </ul>
+      </div>
+    </div>
+    <div class="btn success"  data-toggle="modal" href="#myNewactivity">Agregar actividad</div>
+    <div class="btn info" data-toggle="modal" href="#myActivity">Ultimas actividades</div>
+ </br>
+ </br>
+ <center> 
+  <div id="nomenclatura">
+	      <%= image_tag('menu-calendario.png')%><b> Actividades que he creado en el calendario</b>
+       	  <%= image_tag('menu-tareas.png')%><b> Fecha limite a entregar de una tarea </b>
+          <%= image_tag('menu-examen.png')%><b> Fecha de cuestionario o examen </b>
+	</div>
+ </center>
+ </br>
+<center>
+
+ <h1> 
+  <%= link_to "-", :month => (@date.beginning_of_month-1).strftime("%m/%Y")%>
+   Calendario para:<%= h @date.strftime("%B / %Y") %>
+  <%= link_to "+", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
+ </h1>
+
+ <div id="calendar">
+    <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
+        <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
+        <%= t.day(:day_method => :due_to) do |day, tasks| %>
+            <%= day.day %>
+            <br/>
+            <ul>
+
+              <% for task in tasks %>
+                  <li>
+		<div class="underline">
+                 <p><%= link_to  image_tag(task.icon), task %> <%= link_to( task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
+			
+				<%= link_to image_tag("menu-delete.png"), task, :method => :delete, :confirm => t('confirm_delete'), :class => "right" if task.kind_of? CalendarActivity %>
+				
+				</p>
+		</div>
+                  </li>
+              <% end %>
+
+            </ul>
+        <% end %>
+    <% end %>
+</center>
+</div>
+</div>
+  <%= render :partial => "shared/footer" %>
+</div>
+
+<div class="modal hide" id="myNewactivity" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3>Ingresa la actividad</h3>
+   </p>   
+ </div>
+ <div class="modal-body">
+     
+<%= form_for(@calendar_activity = CalendarActivity.new) do |f| %>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %><br />
+    <%= f.label :description %><br />
+    <%= f.text_area :description,:rows =>5, :cols => 40 %><br />
+    <%= f.label :fecha_de_la_actividad %><br />
+	<%= f.datetime_select :due_to %><br />
+	<br />
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+<br />
+    <%= f.submit "agregar actividad", :class => "btn success right" %>
+  
+
+  <%end%>
+</div>
+</div>
+<div class="modal hide" id="myActivity" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3>Ultimas actividades</h3>
+   </p>   
+ </div>
+ <div class="modal-body">     
+ <div id="activities_calendar_body">
+<% current_user.calendar_activities.reverse.each do |activity| %>
+  <table class="zebra-striped"> 
+ 	<thead>
+	<tr>
+     <th class="blue">Nombre de la actividad</th>
+     <th class="blue">Descripción de la actividad</th>
+     <th class="blue">Fecha de la actividad</th>
+    </thead>
+    <tbody>
+       <tr class="asset">
+	    <td>  <%= activity.name %></td>
+        <td> <p> <%= activity.description %></p></td>
+        <td> <%= activity.due_to%></td>
+       </tr>
+    </tbody>
+
+  </table>
+ <%end%>
+ </div>
+</div>
+</div>
