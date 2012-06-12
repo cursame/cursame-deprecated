@@ -16,13 +16,12 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-   border-top-left-radius: 4px;
-   border-top-right-radius: 4px;
-   border-bottom-right-radius: 4px;
-   border-bottom-left-radius: 4px;
-   width : 900px;
-   height :600px;
-
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  width : 900px;
+  height :600px;
 }
 
 #calendar td,
@@ -31,8 +30,6 @@
   font-size: 10px;
   padding: 6px;
   border-radius: 15px solid;
- 
-
 }
 
 #calendar th {
@@ -40,7 +37,6 @@
   color: #fff;
   text-align: center;
   width: 14.2857142857143%;
-
 }
 
 #calendar td {
@@ -50,7 +46,6 @@
   height: 80px;
   vertical-align: top;
   font-size: 11px;
-
 }
 
 #calendar .notday{
@@ -71,7 +66,6 @@
   text-decoration: none;
   padding: 0 10px;
   color: #000;
-
 }
 
 
@@ -79,7 +73,6 @@
   background-color: #D7F2FF;
   color: #000;
   font-size:20px;
-
 }
 
 #calendar ul {
@@ -91,32 +84,29 @@
 }
 
 #calendar li {
-
   margin: 0;
   padding: 0;
-  font-size: 10px;
-  
+  font-size: 10px;  
 }
 #containertor{
 	display:default;
 	width : 170px;
 	height : 370px;	
 }
-*#chat{
-display:default;
-width : 170px;
-height : 350px;	
-}*
+#chat{
+	display:default;
+	width : 170px;
+	height : 350px;	
+}
 #chat_body{
-             	border : solid 0px #ccc;
-	            background : #fff;
-	            color : #000;
-	            padding : 4px;
-	            width : 170px;
-				height : 300px;
-	            overflow : auto;
-	            text-align: justify;
-	            
+	border : solid 0px #ccc;
+	background : #fff;
+	color : #000;
+	padding : 4px;
+	width : 170px;
+	height : 300px;
+	overflow : auto;
+	text-align: justify;	            
 }
 #chat_footer{
 	background : #D7F2FF;
@@ -135,11 +125,12 @@ height : 350px;
 	color:#00AFC9;
 }
 #activities_calendar_body{
-             	border : solid 0px #ccc;
-	            background : #fff;
-	            color : #000;
-	            padding : 4px;
-	            width : 510px;
-				height : 300px;
-	            overflow : auto;
-	            text-align: justify;
+	border : solid 0px #ccc;
+	background : #fff;
+	color : #000;
+	padding : 4px;
+	width : 510px;
+	height : 300px;
+	overflow : auto;
+	text-align: justify;
+}
