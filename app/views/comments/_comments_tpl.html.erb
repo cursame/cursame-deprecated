@@ -4,7 +4,29 @@
     <div class="span8">
       <h6><%= link_to comment.user.name, user_path(comment.user) %></h6>
       <blockquote>
-        <p><%= comment.text %></p>
+        <p><%= comment.text %></p> 
+       <div class= "like">
+         <% @cabatina=comment.id%>
+		 <div class="right">
+		  <%comment.like_not_likes.each do |c|%>
+
+		  <% @casiopea = c.user_id %>
+
+		  <%end%> 
+
+		  <% if current_user.id == @casiopea %>
+		  <%= comment.like_not_likes.count %>
+		  <% else %>
+          <div id="like_super">
+		  <%= render :partial => "like_not_likes/form"%>
+		  </div>
+		  <div class="right">
+		<center>
+		  <%= comment.like_not_likes.count %>
+		</center>
+          </div>
+		  <% end %>
+		</div>
         <% if comment.assets.any? %>
         <p style="padding-top:10px;">
         <% comment.assets.each do |asset| %>

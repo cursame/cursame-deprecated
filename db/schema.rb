@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120609020728) do
+ActiveRecord::Schema.define(:version => 20120613213638) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -149,6 +149,14 @@ ActiveRecord::Schema.define(:version => 20120609020728) do
 
   add_index "enrollments", ["course_id"], :name => "index_enrollments_on_course_id"
   add_index "enrollments", ["user_id"], :name => "index_enrollments_on_user_id"
+
+  create_table "like_not_likes", :force => true do |t|
+    t.integer  "like"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "comment_id"
+  end
 
   create_table "networks", :force => true do |t|
     t.string   "subdomain"

@@ -30,7 +30,7 @@
 
  <div id="calendar">
     <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
-        <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
+        <%= t.head('Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sabado') %>
         <%= t.day(:day_method => :due_to) do |day, tasks| %>
             <%= day.day %>
             <br/>

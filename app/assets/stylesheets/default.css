@@ -501,6 +501,10 @@ fieldset.answer ol li textarea.span6 {
   float: left;
 }*/
 
+.radio_like{
+	width:70px;
+	background-image:url(ok-blue.png) no-repeat;
+}
 .answers .answer ol li.string,
 .answers .answer ol li.text {
   width: 380px !important;
@@ -1342,4 +1346,10 @@ display: block;
 }
 #content-pane{
 	top:25px !important;
+}
+.login_texted{
+	color: #9EA5A6;
+}
+.login_texted0{
+	color: #fff;
 }

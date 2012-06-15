@@ -156,6 +156,8 @@ $(document).ready(function() {
 		title: {
 			text: 'Relación actual de actividades'
 		},
+		subtitle: {
+	            text: "relación entre <%= t('courses.assignments.assignments') %> y <%= t('surveys.index.header')%> para interpretación temporal por usuarios"},
 		legend: {
 			layout: 'vertical',
 			align: 'left',
@@ -224,13 +226,16 @@ $(document).ready(function() {
 		chart = new Highcharts.Chart({
 			chart: {
 				renderTo: 'value',
-				type: 'column'
+				type: 'areaspline'
 			},
 			title: {
 				text: 'Porcentaje de aprobación de examenes'
 			},
+			subtitle: {
+	            text: "Porcentaje de movimientos promedios de <%= t('surveys.index.header')%> y alumnos"
+	        },
 			xAxis: {
-				categories: ['Movimiento promedio de los examenes actuamente en el grupo']
+				categories: ["Movimiento promedio de <%= t('surveys.index.header')%> actualmente en el grupo"]
 		
 			
 			},		
@@ -286,7 +291,7 @@ $(document).ready(function() {
 				text: "Porcentaje de aprobación en <%= t('courses.assignments.assignments') %>"
 			},
 			subtitle: {
-	            text: 'El porcentaje se encuentra entre el primer y ultimo punto de la gráfica'
+	            text: "Porcentaje de aprobación de <%= t('courses.assignments.assignments') %> con razón en alumnos "
 	        },
 			xAxis: {
 				categories: ["<%= t('courses.assignments.assignments') %>"]
