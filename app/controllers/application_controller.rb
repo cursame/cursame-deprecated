@@ -85,7 +85,10 @@ class ApplicationController < ActionController::Base
     end
   end
   def chat
-  @chat=current_user.chat
-  
+  @chat=current_user.chat  
   end
+  def mobile?
+    request.user_agent =~ /Mobile|webOS/
+  end
+  helper_method :mobile?
 end
