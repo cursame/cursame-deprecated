@@ -1,18 +1,3 @@
-<div class="modal hide" id="myModalcalification" style="display:none;">
- <div class="modal-header">
-   <a class="close" data-dismiss="modal" >×</a>
- <% @deliveries.each do |delivery| %> 
- <h2>Calificación asignada a <%= link_to delivery.user.name, user_path(delivery.user) %></h2>
-   </p>   
- </div>
- <div class="modal-body">
-	
-<center><h3>La calificación asignada es:<h3><h2><%= delivery.raiting%></h2></br>
-   <h3>Comentarios finales:</h3></br> <p><%= delivery.anotation_coment%></p></center>
-   <%end%>
-</div>
-</div>
-
 <div class="container">
   <div class="content">
     
@@ -87,9 +72,14 @@
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
             <%= link_to t('.show'), delivery, :class => "btn" %>
-          Calificación asignada: <div class="btn" href="#myModalcalification" data-toggle="modal"><%=delivery.raiting%></div>
-                 
-            
+          
+          <% @calculus = (delivery.limit/2)%> 
+
+           <% if delivery.raiting > @calculus %>
+          Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting%></b>
+            <%else %>
+           Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting%></b>      
+            <%end%>
           </div>
         <% end %>
         

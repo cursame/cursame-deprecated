@@ -1352,3 +1352,13 @@ display: block;
 .login_texted0{
 	color: #fff;
 }
+
+.calification-bad{       
+       color: #fff !important;
+	   background-color: #FE0606;
+}
+
+.calification-good{       
+       color: #fff !important;
+	   background-color: #09B559;
+}
