@@ -8,6 +8,7 @@
           
     	<div class= "like">
 	         <% @cabatina=comment.id%>
+	         <% @cpo= comment.like_not_likes.count%>
 			 <div class="right">
 			  <%comment.like_not_likes.each do |c|%>
 
@@ -15,18 +16,14 @@
 
 			  <%end%> 
 
-			  <% if current_user.id === @casiopea %>
-			  <%= comment.like_not_likes.count %>
-			  <% else %>
-
-			 <div id="like_super">
-			  <%= render :partial => "like_not_likes/form"%>
+			  <% if current_user.id === @casiopea && comment.like_not_likes.count > 0 %>
+			 <div class="like-element label-tag">
+			  	<%= comment.like_not_likes.count %>
 			  </div>
-			  <div class="right">
-			<center>
-			  <%= comment.like_not_likes.count %>
-			</center>
-	          </div>
+			  <% else %>
+			  	<div id="like_super_<%= comment.id%>">
+			  		<%= render :partial => "like_not_likes/form"%>
+			  	</div>			  
 		    <% end %>
 		</div>
          

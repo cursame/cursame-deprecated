@@ -7,25 +7,25 @@
         <p><%= comment.text %></p> 
        <div class= "like">
          <% @cabatina=comment.id%>
-		 <div class="right">
-		  <%comment.like_not_likes.each do |c|%>
+		 <div class= "like">
+	         <% @cabatina=comment.id%>
+	         <% @cpo= comment.like_not_likes.count%>
+			 <div class="right">
+			  <%comment.like_not_likes.each do |c|%>
 
-		  <% @casiopea = c.user_id %>
+			  <% @casiopea = c.user_id %>
 
-		  <%end%> 
+			  <%end%> 
 
-		  <% if current_user.id == @casiopea %>
-		  <%= comment.like_not_likes.count %>
-		  <% else %>
-          <div id="like_super">
-		  <%= render :partial => "like_not_likes/form"%>
-		  </div>
-		  <div class="right">
-		<center>
-		  <%= comment.like_not_likes.count %>
-		</center>
-          </div>
-		  <% end %>
+			  <% if current_user.id === @casiopea && comment.like_not_likes.count > 0 %>
+			 <div class="like-element label-tag">
+			  	<%= comment.like_not_likes.count %>
+			  </div>
+			  <% else %>
+			  	<div id="like_super_<%= comment.id%>">
+			  		<%= render :partial => "like_not_likes/form"%>
+			  	</div>			  
+		    <% end %>
 		</div>
         <% if comment.assets.any? %>
         <p style="padding-top:10px;">
