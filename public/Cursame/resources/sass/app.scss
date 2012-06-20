@@ -1,0 +1,273 @@
+//custom colors used in this file.
+
+$base-color: #00282E;
+$active-color: #00AFC9;
+
+$cursame-blue: #00AFC9;
+$cursame-blue-btn:#339BB9;
+$decline-color:#C43C35;
+$gray: #d4d6e1;
+$text-gray: #808080;
+$text-color:#444;
+$text-size:14px;
+
+//sencha touch variables we need to override
+$list-pressed-color: lighten($gray, 5%);
+$list-active-color: $gray;
+$list-active-gradient: matte;
+
+@import 'sencha-touch/default/all';
+
+// You may remove any of the following modules that you
+// do not use in order to create a smaller css file.
+@include sencha-panel;
+@include sencha-buttons;
+@include sencha-sheet;
+@include sencha-picker;
+@include sencha-tabs;
+@include sencha-toolbar;
+@include sencha-toolbar-forms;
+@include sencha-indexbar;
+@include sencha-list;
+@include sencha-list-paging;
+@include sencha-list-pullrefresh;
+@include sencha-layout;
+@include sencha-carousel;
+@include sencha-form;
+@include sencha-msgbox;
+@include sencha-loading-spinner;
+
+//sencha mixins
+@include sencha-button-ui('decline', $decline-color, 'matte');
+@include sencha-button-ui('accept', $cursame-blue-btn, 'matte');
+
+//buttons
+@include pictos-iconmask('check1');
+@include pictos-iconmask('delete');
+@include pictos-iconmask('podcast');
+@include pictos-iconmask('list');
+@include pictos-iconmask('user_list');
+@include pictos-iconmask('chat');
+@include pictos-iconmask('calendar');
+@include pictos-iconmask('team1');
+@include pictos-iconmask('docs2');
+@include pictos-iconmask('user_list2');
+@include pictos-iconmask('layout');
+@include pictos-iconmask('doc_list');
+@include pictos-iconmask('inbox2');
+@include pictos-iconmask('nodes2');
+
+
+//login form
+/*body{
+	background:
+	  -webkit-radial-gradient(black 15%, transparent 16%) 0 0,
+	  -webkit-radial-gradient(black 15%, transparent 16%) 8px 8px,
+	  -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	  -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#282828;
+	background-size:16px 16px;; 
+	background:
+	  -webkit-radial-gradient(black 15%, transparent 16%) 0 0,
+	  -webkit-radial-gradient(black 15%, transparent 16%) 8px 8px,
+	  -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+	  -webkit-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+	background-color:#282828;
+	background-size:16px 16px;
+}*/
+
+.x-form-login{
+	
+}
+
+//notification item style
+.x-data-item-notification {
+    padding: 1em;
+    background: #fff;
+    border-bottom: 3px solid $gray;
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+        margin-right: .5em;
+        border: 1px solid $gray;
+        @include border-radius(.4em);
+        -webkit-box-shadow: inset 0 2px 2px rgba(0,0,0,.3);
+    }
+
+    .user {
+        font-weight: bold;
+		font-size:14px;
+		color:$cursame-blue;
+        margin-bottom: .2em;
+    }
+
+    .text {
+        color: $text-color;
+		font-size:$text-size;
+        overflow: visible;        
+    }
+
+    .c-button{
+		width: 42px;
+        height: 42px;
+	}
+	
+	.time-ago{
+        position: absolute;
+		font-size:$text-size;
+		color:$gray;
+        top: .01em;
+        right: .5em;
+        height: 1.5em;
+        background: rgba(255,255,255,.7);
+    }
+}
+
+.active-font{
+	color :$active-color;
+}
+.hashtag {
+    padding: 0.07em 0.3em;
+    @include border-radius(0.4em);
+    background: rgba(200,200,200,.3);
+}
+
+.course{
+	background: #FFF;
+	@include border-radius(.4em);
+	margin: 10px;
+	padding-bottom:5px;
+	div.img {
+        border: 1px solid #fff;
+        @include border-radius(.4em);
+        margin: 5px 10px 10px 10px;
+        overflow: hidden;
+		padding-top:10px;
+        img {
+            border-radius: 2px;
+            width: 48px;
+        }
+    }
+	.left {
+        float: left;
+    }
+	.properties{
+		min-height: 60px;
+		margin: 10px 0 8px 0;
+		font-size:$text-size;
+		font-weight: bold;
+		color:$cursame-blue;
+		align:center;
+		padding-top:10px;
+		.description{
+			color:$text-color;
+			font-weight: normal;
+			padding:5px 0 10px 5px;
+		}
+		.val{
+			color:$text-color;
+			font-weight: bold;
+		}
+		.prop{
+			color:$text-gray;
+			font-weight: normal;
+		}
+	}
+	.boxes{		
+		 border: 1px solid $gray;
+		 border-left:0px;
+		 height: 50px;
+		.box{
+			padding:4px 4px 0 4px;
+			float: left;
+			border-left: 1px solid $gray;
+			.val{
+				color:$text-color;
+				font-weight: bold;
+				font-size:$text-size;
+			}
+			.prop{
+				color:$gray;
+				font-weight: bold;
+				font-size:12px;
+			}
+		}
+		.box-1{			
+			width:70%;
+		}
+		.box-2{
+			width:25%;
+		}
+	}	
+}
+
+.title{
+	font-weight: bold;
+	margin-bottom: .2em; 
+	font-size: .7em; 
+	color: $cursame-blue;
+}
+.text{
+	color: $text-color;
+	line-height: 1.5em;
+	overflow: visible; 
+	font-size: .7em;
+}
+.minibar{
+	background-color:lighten($cursame-blue, 50%);
+	height:1em;
+	margin-top:.5em;
+	padding-right:.5em;
+	color:darken($gray,50%);
+	font-weight: bold;
+	.action{
+		font-size: .8em;		
+		float:left;
+		color: $cursame-blue;
+	}
+	.info{
+		font-size: .6em;
+		float:right;
+	}
+}
+.comment{
+	display: block; 
+	clear: both;
+	margin:-8px -10px -10px -10px;
+	background: white;
+	padding:.8em;
+	border-bottom: 1px solid #D4D6E1;
+	
+	div.img {
+      	float: left; 
+		padding-bottom: 5px;
+        img {
+            margin-right: .6em;
+			width:32px;
+			border: 0px solid #D4D6E1;
+			border-image: initial;
+        }
+    }
+	.contenido{
+		width:100%;
+	}
+}
+
+.comments-background{
+	background-color:lighten($gray, 10%);
+}
+
+.menu-badge {
+	position: absolute;
+	width: auto;
+  	font-size: .4em;
+	text-align:center;
+	left:0;
+	width:100%;
+	border-color:#FFF;
+	bottom: -1.9em;
+}
+.fill-container{
+	margin:-17px -10px -9px -10px;
+}
