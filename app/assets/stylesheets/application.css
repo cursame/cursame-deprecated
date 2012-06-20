@@ -6,7 +6,6 @@
  *= require_tree . 
 */
 
-
 /*this is a part of a calendar in the css this part work with modifications in
  jquery and a modificarion in watu_table_builder gem in rails*/
 
@@ -27,9 +26,10 @@
 #calendar td,
 #calendar th {
   font-family:sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   padding: 6px;
   border-radius: 15px solid;
+  height: 20px;
 }
 
 #calendar th {
@@ -134,3 +134,13 @@
 	overflow : auto;
 	text-align: justify;
 }
+.topbar {
+  height: 40px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  overflow: visible;
+}
+

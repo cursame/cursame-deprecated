@@ -2,10 +2,11 @@
   <h1><%= t("forms.register_#{params[:controller] == 'registrations' ? role : 'student'}") %></h1>
   <%= semantic_form_for resource, :as => resource_name, :url => url do |form| %>
     <%= form.inputs :basic do %>
-      <%= form.input :email, :input_html => { :placeholder => t('forms.email') + " *", :class => "span4" } %>
-      <%= form.input :first_name, :input_html => { :placeholder => t('forms.first_name') + " *", :class => "names", :style => 'margin-right:10px;' }%>
-      <%= form.input :last_name, :input_html => { :placeholder => t('forms.last_name'), :class => "names" } %>
-      <%= form.input :password, :input_html => { :placeholder => t('forms.password') + " *", :class => "span4" } %>
+  <div class="login_texted0"> <%= "Email" %> </div> </br>   <%= form.input :email, :input_html => { :placeholder => t("forms.email") + " *", :class => "span4" } %>
+  <div class="login_texted0"> <%= "Nombre & Apellido " %>  </div> </br>  <%= form.input :first_name, :input_html => { :placeholder => t("forms.first_name") + " *", :class => "names", :style => 'margin-right:10px;' }%>
+      <%= form.input :last_name, :input_html => { :placeholder => t("forms.last_name"), :class => "names" } %>
+    <div class="login_texted0">   <%= "Contraseña & confirmar contraseña" %>  </div> </br>
+     <%= form.input :password, :input_html => { :placeholder => t("forms.password") + " *", :class => "span4" } %>
       <%= form.input :password_confirmation, :input_html => { :placeholder => t('forms.password_confirmation') + " *", :class => "span4" } %>
       <%= form.input :terms_of_service, :as => :boolean, :label => link_to(t('forms.terms'), terms_path, :class => "terms fancybox.ajax"), :required => true, :input_html => { :checked => true, :style => 'display:inline;' } %>
     <% end %>
