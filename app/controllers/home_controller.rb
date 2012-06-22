@@ -44,6 +44,9 @@ class HomeController < ApplicationController
   def blog
     @blogs = Blog.all
   end
+  def reports
+  @user=current_user.id
+  end
   def help
   end
   def members

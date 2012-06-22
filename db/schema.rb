@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120620211913) do
+ActiveRecord::Schema.define(:version => 20120622205747) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -222,6 +222,16 @@ ActiveRecord::Schema.define(:version => 20120620211913) do
     t.datetime "updated_at"
     t.integer  "value"
     t.integer  "position"
+  end
+
+  create_table "send_reports", :force => true do |t|
+    t.string   "title"
+    t.text     "text"
+    t.datetime "event_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "typebug"
   end
 
   create_table "survey_answers", :force => true do |t|

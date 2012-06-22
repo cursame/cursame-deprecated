@@ -9,15 +9,17 @@
         <%= tab.dashboard t('dashboard.start'), root_path %>
         <%= tab.profile t('dashboard.profile'), current_user %>
       <% end %>
-
+                 
       <ul class="nav secondary-nav">
         <li class="dropdown">
           <%= link_to "#{current_user.first_name}" + " #{current_user.last_name}", "#", :class => "dropdown-toggle"%>
           <ul class="dropdown-menu">
             <li><%= link_to t('shared.toolbar.settings'), settings_path %></li>
+            <li><%= link_to t('.soporte y sugerencias'), soporte_path %></li>
             <li class="divider"></li>
             <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>
-          </ul>
+           
+           </ul>
         </li>
       </ul>
       

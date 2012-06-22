@@ -27,13 +27,13 @@
             <h3>Options</h3>
             <ul>
               <li><%= link_to 'Networks', admin_networks_path %></li>
-              <li><%= link_to t("super_admin.shared.statistics"), admin_statistics_path %></li>
+              <li><%= link_to t("super_admin.shared.statistics"), admin_statistics_path %></li>       <li><%= link_to 'Reports', admin_reports_path %></li>
             </ul>
           </div>
 
         </div>
 
-        <div class="span10">
+        <div class="span12">
           <%= yield %>
         </div>
       </div>

@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :send_reports
+
   resources :comment_posts
 
   resources :blogs
@@ -86,6 +88,7 @@ Cursame::Application.routes.draw do
   namespace :admin do
     resources :networks
     get '/statistics', :to => 'base#statistics', :as => :statistics
+    get '/reports', :to => 'base#reports', :as => :reports
   end
 
   match '/admin' => 'admin/base#admin'
@@ -110,6 +113,7 @@ Cursame::Application.routes.draw do
   match  '/blog', :to => 'home#blog/blog', :as => :blog
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
   match  '/nosotros', :to => 'home#nosotros', :as => :nosotros
+  match  '/soporte', :to => 'home#reports', :as => :soporte
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

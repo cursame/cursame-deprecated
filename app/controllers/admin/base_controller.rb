@@ -9,6 +9,9 @@ module Admin
     def statistics
     end
 
+    def reports
+      @send_reports=SendReport.all
+    end
     private
 
     def require_admin
