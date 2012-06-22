@@ -4,7 +4,7 @@ Cursame={
 	//Path:'http://mando.lvh.me:3000',
 	Url:'/api/',
 	Path:'',
-	src:'Cursame/',
+	src:'./assets/Cursame/',
 	ajax :function(obj){
 		obj.url = Cursame.Url + obj.url;
 		
