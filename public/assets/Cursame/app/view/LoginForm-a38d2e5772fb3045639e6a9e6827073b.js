@@ -1,6 +1,0 @@
-/**
- * @class MyNamespace.LoginForm
- * @extends Object
- * Description
- */
-Ext.define("Cursame.view.LoginForm",{extend:"Ext.form.Panel",xtype:"loginform",requires:["Ext.form.FieldSet","Ext.field.Email","Ext.field.Password","Ext.Img","Cursame.model.UserLogin"],config:{ui:"login",padding:"15 15 15 15",items:[{xtype:"container",height:70},{xtype:"container",layout:"hbox",height:64,items:[{xtype:"container",flex:1},{xtype:"image",padding:"15 15 15 15",src:Cursame.src+"resources/images/cursa.png",width:150},{xtype:"container",flex:1}]},{xtype:"fieldset",defaults:{required:!0},items:[{xtype:"emailfield",name:"email",placeHolder:lang.email,value:"armando@cursa.me",clearIcon:!0},{xtype:"passwordfield",name:"password",placeHolder:lang.password,value:"mmmmmm",clearIcon:!0}]},{xtype:"fieldset",items:[{xtype:"button",text:lang.login,ui:"accept",handler:function(a){var b,c;b=this.up("formpanel"),c=b.getValues(),b,b.setMasked({xtype:"loadmask",message:lang.starting}),b.fireEvent("masking",b),Cursame.model.UserLogin.load(888,{params:{email:c.email,password:c.password},success:function(a,c){b.setMasked(!1),b.fireEvent("unmasking",b),a?(Cursame.User=a,b.fireEvent("login",b)):(b.setMasked({xtype:"loadmask",message:c._response.response.message}),b.fireEvent("error",b,c._response.response.message),setTimeout(function(){b.setMasked(!1)},1e3))}})}}]}]}});

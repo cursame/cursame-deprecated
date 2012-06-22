@@ -1,1 +1,0 @@
-Ext.define("Command.log.writer.Cli",{extend:"Ext.log.writer.Writer",doWrite:function(a){console.log(a.message)}});
