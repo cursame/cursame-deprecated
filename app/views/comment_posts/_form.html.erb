@@ -1,0 +1,23 @@
+<%= form_for( @comment_post = CommentPost.new) do |f| %>
+  <div class=" spam6 right">
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content,:rows => 7, :cols => 40 %></br>
+  </div>
+ 
+    <%= f.hidden_field :date, :value => Time.now %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :user, :value => current_user.name %>
+    <%= f.hidden_field :blog_id, :value => @bl%></br>
+    <%= f.submit "Comentar", :class => "btn right" %></br></br></br>
+
+<div id="dater-tree" class="right">
+    <p>Para colocar una imagen o video solo pega el link</p>
+</div>
+
+<% end %>
+  </div>

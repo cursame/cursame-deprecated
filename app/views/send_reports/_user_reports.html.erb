@@ -1,0 +1,43 @@
+<div class="contaniner">
+
+<% current_user.send_reports.each do |report|%>
+<div class="span16" style="border:solid; margin:5px; border-color: #F4F004; border-radius: 15px;">
+<div class="span5">
+<h3>  <%= report.title%> </h3>
+</div>
+</br>
+<div class="span15">
+ <p> <%= report.text%> <p>
+</div>
+</br>
+<div class="right" style="margin:4px">
+  <%= report.event_date%>
+
+<% case report.typebug %>
+ <%when 'bug' %>
+     <%= link_to image_tag("reports_admin/bug-buddy.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+ <% when 'error' %>
+     <%= link_to image_tag("reports_admin/process-warning.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+ <% when 'fallo_plataforma' %>
+     <%= link_to image_tag("reports_admin/bug_error.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+ <% when 'fallo_en_upload' %>
+	  <%= link_to image_tag("reports_admin/process-info.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+ <% when 'fallo_en_visualización' %>
+	<%= link_to image_tag("reports_admin/find-bug.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+ <% when 'otros' %>
+    <%= link_to image_tag("reports_admin/agresive_bug.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+<%end%>
+ 
+</div>
+
+</div>
+
+
+<%end%>
+
+</div>
+<script type="text/javascript">
+  $(function(){
+    setupAutoScroll();
+  });
+</script>

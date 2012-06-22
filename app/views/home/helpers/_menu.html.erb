@@ -1,0 +1,44 @@
+<div class= "span3">
+<% if current_user.role == 'teacher' %>
+<!-- para profesore diferente menu y diferente contenido -->
+
+<%= link_to "Introducción", help_path, :class => "nav" %>
+<%= link_to "Como crear un curso", help_cursos_path, :class => "nav" %> 
+<%= link_to "Como crear una tarea", help_tareas_path, :class => "nav" %> 
+<%= link_to "Como crear un cuestionario", help_cuestionarios_path, :class => "nav" %> 
+<%= link_to "Como crear una discusión y contestar una discusión", help_discusiones_path, :class => "nav" %> 
+<%= link_to "Uso del calendario de actividades", help_calendario_path, :class => "nav" %>
+<%= link_to "Uso de las notificaciones", help_notificaciones_path, :class => "nav" %>
+<%= link_to "Calificaciones y estadísticas del grupo", help_calificaciones_path, :class => "nav" %>
+
+<%end%>
+
+<% if current_user.role == 'student' %>
+<!-- para estudiantes diferente menu y diferente contenido -->
+
+<%= link_to "Introducción", help_path, :class => "nav" %>
+<%= link_to "Como ingresar a un curso", help_cursos_path, :class => "nav" %> 
+<%= link_to "Como entregar una tarea", help_tareas_path, :class => "nav" %> 
+<%= link_to "Como contestar un cuestionario", help_cuestionarios_path, :class => "nav" %> 
+<%= link_to "Como crear una discusión y contestar una discusión", help_discusiones_path, :class => "nav" %> 
+<%= link_to "Uso del calendario de actividades", help_calendario_path, :class => "nav" %>
+<%= link_to "Uso de las notificaciones", help_notificaciones_path, :class => "nav" %>
+<%= link_to "Calificaciones y estadísticas del grupo", help_calificaciones_path, :class => "nav" %>
+
+
+<%end%>
+
+<% if current_user.role == 'supervisor' %>
+
+<%= link_to "Introducción", help_path, :class => "nav" %>
+<%= link_to "Cursos", help_cursos_path, :class => "nav" %> 
+<%= link_to "Tareas", help_tareas_path, :class => "nav" %> 
+<%= link_to "Cuestionarios", help_cuestionarios_path, :class => "nav" %> 
+<%= link_to "Discusiones", help_discusiones_path, :class => "nav" %> 
+<%= link_to "Uso del calendario de actividades", help_calendario_path, :class => "nav" %>
+<%= link_to "Uso de las notificaciones", help_notificaciones_path, :class => "nav" %>
+<%= link_to "Calificaciones y estadísticas del grupo", help_calificaciones_path, :class => "nav" %>
+
+<%end%>
+
+</div>

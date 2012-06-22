@@ -1,0 +1,33 @@
+<div class="container">
+<center>
+	<h1><%=image_tag("reports_admin/browser.png")%><%= link_to "BUG KILLER DE CÚRSAME", soporte_path%>  <%=image_tag("reports_admin/service.png")%></h1>
+</center>
+<div class="span16">
+<%= render :partial => "shared/soporte"%>
+
+<div class="span16" id="contact" style="display:none">
+	
+	<h3>Datos de contacto</h3>
+	<div class="span2">
+	<center>
+	 <%=image_tag("reports_admin/suport.png")%>
+	</center>	 
+    </div>
+    <div class="span6">
+	 <p>Email: <%= mail_to "hola@cursa.me" %> </p>
+	 <p>Twitter: <%= link_to "@cursame", "https://twitter.com/#!/cursame" %>  </p>
+	 <p>Facebook: <%= link_to "Fan page Cúrsame", "http://www.facebook.com/Cursameoficial"%></p>
+    </div>
+</div>
+</br>
+<%= render :partial => "send_reports/user_reports"%>
+
+
+</div>
+</div>
+<script>
+	function mostrarContacto(){
+		
+		$('#contact').toggle();
+	}
+</script>

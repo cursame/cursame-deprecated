@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="span14">
+<%= form_for(@send_report=SendReport.new) do |f| %>
+    <div class="span12">
+	
+    <div class="span3 well">
+	 
+	<b> Tipo de reporte a levantar </b>
+	<br /><br />
+	
+	
+    <div class=" right">
+   <%= f.radio_button :typebug,'bug' %> Bug </br></br>
+  
+  
+   <%= f.radio_button :typebug,'error' %> Error </br></br>
+   
+  
+   <%= f.radio_button :typebug,'fallo_plataforma' %> Fallo de plataforma </br></br>
+
+   
+   <%= f.radio_button :typebug,'fallo_en_upload' %> Fallo en upload </br></br>
+
+    
+   <%= f.radio_button :typebug,'fallo_en_visualización' %> Fallo visualización </br></br>
+   
+   <%= f.radio_button :typebug,'otros' %> Otros </br></br>
+    </div>
+    </div></br>
+    
+    <div class="span8">
+	<% @time = Time.now %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %><br />
+    <%= f.label :text %><br />
+    <%= f.text_area :text,:rows => 8, :cols => 45 %><br /> 
+    <%= f.hidden_field :event_date, :value => @time %><br /><br />
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+    <div class="span5 right">
+	<div class="span2" style="margin:5px;">
+   <div class="right"><div class="btn right" onclick="mostrarContacto()"><%=image_tag("reports_admin/mail.png")%></div></div>
+    <div class="right">  
+	</div>
+	</div>
+	<div calss="span2">
+     <%= Time.now %>
+    </div>
+    </br>
+    <div class="right">
+	    <%= f.submit "Reportar", :class => "btn success" %><br />
+	 </div>
+    </div>
+    </div>
+    </div>
+    </div>
+<% end %>
+   </div>
+</div>

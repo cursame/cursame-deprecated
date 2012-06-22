@@ -1,0 +1,103 @@
+
+<div class="container">
+ <div class="span10">
+<% if current_user.role == 'teacher' %> 
+<h3>¿Cómo crear un Curso?</h3>
+	
+<p>Un curso es él instrumento a través del cual podrás interactuar con todos los miembros de TÚ comunidad. En ellos, encontrarás las herramientas necesarias para comunicarte de manera fácil y eficiente con los miembros de tú escuela ó empresa.  En Cúrsame, podrás crear los cursos que sean necesarios para poder llevar a cabo los objetivos que te has planteado para el aprendizaje y capacitación en línea.
+Pasos para crear un curso:<p>
+<div></br>
+<div class="span9 right">
+<p>1.- En el menú de INICIO, encontrarás un botón de “crear curso”, darle click.</p>
+<center><%= image_tag("help/curso/teacher/nuevo.png")%></center></br>
+<p>2.- Encontrarás un menú en el cual podrás personalizar el curso de las siguientes maneras: </p></br>
+ <center><%= image_tag("help/curso/teacher/crear_curso.png")%></center></br>
+<div class="span8 right">
+<p>-NOMBRE:  Darle un nombre en específico al Curso que se creará (esto acorde a él propósito o material del curso, por ejemplo: Matemáticas 1, Sala de Maestros, Capacitación 1, etc).</p>
+<center><%= image_tag("help/curso/teacher/nombre_curso.png")%></center></br>
+<p>- LOGO: Identificar el Curso por medio de una imagen que tú predeterminarás, la cual puede ir completamente ligada al contenido del curso.</p>
+<center><%= image_tag("help/curso/teacher/avatar_default_curso.png")%></center></br>
+<center><%= image_tag("help/curso/teacher/cargar_logo_curso.png")%></center></br>
+<p>- DESCRIPCION: Podrás hacer una descripción, en la cual podrás explicar cual es el motivo de la creación del curso. Por ejemplo: El Curso Matemáticas 1, tiene como objetivo……etc.</p>
+<center><%= image_tag("help/curso/teacher/descripccion.png")%></center></br>
+<p>- Fecha de inicio / Fecha de término: En Cúrsame podrás controlar los momentos en que deseas arranque y finalice tu curso creado, es decir, si deseas que dure 2, 4 ó 6 meses, lo puedes hacer.</p>
+<center><%= image_tag("help/curso/teacher/fecha_inicio.png")%></center></br>
+<center><%= image_tag("help/curso/teacher/fecha_termino.png")%></center></br>
+<p>- HORARIO: Si lo deseas, identificarás de manera más directa a tu curso con un horario que tú puedes predeterminar.</p>
+<center><%= image_tag("help/curso/teacher/horario.png")%></center></br>
+<p>- CURSO PÚBLICO: Al ser el administrador del curso, debido a que tú lo creaste, puedes decidir, si toda tú comunidad puede entrar a ver el contenido, e interactuar en base a él, ó tienes la alternativa de hacer tu curso PRIVADO, y ser tú quien de el permiso de acceder a tú espacio.</p>
+<center><%= image_tag("help/curso/teacher/publico.png")%></center></br>
+<p>- AÑADIR ARCHIVO: Puedes subir desde el principio los archivos correspondientes a un curso al crearlo, como material general del curso.</p>
+<center><%= image_tag("help/curso/teacher/anadir_archivo.png")%></center></br>
+<p>- BOTON CREAR: Al dar click en este botón la información que usted ha puesto quedará guardada y se publicara el curso, sea muy cuidadoso de no dejar ningún espacio en blanco, todos los datos que se le pidieron son necesarios para que se cree el curso.</p>
+<center><%= image_tag("help/curso/teacher/crear.png")%></center></br>
+
+
+</div>
+</div>
+<%end%>
+<% if current_user.role == 'student' %> 
+<h3>¿Cómo ingresar a un Curso?</h3>
+
+<p>Un curso es él instrumento a través del cual podrás interactuar con todos los miembros de TÚ comunidad. En ellos, encontrarás las herramientas necesarias para comunicarte de manera fácil y eficiente con los miembros de tú escuela ó empresa.<p>
+
+<p>Para accesar a un curso es necesario dar un clic en el boton ver todos los cursos que se encuentra menú principal o dashboard.</p></br>
+
+<center><%= image_tag("help/curso/student/todos_cursos.png")%></center></br>
+
+<p>Al dar click serás redirigido a una pantalla que muestra todos los cursos existentes en la red debes seleccionar la opción de unirte, si el curso es público te unirás de forma instantánea, si es privado enviarás una solicitud al administrador del curso para que seas aprobado dentro de él</p>
+<center><%= image_tag("help/curso/student/cursos.png")%></center></br>
+<center><%= image_tag("help/curso/student/solicitar.png")%></center></br>
+<center><%= image_tag("help/curso/student/solicitu_enviada.png")%></center></br>
+<center><%= image_tag("help/curso/student/cursando.png")%></center></br>
+<%end%>
+
+<% if current_user.role == 'supervisor' %> 
+<h3>¿Cómo crear un Curso?</h3>
+	
+<p>Un curso es él instrumento a través del cual podrás interactuar con todos los miembros de TÚ comunidad. En ellos, encontrarás las herramientas necesarias para comunicarte de manera fácil y eficiente con los miembros de tú escuela ó empresa.  En Cúrsame, podrás crear los cursos que sean necesarios para poder llevar a cabo los objetivos que te has planteado para el aprendizaje y capacitación en línea.
+Pasos para crear un curso:<p>
+<div></br>
+<div class="span9 right">
+<p>1.- En el menú de INICIO, encontrarás un botón de “crear curso”, darle click.</p>
+<center><%= image_tag("help/curso/teacher/nuevo.png")%></center></br>
+<p>2.- Encontrarás un menú en el cual podrás personalizar el curso de las siguientes maneras: </p></br>
+ <center><%= image_tag("help/curso/teacher/crear_curso.png")%></center></br>
+<div class="span8 right">
+<p>-NOMBRE:  Darle un nombre en específico al Curso que se creará (esto acorde a él propósito o material del curso, por ejemplo: Matemáticas 1, Sala de Maestros, Capacitación 1, etc).</p>
+<center><%= image_tag("help/curso/teacher/nombre_curso.png")%></center></br>
+<p>- LOGO: Identificar el Curso por medio de una imagen que tú predeterminarás, la cual puede ir completamente ligada al contenido del curso.</p>
+<center><%= image_tag("help/curso/teacher/avatar_default_curso.png")%></center></br>
+<center><%= image_tag("help/curso/teacher/cargar_logo_curso.png")%></center></br>
+<p>- DESCRIPCION: Podrás hacer una descripción, en la cual podrás explicar cual es el motivo de la creación del curso. Por ejemplo: El Curso Matemáticas 1, tiene como objetivo……etc.</p>
+<center><%= image_tag("help/curso/teacher/descripccion.png")%></center></br>
+<p>- Fecha de inicio / Fecha de término: En Cúrsame podrás controlar los momentos en que deseas arranque y finalice tu curso creado, es decir, si deseas que dure 2, 4 ó 6 meses, lo puedes hacer.</p>
+<center><%= image_tag("help/curso/teacher/fecha_inicio.png")%></center></br>
+<center><%= image_tag("help/curso/teacher/fecha_termino.png")%></center></br>
+<p>- HORARIO: Si lo deseas, identificarás de manera más directa a tu curso con un horario que tú puedes predeterminar.</p>
+<center><%= image_tag("help/curso/teacher/horario.png")%></center></br>
+<p>- CURSO PÚBLICO: Al ser el administrador del curso, debido a que tú lo creaste, puedes decidir, si toda tú comunidad puede entrar a ver el contenido, e interactuar en base a él, ó tienes la alternativa de hacer tu curso PRIVADO, y ser tú quien de el permiso de acceder a tú espacio.</p>
+<center><%= image_tag("help/curso/teacher/publico.png")%></center></br>
+<p>- AÑADIR ARCHIVO: Puedes subir desde el principio los archivos correspondientes a un curso al crearlo, como material general del curso.</p>
+<center><%= image_tag("help/curso/teacher/anadir_archivo.png")%></center></br>
+<p>- BOTON CREAR: Al dar click en este botón la información que usted ha puesto quedará guardada y se publicara el curso, sea muy cuidadoso de no dejar ningún espacio en blanco, todos los datos que se le pidieron son necesarios para que se cree el curso.</p>
+<center><%= image_tag("help/curso/teacher/crear.png")%></center></br>
+</div>
+</div>
+<h3>¿Cómo ingresar a un Curso?</h3>
+
+<p>Un curso es él instrumento a través del cual podrás interactuar con todos los miembros de TÚ comunidad. En ellos, encontrarás las herramientas necesarias para comunicarte de manera fácil y eficiente con los miembros de tú escuela ó empresa.<p>
+
+<p>Para accesar a un curso es necesario dar un clic en el boton ver todos los cursos que se encuentra menú principal o dashboard.</p></br>
+
+<center><%= image_tag("help/curso/student/todos_cursos.png")%></center></br>
+
+<p>Al dar click serás redirigido a una pantalla que muestra todos los cursos existentes en la red debes seleccionar la opción de unirte, si el curso es público te unirás de forma instantánea, si es privado enviarás una solicitud al administrador del curso para que seas aprobado dentro de él</p>
+<center><%= image_tag("help/curso/student/cursos.png")%></center></br>
+<center><%= image_tag("help/curso/student/solicitar.png")%></center></br>
+<center><%= image_tag("help/curso/student/solicitu_enviada.png")%></center></br>
+<center><%= image_tag("help/curso/student/cursando.png")%></center></br>
+<%end%>
+
+ </div>
+</div>

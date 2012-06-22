@@ -1,0 +1,42 @@
+<% if current_user.role == 'admin' %> 
+<%= form_for(@blog = Blog.new) do |f|%>
+  <% if @blog.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>
+
+      <ul>
+      <% @blog.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="kilog">
+  <div class="field">
+    <%= f.label :post, :class => "kilog" %>*<br />
+    <%= f.text_field :post %>
+  </div>
+  <div class="field">
+    <%= f.label :content, :class => "kilog" %>*<br />
+    <%= f.text_area :content,:rows => 10, :cols => 70,:input_html => {'data-editor' => true,   :class => "span6 textarea-size"} %>
+  </div>
+  <div class="field">
+    <%= f.label :date, :class => "kilog" %>*<br />
+    <%= f.date_select :date %>
+  </div>
+  </div>
+     <%= f.hidden_field :user_id, :value => current_user.id %>
+  </br>
+  </br>
+  <div class="actions-l-l">
+    <%= f.submit "Post", :class => "btn right" %>
+  </div>
+<%end%>
+
+<%else%>
+ <script type="text/javascript">
+<!--
+window.location = "http://www.cursa.me"
+//-->
+</script>
+<%end%>

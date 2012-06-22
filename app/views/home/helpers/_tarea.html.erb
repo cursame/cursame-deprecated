@@ -1,0 +1,116 @@
+<div class="container">
+ <div class="span10">
+<% if current_user.role == 'teacher' %> 
+<h3>Introducción</h3>
+  <p>Las tareas son una de las partes esenciales de la interacción en cúrsame te permitirán como profesor efectivizar y maximizar el rendimiento de tus alumnos fuera del aula.<p>
+	
+  <p>Crear una tarea es un proceso sencillo, que te permitirá ahorrar tiempo de replica con tus alumnos y a ellos les recordará inmediatamente al igual que a ti la existencia de la tarea en el calendario.<p>
+
+<h3>¿Cómo crear una tarea?</h3>
+
+  <p>1.- Dirígete al menú tareas dentro de tu curso.</p>
+  <center><%= image_tag("help/tareas/teacher/menu.png")%></center></br>
+  <p>2.- Al dar click te redireccionara a una pantalla que te mostrara todas las tareas existentes, como no tienes tareas dale click en crear tarea.</p>
+	 <center><%= image_tag("help/tareas/teacher/panel.png")%></center></br>
+	</p>3.- Te pedirá los datos necesarios para crear una tarea dentro del sistema <i>"llena todos los datos"</i>.</p>
+  <center><%= image_tag("help/tareas/teacher/nueva_tarea.png")%></center></br>
+    <p><i>La fecha inicial y la final son de gran importancia ya que decides dentro de ellas cuando se publica la tarea y cuando caduca y el alumno ya no puede entregarla</i><p>
+	<p>4.-Puedes subir un archivo a la tarea. </p>
+   <center><%= image_tag("help/tareas/teacher/subir_archivo.png")%></center></br>
+    <p><b>5.- Para finalizar solo necesitas dar click en el botón crear y tu tarea esta creada debajo del subir archivo de la imagen anterior </b></p>
+    <p> <i> <b>Nota:</b> Puedes agregar un video o imagen externo simplemente pegando el link dentro de la caja de texto de la descripción, este se vera dentro de tu tarea </i></p>
+
+<h3>¿Calificar una tarea?</h3>
+ <p>Calificar una tarea es sencillo solo dirígete al menú tareas dentro de tu curso y da click en la tarea que deseas evaluar, tendrás diferentes tipos de tareas, la abiertas, las cerradas y las no publicadas, las abiertas aún están en tiempo para que el alumno las entregue, las cerradas han terminado y el alumno no podrá visualizarlas y las no publicadas son las tareas que ya creaste pero aún no están en tiempo para que el alumno las conteste.</p>
+
+ <p> Para crear una tarea debes seguir los pasos siguientes:<p>
+	
+ <p>1.- Al ingresar al menú tareas da click sobre la tarea la cual deseas calificar.</p>
+    <center><%= image_tag("help/tareas/teacher/tareas.png")%></center></br>
+  <p>2.- Cuando des click te mandará a la tarea seleccionada.</p>
+    <center><%= image_tag("help/tareas/teacher/perfil_tarea.png")%></center></br>
+  <p>3.- Ahí debes dar click sobre la pestaña que dice entregas.</p>
+   <center><%= image_tag("help/tareas/teacher/entregas_tarea.png")%></center></br>
+  <p>4.- Selecciona la tarea que deseas evaluar dando click en mostrar entrega, esto te mostrará lo que el alumno envío.</p>
+  <center><%= image_tag("help/tareas/teacher/colocar_calificacion_entrega.png")%></center></br>
+  
+   <p>5.- Da click en Calificar Tarea / Editar y te mostrará una ventana en la cual debes poner la calificación y los comentarios pertinentes a la evaluación, esta calificación tiene como limite el valor que tú especificaste en la tarea.</p>
+   
+  <center><%= image_tag("help/tareas/teacher/boton_calificar.png")%></center></br>
+  <center><%= image_tag("help/tareas/teacher/calificar_tarea.png")%></center></br>
+
+   <p>6.- Esta calificación se ve reflejada en entregas y en el menú calificaciones; en entregas se verá a manera de puntaje y en calificaciones a manera de porcentaje.</p>
+  <center><%= image_tag("help/tareas/teacher/mostrar_entrega.png")%></center></br>  
+<%end%>
+<% if current_user.role == 'student' %>
+<h3>¿Como entregar una tarea?</h3>
+<p> La entrega de tareas es un proceso muy sencillo en el cual tendrás que seguir una serie de pasos muy cortos.</p>
+<p>1.- Ir al menú de tareas dentro del grupo y seleccionar la tarea abierta que deseo entregar.</p>
+<center><%= image_tag("help/tareas/student/tareas.png")%></center></br>  
+
+<p>2.- Cuando veas la tarea da click en el botón entregar tarea.</p>
+<center><%= image_tag("help/tareas/student/ver_tarea.png")%></center></br>  
+
+<p>3.- Te enviará a una pantalla que te permitirá subir tus archivos a entregar y comentar acerca de ellos, al dar click en entregar tu tarea será enviada a tu profesor </p>
+<center><%= image_tag("help/tareas/student/entrega.png")%></center></br>  
+
+<p><b>Este mismo proceso se usa para editar una tarea</b></p>
+<%end%>
+
+<% if current_user.role == 'supervisor' %> 
+<h3>Introducción</h3>
+  <p>Las tareas son una de las partes esenciales de la interacción en cúrsame te permitirán como profesor efectivizar y maximizar el rendimiento de tus alumnos fuera del aula.<p>
+	
+  <p>Crear una tarea es un proceso sencillo, que te permitirá ahorrar tiempo de replica con tus alumnos y a ellos les recordará inmediatamente al igual que a ti la existencia de la tarea en el calendario.<p>
+
+<h3>¿Cómo crear una tarea?</h3>
+
+  <p>1.- Dirígete al menú tareas dentro de tu curso.</p>
+  <center><%= image_tag("help/tareas/teacher/menu.png")%></center></br>
+  <p>2.- Al dar click te redireccionara a una pantalla que te mostrara todas las tareas existentes, como no tienes tareas dale click en crear tarea.</p>
+	 <center><%= image_tag("help/tareas/teacher/panel.png")%></center></br>
+	</p>3.- Te pedirá los datos necesarios para crear una tarea dentro del sistema <i>"llena todos los datos"</i>.</p>
+  <center><%= image_tag("help/tareas/teacher/nueva_tarea.png")%></center></br>
+    <p><i>La fecha inicial y la final son de gran importancia ya que decides dentro de ellas cuando se publica la tarea y cuando caduca y el alumno ya no puede entregarla</i><p>
+	<p>4.-Puedes subir un archivo a la tarea. </p>
+   <center><%= image_tag("help/tareas/teacher/subir_archivo.png")%></center></br>
+    <p><b>5.- Para finalizar solo necesitas dar click en el botón crear y tu tarea esta creada debajo del subir archivo de la imagen anterior </b></p>
+    <p> <i> <b>Nota:</b> Puedes agregar un video o imagen externo simplemente pegando el link dentro de la caja de texto de la descripción, este se vera dentro de tu tarea </i></p>
+
+<h3>¿Calificar una tarea?</h3>
+ <p>Calificar una tarea es sencillo solo dirígete al menú tareas dentro de tu curso y da click en la tarea que deseas evaluar, tendrás diferentes tipos de tareas, la abiertas, las cerradas y las no publicadas, las abiertas aún están en tiempo para que el alumno las entregue, las cerradas han terminado y el alumno no podrá visualizarlas y las no publicadas son las tareas que ya creaste pero aún no están en tiempo para que el alumno las conteste.</p>
+
+ <p> Para crear una tarea debes seguir los pasos siguientes:<p>
+	
+ <p>1.- Al ingresar al menú tareas da click sobre la tarea la cual deseas calificar.</p>
+    <center><%= image_tag("help/tareas/teacher/tareas.png")%></center></br>
+  <p>2.- Cuando des click te mandará a la tarea seleccionada.</p>
+    <center><%= image_tag("help/tareas/teacher/perfil_tarea.png")%></center></br>
+  <p>3.- Ahí debes dar click sobre la pestaña que dice entregas.</p>
+   <center><%= image_tag("help/tareas/teacher/entregas_tarea.png")%></center></br>
+  <p>4.- Selecciona la tarea que deseas evaluar dando click en mostrar entrega, esto te mostrará lo que el alumno envío.</p>
+  <center><%= image_tag("help/tareas/teacher/colocar_calificacion_entrega.png")%></center></br>
+  
+   <p>5.- Da click en Calificar Tarea / Editar y te mostrará una ventana en la cual debes poner la calificación y los comentarios pertinentes a la evaluación, esta calificación tiene como limite el valor que tú especificaste en la tarea.</p>
+   
+  <center><%= image_tag("help/tareas/teacher/boton_calificar.png")%></center></br>
+  <center><%= image_tag("help/tareas/teacher/calificar_tarea.png")%></center></br>
+
+   <p>6.- Esta calificación se ve reflejada en entregas y en el menú calificaciones; en entregas se verá a manera de puntaje y en calificaciones a manera de porcentaje.</p>
+  <center><%= image_tag("help/tareas/teacher/mostrar_entrega.png")%></center></br>  
+
+<h3>¿Como entregar una tarea?</h3>
+<p> La entrega de tareas es un proceso muy sencillo en el cual tendrás que seguir una serie de pasos muy cortos.</p>
+<p>1.- Ir al menú de tareas dentro del grupo y seleccionar la tarea abierta que deseo entregar.</p>
+<center><%= image_tag("help/tareas/student/tareas.png")%></center></br>  
+
+<p>2.- Cuando veas la tarea da click en el botón entregar tarea.</p>
+<center><%= image_tag("help/tareas/student/ver_tarea.png")%></center></br>  
+
+<p>3.- Te enviará a una pantalla que te permitirá subir tus archivos a entregar y comentar acerca de ellos, al dar click en entregar tu tarea será enviada a tu profesor </p>
+<center><%= image_tag("help/tareas/student/entrega.png")%></center></br>  
+
+<p><b>Este mismo proceso se usa para editar una tarea</b></p>
+<%end%>
+</div>
+</div>

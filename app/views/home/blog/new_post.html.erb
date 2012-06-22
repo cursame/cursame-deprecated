@@ -1,0 +1,11 @@
+<% if current_user.role == 'admin' %> 
+<div class="container">
+	<div class="span10">
+    <h1>Crea un nuevo post para el blog </h1>
+<div class="c-blog">
+<%= link_to "Regresar al blog", blog_path %>
+<%end%>
+<%= render :partial => "home/blog/create_new_post"%>
+</div>
+  </div>
+</div>
