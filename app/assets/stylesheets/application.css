@@ -144,3 +144,8 @@
   overflow: visible;
 }
 
+.intro-image {
+	width : 510px;
+	border : solid 0px;
+	height : 300px;
+}

@@ -1,5 +1,9 @@
 Cursame::Application.routes.draw do
   
+  resources :comment_posts
+
+  resources :blogs
+
   resources :like_not_likes
 
   resources :calendar_activities
@@ -95,6 +99,17 @@ Cursame::Application.routes.draw do
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
+   match '/ayuda', :to => 'home#help', :as => :help
+   match '/ayuda/tareas', :to => 'home#helpers/tareas', :as => :help_tareas
+   match '/ayuda/cursos', :to => 'home#helpers/curso', :as => :help_cursos
+   match '/ayuda/cuestionarios', :to => 'home#helpers/cuestionarios', :as => :help_cuestionarios
+   match '/ayuda/discusion', :to => 'home#helpers/discusion', :as => :help_discusiones
+   match '/ayuda/calendario', :to => 'home#helpers/calendario', :as => :help_calendario
+   match '/ayuda/notificaciones', :to => 'home#helpers/notificaciones', :as => :help_notificaciones
+   match '/ayuda/calificaciones', :to => 'home#helpers/calificaciones', :as => :help_calificaciones
+  match  '/blog', :to => 'home#blog/blog', :as => :blog
+   match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
+  match  '/nosotros', :to => 'home#nosotros', :as => :nosotros
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset

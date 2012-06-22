@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120613213638) do
+ActiveRecord::Schema.define(:version => 20120620211913) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
@@ -46,6 +46,17 @@ ActiveRecord::Schema.define(:version => 20120613213638) do
     t.string   "state"
   end
 
+  create_table "blogs", :force => true do |t|
+    t.string   "post"
+    t.text     "content"
+    t.string   "menu_category"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user"
+    t.integer  "user_id"
+  end
+
   create_table "calendar_activities", :force => true do |t|
     t.string   "name"
     t.text     "description"
@@ -74,6 +85,18 @@ ActiveRecord::Schema.define(:version => 20120613213638) do
     t.string   "course"
     t.string   "user_name"
     t.integer  "course_id"
+  end
+
+  create_table "comment_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.integer  "blog_id"
+    t.string   "user"
   end
 
   create_table "comments", :force => true do |t|
@@ -231,16 +254,19 @@ ActiveRecord::Schema.define(:version => 20120613213638) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.string   "email",                  :default => "",       :null => false
-    t.string   "encrypted_password",     :default => "",       :null => false
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                         :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "first_name"
@@ -253,8 +279,8 @@ ActiveRecord::Schema.define(:version => 20120613213638) do
     t.string   "facebook_link"
     t.string   "linkedin_link"
     t.string   "avatar_file"
-    t.string   "state",                  :default => "active"
-    t.boolean  "accepting_emails",       :default => false
+    t.string   "state",                                 :default => "active"
+    t.boolean  "accepting_emails",                      :default => false
     t.string   "authentication_token"
     t.integer  "chat_id"
     t.string   "calendar_activity"

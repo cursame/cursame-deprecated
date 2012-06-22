@@ -549,3 +549,4 @@ function renderCommentsGraph(renderTo, value) {
 		}]
     });
 }
+

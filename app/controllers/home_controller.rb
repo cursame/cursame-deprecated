@@ -41,7 +41,11 @@ class HomeController < ApplicationController
   
   def terms
   end
-
+  def blog
+    @blogs = Blog.all
+  end
+  def help
+  end
   def members
     @users = current_network.users.search(params[:search])
   end

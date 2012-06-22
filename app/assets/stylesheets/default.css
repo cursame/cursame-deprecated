@@ -1362,3 +1362,48 @@ display: block;
        color: #fff !important;
 	   background-color: #09B559;
 }
+.c-blog{
+	 width: 600px;
+	 height: 600px;
+}
+.actions-l-l{
+	 background-color: #fff;
+     width: 600px;
+	 height: 30px;	
+}
+.kilog {
+	color: #09B559;
+}
+#content-blog {
+	margin: 15 5 5 5;
+	
+
+	background-image: linear-gradient(bottom, #F2F2F2 22%, #FFFFFF 61%, #EBEBEB 81%);
+	background-image: -o-linear-gradient(bottom, #F2F2F2 22%, #FFFFFF 61%, #EBEBEB 81%);
+	background-image: -moz-linear-gradient(bottom, #F2F2F2 22%, #FFFFFF 61%, #EBEBEB 81%);
+	background-image: -webkit-linear-gradient(bottom, #F2F2F2 22%, #FFFFFF 61%, #EBEBEB 81%);
+	background-image: -ms-linear-gradient(bottom, #F2F2F2 22%, #FFFFFF 61%, #EBEBEB 81%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.22, #F2F2F2),
+		color-stop(0.61, #FFFFFF),
+		color-stop(0.81, #EBEBEB)
+	);
+
+
+}
+#dater-tree {
+	color:#32910C;
+	
+}
+#salt-t {
+	background: #fff;
+	height: 30px;
+}
+#border-spander {
+	overflow:scroll;
+	
+}
