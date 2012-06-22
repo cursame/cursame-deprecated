@@ -1,0 +1,5 @@
+/**
+ * @class Command.module.Abstract
+ * @author Jacky Nguyen <jacky@sencha.com>
+ */
+Ext.define("Command.module.Abstract",{actions:{},constructor:function(a){this.cli=a},getModule:function(a){return this.cli.getModule(a)},getTemplate:function(a){return this.cli.getTemplate(a)},hasAction:function(a){return this.actions.hasOwnProperty(a)},getActionRules:function(a){return this.actions[a]},getVendorPath:function(a){return require("path").resolve(this.cli.getCurrentPath(),"vendor/"+a)},escapeShell:function(a){return a?'"'+a+'"':""},exec:function(a,b,c){var d=require("util");typeof b=="function"&&(c=b,b=[]),b=b.map(function(a){return this.escapeShell(a)},this),b.unshift(a),a=d.format.apply(d,b),c=c.bind(this),require("child_process").exec(a,c)}},function(){["log","info","warn","error"].forEach(function(a){this.addMember(a,function(){var b=Ext.Array.from(arguments);return b.push(a),this.cli.doLog.apply(this.cli,b)})},this)});
