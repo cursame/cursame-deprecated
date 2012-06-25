@@ -27,7 +27,7 @@ Ext.define('Cursame.view.comments.CommentTpl', {
 					'<div class="minibar">',
 						'<div class="action"> '+ lang.comment+'</div>',
 						'<div class="info">',									
-                        	'<img src="./resources/images/icons/comment.png"/>{numcommnets}',
+                        	'<img src="./assets/Cursame/resources/images/icons/comment.png"/>{numcommnets}',
 						'</div>',                                 
                     '</div>'].join('');
 		if(minibar){//si el template  debe de mostrar con minibar
