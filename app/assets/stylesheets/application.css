@@ -149,3 +149,15 @@
 	border : solid 0px;
 	height : 300px;
 }
+
+.members-grid{
+  padding-left: 12px;
+}
+
+.like-element{       
+       color: #fff !important;
+	   background-color: #00AFC9;
+		margin: 0 10px 0 0;
+   }
+
+.recommend{ cursor: pointer;}
