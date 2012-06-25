@@ -14,13 +14,20 @@ class Api::TokensController < ApplicationController
       render :status => 200, :json => {:response => {:message => "The request must contain the user email and password.",:success => false}}, :callback => params[:callback]
       return
     end
-    @user = User.find_by_email(email.downcase)
+    @user = User.find_by_email(email.downcase)  
     
     if @user.nil?
       logger.info("User #{email} failed signin, user cannot be found.")
       render :status => 200, :json => {:response => {:message => "Invalid email or password.",:success => false}}, :callback => params[:callback]
       return
     end
+    
+    if current_network && @user && @user.networks.where(:id => current_network.id).count == 0
+      logger.info("User #{email} failed signin, wrong network.")
+      render :status => 200, :json => {:response => {:message => "Invalid network, choose the network you belong to.",:success => false}}, :callback => params[:callback]
+      return
+    end
+    
     # http://rdoc.info/github/plataformatec/devise/master/Devise/Models/TokenAuthenticatable
     @user.ensure_authentication_token!
     
