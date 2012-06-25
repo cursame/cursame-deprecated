@@ -11,6 +11,9 @@ Cursame::Application.routes.draw do
   resources :calendar_activities
   resources :chats
   resources :calificationems
+  devise_for :users do
+    get "/users/sign_out" => "devise/sessions#destroy", :as => :destroy_user_session
+  end
   devise_for :users, :skip => [:registrations]
   with_options :controllers => {:registrations => 'registrations'}, :skip => [:sessions, :passwords, :confirmations, :confirmations] do |opts|  
     opts.devise_for :users, :path => 'maestros', :as => :teacher, :conditions => {:role => :teacher}
