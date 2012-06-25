@@ -29,6 +29,7 @@
 <script type="text/javascript">
 !function( $ ){
   $.fn.dropdown = function ( selector ) {
+	alert(12312);
     return this.each(function () {
       $(this).delegate(selector || d, 'click', function (e) {
         var li = $(this).parent('li')
@@ -52,8 +53,6 @@
   })
 
 }( window.jQuery || window.ender );
-
-alert(5676);
 
  $(".dropdown-toggle").click(function() {
   alert("Handler for .click() called.");
