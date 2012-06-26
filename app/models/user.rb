@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
   has_many :blogs
   has_many :comment_posts
   has_many :send_reports
+  has_many :bug_answers
   # TODO: refactor commentable models to homogenize access to comments (below)
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
   has_many :deliveries

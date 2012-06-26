@@ -43,4 +43,5 @@ class SendReportsController < ApplicationController
       format.json { head :ok }
     end
   end
+  
 end
