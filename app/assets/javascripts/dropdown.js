@@ -1,5 +1,5 @@
-!function( $ ){
 
+!function( $ ){
   $.fn.dropdown = function ( selector ) {
     return this.each(function () {
       $(this).delegate(selector || d, 'click', function (e) {
@@ -24,3 +24,5 @@
   })
 
 }( window.jQuery || window.ender );
+
+

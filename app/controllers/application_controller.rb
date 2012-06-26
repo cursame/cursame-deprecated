@@ -88,7 +88,8 @@ class ApplicationController < ActionController::Base
   @chat=current_user.chat  
   end
   def mobile?
-    request.user_agent =~ /Mobile|webOS/
+   # request.user_agent =~ /Mobile|webOS/ 
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
   end
   helper_method :mobile?
 end
