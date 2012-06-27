@@ -186,6 +186,7 @@ es:
     private: 'Curso Privado'
     my_courses: 'Mis Cursos'
     create_course: 'Crear Curso'
+    clone_course: 'Clonar Curso'
     edit_course: 'Editar Curso'
     information: 'Información de Curso'
     by: 'por'

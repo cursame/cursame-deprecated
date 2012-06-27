@@ -16,7 +16,8 @@
         
       </div>
       <div class="span10">
-        <h1>Crear Curso Nuevo</h1>
+        <h1>Crear Curso Nuevo <div class="btn small right  info "  data-toggle="modal" href="#cloneCourseModal"><%= "++ " + t('courses.clone_course')%></div>
+		</h1>
         <%= render :partial => 'form' %>
       </div>
       <div class="span3" style="margin:0;">
@@ -25,4 +26,26 @@
     </div>
   </div>
   <%= render :partial => "shared/footer" %>
+</div>
+
+<div class="modal hide" id="cloneCourseModal" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3><%=t('courses.clone_course')%></h3>
+   </p>   
+ </div>
+ <div class="modal-body" style="overflow: auto; height: 400px;">
+ 	<% @courses.each do |course| %>
+		<%if course.owner == current_user%>
+			<h4 class="well">				
+				<%= form_for curso = Course.new do |f| %>	
+					<%= course.name %>
+					<input type="hidden" name="clone" value="true" />
+					<input type="hidden" name="id"  value="<%=course.id%>" />										
+					<%= f.submit t('courses.clone_course'), :class => "btn small right info" %>				
+				<% end %>
+			</h4>
+		<%end%>
+	<%end%>
+ </div>
 </div>
