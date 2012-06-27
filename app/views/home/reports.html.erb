@@ -1,6 +1,6 @@
 <div class="container">
 <center>
-	<h1><%=image_tag("reports_admin/browser.png")%><%= link_to "BUG KILLER DE CÚRSAME", soporte_path%>  <%=image_tag("reports_admin/service.png")%></h1>
+	<h1><%= link_to "REPORTE DE ANOMALÍA", soporte_path%></h1>
 </center>
 <div class="span16">
 <%= render :partial => "shared/soporte"%>
@@ -20,11 +20,13 @@
     </div>
 </div>
 </br>
+
+<div class="container">
 <%= render :partial => "send_reports/user_reports"%>
-
-
 </div>
 </div>
+</div>
+
 <script>
 	function mostrarContacto(){
 		

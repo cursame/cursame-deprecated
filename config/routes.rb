@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :bug_answers
+
   resources :send_reports
 
   resources :comment_posts
