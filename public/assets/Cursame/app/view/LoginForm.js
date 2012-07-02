@@ -18,6 +18,9 @@ Ext.define('Cursame.view.LoginForm', {
     config: {
 		ui:'login',
         padding:'15 15 15 15',
+		style:{
+			backGroundColor:'#FFF'
+		},
 		items:[{
 			xtype:'container',
 			height:70,

@@ -11,14 +11,35 @@ class CoursesController < ApplicationController
 
   def new
     @course = Course.new
+    @courses = current_user.courses
   end
 
-  def create
-    @course = current_network.courses.build params[:course]
+  def create    
+    if params[:clone]
+      old_course = current_user.manageable_courses.find(params[:id])
+      @course = old_course.dup
+      @course.assignments = old_course.assignments
+      @course.surveys = old_course.surveys
+      @course.enrollments = []
+      @course.pending_students = []
+      @course.students = []
+      @course.pending_teachers = [] 
+      @course.users = []
+      @course.discussions = []
+      @course.comments = []
+      @course.chats = []
+    else
+      @course = current_network.courses.build params[:course]      
+    end
+    
     @course.enrollments.build(:user => current_user, :admin => true, :role => 'teacher', :state => 'accepted')
-
+    
     if @course.save
-      redirect_to @course, :notice => t('flash.course_created')
+      if params[:clone]
+        redirect_to edit_course_path(@course)
+      else
+        redirect_to @course, :notice => t('flash.course_created')
+      end
     else
       render :new
     end
