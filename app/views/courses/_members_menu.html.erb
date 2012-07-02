@@ -9,10 +9,18 @@
     </li>
 
   </ul>
-  <div class="total-members"><%= t('courses.members.count', :count => @course.users.count) %></div>
-  <ul class="nav-member-avatars">
-    <% @course.users.each do |user| %>
+  <% i = 0%>
+  <% @course.users.each do |user| %> 
+   <% i+=1 if user.view_status == "fantom"%>
+  <% end %>
+  <%@l=@course.users.count-i %>
+  <div class="total-members"><%= t('courses.members.count', :count => @l) + " activo "%></div>
+  <ul class="nav-member-avatars">	
+    <% @course.users.each do |user| %> 
+    <% if user.view_status == "fantom" %>   
+    <%else%>
       <li><%= link_to(image_tag(user.avatar_file.xsmall.url), user_path(user), :rel => "tip", :title => user.name) %></li>
+      <%end%>
     <% end %>
   </ul>
 </div>

@@ -1,13 +1,17 @@
 <% teachers.each do |teacher| %>
+  <%if teacher.view_status == 'fantom'%>
+  <%else%>
   <div class="user padding-all <%= cycle('odd', 'even') %>">
     <div class="teacher">
       <div class="row">
         <div class="span1" style="margin-left:20px;">
+	       <% @teacher_id = teacher.id%>
           <%= image_tag teacher.avatar_file.xsmall.url %>
         </div>
         <div class="span5">
           <%= link_to(teacher.name, user_path(teacher)) %><br />
           <%= mail_to teacher.email %>
+           <%= teacher.view_status%>
         </div>
         <div class="span3-5">
           <div class="teacher_aproval">
@@ -21,15 +25,25 @@
               <% end %>
             <% else %>
               <div class="edit_role">
-                <%= link_to t('.change_role'), 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
-                <%= link_to t('.destroy'), '#', :class=>"reject btn small danger" %>
+                <%= link_to "Opciones de edición de usuario ", 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
+               
               </div>
               <div id="edit_role_form" style="display:none;">
                 <%= form_for teacher do |f|%>
                   <%= f.select :role, options_for_select([[t('.teacher'), "teacher"], [t('.student'), "student"], [t('.supervisor'), "supervisor"]])%>
                   <%= f.submit t('.update'), :class => "accept btn success small"%>
                 <%end%>
-              </div>
+
+                   <h3>Cambiar el status de usuario</h3>
+                  <%= form_for @status do |view_status|%>
+                  <%= view_status.select :view_status, options_for_select([[t('.suspender'), "fantom"], [t('.activar'), "live"]])%>
+                   <%= view_status.hidden_field :user_id, :value =>  @teacher_id %>
+                   <%= view_status.hidden_field :date_status, :value => Time.now %>
+                  <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
+                   <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>
+                <%end%>
+               </div>
+              <% end %>
             <% end %>
           </div>
         </div>

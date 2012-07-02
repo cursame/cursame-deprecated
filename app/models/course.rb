@@ -18,7 +18,7 @@ class Course < ActiveRecord::Base
   has_many :discussions, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :chats
-  
+
   can_haz_assets
 
   validates_presence_of :name, :description, :start_date, :finish_date, :network

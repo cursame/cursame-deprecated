@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :statuses
+
   resources :bug_answers
 
   resources :send_reports
@@ -119,11 +121,12 @@ Cursame::Application.routes.draw do
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
   match  '/nosotros', :to => 'home#nosotros', :as => :nosotros
   match  '/soporte', :to => 'home#reports', :as => :soporte
+  match  'supervisor/suspended/users', :to => 'supervisor#suspended', :as => :user_suspended
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
-
+  
   root :to => "home#index"
   
   #this is for api for the mobile app

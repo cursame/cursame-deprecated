@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       render 'supervisor/new_user'
     end
   end
-
+  
   def update
     find_user and check_edit_permissions!
     if @user.update_attributes(params[:user])

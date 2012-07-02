@@ -39,9 +39,9 @@ class User < ActiveRecord::Base
   has_many :deliveries
   has_many :notifications
   has_many :survey_replies
-  
+  has_many :statuses 
  
-  
+ 
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
   validates_inclusion_of :state, :in => %w(active inactive)
@@ -61,7 +61,15 @@ class User < ActiveRecord::Base
   def active?
     state == 'active'
   end
-
+  
+  def fantom?
+    view_status == 'fantom'
+  end
+  
+  def live?
+    view_status == 'live'
+  end
+  
   def teacher?
     role == 'teacher'
   end
@@ -168,5 +176,5 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+  
 end

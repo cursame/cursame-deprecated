@@ -4,7 +4,10 @@
   <ul class="nav-member-avatars">
     <% if @users %>
       <% @users.each do |user| %>
+        <% if user.view_status == "fantom"%>
+        <%else%>
         <li><%= link_to(image_tag(user.avatar_file.xxsmall.url), user_path(user), :rel => "dashboard-tip", :title => user.name) %></li>
+        <%end%>
       <% end %>
     <% end %>
   </ul>

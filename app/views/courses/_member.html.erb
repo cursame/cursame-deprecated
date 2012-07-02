@@ -1,15 +1,27 @@
 <% request  = @course.enrollments.where(:user_id => member).first %>
+ 	<% if member.view_status == 'fantom'%>
+    <div class="<%= member.role %> <%= request.state %>">
+	  <div class="row bottom-margin <%= cycle("odd", "even") %>">
+	    <div class="span1" style="margin-left:20px;">
+	      <%= image_tag('anonimus-user/tamano/anonimus2.png') %>
+	    </div>
+	    <div class="span5-5">
+	          <%= "Usuario Anónimo" %><br />
+	          <%= t('.role')%>: <%= t(".#{request.role}")%>     
+	    </div>
 
+	   <%else%>
 <div class="<%= member.role %> <%= request.state %>">
   <div class="row bottom-margin <%= cycle("odd", "even") %>">
     <div class="span1" style="margin-left:20px;">
       <%= image_tag member.avatar_file.xsmall.url %>
     </div>
     <div class="span5-5">
-      <%= link_to(member.name, user_path(member)) %><br />
-      <%= mail_to member.email %><br />
-      <%= t('.role')%>: <%= t(".#{request.role}")%>
+          <%= link_to(member.name, user_path(member)) %><br />
+          <%= mail_to member.email %><br />
+          <%= t('.role')%>: <%= t(".#{request.role}")%>     
     </div>
+   <% end %>
     <div class="span3-5">
       <% if current_user.manageable_courses.include? @course %>
         <% if request.state == 'pending' %>

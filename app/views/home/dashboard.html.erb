@@ -1,4 +1,12 @@
-
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     <div class="row">
@@ -9,7 +17,6 @@
       </div>
     </div>
     <div class="row">
-
       <div class="span-one-third verticle_line">
         <div class="underline">
           <div class="row">
@@ -23,7 +30,6 @@
             </div>
           </div>
         </div>
-
         <% unless @courses.blank? %>
             <% @courses.each do |course| %>
                 <div class="course-detail <%= cycle("odd", "even") %>">
@@ -82,3 +88,4 @@
  </div>
   <%= render :partial => "shared/footer" %>
 </div>
+<%end%>

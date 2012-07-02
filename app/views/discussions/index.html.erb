@@ -1,3 +1,12 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -28,9 +37,25 @@
             <%= link_to t('discussions.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
           </div>
         </div>
-
+    
         <div class="discussions">
           <% @discussions.order("created_at DESC").each do |discussion| %>
+              
+            <% if discussion.starter.view_status == "fantom" %>
+
+         	 <div class="discussion row course padding-all <%= cycle('odd', 'even') %>" style="margin-left:0;">
+	              <div class="span7">
+	                <h3><%= link_to discussion.title, discussion %></h3>
+	                <span class="author"><%= t('discussions.ago')%> <%= time_ago_in_words(discussion.created_at) %> <%= t('discussions.by')%> <%="Usuario Anónimo" %></span>
+	              </div>
+	              <div class="span1" style="padding-top:12px;">
+	                <span class="label-tag notice course-notification" style="margin-top:2px;">
+	                  <a href="<%= discussion_path(discussion) %>"><%= discussion.comments.count %> <%= image_tag("menu-discusiones.png") %></a>
+
+	                </span>
+	              </div>
+	            </div>
+            <% else %>
             <div class="discussion row course padding-all <%= cycle('odd', 'even') %>" style="margin-left:0;">
               <div class="span7">
                 <h3><%= link_to discussion.title, discussion %></h3>
@@ -39,9 +64,11 @@
               <div class="span1" style="padding-top:12px;">
                 <span class="label-tag notice course-notification" style="margin-top:2px;">
                   <a href="<%= discussion_path(discussion) %>"><%= discussion.comments.count %> <%= image_tag("menu-discusiones.png") %></a>
+       
                 </span>
               </div>
             </div>
+           <% end %>
           <% end %>
         </div>
 
@@ -54,3 +81,4 @@
     
   </div>
 </div>
+<%end%>

@@ -19,6 +19,8 @@
 	<th class="blue"><%=molto.name%></th>	
 	</tr>
      <% molto.deliveries.each do |delivery|%>
+      <% if  delivery.user.view_status =='fantom'%>
+      <%else%>
      </thead>
      <tbody>
 	<tr class="asset">
@@ -29,7 +31,7 @@
      </tbody>
      <%end%>
 	<%end%>
-    
+   <%end%> 
    </table>
 </div>
 
@@ -43,7 +45,8 @@
 	<tr>
 	<th class="blue"><%=bella.name%></th>
 	 <% bella.survey_replies.each do |reply|%>
-		
+	 <% if  reply.user.view_status == "fantom"%>	
+	 <%else%>
 	</tr>
        
      </thead>
@@ -55,7 +58,7 @@
      </tbody>
      <%end%>
 	<%end%>
-    
+   <%end%> 
    </table>
 </div>
 </div>
@@ -69,6 +72,8 @@
 	<tr>
 
 	 <% @course.users.each do |user|%>
+	    <% if user.view_status == "fantom"%>
+	    <%else%>
 	  	<th class="blue"> <%if user.role == "student" %>
 		<%= user.name %>
 		<%else%>
@@ -105,12 +110,13 @@
 </b></p></td></tr>
      </tbody> 
    
-	
+	<%end%>
     
     <%end%>
    </table>
 </div>
 </div>
+
 <div class="tab-pane" id="tab4">	
 <% totales = []%>
 <% totales2=[] %>

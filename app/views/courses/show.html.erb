@@ -7,6 +7,7 @@
           <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
           <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
           <li class="active"><%= @course.name %></li>
+           
         </ul>  
       </div>
     </div>
@@ -30,9 +31,11 @@
           <div class="span2">
             <% if current_user.manageable_courses.include? @course %>
               <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %>
+            
             <% end %>
 
           </div>
+ 
         </div>
         <div class="row with line">
           <div class="span2 description no-margin"><%= t('courses.time') %></div>

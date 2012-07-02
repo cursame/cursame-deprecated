@@ -68,6 +68,8 @@
         </div>
         
         <% @deliveries.each do |delivery| %>
+        <% if delivery.user.view_status == "fantom"%>
+        <%else%>
           <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
@@ -82,7 +84,7 @@
             <%end%>
           </div>
         <% end %>
-        
+        <%end%>
         </div>
       
         <div class="span3" style="margin:0;">

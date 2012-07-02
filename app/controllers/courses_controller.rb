@@ -6,6 +6,7 @@ class CoursesController < ApplicationController
   set_tab :calification, :only => %w(calification)
   def index
     @courses = current_network.courses
+    
   end
 
   def new
@@ -38,6 +39,7 @@ class CoursesController < ApplicationController
   
   def show
     @course = accessible_course 
+
   end
   def calification
     @course = accessible_course
