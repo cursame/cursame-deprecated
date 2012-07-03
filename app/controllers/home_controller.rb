@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms]
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]
   set_tab :dashboard
 
   def index
@@ -54,6 +54,7 @@ class HomeController < ApplicationController
   end
 end
 
-def create_new_network
-
+def network_cc
+  @network = Network.new
+  @user = User.new
 end

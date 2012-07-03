@@ -1,6 +1,10 @@
 ---
 ajax-loader.gif: ajax-loader-a4652bbc75fc8ba02cb4a69163e163be.gif
 al.png: al-a2237d8ba50cd9bfdbf038440061e8ca.png
+anonimus-user/anonimus.png: anonimus-user/anonimus-68c6380300e98796db407afde8217e79.png
+anonimus-user/tamano/anonimus1.png: anonimus-user/tamano/anonimus1-a4a511b318e77546c92cd3e512c2912a.png
+anonimus-user/tamano/anonimus2.png: anonimus-user/tamano/anonimus2-66779cb43345749f27ac123d3e0c1672.png
+anonimus-user/tamano/anonimus3.png: anonimus-user/tamano/anonimus3-3f578934b2eeb8a0bc792b084094b077.png
 avatar1.png: avatar1-b830c1e9dac4fd343379439fc3ce5f06.png
 back-new-post.jpg: back-new-post-07ced62151946dfefcbf9fbf4cb2dcab.jpg
 blank.gif: blank-18859c4a7f4454262dffc36a3fdb0e4e.gif
@@ -172,6 +176,7 @@ minichat_files/talk_speak_chat.png: minichat_files/talk_speak_chat-d7c5d73dd0f72
 minichat_files/webcam_128.png: minichat_files/webcam_128-a3e20d41e89167e0069f97bcd3375583.png
 minichat_files/xchat.png: minichat_files/xchat-883321616bfb596c839ecdef7a9f59d0.png
 nosotros/alfredo.jpg: nosotros/alfredo-2d9a9f1e30df627ae333e56ff2840f40.jpg
+nosotros/alfredot.png: nosotros/alfredot-5e037d85594aef707cd9d701c07dca71.png
 nosotros/armando.jpg: nosotros/armando-6f4cf3c5fd6320f01140682b31cadea6.jpg
 nosotros/cursame.png: nosotros/cursame-06fc99dbc38fb81de8afe9816c6690f0.png
 nosotros/gabriel.png: nosotros/gabriel-176565a6041e733c63f8aa3d3fe76694.png
@@ -211,9 +216,10 @@ student_xxsmall.png: student_xxsmall-5098060143ade352095b22ff9c09d4c3.png
 supervisor_small.png: supervisor_small-4ec26261167c45fe7b4d8318e45f23d0.png
 supervisor_xsmall.png: supervisor_xsmall-bb855168a0c0f15931482ac603dcbb6f.png
 supervisor_xxsmall.png: supervisor_xxsmall-546ca63987866c6d8a69fc569147df0f.png
+suspendido.png: suspendido-ecba2a4505582a520ed1a2ceb4c38211.png
 teacher_small.png: teacher_small-4723c307eaac0fa1005ad89eeb54620e.png
 teacher_xsmall.png: teacher_xsmall-eb790ff7fce5fc451be0d648e0a5abfc.png
 teacher_xxsmall.png: teacher_xxsmall-8dea30577360e0254c48ed55f46adcd6.png
 trash.png: trash-fed6d579cb903b3e1a5b8fd4dde6cb5b.png
-application.js: application-1c57ae3ba86b0f89b486c76dae5c77a7.js
-application.css: application-20c733a872a4f4187ebdf15381ccef06.css
+application.js: application-c93dfd9c01cf0e0b70e31f3810bab505.js
+application.css: application-ba4fd6a3c0a73ae4f647b9f7399b5446.css
