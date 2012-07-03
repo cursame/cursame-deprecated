@@ -1,0 +1,11 @@
+<% if current_user.role == 'admin'%>
+<div class="container">
+	<div class="content">
+	<div class="span13" style="margin:30px;"></br>
+       <%= render :partial => 'new_network'%>
+    <div class="span4">
+	</div>
+    </div>
+    </div>
+</div>
+<%end%>

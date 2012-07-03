@@ -1,0 +1,55 @@
+<div class="container">
+<div class="span9">
+<% @users.each do |user| %>
+<div class="span7" style="margin-bottom:15px;">
+<!-- class row inicia -->
+<div class="row">
+	 <%if user.view_status == 'fantom'%>
+					    
+<!--span 1 inicia-->
+				        <div class="span1" style="margin-left:20px;">
+					       <% @user_id = user.id%>
+				          <%= image_tag user.avatar_file.xsmall.url %>
+				        </div>
+<!--span 1 termina -->
+<!--span 6 inicia-->
+				        <div class="span6">
+				          <%= link_to(user.name, user_path(user)) %><br />
+				          <%= mail_to user.email %>
+				        </div>
+<!--span 6 termina -->
+                  
+<!--inicia div edit role-->
+				              <div class="edit_role span5">
+				                <%= link_to "Reactivar usuario ", 'javascript:void(0)', :class=>"accept btn success large change_role_button" %>
+</div>
+<!--finaliza div edit role-->
+                  
+<!-- div del cambio de status-->
+                            <div class="spam6" style="display:none;">
+	                             				           </br>
+				              <div id="edit_role_form" >
+				                   <h3>Cambiar el status de usuario</h3>
+				                  <%= form_for @status do |view_status|%>
+				                  <%= view_status.select :view_status, options_for_select([[t('.activar'), "live"],[t('.suspender'), "fantom"]])%>
+				                   <%= view_status.hidden_field :user_id, :value =>  @user_id %>
+				                   <%= view_status.hidden_field :date_status, :value => Time.now %>
+				                   <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
+				                <%end%>
+				             </div>
+				             	<div class=" row line">
+								</div>
+				           </div> 
+
+			
+								              
+	 <%else%>
+  <%end%> 
+<!-- finaliza div de cambio de status-->
+	 </div>
+ 	 <!--class row termina-->
+	</div>  
+<%end%>
+ </div>
+</div>
+</div>

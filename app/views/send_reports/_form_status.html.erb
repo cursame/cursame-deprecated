@@ -1,0 +1,25 @@
+<div class="container">
+<div class="span10" style="border:0px;">
+<%= form_for (@bug_answer = BugAnswer.new) do |f| %>
+<div class="field">
+   <%= f.label :container %><br />
+   <%= f.text_area :container, :rows => 8, :cols => 45 %>
+ </div>
+ <div class="field">
+   <%= f.label :date %><br />
+   <%= f.date_select :date %>
+<div class="field">
+<%if current_user.role == 'admin'%>
+   <%= f.label :bug_status_request %><br />
+<%= f.select :send_report_status, options_for_select([["En proceso", 1], ["Resolviendo", 2],["Finalizado",3]]) %>
+<%end%>
+<%= f.hidden_field :send_report_id, :value => @reports_id %>
+<%= f.hidden_field :user_id, :value => current_user.id %>
+ </div>
+<div class="right">
+<%= f.submit "send request", :class => "btn info"%>
+</div>
+ </div>
+</div>
+<%end%>
+</div>
