@@ -21,7 +21,6 @@ class SupervisorController < ApplicationController
     @teachers_suspended = teachers.where(:view_status => 'fantom').count
     @approved = teachers.where(:state => 'active').page(params[:a_page]).per(15)
     @pending = teachers.where(:state => 'inactive').page(params[:p_page]).per(15)
-    @suspended = teachers.where(:view_status => 'fantom').page(params[:f_page]).per(15)
     @status = Status.new
     respond_to do |format|
       format.html
