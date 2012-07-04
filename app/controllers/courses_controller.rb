@@ -14,10 +14,11 @@ class CoursesController < ApplicationController
     @courses = current_user.courses
   end
 
-  def create    
+  def create 
+    @time = " #{Date.today} "   
     if params[:clone]
       old_course = current_user.manageable_courses.find(params[:id])
-      @course = old_course.dup
+      @course = old_course.dup 
       #new assignments
       new_assignments = old_course.assignments.dup 
       new_assignments.each do |assigment|
@@ -31,7 +32,7 @@ class CoursesController < ApplicationController
         survey.survey_replies =[] 
       end           
       @course.surveys = new_surveys      
-      
+      @course.name = old_course.name + @time
       @course.enrollments = []
       @course.pending_students = []
       @course.students = []

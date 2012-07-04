@@ -9,7 +9,7 @@ class CalificationemsController < ApplicationController
          @delivery.raiting=@calificationem.raiting
          @delivery.anotation_coment=@calificationem.anotation_coment
          @delivery.save
-        format.html { redirect_to :back, notice: 'Calificationem was successfully created.' }
+        format.html { redirect_to :back, notice: 'se ha creado correctamente el resultado.' }
         format.json { render json: @calificationem, status: :created, location: @calificationem }
       else
         format.html { render action: "new" }
