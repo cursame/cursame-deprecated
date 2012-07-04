@@ -18,8 +18,17 @@ class CoursesController < ApplicationController
     if params[:clone]
       old_course = current_user.manageable_courses.find(params[:id])
       @course = old_course.dup
-      @course.assignments = old_course.assignments
-      @course.surveys = old_course.surveys
+      #new assignments
+      new_assignments = old_course.assignments.dup
+      new_assignments.deliveries = []
+      deliveries.comments = []      
+      @course.assignments = new_assignments
+      #new surveys
+      new_surveys = old_course.surveys.dup
+      new_surveys.survey_replies =[]      
+      @course.surveys = new_surveys
+      
+      
       @course.enrollments = []
       @course.pending_students = []
       @course.students = []
