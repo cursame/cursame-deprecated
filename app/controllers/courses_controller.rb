@@ -19,15 +19,18 @@ class CoursesController < ApplicationController
       old_course = current_user.manageable_courses.find(params[:id])
       @course = old_course.dup
       #new assignments
-      new_assignments = old_course.assignments.dup
-      new_assignments.deliveries = []
-      deliveries.comments = []      
+      new_assignments = old_course.assignments.dup 
+      new_assignments.each do |assigment|
+        assigment.deliveries = []
+        assigment.comments = []
+      end 
       @course.assignments = new_assignments
       #new surveys
       new_surveys = old_course.surveys.dup
-      new_surveys.survey_replies =[]      
-      @course.surveys = new_surveys
-      
+      new_surveys.each do |survey|
+        survey.survey_replies =[] 
+      end           
+      @course.surveys = new_surveys      
       
       @course.enrollments = []
       @course.pending_students = []
