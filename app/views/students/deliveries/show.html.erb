@@ -28,7 +28,10 @@
     <div class="row">
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
+       	 <% if @course.status == 'finish'%>
+			<%else%>
         <%= render :partial => "courses/members_menu" %>
+        <%end%>
       </div>
 
       <div class="span10 assignments">
@@ -62,13 +65,17 @@
 
           <div class="span3" style="width:170px;">
             <% if @assignment.due_to > DateTime.now and @delivery.user == current_user%>
+                <% if @course.status == 'finish'%>
+				<%else%>
               <%= link_to t('assignments.show.edit_delivery'), edit_assignment_delivery_path(@assignment), :id => 'edit_delivery', :class => 'btn info right small' %>
+               <%end%>
             <% end %>
 			
 			<% if current_user.role == 'teacher' %>
-			     
+			  <% if @course.status == 'finish'%>
+			     <%else%>
                  <div class="btn"  data-toggle="modal" href="#myModal">Calificar Tarea / Editar </div>
-                
+              <%end%>
             <% end %>
                
          

@@ -7,6 +7,13 @@
   </div>
 </div>
 <%else%>
+<% if @course.status == "finish"%>
+<center></br></br>
+<h2>Este curso ha finalizado por seguridad no puedes acceder a sus calificaciones</h2>
+<%= image_tag("lock.png")%>	
+</center>
+
+<%else%>
 <html>
 <div class="container">
   <div class="content">
@@ -36,4 +43,5 @@
   <%= render :partial => "shared/footer" %>
 </div>
 <html>
+<%end%>
 <%end%>

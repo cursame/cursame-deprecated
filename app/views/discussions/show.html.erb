@@ -25,7 +25,10 @@
     <div class="row">
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
-        <%= render :partial => "courses/members_menu" %>
+       	<% if @course.status == "finish"%>
+	      <%else%>
+            <%= render :partial => "courses/members_menu" %>
+          <%end%>
       </div>
       
       <div class="span10 discussions">
@@ -44,10 +47,17 @@
           </div>
           </div>
           <div class="span3" style="margin-left:70px;">
-            <% if @comments.empty? %>
+       <% if @course.status == "finish"%>
+		      
+		<%else%>
+
+          <% if @comments.empty? %>
               <%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete')  %>
             <% end %>
-            <%= link_to t('.edit'), edit_discussion_url(@discussion), :id => 'edit_discussion', :class => 'btn info right' %>
+			
+            <%= link_to t('.edit'), edit_discussion_url(@discussion), :id => 'edit_discussion', :class => 'btn info right' %> 
+             
+        <%end%>
           </div>
         </div>
               
@@ -76,6 +86,9 @@
   </div>
 </div>
 <%end%>
+</div>
+<%= render :partial => "shared/footer"%>
+</div>
 <script type="text/javascript">
   $(function(){
     setupAutoScroll();

@@ -24,7 +24,10 @@
     <div class="row">
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
+      <% if @course.status == "finish"%>
+      <%else%>
         <%= render :partial => "courses/members_menu" %>
+      <%end%>
       </div>
     
       <div class="span10">
@@ -34,7 +37,10 @@
             <h2><%= t('discussions.title') %></h2>
           </div>
           <div class="span3" style="margin-left:45px;">
+			<% if @course.status == "finish"%>
+		      <%else%>
             <%= link_to t('discussions.new_discussion'), new_course_discussion_path(@course), :id => 'new_discussion', :class => "btn small right" %>
+            <%end%>
           </div>
         </div>
     
@@ -82,3 +88,6 @@
   </div>
 </div>
 <%end%>
+</div>
+<%= render :partial => "shared/footer"%>
+</div>

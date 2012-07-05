@@ -24,6 +24,7 @@
               <h2><%= t('courses.my_courses') %></h2>
             </div>
             <div class="span2 padding-top">
+	           <div class="btn" data-toggle="modal" href="#oldCourses"><%= "Anteriores" %></div>
               <% if current_user.teacher? %>
                   <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>        
               <% end %>
@@ -32,6 +33,8 @@
         </div>
         <% unless @courses.blank? %>
             <% @courses.each do |course| %>
+                 <% if course.status == "finish"%>
+                 <%else%>
                 <div class="course-detail <%= cycle("odd", "even") %>">
                   <div class="span4">
                     <% if course.course_logo_file.xxsmall.url %>
@@ -49,6 +52,7 @@
                     <span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span>
                   </div>
                 </div>
+                <%end%>
             <% end %>
         <% else %>
             <% if current_user.teacher? %>
@@ -89,3 +93,36 @@
   <%= render :partial => "shared/footer" %>
 </div>
 <%end%>
+
+<div class="modal hide" id="oldCourses" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3>Mis cursos que han finalizaso</h3>
+   </p>   
+ </div>
+ <div class="modal-body">     
+ <div id="activities_calendar_body">
+	<div id="down_modal_course" style="overflow: auto;">
+		<% @courses.each do |course| %>
+          <% if course.status == "finish"%>
+         <div class="course-detail <%= cycle("odd", "even") %>">
+           <div class="span7">
+             <% if course.course_logo_file.xxsmall.url %>
+                 <div class="left" style="padding-right: 8px;">
+                   <%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
+                 </div>
+             <% end %>
+             <div class="left">
+               <h4><%= link_to(course.name, course_path(course)) %></h4>
+             </div>
+           </div>
+           <div class="span1">
+             <span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span>
+           </div>
+         </div>
+         <%end%>
+     <% end %>
+   </div>
+ </div>
+</div>
+</div>

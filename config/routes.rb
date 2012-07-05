@@ -1,7 +1,12 @@
 Cursame::Application.routes.draw do
   
+  resources :status_courses
+
+  resources :stutus_courses
+
   get "networks/network_cc"
   resources :networks
+  
   resources :statuses
 
   resources :bug_answers

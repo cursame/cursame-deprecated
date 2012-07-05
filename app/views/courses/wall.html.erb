@@ -7,6 +7,12 @@
   </div>
 </div>
 <%else%>
+<% if @course.status == "finish"%>
+<center></br></br>
+<h2>Este curso ha finalizado por seguridad no puedes acceder a su muro</h2>
+<%= image_tag("lock.png")%>	
+</center>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -46,7 +52,7 @@
   </div>
   <%= render :partial => "shared/footer" %>
 </div>
-
+<%end%>
 <script type="text/javascript">
   $(function(){
     setupAutoScroll();

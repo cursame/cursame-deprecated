@@ -1,5 +1,6 @@
 module Students
   class DeliveriesController < ApplicationController
+
     def show
       @delivery   = current_user.deliveries.where(:assignment_id => params[:assignment_id]).first
       @assignment = @delivery.assignment
