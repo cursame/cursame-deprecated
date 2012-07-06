@@ -86,16 +86,23 @@
         <%else%>
         <% if @course.status == "finish"%>
        
-         <div class="delivery <%= cycle("odd", "even") %>">
-            <%= image_tag delivery.user.avatar_file.xsmall.url %>
-            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
-          
-        <%= link_to t('.show'), delivery, :class => "btn" %>
+         
            
            <% if delivery.rating == "nil"%>
 
+    	<div class="delivery <%= cycle("odd", "even") %>">
+            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+
+        <%= link_to t('.show'), delivery, :class => "btn" %>
+
            <%else%>
 
+			<div class="delivery <%= cycle("odd", "even") %>">
+	            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+	            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+
+	        <%= link_to t('.show'), delivery, :class => "btn" %>
           <% @calculus = (delivery.limit/2)%> 
 
            <% if delivery.raiting > @calculus %>
