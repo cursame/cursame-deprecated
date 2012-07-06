@@ -143,13 +143,13 @@
     <% totales.push(total_deliveries)%>
     <% totales2.push(total_survey)%>
 <%end%>
-<div id="calificacion"></div>
+<div id="calificacioncal">erer</div>
  <script type="text/javascript" charset="utf-8">
 var chart;
 $(document).ready(function() {
 	chart = new Highcharts.Chart({
 		chart: {
-			renderTo: 'calificacion',
+			renderTo: 'calificacioncal',
 			type: 'areaspline'
 		},
 		title: {
@@ -217,14 +217,14 @@ $(document).ready(function() {
    <%end%>
 <% end %>
 
-<div id="value"></div>
+<div id="valuecal"></div>
    
     <script type="text/javascript" charset="utf-8">
 	   var chart;
 	$(document).ready(function() {
 		chart = new Highcharts.Chart({
 			chart: {
-				renderTo: 'value',
+				renderTo: 'valuecal',
 				type: 'areaspline'
 			},
 			title: {
@@ -274,16 +274,16 @@ $(document).ready(function() {
     <% codn = califn/@course.users.count%>
     <% codan = codn-100%>
     <% porcento_delivery.push(codn)%>
-    <% grafica_reprobacion_delivery.push(codan)%>
- <div id="value2"></div> 
+    <% grafica_reprobacion_delivery.push(codan)%>  
  <%end%>
 <%end%>
+<div id="value2cal"></div>
 <script type="text/javascript" charset="utf-8">
 	   var chart;
 	$(document).ready(function() {
 		chart = new Highcharts.Chart({
 			chart: {
-				renderTo: 'value2',
+				renderTo: 'value2cal',
 				type: 'areaspline'
 			},
 			title: {
