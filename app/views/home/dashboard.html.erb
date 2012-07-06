@@ -25,9 +25,9 @@
             </div>
             <div class="span2 padding-top">
 	         
-	           <div class="btn" data-toggle="modal" href="#oldCourses" style="panding:10px; margin:5px;"><%= "Anteriores" %></div></br>
+	           <div class="btn" data-toggle="modal" href="#oldCourses" style="margin:2px;"><%= "Anteriores" %></div></br>
               <% if current_user.teacher? %>
-                  <div style="panding:10px; margin:5px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %></div>    
+                  <div style="margin:2px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn success small") %></div>    
               <% end %>
             </div>
           </div>
@@ -98,7 +98,7 @@
 <div class="modal hide" id="oldCourses" style="display:none;">
  <div class="modal-header">
    <a class="close" data-dismiss="modal" >×</a>
-   <h3>Mis cursos que han finalizaso</h3>
+   <h3>Mis cursos que han finalizado</h3>
    </p>   
  </div>
  <div class="modal-body">     
