@@ -85,6 +85,15 @@
         <% if delivery.user.view_status == "fantom"%>
         <%else%>
         <% if @course.status == "finish"%>
+ 
+		<% if delivery.raiting == "nil"%>
+        <div class="delivery <%= cycle("odd", "even") %>">
+            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+          
+        <%= link_to t('.show'), delivery, :class => "btn" %>
+
+           <%else%>
        
          <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
@@ -92,17 +101,24 @@
           
         <%= link_to t('.show'), delivery, :class => "btn" %>
            
-           <% if delivery.rating == "nil"%>
+          <%end%>
+           
+         <% if delivery.raiting == "nil"%>
+           <div class="delivery <%= cycle("odd", "even") %>">
+	            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+	            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
 
-           <%else%>
-
-          <% @calculus = (delivery.limit/2)%> 
+	        <%= link_to t('.show'), delivery, :class => "btn" %>
+         <%else%>
+            <% @calculus = (delivery.limit/2)%> 
 
            <% if delivery.raiting > @calculus %>
           Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting%></b>
             <%else %>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting%></b>      
             <%end%>
+           <%end%>
+        <%else%>
 
           <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
@@ -116,11 +132,11 @@
             <%else%>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
             <%end%>
+          
        <%end%>
           </div>
         <% end %>
         <%end%>
-       <%end%>
         </div>
       
         <div class="span3" style="margin:0;">
