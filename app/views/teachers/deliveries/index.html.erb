@@ -114,7 +114,6 @@
                   Calificación asignada:  <b class="label-tag calification-bad">0</b>
              <%else%>
             <% @calculus = (delivery.limit/2)%> 
-
            <% if delivery.raiting > @calculus %>
           Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting%></b>
             <%else %>
@@ -129,18 +128,22 @@
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
             <%= link_to t('.show'), delivery, :class => "btn" %>
 
-          	<% if delivery.limit == "nil"%>
-                  Calificación asignada:  <b class="label-tag calification-bad">0</b>
-             <%else%>
-
+         
+          <% if delivery.limit == "nil"%>
+                  Calificación asignada:  <b class="label-tag calification-bad">0</b>            
+          <%else%>
+           
           <% @calculus = (delivery.limit/2)%> 
-              
+              <% if @calculus =="nil" %>
+                    Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>
+	         <%else%>
            <% if delivery.raiting > @calculus %>
           Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting %></b>
             <%else%>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
             <%end%>
           <%end%>
+            <%end%>
        <%end%>
           </div>
         <% end %>
