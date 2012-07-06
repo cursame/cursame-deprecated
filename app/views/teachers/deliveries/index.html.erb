@@ -135,11 +135,14 @@
           <%else%>
            
           <% @calculus = (delivery.limit/2)%> 
-              
+            <% if @calculus == "nil"%>
+              Calificación asignada:  <b class="label-tag calification-bad">0</b>
+             <%else%>
            <% if delivery.raiting > @calculus %>
           Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting %></b>
             <%else%>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
+           <%end%>
            <%end%>
        <%end%>
       <%end%>
