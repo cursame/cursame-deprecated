@@ -24,9 +24,10 @@
               <h2><%= t('courses.my_courses') %></h2>
             </div>
             <div class="span2 padding-top">
-	           <div class="btn" data-toggle="modal" href="#oldCourses"><%= "Anteriores" %></div>
+	         
+	           <div class="btn" data-toggle="modal" href="#oldCourses" style="panding:10px; margin:5px;"><%= "Anteriores" %></div></br>
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>        
+                  <div style="panding:10px; margin:5px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %></div>    
               <% end %>
             </div>
           </div>
