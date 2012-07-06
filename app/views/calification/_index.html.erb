@@ -25,7 +25,7 @@
      <tbody>
 	<tr class="asset">
     <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
-        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= delivery.score if delivery.raiting%> %</b></p></td>
+        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= delivery.score ? delivery.score : 0 if delivery.raiting%> %</b></p></td>
 
     </tr>
      </tbody>
@@ -84,8 +84,9 @@
 	   <% total_survey= 0%>
 	  <%user.deliveries.each do |delivery|%>
 	     
-	    <% delivery.score %>
-	    <% total_deliveries=total_deliveries+delivery.score if delivery.raiting%>
+	   
+		<% delivery.score ? delivery.score : 0 %>		
+	    <% total_deliveries=total_deliveries + delivery.score ? delivery.score : 0 if delivery.raiting%>
 	   
 	  <%end%>
 	   <%user.survey_replies.each do |survey|%>
@@ -125,10 +126,12 @@
    <% total_survey= 0%>
   
   <%user.deliveries.each do |delivery|%>
-     
-    <% delivery.score %>
-    <% total_deliveries=total_deliveries+delivery.score if delivery.raiting%>
     
+ 	
+    <% delivery.score ? delivery.score : 0 %>	
+    <% total_deliveries=total_deliveries + delivery.score ? delivery.score : 0 if delivery.raiting%>
+  
+
   <%end%>
    <%user.survey_replies.each do |survey|%>
 
@@ -270,7 +273,8 @@ $(document).ready(function() {
   <% califn = 0%>
   <% codn = 0%>
  <%assigment.deliveries.each do |delivery|%>
-   	<% califn = califn + delivery.score if delivery.raiting%>
+	
+   	<% califn = califn + delivery.score ? delivery.score : 0  if delivery.raiting%>
     <% codn = califn/@course.users.count%>
     <% codan = codn-100%>
     <% porcento_delivery.push(codn)%>
