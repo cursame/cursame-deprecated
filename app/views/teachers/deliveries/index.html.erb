@@ -103,8 +103,6 @@
             <%else %>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting%></b>      
             <%end%>
-        
-        <%else%>
 
           <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
