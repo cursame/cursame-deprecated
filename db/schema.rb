@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.integer   "calificationem_id"
-    t.integer   "raiting"
+    t.integer   "raiting"                                        :default => 0
     t.text      "anotation_coment"
   end
 
