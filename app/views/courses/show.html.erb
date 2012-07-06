@@ -80,7 +80,7 @@
       </div>
       <div class="span10">
         <div class="row">
-          <div class="span7">
+          <div class="span6">
             <h2><%= @course.name %></h2>
             <div class="public-course">
               <% if @course.public? %>
@@ -91,8 +91,11 @@
             </div>
           </div>
           <div class="span2">
-            <% if current_user.manageable_courses.include? @course %>
-              <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %>
+          <div class="span2">
+          <div style="margin:2px;">  <% if current_user.manageable_courses.include? @course %>
+              <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %></div>
+          <div class="span2 right">
+            <div style="margin:2px;">
               <%= form_for @status_course do |status|%>
                 <%= status.hidden_field :status, :value => "finish" %>
                 <%= status.hidden_field :date, :value => Date.today %>
@@ -100,8 +103,11 @@
                 <%= status.submit "Finalizar curso", :class => "btn danger"%>
 
               <%end%>
+              </div>
+            </div>
+           </div>
             <% end %>
-
+            
           </div>
  
         </div>
