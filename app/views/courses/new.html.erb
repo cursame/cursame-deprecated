@@ -30,11 +30,11 @@
 
 <div class="modal hide" id="cloneCourseModal" style="display:none;">
  <div class="modal-header">
-   <a class="close" data-dismiss="modal" >×</a>
+   <a class="close" data-dismiss="modal" >×</a> 
    <h3><%=t('courses.clone_course')%></h3>
-   </p>   
+   
  </div>
- <div class="modal-body" style="overflow: auto; height: 400px;">
+ <div class="modal-body" style="overflow: auto; height: 300px;">
  	<% @courses.each do |course| %>
 		<%if course.owner == current_user%>
 			<h4 class="well">				
@@ -48,4 +48,7 @@
 		<%end%>
 	<%end%>
  </div>
+<div class="modal-footer">
+   <p><b>Notificación:</b> Al clonar un curso todos los archivos principales del mismo serán traspasados al nuevo curso, lo que permitirá reiniciar la asignatura ya con su pre-cargado de material. </p>
+</div>
 </div>

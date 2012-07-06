@@ -103,7 +103,7 @@
  </div>
  <div class="modal-body">     
  <div id="activities_calendar_body">
-	<div id="down_modal_course" style="overflow: auto;">
+	<div id="down_modal_course" style="overflow: auto; height: 400px;">
 		<% @courses.each do |course| %>
           <% if course.status == "finish"%>
          <div class="course-detail <%= cycle("odd", "even") %>">
