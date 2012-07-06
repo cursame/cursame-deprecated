@@ -47,7 +47,7 @@ class StatusCoursesController < ApplicationController
          @course = @status_course.course
          @course.status = @status_course.status
          @course.save
-        format.html { redirect_to :back, notice: 'Se ha finalizado el curso satisfactoriamente.' }
+        format.html { redirect_to :back, notice: 'Se ha aceptado la orden de status del curso' }
         format.json { render json: @status_course, status: :created, location: @status_course }
       else
         format.html { render action: "new" }

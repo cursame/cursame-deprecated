@@ -24,9 +24,10 @@
               <h2><%= t('courses.my_courses') %></h2>
             </div>
             <div class="span2 padding-top">
-	           <div class="btn" data-toggle="modal" href="#oldCourses"><%= "Anteriores" %></div>
+	         
+	           <div class="btn" data-toggle="modal" href="#oldCourses" style="margin:2px;"><%= "Anteriores" %></div></br>
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>        
+                  <div style="margin:2px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn info small") %></div>    
               <% end %>
             </div>
           </div>
@@ -97,12 +98,12 @@
 <div class="modal hide" id="oldCourses" style="display:none;">
  <div class="modal-header">
    <a class="close" data-dismiss="modal" >×</a>
-   <h3>Mis cursos que han finalizaso</h3>
+   <h3>Mis cursos que han finalizado</h3>
    </p>   
  </div>
  <div class="modal-body">     
  <div id="activities_calendar_body">
-	<div id="down_modal_course" style="overflow: auto;">
+	<div id="down_modal_course" style="overflow: auto; height: 400px;">
 		<% @courses.each do |course| %>
           <% if course.status == "finish"%>
          <div class="course-detail <%= cycle("odd", "even") %>">
