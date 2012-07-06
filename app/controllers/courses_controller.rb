@@ -23,6 +23,7 @@ class CoursesController < ApplicationController
       new_assignments.each do |assigment|
         assigment.deliveries = []
         assigment.comments = []
+        assigment.assets = assigment.assets if assigment.assets
       end 
       @course.assignments = new_assignments
       #new surveys
@@ -30,7 +31,11 @@ class CoursesController < ApplicationController
       new_surveys.each do |survey|
         survey.survey_replies =[] 
       end           
-      @course.surveys = new_surveys      
+      @course.surveys = new_surveys
+
+      new_assets = old_course.assets.dup
+      @course.assets = new_assets
+      
       @course.name = old_course.name + @time
       @course.enrollments = []
       @course.pending_students = []

@@ -39,10 +39,10 @@
 		<%if course.owner == current_user%>
 			<h4 class="well">				
 				<%= form_for curso = Course.new do |f| %>	
-					<%= course.name %>
+					<%= course.name %></br>					
 					<input type="hidden" name="clone" value="true" />
 					<input type="hidden" name="id"  value="<%=course.id%>" />										
-					<%= f.submit t('courses.clone_course'), :class => "btn small right info" %>				
+					<%= f.submit t('courses.clone_course'), :class => "btn small right info",:onclick => 'alert("Los archivos del curso anterior se asignarán al nuevo curso clonado' %>				
 				<% end %>
 			</h4>
 		<%end%>
