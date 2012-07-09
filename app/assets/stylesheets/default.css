@@ -1407,4 +1407,7 @@ display: block;
 	overflow:scroll;
 	
 }
-
+.suspended-container{
+	 width: 700px;
+	 height: 700px;
+}
