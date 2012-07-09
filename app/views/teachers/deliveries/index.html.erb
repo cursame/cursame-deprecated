@@ -20,10 +20,8 @@
           <li class="active"><%= @assignment.name %></li>
         </ul>  
       </div>
-    </div>
-    
-    <div class="row">
-      
+    </div>    
+    <div class="row">      
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
    <% if @course.status == "finish"%>
@@ -83,62 +81,38 @@
         
         <% @deliveries.each do |delivery| %>
         <% if delivery.user.view_status == "fantom"%>
-        <%else%>
-        <% if @course.status == "finish"%>
- 
-		<% if delivery.raiting == "nil"%>
-        <div class="delivery <%= cycle("odd", "even") %>">
-            <%= image_tag delivery.user.avatar_file.xsmall.url %>
-            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
-          
-        <%= link_to t('.show'), delivery, :class => "btn" %>
-
-           <%else%>
-       
-         <div class="delivery <%= cycle("odd", "even") %>">
-            <%= image_tag delivery.user.avatar_file.xsmall.url %>
-            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
-          
-        <%= link_to t('.show'), delivery, :class => "btn" %>
-           
-          <%end%>
-           
-         <% if delivery.raiting == "nil"%>
-           <div class="delivery <%= cycle("odd", "even") %>">
+         
+	         <div class="delivery <%= cycle("odd", "even") %>">
 	            <%= image_tag delivery.user.avatar_file.xsmall.url %>
 	            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
 
 	        <%= link_to t('.show'), delivery, :class => "btn" %>
-         <%else%>
-             <% if delivery.limit == "nil"%>
-                  Calificación asignada:  <b class="label-tag calification-bad">0</b>
-             <%else%>
-            <% @calculus = (delivery.limit/2)%> 
-           <% if delivery.raiting > @calculus %>
-          Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting%></b>
-            <%else %>
-           Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting%></b>      
-            <%end%>
-           <%end%>
-           <%end%>
+	
         <%else%>
 
-          <div class="delivery <%= cycle("odd", "even") %>">
+        <% if @course.status == "finish"%>
+    
+       <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
-            <%= link_to t('.show'), delivery, :class => "btn" %>
-
-         
-       <% if delivery.limit == "nil"%>
-           <% @calculus = 0 %>
+          
+        <%= link_to t('.show'), delivery, :class => "btn" %>
+        
+          <% @calculus = (delivery.limit/2)%>   
            
            <% if delivery.raiting > @calculus %>
           Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting %></b>
             <%else%>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
            <%end%>
+        <%else%>
+           
 
-          <%else%>
+          <div class="delivery <%= cycle("odd", "even") %>">
+            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+            <%= link_to t('.show'), delivery, :class => "btn" %>
+
           <% @calculus = (delivery.limit/2)%>   
            
            <% if delivery.raiting > @calculus %>
@@ -146,7 +120,6 @@
             <%else%>
            Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
            <%end%> 
-       <%end%>
           
       <%end%>
           </div>
@@ -162,6 +135,8 @@
     
   </div>
 </div>
+</div>
+<%= render :partial=> "shared/footer"%>
 <%end%>
 <script type="text/javascript">
   $(function(){

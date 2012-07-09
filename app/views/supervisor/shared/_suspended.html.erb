@@ -1,12 +1,17 @@
 <div class="container">
 <div class="span9">
 <% @users.each do |user| %>
-<div class="span7" style="margin-bottom:15px;">
+
+<div class="span8" style="margin-bottom:15px;">
 <!-- class row inicia -->
+
 <div class="row">
 	 <%if user.view_status == 'fantom'%>
 					    
 <!--span 1 inicia-->
+			
+     <div class="user padding-all <%= cycle('odd', 'even') %>">
+			
 				        <div class="span1" style="margin-left:20px;">
 					       <% @user_id = user.id%>
 				          <%= image_tag user.avatar_file.xsmall.url %>
@@ -21,13 +26,14 @@
                   
 <!--inicia div edit role-->
 				              <div class="edit_role span5">
-				                <%= link_to "Reactivar usuario ", 'javascript:void(0)', :class=>"accept btn success large change_role_button" %>
+				                <%= link_to "Reactivar usuario ", 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
 </div>
 <!--finaliza div edit role-->
                   
 <!-- div del cambio de status-->
                             <div class="spam6" style="display:none;">
-	                             				           </br>
+	                       				           </br>
+
 				              <div id="edit_role_form" >
 				                   <h3>Cambiar el status de usuario</h3>
 				                  <%= form_for @status do |view_status|%>
@@ -41,7 +47,7 @@
 								</div>
 				           </div> 
 
-			
+     </div>			
 								              
 	 <%else%>
   <%end%> 

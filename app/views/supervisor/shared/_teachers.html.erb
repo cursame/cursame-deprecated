@@ -1,3 +1,4 @@
+<div class="content">
 <% teachers.each do |teacher| %>
   <%if teacher.view_status == 'fantom'%>
   <%else%>
@@ -11,7 +12,6 @@
         <div class="span5">
           <%= link_to(teacher.name, user_path(teacher)) %><br />
           <%= mail_to teacher.email %>
-           <%= teacher.view_status%>
         </div>
         <div class="span3-5">
           <div class="teacher_aproval">
@@ -40,7 +40,8 @@
                    <%= view_status.hidden_field :user_id, :value =>  @teacher_id %>
                    <%= view_status.hidden_field :date_status, :value => Time.now %>
                   <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
-                   <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>
+
+                 <!--  <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>-->
                 <%end%>
                </div>
               <% end %>
@@ -51,3 +52,4 @@
     </div>
   </div>
 <% end %>
+</div>
