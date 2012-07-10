@@ -1,5 +1,5 @@
 class NetworksController < ApplicationController
-  #skip_before_filter :authenticate_active_user_within_network!, :only => [:network_cc]
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:network_cc , :create, :update ]
       def network_cc
         @network = Network.new
         @network.supervisors.build
