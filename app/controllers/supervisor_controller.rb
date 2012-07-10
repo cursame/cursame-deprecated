@@ -46,7 +46,7 @@ class SupervisorController < ApplicationController
   end
   def suspended
     @users = current_network.users.where(:view_status => 'fantom').order("upper(first_name), upper(last_name) asc").page(params[:page]).per(10)
-    @counter =  @users.where(:view_status => 'fantom').count
+    @counter = current_network.users.where(:view_status => 'fantom').count
     @status = Status.new
   end
   def import_users
