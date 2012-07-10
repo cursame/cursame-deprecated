@@ -1,13 +1,19 @@
 class NetworksController < ApplicationController
-  skip_before_filter :authenticate_active_user_within_network!, :only => [:network_cc , :create, :update ]
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:network_cc , :create, :update, :instrucciones]
+  #bloquea el layout en el network_cc
+  #layout 'application', :except => [:network_cc ]
       def network_cc
         @network = Network.new
         @network.supervisors.build
       end
+      def instrucciones
+        
+      end
+      
       def create
         @network = Network.new params[:network]
         if @network.save
-          redirect_to  :back , :notice => t('flash.network_created')
+          redirect_to  :instrucciones_red
         else
           render :new
         end

@@ -1,10 +1,10 @@
 Cursame::Application.routes.draw do
   
   resources :status_courses
-
-  resources :stutus_courses
-
+  #networks gets
   get "networks/network_cc"
+  get "networks/instrucciones"
+  
   resources :networks
   
   resources :statuses
@@ -126,6 +126,7 @@ Cursame::Application.routes.draw do
    match '/ayuda/calificaciones', :to => 'home#helpers/calificaciones', :as => :help_calificaciones
    #this is the abstract to new network
    match '/nueva-red', :to => 'networks#network_cc', :as => :network_cc
+   match '/nueva-red/instrucciones', :to => 'networks#instrucciones', :as => :instrucciones_red   
    #fin
   match  '/blog', :to => 'home#blog/blog', :as => :blog
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
