@@ -16,7 +16,7 @@
       </div>
 
       <div class="span5">
-        <h2><%= pluralize @students_count-@students_suspended, t('.registered_students') %></h2>
+        <h2><%= pluralize @students_count, t('.registered_students') %></h2>
       </div>
       <div class="span2" style="margin-left:20px;">
         <%= link_to t('supervisor.import_students'), supervisor_import_users_path(:role => :student), :class => "btn small" %>
