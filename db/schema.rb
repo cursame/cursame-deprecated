@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120704210721) do
+ActiveRecord::Schema.define(:version => 20120704193436) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -47,43 +47,43 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
   end
 
   create_table "blogs", :force => true do |t|
-    t.string   "post"
-    t.text     "content"
-    t.string   "menu_category"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user"
-    t.integer  "user_id"
+    t.string    "post"
+    t.text      "content"
+    t.string    "menu_category"
+    t.date      "date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "user"
+    t.integer   "user_id"
   end
 
   create_table "bug_answers", :force => true do |t|
-    t.text     "container"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "send_report_id"
-    t.string   "send_report_status"
-    t.integer  "user_id"
+    t.text      "container"
+    t.date      "date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "send_report_id"
+    t.string    "send_report_status"
+    t.integer   "user_id"
   end
 
   create_table "calendar_activities", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user"
-    t.integer  "user_id"
-    t.date     "date_activity"
-    t.datetime "due_to"
+    t.string    "name"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "user"
+    t.integer   "user_id"
+    t.date      "date_activity"
+    t.timestamp "due_to"
   end
 
   create_table "calificationems", :force => true do |t|
-    t.integer  "raiting"
-    t.text     "anotation_coment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "delivery_id"
+    t.integer   "raiting"
+    t.text      "anotation_coment"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "delivery_id"
   end
 
   create_table "chats", :force => true do |t|
@@ -98,15 +98,15 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
   end
 
   create_table "comment_posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.integer  "blog_id"
-    t.string   "user"
+    t.string    "title"
+    t.text      "content"
+    t.date      "date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "post_id"
+    t.integer   "user_id"
+    t.integer   "blog_id"
+    t.string    "user"
   end
 
   create_table "comments", :force => true do |t|
@@ -119,18 +119,17 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
   end
 
   create_table "courses", :force => true do |t|
-    t.string    "name"
-    t.text      "description"
-    t.date      "start_date"
-    t.date      "finish_date"
-    t.boolean   "public"
-    t.string    "reference"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "network_id"
-    t.string    "course_logo_file"
-    t.integer   "chat_id"
-    t.string    "status"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "finish_date"
+    t.boolean  "public"
+    t.string   "reference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "network_id"
+    t.string   "course_logo_file"
+    t.integer  "chat_id"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
@@ -158,7 +157,7 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.integer   "calificationem_id"
-    t.integer   "raiting"                                        :default => 0
+    t.integer   "raiting",           :default => 0
     t.text      "anotation_coment"
   end
 
@@ -185,11 +184,11 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
   add_index "enrollments", ["user_id"], :name => "index_enrollments_on_user_id"
 
   create_table "like_not_likes", :force => true do |t|
-    t.integer  "like"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "comment_id"
+    t.integer   "like"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "comment_id"
   end
 
   create_table "networks", :force => true do |t|
@@ -236,30 +235,30 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
   end
 
   create_table "send_reports", :force => true do |t|
-    t.string   "title"
-    t.text     "text"
-    t.datetime "event_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.string   "typebug"
-    t.string   "status"
+    t.string    "title"
+    t.text      "text"
+    t.timestamp "event_date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "user_id"
+    t.string    "typebug"
+    t.string    "status"
   end
 
   create_table "status_courses", :force => true do |t|
-    t.string   "status"
-    t.date     "date"
-    t.integer  "course_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "status"
+    t.date      "date"
+    t.integer   "course_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "statuses", :force => true do |t|
-    t.string   "view_status"
-    t.date     "date_status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
+    t.string    "view_status"
+    t.date      "date_status"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "user_id"
   end
 
   create_table "survey_answers", :force => true do |t|
@@ -322,7 +321,7 @@ ActiveRecord::Schema.define(:version => 20120704210721) do
     t.string    "authentication_token"
     t.integer   "chat_id"
     t.string    "calendar_activity"
-    t.string    "view_status"
+    t.string    "view_status"                            :default => "live"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

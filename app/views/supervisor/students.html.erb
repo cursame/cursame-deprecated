@@ -62,7 +62,7 @@
 		                   <%= view_status.hidden_field :user_id, :value =>  @student_id %>
 		                   <%= view_status.hidden_field :date_status, :value => Time.now %>
 		                  <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
-		                   <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>
+		                <!--   <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>-->
 		                <%end%>
                       </div>
                     </div>
@@ -70,7 +70,7 @@
                 </div>
               </div>
             </div>
-          <% end %>
+            <%end%>
            <%end%>
           <%= paginate @students%>
         </div>

@@ -19,7 +19,7 @@ class SupervisorController < ApplicationController
     teachers = current_network.teachers.order("upper(first_name), upper(last_name) asc")
     @teachers_count = teachers.where(:state => 'active').count
     @teachers_suspended = teachers.where(:view_status => 'fantom').count
-    @approved = teachers.where(:state => 'active').page(params[:a_page]).per(15)
+    @approved = teachers.where(:view_status => 'live').where(:state => 'active').page(params[:a_page]).per(15)
     @pending = teachers.where(:state => 'inactive').page(params[:p_page]).per(15)
     @status = Status.new
     respond_to do |format|
@@ -29,7 +29,7 @@ class SupervisorController < ApplicationController
   end
 
   def students
-    @students = current_network.students.order("upper(first_name), upper(last_name) asc").page(params[:page]).per(15)
+    @students = current_network.students.where(:view_status => 'live').order("upper(first_name), upper(last_name) asc").page(params[:page]).per(15)
     @students_count = current_network.students.count
     @students_suspended = @students.where(:view_status => 'fantom').count
     @status = Status.new
@@ -47,7 +47,7 @@ class SupervisorController < ApplicationController
     end
   end
   def suspended
-    @users = current_network.users
+    @users = current_network.users.where(:view_status => 'fantom').order("upper(first_name), upper(last_name) asc").page(params[:page]).per(10)
     @counter =  @users.where(:view_status => 'fantom').count
     @status = Status.new
   end

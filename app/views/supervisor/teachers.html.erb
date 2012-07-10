@@ -35,9 +35,10 @@
             <%= render :partial => "supervisor/shared/teachers", :locals => {:teachers => @approved}%>
             <%= paginate @approved, :param_name => :a_page, :params=>{:type=>"approved"} %>
           </div>
+       
           <div id="pending" class="users teachers <%= class_for_active_li(params[:type], "pending")%>">
             <%= render :partial => "supervisor/shared/teachers", :locals => {:teachers => @pending}%>
-            <%= paginate @pending, :param_name => :p_page, :params=>{:type=>"pending"} %>
+            <%=  paginate @pending, :param_name => :p_page, :params=>{:type=>"pending"} %>
           </div>
         </div>
       </div>

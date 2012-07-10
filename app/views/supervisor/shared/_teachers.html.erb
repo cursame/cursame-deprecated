@@ -1,7 +1,7 @@
 <div class="content">
 <% teachers.each do |teacher| %>
   <%if teacher.view_status == 'fantom'%>
-phantom
+
   <%else%>
   <div class="user padding-all <%= cycle('odd', 'even') %>">
     <div class="teacher">
@@ -41,7 +41,7 @@ phantom
                    <%= view_status.hidden_field :user_id, :value =>  @teacher_id %>
                    <%= view_status.hidden_field :date_status, :value => Time.now %>
                   <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
-
+               
                  <!--  <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>-->
                 <%end%>
                </div>
