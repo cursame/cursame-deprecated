@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
     end
   end
   def my_favorite_users
-    @favorites=current_user.favorites
+    @favorites=current_user.all
   end
   # GET /favorites/1/edit
   def edit
@@ -30,6 +30,9 @@ def create
   def destroy
     @favorite = Favorite.find(params[:id])
     @favorite.destroy
+    if @favorite.destroy
+        format.html { redirect_to :back, notice: 'El usuario fue retirado de sus favoritos.' }
+    end
   end
 private 
   # PUT /favorites/1

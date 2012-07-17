@@ -7,4 +7,10 @@ class CreateFavorites < ActiveRecord::Migration
       t.timestamps
     end
   end
+  def self.up
+          rename_table :favorites, :favorites_users
+      end 
+  def self.down
+          rename_table :favorites, :favorites_users
+  end
 end
