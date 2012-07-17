@@ -38,6 +38,9 @@ class UsersController < ApplicationController
   def wall
     find_user
     @comments = @user.profile_comments.order("created_at DESC").page(params[:page]).per(10)
+     @favorite = Favorite.new
+     @friend_crocodile = current_user.id 
+     @friend_salamander = find_user
   end
 
   def upload_avatar

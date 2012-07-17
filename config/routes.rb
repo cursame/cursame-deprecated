@@ -1,7 +1,7 @@
 Cursame::Application.routes.draw do
   
   resources :favorites
-
+  
   resources :status_courses
   #networks gets
   get "networks/network_cc"

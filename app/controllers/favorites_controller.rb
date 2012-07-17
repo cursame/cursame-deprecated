@@ -7,9 +7,6 @@ class FavoritesController < ApplicationController
       format.json { render json: @favorite }
     end
   end
-  def my_favorite_users
-    @favorites=current_user.all
-  end
   # GET /favorites/1/edit
   def edit
     @favorite = Favorite.find(params[:id])
