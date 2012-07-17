@@ -44,11 +44,7 @@ class UsersController < ApplicationController
     asset_file = User.new :avatar_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
-  def my_favorite_users
-    @favorites=current_user.favorites
-    @user = current_user
-    @users_network = current_network.users.limit(200) if current_network
-  end
+  
   private
   def find_user
     @user ||= current_network.users.find params[:id]

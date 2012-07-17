@@ -131,7 +131,7 @@ Cursame::Application.routes.draw do
    match '/nueva-red/instrucciones', :to => 'networks#instrucciones', :as => :instrucciones_red   
    #fin
    #user favorites 
-   match 'my_favorites', :to => 'users#my_favorite_users', :as => :my_favorite_users   
+   match 'my_favorites', :to => 'favorites#my_favorite_users', :as => :my_favorite_users   
    #fin
   match  '/blog', :to => 'home#blog/blog', :as => :blog
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new

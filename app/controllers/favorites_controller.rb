@@ -34,6 +34,11 @@ def create
         format.html { redirect_to :back, notice: 'El usuario fue retirado de sus favoritos.' }
     end
   end
+  def my_favorite_users
+    @user = current_user
+    @favorite=@user.favorites
+    @users_network = current_network.users.limit(200) if current_network
+  end
 private 
   # PUT /favorites/1
   # PUT /favorites/1.json

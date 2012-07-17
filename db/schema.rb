@@ -47,14 +47,14 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "blogs", :force => true do |t|
-    t.string   "post"
-    t.text     "content"
-    t.string   "menu_category"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user"
-    t.integer  "user_id"
+    t.string    "post"
+    t.text      "content"
+    t.string    "menu_category"
+    t.date      "date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "user"
+    t.integer   "user_id"
   end
 
   create_table "bug_answers", :force => true do |t|
@@ -68,22 +68,22 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "calendar_activities", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "user"
-    t.integer  "user_id"
-    t.date     "date_activity"
-    t.datetime "due_to"
+    t.string    "name"
+    t.text      "description"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "user"
+    t.integer   "user_id"
+    t.date      "date_activity"
+    t.timestamp "due_to"
   end
 
   create_table "calificationems", :force => true do |t|
-    t.integer  "raiting"
-    t.text     "anotation_coment"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "delivery_id"
+    t.integer   "raiting"
+    t.text      "anotation_coment"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "delivery_id"
   end
 
   create_table "chats", :force => true do |t|
@@ -98,15 +98,15 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "comment_posts", :force => true do |t|
-    t.string   "title"
-    t.text     "content"
-    t.date     "date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "post_id"
-    t.integer  "user_id"
-    t.integer  "blog_id"
-    t.string   "user"
+    t.string    "title"
+    t.text      "content"
+    t.date      "date"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "post_id"
+    t.integer   "user_id"
+    t.integer   "blog_id"
+    t.string    "user"
   end
 
   create_table "comments", :force => true do |t|
@@ -119,18 +119,18 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "courses", :force => true do |t|
-    t.string    "name"
-    t.text      "description"
-    t.date      "start_date"
-    t.date      "finish_date"
-    t.boolean   "public"
-    t.string    "reference"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "network_id"
-    t.string    "course_logo_file"
-    t.integer   "chat_id"
-    t.string    "status"
+    t.string   "name"
+    t.text     "description"
+    t.date     "start_date"
+    t.date     "finish_date"
+    t.boolean  "public"
+    t.string   "reference"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "network_id"
+    t.string   "course_logo_file"
+    t.integer  "chat_id"
+    t.string   "status"
   end
 
   add_index "courses", ["network_id"], :name => "index_courses_on_network_id"
@@ -158,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.integer   "calificationem_id"
-    t.integer   "raiting"
+    t.integer   "raiting",           :default => 0
     t.text      "anotation_coment"
   end
 
@@ -194,27 +194,27 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "like_not_likes", :force => true do |t|
-    t.integer  "like"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "comment_id"
+    t.integer   "like"
+    t.integer   "user_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "comment_id"
   end
 
   create_table "networks", :force => true do |t|
-    t.string    "subdomain"
-    t.string    "name"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "slogan"
-    t.text      "welcome_message"
-    t.string    "logo_file"
-    t.string    "time_zone"
-    t.boolean   "public_registry",  :default => true
-    t.boolean   "private_registry", :default => false
-    t.string    "registry_domain"
-    t.string    "lenguajes"
-    t.string    "variante"
+    t.string   "subdomain"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slogan"
+    t.text     "welcome_message"
+    t.string   "logo_file"
+    t.string   "time_zone"
+    t.boolean  "public_registry",  :default => true
+    t.boolean  "private_registry", :default => false
+    t.string   "registry_domain"
+    t.string   "lenguajes"
+    t.string   "variante"
   end
 
   create_table "networks_users", :id => false, :force => true do |t|
@@ -301,38 +301,38 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
   end
 
   create_table "users", :force => true do |t|
-    t.string    "role"
-    t.string    "email",                                 :default => "",       :null => false
-    t.string    "encrypted_password",     :limit => 128, :default => "",       :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",                         :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.string    "confirmation_token"
-    t.timestamp "confirmed_at"
-    t.timestamp "confirmation_sent_at"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "first_name"
-    t.string    "last_name"
-    t.text      "about_me"
-    t.text      "studies"
-    t.date      "birth_date"
-    t.text      "occupation"
-    t.string    "twitter_link"
-    t.string    "facebook_link"
-    t.string    "linkedin_link"
-    t.string    "avatar_file"
-    t.string    "state",                                 :default => "active"
-    t.boolean   "accepting_emails",                      :default => false
-    t.string    "authentication_token"
-    t.integer   "chat_id"
-    t.string    "calendar_activity"
-    t.string    "view_status"
+    t.string   "role"
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "about_me"
+    t.text     "studies"
+    t.date     "birth_date"
+    t.text     "occupation"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "linkedin_link"
+    t.string   "avatar_file"
+    t.string   "state",                                 :default => "active"
+    t.boolean  "accepting_emails",                      :default => false
+    t.string   "authentication_token"
+    t.integer  "chat_id"
+    t.string   "calendar_activity"
+    t.string   "view_status",                           :default => "live"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

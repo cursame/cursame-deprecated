@@ -1,11 +1,11 @@
 <h1>Mis usuarios favoritos</h1>
 
-<% @favorites.each do |favorite|%>
+<% @favorite.each do |favorite|%>
 <div class="blue">
 	      <% @favorite = favorite.id %>
 	      <%=link_to image_tag(favorite.avatar), user_path(favorite.user_favorite_id), :rel => "dashboard-tip", :title => (favorite.name) %>
 	      <%= link_to "#{favorite.name}", user_path(favorite.user_favorite_id) %>
 	      <%#= link_to "Eliminar",favorite, :confirm => 'Seguro que desea eliminar el usuario de sus favoritos?', :method => :delete %>
-	      <%= link_to 'Destroy', Favorite, confirm: 'Are you sure?', method: :delete %>
+	      <%= link_to 'Destroy', favorites, method: :delete %>
 </div>     
 <%end%>
