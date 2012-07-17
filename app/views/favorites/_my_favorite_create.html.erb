@@ -1,0 +1,11 @@
+<%= form_for @favorite do |favorite| %>
+    	<%= favorite.hidden_field :user_id, :value => @friend_crocodile %>
+    	<%= favorite.hidden_field :user_favorite_id, :value => @user.id %>
+        <%= favorite.hidden_field :name, :value => @user.name %>
+        <%if @user.avatar_file%>
+	        <%= favorite.hidden_field :avatar, :value => @user.avatar_file.xxsmall.url%>
+	    <%end%>
+      <center>
+		<%= favorite.submit 'Agregar a favoritos', :class => "btn info"%>
+	  </center>
+ <%end%>
