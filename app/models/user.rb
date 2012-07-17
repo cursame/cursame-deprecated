@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
   has_many :notifications
   has_many :survey_replies
   has_many :statuses 
+  has_many :favorites
  
  
   validates_presence_of :first_name, :last_name

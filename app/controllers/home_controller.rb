@@ -21,14 +21,13 @@ class HomeController < ApplicationController
   def dashboard
     @courses       = current_user.visible_courses.where(:network_id => current_network).limit(4)
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
-    @users = current_network.users.limit(30) if current_network
+    @users = current_user.favorites.limit(30) if current_user
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
   def dashboard_calendar
       @courses       = current_user.visible_courses.where(:network_id => current_network).limit(4)
       @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
-      @users = current_network.users.limit(30) if current_network
       @tasks=current_user.assignments + current_user.surveys + current_user.calendar_activities
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
       @calendar_activity = CalendarActivity.new(params[:calendar_activity])

@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :favorites
+
   resources :status_courses
   #networks gets
   get "networks/network_cc"
@@ -127,6 +129,9 @@ Cursame::Application.routes.draw do
    #this is the abstract to new network
    match '/nueva-red', :to => 'networks#network_cc', :as => :network_cc
    match '/nueva-red/instrucciones', :to => 'networks#instrucciones', :as => :instrucciones_red   
+   #fin
+   #user favorites 
+   match 'my_favorites', :to => 'users#my_favorite_users', :as => :my_favorite_users   
    #fin
   match  '/blog', :to => 'home#blog/blog', :as => :blog
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new

@@ -9,7 +9,6 @@
 <%else%>
 <div class="container">
   <div class="content">
-    
     <div class="row">
       <div class="span16">
 	   	<% if @user.view_status == "fantom"%>
@@ -26,6 +25,9 @@
 		</div>
 		 <%= render :partial => "shared/footer" %>
 		<%else%>
+		<div class="container">
+		  <div class="content">
+		    <div class="row">
 		<div class="span16">
         <ul class="breadcrumb">
           <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
@@ -35,8 +37,12 @@
     </div>
     
     <div class="row">
-      <div class="span3">
+      <div class="span3">    
         <%= render :partial => "users/profile_menu" %>
+        </br>
+        <% if @user == current_user%>
+	    <%= link_to"Mis usuarios favoritos", my_favorite_users_path %>
+	    <%end%> 
       </div>
 
       <div class="span10">

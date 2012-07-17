@@ -1,28 +1,5 @@
 class BugAnswersController < ApplicationController
-  # GET /bug_answers
-  # GET /bug_answers.json
-  def index
-    @bug_answers = BugAnswer.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @bug_answers }
-    end
-  end
-
-  # GET /bug_answers/1
-  # GET /bug_answers/1.json
-  def show
-    @bug_answer = BugAnswer.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @bug_answer }
-    end
-  end
-
-  # GET /bug_answers/new
-  # GET /bug_answers/new.json
+ 
   def new
     @bug_answer = BugAnswer.new
 
@@ -46,7 +23,7 @@ class BugAnswersController < ApplicationController
          @send_report = @bug_answer.send_report
          @send_report.status = @bug_answer.send_report_status
          @send_report.save
-        format.html { redirect_to @bug_answer, notice: 'Bug answer was successfully created.' }
+        format.html { redirect_to :back, notice: 'Bug answer was successfully created.' }
         format.json { render json: @bug_answer, status: :created, location: @bug_answer }
       else
         format.html { render action: "new" }
