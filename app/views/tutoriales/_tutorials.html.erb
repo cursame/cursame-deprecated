@@ -1,0 +1,8 @@
+<% @tutoriales.each do |tutoriale| %>	
+ <%= tutoriale.title %>
+ <%= tutoriale.description %>
+ <%= tutoriale.date %>
+ <iframe width="50" height="50" src=<%="#{tutoriale.link}" %> frameborder="0" allowfullscreen></iframe>
+ <%= link_to 'Destroy', tutoriale, confirm: 'Estas seguro de eliminar el tutorial?', method: :delete, :class => "btn danger" %>
+  </tr>
+<% end %>
