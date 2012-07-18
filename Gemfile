@@ -1,6 +1,6 @@
 
 source 'http://rubygems.org'
-
+gem 'taps'
 gem 'rails', '3.1.1'
 gem 'devise', '2.0'
 gem 'mime-types'
@@ -45,8 +45,8 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'thin'
-  gem 'heroku'
+  gem 'thin' 
+  gem "heroku"
   gem "pg"
   gem 'therubyracer'
   gem 'airbrake'

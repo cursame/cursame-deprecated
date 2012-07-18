@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :tutoriales
+
   resources :favorites
   
   resources :status_courses
@@ -105,6 +107,7 @@ Cursame::Application.routes.draw do
     resources :networks
     get '/statistics', :to => 'base#statistics', :as => :statistics
     get '/reports', :to => 'base#reports', :as => :reports
+    get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
   end
 
   match '/admin' => 'admin/base#admin'

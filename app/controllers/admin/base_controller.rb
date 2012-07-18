@@ -12,6 +12,11 @@ module Admin
     def reports
       @send_reports=SendReport.all
     end
+    
+    def tutorials
+      @tutoriales = Tutoriale.all
+      @tutoriale = Tutoriale.new
+    end
     private
 
     def require_admin

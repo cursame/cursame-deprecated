@@ -1,28 +1,5 @@
 class LikeNotLikesController < ApplicationController
-  # GET /like_not_likes
-  # GET /like_not_likes.json
-  def index
-    @like_not_likes = LikeNotLike.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @like_not_likes }
-    end
-  end
-
-  # GET /like_not_likes/1
-  # GET /like_not_likes/1.json
-  def show
-    @like_not_like = LikeNotLike.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @like_not_like }
-    end
-  end
-
-  # GET /like_not_likes/new
-  # GET /like_not_likes/new.json
+ 
   def new
     @like_not_like = LikeNotLike.new
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120713223420) do
+ActiveRecord::Schema.define(:version => 20120717155746) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -298,6 +298,15 @@ ActiveRecord::Schema.define(:version => 20120713223420) do
     t.timestamp "updated_at"
     t.string    "state"
     t.timestamp "start_at"
+  end
+
+  create_table "tutoriales", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.date     "date"
+    t.string   "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
