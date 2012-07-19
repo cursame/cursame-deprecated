@@ -1,3 +1,13 @@
+<script>
+/* Click para aparecer desplegable*/
+$(document).ready(function() {       
+   $(".desplegable-tutoriales").click(function () {
+	  
+        $(".desplegable-interno").fadeToggle("slow", "linear");
+     });
+
+  });
+</script>
 <div id="tutorial-all" style="width:175px; margin-left:5px; margin-top:-10px;">
 	<div class="tutorial-header">
 		<div class="title">
@@ -55,16 +65,3 @@
  </center>
  </div>
 </div>
-<script>
-/* Click para aparecer desplegable*/
-$(document).ready(function() {
-    
-    
-   $(".desplegable-tutoriales").click(function () {
-	  
-        $(".desplegable-interno").fadeToggle("slow", "linear");
-   
-    });
-
-  });
-</script>
