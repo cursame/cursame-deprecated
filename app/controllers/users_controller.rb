@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @favorite = Favorite.new
     @friend_crocodile = current_user.id 
     @friend_salamander = find_user
+    @tutoriales = Tutoriale.all
   end
 
   def edit
@@ -41,6 +42,7 @@ class UsersController < ApplicationController
      @favorite = Favorite.new
      @friend_crocodile = current_user.id 
      @friend_salamander = find_user
+     @tutoriales = Tutoriale.all
   end
 
   def upload_avatar

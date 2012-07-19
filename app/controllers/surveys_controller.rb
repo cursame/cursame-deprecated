@@ -4,6 +4,7 @@ class SurveysController < ApplicationController
   def index
     @current_surveys = course.surveys.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
     @previous_surveys = course.surveys.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
+    @tutoriales = Tutoriale.all
     unless current_user.role_for_course(course) == "student"
       @unpublished_surveys = course.surveys.unpublished.order("due_to DESC")
     end
@@ -12,6 +13,7 @@ class SurveysController < ApplicationController
   def new
     @survey = manageable_course.surveys.build
     @survey.due_to = DateTime.now+1.week
+    @tutoriales = Tutoriale.all
   end
 
   def create
@@ -27,6 +29,7 @@ class SurveysController < ApplicationController
   def show
     @survey = accessible_surveys.find params[:id]
     @course = @survey.course
+    @tutoriales = Tutoriale.all
     if current_user.role_for_course(@course) != 'teacher' && !@survey.published?
       raise ActiveRecord::RecordNotFound
     end
@@ -35,6 +38,7 @@ class SurveysController < ApplicationController
 
   def edit
     @survey = current_user.manageable_surveys.find params[:id]
+    @tutoriales = Tutoriale.all
     if @survey.published?
       redirect_to survey_path @survey 
     else

@@ -1,8 +1,57 @@
-<% @tutoriales.each do |tutoriale| %>	
- <%= tutoriale.title %>
- <%= tutoriale.description %>
- <%= tutoriale.date %>
- <iframe width="50" height="50" src=<%="#{tutoriale.link}" %> frameborder="0" allowfullscreen></iframe>
- <%= link_to 'Destroy', tutoriale, confirm: 'Estas seguro de eliminar el tutorial?', method: :delete, :class => "btn danger" %>
-  </tr>
+<div id="tutorial-all" style="width:175px; margin-left:5px; margin-top:-10px;">
+	<div class="tutorial-header">
+		<div class="title">
+		<center>
+		<h3>Tutoriales de uso</h3>	
+		<div data-toggle="modal" href="#primer_tutorial" style="margin:2px;cursor:pointer;"><%=image_tag("video.png")%></div>
+		</center>
+	    </div>
+	</div>
+<div class="desplegable-interno" style="height:300px; display:none;">
+<% @tutoriales.each do |tutoriale| %>
+    <div class="row with line" style="margin:0px; padding:0px;">
+<div class="user padding-all <%= cycle('odd', 'even') %>">
+	<div class="interno" style="height:20px; cursor:pointer;">
+      <a> <div data-toggle="modal" href="#sub_tutorials<%= tutoriale.description %>" style="margin:2px;"><%=tutoriale.title %></a>
+	   </div>
+   </div>
+</div>
+ 
+<!--estos modal sirven para exponer cada uno del os tutoriales, el segundo modal sirve para el tutorial principal de introducción a cúrsame--> 
+
+<div class="modal hide" id="sub_tutorials<%= tutoriale.description %>" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3><%= tutoriale.title %></h3>
+   </p>   
+ </div>
+ <div class="modal-body">
+ <center>
+	<iframe width="520" height="293" src=<%="#{tutoriale.link}" %> frameborder="0" allowfullscreen></iframe>
+ </center>
+ </div>
+<div class="modal-footer">
+	<%="Descrición: #{tutoriale.description}"%>
+</div>
+</div>
 <% end %>
+</div>
+</div>
+</div>
+<div class="desplegable-tutoriales" style="cursor:pointer;">
+	<center>
+	<a>Mostrar Todos</a>
+	</center>
+</div>
+<div class="modal hide" id="primer_tutorial" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3>Introducción</h3>
+   </p>   
+ </div>
+ <div class="modal-body">
+ <center>
+	<iframe width="520" height="293" src="http://www.youtube.com/embed/2qU_l8FKoqA" frameborder="0" allowfullscreen></iframe>
+ </center>
+ </div>
+</div>

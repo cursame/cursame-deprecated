@@ -1,5 +1,5 @@
 <% if current_user.role == 'admin' %> 
-<%= form_for(@blog = Blog.new) do |f|%>
+<%= form_for(@blog=Blog.new) do |f|%>
   <% if @blog.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@blog.errors.count, "error") %> prohibited this blog from being saved:</h2>

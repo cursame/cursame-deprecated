@@ -3,10 +3,12 @@ class DiscussionsController < ApplicationController
   
   def new
     @discussion = course.discussions.build
+    @tutoriales = Tutoriale.all
   end
 
   def index
     @course, @discussions = course, course.discussions
+    @tutoriales = Tutoriale.all
   end
 
   def create
@@ -23,6 +25,7 @@ class DiscussionsController < ApplicationController
     @discussion = accessible_discussions.find params[:id]
     @course     = @discussion.course
     @comments   = @discussion.comments.order("created_at DESC").page(params[:page]).per(10)
+    @tutoriales = Tutoriale.all
   end
 
   def edit

@@ -6,11 +6,13 @@ class CoursesController < ApplicationController
   set_tab :calification, :only => %w(calification)
   def index
     @courses = current_network.courses 
+    @tutoriales = Tutoriale.all
   end
 
   def new
     @course = Course.new
     @courses = current_user.courses
+    @tutoriales = Tutoriale.all
   end
 
   def create 
@@ -64,6 +66,7 @@ class CoursesController < ApplicationController
 
   def edit
     @course = current_user.manageable_courses.find params[:id]
+    @tutoriales = Tutoriale.all
   end
 
   def update
@@ -78,15 +81,18 @@ class CoursesController < ApplicationController
   def show
     @course = accessible_course 
     @status_course = StatusCourse.new
+    @tutoriales = Tutoriale.all
   end
   def calification
     @course = accessible_course
     @molto_course = @course.assignments
     @bella_survey = @course.surveys
+    @tutoriales = Tutoriale.all
   end
   
   def members
     @course = accessible_course
+    @tutoriales = Tutoriale.all
     if current_user.manageable_courses.include? @course
       @pending_students = @course.pending_students
       @pending_teachers = @course.pending_teachers
@@ -97,6 +103,7 @@ class CoursesController < ApplicationController
 
   def wall
     @course   = accessible_course
+    @tutoriales = Tutoriale.all
     @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)    
     respond_to do |format|
         format.js

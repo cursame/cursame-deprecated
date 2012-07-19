@@ -8,16 +8,15 @@
 <%else%>
 
 
-  <% current_user.favorites.each do |favorites|%>  
+   <% current_user.favorites.each do |favorites|%>  
   
    <% @favorite_p = favorites.user_favorite_id%>
   
    <%end%>
 
+   <% if @user.id === @favorite_p %>
 
-   <% if @user.id == @favorite_p %>
-
-    <%else%>
+   <%else%>
    <%= render :partial => "favorites/my_favorite_create"%>
    <%end%>
  
