@@ -37,10 +37,10 @@ margin-top:5px;
 margin-left:30px;margin-bottom:5px;">
 <div class="text" style="color:#000;opacity:0.9;
   filter:alpha(opacity=60); margin-left:9px;">
- <b><%= @notificaciones_admin_actualice_last.title %>:<div class="btn right" id="desplegar">
+ <b><%= @notificaciones_admin_actualice_last.title if @notificaciones_admin_actualice.count> 0 %>:<div class="btn right" id="desplegar">
 	<%= image_tag("desplegar.png")%>
 </div></b>
- <div class="page"><%= @notificaciones_admin_actualice_last.content %></div>
+ <div class="page"><%= @notificaciones_admin_actualice_last.content if @notificaciones_admin_actualice.count > 0 %></div>
  
  </div>
 </div>
