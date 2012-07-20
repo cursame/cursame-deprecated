@@ -44,6 +44,14 @@
    </script>
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
+  	<div class="container">
+	<% 
+	@notificaciones_admin_actualice = NotificacionesAdminActualouse.all
+    @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last
+	%>
+	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>
+	 </div>
   <%= yield %>
+	
 </html>
 <% end%>

@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :notificaciones_admin_actualice
+
   resources :tutoriales
 
   resources :favorites
@@ -108,6 +110,7 @@ Cursame::Application.routes.draw do
     get '/statistics', :to => 'base#statistics', :as => :statistics
     get '/reports', :to => 'base#reports', :as => :reports
     get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
+    get '/public-notification', :to => 'base#notification', :as => :notification
   end
 
   match '/admin' => 'admin/base#admin'

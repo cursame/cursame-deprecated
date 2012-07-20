@@ -16,10 +16,13 @@
 <body>
 
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
-
+  
   <%= render :partial => 'shared/flash', :locals => {:flash => flash} %>
 
   <div class="container">
+	<div class="container">
+	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>
+	 </div>
     <div class="content">
       <div class="row">
         <div class="span3">
@@ -30,6 +33,7 @@
               <li><%= link_to t("super_admin.shared.statistics"), admin_statistics_path %></li>                   
               <li><%= link_to 'Reports', admin_reports_path %></li>
               <li><%= link_to 'Tutoriales', admin_tutorial_path %></li>
+              <li><%= link_to 'Notificaciones', admin_notification_path %></li>
             </ul>
           </div>
 

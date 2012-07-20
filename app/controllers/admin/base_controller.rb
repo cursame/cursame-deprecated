@@ -17,6 +17,11 @@ module Admin
       @tutoriales = Tutoriale.all
       @tutoriale = Tutoriale.new
     end
+    def notification
+      @notificaciones_admin_actualice = NotificacionesAdminActualouse.all
+      @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last !
+      @notificaciones_admin_actualouse = NotificacionesAdminActualouse.new
+    end
     private
 
     def require_admin

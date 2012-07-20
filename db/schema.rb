@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120717155746) do
+ActiveRecord::Schema.define(:version => 20120720171149) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -224,6 +224,14 @@ ActiveRecord::Schema.define(:version => 20120717155746) do
 
   add_index "networks_users", ["network_id"], :name => "index_networks_users_on_network_id"
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
+
+  create_table "notificaciones_admin_actualice", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.string   "link_video"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "notifications", :force => true do |t|
     t.integer   "notificator_id"
