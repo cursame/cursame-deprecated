@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]
   set_tab :dashboard
   layout 'application', :except => [:index, :termns ]
-  layout 'index_layout', :except => [:dashboard, :dashboard_calendar, :blog, :repots, :help, :members, :network_cc]
+  layout 'index_layout',:except => [:dashboard, :dashboard_calendar, :blog, :repots, :help, :members, :network_cc]
 
   def index
     if current_user && current_user.active?
