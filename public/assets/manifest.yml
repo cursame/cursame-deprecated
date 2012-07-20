@@ -15,6 +15,7 @@ course_small.png: course_small-50a92fb31aaef15529d9781c2ae634b7.png
 course_thumb.png: course_thumb-64fecc7269fe8bd87bcce55407481fca.png
 course_xsmall.png: course_xsmall-b78443a489659092cca2ced64e18e369.png
 course_xxsmall.png: course_xxsmall-5b45a51f96b66bd7eb85ccddd0d8eb68.png
+desplegar.png: desplegar-df3c66af2809fb52bedb7c7b83089917.png
 discusiones-notif.png: discusiones-notif-b02f3d0ce29c5a72bb3223f940b08fdf.png
 drag_selector.png: drag_selector-873cf97f10778cdb9da1d58123bcadc6.png
 fancybox_loading.gif: fancybox_loading-fa43be6c077295cf1d06e683819aff28.gif
@@ -186,6 +187,7 @@ nosotros/gabriel.png: nosotros/gabriel-176565a6041e733c63f8aa3d3fe76694.png
 nosotros/ignacio.png: nosotros/ignacio-0cd55ea8d2e0b044754968896619ebcf.png
 nosotros/leon.jpg: nosotros/leon-292ef74821fa14a90dd3630cce3a29a6.jpg
 nosotros/rogelio.png: nosotros/rogelio-e03ec64c56e547eefffd105a6e42226e.png
+notificate-open.png: notificate-open-5ea36c85f5e31d158912ab1c6a834020.png
 notification-hover.png: notification-hover-922070a4280c8b45abe18e31a1bb2586.png
 notification.png: notification-09107ae1cfbd04c243920de02e144181.png
 ok-blue.png: ok-blue-d4a0e9cebf722d8c8ee8c7b710755ce1.png
@@ -226,5 +228,5 @@ teacher_xsmall.png: teacher_xsmall-eb790ff7fce5fc451be0d648e0a5abfc.png
 teacher_xxsmall.png: teacher_xxsmall-8dea30577360e0254c48ed55f46adcd6.png
 trash.png: trash-fed6d579cb903b3e1a5b8fd4dde6cb5b.png
 video.png: video-d39ff5fe5586a5fc90cd42c1806472b8.png
-application.js: application-28c9440f33710019f1679cc498b8d656.js
+application.js: application-fa1d027d763dd873a2508ceb2c6f111d.js
 application.css: application-ba4fd6a3c0a73ae4f647b9f7399b5446.css
