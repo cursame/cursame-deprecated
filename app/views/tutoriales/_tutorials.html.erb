@@ -17,7 +17,7 @@ $(document).ready(function() {
 		</center>
 	    </div>
 	</div>
-<div id="desplegable-interno" style="height:300px; display:none;">
+<div id="desplegable-interno" style="height:300px;">
 <% @tutoriales.each do |tutoriale| %>
     <div class="row with line" style="margin:0px; padding:0px;">
 <div class="user padding-all <%= cycle('odd', 'even') %>">
@@ -50,7 +50,7 @@ $(document).ready(function() {
 </div>
 <div id="desplegable-tutoriales" style="cursor:pointer;">
 	<center>
-	<a>Mostrar Todos</a>
+	<!--<a>Mostrar Todos</a>-->
 	</center>
 </div>
 <!--
