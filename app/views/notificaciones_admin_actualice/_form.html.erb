@@ -1,0 +1,17 @@
+<%= form_for(@notificaciones_admin_actualouse) do |f| %>
+   <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content,:rows => 8, :cols => 45 %>
+  </div>
+  <div class="field">
+    <%= f.label :link_video %><br />
+    <%= f.text_field :link_video %>
+  </div>
+  <div class="actions">
+    <%= f.submit "crear notificación", :class => "btn" %>
+  </div>
+<% end %>
