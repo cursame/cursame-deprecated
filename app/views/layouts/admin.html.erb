@@ -21,6 +21,10 @@
 
   <div class="container">
 	<div class="container">
+		<% 
+		@notificaciones_admin_actualice = NotificacionesAdminActualouse.all
+	    @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last
+		%>
 	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>
 	 </div>
     <div class="content">
