@@ -13,29 +13,30 @@ $(document).ready(function() {
 <div class="span16" style="margin:0px; margin-bottom:5px;">
 
  <div class="span15" style="
-	opacity:0.7;
+	opacity:1;
 	  filter:alpha(opacity=60); background-image: linear-gradient(bottom, rgb(40,51,50) 23%, rgb(66,77,76) 68%);
- background-image: linear-gradient(bottom, rgb(214,212,210) 36%, rgb(199,199,199) 69%, rgb(217,224,224) 85%);
-background-image: -o-linear-gradient(bottom, rgb(214,212,210) 36%, rgb(199,199,199) 69%, rgb(217,224,224) 85%);
-background-image: -moz-linear-gradient(bottom, rgb(214,212,210) 36%, rgb(199,199,199) 69%, rgb(217,224,224) 85%);
-background-image: -webkit-linear-gradient(bottom, rgb(214,212,210) 36%, rgb(199,199,199) 69%, rgb(217,224,224) 85%);
-background-image: -ms-linear-gradient(bottom, rgb(214,212,210) 36%, rgb(199,199,199) 69%, rgb(217,224,224) 85%);
+	
 
-background-image: -webkit-gradient(
-	linear,
-	left bottom,
-	left top,
-	color-stop(0.36, rgb(214,212,210)),
-	color-stop(0.69, rgb(199,199,199)),
-	color-stop(0.85, rgb(217,224,224))
-);
+	background-image: linear-gradient(bottom, rgb(33,164,173) 12%, rgb(14,160,173) 3%, rgb(6,125,143) 82%);
+	background-image: -o-linear-gradient(bottom, rgb(33,164,173) 12%, rgb(14,160,173) 3%, rgb(6,125,143) 82%);
+	background-image: -moz-linear-gradient(bottom, rgb(33,164,173) 12%, rgb(14,160,173) 3%, rgb(6,125,143) 82%);
+	background-image: -webkit-linear-gradient(bottom, rgb(33,164,173) 12%, rgb(14,160,173) 3%, rgb(6,125,143) 82%);
+	background-image: -ms-linear-gradient(bottom, rgb(33,164,173) 12%, rgb(14,160,173) 3%, rgb(6,125,143) 82%);
 
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.12, rgb(33,164,173)),
+		color-stop(0.03, rgb(14,160,173)),
+		color-stop(0.82, rgb(6,125,143))
+	);
 -webkit-border-radius: 5px;
 -moz-border-radius: 5px;
 border-radius: 5px;
 margin-top:5px;
 margin-left:30px;margin-bottom:5px;">
-<div class="text" style="color:#000;opacity:0.9;
+<div class="text" style="color:#fff;opacity:0.9;
   filter:alpha(opacity=60); margin-left:9px;">
  <b><%= @notificaciones_admin_actualice_last.title if @notificaciones_admin_actualice.count > 0 %>:<div class="btn right" id="desplegar">
 	<%= image_tag("desplegar.png")%>
@@ -71,7 +72,7 @@ margin-left:30px;margin-bottom:5px;">
 	   <h4 style="color:#fff;"><%=actualice.title%>:<div class="btn right" id="notificate-open<%=actualice.id%>"><%= image_tag("notificate-open.png")%></div></h4>
 	  </div>
 	 </div>	
-	   <div class="span5 well" style="display:none; height:180px; overflow:auto;" id="contenidos-notificaciones<%=actualice.id%>">
+	   <div class="span5 well" style="display:none; height:70px; overflow:auto;" id="contenidos-notificaciones<%=actualice.id%>">
         <div class="page"><%= actualice.content%></div>
 	 </div>
 	</div>
