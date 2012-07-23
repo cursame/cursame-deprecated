@@ -1,3 +1,15 @@
+<% if @course.status == "finish"%>
+<div class="underline">
+  <%= image_tag @course.course_logo_file.small.url %>
+</div>
+<div class="underline">	
+<%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
+    <%= tab.course t('courses.information'), course_path(@course), :class => "informacion" %>
+    <%= tab.assignments t('.assignments'), course_assignments_path(@course), :class => "tareas" %>
+    <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
+  <% end %>
+</div>
+<%else%>
 <div class="underline">
   <%= image_tag @course.course_logo_file.small.url %>
 </div>
@@ -9,6 +21,7 @@
     <%= tab.assignments t('.assignments'), course_assignments_path(@course), :class => "tareas" %>
     <%= tab.surveys t('.surveys'), course_surveys_path(@course), :class => "surveys" %>
     <%= tab.discussions t('.discussions'), course_discussions_path(@course), :class => "discusiones" %>
-   
+     <%= tab.calification t('courses.calification.calificaciones'), calification_for_course_path(@course), :class => "calification" %>
   <% end %>
 </div>
+<%end%>

@@ -29,11 +29,19 @@ class User < ActiveRecord::Base
   has_many :enrollment_requests,       :through => :courses, :class_name => 'Enrollment', :source => :enrollments
   has_many :comments
   has_many :chats
+  has_many :calendar_activities
+  has_many :blogs
+  has_many :comment_posts
+  has_many :send_reports
+  has_many :bug_answers
   # TODO: refactor commentable models to homogenize access to comments (below)
   has_many :profile_comments, :as => :commentable, :class_name => 'Comment', :source => :comment
   has_many :deliveries
   has_many :notifications
   has_many :survey_replies
+  has_many :statuses 
+  has_many :favorites
+ 
  
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor)
@@ -54,7 +62,15 @@ class User < ActiveRecord::Base
   def active?
     state == 'active'
   end
-
+  
+  def fantom?
+    view_status == 'fantom'
+  end
+  
+  def live?
+    view_status == 'live'
+  end
+  
   def teacher?
     role == 'teacher'
   end
@@ -161,5 +177,5 @@ class User < ActiveRecord::Base
       end
     end
   end
-
+  
 end

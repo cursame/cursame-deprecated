@@ -1,3 +1,5 @@
+<% if course.status == "finish"%>
+<%else%>
 <div class="course padding-all <%= cycle('odd', 'even') %>">
   <div class="row">
     <div class="span6">
@@ -50,3 +52,4 @@
   </div>
   <p class="padding-right"><%= truncate(course.description, :length => 200).html_safe %></p>
 </div>
+<%end%>

@@ -1,0 +1,41 @@
+
+<div class="container well" style="background-color: #fff;">
+<div class="span15">
+	<div class="span7"  style="float:left; margin:20px; color:#fff;">
+		<%= image_tag("new-good.png")%>
+		<%= image_tag("nosotros/cursame.png")%>
+		<h3 style="color:#000;">Bienvenido a la red de cúrsame es necesario que llenes
+			 cada uno de los campos para poder crear tu nueva red, 
+			después te llegará un mail de confirmación mediante el 
+			cual podrás acceder a tu usuario para configurar tu nueva 
+			red.</h3>
+	</div>
+<div class="span6" style="margin-top:30px;">
+<h4 style="color:#000;" > Crea un selecciona un dominio para la red. </h4></br></br>
+<%= semantic_form_for @network do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :subdomain %>
+    <%= form.label :versión_a_usar%>
+    <%= form.select :variante, options_for_select([[t('.free'), "free"],[t('.pro'), "pro"],[t('.enterprise'),"enterprise"]]) %>
+  <% end %>
+ <h4 style="color:#000;" > Crea un supervisor para la red. </h4></br></br>
+  <%= form.semantic_fields_for :supervisors do |user| %>
+    <%= user.input :first_name %></br>
+    <%= user.input :last_name %></br>
+    <%= user.input :email %></br>
+    <%= user.input :password %></br>
+    <%= user.input :password_confirmation %></br>
+  <% end %>
+</a>
+  </br>
+<div class="right">
+  <%= form.buttons do %>
+    <%= form.submit "Crear red", :class => "btn", :button_html => {:id => :submit} %>
+  <% end %>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+</div>

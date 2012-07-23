@@ -19,7 +19,10 @@
     <div class="members-grid">
       <ul class="nav-member-avatars">
         <% @users.each do |user| %>
+            <% if user.view_status == "fantom"%>
+           <%else%>
           <li><%= link_to(image_tag('grey.gif', "data-original".to_sym => user.avatar_file.small.url, :class => "network-members", :width => 100, :height=>100), user_path(user), :rel => "tip", :title => user.name) %></li>
+          <%end%>
         <% end %>
       </ul>
       <%= link_to t(".all_members"), network_members_path %>

@@ -1,12 +1,17 @@
 <div class="underline padding-top">
-  <h2><%= t(".members")%></h2>
+  <h2>Mis favoritos</h2>
 </div>
   <ul class="nav-member-avatars">
+	
     <% if @users %>
-      <% @users.each do |user| %>
-        <li><%= link_to(image_tag(user.avatar_file.xxsmall.url), user_path(user), :rel => "dashboard-tip", :title => user.name) %></li>
-      <% end %>
-    <% end %>
+
+        <% if current_user.view_status == "fantom"%>
+        <%else%> 
+      	 <% @users.each do |favorites|%>  
+			      <%=link_to image_tag(favorites.avatar), user_path(favorites.user_favorite_id), :rel => "dashboard-tip", :title => (favorites.name) %>
+		  <%end%>
+      <%end%>
+    <%end%>
   </ul>
   <%= link_to t(".all_members"), network_members_path %>
 

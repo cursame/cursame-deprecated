@@ -1,18 +1,49 @@
 <div class="comment body" id="<%= "comment_#{comment.id}" %>">
   <div class="row">
+	<% if comment.user.view_status == "fantom"%>
+	<div class="span1"><%= image_tag("anonimus-user/tamano/anonimus2.png")%></div>
+	<div class="span7">
+      <h6>Usuario Anónimo</h6>
+      <blockquote>
+        <p><%= comment.text %></p>
+	<%else%>
     <div class="span1"><%= link_to(link_to(image_tag(comment.user.avatar_file.xsmall.url)), user_path(comment.user)) %></div>
     <div class="span7">
       <h6><%= link_to comment.user.name, user_path(comment.user) %></h6>
       <blockquote>
         <p><%= comment.text %></p>
+        <%end%>
+    	<div class= "like">
+	         <% @cabatina=comment.id%>
+	         <% @cpo= comment.like_not_likes.count%>
+			 <div class="right">
+			  <%comment.like_not_likes.each do |c|%>
+
+			  <% @casiopea = c.user_id %>
+
+			  <%end%> 
+
+			  <% if current_user.id === @casiopea && comment.like_not_likes.count > 0 %>
+			 <div class="like-element label-tag">
+			  	<%= comment.like_not_likes.count %>
+			  </div>
+			  <% else %>
+			  	<div id="like_super_<%= comment.id%>">
+			  		<%= render :partial => "like_not_likes/form"%>
+			  	</div>			  
+		    <% end %>
+		</div>
+         
         <% if comment.assets.any? %>
         <p>
         <% comment.assets.each do |asset| %>
           <%= image_tag asset.file.thumb_url %>
 		  <%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
-		  <a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %></a><br />
+		  <a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %> </a><br />
         <% end %>
         </p>
+             
+           
         <% end %>
         <small>
           <%= time_ago_in_words(comment.created_at) %>
@@ -23,6 +54,7 @@
               <%= link_to t('comment'), '#', :class => "toggle_comment_box" %>
           <% end %>
         </small>
+     
       </blockquote>
     </div>
   </div>

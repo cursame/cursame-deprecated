@@ -1,3 +1,4 @@
+<% if @course.status == "finish"%>
 <div class="container">
   <div class="content">
     
@@ -7,19 +8,18 @@
           <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
           <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
           <li class="active"><%= @course.name %></li>
+           
         </ul>  
       </div>
     </div>
-    
     <div class="row">
       <div class="span3">
         <%= render :partial => "course_menu" %>
-        <%= render :partial => "members_menu" %>
       </div>
       <div class="span10">
         <div class="row">
           <div class="span7">
-            <h2><%= @course.name %></h2>
+            <h2><%= "este curso esta finalizado: #{@course.name} "  %></h2>
             <div class="public-course">
               <% if @course.public? %>
                 <%= t('courses.public') %>
@@ -30,11 +30,88 @@
           </div>
           <div class="span2">
             <% if current_user.manageable_courses.include? @course %>
-              <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %>
+           
+              <%= form_for @status_course do |status|%>
+                <%= status.hidden_field :status, :value => "active" %>
+                <%= status.hidden_field :date, :value => Date.today %>
+                <%= status.hidden_field :course_id, :value => @course.id%>
+                <%= status.submit "Reactivar curso", :class => "btn success"%>
+
+              <%end%>
             <% end %>
+
           </div>
+ 
+        </div>
+        <div class="row with line">
+          <div class="description"><%= t('courses.description') %></div>
+          <div class="expander"><p><%= @course.description %></p></div>
         </div>
         
+        <div class="section-divider"><h3><%= t('courses.archives') %></h3></div>
+        <%= render :partial => 'shared/assets_table', :locals => {:record => @course} %>
+      </div>
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
+
+<%else%>
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
+          <li class="active"><%= @course.name %></li>
+           
+        </ul>  
+      </div>
+    </div>
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "course_menu" %>
+        <%= render :partial => "members_menu" %>
+      </div>
+      <div class="span10">
+        <div class="row">
+          <div class="span6">
+            <h2><%= @course.name %></h2>
+            <div class="public-course">
+              <% if @course.public? %>
+                <%= t('courses.public') %>
+              <% else %>
+                <%= t('courses.private') %>
+              <% end %>
+            </div>
+          </div>
+          <div class="span2">
+          <div class="span2">
+          <div style="margin:2px;">  <% if current_user.manageable_courses.include? @course %>
+              <%= link_to(t('courses.edit_course'), edit_course_path(@course), :class => "btn info small right") %></div>
+          <div class="span2 right">
+            <div style="margin:2px;">
+              <%= form_for @status_course do |status|%>
+                <%= status.hidden_field :status, :value => "finish" %>
+                <%= status.hidden_field :date, :value => Date.today %>
+                <%= status.hidden_field :course_id, :value => @course.id%>
+                <%= status.submit "Finalizar curso", :class => "btn danger"%>
+
+              <%end%>
+              </div>
+            
+          
+            <% end %>
+           </div>
+            </div>
+          </div>
+ 
+        </div>
         <div class="row with line">
           <div class="span2 description no-margin"><%= t('courses.time') %></div>
           <div class="span6"><p><%= l @course.start_date, :format => :medium %> - <%= l @course.finish_date, :format => :medium %></p></div>
@@ -58,3 +135,4 @@
   </div>
   <%= render :partial => "shared/footer" %>
 </div>
+<%end%>

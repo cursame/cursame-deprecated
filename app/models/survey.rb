@@ -70,7 +70,9 @@ class Survey < ActiveRecord::Base
       where(:state => "*")
     end
   end
-
+  def icon
+      'menu-examen.png'
+  end
   private
 
   def start_at_less_than_due_to
@@ -80,4 +82,5 @@ class Survey < ActiveRecord::Base
     end
 
   end
+  
 end

@@ -1,0 +1,44 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
+<% if @course.status == "finish"%>
+<center></br></br>
+<h2>Este curso ha finalizado por seguridad no puedes acceder a sus calificaciones</h2>
+<%= image_tag("lock.png")%>	
+</center>
+
+<%else%>
+<html>
+<div class="container">
+  <div class="content">
+	<div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('courses.courses'), courses_path) %> <span class="divider">/</span></li>
+          <li class="active"><%= @course.name %></li>
+        </ul>  
+      </div>
+    </div>
+ <div class="row">
+      <div class="span3">
+        <%= render :partial => "course_menu" %>
+        <%= render :partial => "members_menu" %>
+      </div>
+      <div class="span10" style="border:0;">
+        <h1>Calificaciones del curso</h1>
+		<%= render :partial => "calification/index"%>
+      </div>
+    </div>
+  </div>
+  <%= render :partial => "shared/footer" %>
+</div>
+<html>
+<%end%>
+<%end%>

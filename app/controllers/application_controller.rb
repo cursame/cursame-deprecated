@@ -42,10 +42,12 @@ class ApplicationController < ActionController::Base
   end
   
   def current_languaje
-    I18n.locale = current_network.lenguajes
-      def default_url_options(options = {})
-       {lenguajes: I18n.locale}
-      end 
+    if current_network
+      I18n.locale = current_network.lenguajes
+        def default_url_options(options = {})
+          {lenguajes: I18n.locale}
+        end       
+    end  
   end
 
   def authenticate_active_user_within_network!
@@ -83,7 +85,11 @@ class ApplicationController < ActionController::Base
     end
   end
   def chat
-  @chat=current_user.chat
-  
+  @chat=current_user.chat  
   end
+  def mobile?
+   # request.user_agent =~ /Mobile|webOS/ 
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
+  end
+  helper_method :mobile?
 end

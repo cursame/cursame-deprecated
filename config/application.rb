@@ -26,6 +26,7 @@ module Cursame
     config.filter_parameters += [:password]
     config.assets.enabled = true
     config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = false
     
     
     config.generators do |gen|

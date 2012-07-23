@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="content">
+	<div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(t('dashboard.calendar'), calendar_path) %> <span class="divider">/</span></li>
+          <li>Activity</li>
+       </ul>  
+      </div>
+    </div>
+   </div>
+ <div class="row">
+   <div class="spam3">
+   </div>
+<center> 
+	
+<div class="spam10" style="border:0;">
+<h2>Actividad:</h2>
+  <p id="notice"><%= notice %></p>
+<p>
+  <b>Name:</b>
+  <%= @calendar_activity.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @calendar_activity.description %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @calendar_activity.due_to %>
+</p>
+</div>
+<center>
+</div>
+ <%= render :partial => "shared/footer" %>
+</div>

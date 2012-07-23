@@ -1,9 +1,8 @@
 class Delivery < ActiveRecord::Base
-  default_scope includes(:assignment)
-
+  default_scope includes(:assignment)  
+  has_one :calificationem
   extend ActiveRecord::HTMLSanitization
   extend ActiveRecord::AssetsOwner
-
   belongs_to :assignment
   belongs_to :user
   has_many :comments, :as => :commentable
@@ -24,4 +23,13 @@ class Delivery < ActiveRecord::Base
       Notification.create :user => teacher, :notificator => self, :kind => 'student_assignment_delivery'
     end
   end
+  def score   
+       (100 * raiting/assignment.value).to_i    
+   end
+   
+  def limit
+  assignment.value
+  end
+  
+  
 end

@@ -1,0 +1,6 @@
+
+<%= form_for @like_not_like = LikeNotLike.new, :remote=>true do |f| %>
+	<div onclick="$(this).parent('form').submit()" class="recommend" ><%= image_tag('recomendar.png')%>  <%= @cpo if @cop == 0  %> </li></div>    
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <%= f.hidden_field :comment_id, :value => @cabatina %>
+<% end %>

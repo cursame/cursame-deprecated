@@ -4,6 +4,7 @@ class AssignmentsController < ApplicationController
   def index
     @current_assignments = course.assignments.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
     @previous_assignments = course.assignments.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
+    @tutoriales = Tutoriale.all
     unless current_user.student?
       @unpublished_assignments = course.assignments.created.order("due_to DESC")
     end
@@ -12,11 +13,12 @@ class AssignmentsController < ApplicationController
   def new
     @assignment = manageable_course.assignments.build
     @assignment.due_to = DateTime.now+1.week
+    @tutoriales = Tutoriale.all
   end
 
   def create
     @assignment = manageable_course.assignments.build(params[:assignment])
-
+   
     if @assignment.save
       redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
@@ -48,6 +50,7 @@ class AssignmentsController < ApplicationController
     @assignment = accessible_assignments.find params[:id]
     @course     = @assignment.course
     @comments   = @assignment.comments.order("created_at DESC").page(params[:page]).per(10)
+    @tutoriales = Tutoriale.all
   end
 
   private

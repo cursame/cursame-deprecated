@@ -1,3 +1,12 @@
+<% if current_user.view_status == "fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -11,13 +20,14 @@
           <li class="active"><%= @assignment.name %></li>
         </ul>  
       </div>
-    </div>
-    
-    <div class="row">
-      
+    </div>    
+    <div class="row">      
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
+   <% if @course.status == "finish"%>
+     <%else%>
         <%= render :partial => "courses/members_menu" %>
+     <%end%>
       </div>
       
       <div class="span10 assignments">
@@ -28,9 +38,11 @@
           </div>
           <div class="span3" style="margin-left:70px;">
             <% if current_user.manageable_assignments.where(:id => @assignment).count > 0 %>
+<% if @course.status == "finish" %>
+<%else%>
               <%= link_to t('formtastic.actions.delete'), @assignment, :id => 'delete', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete') %>
               <%= link_to t('formtastic.actions.edit'), edit_assignment_path(@assignment), :id => 'edit', :class => 'btn info right' %>
-              
+<%end%>
             <% elsif @assignment.due_to > DateTime.now %>
               <% if current_user.deliveries.where(:assignment_id => @assignment).count == 0 %>
                 <%= link_to t('.deliver'), new_assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right' %>
@@ -68,13 +80,51 @@
         </div>
         
         <% @deliveries.each do |delivery| %>
+        <% if delivery.user.view_status == "fantom"%>
+         
+	         <div class="delivery <%= cycle("odd", "even") %>">
+	            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+	            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+
+	        <%= link_to t('.show'), delivery, :class => "btn" %>
+	
+        <%else%>
+
+        <% if @course.status == "finish"%>
+    
+       <div class="delivery <%= cycle("odd", "even") %>">
+            <%= image_tag delivery.user.avatar_file.xsmall.url %>
+            <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
+          
+        <%= link_to t('.show'), delivery, :class => "btn" %>
+        
+          <% @calculus = (delivery.limit/2)%>   
+           
+           <% if delivery.raiting > @calculus %>
+          Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting %></b>
+            <%else%>
+           Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
+           <%end%>
+        <%else%>
+           
+
           <div class="delivery <%= cycle("odd", "even") %>">
             <%= image_tag delivery.user.avatar_file.xsmall.url %>
             <div class="left right-margin"><%= link_to delivery.user.name, user_path(delivery.user) %><div class="assignment-values"><%= l delivery.updated_at, :format => :short %></div></div>
-            <%= link_to t('.show'), delivery, :class => "btn" %> 
+            <%= link_to t('.show'), delivery, :class => "btn" %>
+
+          <% @calculus = (delivery.limit/2)%>   
+           
+           <% if delivery.raiting > @calculus %>
+          Calificación asignada:  <b class="label-tag calification-good"><%=delivery.raiting %></b>
+            <%else%>
+           Calificación asignada:  <b class="label-tag calification-bad"><%=delivery.raiting %></b>      
+           <%end%> 
+          
+      <%end%>
           </div>
         <% end %>
-        
+        <%end%>
         </div>
       
         <div class="span3" style="margin:0;">
@@ -85,6 +135,9 @@
     
   </div>
 </div>
+</div>
+<%= render :partial=> "shared/footer"%>
+<%end%>
 <script type="text/javascript">
   $(function(){
     setupAutoScroll();

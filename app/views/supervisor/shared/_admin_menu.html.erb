@@ -7,6 +7,5 @@
   <%= teachers_notification_tab(@pending_teachers_total, tab) %>
   <%= tab.students t('.students'), supervisor_students_path %>
   <%= tab.new_user t('.new_user'), supervisor_new_user_path %>
-   <li><%= link_to(t('.reports'), "#") %></li>
-
+  <%= tab.suspended t('.suspendidos'), user_suspended_path %>
 <% end %>

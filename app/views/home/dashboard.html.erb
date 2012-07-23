@@ -1,3 +1,12 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     <div class="row">
@@ -8,7 +17,6 @@
       </div>
     </div>
     <div class="row">
-
       <div class="span-one-third verticle_line">
         <div class="underline">
           <div class="row">
@@ -16,15 +24,18 @@
               <h2><%= t('courses.my_courses') %></h2>
             </div>
             <div class="span2 padding-top">
+	         
+	           <div class="btn" data-toggle="modal" href="#oldCourses" style="margin:2px;"><%= "Anteriores" %></div></br>
               <% if current_user.teacher? %>
-                  <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small") %>
+                  <div style="margin:2px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn info small") %></div>    
               <% end %>
             </div>
           </div>
         </div>
-
         <% unless @courses.blank? %>
             <% @courses.each do |course| %>
+                 <% if course.status == "finish"%>
+                 <%else%>
                 <div class="course-detail <%= cycle("odd", "even") %>">
                   <div class="span4">
                     <% if course.course_logo_file.xxsmall.url %>
@@ -42,6 +53,7 @@
                     <span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span>
                   </div>
                 </div>
+                <%end%>
             <% end %>
         <% else %>
             <% if current_user.teacher? %>
@@ -55,47 +67,12 @@
         <%= render :partial => "members" %>
       </div>
       <div class="span-two-thirds">
-        <div class="tabs">
-          <ul class="tabs">
-            <li class="active"><a href="#tab1" data-toggle="tab"><%= t('calendar') %></a></li>
-            <li><a href="#tab2" data-toggle="tab"><%= t('notifications.header') %></a></li>
-
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="tab1">
-              <div class="row with line">
-                <center>
-                  <h2>
-                    <%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%m/%Y") %>
-                    <%= h @date.strftime("%B / %Y") %>
-                    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%m/%Y") %>
-                  </h2>
-                </center>
-                <div id="calendar">
-
-                  <%= calendar_for(@tasks, :year => @date.year, :month => @date.month) do |t| %>
-                      <%= t.head('sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday') %>
-                      <%= t.day(:day_method => :due_to) do |day, tasks| %>
-                          <%= day.day %>
-                          <br/>
-                          <ul>
-                            <% for task in tasks %>
-                                <li>
-                                  <%= link_to(task.name, task, :rel => "dashboard-tip", :title => sanitize(task.description, :tags => %w(a)))%>
-                                </li>
-                            <% end %>
-                          </ul>
-                      <% end %>
-                  <% end %>
-                </div>
-
-              </div>
-            </div>
-            <div class="tab-pane" id="tab2">
-              <div class="row with line">
+	              <%= link_to image_tag("kontact-date.png"),calendar_path, :class => "btn info small right",:rel => "dashboard-tip", :title => "Ir a mi calendario de actividades"%>
+               <div class="row with line">
                 <div class="dashboard-box">
                   <div class="underline padding-top">
-                    <h2><%= t('notifications.header') %></h2>
+                    <h2><%= t('notifications.header') %> </h2>
+		             
                   </div>
                   <div id="notifications">
                     <% @notifications.each do |notification| %>
@@ -107,12 +84,46 @@
                     <%= paginate @notifications %>
                   </div>
                 </div>
-              </div>
             </div> 
           </div>
         </div>
       </div>
     </div>
   </div>
+ </div>
   <%= render :partial => "shared/footer" %>
+</div>
+<%end%>
+
+<div class="modal hide" id="oldCourses" style="display:none;">
+ <div class="modal-header">
+   <a class="close" data-dismiss="modal" >×</a>
+   <h3>Mis cursos que han finalizado</h3>
+   </p>   
+ </div>
+ <div class="modal-body">     
+ <div id="activities_calendar_body">
+	<div id="down_modal_course" style="overflow: auto; height: 400px;">
+		<% @courses.each do |course| %>
+          <% if course.status == "finish"%>
+         <div class="course-detail <%= cycle("odd", "even") %>">
+           <div class="span7">
+             <% if course.course_logo_file.xxsmall.url %>
+                 <div class="left" style="padding-right: 8px;">
+                   <%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
+                 </div>
+             <% end %>
+             <div class="left">
+               <h4><%= link_to(course.name, course_path(course)) %></h4>
+             </div>
+           </div>
+           <div class="span1">
+             <span class="label-tag notice course-notification"><a href="<%= course_path(course) %>">2 <%= image_tag("notification.png") %></a></span>
+           </div>
+         </div>
+         <%end%>
+     <% end %>
+   </div>
+ </div>
+</div>
 </div>

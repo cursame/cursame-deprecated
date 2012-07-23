@@ -1,0 +1,118 @@
+<div class="container">
+<% current_user.send_reports.reverse.each do |report|%>
+<% @reports_id = report.id %>
+<div class="span16" style="border:0px;">
+    <div class="span15" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px;  padding:10px;">
+	<!-- inicia span5-->
+       <div class="span5">
+          <h3>  <%= report.title%> </h3>
+        </div>
+    	<!-- termina span5-->
+           </br>
+       	<!-- inicia span10-->
+           <div class="span10" style="border:0px;">
+              <div class="expander" id="border-spander"><p><%= report.text%><p></div>
+           </div>
+        <!-- termina span5-->
+           </br>   
+<!-- inicia span5 rigth-->
+<div class="span5 right" style="margin:0px">
+<!-- inicia span3-->
+    <div class="span3">
+     <%= report.event_date%>
+    </div>
+<!--termina span3-->
+<!--inicia span1-->
+     <div class="span1">
+     <% case report.typebug %>
+      <%when 'bug' %>
+        <%= link_to image_tag("reports_admin/bug-buddy.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+      <% when 'error' %>
+        <%= link_to image_tag("reports_admin/process-warning.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+      <% when 'fallo_plataforma' %>
+        <%= link_to image_tag("reports_admin/bug_error.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+      <% when 'fallo_en_upload' %>
+	    <%= link_to image_tag("reports_admin/process-info.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+      <% when 'fallo_en_visualización' %>
+     	<%= link_to image_tag("reports_admin/find-bug.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+      <% when 'otros' %>
+        <%= link_to image_tag("reports_admin/agresive_bug.png",:rel => "dashboard-tip", :title => sanitize(report.typebug, :tags => %w(a)))%>
+    <%end%>
+    </div>
+<!--termina span1-->
+   </div>
+<!--termnina span3-->
+</div>
+<!--termnina span5 right-->
+<!-- inicia span9 progress bar -->
+   <div class="span9 progress_gotre right" style="margin:0px;">
+     <% case report.status %>
+          <%when '1' %>
+
+        <div class="progress_bar_process_status">
+           <div class="yellow" style="width:80%;">Status</div>  
+        </div>
+
+          <% when '2' %>
+       <div class="progress_bar_process_status">
+        	<div class="green" style="width:140%;">Status</div>
+       </div>
+         <% when '3' %>
+       <div class="progress_bar_process_status">
+        	<div class="blue" style="width:200%;">Status</div>
+       </div>
+    
+    <%end%>
+   </div>
+<!-- termina span9 progress bar-->
+</div>
+<!-- termina span 11-->
+</div>
+<!-- termina span 12-->
+</br>
+<div>
+<div class="btn right" onclick="mostrarRespuestasw(<%=report.id%>)">Status de la petición</div>
+<div id="prt-<%=report.id%>" style="display:none" >
+<h1>Dialogo</h1>
+<div class="span12">
+<%= render :partial => "send_reports/form_status"%>
+<% report.bug_answers.each do |answer|%>
+<div class="span8" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px; padding:10px;">
+<div class="expander" id="border-spander"><p><%= answer.container%></p></div>
+ <div class="right">
+ 	
+      <%= answer.date%></br>
+           <% case report.status %>
+	          <%when '1' %>
+
+	        <p style="color:#EDFE04">En proceso</p>
+
+	          <% when '2' %>
+	
+	        <p style="color: #15F88E"> Resolviendo </p>
+	         
+	          <% when '3' %>
+	       
+	       <p style="color:#15E1F8"> Finalizado</p>
+	      <%end%>
+</div></br>
+<div class="right">
+	<%= report.user.name %>
+</div>
+</div>
+<%end%>
+</div>
+</div>
+<%end%>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    setupAutoScroll();
+  });
+</script>
+<script>
+	function mostrarRespuestasw(id){
+		$('#prt-'+id).toggle();
+	}
+</script>

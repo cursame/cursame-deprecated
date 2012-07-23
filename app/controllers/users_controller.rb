@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   before_filter :authenticate_supervisor!, :only => [:create]
   def show
     find_user
+    @favorite = Favorite.new
+    @friend_crocodile = current_user.id 
+    @friend_salamander = find_user
+    @tutoriales = Tutoriale.all
   end
 
   def edit
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
       render 'supervisor/new_user'
     end
   end
-
+  
   def update
     find_user and check_edit_permissions!
     if @user.update_attributes(params[:user])
@@ -35,13 +39,17 @@ class UsersController < ApplicationController
   def wall
     find_user
     @comments = @user.profile_comments.order("created_at DESC").page(params[:page]).per(10)
+     @favorite = Favorite.new
+     @friend_crocodile = current_user.id 
+     @friend_salamander = find_user
+     @tutoriales = Tutoriale.all
   end
 
   def upload_avatar
     asset_file = User.new :avatar_file => uploaded_file
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
-
+  
   private
   def find_user
     @user ||= current_network.users.find params[:id]

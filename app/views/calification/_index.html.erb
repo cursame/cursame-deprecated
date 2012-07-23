@@ -1,0 +1,333 @@
+
+<div class="spam10">
+	<div class="span-two-thirds">
+	    <div class="tabs">
+	      <ul class="tabs">
+	        <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
+	        <li><a href="#tab2" data-toggle="tab"><%= t('surveys.index.header')%></a></li>
+	         <li><a href="#tab3" data-toggle="tab"><%=t('courses.calification.calificación')%></a></li>
+	         <li><a href="#tab4" data-toggle="tab"><%= t('courses.analítics') %></a></li>
+	      </ul>
+	<div class="tab-content">	
+<div class="tab-pane active" id="res">	
+	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
+  <table class= "zebra-striped">
+	
+	<% @molto_course.each do |molto|%>
+    <thead>
+	<tr>
+	<th class="blue"><%=molto.name%></th>	
+	</tr>
+     <% molto.deliveries.each do |delivery|%>
+      <% if  delivery.user.view_status =='fantom'%>
+      <%else%>
+     </thead>
+     <tbody>
+	<tr class="asset">
+    <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
+        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting%> %</b></p></td>
+
+    </tr>
+     </tbody>
+     <%end%>
+	<%end%>
+   <%end%> 
+   </table>
+</div>
+
+<div class="tab-pane" id="tab2">	
+<div id="cues">	
+	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
+  <table class= "zebra-striped">
+	
+	<% @bella_survey.each do |bella|%>
+    <thead>
+	<tr>
+	<th class="blue"><%=bella.name%></th>
+	 <% bella.survey_replies.each do |reply|%>
+	 <% if  reply.user.view_status == "fantom"%>	
+	 <%else%>
+	</tr>
+       
+     </thead>
+     <tbody>
+	<tr class="asset">	<td><p><%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
+	         <%=reply.user.name %> /
+	          Porcentaje del examen: <b><%= reply.score %>%</b></p></td></tr>
+  
+     </tbody>
+     <%end%>
+	<%end%>
+   <%end%> 
+   </table>
+</div>
+</div>
+<div class="tab-pane" id="tab3">	
+<div id="total">
+	<h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
+	   	
+  <table class= "zebra-striped">
+
+    <thead>
+	<tr>
+
+	 <% @course.users.each do |user|%>
+	    <% if user.view_status == "fantom"%>
+	    <%else%>
+	  	<th class="blue"> <%if user.role == "student" %>
+		<%= user.name %>
+		<%else%>
+		<%= 'Rol sin evaluación'%> 
+		<%end%></th>
+	                        
+	   <% total_deliveries= 0%>
+	   <% total_survey= 0%>
+	  <%user.deliveries.each do |delivery|%>
+	     
+	   
+			
+	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting%>
+	   
+	  <%end%>
+	   <%user.survey_replies.each do |survey|%>
+
+	    <% survey.score %>
+	    <% total_survey=total_survey+survey.score %>
+
+	  <%end%>
+	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
+	  
+	    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+	 	
+	</tr>
+       
+     </thead>
+     <tbody>
+	
+	<tr class="asset">	<td><p> <%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
+     	<%else%>
+		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
+		 <%end%>
+</b></p></td></tr>
+     </tbody> 
+   
+	<%end%>
+    
+    <%end%>
+   </table>
+</div>
+</div>
+
+<div class="tab-pane" id="tab4">	
+<% totales = []%>
+<% totales2=[] %>
+<% @course.users.each do |user|%>                      
+   <% total_deliveries= 0%>
+   <% total_survey= 0%>
+  
+  <%user.deliveries.each do |delivery|%>
+    
+ 	
+    	
+    <% total_deliveries=total_deliveries + delivery.score ? delivery.score : 0 if delivery.raiting%>
+  
+
+  <%end%>
+   <%user.survey_replies.each do |survey|%>
+
+    <% survey.score %>
+    <% total_survey=total_survey+survey.score %>
+    
+  <%end%>
+   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
+  
+    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+ 	<% (total_survey+total_deliveries)/2%>
+    <% totales.push(total_deliveries)%>
+    <% totales2.push(total_survey)%>
+<%end%>
+<div id="calificacioncal">erer</div>
+ <script type="text/javascript" charset="utf-8">
+var chart;
+$(document).ready(function() {
+	chart = new Highcharts.Chart({
+		chart: {
+			renderTo: 'calificacioncal',
+			type: 'areaspline'
+		},
+		title: {
+			text: 'Relación actual de actividades'
+		},
+		subtitle: {
+	            text: "relación entre <%= t('courses.assignments.assignments') %> y <%= t('surveys.index.header')%> para interpretación temporal por usuarios"},
+		legend: {
+			layout: 'vertical',
+			align: 'left',
+			verticalAlign: 'top',
+			x: 50,
+			y: 100,
+			floating: true,
+			borderWidth: 1,
+			backgroundColor: '#FFFFFF'
+		},
+		xAxis: {
+			
+			categories: ["Id de alumnos"]
+		},
+		yAxis: {
+			title: {
+				text: 'Movimiento temporal de los usuarios'
+			}
+		},
+		tooltip: {
+			formatter: function() {
+				return ''+
+				this.series.name + this.y +"%";
+			}
+		},
+		credits: {
+			enabled: false
+		},
+		plotOptions: {
+			areaspline: {
+				fillOpacity: 0.5
+			}
+		},
+		series: [{
+			name: "<%= t('courses.assignments.assignments') %>",
+			data:<%= totales %>
+		}, {
+			name: "<%= t('surveys.index.header')%>",
+			data:<%= totales2 %> 
+		}]
+	});
+});
+
+ </script>   
+
+<% grafica_reprobacion =[]%>
+<% porcento_examenes =[]%>
+<% @course.surveys.each do |survey|%>
+
+  <% calif = 0%>
+  <% cod = 0%>
+   <%survey.survey_replies.each do |reply|%>
+        <%calif = calif + reply.score%>
+        <% cod = calif/@course.users.count%>
+        <% coda = cod-100%>
+        <% porcento_examenes.push(cod)%>
+        <% grafica_reprobacion.push(coda)%>
+   <%end%>
+<% end %>
+
+<div id="valuecal"></div>
+   
+    <script type="text/javascript" charset="utf-8">
+	   var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'valuecal',
+				type: 'areaspline'
+			},
+			title: {
+				text: 'Porcentaje de aprobación de examenes'
+			},
+			subtitle: {
+	            text: "Porcentaje de movimientos promedios de <%= t('surveys.index.header')%> y alumnos"
+	        },
+			xAxis: {
+				categories: ["Movimiento promedio de <%= t('surveys.index.header')%> actualmente en el grupo"]
+		
+			
+			},		
+			yAxis:{
+					 min: -100,
+			            title: {
+			                text: 'Porcentaje %'
+			            }
+			},
+					
+			tooltip: {
+				formatter: function() {
+					return ''+
+						this.series.name +' '+ this.y +'%';
+				}
+			},
+			credits: {
+				enabled: false
+			},
+			series: [{
+				name: 'Aprobados',
+				data: <%=porcento_examenes%>
+			}, {
+				name: 'Reprobados',
+				data: <%= grafica_reprobacion %>
+			}]
+		});
+	});
+	</script>
+<% grafica_reprobacion_delivery =[]%>
+<% porcento_delivery =[]%>
+<% @course.assignments.each do |assigment|%>
+  <% califn = 0%>
+  <% codn = 0%>
+ <%assigment.deliveries.each do |delivery|%>
+	
+   	<% califn = califn + delivery.score ? delivery.score : 0  if delivery.raiting%>
+    <% codn = califn/@course.users.count%>
+    <% codan = codn-100%>
+    <% porcento_delivery.push(codn)%>
+    <% grafica_reprobacion_delivery.push(codan)%>  
+ <%end%>
+<%end%>
+<div id="value2cal"></div>
+<script type="text/javascript" charset="utf-8">
+	   var chart;
+	$(document).ready(function() {
+		chart = new Highcharts.Chart({
+			chart: {
+				renderTo: 'value2cal',
+				type: 'areaspline'
+			},
+			title: {
+				text: "Porcentaje de aprobación en <%= t('courses.assignments.assignments') %>"
+			},
+			subtitle: {
+	            text: "Porcentaje de aprobación de <%= t('courses.assignments.assignments') %> con razón en alumnos "
+	        },
+			xAxis: {
+				categories: ["<%= t('courses.assignments.assignments') %>"]
+
+
+			},		
+			yAxis:{
+					 min: -100,
+			            title: {
+			                text: 'Porcentaje %'
+			            }
+			},
+
+			tooltip: {
+				formatter: function() {
+					return ''+
+						this.series.name +' '+ this.y +'%';
+				}
+			},
+			credits: {
+				enabled: false
+			},
+			series: [{
+				name: 'Aprobadas',
+				data: <%=porcento_delivery%>
+			}, {
+				name: 'Reprobadas',
+				data: <%= grafica_reprobacion_delivery %>
+			}]
+		});
+	});
+	</script> 
+</div> 
+</div>
+</div>
+</div>

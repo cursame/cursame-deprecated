@@ -1,0 +1,8 @@
+<div class= "span3">
+	<h3>Menú</h3>
+	<% @blogs.reverse.each do |blog| %>  
+      <% @mo=blog.menu_category %>
+       <%= link_to "#{@mo}", blog%>
+   <%end%>
+  
+</div>

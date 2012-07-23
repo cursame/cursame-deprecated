@@ -9,18 +9,50 @@
         <%= tab.dashboard t('dashboard.start'), root_path %>
         <%= tab.profile t('dashboard.profile'), current_user %>
       <% end %>
-
+                 
       <ul class="nav secondary-nav">
         <li class="dropdown">
-          <%= link_to "#{current_user.first_name}" + " #{current_user.last_name}", "#", :class => "dropdown-toggle" %>
+          <%= link_to "#{current_user.first_name}" + " #{current_user.last_name}", "#", :class => "dropdown-toggle"%>
           <ul class="dropdown-menu">
             <li><%= link_to t('shared.toolbar.settings'), settings_path %></li>
+            <li><%= link_to t('.soporte y sugerencias'), soporte_path %></li>
             <li class="divider"></li>
-            <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>
-          </ul>
+            <li><%= link_to t('.logout'), destroy_user_session_path, :method => :delete %></li>           
+           </ul>
         </li>
       </ul>
       
     </div>
   </div>
 </div>
+<script type="text/javascript">
+/*!function( $ ){
+  $.fn.dropdown = function ( selector ) {
+    return this.each(function () {
+      $(this).delegate(selector || d, 'click', function (e) {
+        var li = $(this).parent('li')
+          , isActive = li.hasClass('open')
+        clearMenus()
+        !isActive && li.toggleClass('open')
+        return false
+      })
+    })
+  }
+
+  var d = 'a.menu, .dropdown-toggle'
+
+  function clearMenus() {
+    $(d).parent('li').removeClass('open')
+  }
+
+  $(function () {
+    $('html').bind("click", clearMenus)
+    $('body').dropdown()
+  })
+
+}( window.jQuery || window.ender );*/
+
+  $(function(){
+	$(".dropdown-toggle").dropdown()
+  });
+</script>

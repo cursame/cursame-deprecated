@@ -13,11 +13,12 @@ class Course < ActiveRecord::Base
   has_many :teachers,         :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'accepted' AND enrollments.role = 'teacher'", :source => :user
   has_many :pending_teachers, :through => :enrollments, :class_name => 'User', :conditions => "enrollments.state = 'pending' AND enrollments.role = 'teacher'", :source => :user
   has_many :users,            :through => :enrollments, :conditions => "(enrollments.state = 'accepted' AND enrollments.role = 'student') OR enrollments.role  = 'teacher'", :source => :user
-  has_many :assignments, :dependent => :destroy
+  has_many :assignments, :dependent => :destroy 
   has_many :surveys, :dependent => :destroy
   has_many :discussions, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :chats
+  has_many :status_courses
   can_haz_assets
 
   validates_presence_of :name, :description, :start_date, :finish_date, :network

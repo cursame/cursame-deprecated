@@ -1,0 +1,25 @@
+<div class="container">
+	<% if current_user.role == 'admin' %>
+	<%= render :partial => "home/blog/content_admin"%>
+	<%end%>
+<% @blogs = Blog.all %>
+<%= render :partial => "home/blog/header_blog"%>
+
+<div class="span10">
+	<div id="course_comments">
+      <div class="page">
+<%= render :partial => "blogs/index" %>
+      </div>
+     </div>
+</div>
+<br />
+</div>
+<div>
+<%= render :partial => "shared/footer" %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    setupAutoScroll();
+  });
+</script>

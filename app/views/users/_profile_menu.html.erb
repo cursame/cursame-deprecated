@@ -1,10 +1,37 @@
+<% if @user.view_status == "fantom"%>
 <div class="underline">
+  <%= image_tag('anonimus-user/tamano/anonimus1.png') %>
+</div>
+<%else%>
+<div class="underline">
+<% if current_user.id == @user.id%>
+<%else%>
+
+
+   <% current_user.favorites.each do |favorites|%>  
+  
+   <% @favorite_p = favorites.user_favorite_id%>
+  
+   <%end%>
+
+   <% if @user.id === @favorite_p %>
+
+   <%else%>
+   <%= render :partial => "favorites/my_favorite_create"%>
+   <%end%>
+ 
+<%end%>
   <%= image_tag @user.avatar_file.small.url %>
 </div>
-
 <div class="underline">	
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
     <%= tab.profile t('dashboard.profile'), user_path(@user), :class => "informacion" %>
     <%= tab.wall t('profile.wall'), wall_for_user_path(@user), :class => "actualizaciones" %>
   <% end %>
 </div>
+
+<h3><%="Siguiendo:"%></h3>
+<% @user.favorites.each do |user_favorites| %>
+   <%=link_to image_tag(user_favorites.avatar), user_path(user_favorites.user_favorite_id), :rel => "dashboard-tip", :title => (user_favorites.name) %>
+<%end%>
+<%end%>

@@ -1,4 +1,57 @@
-<%= javascript_include_tag 'bootstrap-tabs' %>
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
+<% if @course.status == "finish"%>
+<div class="container">
+  <div class="content">
+    
+    <div class="row">
+      <div class="span16">
+        <ul class="breadcrumb">
+          <li><%= link_to("Dashboard", dashboard_path) %> <span class="divider">/</span></li>
+          <li><%= link_to("Courses", courses_path) %> <span class="divider">/</span></li>
+          <li><%= link_to(@course.name, course_path(@course)) %> <span class="divider">/</span></li>
+          <li class="active"><%= t('courses.assignments.assignments') %></li>
+        </ul>  
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="span3">
+        <%= render :partial => "courses/course_menu" %>
+      </div>
+      
+      <div class="span10">   
+        <div class="row bottom-margin">
+          <div class="span5">
+            <h2><%= Assignment.model_name.human(:count => :many) %></h2>
+          </div>
+        </div>
+
+        <div class="assignments">
+          	 <% @course.assignments.each do |a|%>
+             <div class="discussion row course padding-all <%= cycle('odd', 'even') %>" style="margin-left:0;">
+             <h3><%= link_to a.name, a %></h3>
+			     <%= a.course.name %>
+			</div>
+           <%end%>     
+        </div>
+        
+      </div>
+      <div class="span3" style="margin:0;">
+        <%= render :partial => "shared/adds" %>
+      </div>
+    </div>
+    
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -40,17 +93,19 @@
             <li><%= link_to t('.unpublished'), '#unpublished' %></li>
             <% end%>
           </ul>
-          <div class="pill-content">
-            <div id="current" class="users teachers active">
-              <%= render :partial => 'assignment', :collection => @current_assignments %>
-            </div>
-            <div id="previous" class="users teachers">
-              <%= render :partial => 'assignment', :collection => @previous_assignments %>
-            </div>
-            <div id="unpublished" class="users teachers">
-              <%= render :partial => 'assignment', :collection => @unpublished_assignments %>
-            </div>
-          </div>
+          
+            <div class="pill-content">
+	            <div id="current" class="users teachers active">
+	              <%= render :partial => 'assignment', :collection => @current_assignments %>
+	            </div>
+	            <div id="previous" class="users teachers">
+	              <%= render :partial => 'assignment', :collection => @previous_assignments %>
+	            </div>
+	            <div id="unpublished" class="users teachers">
+	              <%= render :partial => 'assignment', :collection => @unpublished_assignments %>
+	            </div>
+	          </div>
+
         </div>
         
       </div>
@@ -60,4 +115,9 @@
     </div>
     
   </div>
+</div>
+<%end%>
+<%end%>
+</div>
+<%= render :partial => "shared/footer"%>
 </div>

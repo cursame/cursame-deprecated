@@ -1,3 +1,12 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -45,3 +54,4 @@
   </div>
   <%= render :partial => "shared/footer" %>
 </div>
+<%end%>

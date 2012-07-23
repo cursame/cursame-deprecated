@@ -2,3 +2,10 @@
 
 require ::File.expand_path('../config/environment',  __FILE__)
 run Cursame::Application
+
+require 'rubygems'
+require 'bundler'
+Bundler.require
+require 'faye'
+
+

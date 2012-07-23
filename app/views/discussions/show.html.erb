@@ -1,3 +1,12 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
 <div class="container">
   <div class="content">
     
@@ -16,7 +25,10 @@
     <div class="row">
       <div class="span3">
         <%= render :partial => "courses/course_menu" %>
-        <%= render :partial => "courses/members_menu" %>
+       	<% if @course.status == "finish"%>
+	      <%else%>
+            <%= render :partial => "courses/members_menu" %>
+          <%end%>
       </div>
       
       <div class="span10 discussions">
@@ -24,15 +36,28 @@
           <div class="span5">
             <h2><%= @discussion.title %></h2>
             <div class="row">
+	        <% if @discussion.starter.view_status == "fantom"%>
+            <div class="span1"><%= image_tag("anonimus-user/tamano/anonimus2.png") %></div>
+              <div class="span4 left-margin author"><%= t('discussions.ago')%> <%= time_ago_in_words(@discussion.created_at) %> <%= t('discussions.by')%> <%= "Usuario Anónimo" %></div>
+
+            <%else%>
               <div class="span1"><%= link_to(image_tag(@discussion.starter.avatar_file.xsmall.url), user_path(@discussion.starter)) %></div>
               <div class="span4 left-margin author"><%= t('discussions.ago')%> <%= time_ago_in_words(@discussion.created_at) %> <%= t('discussions.by')%> <%= link_to(@discussion.starter.name, user_path(@discussion.starter)) %></div>
-            </div>
+          <%end%>
+          </div>
           </div>
           <div class="span3" style="margin-left:70px;">
-            <% if @comments.empty? %>
+       <% if @course.status == "finish"%>
+		      
+		<%else%>
+
+          <% if @comments.empty? %>
               <%= link_to t('.remove'), discussion_url(@discussion), :id => 'remove_discussion', :class => 'btn danger right', :style => 'margin-left:10px;', :method => :delete, :confirm => t('confirm_delete')  %>
             <% end %>
-            <%= link_to t('.edit'), edit_discussion_url(@discussion), :id => 'edit_discussion', :class => 'btn info right' %>
+			
+            <%= link_to t('.edit'), edit_discussion_url(@discussion), :id => 'edit_discussion', :class => 'btn info right' %> 
+             
+        <%end%>
           </div>
         </div>
               
@@ -60,7 +85,10 @@
     
   </div>
 </div>
-
+<%end%>
+</div>
+<%= render :partial => "shared/footer"%>
+</div>
 <script type="text/javascript">
   $(function(){
     setupAutoScroll();

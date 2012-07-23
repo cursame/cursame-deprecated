@@ -1,6 +1,4 @@
-class ChatsController < ApplicationController
-  stream
- 
+class ChatsController < ApplicationController 
   def create 
     @chats = Chat.all 
     @chat = Chat.new(params[:chat])

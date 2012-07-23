@@ -1,0 +1,55 @@
+
+<div class="container">
+<h1>Listado de posts</h1>
+
+<% @blogs.reverse.each do |blog| %>  
+<div class="span16">
+<div id="content-blog" class="well">	    
+	    <% @bl = blog.id %>    
+    <h3><%= blog.post %></h3>
+          <div class="expander" id="border-spander"><p><%= blog.content %></p></div><br>
+    
+     <div id="dater-tree" class="right">  
+     Posteado el: <%= blog.date %> 	
+      </div>  
+      </br>
+      <div id="dater-tree" class="right">  
+           <b> Por: <%= blog.user.name %> </b>
+      </div>
+      <div class="btn" id="comment-show" onclick="mostrarComentarioBlog(<%=@bl%>)">Mostrar comentarios</div>
+</div> 
+ <div id="salt-t">	
+ </div>
+ </br>
+</div>
+     <div class="span16" style="display:none" id="blog-comment-<%=@bl%>">
+	 <div class="span10">
+        <% blog.comment_posts.each do |comment|%>
+     <div class="well">
+        <h3><%= comment.title %></h3></br>
+         <div class="expander" id="border-spander"><p><%= comment.content %></p></div>
+     <div id="dater-tree" class="right">
+            <%= comment.date %>
+     </div>
+     </br>
+     <div id="dater-tree" class="right">
+        <b>Por: <%= comment.user %></b>
+     </div>
+     </div>			
+       <% end %>
+     </div>
+	<%= render :partial => "comment_posts/form"%>
+     </br>
+</div>
+    
+<% end %>
+
+</br>
+   
+</div>
+<script>
+	function mostrarComentarioBlog(id){
+		
+		$('#blog-comment-'+id).toggle();
+	}
+</script>

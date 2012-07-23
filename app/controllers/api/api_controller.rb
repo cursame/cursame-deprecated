@@ -54,29 +54,25 @@ class Api::ApiController < ApplicationController
       case notification.kind
         when 'student_course_enrollment'
           text = I18n.t('notifications.wants_to_participate_in_course')
-          image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
           @course = notification.notificator.course
         when 'student_assignment_delivery'
           text = I18n.t('notifications.has_delived_assignment')
-          image = notification.notificator.user.avatar_file.xxsmall.url
           assignment= notification.notificator.assignment
           user = notification.notificator.user
           @course = assignment.course
         when 'teacher_survey_replied'
           text = I18n.t('notifications.has_answered_the_survey')
           survey = notification.notificator.survey
-          image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
           @course = survey.course
           text2 = I18n.t('notifications.for_the_course')
         when 'teacher_survey_updated'
           text = I18n.t('notifications.has_updated_survey_answers')
           survey = notification.notificator.survey
-          image = notification.notificator.user.avatar_file.xxsmall.url
           user = notification.notificator.user
           @course = survey.course
-        when 'student_course_rejected'
+        when 'student_course_rejected'          
           text = I18n.t 'notifications.was_rejected'
         when 'student_course_accepted'
           text = I18n.t 'notifications.you_where_accepted_for_course'
@@ -85,10 +81,25 @@ class Api::ApiController < ApplicationController
         when 'student_assignment_updated'
           text = I18n.t 'notifications.assignment_updated'
         when 'student_survey_added'
-          text = I18n.t 'notifications.survey_added'
+          text = I18n.t 'notifications.survey_added'          
+          #puts notification.notificator
+          survey = notification.notificator if notification.notificator
+          user = notification.notificator.course.teachers.first if notification.notificator
+          @course = survey.course if notification.notificator
         when 'user_comment_on_course'
-          text = 'comentario en curso'
-      end
+          text = I18n.t 'notifications.has_posted_a_comment_on_course'
+          user = notification.notificator.user if notification.notificator
+          @course = notification.notificator.commentable if notification.notificator
+        when 'user_comment_on_discussion'
+          text = I18n.t 'notifications.has_posted_a_comment_on_discussion'
+          user = notification.notificator.user if notification.notificator
+          @course = notification.notificator.commentable.course if notification.notificator
+        when 'course_discussion_added'
+          text = I18n.t 'notifications.discussion_added'
+        when 'user_comment_on_user'
+          text = I18n.t 'notifications.has_posted_a_comment_on_user'
+      end      
+      image = @course.course_logo_file if @course
       
       notification.text = {
           :text => text,

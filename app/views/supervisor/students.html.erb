@@ -1,6 +1,4 @@
-<%= javascript_include_tag 'supervisor' %>
-<div class="container">
-  
+<div class="container"> 
   <div class="row">
     <div class="span16">
       <ul class="breadcrumb">
@@ -30,7 +28,11 @@
       <div class="span9">
 
         <div class="users students">
+
           <% @students.each do |student| %>
+               <%if student.view_status == 'fantom'%>
+			  <%else%>
+              <% @student_id = student.id %>
             <div class="user padding-all <%= cycle('odd', 'even') %>">
               <div class="student">
                 <div class="row">
@@ -44,21 +46,32 @@
                   <div class="span3-5">
                     <div class="user_options">
                       <div class="edit_role">
-                        <%= link_to t('.change_role'), 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
-                        <%= link_to t('.destroy'), '#', :class=>"reject btn small danger" %>
+                        <%= link_to  " Opciones de edición de usuario ", 'javascript:void(0)', :class=>"accept btn success small change_role_button" %>
+                       
                       </div>
                       <div id="edit_role_form" style="display:none;">
                         <%= form_for student do |f|%>
                           <%= f.select :role, options_for_select([[t('.student'), "student"], [t('.teacher'), "teacher"], [t('.supervisor'), "supervisor"]])%>
                           <%= f.submit t('.update'), :class => "accept btn success small"%>
                         <%end%>
+
+                          <h3>Cambiar el status de usuario</h3>
+		                  <%= form_for @status do |view_status|%>
+	                      
+		                  <%= view_status.select :view_status, options_for_select([[t('.suspender'), "fantom"], [t('.activar'), "live"]])%>
+		                   <%= view_status.hidden_field :user_id, :value =>  @student_id %>
+		                   <%= view_status.hidden_field :date_status, :value => Time.now %>
+		                  <%= view_status.submit "Cambiar status", :class => "reject btn danger"%>
+		                <!--   <i><p> *Al suspender un usuario se cobrará 1 USD ya que su información quedará guardada en la plataforma, para que la puedas usar en un futuro. </p> </i>-->
+		                <%end%>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          <% end %>
+            <%end%>
+           <%end%>
           <%= paginate @students%>
         </div>
       </div>

@@ -1,0 +1,93 @@
+<div class="container">
+ <div class="span10">
+<% if current_user.role == 'teacher' %> 
+<h3>Introducción</h3>
+<p>Un cuestionario es la herramienta de evaluación temporal, que le permite al profesor evaluar rubros generales del conocimiento de la materia.</p>
+<h3>¿Como crear un cuestionario?</h3>
+<p>1.-Para crear un cuestionario simplemente se requiere ir al menú del curso cuestionarios y dar click en crear</p>
+<center><%= image_tag("help/cuestionarios/teacher/menu.png")%></center></br>
+<p>2.-Después seleccionar crear cuestionario. </p>
+<center><%= image_tag("help/cuestionarios/teacher/inicial.png")%></center></br>
+<p>3.-Ya seleccionado el cuestionario llenar "todos los datos requeridos".</p>
+<center><%= image_tag("help/cuestionarios/teacher/nuevo_cuestionario.png")%></center></br>
+<p>4.-Después de los datos requeridos damos click en el botón agregar pregunta.</p>
+<center><%= image_tag("help/cuestionarios/teacher/anadir_preguntas.png")%></center></br>
+<p>5.-Aparecerá un recuadro como el cual debes de llenar con tu pregunta.</p>
+<center><%= image_tag("help/cuestionarios/teacher/pregunta.png")%></center></br>
+<p>6.-No olvides llenar el recuadro de valor, la suma de los valores de las preguntas que crees no puede superar el valor del cuestionario que has puesto en el paso tres.</p>
+<center><%= image_tag("help/cuestionarios/teacher/value.png")%></center></br>
+<p>7.-Da click en el botón agregar respuesta y agrega las respuestas que sean necesaria selecciona el circulito de la que sea la correcta para que así se guarde puedes acomodar las respuestas en el orden que mejor te parezca.</p>
+<center><%= image_tag("help/cuestionarios/teacher/preguntas_respuestas.png")%></center></br>
+<p>8.-Da click en el botón crear al final del cuestionario para que quede hecho y veas los resultados.</p>
+<center><%= image_tag("help/cuestionarios/teacher/crear.png")%></center></br>
+<center><%= image_tag("help/cuestionarios/teacher/final.png")%></center></br>
+<h3>¿Como ver la entrega de un cuestionario?</h3>
+
+<p>Ver la entrega de respuestas de un cuestionario es sencillo tienes que ir a los cuestionarios, seleccionar el cuestionarios contestados que es un botón a la derecha de la pantalla de visualización de cuestionario</p>
+<center><%= image_tag("help/cuestionarios/teacher/final.png")%></center></br>
+<p>Ahi te mostrará los cuestionarios que ya han sido contestados y su score </p>
+<center><%= image_tag("help/cuestionarios/teacher/score_cuestionario.png")%></center></br>
+
+<%end%>
+<% if current_user.role == 'student' %> 
+<h3>¿Como responder un cuestionario?</h3>
+<p>Responder un cuestionario es sencillo solo tienes que seguir los pasos que acontinuación te señalamos</p>
+<p>1.-Ingresa al menú de cuestionarios en la aplicación.</p>
+<center><%= image_tag("help/cuestionarios/teacher/menu.png")%></center></br>
+<p>2.-Selecciona el cuestionario abierto que  deseas contestar.</p>
+<center><%= image_tag("help/cuestionarios/student/index.png")%></center></br>
+<p>3.-En ese momento abrirá el cuestionario y debes seleccionar enviar respuestas.</p>
+<center><%= image_tag("help/cuestionarios/student/vision_cuestionario.png")%></center></br>
+<p>4.-Esto te abrirá el cuestionario el cual podrá ser contestado.</p>
+<center><%= image_tag("help/cuestionarios/student/responder_cuestionario.png")%></center></br>
+<p>5.-Cuando selecciones la respuesta dale click en guardar mis respuestas.</p>
+<center><%= image_tag("help/cuestionarios/student/selecionar_respuesta.png")%></center></br>
+<center><%= image_tag("help/cuestionarios/student/guardar_respuesta.png")%></center></br>
+
+<%end%>
+<% if current_user.role == 'supervisor' %> 
+<h3>Introducción</h3>
+<p>Un cuestionario es la herramienta de evaluación temporal, que le permite al profesor evaluar rubros generales del conocimiento de la materia.</p>
+<h3>¿Como crear un cuestionario?</h3>
+<p>1.-Para crear un cuestionario simplemente se requiere ir al menú del curso cuestionarios y dar click en crear</p>
+<center><%= image_tag("help/cuestionarios/teacher/menu.png")%></center></br>
+<p>2.-Después seleccionar crear cuestionario. </p>
+<center><%= image_tag("help/cuestionarios/teacher/inicial.png")%></center></br>
+<p>3.-Ya seleccionado el cuestionario llenar "todos los datos requeridos".</p>
+<center><%= image_tag("help/cuestionarios/teacher/nuevo_suetionario.png")%></center></br>
+<p>4.-Después de los datos requeridos damos click en el botón agregar pregunta.</p>
+<center><%= image_tag("help/cuestionarios/teacher/anadir_preguntas.png")%></center></br>
+<p>5.-Aparecerá un recuadro como el cual debes de llenar con tu pregunta.</p>
+<center><%= image_tag("help/cuestionarios/teacher/pregunta.png")%></center></br>
+<p>6.-No olvides llenar el recuadro de valor, la suma de los valores de las preguntas que crees no puede superar el valor del cuestionario que has puesto en el paso tres.</p>
+<center><%= image_tag("help/cuestionarios/teacher/value.png")%></center></br>
+<p>7.-Da click en el botón agregar respuesta y agrega las respuestas que sean necesaria selecciona el circulito de la que sea la correcta para que así se guarde puedes acomodar las respuestas en el orden que mejor te parezca.</p>
+<center><%= image_tag("help/cuestionarios/teacher/preguntas_respuestas.png")%></center></br>
+<p>8.-Da click en el botón crear al final del cuestionario para que quede hecho y veas los resultados.</p>
+<center><%= image_tag("help/cuestionarios/teacher/crear.png")%></center></br>
+<center><%= image_tag("help/cuestionarios/teacher/final.png")%></center></br>
+<h3>¿Como ver la entrega de un cuestionario?</h3>
+
+<p>Ver la entrega de respuestas de un cuestionario es sencillo tienes que ir a los cuestionarios, seleccionar el cuestionarios contestados que es un botón a la derecha de la pantalla de visualización de cuestionario</p>
+<center><%= image_tag("help/cuestionarios/teacher/final.png")%></center></br>
+<p>Ahi te mostrará los cuestionarios que ya han sido contestados y su score </p>
+<center><%= image_tag("help/cuestionarios/teacher/score_cuestionario.png")%></center></br>
+
+<h3>¿Como responder un cuestionario?</h3>
+<p>Responder un cuestionario es sencillo solo tienes que seguir los pasos que acontinuación te señalamos</p>
+<p>1.-Ingresa al menú de cuestionarios en la aplicación.</p>
+<center><%= image_tag("help/cuestionarios/teacher/menu.png")%></center></br>
+<p>2.-Selecciona el cuestionario abierto que  deseas contestar.</p>
+<center><%= image_tag("help/cuestionarios/student/index.png")%></center></br>
+<p>3.-En ese momento abrirá el cuestionario y debes seleccionar enviar respuestas.</p>
+<center><%= image_tag("help/cuestionarios/student/vision_cuestionario.png")%></center></br>
+<p>4.-Esto te abrirá el cuestionario el cual podrá ser contestado.</p>
+<center><%= image_tag("help/cuestionarios/student/responder_cuestionario.png")%></center></br>
+<p>5.-Cuando selecciones la respuesta dale click en guardar mis respuestas.</p>
+<center><%= image_tag("help/cuestionarios/student/selecionar_respuesta.png")%></center></br>
+<center><%= image_tag("help/cuestionarios/student/guardar_respuesta.png")%></center></br>
+
+<%end%>
+ </div>
+</div>
+

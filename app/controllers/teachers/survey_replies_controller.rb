@@ -3,6 +3,7 @@ class Teachers::SurveyRepliesController < ApplicationController
     @survey  = current_user.manageable_surveys.find params[:survey_id]
     @replies = @survey.survey_replies
     @course  = @survey.course
+    @tutoriales = Tutoriale.all
   end
 
   def show
@@ -11,5 +12,6 @@ class Teachers::SurveyRepliesController < ApplicationController
     @course = @survey_reply.course
     @reveal_answers = true 
     render 'students/survey_replies/show'
+    @tutoriales = Tutoriale.all
   end
 end

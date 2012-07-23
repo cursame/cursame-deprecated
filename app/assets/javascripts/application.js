@@ -6,9 +6,7 @@
  
 //= require jquery
 //= require jquery_ujs
-//= require private_pub
 //= require_tree
-
 
 $(function(){
   // disabling buttons to avoid double posting
@@ -302,3 +300,253 @@ var setupAutoScroll = function() {
 $('.submittable').live('change', function() {
   $(this).parents('form:first').submit();
 });
+
+
+function generarVector(value,arraysize){
+	var randomnumber,aux=value,vector = [];
+	for (var i = 0; i < arraysize; i++){
+		randomnumber=Math.floor(Math.random()*aux+1);		
+		vector.push(randomnumber);
+		aux = aux - randomnumber;
+	}
+	return vector;
+}
+
+/*highcharts*/
+function renderUserGraph(title, renderTo,subtitle,yText,value,fecha) {
+	var mes = fecha.split("/"),
+	 	meses = [ "January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December" ];
+		meses = meses.slice(mes[0]-1,12),
+	 	usuariosTotales = value,
+	 	estudiantesTotales = value - (parseInt(value/40) + 1),
+		maestrosTotales = parseInt(value/40) + 1 ;
+		
+		//$('#'+renderTo+'t').html('<strong>Teachers count:</strong>'+maestrosTotales*2)
+	
+	var aEstudiantes = generarVector(estudiantesTotales,mes[0]),
+		aMaestros = generarVector(maestrosTotales,mes[0]),
+		aUsuarios = [];
+		
+		for(var i = 0; i < mes[0];i++){			
+			aUsuarios .push(aEstudiantes[i]+aMaestros[i]);
+		}
+	 
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: title
+        },
+        subtitle: {
+            text: subtitle || 'Tipos'
+        },
+        xAxis: {
+            categories: meses
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: yText || 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return '' + this.x + ': ' + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Usuarios',
+            data: aUsuarios
+        }, {
+            name: 'Estudiantes',
+            data: aEstudiantes
+        }, {
+            name: 'Maestro',
+            data: aMaestros
+        }]
+    });
+}
+
+function renderUsersGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Usuarios en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Redes',
+            data: [value[0]]
+        }, {
+            name: 'Usuarios',
+            data: [value[1]]
+        }, {
+            name: 'Supervisores',
+            data: [value[2]]
+        },{
+	       	name: 'Maestros',
+	        data: [value[3]]
+	    },{
+		    name: 'Estudiantes',
+		    data: [value[4]]
+		}]
+    });
+}
+function renderCoursesGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'column'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Cursos en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Cursos',
+            data: [value[0]]
+        }, {
+            name: 'Públicos',
+            data: [value[1]]
+        }, {
+            name: 'Privados',
+            data: [value[2]]
+        },{
+	       	name: 'Tareas',
+	        data: [value[3]]
+	    },{
+		    name: 'Discusiones',
+		    data: [value[4]]
+		},{
+			name: 'Cuestionarios',
+			data: [value[5]]
+		}]
+    });
+}
+
+function renderCommentsGraph(renderTo, value) {
+    new Highcharts.Chart({
+        chart: {
+            renderTo: renderTo ,
+            type: 'line'
+        },
+        title: {
+            text: 'Cúrsame'
+        },
+        subtitle: {
+            text: 'Comentarios en cúrsame'
+        },
+        xAxis: {
+            categories: ['Resúmenes']
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Unidades'
+            }
+        },
+        legend: {
+            backgroundColor: '#FFFFFF',
+            shadow: true
+        },
+
+        tooltip: {
+            formatter: function () {
+                return ''  + this.y + '';
+            }
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Comentarios',
+            data: [value[0]]
+        }, {
+            name: 'Comentarios en tareas',
+            data: [value[1]]
+        }, {
+            name: 'Comentarios en iscusiones',
+            data: [value[2]]
+        },{
+	       	name: 'Comentarios en muro usuarios',
+	        data: [value[3]]
+	    },{
+		    name: 'Comentarios muro cursos',
+		    data: [value[4]]
+		}]
+    });
+}
+

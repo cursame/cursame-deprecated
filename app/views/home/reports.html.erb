@@ -1,0 +1,44 @@
+<% if current_user.view_status =="fantom"%>
+<div class="container">
+  <div class="content">
+	<center>
+<%= image_tag("suspendido.png")%>
+    </center>
+  </div>
+</div>
+<%else%>
+<div class="container">
+<center>
+	<h1><%= link_to "REPORTE DE ANOMALÍA", soporte_path%></h1>
+</center>
+<div class="span16">
+<%= render :partial => "shared/soporte"%>
+
+<div class="span16" id="contact" style="display:none">
+	
+	<h3>Datos de contacto</h3>
+	<div class="span2">
+	<center>
+	 <%=image_tag("reports_admin/suport.png")%>
+	</center>	 
+    </div>
+    <div class="span6">
+	 <p>Email: <%= mail_to "hola@cursa.me" %> </p>
+	 <p>Twitter: <%= link_to "@cursame", "https://twitter.com/#!/cursame" %>  </p>
+	 <p>Facebook: <%= link_to "Fan page Cúrsame", "http://www.facebook.com/Cursameoficial"%></p>
+    </div>
+</div>
+</br>
+
+<div class="container">
+<%= render :partial => "send_reports/user_reports"%>
+</div>
+</div>
+</div>
+<%end%>
+<script>
+	function mostrarContacto(){
+		
+		$('#contact').toggle();
+	}
+</script>
