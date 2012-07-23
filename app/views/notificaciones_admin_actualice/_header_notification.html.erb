@@ -61,7 +61,7 @@ $('#boton_desplegar_ocultar').click(function () {
 </div>
 <div id="desplegando"class="span15" style="display:none; height:400px; overflow:auto; margin-top:-5px;
 margin-left:30px;background-color:#f7f7f7;" id="notificaciones-admin"> 
-	<% @notificaciones_admin_actualice.each do |actualice|%>
+	<% @notificaciones_admin_actualice.reverse.each do |actualice|%>
 	 <div class="span14">
 	 <div class="span7" style="opacity:0.4;
 	  filter:alpha(opacity=60); background-image: linear-gradient(bottom, rgb(40,51,50) 23%, rgb(66,77,76) 68%);

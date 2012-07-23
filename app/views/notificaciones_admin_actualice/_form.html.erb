@@ -15,3 +15,20 @@
     <%= f.submit "crear notificación", :class => "btn" %>
   </div>
 <% end %>
+
+<% @notificaciones_admin_actualice.reverse.each do |actualice| %>
+<table>
+	<tr>
+	<th>Titulo</th>
+	<th>Content</th>
+	<th>Video</th>
+	<th>Accciones</th>
+	</tr>
+<tr>
+<td><%= actualice.title %></td>
+<td><%= actualice.content%></td>
+<td><%= actualice.link_video%></td>
+ <td><%= link_to 'Destroy', actualice, confirm: 'Estas seguro de eliminar la notificación?', method: :delete, :class => "btn danger" %></td>
+</tr>
+</table>
+<%end%>

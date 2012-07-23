@@ -53,7 +53,7 @@ class NotificacionesAdminActualiceController < ApplicationController
     @notificaciones_admin_actualouse.destroy
 
     respond_to do |format|
-      format.html { redirect_to notificaciones_admin_actualice_url }
+      format.html { redirect_to :back }
       format.json { head :ok }
     end
   end
