@@ -1,14 +1,4 @@
-<script>
-/* Click para aparecer desplegable*/
-$(document).ready(function() {       
-   $("#desplegar").click(function () {
-	  
-        $("#notificaciones-admin").fadeToggle("slow", "linear");
-     });
 
-  });
-
-</script>
 
 <div class="span16" style="margin:0px; margin-bottom:5px;">
 
@@ -38,14 +28,39 @@ margin-top:5px;
 margin-left:30px;margin-bottom:5px;">
 <div class="text" style="color:#fff;opacity:0.9;
   filter:alpha(opacity=60); margin-left:9px;">
- <b><%= @notificaciones_admin_actualice_last.title if @notificaciones_admin_actualice.count > 0 %>:<div class="btn right" id="desplegar">
-	<%= image_tag("desplegar.png")%>
+ <b><%= @notificaciones_admin_actualice_last.title if @notificaciones_admin_actualice.count > 0 %>:<div id="boton_desplegar_ocultar"class="btn right">
+<%= image_tag("desplegar.png")%>
 </div></b>
- <div class="page"><%= @notificaciones_admin_actualice_last.content if @notificaciones_admin_actualice.count > 0 %></div>
- 
+<script>
+/* Click para aparecer desplegable
+$(document).ready(function() {       
+   $("#desplegar").click(function () {
+	  
+        $("#notificaciones-admin").fadeToggle("slow", "slideDown");
+     });
+
+  });*/
+
+$('#boton_desplegar_ocultar').click(function () {
+    if ($("#desplegando").is(":hidden")) {
+
+      $("#desplegando").slideDown("slow"); // hacemos el slide down
+
+      $('#boton_desplegar_ocultar').html('<%= image_tag("upload.png")%>'); //cambiamos imagen
+    } else {
+
+      $("#desplegando").slideUp(); // hacemos el slide up
+
+       $('#boton_desplegar_ocultar').html('<%= image_tag("desplegar.png")%>');//cambiamos imagen
+    }
+  });
+
+</script>
+ <div class="page"><%= @notificaciones_admin_actualice_last.content if @notificaciones_admin_actualice.count > 0 %></div> 
  </div>
 </div>
-<div class="span15" style="display:none; height:650px; overflow:auto;" id="notificaciones-admin"> 
+<div id="desplegando"class="span15" style="display:none; height:400px; overflow:auto; margin-top:-5px;
+margin-left:30px;background-color:#f7f7f7;" id="notificaciones-admin"> 
 	<% @notificaciones_admin_actualice.each do |actualice|%>
 	 <div class="span14">
 	 <div class="span7" style="opacity:0.4;
