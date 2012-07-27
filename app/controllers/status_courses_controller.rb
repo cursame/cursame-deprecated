@@ -1,28 +1,7 @@
 class StatusCoursesController < ApplicationController
   # GET /status_courses
   # GET /status_courses.json
-  def index
-    @status_courses = StatusCourse.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @status_courses }
-    end
-  end
-
-  # GET /status_courses/1
-  # GET /status_courses/1.json
-  def show
-    @status_course = StatusCourse.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @status_course }
-    end
-  end
-
-  # GET /status_courses/new
-  # GET /status_courses/new.json
+ 
   def new
     @status_course = StatusCourse.new
 

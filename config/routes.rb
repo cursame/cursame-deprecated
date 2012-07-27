@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :new_users_change_types
+
   resources :notificaciones_admin_actualice
 
   resources :tutoriales

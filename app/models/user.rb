@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
   has_many :survey_replies
   has_many :statuses 
   has_many :favorites
+  # SE comoloca el cambio de tipo de usuario-
+  has_many  :new_users_change_types
  
  
   validates_presence_of :first_name, :last_name

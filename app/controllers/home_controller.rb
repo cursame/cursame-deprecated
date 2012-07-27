@@ -22,6 +22,7 @@ class HomeController < ApplicationController
     @courses       = current_user.visible_courses.where(:network_id => current_network).limit(4)
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
     @users = current_user.favorites.limit(30) if current_user
+    @new_users_change_type = NewUsersChangeType.new
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end

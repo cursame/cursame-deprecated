@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720171149) do
+ActiveRecord::Schema.define(:version => 20120726211134) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -225,6 +225,13 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   add_index "networks_users", ["network_id"], :name => "index_networks_users_on_network_id"
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
 
+  create_table "new_users_change_types", :force => true do |t|
+    t.integer  "new_old"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notificaciones_admin_actualice", :force => true do |t|
     t.string   "title"
     t.string   "content"
@@ -350,6 +357,7 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
     t.integer  "chat_id"
     t.string   "calendar_activity"
     t.string   "view_status",                           :default => "live"
+    t.integer  "new_old",                               :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
