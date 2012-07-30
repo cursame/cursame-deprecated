@@ -49,23 +49,30 @@ class Api::ApiController < ApplicationController
 
   def notifications
     @notifications = @user.notifications.order("created_at DESC");
-
+    @notifications_aux = Array.new
     @notifications.each do |notification|
       case notification.kind
         when 'student_course_enrollment'
-          text = I18n.t('notifications.wants_to_participate_in_course')
-          user = notification.notificator.user
-          @course = notification.notificator.course
-        when 'student_assignment_delivery'
+          next if notification.notificator == nil
+          text = I18n.t('notifications.wants_to_participate_in_course')          
+          puts "*******************esto es el debugin**************************"
+          puts notification.to_yaml
+          puts notification.notificator.to_yaml
+          
+          user = notification.notificator.user 
+          @course = notification.notificator.course 
+        when 'student_assignment_delivery'          
+          next if notification.notificator == nil          
           text = I18n.t('notifications.has_delived_assignment')
-          assignment= notification.notificator.assignment
-          user = notification.notificator.user
+          assignment= notification.notificator.assignment 
+          user = notification.notificator.user 
           @course = assignment.course
         when 'teacher_survey_replied'
-          text = I18n.t('notifications.has_answered_the_survey')
-          survey = notification.notificator.survey
-          user = notification.notificator.user
-          @course = survey.course
+          next if notification.notificator == nil
+          text = I18n.t('notifications.has_answered_the_survey')          
+          survey = notification.notificator.survey 
+          user = notification.notificator.user 
+          @course = survey.course 
           text2 = I18n.t('notifications.for_the_course')
         when 'teacher_survey_updated'
           text = I18n.t('notifications.has_updated_survey_answers')
@@ -98,6 +105,8 @@ class Api::ApiController < ApplicationController
           text = I18n.t 'notifications.discussion_added'
         when 'user_comment_on_user'
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
+        else #esta es la notificacion por deafult que hay que checar como esta estructurada
+          next
       end      
       image = @course.course_logo_file if @course
       
@@ -114,8 +123,9 @@ class Api::ApiController < ApplicationController
           :courseComments => @course ? @course.comments.count : nil,
           :text2 => text2
       }
+       @notifications_aux.push(notification)
     end
-    render :json => {:notifications => @notifications.as_json, :count => @notifications.count()}, :callback => params[:callback]    
+    render :json => {:notifications => @notifications_aux.as_json, :count => @notifications_aux.count()}, :callback => params[:callback]    
   end
 
   def comments
