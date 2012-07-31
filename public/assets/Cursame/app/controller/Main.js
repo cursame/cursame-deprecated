@@ -129,7 +129,13 @@ Ext.define('Cursame.controller.Main', {
 		this.getNotificationsList().setMasked(false);
 	},
 	onNotificationTap:function(dataview,index,target,record,e){
-		if(!record.get('survey')){			
+		var type = record.get('notificator_type');
+		if(type === 'Delivery' || type === 'SurveyReply'){ // si trata de una entrega de la tarea
+			Ext.Msg.alert('Cursame', 'Para aprovechar esta función por favor utiliza Cúrsame desde una computadora o tablet.', Ext.emptyFn);			
+			return;
+		}
+			
+		if(type === 'Enrollment' || type === 'Comment'){			
 			this.getNotificationNavigationView().push({xtype:'coursewall' ,title:record.data.courseObject.name});				
 			this.loadStore(Ext.getStore('Comments'),{
 					id:record.get('course_id'),
@@ -149,9 +155,7 @@ Ext.define('Cursame.controller.Main', {
 					members:record.get('courseMembers')
 				});			
 			this.getCourseContainer().setRecord(course);
-		}else{
-			alert('se trata de una tarea');
-		}		
+		}	
 	},
 	maskComponent:function(cmp){
 		cmp.setMasked({
