@@ -129,13 +129,13 @@ Ext.define('Cursame.controller.Main', {
 		this.getNotificationsList().setMasked(false);
 	},
 	onNotificationTap:function(dataview,index,target,record,e){
-		var type = record.get('notificator_type');
-		if(type === 'Delivery' || type === 'SurveyReply'){ // si trata de una entrega de la tarea
+		var type = record.get('kind');
+		if(type === 'student_assignment_delivery' || type === 'teacher_survey_replied'){ // si trata de una entrega de la tarea
 			Ext.Msg.alert('Cursame', 'Para aprovechar esta función por favor utiliza Cúrsame desde una computadora o tablet.', Ext.emptyFn);			
 			return;
 		}
 			
-		if(type === 'Enrollment' || type === 'Comment'){			
+		if(type === 'user_comment_on_course'){			
 			this.getNotificationNavigationView().push({xtype:'coursewall' ,title:record.data.courseObject.name});				
 			this.loadStore(Ext.getStore('Comments'),{
 					id:record.get('course_id'),
