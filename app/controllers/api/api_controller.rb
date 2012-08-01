@@ -145,7 +145,7 @@ class Api::ApiController < ApplicationController
       else
         @commentable = Course.find params[:id]
     end
-    @comments = @commentable.comments
+    @comments = @commentable.comments.order("created_at DESC");
     render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments])), :count => @comments.count()}, :callback => params[:callback]
   end
   
