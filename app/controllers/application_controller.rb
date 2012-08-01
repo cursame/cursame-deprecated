@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
-  after_filter :current_languaje
+  after_filter  :current_languaje
+  helper_method :current_network
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
@@ -33,7 +34,11 @@ class ApplicationController < ActionController::Base
     when 'admin'      then admin_path(:subdomain => nil)
     when 'supervisor' then supervisor_dashboard_path(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     else 
-      dashboard_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
+     if current_network.variante == "free"
+        dashboard_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
+     else   
+        principal_wall_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
+     end
     end
   end
 

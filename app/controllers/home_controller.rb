@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]
-  set_tab :dashboard
-
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]  
+ #tabs para modificar el menu del header      
+    set_tab :dashboard, :only => %(dashboard principal_wall)
+    set_tab :principal_wall
   def index
     if current_user && current_user.active?
       case current_user.role
@@ -10,7 +11,11 @@ class HomeController < ApplicationController
         when 'supervisor'
           redirect_to supervisor_dashboard_path
         else
+        if current_network.variante == "free"
           redirect_to dashboard_url
+        else
+          redirect_to :principal_wall
+        end
       end
     else
       @user = User.new
@@ -51,6 +56,12 @@ class HomeController < ApplicationController
   end
   def members
     @users = current_network.users.search(params[:search])
+  end
+  def principal_wall
+     @tutoriales = Tutoriale.all
+      
+      @public_comments = PublicComment.all
+      @public_comment = PublicComment.new(params[:public_comment])
   end
 end
 

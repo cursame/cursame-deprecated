@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726211134) do
+ActiveRecord::Schema.define(:version => 20120729070147) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -214,7 +214,7 @@ ActiveRecord::Schema.define(:version => 20120726211134) do
     t.boolean  "private_registry", :default => false
     t.string   "registry_domain"
     t.string   "lenguajes"
-    t.string   "variante"
+    t.string   "variante",         :default => "free"
   end
 
   create_table "networks_users", :id => false, :force => true do |t|
@@ -233,9 +233,9 @@ ActiveRecord::Schema.define(:version => 20120726211134) do
   end
 
   create_table "notificaciones_admin_actualice", :force => true do |t|
-    t.string   "title"
-    t.string   "content"
-    t.string   "link_video"
+    t.string   "title",      :default => "Ahora notificaciones del administrador"
+    t.string   "content",    :default => "Ahora puedes recibir notificaciones del administrador para estar siempre enterado de las actualizaciones del sistema"
+    t.string   "link_video", :default => "link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -248,6 +248,15 @@ ActiveRecord::Schema.define(:version => 20120726211134) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.text      "text"
+  end
+
+  create_table "public_comments", :force => true do |t|
+    t.integer  "network_id"
+    t.integer  "commentable_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "text"
   end
 
   create_table "questions", :force => true do |t|

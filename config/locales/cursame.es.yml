@@ -175,6 +175,7 @@ es:
     view_all_courses: 'Ver todos los cursos disponibles'
     start: 'Inicio'
     profile: 'Perfil'
+    propiety: 'Red'
     account_settings: 'Configuración de la cuenta'
 
   courses:

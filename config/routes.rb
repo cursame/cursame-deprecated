@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :public_comments
+
   resources :new_users_change_types
 
   resources :notificaciones_admin_actualice
@@ -124,6 +126,10 @@ Cursame::Application.routes.draw do
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
   match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
+  #cambio del principal por el dashboard
+  match '/network-wall', :to =>'home#principal_wall', :as => :principal_wall
+  #routes basics home
+  #el dasbiard se mantien como ruta principal en el el home para al free
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
    match '/ayuda', :to => 'home#help', :as => :help
