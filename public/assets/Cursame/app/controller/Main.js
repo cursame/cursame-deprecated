@@ -91,6 +91,9 @@ Ext.define('Cursame.controller.Main', {
 			'coursenavigationview discussionslist':{
 				itemtap:'onDiscussionsListTap'
 			},
+			'notificationnavigationview discussionslist':{
+				itemtap:'onDiscussionsListTap2'
+			},
 			'discussionwall commentbar button':{
 				tap:'onDiscussionWallPost'
 			},
@@ -131,7 +134,7 @@ Ext.define('Cursame.controller.Main', {
 	onNotificationTap:function(dataview,index,target,record,e){
 		var type = record.get('kind');
 		if(type === 'student_assignment_delivery' || type === 'teacher_survey_replied'){ // si trata de una entrega de la tarea
-			Ext.Msg.alert('Cursame', 'Para aprovechar esta función por favor utiliza Cúrsame desde una computadora o tablet.', Ext.emptyFn);			
+			Ext.Msg.alert('Cursame', 'Para utilizar esta función por favor utiliza Cúrsame desde una computadora o tablet.', Ext.emptyFn);			
 			return;
 		}
 			
@@ -155,7 +158,15 @@ Ext.define('Cursame.controller.Main', {
 					members:record.get('courseMembers')
 				});			
 			this.getCourseContainer().setRecord(course);
-		}	
+			return;
+		}
+		if(type === "user_comment_on_discussion"){		
+			this.getNotificationNavigationView().push({xtype:'discussionslist' ,title:lang.discussions});
+			this.loadStore(Ext.getStore('Discussions'),{
+						id:record.data.courseObject.id
+				},undefined);			
+			return;
+		}
 	},
 	maskComponent:function(cmp){
 		cmp.setMasked({
@@ -323,6 +334,14 @@ Ext.define('Cursame.controller.Main', {
 	/*discussions*/
 	onDiscussionsListTap:function(dataview,index,target,record,e,opt){
 		this.getCourseNavigationView().push({ xtype:'discussionwall',title: record.get('name')});
+		this.loadStore(Ext.getStore('Comments'),{
+				id:record.get('id'),
+				type:'Discussion'
+			},undefined);
+		this.getDiscussionWall().items.items[0].setRecord(record);
+	},
+	onDiscussionsListTap2:function(dataview,index,target,record,e,opt){
+		this.getNotificationNavigationView().push({ xtype:'discussionwall',title: record.get('name')});
 		this.loadStore(Ext.getStore('Comments'),{
 				id:record.get('id'),
 				type:'Discussion'

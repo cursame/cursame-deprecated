@@ -21,17 +21,17 @@ class Api::ApiController < ApplicationController
   
   def assignments
      @course = Course.find params[:id]  
-     render :json => {:assignments => @course.assignments, :count => @course.assignments.count()}, :callback => params[:callback]      
+     render :json => {:assignments => @course.assignments.order("created_at DESC"), :count => @course.assignments.count()}, :callback => params[:callback]      
   end
   
   def discussions
      @course = Course.find params[:id]  
-     render :json => {:discussions => @course.discussions, :count => @course.discussions.count()}, :callback => params[:callback]      
+     render :json => {:discussions => @course.discussions.order("created_at DESC"), :count => @course.discussions.count()}, :callback => params[:callback]      
   end
   
   def surveys
      @course = Course.find params[:id]  
-     render :json => {:surveys => @course.surveys, :count => @course.surveys.count()}, :callback => params[:callback]      
+     render :json => {:surveys => @course.surveys.order("created_at DESC"), :count => @course.surveys.count()}, :callback => params[:callback]      
   end
   
   def users    
@@ -104,6 +104,7 @@ class Api::ApiController < ApplicationController
         when 'course_discussion_added'
           text = I18n.t 'notifications.discussion_added'
         when 'user_comment_on_user'
+          next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
         else #esta es la notificacion por deafult que hay que checar como esta estructurada
           next
