@@ -1,7 +1,5 @@
 Cursame::Application.routes.draw do
   
-  resources :public_comments
-
   resources :new_users_change_types
 
   resources :notificaciones_admin_actualice

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120729070147) do
+ActiveRecord::Schema.define(:version => 20120726211134) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -248,15 +248,6 @@ ActiveRecord::Schema.define(:version => 20120729070147) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.text      "text"
-  end
-
-  create_table "public_comments", :force => true do |t|
-    t.integer  "network_id"
-    t.integer  "commentable_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "text"
   end
 
   create_table "questions", :force => true do |t|
