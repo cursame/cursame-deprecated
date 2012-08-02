@@ -76,6 +76,9 @@ Ext.define('Cursame.controller.Main', {
 			'coursenavigationview assignmentslist':{
 				itemtap:'onAssignmentsListTap'
 			},
+			'notificationnavigationview assignmentslist':{
+				itemtap:'onAssignmentsListTap2'
+			},
 			'assignmentwall commentbar button':{
 				tap:'onAssignmentWallPost'
 			},
@@ -85,6 +88,9 @@ Ext.define('Cursame.controller.Main', {
 			/*surveys*/
 			'coursenavigationview surveyslist':{
 				itemtap:'onSurveysListTap'
+			},
+			'notificationnavigationview surveyslist':{
+				itemtap:'onSurveysListTap2'
 			},
 			'coursenavigationview surveywall':{},
 			/*discussions*/
@@ -138,7 +144,7 @@ Ext.define('Cursame.controller.Main', {
 			return;
 		}
 			
-		if(type === 'user_comment_on_course'){			
+		if(type === 'user_comment_on_course' || type === 'student_course_accepted' || type === 'user_comment_on_comment'){			
 			this.getNotificationNavigationView().push({xtype:'coursewall' ,title:record.data.courseObject.name});				
 			this.loadStore(Ext.getStore('Comments'),{
 					id:record.get('course_id'),
@@ -160,13 +166,28 @@ Ext.define('Cursame.controller.Main', {
 			this.getCourseContainer().setRecord(course);
 			return;
 		}
-		if(type === "user_comment_on_discussion"){		
+		if(type === 'user_comment_on_discussion' || type === 'course_discussion_added'){		
 			this.getNotificationNavigationView().push({xtype:'discussionslist' ,title:lang.discussions});
 			this.loadStore(Ext.getStore('Discussions'),{
 						id:record.data.courseObject.id
 				},undefined);			
 			return;
 		}
+		if(type === 'student_assignment_added' || type === 'student_assignment_updated'){
+			this.getNotificationNavigationView().push({xtype:'assignmentslist' ,title:lang.assignments});
+			this.loadStore(Ext.getStore('Assignments'),{
+					id:record.data.courseObject.id
+				},undefined);
+		}
+		if(type === 'student_survey_added' || type === 'student_survey_updated'){
+			this.getNotificationNavigationView().push({xtype:'surveyslist' ,title:lang.surveys});
+			this.loadStore(Ext.getStore('Surveys'),{
+					id:record.data.courseObject.id
+				},undefined);
+		}
+		/*if(type === 'user_comment_on_comment'){
+			
+		}*/
 	},
 	maskComponent:function(cmp){
 		cmp.setMasked({
@@ -312,6 +333,14 @@ Ext.define('Cursame.controller.Main', {
 			},undefined);
 		this.getAssignmentWall().items.items[0].setRecord(record);
 	},
+	onAssignmentsListTap2:function(dataview,index,target,record,e,opt){		
+		this.getNotificationNavigationView().push({ xtype:'assignmentwall',title: record.get('name')});
+		this.loadStore(Ext.getStore('Comments'),{
+				id:record.get('id'),
+				type:'Assignment'
+			},undefined);
+		this.getAssignmentWall().items.items[0].setRecord(record);
+	},
 	onAssignmentWallTap:function(dataview,index,target,record,e,opt){
 		if (e.getTarget('div.minibar')) {			
 			this.getCourseNavigationView().push({xtype:'commentwall' ,title:lang.comments});
@@ -325,6 +354,14 @@ Ext.define('Cursame.controller.Main', {
 	/*surveys*/
 	onSurveysListTap:function(dataview,index,target,record,e,opt){
 		this.getCourseNavigationView().push({ xtype:'surveywall',title: record.get('name')});
+		this.loadStore(Ext.getStore('Comments'),{
+				id:record.get('id'),
+				type:'Survey'
+			},undefined);
+		this.getSurveyWall().items.items[0].setRecord(record);
+	},
+	onSurveysListTap2:function(dataview,index,target,record,e,opt){
+		this.getNotificationNavigationView().push({ xtype:'surveywall',title: record.get('name')});
 		this.loadStore(Ext.getStore('Comments'),{
 				id:record.get('id'),
 				type:'Survey'

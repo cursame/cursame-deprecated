@@ -104,7 +104,7 @@ class Api::ApiController < ApplicationController
         when 'course_discussion_added'
           text = I18n.t 'notifications.discussion_added'
         when 'user_comment_on_user'
-          next
+          #next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
         else #esta es la notificacion por deafult que hay que checar como esta estructurada
           next
