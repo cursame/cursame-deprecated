@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720171149) do
+ActiveRecord::Schema.define(:version => 20120803090904) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -110,12 +110,13 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   end
 
   create_table "comments", :force => true do |t|
-    t.integer   "commentable_id"
-    t.string    "commentable_type"
-    t.integer   "user_id"
-    t.text      "text"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "network_id"
   end
 
   create_table "courses", :force => true do |t|
@@ -225,12 +226,19 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   add_index "networks_users", ["network_id"], :name => "index_networks_users_on_network_id"
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
 
+  create_table "new_users_change_types", :force => true do |t|
+    t.integer  "new_old"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "notificaciones_admin_actualice", :force => true do |t|
-    t.string    "title",      :default => "Ahora notificaciones del administrador"
-    t.string    "content",    :default => "Ahora puedes recibir notificaciones del administrador para estar siempre enterado de las actualizaciones del sistema"
-    t.string    "link_video", :default => "link"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
+    t.string   "title",      :default => "Ahora notificaciones del administrador"
+    t.string   "content",    :default => "Ahora puedes recibir notificaciones del administrador para estar siempre enterado de las actualizaciones del sistema"
+    t.string   "link_video", :default => "link"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "notifications", :force => true do |t|
@@ -318,38 +326,39 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   end
 
   create_table "users", :force => true do |t|
-    t.string    "role"
-    t.string    "email",                                 :default => "",       :null => false
-    t.string    "encrypted_password",     :limit => 128, :default => "",       :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",                         :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.string    "confirmation_token"
-    t.timestamp "confirmed_at"
-    t.timestamp "confirmation_sent_at"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "first_name"
-    t.string    "last_name"
-    t.text      "about_me"
-    t.text      "studies"
-    t.date      "birth_date"
-    t.text      "occupation"
-    t.string    "twitter_link"
-    t.string    "facebook_link"
-    t.string    "linkedin_link"
-    t.string    "avatar_file"
-    t.string    "state",                                 :default => "active"
-    t.boolean   "accepting_emails",                      :default => false
-    t.string    "authentication_token"
-    t.integer   "chat_id"
-    t.string    "calendar_activity"
-    t.string    "view_status",                           :default => "live"
+    t.string   "role"
+    t.string   "email",                                 :default => "",       :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",       :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                         :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "about_me"
+    t.text     "studies"
+    t.date     "birth_date"
+    t.text     "occupation"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "linkedin_link"
+    t.string   "avatar_file"
+    t.string   "state",                                 :default => "active"
+    t.boolean  "accepting_emails",                      :default => false
+    t.string   "authentication_token"
+    t.integer  "chat_id"
+    t.string   "calendar_activity"
+    t.string   "view_status",                           :default => "live"
+    t.integer  "new_old",                               :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -37,9 +37,9 @@ Cursame::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => '50.116.21.144',
     :port           => '25',
-   # :authentication => :none,
-  #  :user_name      => ENV['SENDGRID_USERNAME'],
-  #  :password       => ENV['SENDGRID_PASSWORD'],
+    :authentication => :true,
+    :user_name      => 'wichobabas',
+    :password       => 'qor43e95',
     :domain         => 'cursa.me'
   }
   ActionMailer::Base.delivery_method = :smtp
