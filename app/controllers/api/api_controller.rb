@@ -54,10 +54,7 @@ class Api::ApiController < ApplicationController
       case notification.kind
         when 'student_course_enrollment'
           next if notification.notificator == nil
-          text = I18n.t('notifications.wants_to_participate_in_course')          
-          puts "*******************esto es el debugin**************************"
-          puts notification.to_yaml
-          puts notification.notificator.to_yaml
+          text = I18n.t('notifications.wants_to_participate_in_course')           
           
           user = notification.notificator.user 
           @course = notification.notificator.course 
@@ -103,8 +100,18 @@ class Api::ApiController < ApplicationController
           @course = notification.notificator.commentable.course if notification.notificator
         when 'course_discussion_added'
           text = I18n.t 'notifications.discussion_added'
+        when 'user_comment_on_comment'
+          
+          puts "*******************esto es el debugin**************************"
+          puts notification.to_yaml
+          puts notification.notificator.to_yaml
+          puts notification.notificator.commentable
+          
+          text = I18n.t 'notifications.has_posted_a_comment_on_comment'
+          notification.notificator = notification.notificator.commentable
+          user = notification.notificator.user if notification.notificator      
         when 'user_comment_on_user'
-          #next
+          next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
         else #esta es la notificacion por deafult que hay que checar como esta estructurada
           next
