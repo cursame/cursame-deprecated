@@ -37,10 +37,10 @@ Cursame::Application.configure do
   ActionMailer::Base.smtp_settings = {
     :address        => '50.116.21.144',
     :port           => '25',
-    :authentication => :true,
-    :user_name      => 'wichobabas',
+    :authentication => 'plain',
+    :user_name      => 'wichobabas@50.116.21.144',
     :password       => 'qor43e95',
-    :domain         => 'cursa.me'
+    :domain         => 'mail.cursame.me'
   }
   ActionMailer::Base.delivery_method = :smtp
 end
