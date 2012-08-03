@@ -41,20 +41,6 @@ class Comment < ActiveRecord::Base
     end
   end
 
-  def self.total_comments_assignments
-    self.where(:commentable_type => "Assignment").count
-  end
-  
-  def self.total_comments_discussions
-    self.where(:commentable_type => "Discussion").count
-  end
-
-  def self.total_comments_user_walls
-    self.where(:commentable_type => "User").count
-  end
-
-  def self.total_comments_course_walls
-    self.where(:commentable_type => "Course").count
   end
 
   private

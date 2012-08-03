@@ -58,12 +58,7 @@ class HomeController < ApplicationController
     @users = current_network.users.search(params[:search])
   end
   def principal_wall
-      @tutoriales = Tutoriale.all
-      
-      @public_comments = current_network.public_comments
-      @public_comment = PublicComment.new(params[:public_comment])
-      @public_comments_comment = PublicCommentsComment.new(params[:public_comments_comment])
-      
+      @tutoriales = Tutoriale.all    
   end
 end
 
