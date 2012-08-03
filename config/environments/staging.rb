@@ -28,7 +28,7 @@ Cursame::Application.configure do
       :address        => '50.116.21.144',
       :port           => '25',
       :authentication => 'plain',
-      :user_name      => 'wichobabas@50.116.21.144',
+      :user_name      => 'wichobabas',
       :password       => 'qor43e95',
       :domain         => 'mail.cursame.me'
   }
