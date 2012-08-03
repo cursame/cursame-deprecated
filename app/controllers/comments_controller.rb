@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
   def create
     @comment = (User === commentable ? commentable.profile_comments : commentable.comments).build params[:comment]
-    @comment.user = current_user
+    @comment.user = current_user 
     respond_to do |format|
-      if @comment.save
+      @comment.true
         format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
         format.js
-      else
-        format.js {render :action => "rollback.js.erb"}
-      end
+     # else
+      #  format.js {render :action => "rollback.js.erb"}
+     # end
     end
   end
 
@@ -54,6 +54,8 @@ class CommentsController < ApplicationController
   def commentable_path_for comment
     commentable = comment.commentable
     case commentable
+    when Network
+      principal_wall_path commentable
     when Course
       wall_for_course_path commentable
     when User
@@ -67,5 +69,8 @@ class CommentsController < ApplicationController
     else
       Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
     end
+  end
+  def comments
+    current_network.comments
   end
 end

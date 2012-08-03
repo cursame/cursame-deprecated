@@ -46,6 +46,10 @@ class ApplicationController < ActionController::Base
     @current_network ||= Network.find_by_subdomain(filter_subdomain(request.subdomain.downcase))
   end
   
+  def comment_network_path
+    current_network
+  end
+  
   def current_languaje
     if current_network
       I18n.locale = current_network.lenguajes

@@ -2,7 +2,8 @@ class NetworksController < ApplicationController
   skip_before_filter :authenticate_active_user_within_network!, :only => [:network_cc , :create, :update, :instrucciones]
   #bloquea el layout en el network_cc
   layout 'application', :except => [:network_cc ]
-  layout 'new_network', :except => [:create, :update, :instrucciones]
+  
+  layout 'application', :only => [:create, :update, :instrucciones, :principal_wall]
       def network_cc
         @network = Network.new
         @network.supervisors.build
@@ -19,10 +20,11 @@ class NetworksController < ApplicationController
           render :new
         end
       end
-
+     
       def show
         @network = Network.find params[:id]
       end
+      
 
       def update
         @network = Network.find params[:id]
@@ -32,6 +34,14 @@ class NetworksController < ApplicationController
           render :edit
         end
       end
+      def principal_wall
+          @network = current_network    
+          @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
+          @tutoriales = Tutoriale.all  
+      end
       
+      def relate
+         @network = current_network  
+      end
 end
 

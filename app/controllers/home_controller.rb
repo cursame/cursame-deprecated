@@ -3,6 +3,7 @@ class HomeController < ApplicationController
  #tabs para modificar el menu del header      
     set_tab :dashboard, :only => %(dashboard principal_wall)
     set_tab :principal_wall
+  
   def index
     if current_user && current_user.active?
       case current_user.role
@@ -58,7 +59,11 @@ class HomeController < ApplicationController
     @users = current_network.users.search(params[:search])
   end
   def principal_wall
-      @tutoriales = Tutoriale.all    
+     
+      @network = current_network    
+      @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
+      @tutoriales = Tutoriale.all  
+      
   end
 end
 

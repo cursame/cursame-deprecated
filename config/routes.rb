@@ -124,10 +124,12 @@ Cursame::Application.routes.draw do
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
   match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
+  match '/network/:commentable_id/comment', :to => 'comments#create',:as => :comment_network,    :conditions => {:commentable => :network}
   #cambio del principal por el dashboard
-  match '/network-wall', :to =>'home#principal_wall', :as => :principal_wall
-  #routes basics home
-  #el dasbiard se mantien como ruta principal en el el home para al free
+     get'/network/:id', :to => 'networks#relate', :as => :relate_wall
+     match '/network/:id/wall', :to =>'networks#principal_wall', :as => :principal_wall
+  #routes basics home   
+  #el dasboard se mantien como ruta principal en el el home para al free
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
    match '/ayuda', :to => 'home#help', :as => :help

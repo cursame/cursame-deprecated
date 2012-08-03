@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726211134) do
+ActiveRecord::Schema.define(:version => 20120803090904) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120726211134) do
     t.text      "text"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.integer   "network_id"
   end
 
   create_table "courses", :force => true do |t|
