@@ -18,9 +18,6 @@ class Comment < ActiveRecord::Base
     subdomain = user.networks.first.subdomain if user.networks.first
 
     case commentable_type
-    when "Network"
-      unless commentable.network.id == self.network.id 
-      end
     when "Comment"
       unless commentable.user.id == self.user.id 
         Notification.create :user => commentable.user, :notificator => self, :kind => 'user_comment_on_comment'
@@ -57,7 +54,7 @@ class Comment < ActiveRecord::Base
     when "Discussion"
       return commentable.starter.id
      when "Network"
-       return commentable.network.id
+       return commentable.id
     end
     nil
   end
