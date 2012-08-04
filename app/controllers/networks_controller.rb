@@ -14,9 +14,9 @@ class NetworksController < ApplicationController
       def create
         @network = Network.new params[:network]
         if @network.save
-          redirect_to  :instrucciones_red, :notice => t('Red creada correctamente')
+          redirect_to  :back, :notice => t('Red creada correctamente')
         else
-          render :new
+          redirect_to :back, :notice => t('Red creada incorrectamente')
         end
       end
 
