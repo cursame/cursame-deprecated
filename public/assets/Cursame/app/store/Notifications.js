@@ -8,6 +8,12 @@ Ext.define('Cursame.store.Notifications', {
 	requires: ['Cursame.model.Notification'],
     
     config: {
-        model: 'Cursame.model.Notification'
+        model: 'Cursame.model.Notification',
+		sorters: [
+	        {
+	            property : 'created',
+	            direction: 'DESC'
+	        }
+	    ]
     }
 });

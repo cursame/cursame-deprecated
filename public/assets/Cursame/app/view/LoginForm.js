@@ -49,13 +49,11 @@ Ext.define('Cursame.view.LoginForm', {
 				xtype:'emailfield',
 				name:'email',
 				placeHolder :lang.email,
-				//value:'armando@cursa.me',	
 				clearIcon: true
 			},{
 				xtype:'passwordfield',
 				name:'password',
 				placeHolder:lang.password,
-				//value:'mmmmmm',
 				clearIcon: true
 			}]
 		},	{			
