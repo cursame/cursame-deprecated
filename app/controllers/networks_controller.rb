@@ -38,6 +38,7 @@ class NetworksController < ApplicationController
           @network = current_network    
           @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
           @tutoriales = Tutoriale.all  
+          @user=current_user
       end
       
       def relate
