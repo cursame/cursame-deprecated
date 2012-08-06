@@ -1,5 +1,5 @@
 Cursame::Application.configure do
-  HOST = 'cursatelefonica.com'
+  HOST = 'cursametelefonica.com'
   HEROKU_HOST = 'cursametelefonica.heroku.com'
 
   config.cache_classes = true
