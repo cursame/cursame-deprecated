@@ -6,17 +6,11 @@
       </div>
       
        
-        <% if current_network.variante == "free"%>
-        <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
-        <%= tab.principal_wall t('dashboard.start'), root_path %>       
-        <%= tab.profile t('dashboard.profile'), current_user %> 
-        <%end%>
-        <%else%>
+       
         <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
         <%= tab.principal_wall t('dashboard.start'), root_path %> 
         <%= tab.profile t('dashboard.profile'), current_user %>    
         <%= tab.dashboard t('dashboard.propiety'), dashboard_path %>
-        <%end%>
         <%end%>
                  
       <ul class="nav secondary-nav">
