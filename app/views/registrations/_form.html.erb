@@ -1,4 +1,12 @@
-<div class="register-box">
+<div class="register-box"
+style="background-color: #005C84;
+background-image: linear-gradient(bottom, #63CCDF 0%, #19678B 67%);
+background-image: -o-linear-gradient(bottom, #63CCDF 0%, #19678B 67%);
+background-image: -moz-linear-gradient(bottom, #63CCDF 0%, #19678B 67%);
+background-image: -webkit-linear-gradient(bottom, #63CCDF 0%, #19678B 67%);
+background-image: -ms-linear-gradient(bottom, #63CCDF 0%, #19678B 67%);
+background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #63CCDF), color-stop(0.67, #19678B) );">
+
   <h1><%= t("forms.register_#{params[:controller] == 'registrations' ? role : 'student'}") %></h1>
   <%= semantic_form_for resource, :as => resource_name, :url => url do |form| %>
     <%= form.inputs :basic do %>

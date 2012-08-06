@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
   def create
+     puts commentable
+     puts "*********"
     @comment = (User === commentable ? commentable.profile_comments : commentable.comments).build params[:comment]
-    @comment.user = current_user
+    @comment.user = current_user 
     respond_to do |format|
-      if @comment.save
+     if @comment.save
+       puts commentable
         format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
         format.js
-      else
-        format.js {render :action => "rollback.js.erb"}
-      end
+     else
+       format.js {render :action => "rollback.js.erb"}
+     end
     end
   end
 
@@ -33,6 +36,8 @@ class CommentsController < ApplicationController
   def commentable
     @commentable ||=
       case params[:conditions][:commentable]
+      when :network
+       current_network
       when :assignment
         (current_user.supervisor? ? current_network.assignments.find(params[:commentable_id]) : current_user.assignments.find(params[:commentable_id]))
       when :course
@@ -46,7 +51,7 @@ class CommentsController < ApplicationController
           current_user.manageable_deliveries.find(params[:commentable_id])
       when :comment
         comment = Comment.find params[:commentable_id]
-        raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)
+        #raise ActiveRecord::RecordNotFound unless current_user.can_view_comment?(comment)
         comment
       end
   end
@@ -54,6 +59,8 @@ class CommentsController < ApplicationController
   def commentable_path_for comment
     commentable = comment.commentable
     case commentable
+    when Network
+      principal_wall_path commentable
     when Course
       wall_for_course_path commentable
     when User
@@ -67,5 +74,8 @@ class CommentsController < ApplicationController
     else
       Comment === commentable ? commentable_path_for(commentable) : polymorphic_path(commentable)
     end
+  end
+  def comments
+    current_network.comments
   end
 end

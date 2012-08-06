@@ -1,28 +1,22 @@
 <div class="topbar">
-  <div class="fill">
+  <div class="fill" style="background-color: #005C84">
     <div class="container">
       <div class="logo-container">
-        <%= link_to image_tag("logo.png"), root_path, :class => "brand" %>
+        <%= link_to image_tag("logo2.png"), root_path, :class => "brand" %>
       </div>
       
        
-        <% if current_network.variante == "free"%>
-        <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
-        <%= tab.principal_wall t('dashboard.start'), root_path %>       
-        <%= tab.profile t('dashboard.profile'), current_user %> 
-        <%end%>
-        <%else%>
+       
         <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
         <%= tab.principal_wall t('dashboard.start'), root_path %> 
         <%= tab.profile t('dashboard.profile'), current_user %>    
-        <%= tab.dashboard t('dashboard.propiety'), dashboard_path %>
-        <%end%>
+        <%= tab.dashboard t('dashboard.propiety'), network_members_path %>
         <%end%>
                  
       <ul class="nav secondary-nav">
         <li class="dropdown">
           <%= link_to "#{current_user.first_name}" + " #{current_user.last_name}", "#", :class => "dropdown-toggle"%>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" style="background-color: #005C84">
             <li><%= link_to t('shared.toolbar.settings'), settings_path %></li>
             <li><%= link_to t('.soporte y sugerencias'), soporte_path %></li>
             <li class="divider"></li>

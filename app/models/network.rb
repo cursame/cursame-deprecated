@@ -7,7 +7,8 @@ class Network < ActiveRecord::Base
   has_many :discussions, :through => :courses
   has_many :assignments, :through => :courses
   has_many :surveys,     :through => :courses
-  has_many :public_comments
+  has_many :comments, :as => :commentable, :dependent => :destroy 
+  
   accepts_nested_attributes_for :supervisors
 
   validates_presence_of   :name, :subdomain
@@ -21,6 +22,9 @@ class Network < ActiveRecord::Base
   mount_uploader :logo_file, LogoUploader
   
   private
+  def comment_network_path
+    self.comments!
+  end
   
   def downcase_subdomain
     self.subdomain.downcase! unless self.subdomain.blank?

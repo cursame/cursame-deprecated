@@ -80,7 +80,7 @@ body {
 }
 
 .topbar .fill {
-	background-color: #00282e;
+	background-color: #005C84;
 }
 
 .topbar .brand {
@@ -691,14 +691,34 @@ ul.left-nav-main-ul {
 	color: #fff;
 }
 
-.left-nav-main-ul li a.documentos {
-	background: url(menu-documentos.png) no-repeat 5px;
+/*se agregan a los estilos de lista el dshboard y favoritos*/
+.left-nav-main-ul li a.info {
+	background: url(menu-info.png) no-repeat 5px;
 	padding-left: 30px;
 }
 
-.left-nav-main-ul li a.documentos:hover {
-	background: #00afc9 url(menu-documentos.png) no-repeat 5px;
+.left-nav-main-ul li a.info:hover {
+	background: #00afc9 url(menu-info.png) no-repeat 5px;
 	width: 150px;
+}
+.left-nav-main-ul li a.info.active {
+	background: #00ccec url(menu-info.png) no-repeat 5px;
+	width: 150px;
+	color: #fff;
+}
+.left-nav-main-ul li a.favoritos {
+	background: url(users-users.png) no-repeat 5px;
+	padding-left: 30px;
+}
+
+.left-nav-main-ul li a.favoritos:hover {
+	background: #00afc9 url(users-users.png) no-repeat 5px;
+	width: 150px;
+}
+.left-nav-main-ul li a.favoritos.active {
+	background: #00ccec url(users-users.png) no-repeat 5px;
+	width: 150px;
+	color: #fff;
 }
 
 .left-nav-main-ul li a.evaluaciones {

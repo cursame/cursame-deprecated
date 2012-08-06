@@ -11,8 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720171149) do
 
+ActiveRecord::Schema.define(:version => 20120803090904) do
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
     t.integer   "question_id"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
     t.text      "text"
     t.timestamp "created_at"
     t.timestamp "updated_at"
+    t.integer   "network_id"
   end
 
   create_table "courses", :force => true do |t|
@@ -241,15 +242,6 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
     t.timestamp "created_at"
     t.timestamp "updated_at"
     t.text      "text"
-  end
-
-  create_table "public_comments", :force => true do |t|
-    t.integer  "network_id"
-    t.integer  "commentable_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "text"
   end
 
   create_table "questions", :force => true do |t|
