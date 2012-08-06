@@ -33,9 +33,7 @@ Ext.define('Cursame.model.Notification', {
             {name:"notificator_type", type:"string"},
             {name:"notificator_id", type:"string"},
             {name:"avatar", type:"string",mapping:'text.image',convert:function(value,record){
-				console.log(value);
 				value = value ? Cursame.Path+value.url : Cursame.src+'resources/images/avatar_normal.png';
-				console.log(value);
 				return value;
 			}},
             {name:"user", type:"string"},

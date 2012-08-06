@@ -11,11 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20120729070147) do
-=======
 ActiveRecord::Schema.define(:version => 20120720171149) do
->>>>>>> origin/development
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -206,21 +202,6 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   end
 
   create_table "networks", :force => true do |t|
-<<<<<<< HEAD
-    t.string   "subdomain"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "slogan"
-    t.text     "welcome_message"
-    t.string   "logo_file"
-    t.string   "time_zone"
-    t.boolean  "public_registry",  :default => true
-    t.boolean  "private_registry", :default => false
-    t.string   "registry_domain"
-    t.string   "lenguajes"
-    t.string   "variante",         :default => "free"
-=======
     t.string    "subdomain"
     t.string    "name"
     t.timestamp "created_at"
@@ -234,7 +215,6 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
     t.string    "registry_domain"
     t.string    "lenguajes"
     t.string    "variante"
->>>>>>> origin/development
   end
 
   create_table "networks_users", :id => false, :force => true do |t|
@@ -246,19 +226,11 @@ ActiveRecord::Schema.define(:version => 20120720171149) do
   add_index "networks_users", ["user_id"], :name => "index_networks_users_on_user_id"
 
   create_table "notificaciones_admin_actualice", :force => true do |t|
-<<<<<<< HEAD
-    t.string   "title",      :default => "Ahora notificaciones del administrador"
-    t.string   "content",    :default => "Ahora puedes recibir notificaciones del administrador para estar siempre enterado de las actualizaciones del sistema"
-    t.string   "link_video", :default => "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-=======
     t.string    "title",      :default => "Ahora notificaciones del administrador"
     t.string    "content",    :default => "Ahora puedes recibir notificaciones del administrador para estar siempre enterado de las actualizaciones del sistema"
     t.string    "link_video", :default => "link"
     t.timestamp "created_at"
     t.timestamp "updated_at"
->>>>>>> origin/development
   end
 
   create_table "notifications", :force => true do |t|
