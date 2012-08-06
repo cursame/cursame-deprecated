@@ -15,8 +15,8 @@ es:
       total_networks: 'Total de redes'
       total_users: 'Total de usuarios'
       total_supervisors: 'Supervisores de red'
-      total_teachers: 'Maestros'
-      total_students: 'Estudiantes'
+      total_teachers: 'Administradores'
+      total_students: 'Vendedores'
       total_courses: 'Total de cursos'
       total_open_courses: 'Cursos públicos'
       total_private_courses: 'Cursos privados'
@@ -43,8 +43,8 @@ es:
     register_btn: 'Regístrate'
     register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
-    register_student: 'Registro de Estudiantes'
-    register_teacher: 'Registro de Maestros'
+    register_student: 'Registro de Vendedores'
+    register_teacher: 'Registro de Administradores'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -57,7 +57,7 @@ es:
     accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
-    teacher_register: 'Registro como maestro'
+    teacher_register: 'Registro como Administrador'
 
   flash:
     course_created: Curso creado
@@ -69,7 +69,7 @@ es:
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusión creada 
-    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
+    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el Gerente
     delivery_created: Tu tarea fue entregada
     delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
@@ -213,8 +213,8 @@ es:
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este curso'
-      teachers: 'Maestros'
-      students: 'Estudiantes'
+      teachers: 'Gerentees'
+      students: 'Vendedores'
       member: 'Miembro'
       members: 'Miembros'
       count:
@@ -231,14 +231,14 @@ es:
       reject: 'Rechazar'
       remove: 'Quitar del curso'
       role: 'Rol'
-      student: 'Estudiante'
-      teacher: 'Maestro'
+      student: 'Vendedores'
+      teacher: 'Gerentees'
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
     course:
       request_join_student: Solicitar unirse
-      request_join_teacher: Ser maestro del curso
+      request_join_teacher: Ser Administrador del curso
       request_join_again: Solicitar unirse de nuevo
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
@@ -397,18 +397,18 @@ es:
         admin: 'Administración'
         configuration: "Configuración"
         courses: Cursos
-        teachers: Maestros
-        students: Estudiantes
-        supervisors: Administradores
+        teachers: Gerentees
+        students: Vendedores
+        supervisors: Gerentees
         reports: 'Reportes'
-        pending_approvals: Registros de maestros pendientes
+        pending_approvals: Registros de Administradores pendientes
         new_user: "Crear nuevo usuario"
       teachers:
         approve: Aceptar
         reject: Rechazar
-        teacher: Maestro
-        student: Estudiante
-        supervisor: Administrador
+        teacher: Administrador
+        student: Vendedor
+        supervisor: Gerente
         update: Actualizar
         change_role: Cambiar rol
         destroy: Eliminar
@@ -419,28 +419,28 @@ es:
       approve: Aceptar
       reject: Rechazar
     teachers:
-      registered_teachers: Maestros registrados
+      registered_teachers: Administradores registrados
     students:
-      student: Estudiante
-      teacher: Maestro
-      supervisor: Administrador
+      student: Vendedor
+      teacher: Gerente
+      supervisor: Gerente
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      registered_students: Estudiantes inscritos
+      registered_students: Vendedores inscritos
     supervisors:
-      singular_supervisor: Administrador
-      plural_supervisor: Administradores
+      singular_supervisor: Gerente
+      plural_supervisor: Gerentees
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      teacher: Maestro
-      student: Estudiante
-      supervisor: Administrador
-    export_students: "Exportar estudiantes"
-    import_students: "Importar estudiantes"
-    export_teachers: "Exportar maestros"
-    import_teachers: "Importar maestros"
+      teacher: Administrador
+      student: Vendedor
+      supervisor: Gerente
+    export_students: "Exportar Vendedores"
+    import_students: "Importar Vendedores"
+    export_teachers: "Exportar Administradores"
+    import_teachers: "Importar Administradores"
     networks:
       edit:
         example: 'Ejemplo:'
@@ -498,12 +498,12 @@ es:
   teacher_mailer:
     pending_user_on_course:
       subject: Un usuario ha solicitado acceso a uno de tus cursos
-      teacher: maestro
-      student: alumno
+      teacher: Gerente
+      student: venderor
       
   supervisor_mailer:
     new_teacher_registered:
-      subject: Un maestro ha solicitado acceso a tu red
+      subject: Un Administrador ha solicitado acceso a tu red
     finished_upload_users:
       subject: Importación de usuarios completa
       

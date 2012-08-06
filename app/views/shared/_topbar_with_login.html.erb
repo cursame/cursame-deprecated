@@ -1,20 +1,20 @@
 <div class="topbar">
-  <div class="fill">
+  <div class="fill" style="background-color: #005C84">
     <div class="container">
-      <%= link_to(image_tag("logo.png"), root_url, :class => "brand", :style => "padding-top: 16px;") %>
+      <%= link_to(image_tag("logo2.png"), root_url, :class => "brand", :style => "padding-top: 16px;") %>
       <form action="<%= user_session_path %>" class="pull-right" method="post">
         
 
        <fieldset class="textbox">
 
-<div class="login_texted"><%= "Email / contraseña"  %></div>         <input class="input-small" name="user[email]" type="text" placeholder="<%= t("forms.email") %>">
+<div class="login_texted" style="color:#fff;"><%= "Email / contraseña"  %></div>         <input class="input-small" name="user[email]" type="text" placeholder="<%= t("forms.email") %>">
           <input class="input-small" name="user[password]" type="password" placeholder="<%= t("forms.password") %>">
           <button class="btn" type="submit" id="sign_in"><%= t("forms.sign_in_btn") %></button>
         </fieldset>
         <fieldset class="checkbox">
           <input name="user[remember_me]" type="hidden" value="0" />
-          <label for="user_remember_me"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <%= t("forms.remember_me")%></label>
-          <p><%= link_to t("forms.lost_password_text"), new_user_password_path %></p>
+          <label for="user_remember_me" style="color:#fff;"><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" /> <%= t("forms.remember_me")%></label>
+          <p style="color:#5cd2ed;"><%= link_to t("forms.lost_password_text"), new_user_password_path %></p>
         </fieldset>
       </form>
     </div>
