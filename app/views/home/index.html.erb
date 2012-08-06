@@ -11,7 +11,7 @@
       <%- if @network %>
         <div class="network-info">
 	      	<% if @network.logo_file.large.url == nil%>
-			<%= image_tag("login.png")%>
+			<%= image_tag("login.jpg")%>
 			<%else%>
             <%= image_tag(@network.logo_file.large.url) %>
             <%end%>
