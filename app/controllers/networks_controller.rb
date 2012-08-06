@@ -3,6 +3,7 @@ class NetworksController < ApplicationController
   #bloquea el layout en el network_cc
  # layout 'application', :except => [:network_cc ] 
  # layout 'new_network', :except => [:create, :update, :instrucciones, :principal_wall]
+ set_tab :principal_wall
       def network_cc
         @network = Network.new
         @network.supervisors.build

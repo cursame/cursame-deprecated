@@ -1,8 +1,8 @@
 class HomeController < ApplicationController
   skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]  
  #tabs para modificar el menu del header      
-    set_tab :dashboard, :only => %( principal_wall)
-    set_tab :principal_wall, :only => %( principal_wall)
+    set_tab :dashboard
+    
   
   def index
     if current_user && current_user.active?
