@@ -16,7 +16,7 @@ var language ={
         decline:'Rechazar',
         courseInfo:'Información de la Campaña',
         wall:'Muro',
-        assignments:'Tareas',
+        assignments:'Actividades',
         surveys:'Cuestionarios',
         discussions:'Discusiones',
 		calendar:'Calendario',
