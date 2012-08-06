@@ -21,17 +21,17 @@ class Api::ApiController < ApplicationController
   
   def assignments
      @course = Course.find params[:id]  
-     render :json => {:assignments => @course.assignments, :count => @course.assignments.count()}, :callback => params[:callback]      
+     render :json => {:assignments => @course.assignments.order("created_at DESC"), :count => @course.assignments.count()}, :callback => params[:callback]      
   end
   
   def discussions
      @course = Course.find params[:id]  
-     render :json => {:discussions => @course.discussions, :count => @course.discussions.count()}, :callback => params[:callback]      
+     render :json => {:discussions => @course.discussions.order("created_at DESC"), :count => @course.discussions.count()}, :callback => params[:callback]      
   end
   
   def surveys
      @course = Course.find params[:id]  
-     render :json => {:surveys => @course.surveys, :count => @course.surveys.count()}, :callback => params[:callback]      
+     render :json => {:surveys => @course.surveys.order("created_at DESC"), :count => @course.surveys.count()}, :callback => params[:callback]      
   end
   
   def users    
@@ -49,23 +49,27 @@ class Api::ApiController < ApplicationController
 
   def notifications
     @notifications = @user.notifications.order("created_at DESC");
-
+    @notifications_aux = Array.new
     @notifications.each do |notification|
       case notification.kind
         when 'student_course_enrollment'
-          text = I18n.t('notifications.wants_to_participate_in_course')
-          user = notification.notificator.user
-          @course = notification.notificator.course
-        when 'student_assignment_delivery'
+          next if notification.notificator == nil
+          text = I18n.t('notifications.wants_to_participate_in_course')           
+          
+          user = notification.notificator.user 
+          @course = notification.notificator.course 
+        when 'student_assignment_delivery'          
+          next if notification.notificator == nil          
           text = I18n.t('notifications.has_delived_assignment')
-          assignment= notification.notificator.assignment
-          user = notification.notificator.user
+          assignment= notification.notificator.assignment 
+          user = notification.notificator.user 
           @course = assignment.course
         when 'teacher_survey_replied'
-          text = I18n.t('notifications.has_answered_the_survey')
-          survey = notification.notificator.survey
-          user = notification.notificator.user
-          @course = survey.course
+          next if notification.notificator == nil
+          text = I18n.t('notifications.has_answered_the_survey')          
+          survey = notification.notificator.survey 
+          user = notification.notificator.user 
+          @course = survey.course 
           text2 = I18n.t('notifications.for_the_course')
         when 'teacher_survey_updated'
           text = I18n.t('notifications.has_updated_survey_answers')
@@ -96,8 +100,21 @@ class Api::ApiController < ApplicationController
           @course = notification.notificator.commentable.course if notification.notificator
         when 'course_discussion_added'
           text = I18n.t 'notifications.discussion_added'
+        when 'user_comment_on_comment'
+          
+          puts "*******************esto es el debugin**************************"
+          puts notification.to_yaml
+          puts notification.notificator.to_yaml
+          puts notification.notificator.commentable
+          
+          text = I18n.t 'notifications.has_posted_a_comment_on_comment'
+          notification.notificator = notification.notificator.commentable
+          user = notification.notificator.user if notification.notificator      
         when 'user_comment_on_user'
+          next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
+        else #esta es la notificacion por deafult que hay que checar como esta estructurada
+          next
       end      
       image = @course.course_logo_file if @course
       
@@ -114,8 +131,9 @@ class Api::ApiController < ApplicationController
           :courseComments => @course ? @course.comments.count : nil,
           :text2 => text2
       }
+       @notifications_aux.push(notification)
     end
-    render :json => {:notifications => @notifications.as_json, :count => @notifications.count()}, :callback => params[:callback]    
+    render :json => {:notifications => @notifications_aux.as_json, :count => @notifications_aux.count()}, :callback => params[:callback]    
   end
 
   def comments
@@ -134,7 +152,7 @@ class Api::ApiController < ApplicationController
       else
         @commentable = Course.find params[:id]
     end
-    @comments = @commentable.comments
+    @comments = @commentable.comments.order("created_at DESC");
     render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments])), :count => @comments.count()}, :callback => params[:callback]
   end
   
