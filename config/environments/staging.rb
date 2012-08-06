@@ -25,12 +25,12 @@ Cursame::Application.configure do
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
   ActionMailer::Base.smtp_settings = {
-     :address        => '50.116.21.144',
+      :address        => '50.116.21.144',
       :port           => '25',
-     # :authentication => :none,
-    #  :user_name      => ENV['SENDGRID_USERNAME'],
-    #  :password       => ENV['SENDGRID_PASSWORD'],
-      :domain         => 'heroku.com'
+      :authentication => 'plain',
+      :user_name      => 'wichobabas',
+      :password       => 'qor43e95',
+      :domain         => 'mail.cursame.me'
   }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.default :from => "Cursame <noreply@cursa.me>"
