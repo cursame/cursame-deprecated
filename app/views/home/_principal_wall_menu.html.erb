@@ -1,4 +1,12 @@
 	<div class="underline">
 		<%= link_to image_tag(current_user.avatar_file.small.url), current_user%>
 	</div>
-    <h3>Menú Principal</h3>
+    <h2>Menú Principal</h2>
+     <div class="line"></div>
+	<%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
+	    <%= tab.course "Manejo del sistema", dashboard_path, :class => "info" %>
+	    <%= tab.assignments "Mis usuario favoritos", my_favorite_users_path, :class => "favoritos" %>
+	 <% end %>
+   
+	<%= render :partial => "home/members" %>
+ 
