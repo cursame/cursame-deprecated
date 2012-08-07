@@ -213,7 +213,7 @@ es:
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este Campaña'
-      teachers: 'Gerentees'
+      teachers: 'Gerentes'
       students: 'Vendedores'
       member: 'Miembro'
       members: 'Miembros'
@@ -232,7 +232,7 @@ es:
       remove: 'Quitar del Campaña'
       role: 'Rol'
       student: 'Vendedores'
-      teacher: 'Gerentees'
+      teacher: 'Gerentes'
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
@@ -397,9 +397,9 @@ es:
         admin: 'Administración'
         configuration: "Configuración"
         courses: Campañas
-        teachers: Gerentees
+        teachers: Gerentes
         students: Vendedores
-        supervisors: Gerentees
+        supervisors: Gerentes
         reports: 'Reportes'
         pending_approvals: Registros de Administradores pendientes
         new_user: "Crear nuevo usuario"
@@ -430,7 +430,7 @@ es:
       registered_students: Vendedores inscritos
     supervisors:
       singular_supervisor: Gerente
-      plural_supervisor: Gerentees
+      plural_supervisor: Gerentes
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
