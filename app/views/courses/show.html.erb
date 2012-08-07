@@ -19,7 +19,7 @@
       <div class="span10">
         <div class="row">
           <div class="span7">
-            <h2><%= "este curso esta finalizado: #{@course.name} "  %></h2>
+            <h2><%= "esta campaña esta finalizado: #{@course.name} "  %></h2>
             <div class="public-course">
               <% if @course.public? %>
                 <%= t('courses.public') %>
@@ -35,7 +35,7 @@
                 <%= status.hidden_field :status, :value => "active" %>
                 <%= status.hidden_field :date, :value => Date.today %>
                 <%= status.hidden_field :course_id, :value => @course.id%>
-                <%= status.submit "Reactivar curso", :class => "btn success"%>
+                <%= status.submit "Reactivar campaña", :class => "btn success"%>
 
               <%end%>
             <% end %>
@@ -100,7 +100,7 @@
                 <%= status.hidden_field :status, :value => "finish" %>
                 <%= status.hidden_field :date, :value => Date.today %>
                 <%= status.hidden_field :course_id, :value => @course.id%>
-                <%= status.submit "Finalizar curso", :class => "btn danger"%>
+                <%= status.submit "Finalizar campaña", :class => "btn danger"%>
 
               <%end%>
               </div>

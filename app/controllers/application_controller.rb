@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     when 'admin'      then admin_path(:subdomain => nil)
     when 'supervisor' then supervisor_dashboard_path(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     else 
-        principal_wall_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
+        dashboard_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     end
   end
 

@@ -10,18 +10,18 @@
     <div class="span11">
       <%- if @network %>
         <div class="network-info">
-	      	<% if @network.logo_file.large.url == nil%>
+		<% if @network.logo_file.large.url == nil%>
 			<%= image_tag("login.jpg")%>
 			<%else%>
             <%= image_tag(@network.logo_file.large.url) %>
             <%end%>
             <%if @network.slogan == nil %>
-             <!-- <h1> Bienvenido a Cúrsame</h2> -->
+           <!--<h1> Bienvenido a Cúrsame</h2> -->
             <%else%>
               <h1><%= @network.slogan %></h1>
             <%end%>
             <% if @network.welcome_message == nil %>
-              <!--<h3>Cúrsame es la Red Social privda y segura de tu institución, donde además podrás encontrar tus clases, tareas y cursos. <br /><br />¡Tienes la institución a un click de distancia!</h3>-->
+          <!--    <h3>Cúrsame es la Red Social privda y segura de tu institución, donde además podrás encontrar tus clases, tareas y cursos. <br /><br />¡Tienes la institución a un click de distancia!</h3>-->
             <%else%>
               <h3><%= @network.welcome_message %></h3>
             <%end%>
