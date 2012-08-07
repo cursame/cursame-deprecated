@@ -66,6 +66,7 @@ $list-active-gradient: matte;
 @include pictos-iconmask('docs_black1');
 @include pictos-iconmask('help_black');
 @include pictos-iconmask('user_list');
+@include pictos-iconmask('movistar');
 
 
 //login form
@@ -261,6 +262,12 @@ $list-active-gradient: matte;
     }
 	.contenido{
 		width:100%;
+		.text{
+			img {
+	            width: 291px;
+				height:193px;
+	        }
+		}
 	}
 }
 
@@ -290,4 +297,6 @@ iframe{
 
 .movi-color{
 	color : #005C84;
+	
 }
+

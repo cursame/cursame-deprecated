@@ -16,8 +16,18 @@ Ext.define('Cursame.view.notifications.NavigationView', {
     config: {
         items:{
 			xtype:'notificationslist',
-			title:lang.notifications
-		}
+			title:lang.notifications			
+		},
+		 navigationBar: {
+		            items: [
+		                {
+		                    iconCls: 'movistar',
+		                    iconMask: true,
+		                    ui: 'plain',
+		                    align: 'right'
+		                }
+		            ],
+		        }
     },
  	applyLayout: function(config) {
         config = config || {};

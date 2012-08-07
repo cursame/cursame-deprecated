@@ -22,7 +22,17 @@ Ext.define('Cursame.view.courses.CourseNavigationView', {
         items:{
 			xtype:'courselist',
 			title:lang.courses
-		}
+		},
+		navigationBar: {
+		            items: [
+		                {
+		                    iconCls: 'movistar',
+		                    iconMask: true,
+		                    ui: 'plain',
+		                    align: 'right'
+		                }
+		            ],
+		        }
     },
  	applyLayout: function(config) {
         config = config || {};

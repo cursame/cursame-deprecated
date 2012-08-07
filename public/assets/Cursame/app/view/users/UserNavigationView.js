@@ -11,7 +11,16 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 			'Cursame.view.users.UserWall'
 	],
     config: {
-        
+        navigationBar: {
+		            items: [
+		                {
+		                    iconCls: 'movistar',
+		                    iconMask: true,
+		                    ui: 'plain',
+		                    align: 'right'
+		                }
+		            ],
+		        }
     },
  	applyLayout: function(config) {
         config = config || {};
