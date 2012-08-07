@@ -25,7 +25,7 @@
             </div>
             <div class="span2 padding-top">
 	         
-	           <div class="btn" data-toggle="modal" href="#oldCourses" style="margin:2px;"><%= "Anteriores" %></div></br>
+	         <!-- <div class="btn" data-toggle="modal" href="#oldCourses" style="margin:2px;"><%= "Anteriores" %></div></br> -->
               <% if current_user.teacher? %>
                   <div style="margin:2px;" ><%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn info small") %></div>    
               <% end %>
