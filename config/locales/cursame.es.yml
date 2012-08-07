@@ -20,11 +20,11 @@ es:
       total_courses: 'Total de Campañas'
       total_open_courses: 'Campañas públicos'
       total_private_courses: 'Campañas privados'
-      total_assignments: 'Total de Actividades'
+      total_assignments: 'Total de Contenidos'
       total_surveys: 'Total de cuestionarios'
       total_discussions: 'Total de discusiones'
       total_comments: 'Total de comentarios'
-      total_comments_assignments: 'Comentarios en Actividades'
+      total_comments_assignments: 'Comentarios en Contenidos'
       total_comments_discussions: 'Comentarios en discusiones'
       total_comments_user_walls: 'En muro de usuarios'
       total_comments_course_walls: 'En muro de Campañas'
@@ -65,13 +65,13 @@ es:
     course_destroyed: El Campaña fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
-    assignment_created: La Actividad fue creada
+    assignment_created: La Contenido fue creada
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusión creada 
     account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el Gerente
-    delivery_created: Tu Actividad fue entregada
-    delivery_updated: Tu Actividad fue actualizada
+    delivery_created: Tu Contenido fue entregada
+    delivery_updated: Tu Contenido fue actualizada
     survey_created: El cuestionario fue creado
     survey_created_and_published: El cuestionario fue creado y publicado
     survey_updated: El cuestionario fue actualizado
@@ -91,8 +91,8 @@ es:
         one: Campaña
         other: Campañas
       assignment:
-        one: Actividad
-        other: Actividades
+        one: Contenido
+        other: Contenidos
       survey:
         one: Cuestionario
         other: Cuestionarios
@@ -200,7 +200,7 @@ es:
       new_discussion: 'Crear discusión'
       discussions: 'Discusiones'
       requests: 'Solicitudes'
-      tasks: 'Actividades'
+      tasks: 'Contenidos'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
@@ -209,7 +209,7 @@ es:
       my_courses: 'Mis Campañas'
       new_course: 'Crear Campaña Nuevo'
       surveys: 'Cuestionarios'
-      assignments: 'Actividades'
+      assignments: 'Contenidos'
     members:
       members_in_group: 'Miembros en este grupo'
       members_in_course: 'Miembros en este Campaña'
@@ -249,10 +249,10 @@ es:
     wall:
       header: Muro
     assignments:
-      create_assignment: 'Crear Actividad'
-      assignments: 'Actividades'
-      new_assignment: 'Nueva Actividad'
-      edit_assignment: 'Editar Actividad'
+      create_assignment: 'Crear Contenido'
+      assignments: 'Contenidos'
+      new_assignment: 'Nueva Contenido'
+      edit_assignment: 'Editar Contenido'
       date_time: 'Fecha Límite'
       start_at: 'Fecha de Inicio'
       value: 'Valor'
@@ -261,16 +261,16 @@ es:
 
   assignments:
     show:
-      deliver: "Entregar Actividad"
+      deliver: "Entregar Contenido"
       edit_delivery: Editar entrega
       deliveries: Entregas
       show_delivery: Mostrar entrega
-      failed_delivery: Actividad no entregada
+      failed_delivery: Contenido no entregada
       course: Campaña
     index:
-      current: Abiertas
-      previous: Cerradas
-      unpublished: No publicadas
+      current: Abierto
+      previous: Cerrado
+      unpublished: Contenido sin publicar
 
   surveys:
     survey:
@@ -322,11 +322,11 @@ es:
   students:
     deliveries:
       new:
-        header: Entregar Actividad
+        header: Entregar Contenido
       edit:
-        header: Editar entrega de Actividad
+        header: Editar entrega de Contenido
       show:
-        header: Entrega de Actividad
+        header: Entrega de Contenido
         delivered: Entrega
         comment: Comentar entrega
     survey_replies:
@@ -343,7 +343,7 @@ es:
   teachers:
     deliveries:
       index:
-        heder: Entregas para Actividad
+        heder: Entregas para Contenido
         show: Mostrar entrega
     survey_replies:
       index:
@@ -458,21 +458,21 @@ es:
     show_requests: Ver solicitudes
     show_delivery: Ver entrega
     show_courses: Ver Campañas
-    show_assignment: Ver Actividad
+    show_assignment: Ver Contenido
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
     show_comment: Ver comentario
     show_discussion: Ver discusión
     wants_to_participate_in_course: quiere participar en el Campaña
-    has_delived_assignment: ha entregado la Actividad
+    has_delived_assignment: ha entregado la Contenido
     has_answered_the_survey: ha contestado el cuestionario
     for_the_course: para el Campaña
     has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
     your_course_request: Tu solicitud para participar en el Campaña
     was_rejected: fue rechazada
     you_where_accepted_for_course: Has sido aceptado para participar en el Campaña
-    assignment_added: Se ha creado la Actividad
-    assignment_updated: Se ha actualizado la Actividad
+    assignment_added: Se ha creado la Contenido
+    assignment_updated: Se ha actualizado la Contenido
     survey_added: Se ha creado el cuestionario
     users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión
@@ -511,7 +511,7 @@ es:
     accepted_on_course:
       subject: Solicitud de ingreso al Campaña %{course_name} aceptada
     new_homework:
-      subject: Nueva Actividad en uno de tus Campañas
+      subject: Nueva Contenido en uno de tus Campañas
     new_survey:
       subject: Nuevo cuestionario en uno de tus Campañas
       

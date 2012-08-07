@@ -13,7 +13,7 @@ class HomeController < ApplicationController
         when 'supervisor'
           redirect_to supervisor_dashboard_path
         else
-          redirect_to :principal_wall
+          redirect_to :dashboard
       end
     else
       @user = User.new
