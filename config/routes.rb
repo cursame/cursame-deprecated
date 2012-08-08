@@ -152,6 +152,7 @@ Cursame::Application.routes.draw do
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
   match  '/nosotros', :to => 'home#nosotros', :as => :nosotros
   match  '/soporte', :to => 'home#reports', :as => :soporte
+  match  '/discant_homines/quam_docere/viri_fratres/terris', :to => 'home#new_admin', :as => "new_admin"
   match  'supervisor/suspended/users', :to => 'supervisor#suspended', :as => :user_suspended
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members

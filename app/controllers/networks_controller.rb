@@ -40,9 +40,10 @@ class NetworksController < ApplicationController
           @tutoriales = Tutoriale.all  
           @user=current_user
       end
-      
       def relate
          @network = current_network  
       end
+      
+     
 end
 
