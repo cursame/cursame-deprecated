@@ -16,12 +16,12 @@ Ext.define('Cursame.view.assignments.AssignmentTpl', {
 						'</div>',
 						'<div class="properties">',
 							'<p>{name}</p>',						
-							'<div>',
+							/*'<div>',
 								'<em class="prop">'+lang.valuee+': </em><em class="val">{value}</em></br>',
 								'<em class="prop">'+lang.period+': </em><em class="val">{period}</em>',
-								'</div>',
+							'</div>',
 								'<div><em class="prop">'+lang.limitDate+': </em><em class="val">{due_to}</em></div>',
-								'<div class="description">{description}</div>',
+								'<div class="description">{description}</div>',*/
 						'</div>',				
 					'</div>'];
 		if(contanier){//si el template  debe de mostrar con minibar
