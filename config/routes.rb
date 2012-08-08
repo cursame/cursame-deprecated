@@ -158,7 +158,7 @@ Cursame::Application.routes.draw do
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
   
-  root 'http://telefonicamx.cursametelefonicamx.com/' :to => "home#index"
+  root 'http://telefonicamx.cursametelefonicamx.com/':to => "home#index"
   
   #this is for api for the mobile app
   namespace :api do
