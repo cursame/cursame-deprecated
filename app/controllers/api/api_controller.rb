@@ -58,7 +58,8 @@ class Api::ApiController < ApplicationController
           
           user = notification.notificator.user 
           @course = notification.notificator.course 
-        when 'student_assignment_delivery'          
+        when 'student_assignment_delivery' 
+          next           
           next if notification.notificator == nil          
           text = I18n.t('notifications.has_delived_assignment')
           assignment= notification.notificator.assignment 
@@ -81,8 +82,10 @@ class Api::ApiController < ApplicationController
         when 'student_course_accepted'
           text = I18n.t 'notifications.you_where_accepted_for_course'
         when 'student_assignment_added'
+          next
           text = I18n.t 'notifications.assignment_added'
         when 'student_assignment_updated'
+          next
           text = I18n.t 'notifications.assignment_updated'
         when 'student_survey_added'
           text = I18n.t 'notifications.survey_added'          

@@ -67,7 +67,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					badgeCls:'menu-badge',
 					action:'surveys',			
 					iconMask:true
-				},{
+				}/*,{
 					xtype:'button',
 					iconCls:'chat',
 					ui:'accept',
@@ -76,7 +76,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					badgeCls:'menu-badge',
 					action:'discussions',		
 					iconMask:true
-				}/*,{
+				},{
 					xtype:'component',
 					iconCls:'calendar',
 					ui:'accept',
