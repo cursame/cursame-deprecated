@@ -40,7 +40,7 @@
       <div class="span3">    
         <%= render :partial => "users/profile_menu" %>
         </br>
-        <% if @user == current_user%>
+        <% if @user === current_user%>
 	    <%= link_to"Mis usuarios favoritos", my_favorite_users_path %>
 	    <%end%> 
       </div>
