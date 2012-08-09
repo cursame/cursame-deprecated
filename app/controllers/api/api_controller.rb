@@ -60,7 +60,7 @@ class Api::ApiController < ApplicationController
           @course = notification.notificator.course 
         when 'student_assignment_delivery' 
           next           
-          next if notification.notificator == nil          
+          #next if notification.notificator == nil          
           text = I18n.t('notifications.has_delived_assignment')
           assignment= notification.notificator.assignment 
           user = notification.notificator.user 
