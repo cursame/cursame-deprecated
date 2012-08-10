@@ -17,7 +17,7 @@ var language ={
         courseInfo:'Información de la Campaña',
         wall:'Muro',
         assignments:'Contenidos',
-        surveys:'Cuestionarios',
+        surveys:'Quizzes',
         discussions:'Discusiones',
 		calendar:'Calendario',
         members:'Miembros',
@@ -50,7 +50,8 @@ var language ={
 		studies:'Estudios :',
 		occupation:'Ocupación :',
 		like:'Me gusta',
-		notLike:'Ya no me gusta'
+		notLike:'Ya no me gusta',
+		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.'
     },
     en:{
         appName: 'Cúrsame',

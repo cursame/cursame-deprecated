@@ -147,7 +147,7 @@ Ext.define('Cursame.controller.Main', {
     onNotificationTap: function (dataview, index, target, record, e) {
         var type = record.get('kind');
         if (type === 'student_assignment_delivery' || type === 'teacher_survey_replied') { // si trata de una entrega de la tarea
-            Ext.Msg.alert('Cursame', 'Para utilizar esta función por favor utiliza Cúrsame desde una computadora o tablet.', Ext.emptyFn);
+            Ext.Msg.alert('Cursame', lang.alertMsg, Ext.emptyFn);
             return;
         }
 
@@ -413,13 +413,14 @@ Ext.define('Cursame.controller.Main', {
             }, undefined);
             break;
         case 'surveys':
-            this.getCourseNavigationView().push({
+            /*this.getCourseNavigationView().push({
                 xtype: 'surveyslist',
                 title: lang.surveys
             });
             this.loadStore(Ext.getStore('Surveys'), {
                 id: courseRecord.get('id')
-            }, undefined);
+            }, undefined);*/
+			Ext.Msg.alert('Cursame', lang.alertMsg, Ext.emptyFn);
             break;
         case 'discussions':
             this.getCourseNavigationView().push({
