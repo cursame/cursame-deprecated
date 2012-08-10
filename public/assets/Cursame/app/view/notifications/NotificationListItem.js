@@ -44,9 +44,7 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 		
 		avatar:{
 			docked	:'left',
-			cls		:'avatar',
-			height: 48,
-		    width: 48
+			cls		:'avatar'
 		},			
 		
 		declineButton:{
