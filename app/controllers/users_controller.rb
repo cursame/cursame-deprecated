@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
       redirect_to @user, :notice => I18n.t('flash.user_created')
     else
-      render 'supervisor/new_user'
+      render 'supervisor/new_user', :notice => I18n.t('flash.user_created')
     end
   end
   

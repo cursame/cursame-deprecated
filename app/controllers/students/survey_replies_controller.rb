@@ -21,6 +21,7 @@ class Students::SurveyRepliesController < ApplicationController
     @survey = current_user.surveys.published.find params[:survey_id]
     @survey_reply = current_user.survey_replies.build(params[:survey_reply])
     @survey_reply.survey = @survey
+    @tutoriales = Tutoriale.all
     if @survey_reply.save
       redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_created')
     else
@@ -40,7 +41,7 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply = current_user.survey_replies.where(:survey_id => params[:survey_id]).first
     @survey = @survey_reply.survey
     @course = @survey_reply.course
-
+    @tutoriales = Tutoriale.all
     if @survey_reply.update_attributes params[:survey_reply]
       redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_updated')
     else

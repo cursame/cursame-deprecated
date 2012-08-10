@@ -18,6 +18,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = manageable_course.surveys.build(params[:survey])
+    @tutoriales = Tutoriale.all
     if @survey.save
       flash[:notice] = I18n.t('flash.survey_created')
       redirect_to @survey
@@ -48,6 +49,7 @@ class SurveysController < ApplicationController
 
   def update
     @survey = current_user.manageable_surveys.find params[:id]
+    @tutoriales = Tutoriale.all
     if @survey.update_attributes params[:survey]
       flash[:notice] = I18n.t('flash.survey_updated')
       redirect_to @survey
@@ -61,11 +63,13 @@ class SurveysController < ApplicationController
     survey = current_user.manageable_surveys.find(params[:id])
     survey.destroy
     redirect_to course_surveys_path(survey.course), :notice => I18n.t('flash.survey_deleted')
+    @tutoriales = Tutoriale.all
   end
 
   def publish
     current_user.manageable_surveys.find(params[:id]).publish!
     head :ok
+    @tutoriales = Tutoriale.all
   end
 
   private
@@ -80,6 +84,8 @@ class SurveysController < ApplicationController
   end
 
   def accessible_surveys
+    
     surveys = current_user.supervisor? ? current_network.surveys : current_user.surveys
+    @tutoriales = Tutoriale.all
   end
 end
