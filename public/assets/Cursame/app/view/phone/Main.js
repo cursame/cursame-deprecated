@@ -19,13 +19,16 @@ Ext.define('Cursame.view.phone.Main', {
 	        tabBarPosition:'bottom',
 			items:[{
 				xtype:'notificationnavigationview',
-				iconCls:'help_black'
+				iconCls:'rss_black2',
+				title:'notificaciones'
 			},{
 				xtype:'coursenavigationview',
-				iconCls:'docs_black1'
+				title :'Campañas',
+				iconCls:'tags'
 			},{
 				xtype:'usernavigationview',
 				type:'user',
+				title:'Perfil',
 				iconCls:'user_list'
 			}]
 		}]

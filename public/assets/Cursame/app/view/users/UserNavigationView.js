@@ -11,6 +11,10 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 			'Cursame.view.users.UserWall'
 	],
     config: {
+		items:{
+			xtype: 'userwall',
+			title: lang.profilee
+		},
         navigationBar: {
 		            items: [
 		                {

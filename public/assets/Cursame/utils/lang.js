@@ -17,7 +17,7 @@ var language ={
         courseInfo:'Información de la Campaña',
         wall:'Muro',
         assignments:'Contenidos',
-        surveys:'Cuestionarios',
+        surveys:'Quizzes',
         discussions:'Discusiones',
 		calendar:'Calendario',
         members:'Miembros',
@@ -37,8 +37,8 @@ var language ={
 		password:'Contraseña',
 		login:'Iniciar Sesión',
 		starting :'Iniciando ...',
-		teacher:'Maestro',
-		student:'Alumno',
+		teacher:'Gerente',
+		student:'Vendedor',
 		admin:'Administrador',
 		loading:'Cargando ...',
 		send: 'Enviar',
@@ -48,7 +48,10 @@ var language ={
 		limitDate:'Fecha Límite',
 		about_me:'Acerca de mí :',
 		studies:'Estudios :',
-		occupation:'Ocupación :'
+		occupation:'Ocupación :',
+		like:'Me gusta',
+		notLike:'Ya no me gusta',
+		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.'
     },
     en:{
         appName: 'Cúrsame',

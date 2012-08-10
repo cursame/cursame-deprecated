@@ -67,6 +67,11 @@ $list-active-gradient: matte;
 @include pictos-iconmask('help_black');
 @include pictos-iconmask('user_list');
 @include pictos-iconmask('movistar');
+@include pictos-iconmask('rss_black2');
+@include pictos-iconmask('tags');
+@include pictos-iconmask('rss_black2');
+@include pictos-iconmask('attachment');
+@include pictos-iconmask('compose');
 
 
 //login form
@@ -98,8 +103,8 @@ $list-active-gradient: matte;
     border-bottom: 3px solid $gray;
 
     .avatar {
-        width: 48px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         margin-right: .5em;
         border: 1px solid $gray;
         @include border-radius(.4em);
@@ -265,7 +270,6 @@ $list-active-gradient: matte;
 		.text{
 			img {
 	            width: 291px;
-				height:193px;
 	        }
 		}
 	}
