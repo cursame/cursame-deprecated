@@ -46,8 +46,7 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 			docked	:'left',
 			cls		:'avatar',
 			height: 48,
-		    width: 48/*,
-			src:Cursame.src+'resources/images/experto.png'*/
+		    width: 48
 		},			
 		
 		declineButton:{
