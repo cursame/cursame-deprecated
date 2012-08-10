@@ -6,7 +6,9 @@ Ext.Loader.setPath({
 Ext.application({
 	
     name: 'Cursame',
-	
+	viewport: {
+     autoMaximize: true
+    },	
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
 
@@ -19,8 +21,8 @@ Ext.application({
         144: 'resources/icons/Icon~ipad@2x.png'
     },
     
-    phoneStartupScreen: 'resources/loading/Homescreen.jpg',
-    tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
+    phoneStartupScreen: './resources/loading/Homescreen.jpg',
+    tabletStartupScreen: './resources/loading/Homescreen~ipad.jpg',
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
