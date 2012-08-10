@@ -31,7 +31,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 								/*'<em class="prop">'+lang.startDate+': </em><em class="val">{start_date}</em></br>',
 								'<em class="prop">'+lang.endDate+': </em><em class="val">{finish_date}</em>',*/
 							'</div>',
-							'<div><em class="prop">'+lang.timee+': </em><em class="val">10</em></div>',
+							//'<div><em class="prop">'+lang.timee+': </em><em class="val">10</em></div>',
 							'<div class="description">{description}</div>',
 						'</div>',
 					'</div>')
@@ -42,7 +42,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 			//layout:'hbox',				
 			items:[{
 					xtype:'button',
-					iconCls:'nodes2',
+					iconCls:'chat',
 					ui:'accept',
 					action:'wall',
 					badgeText:lang.wall,
@@ -51,7 +51,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					iconMask:true
 				},{
 					xtype:'button',
-					iconCls:'inbox2',
+					iconCls:'attachment',
 					ui:'accept',
 					action:'assignments',	
 					badgeText:lang.assignments,
@@ -60,7 +60,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					iconMask:true
 				},{
 					xtype:'button',
-					iconCls:'doc_list',
+					iconCls:'compose',
 					ui:'accept',
 					badgeText:lang.surveys,
 					iconAlign:'bottom',

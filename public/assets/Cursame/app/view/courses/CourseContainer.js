@@ -19,7 +19,7 @@ Ext.define('Cursame.view.courses.CourseContainer', {
 							/*'<em class="prop">'+lang.startDate+': </em><em class="val">{start_date}</em></br>',
 							'<em class="prop">'+lang.endDate+': </em><em class="val">{finish_date}</em>',*/
 						'</div>',
-						'<div><em class="prop">'+lang.timee+': </em><em class="val">10</em></div>',
+						//'<div><em class="prop">'+lang.timee+': </em><em class="val">10</em></div>',
 						'<div class="description">{description}</div>',
 					'</div>',
 					'<div class="boxes">',
