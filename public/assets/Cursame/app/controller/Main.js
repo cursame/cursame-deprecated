@@ -28,7 +28,9 @@ Ext.define('Cursame.controller.Main', {
             discussionContainer: 'discussioncontainer',
             discussionWallTextfield: 'discussionwall toolbar textfield',
             userWall: 'usernavigationview userwall',
-            userNavigationView: 'usernavigationview'
+            userContainer: 'usercontainer',
+            userNavigationView: 'usernavigationview',
+            userWallTextfield: 'usernavigationview userwall toolbar textfield'
         },
         control: {
             'notificationslist notificationlistitem button': {
@@ -88,7 +90,7 @@ Ext.define('Cursame.controller.Main', {
             'notificationnavigationview surveyslist': {
                 itemtap: 'onSurveysListTap2'
             },
-            'coursenavigationview surveywall': {},
+            //'coursenavigationview surveywall': {},
             /*discussions*/'coursenavigationview discussionslist': {
                 itemtap: 'onDiscussionsListTap'
             },
@@ -101,6 +103,16 @@ Ext.define('Cursame.controller.Main', {
             'discussionwall': {
                 itemtap: 'onDiscussionWallTap'
             },
+            /*user*/'usernavigationview userwall commentbar button': {
+                tap: 'onUserWallPost'
+            },
+            'usernavigationview userwall': {
+                itemtap: 'onUserWallTap'
+            },
+			/*comments*/
+			'commentwall':{
+				itemtap: 'onCommentWallTap'
+			}
         }
     },
     launch: function () {},
@@ -201,27 +213,14 @@ Ext.define('Cursame.controller.Main', {
                 id: record.get('notificator_id'),
                 type: 'Comment'
             }, undefined);
-			/*
-				  {name:"id", type:"int"},
-		            {name:"commentable_id", type:"int"},
-		            {name:"commentable_type", type:"string"},
-		            {name:"created_at", type:"date"},
-		            {name:"text", type:"string"},
-		            {name:"user_id", type:"int"},
-		            {name:"userfirstname", type:"string",mapping:'user.first_name'},
-		            {name:"userlasttname", type:"string",mapping:'user.last_name'},
-		            {name:"userimage", type:"string",mapping:'user.avatar_file.small.url'},
-		            {name:"numcommnets", type:"int",mapping:'comments',convert:function (value, record) {
-		                return  value.length;
-		            }}
-			*/
-			var r = record.raw.text.notificator,user = record.raw.text.user;
-				r.numcommnets = 888;
-				r.user_id = user.id;
-				r.userfirstname = user.first_name;
-				r.userlasttname = user.last_name;
-				r.userimage = user.avatar_file.small.url;
-				
+            var r = record.raw.text.notificator,
+                user = record.raw.text.user;
+            r.numcommnets = 888;
+            r.user_id = user.id;
+            r.userfirstname = user.first_name;
+            r.userlasttname = user.last_name;
+            r.userimage = user.avatar_file.small.url;
+
             var commnent = Ext.create('Cursame.model.Comment', r);
             this.getCommentContainer().setRecord(commnent);
         }
@@ -233,7 +232,8 @@ Ext.define('Cursame.controller.Main', {
         });
     },
     onCourseWallTap: function (dataview, index, target, record, e, opt) {
-        if (e.getTarget('div.minibar')) {
+		var like = 0,target;
+        if (e.getTarget('div.info')) {
             if (this.getNotificationNavigationView().getItems().length === 3) { //si se tiene que agregar a notificaciones el commentwall
                 this.getNotificationNavigationView().push({
                     xtype: 'commentwall',
@@ -251,6 +251,64 @@ Ext.define('Cursame.controller.Main', {
             }, undefined);
             this.getCommentContainer().setRecord(record);
         }
+		else if (e.getTarget('div.action')){
+			target = e.getTarget('div.action');
+			if(target.innerHTML === lang.like){
+				like = 1;
+				record.data.like = lang.notLike;
+			}
+			this.saveLike(record.get('id'), like, target);
+		}
+    },
+    onUserWallTap: function (dataview, index, target, record, e, opt) {
+		var like = 0,target;
+        if (e.getTarget('div.info')) {
+            this.getUserNavigationView().push({
+                xtype: 'commentwall',
+                title: lang.comments
+            });
+            this.loadStore(Ext.getStore('CommentsComments'), {
+                id: record.get('id'),
+                type: 'Comment'
+            }, undefined);
+            this.getCommentContainer().setRecord(record);
+        }
+		else if (e.getTarget('div.action')){
+			target = e.getTarget('div.action');
+			if(target.innerHTML === lang.like){
+				like = 1;
+				record.data.like = lang.notLike;
+			}
+			this.saveLike(record.get('id'), like, target);
+		}
+    },
+	onCommentWallTap:function(dataview, index, target, record, e, opt){
+		var like = 0,target;
+		if (e.getTarget('div.action')){
+			target = e.getTarget('div.action');
+			if(target.innerHTML === lang.like){
+				like = 1;
+				record.data.like = lang.notLike;
+			}
+			this.saveLike(record.get('id'), like, target);
+		}
+	},
+	saveLike: function (type, like,target) {
+		var text = lang.like;
+		if(like){
+			text = lang.notLike;
+		}		
+        Cursame.ajax({
+            url: 'api/create_like',
+            scope: this,
+            params: {
+                like: like,
+				type: type
+            },
+            success: function (response) {
+                target.innerHTML = text;
+            }
+        });
     },
     loadStore: function (store, params, callback) {
         store.load({
@@ -283,6 +341,10 @@ Ext.define('Cursame.controller.Main', {
     onDiscussionWallPost: function (btn) {
         var record = this.getDiscussionContainer().getRecord();
         this.saveComment('Discussion', this.getDiscussionWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
+    },
+    onUserWallPost: function (btn) {
+        var record = this.getUserWall().items.items[0].getRecord();
+        this.saveComment('User', this.getUserWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
     },
     saveComment: function (type, textfield, btn, comentableId, store) {
         btn.disable();
@@ -376,13 +438,11 @@ Ext.define('Cursame.controller.Main', {
         var cuantos = oldValue.getItems().length;
         oldValue.pop(cuantos - 1);
         if (value.config.type === 'user') {
-            this.getUserNavigationView().push({
-                xtype: 'userwall',
-                title: Cursame.User.get('first_name') + ' ' + Cursame.User.get('last_name')
-            });
-            this.loadStore(Ext.getStore('Users'), {
-                type: 'Profile'
+            this.loadStore(Ext.getStore('Comments'), {
+                id: Cursame.User.get('id'),
+                type: 'User'
             }, undefined);
+            this.getUserWall().items.items[0].setRecord(Cursame.User);
         }
     },
     /*members*/
@@ -488,4 +548,4 @@ Ext.define('Cursame.controller.Main', {
     onCommentFieldChange: function (textfield, nval, oval, o) {
         textfield.up('container').items.items[1].setDisabled(nval.replace(/ /g, '') == '');
     }
-})
+})	

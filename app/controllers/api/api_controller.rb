@@ -103,13 +103,7 @@ class Api::ApiController < ApplicationController
           @course = notification.notificator.commentable.course if notification.notificator
         when 'course_discussion_added'
           text = I18n.t 'notifications.discussion_added'
-        when 'user_comment_on_comment'
-          
-          puts "*******************esto es el debugin**************************"
-          puts notification.to_yaml
-          puts notification.notificator.to_yaml
-          puts notification.notificator.commentable
-          
+        when 'user_comment_on_comment'      
           text = I18n.t 'notifications.has_posted_a_comment_on_comment'
           notification.notificator = notification.notificator.commentable
           user = notification.notificator.user if notification.notificator      
@@ -152,11 +146,17 @@ class Api::ApiController < ApplicationController
         @commentable = Assignment.find params[:id]
       when 'Discussion'
         @commentable = Discussion.find params[:id]
+      when 'User'
+        @commentable = User.find params[:id]
       else
         @commentable = Course.find params[:id]
     end
-    @comments = @commentable.comments.order("created_at DESC");
-    render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments])), :count => @comments.count()}, :callback => params[:callback]
+    if params[:type] == 'User'
+      @comments = @commentable.profile_comments.order("created_at DESC");
+    else
+      @comments = @commentable.comments.order("created_at DESC");
+    end
+    render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments, :like_not_likes])), :count => @comments.count()}, :callback => params[:callback]
   end
   
   def create_comment
@@ -168,6 +168,15 @@ class Api::ApiController < ApplicationController
     @comment.save
     render :json => {:success => true}, :callback => params[:callback]        
   end
+  
+  def create_like
+     @like_not_like = LikeNotLike.new
+     @like_not_like.user_id = current_user.id
+     @like_not_like.comment_id = params[:type]
+     @like_not_like.like = params[:like]
+     @like_not_like.save
+     render :json => {:success => true}, :callback => params[:callback]        
+   end
   
   private 
   def authorize

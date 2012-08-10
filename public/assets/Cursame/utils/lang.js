@@ -48,7 +48,9 @@ var language ={
 		limitDate:'Fecha Límite',
 		about_me:'Acerca de mí :',
 		studies:'Estudios :',
-		occupation:'Ocupación :'
+		occupation:'Ocupación :',
+		like:'Me gusta',
+		notLike:'Ya no me gusta'
     },
     en:{
         appName: 'Cúrsame',
