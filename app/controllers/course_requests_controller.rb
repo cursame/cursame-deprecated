@@ -1,5 +1,5 @@
 class CourseRequestsController < ApplicationController
-  before_filter :authenticate_teacher!, :except => [:create]
+  before_filter :authenticate_supervisor!, :except => [:create]
   set_tab :request
 
   def create

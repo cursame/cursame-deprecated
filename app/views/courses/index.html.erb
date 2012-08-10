@@ -36,9 +36,9 @@
             <h2><%= t('.title') %></h2>
           </div>
           <div class="span3">
-            <% if current_user.role == "supervisor" %>
+           <% if current_user.role == "supervisor" %>
               <%= link_to("+ " + t('courses.create_course'), new_course_path, :class => "btn small right") %>
-            <% end %>
+           <% end %>
           </div>
         </div> 
           

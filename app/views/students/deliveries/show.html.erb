@@ -71,7 +71,7 @@
                <%end%>
             <% end %>
 			
-			<% if current_user.role == 'teacher' %>
+			<% if current_user.role == 'supervisor' %>
 			  <% if @course.status == 'finish'%>
 			     <%else%>
                  <div class="btn"  data-toggle="modal" href="#myModal">Calificar Tarea / Editar </div>
