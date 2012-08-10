@@ -13,12 +13,10 @@ class SurveysController < ApplicationController
   def new
     @survey = manageable_course.surveys.build
     @survey.due_to = DateTime.now+1.week
-    @tutoriales = Tutoriale.all
   end
 
   def create
     @survey = manageable_course.surveys.build(params[:survey])
-    @tutoriales = Tutoriale.all
     if @survey.save
       flash[:notice] = I18n.t('flash.survey_created')
       redirect_to @survey
@@ -30,7 +28,6 @@ class SurveysController < ApplicationController
   def show
     @survey = accessible_surveys.find params[:id]
     @course = @survey.course
-    @tutoriales = Tutoriale.all
     if current_user.role_for_course(@course) != 'teacher' && !@survey.published?
       raise ActiveRecord::RecordNotFound
     end
@@ -39,7 +36,6 @@ class SurveysController < ApplicationController
 
   def edit
     @survey = current_user.manageable_surveys.find params[:id]
-    @tutoriales = Tutoriale.all
     if @survey.published?
       redirect_to survey_path @survey 
     else
@@ -49,7 +45,6 @@ class SurveysController < ApplicationController
 
   def update
     @survey = current_user.manageable_surveys.find params[:id]
-    @tutoriales = Tutoriale.all
     if @survey.update_attributes params[:survey]
       flash[:notice] = I18n.t('flash.survey_updated')
       redirect_to @survey
@@ -69,7 +64,6 @@ class SurveysController < ApplicationController
   def publish
     current_user.manageable_surveys.find(params[:id]).publish!
     head :ok
-    @tutoriales = Tutoriale.all
   end
 
   private
@@ -86,6 +80,5 @@ class SurveysController < ApplicationController
   def accessible_surveys
     
     surveys = current_user.supervisor? ? current_network.surveys : current_user.surveys
-    @tutoriales = Tutoriale.all
   end
 end
