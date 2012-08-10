@@ -391,7 +391,7 @@ Ext.define('Cursame.controller.Main', {
                 id: courseRecord.get('id'),
                 type: 'Course'
             }, undefined);
-            this.getCourseContainer().setRecord(courseRecord);
+            //this.getCourseContainer().setRecord(courseRecord);
             break;
         case 'members':
             this.getCourseNavigationView().push({
