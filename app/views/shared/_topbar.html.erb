@@ -8,9 +8,10 @@
        
        
         <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
-        <%= tab.dashboard t('dashboard.start'), root_path %> 
+        <%= tab.principal_wall t('dashboard.start'), root_path %> 
         <%= tab.profile t('dashboard.profile'), current_user %>    
-        <%#= tab.dashboard t('dashboard.propiety'), network_members_path %>
+        <%= tab.members t('dashboard.propiety'), network_members_path %>
+        <%#= tab.dashboard t('dashboard.dashboard'), dashboard_path %>
         <%end%>
                  
       <ul class="nav secondary-nav">

@@ -712,11 +712,11 @@ ul.left-nav-main-ul {
 }
 
 .left-nav-main-ul li a.favoritos:hover {
-	background: #00afc9 url(users-users.png) no-repeat 5px;
+	background: #00afc9 url(cel.png) no-repeat 5px;
 	width: 150px;
 }
 .left-nav-main-ul li a.favoritos.active {
-	background: #00ccec url(users-users.png) no-repeat 5px;
+	background: #00ccec url(cel.png) no-repeat 5px;
 	width: 150px;
 	color: #fff;
 }

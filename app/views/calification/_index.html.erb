@@ -276,9 +276,9 @@ $(document).ready(function() {
 	
    	<% califn = califn + delivery.score ? delivery.score : 0  if delivery.raiting%>
     <% codn = califn/@course.users.count%>
-    <%# codan = codn-100%>
-    <%# porcento_delivery.push(codn)%>
-    <% grafica_reprobacion_delivery.push(codn)%>  
+    <% codan = codn-100%>
+    <% porcento_delivery.push(codn)%>
+    <% grafica_reprobacion_delivery.push(codan)%>  
  <%end%>
 <%end%>
 <div id="value2cal"></div>

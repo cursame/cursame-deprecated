@@ -4,8 +4,8 @@
     <h3>Menú Principal</h3>
      <div class="line"></div>
 	<%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
-	    <%= tab.course "Manejo de campañas", dashboard_path, :class => "info" %>
-	    <%= tab.assignments "Mis usuarios favoritos", my_favorite_users_path, :class => "favoritos" %>
+	    <%= tab.course "Panel de control", dashboard_path, :class => "info" %>
+	    <%= tab.courses "Campañas", courses_path, :class => "favoritos" %>
 	 <% end %>
 	
 	<h3>Mis favoritos</h3>
