@@ -19,15 +19,11 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     password = Devise.friendly_token[0,20]
     build_user(password)
-    respond_to do |format|
     if @user.save
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
-      #redirect_to @user, :notice => I18n.t('notifications.has_register')
-          format.html { redirect_to @user, notice: 'Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!'}
-          fotmat.json
+      redirect_to @user, :notice => I18n.t('notifications.has_register')
     else
       render 'supervisor/new_user'
-    end
     end
   end
   
