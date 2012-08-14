@@ -45,13 +45,13 @@
 	<% if current_user.role == "student"%>
 	<%= link_to t('.show_delivery'), assignment_delivery_path(@assignment), :id => 'deliver', :class => 'btn info right small' %>
 	<%end%>
-          <div class="span6 description no-margin">
-            <p><%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
-            <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b></p>
+         <!-- <div class="span6 description no-margin">
+             <p><%#= t('courses.assignments.value') %>: <b><%#= @assignment.value %></b> -
+            <%#= t('courses.assignments.period') %>: <b><%#= @assignment.period %></b> -
+            <%#= t('courses.assignments.date_time') %>: <b><%#= l @assignment.due_to, :format => :short %></b></p>
  
           </div>
-        </div>
+        </div>-->
         
         <div class="row with line">
           <div class="description"><%= t('courses.description') %></div>
@@ -136,13 +136,13 @@
           </div>
         </div>
         
-        <div class="row with line">
+     <!--   <div class="row with line">
           <div class="span6 description no-margin">
-            <p><%= t('courses.assignments.value') %>: <b><%= @assignment.value %></b> -
-            <%= t('courses.assignments.period') %>: <b><%= @assignment.period %></b> -
-            <%= t('courses.assignments.date_time') %>: <b><%= l @assignment.due_to, :format => :short %></b></p>
+            <p><%#= t('courses.assignments.value') %>: <b><%#= @assignment.value %></b> -
+            <%#= t('courses.assignments.period') %>: <b><%#= @assignment.period %></b> -
+            <%#= t('courses.assignments.date_time') %>: <b><%#= l @assignment.due_to, :format => :short %></b></p>
           </div>
-        </div>
+        </div>-->
         
         <div class="row with line">
           <div class="description"><%= t('courses.description') %></div>

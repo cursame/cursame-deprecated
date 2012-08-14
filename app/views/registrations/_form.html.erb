@@ -22,7 +22,8 @@ background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0,
       <%= form.commit_button :button_html => {:id => :register, :class => "btn", :value => t('forms.register_btn') } %>
     <% end %>
     <% unless params[:controller] == 'registrations' %>
-      <%= link_to t('forms.register_teacher'), new_teacher_user_registration_path, :class => 'switch_user' %>
+      <%#= link_to t('forms.register_teacher'), new_teacher_user_registration_path, :class => 'switch_user' %>
+      <%= link_to "Registro de Gerentes", new_teacher_user_registration_path, :class => 'switch_user' %>
     <% else %>
       <%= link_to t('forms.register_student'), root_url , :class => 'switch_user'%>
     <% end %>
