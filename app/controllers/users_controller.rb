@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     build_user(password)
     if @user.save
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
-      redirect_to @user, :notice => I18n.t('flash.user_created')
+      #redirect_to @user, :notice => I18n.t('flash.user_created')
+      redirect_to @user, :notice => 'El usuario ha sido creado correctamente.'
     else
       render 'supervisor/new_user'
     end
