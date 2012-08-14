@@ -1,13 +1,13 @@
 	<div class="underline">
 		<%= link_to image_tag(current_user.avatar_file.small.url), current_user%>
 	</div>
-    <h3>Menú Principal</h3>
+    <!--<h3>Menú Principal</h3>
      <div class="line"></div>
-	<%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
-	    <%= tab.course "Panel de control", dashboard_path, :class => "info" %>
-	    <%= tab.courses "Campañas", courses_path, :class => "favoritos" %>
-	 <% end %>
-	
+	<%#= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
+	    <%#= tab.course "Panel de control", dashboard_path, :class => "info" %>
+	    <%#= tab.courses "Campañas", courses_path, :class => "favoritos" %>
+	 <%# end %>
+	-->
 	<h3>Mis favoritos</h3>
 	<% @user.favorites.each do |user_favorites| %>
 	   <%=link_to image_tag(user_favorites.avatar), user_path(user_favorites.user_favorite_id), :rel => "dashboard-tip", :title => (user_favorites.name) %>

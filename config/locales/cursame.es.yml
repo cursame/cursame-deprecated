@@ -176,6 +176,7 @@ es:
     start: 'Inicio'
     profile: 'Perfil'
     propiety: 'Red'
+    panel: 'Panel'
     account_settings: 'Configuración de la cuenta'
 
   courses:
