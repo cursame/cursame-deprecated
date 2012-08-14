@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  get "autocomplete_networks/index"
+
   resources :new_users_change_types
 
   resources :notificaciones_admin_actualice
