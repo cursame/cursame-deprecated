@@ -1,41 +1,38 @@
+<div class="span10"style="background-image:url(/assets/mano.png); height:820px; width:982px; border:none; display:block; background-repeat:no-repeat;  zoom: 0.9; position:absolute; bottom:-50px; right:20px; ">	
+<div class="span6" style=" margin-top:150px; margin-left:450px;color:#fff; width:320px;">
 
-<div cass="container" style=" " >
-<div class="container well" style="background-color: #fff;">
-<div class="span15">
-	<div class="span7"  style="float:left; margin-top:0px; color:#fff;">
-		<%= image_tag("nosotros/cursame.png")%>
-		<h3 style="color:#00AFC9;">Bienvenido a la red de cúrsame es necesario que llenes
-			 cada uno de los campos para poder crear tu nueva red FREE!!, 
-			después te llegará un mail de confirmación mediante el 
-			cual podrás acceder a tu usuario para configurar la red.</h3>
-	</div>
-<div class="span6" style="margin-top:10px;">
-<h4 style="color:#000;" > Crea un selecciona un dominio para la red. </h4></br></br>
+<div class="nav" style="margin-right:100px;">
 <%= semantic_form_for @network do |form| %>
   <%= form.inputs do %>
-    <%= form.input :name %>
-    <%= form.input :subdomain %>
+    <%= form.input :name, :input_html => { :placeholder => "red"},  :label => false  %>
+    <%= form.input :subdomain, :input_html => { :placeholder => "subdominio"},  :label => false %>
     <%= form.hidden_field :variante, :value => "free"%>
+
     <%#= form.select :variante, options_for_select([[t('.free'), "free"],[t('.pro'), "pro"],[t('.enterprise'),"enterprise"]]) %>
   <% end %>
- <h4 style="color:#000;" > Crea un supervisor para la red. </h4></br></br>
+
+</div>
+<div class="nav" style="margin-right:-90px;">
   <%= form.semantic_fields_for :supervisors do |user| %>
-    <%= user.input :first_name %></br>
-    <%= user.input :last_name %></br>
-    <%= user.input :email %></br>
-    <%= user.input :password %></br>
-    <%= user.input :password_confirmation %></br>
+</br>
+    <%= user.input :first_name, :input_html => { :placeholder => "Nombre", :required => false},  :label => false %></br>
+   </br> <%= user.input :last_name, :input_html => { :placeholder => "Apellidos"},  :label => false %></br>
+</br>
+    <%= user.input :email,:input_html => { :placeholder => "Email"},  :label => false%></br>
+</br>    <%= user.input :password, :input_html => { :placeholder => "Contraseña"},  :label => false%></br>
+ </br>   <%= user.input :password_confirmation, :input_html => { :placeholder => "Confirma"},  :label => false%></br>
   <% end %>
+</div>
 </a>
   </br>
-<div class="right">
+<div class="right" style="margin-right: 150px; margin-top: 200px;">
+</br>
   <%= form.buttons do %>
     <%= form.submit "Crear red", :class => "btn", :button_html => {:id => :submit} %>
   <% end %>
 </div>
+
 <% end %>
 </div>
 </div>
-</div>
-</div>
-</div>
+
