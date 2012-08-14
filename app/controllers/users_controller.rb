@@ -21,8 +21,8 @@ class UsersController < ApplicationController
     build_user(password)
     if @user.save
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
-      #redirect_to @user, :notice => I18n.t('flash.user_created')
-      redirect_to @user, :notice => 'Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!'
+      redirect_to @user, :notice => I18n.t('flash.user_created')
+      #redirect_to @user, :notice => 'Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!'
     else
       render 'supervisor/new_user'
     end

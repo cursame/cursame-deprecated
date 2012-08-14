@@ -192,7 +192,7 @@ es:
     wrong_network: 'Red equivocada'
     assignment_updated: 'Tarea actualizada'
     user_registration_accepted: 'Maestro autorizado correctamente'
-    user_created: 'Usuario creado correctamente. Recibirá un correo con su contraseña.'
+    user_created: 'Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!'
     assignment_deleted: 'Tarea eliminada'
 
   errors:
