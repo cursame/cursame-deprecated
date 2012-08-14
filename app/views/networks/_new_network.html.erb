@@ -1,5 +1,5 @@
 <div class="span10"style="background-image:url(/assets/mano.png); height:820px; width:982px; border:none; display:block; background-repeat:no-repeat;  zoom: 0.9; position:absolute; bottom:-50px; right:20px; ">	
-<div class="span6" style=" margin-top:150px; margin-left:450px;color:#fff; width:320px;">
+<div class="span6" style=" margin-top:150px; margin-left:450px;color:#fff; width:320px; z-index:99;">
 
 <div class="nav" style="margin-right:100px;">
 <%= semantic_form_for @network do |form| %>
@@ -22,11 +22,8 @@
 </br>    <%= user.input :password, :input_html => { :placeholder => "Contraseña"},  :label => false%></br>
  </br>   <%= user.input :password_confirmation, :input_html => { :placeholder => "Confirma"},  :label => false%></br>
   <% end %>
-</div>
-</a>
-  </br>
-<div class="right" style="margin-right: 150px;">
-</br>
+</div></br>
+<div class="span3 right" style="margin-right: 90px;">
   <%= form.buttons do %>
     <%= form.submit "Crear red", :class => "btn", :button_html => {:id => :submit} %>
   <% end %>
