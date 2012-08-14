@@ -19,7 +19,11 @@
       </ol>
     </fieldset>
   <% end %>
+<% if current_user.role == "supervisor" %>
   <%= link_to t('courses.add_asset'), '#', :class => 'btn small info add_record left', :style => 'display:none' %>
+<%end%>
   <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :submit, :class => "btn right"}, :wrapper_html => {:class=>"right"} %>
 </fieldset>
+<% if current_user.role == "supervisor" %>
 <%= link_to t('public_comments.insert_multimedia'), 'javascript:void(0)',:rel => "tooltip", :class => 'small left', :title => "#{t('comments.tooltip')}" %>
+<%end%>
