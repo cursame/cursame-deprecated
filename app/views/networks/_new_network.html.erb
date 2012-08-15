@@ -1,28 +1,94 @@
+<script type="text/javascript">
+	//Clear Text input and Textareas in onfocus action
+	
+	$(document).ready(function() {
+					$('input, textarea').each(function() {
+						var field = $(this);
+						var default_value = field.val();
+						field.addClass('focus-text');
+						field.focus(function() {
+							if (field.val() == default_value) {
+								field.val('');
+								field.removeClass('focus-text');
+							}
+						});
+						field.blur(function() {
+							if (field.val() == '') {
+								field.val(default_value);
+								field.addClass('focus-text');
+							}
+						});
+					});
+					
+					
+					var password_main = '#network_supervisors_attributes_0_password';
+					var password_conf = '#network_supervisors_attributes_0_password_confirmation';
+					
+					var hidde_1 = '#network_supervisors_attributes_0_hidde_input';
+					var hidde_2 = '#network_supervisors_attributes_0_hidde_input2';
+					
+					$(password_main).css('display','none');
+					$(password_conf).css('display','none');
+					
+					$(hidde_1).focus(function() {
+						var field = $(this);
+						field.css('display','none');
+						$(password_main).css('display','block');
+						$(password_main).focus();
+					});
+					
+					$(hidde_2).focus(function() {
+						var field = $(this);
+						field.css('display','none');
+						$(password_conf).css('display','block');
+						$(password_conf).focus();
+					});
+					
+					$(password_main).focusout(function() {
+						var field = $(this);
+						if(field.val().length === 0){
+							field.css('display','none');
+							$(hidde_1).css('display','block');
+						}
+					});
+					$(password_conf).focusout(function() {
+						var field = $(this);
+						if(field.val().length === 0){
+							field.css('display','none');
+							$(hidde_2).css('display','block');
+						}
+					});
+					
+	});
+					
+</script>
 <div class="span10"style="background-image:url(/assets/mano.png); height:820px; width:982px; border:none; display:block; background-repeat:no-repeat;  zoom: 0.9; position:absolute; bottom:-50px; right:20px; z-index:2;">	
 <div class="span6" style=" margin-top:150px; margin-left:450px;color:#fff; width:320px; z-index:99;">
 
-<div class="nav" style="margin-right:100px;">
+<div class="nav span4" style="margin-right:100px;">
 <%= semantic_form_for @network do |form| %>
   <%= form.inputs do %>
-    <%= form.input :name, :input_html => { :placeholder => "red"},  :label => false  %>
-    <%= form.input :subdomain, :input_html => { :placeholder => "subdominio"},  :label => false %>
+    <%= form.input :name, :input_html => { :value => "red", :class => "inputtext"},  :label => false  %>
+    <%= form.input :subdomain, :input_html => { :value => "subdominio", :class => "inputtext"},  :label => false %>
     <%= form.hidden_field :variante, :value => "free"%>
 
     <%#= form.select :variante, options_for_select([[t('.free'), "free"],[t('.pro'), "pro"],[t('.enterprise'),"enterprise"]]) %>
   <% end %>
 
 </div>
-<div class="nav" style="margin-right:-90px;">
+<div class="nav span4" style="margin-right:-90px;">
   <%= form.semantic_fields_for :supervisors do |user| %>
-</br>
-    <%= user.input :first_name, :input_html => { :placeholder => "Nombre", :required => false},  :label => false %></br>
-   </br> <%= user.input :last_name, :input_html => { :placeholder => "Apellidos"},  :label => false %></br>
-</br>
-    <%= user.input :email,:input_html => { :placeholder => "Email"},  :label => false%></br>
-</br>    <%= user.input :password, :input_html => { :placeholder => "Contraseña"},  :label => false%></br>
- </br>   <%= user.input :password_confirmation, :input_html => { :placeholder => "Confirma"},  :label => false%></br>
+    <%= user.input :first_name, :input_html => { :value => "Nombre", :class => "inputtext", :required => false},  :label => false %>
+    <%= user.input :last_name, :input_html => { :value => "Apellidos", :class => "inputtext"},  :label => false %>
+    <%= user.input :email,:input_html => { :value => "Email", :class => "inputtext"},  :label => false%>
+
+    <%= user.input :hidde_input, :input_html => { :value => "Password", :class => "inputtext", :required => false},  :label => false %>
+
+<%= user.input :password, :input_html => { :value => ""},  :label => false, :style => 'display:none;'%>
+<%= user.input :hidde_input2, :input_html => { :value => "Confirmar Password", :class => "inputtext", :required => false},  :label => false %> 	
+<%= user.input :password_confirmation, :input_html => { :value => ""},  :label => false%>
   <% end %>
-</div></br>
+</div>
 <div class="span3 right" style="margin-right: 90px;">
   <%= form.buttons do %>
     <%= form.submit "Crear red", :class => "btn", :button_html => {:id => :submit} %>
