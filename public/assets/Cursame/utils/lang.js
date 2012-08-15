@@ -20,7 +20,7 @@ var language ={
         surveys:'Quizzes',
         discussions:'Discusiones',
 		calendar:'Calendario',
-        members:'Miembros',
+        members:'Comunidad',
         name:'Nombre',
         description:'Descripción',
         startDate:'Fecha de inicio',

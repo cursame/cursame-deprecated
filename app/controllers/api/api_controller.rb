@@ -36,9 +36,11 @@ class Api::ApiController < ApplicationController
   
   def users    
     case params[:type]
-       when 'Course'
+      when 'Course'
          @course = Course.find params[:id]       
          @users = @course.students + @course.teachers
+      when 'Network'
+          @users = current_network.users
       when 'Profile'         
          @users = [@user]
       else

@@ -28,12 +28,13 @@ Ext.define('Cursame.controller.Main', {
             discussionContainer: 'discussioncontainer',
             discussionWallTextfield: 'discussionwall toolbar textfield',
             userWall: 'usernavigationview userwall',
-			courseUserWall: 'coursenavigationview userwall',
+			courseUserWall: 'communitynavigationview userwall',
             userContainer: 'usercontainer',
             userNavigationView: 'usernavigationview',
             userWallTextfield: 'usernavigationview userwall toolbar textfield',
-			courseUserWallTextfield: 'coursenavigationview userwall toolbar textfield',
-			usersList:'userslist'
+			courseUserWallTextfield: 'communitynavigationview userwall toolbar textfield',
+			usersList:'userslist',
+			communityNavigationView :'communitynavigationview'
         },
         control: {
             'notificationslist notificationlistitem button': {
@@ -72,7 +73,7 @@ Ext.define('Cursame.controller.Main', {
             /*generic behavior for comments button*/'commentbar textfield': {
                 change: 'onCommentFieldChange'
             },
-            /*members*/'coursenavigationview userslist': {
+            /*members*/'userslist': {
                 itemtap: 'onUsersListTap'
             },
             /*assignments*/'coursenavigationview assignmentslist': {
@@ -112,10 +113,10 @@ Ext.define('Cursame.controller.Main', {
             'usernavigationview userwall': {
                 itemtap: 'onUserWallTap'
             },
-			'coursenavigationview userwall': {
+			'communitynavigationview userwall': {
                 itemtap: 'onUserWallTap2'
             },
-			'coursenavigationview userwall commentbar button': {
+			'communitynavigationview userwall commentbar button': {
                 tap: 'onUserWallPost2'
             },
 			/*comments*/
@@ -484,10 +485,15 @@ Ext.define('Cursame.controller.Main', {
             }, undefined);
             this.getUserWall().items.items[0].setRecord(Cursame.User);
         }
+		 if (value.config.type === 'userlist') {
+	            this.loadStore(Ext.getStore('Users'), {
+	                type: 'Network'
+	            }, undefined);
+	        }
     },
     /*members*/
     onUsersListTap: function (dataview, index, target, record, e, opt) {
-        this.getCourseNavigationView().push({
+        this.getCommunityNavigationView().push({
             xtype: 'userwall'
         });
         this.loadStore(Ext.getStore('Comments'), {
@@ -499,8 +505,8 @@ Ext.define('Cursame.controller.Main', {
     /*assignments*/
     onAssignmentsListTap: function (dataview, index, target, record, e, opt) {
         this.getCourseNavigationView().push({
-            xtype: 'assignmentwall',
-            title: record.get('name')
+            xtype: 'assignmentwall'/*,
+            title: record.get('name')*/
         });
         this.loadStore(Ext.getStore('Comments'), {
             id: record.get('id'),
@@ -510,8 +516,8 @@ Ext.define('Cursame.controller.Main', {
     },
     onAssignmentsListTap2: function (dataview, index, target, record, e, opt) {
         this.getNotificationNavigationView().push({
-            xtype: 'assignmentwall',
-            title: record.get('name')
+            xtype: 'assignmentwall'/*,
+            title: record.get('name')*/
         });
         this.loadStore(Ext.getStore('Comments'), {
             id: record.get('id'),

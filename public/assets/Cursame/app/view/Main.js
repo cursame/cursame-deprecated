@@ -8,6 +8,7 @@ Ext.define("Cursame.view.Main", {
 		'Cursame.view.notifications.NavigationView',
 		'Cursame.view.courses.CourseNavigationView',
 		'Cursame.view.users.UserNavigationView',
+		'Cursame.view.users.CommunityNavigationView',
 		'Cursame.view.comments.CommentTpl',
 		'Cursame.view.users.UserTpl',
 		'Cursame.view.assignments.AssignmentTpl',
