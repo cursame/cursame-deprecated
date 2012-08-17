@@ -16,7 +16,8 @@ Ext.define('Cursame.model.Comment', {
             {name:"userfirstname", type:"string",mapping:'user.first_name'},
             {name:"userlasttname", type:"string",mapping:'user.last_name'},
             {name:"userimage", type:"string",mapping:'user.avatar_file.small.url'},
-            {name:"numcommnets", type:"int",mapping:'comments',convert:function (value, record) {
+			{name:"userlasttname", type:"string",mapping:'user.last_name'},
+            {name:"numlikes", type:"int",mapping:'comments',convert:function (value, record) {
                 return  value.length;
             }},
 			{name: 'like', type:'string', mapping:'like_not_likes', convert:function (value, record) {
