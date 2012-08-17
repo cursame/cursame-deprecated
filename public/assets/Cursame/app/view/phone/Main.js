@@ -25,6 +25,7 @@ Ext.define('Cursame.view.phone.Main', {
 			},{
 				xtype: 'notificationnavigationview',
 				iconCls: 'rss_black2',
+				type:'notifications',
 				title: lang.notifications
 			}, {
 				xtype: 'coursenavigationview',

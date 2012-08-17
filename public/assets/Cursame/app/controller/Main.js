@@ -535,7 +535,7 @@ Ext.define('Cursame.controller.Main', {
 			}, undefined);
 		}
 		if (value.config.type === 'notifications') {
-			Ext.getStore('Notifications').store.load();			
+			Ext.getStore('Notifications').load();			
 		}
 	},
 	/*members*/
