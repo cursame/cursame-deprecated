@@ -150,6 +150,8 @@ class Api::ApiController < ApplicationController
         @commentable = Discussion.find params[:id]
       when 'User'
         @commentable = User.find params[:id]
+      when 'Network'
+        @commentable = current_network
       else
         @commentable = Course.find params[:id]
     end
@@ -163,7 +165,7 @@ class Api::ApiController < ApplicationController
   
   def create_comment
     @comment = Comment.new
-    @comment.commentable_type= params[:commentable_type]
+    @comment.commentable_type = params[:commentable_type]
     @comment.commentable_id = params[:commentable_id]
     @comment.text = params[:text]
     @comment.user = @user

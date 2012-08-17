@@ -60,7 +60,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					iconMask:true
 				},{
 					xtype:'button',
-					iconCls:'compose',
+					iconCls:'check_black1',
 					ui:'accept',
 					badgeText:lang.surveys,
 					iconAlign:'bottom',

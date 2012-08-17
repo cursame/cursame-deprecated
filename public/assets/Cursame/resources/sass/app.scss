@@ -71,7 +71,8 @@ $list-active-gradient: matte;
 @include pictos-iconmask('tags');
 @include pictos-iconmask('rss_black2');
 @include pictos-iconmask('attachment');
-@include pictos-iconmask('compose');
+@include pictos-iconmask('compose'); 
+@include pictos-iconmask('check_black1');
 
 
 //login form

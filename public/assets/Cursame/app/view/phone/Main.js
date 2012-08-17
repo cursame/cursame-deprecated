@@ -18,6 +18,11 @@ Ext.define('Cursame.view.phone.Main', {
 			activeItem: 0,
 			tabBarPosition: 'bottom',
 			items: [{
+				xtype: 'networknavigationview',
+				iconCls: 'chat',
+				type :'wall',
+				title: lang.wall
+			},{
 				xtype: 'notificationnavigationview',
 				iconCls: 'rss_black2',
 				title: lang.notifications
