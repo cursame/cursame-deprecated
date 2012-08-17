@@ -108,7 +108,7 @@ class Api::ApiController < ApplicationController
         when 'user_comment_on_comment'      
           text = I18n.t 'notifications.has_posted_a_comment_on_comment'
           notification.notificator = notification.notificator.commentable
-          user = notification.notificator.user if notification.notificator      
+          user = notification.notificator.user if notification.notificator
         when 'user_comment_on_user'
           next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
