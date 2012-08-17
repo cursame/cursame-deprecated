@@ -12,7 +12,6 @@ Cursame::Application.routes.draw do
   
   resources :status_courses
   
-  resources :enrollments
   #networks gets
   get "networks/network_cc"
   get "networks/instrucciones"
