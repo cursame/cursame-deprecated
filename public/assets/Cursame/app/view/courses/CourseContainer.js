@@ -11,7 +11,7 @@ Ext.define('Cursame.view.courses.CourseContainer', {
         tpl : Ext.create('Ext.XTemplate',
 				'<div class="course">',
 					'<div class="left">',
-						'<div class="img"><img src="'+Cursame.Path+'/assets/course_small.png" /></div>',
+						'<div class="img"><img src="'+Cursame.Path+'/assets/course_small_movistar.jpeg" /></div>',
 					'</div>',
 					'<div class="properties">',
 						'<p>{name}</p>',						
