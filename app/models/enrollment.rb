@@ -9,7 +9,8 @@ class Enrollment < ActiveRecord::Base
     state :pending,  :enter => :enrollment_requested
     state :accepted, :enter => :enrollment_accepted
     state :rejected, :enter => :enrollment_rejected
-
+    #llamar el nombre estado, segundo argumento cuales pueden ser los estados anteriores
+    #agarrar un enrrolment y invocarlo enrollment.accepted!
     event :request do
       transitions :to => :pending, :from => [:pending, :rejected]
     end
@@ -22,7 +23,11 @@ class Enrollment < ActiveRecord::Base
       transitions :to => :rejected, :from => [:pending, :accepted]
     end
   end
-
+ 
+  def after_transition(enrollment, transition)
+    Audit.log(enrollment, transition)
+  end
+  
   def enrollment_requested
     course.teachers.select('users.id').each do |teacher|
       Notification.create :user => teacher, :notificator => self, :kind => 'student_course_enrollment'
