@@ -35,7 +35,7 @@ Ext.define('Cursame.view.comments.CommentTpl', {
 						'<div class="minibar">',
 							'<div class="action">{like}</div>',
 							'<div class="info">',									
-	                        	lang.comment+'<img src="./assets/Cursame/resources/images/icons/comment.png"/>{numcommnets}',
+	                        	'<img src="./assets/Cursame/resources/images/icons/tick.png"/> {numlikes} &nbsp;&nbsp;',lang.comment+' <img src="./assets/Cursame/resources/images/icons/comment.png"/>{numcommnets}',
 							'</div>',                                 
 	                    '</div>'].join('');
 		}		
