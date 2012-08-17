@@ -9,12 +9,14 @@
     </div>
     <div class="span4" style="margin-top: 5px;">
       <% enrollment = current_user.enrollments.where(:course_id => course).first %>
+      
       <% if !enrollment %>
         <span class="label-tag notice course-notification student_request">
           <% unless accessible_courses.include? course %>
             <%= link_to t(".request_join_student"), course_requests_path(course, :role => 'student'), :method => :post %>
           <% end %>
         </span>
+        
         <%if current_user.teacher?%>
           <br />
           <span class="label-tag notice course-notification teacher_request">
@@ -22,7 +24,7 @@
           </span>
         <%end%>
         <% elsif enrollment.pending? %>
-          <span class="label-tag important requested"><%= t('.join_requested') %></em>
+          <span class="label-tag important requested"><%= t('.join_requested') %></em>	      
 
         <% elsif enrollment.rejected? %>
           <span class="label-tag important rejected"><%= t('.join_rejected') %></span>
@@ -53,3 +55,4 @@
   <p class="padding-right"><%= truncate(course.description, :length => 200).html_safe %></p>
 </div>
 <%end%>
+

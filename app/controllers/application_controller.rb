@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
   after_filter :current_languaje
+  helper_method :current_network
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)

@@ -4,6 +4,7 @@ class CoursesController < ApplicationController
   set_tab :wall,    :only => %w(wall)
   set_tab :members, :only => %w(members)
   set_tab :calification, :only => %w(calification)
+  helper_method :command_course
   def index
     @courses = current_network.courses 
     @tutoriales = Tutoriale.all
@@ -124,7 +125,11 @@ class CoursesController < ApplicationController
     end
     redirect_to courses_path
   end
-
+  
+  def command_course
+    @accessible_course ||= accessible_courses.find params[:id]
+  end
+  
   protected
   def accessible_course
     @accessible_course ||= accessible_courses.find params[:id]

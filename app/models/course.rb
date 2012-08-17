@@ -53,5 +53,8 @@ class Course < ActiveRecord::Base
     mails = []
     self.users.map{ |u| mails << u.email unless u == current_user || !u.accepting_emails }.compact.join(", ")
   end
+  
+  
+  
 end
 
