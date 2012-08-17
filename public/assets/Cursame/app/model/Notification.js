@@ -33,7 +33,7 @@ Ext.define('Cursame.model.Notification', {
             {name:"notificator_type", type:"string"},
             {name:"notificator_id", type:"string"},
             {name:"avatar", type:"string",mapping:'text',convert:function(value,record){				
-				return value.user ? value.user.avatar_file.xsmall.url : value.image.xsmall.url;				
+				return value.user ? value.user.avatar_file.xsmall.url : value.image? value.image.xsmall.url:'resources/images/experto.png';				
 			}},
             {name:"user", type:"string"},
             {name:"survey", type:"string"},

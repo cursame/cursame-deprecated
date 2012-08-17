@@ -60,7 +60,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					iconMask:true
 				},{
 					xtype:'button',
-					iconCls:'compose',
+					iconCls:'check_black1',
 					ui:'accept',
 					badgeText:lang.surveys,
 					iconAlign:'bottom',
@@ -85,7 +85,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					badgeCls:'menu-badge',
 					action:'calendar',				
 					iconMask:true
-				}*/,{
+				},{
 					xtype:'button',
 					iconCls:'team1',
 					ui:'accept',
@@ -94,7 +94,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					badgeCls:'menu-badge',
 					action:'members',				
 					iconMask:true
-				}]
+				}*/]
 		}]
     }
 });

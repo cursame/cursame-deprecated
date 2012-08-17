@@ -36,9 +36,11 @@ class Api::ApiController < ApplicationController
   
   def users    
     case params[:type]
-       when 'Course'
+      when 'Course'
          @course = Course.find params[:id]       
          @users = @course.students + @course.teachers
+      when 'Network'
+          @users = current_network.users
       when 'Profile'         
          @users = [@user]
       else
@@ -106,7 +108,7 @@ class Api::ApiController < ApplicationController
         when 'user_comment_on_comment'      
           text = I18n.t 'notifications.has_posted_a_comment_on_comment'
           notification.notificator = notification.notificator.commentable
-          user = notification.notificator.user if notification.notificator      
+          user = notification.notificator.user if notification.notificator
         when 'user_comment_on_user'
           next
           text = I18n.t 'notifications.has_posted_a_comment_on_user'
@@ -148,6 +150,8 @@ class Api::ApiController < ApplicationController
         @commentable = Discussion.find params[:id]
       when 'User'
         @commentable = User.find params[:id]
+      when 'Network'
+        @commentable = current_network
       else
         @commentable = Course.find params[:id]
     end
@@ -161,7 +165,7 @@ class Api::ApiController < ApplicationController
   
   def create_comment
     @comment = Comment.new
-    @comment.commentable_type= params[:commentable_type]
+    @comment.commentable_type = params[:commentable_type]
     @comment.commentable_id = params[:commentable_id]
     @comment.text = params[:text]
     @comment.user = @user
