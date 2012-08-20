@@ -7,7 +7,7 @@ class AutocompleteNetworksController < ApplicationController
     @networks = Network.find :all
 
     @networks.each do |n|
-       @networks_hash << { "label" => n.name }
+       @networks_hash << { "label" => n.name, "value" => n.subdomain }
      end
  
      render :json => @networks_hash
