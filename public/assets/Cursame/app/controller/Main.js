@@ -174,7 +174,7 @@ Ext.define('Cursame.controller.Main', {
 	onNotificationTap: function(dataview, index, target, record, e) {
 		var type = record.get('kind');
 		if (type === 'student_assignment_delivery' || type === 'teacher_survey_replied') { // si trata de una entrega de la tarea
-			Ext.Msg.alert('Cursame', lang.alertMsg, Ext.emptyFn);
+			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
 			return;
 		}
 
@@ -504,7 +504,7 @@ Ext.define('Cursame.controller.Main', {
             this.loadStore(Ext.getStore('Surveys'), {
                 id: courseRecord.get('id')
             }, undefined);*/
-			Ext.Msg.alert('Cursame', lang.alertMsg, Ext.emptyFn);
+			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
 			break;
 		case 'discussions':
 			this.getCourseNavigationView().push({
@@ -536,6 +536,11 @@ Ext.define('Cursame.controller.Main', {
 		}
 		if (value.config.type === 'notifications') {
 			Ext.getStore('Notifications').load();			
+		}
+		if (value.config.type === 'wall') {
+			this.loadStore(Ext.getStore('Comments'), {
+				type: 'Network'
+			}, undefined);			
 		}
 	},
 	/*members*/

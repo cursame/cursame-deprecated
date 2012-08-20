@@ -45,7 +45,7 @@ Ext.define('Cursame.view.LoginForm', {
 			},{
 				xtype:'passwordfield',
 				name:'password',
-				placeHolder:lang.password,
+				placeHolder :lang.password,
 				clearIcon: true
 			}]
 		},	{			

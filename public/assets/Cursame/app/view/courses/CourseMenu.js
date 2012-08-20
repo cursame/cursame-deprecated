@@ -23,7 +23,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 			tpl:Ext.create('Ext.XTemplate',
 					'<div class="course">',
 						'<div class="left">',
-							'<div class="img"><img src="'+Cursame.Path+'/assets/course_small.png" /></div>',
+							'<div class="img"><img src="'+Cursame.Path+'/assets/course_small_movistar.jpg" /></div>',
 						'</div>',
 						'<div class="properties">',
 							'<p>{name}</p>',						
@@ -40,7 +40,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 			docked: 'bottom',
 			ui:'accept',
 			//layout:'hbox',				
-			items:[{
+			items:[/*{
 					xtype:'button',
 					iconCls:'chat',
 					ui:'accept',
@@ -49,23 +49,21 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					iconAlign:'bottom',
 					badgeCls:'menu-badge',		
 					iconMask:true
-				},{
+				},*/{
 					xtype:'button',
 					iconCls:'attachment',
 					ui:'accept',
+					text:lang.assignments,
 					action:'assignments',	
-					badgeText:lang.assignments,
-					iconAlign:'bottom',
-					badgeCls:'menu-badge',			
+					iconAlign:'left',		
 					iconMask:true
 				},{
 					xtype:'button',
 					iconCls:'check_black1',
 					ui:'accept',
-					badgeText:lang.surveys,
-					iconAlign:'bottom',
-					badgeCls:'menu-badge',
-					action:'surveys',			
+					text:lang.surveys,
+					action:'surveys',
+					iconAlign:'left',								
 					iconMask:true
 				}/*,{
 					xtype:'button',
