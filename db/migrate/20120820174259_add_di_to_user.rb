@@ -1,5 +1,5 @@
 class AddDiToUser < ActiveRecord::Migration
   def change
-    add_column :users, :di, :string, :default => "a10"
+    add_column :users, :di, :string
   end
 end
