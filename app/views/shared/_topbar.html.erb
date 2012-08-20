@@ -6,16 +6,15 @@
       </div>
       
        
-       
-        <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
        <center>
+        <%= tabs_tag :open_tabs => { :class => "nav" } do |tab| %>
          <%= tab.principal_wall t('dashboard.start'), root_path %> 
          <%= tab.dashboard t('dashboard.panel'), dashboard_path %>
          <%= tab.courses t('dashboard.campanas'), courses_path%>
          <%= tab.wall t('dashboard.profile'), wall_for_user_path(current_user) %>    
          <%= tab.members t('dashboard.propiety'), network_members_path %>
-        </center>
         <%end%>
+       </center>
                  
       <ul class="nav secondary-nav">
         <li class="dropdown">
