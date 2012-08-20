@@ -173,10 +173,11 @@ es:
 
   dashboard:
     view_all_courses: 'Ver todos los Campañas disponibles'
-    start: 'Inicio'
+    start: 'Muro'
     profile: 'Perfil'
-    propiety: 'Red'
-    panel: 'Panel'
+    propiety: 'Comunidad'
+    panel: 'Notificaciones'
+    campanas: 'Campañas'
     account_settings: 'Configuración de la cuenta'
 
   courses:
