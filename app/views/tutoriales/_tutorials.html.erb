@@ -17,7 +17,7 @@ $(document).ready(function() {
 		</center>
 	    </div>
 	</div>
-<div id="desplegable-interno" style="overflow:auto; height:300px; display:none;">
+<div id="desplegable-interno" style="overflow:auto; height:190px; display:none;">
 <% if @tutoriales.count < 0 %>
 <%else%>
 <% @tutoriales.each do |tutoriale| %>
@@ -43,7 +43,7 @@ $(document).ready(function() {
  </center>
  </div>
 <div class="modal-footer">
-	<%="Descrición: #{tutoriale.description}"%>
+	<%="Descripción: #{tutoriale.description}"%>
 </div>
 </div>
 <% end %>
