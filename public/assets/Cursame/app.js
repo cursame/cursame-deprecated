@@ -27,9 +27,13 @@ Ext.application({
     launch: function() {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
+		//prevent back button		
+		window.onbeforeunload = function() {
+		    return false;
+		};
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Cursame.view.Main'));
+        Ext.Viewport.add(Ext.create('Cursame.view.Main'));		
     },
 
     onUpdated: function() {
@@ -42,3 +46,5 @@ Ext.application({
         );
     }
 });
+
+

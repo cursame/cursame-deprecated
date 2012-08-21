@@ -138,10 +138,53 @@ Ext.define('Cursame.controller.Main', {
 			},
 			'networknavigationview networkwall commentbar button': {
 				tap: 'onNetworkWallPost'
-			}
+			},
+			//implementamos el comportamiento de back
+			'notificationnavigationview':{
+				push:'onViewPush',
+				pop:'onViewPop'
+			},
+			'usernavigationview':{
+				push:'onViewPush',
+				pop:'onViewPop'
+			},
+			'coursenavigationview':{
+				push:'onViewPush',
+				pop:'onViewPop'
+			},
+			'communitynavigationview':{
+				push:'onViewPush',
+				pop:'onViewPop'
+			},
+			'notificationnavigationview #backBtn':{
+				tap:'goToWall'
+			},
+			'usernavigationview #backBtn':{
+				tap:'goToWall'
+			},
+			'coursenavigationview #backBtn':{
+				tap:'goToWall'
+			},
+			'communitynavigationview #backBtn':{
+				tap:'goToWall'
+			}		
 		}
 	},
-	launch: function() {},
+	goToWall:function(){
+		this.getTabPanel().setActiveItem(0);
+	},
+	onViewPush:function(view,pushedview,obj){
+		view.down('#backBtn').hide();
+	},
+	onViewPop:function(view,popedview,obj){
+		var btn = view.down('#backBtn');
+		if(view.getItems().length === 2){
+			btn.show();
+		}
+	},
+	launch: function() {
+		//preventing browser back			
+	},
 	onLogin: function(form) {
 		this.loadStore(Ext.getStore('Comments'), {
 			type: 'Network'
@@ -475,7 +518,6 @@ Ext.define('Cursame.controller.Main', {
 				id: courseRecord.get('id'),
 				type: 'Course'
 			}, undefined);
-			//this.getCourseContainer().setRecord(courseRecord);
 			break;
 		case 'members':
 			this.getCourseNavigationView().push({
@@ -534,6 +576,9 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Network'
 			}, undefined);
 		}
+		if (value.config.type === 'courses') {
+			this.loadStore(Ext.getStore('Courses'), {}, undefined);
+		}
 		if (value.config.type === 'notifications') {
 			Ext.getStore('Notifications').load();			
 		}
@@ -557,9 +602,8 @@ Ext.define('Cursame.controller.Main', {
 	/*assignments*/
 	onAssignmentsListTap: function(dataview, index, target, record, e, opt) {
 		this.getCourseNavigationView().push({
-			xtype: 'assignmentwall'
-/*,
-            title: record.get('name')*/
+			xtype: 'assignmentwall',
+            title: record.raw.course.name
 		});
 		this.loadStore(Ext.getStore('Comments'), {
 			id: record.get('id'),
@@ -569,9 +613,8 @@ Ext.define('Cursame.controller.Main', {
 	},
 	onAssignmentsListTap2: function(dataview, index, target, record, e, opt) {
 		this.getNotificationNavigationView().push({
-			xtype: 'assignmentwall'
-/*,
-            title: record.get('name')*/
+			xtype: 'assignmentwall',
+            title: record.raw.course.name
 		});
 		this.loadStore(Ext.getStore('Comments'), {
 			id: record.get('id'),

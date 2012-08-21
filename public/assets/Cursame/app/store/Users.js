@@ -12,10 +12,10 @@ Ext.define('Cursame.store.Users', {
 		//setup the grouping functionality to group by the first letter of the firstName field
         grouper: {
             groupFn: function(record) {
-                return record.get('first_name')[0];
+                return record.get('last_name')[0].toUpperCase();
             }
         },
 		//filter the data using the firstName field
-        sorters: 'first_name'
+        sorters: 'last_name'
     }
 });
