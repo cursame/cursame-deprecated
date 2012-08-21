@@ -44,7 +44,7 @@ es:
     register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
     register_student: 'Registro de Vendedores'
-    register_teacher: 'Registro de Administradores'
+    register_teacher: 'Registro de Gerentes'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -403,7 +403,7 @@ es:
         students: Vendedores
         supervisors: Gerentes
         reports: 'Reportes'
-        pending_approvals: Registros de Administradores pendientes
+        pending_approvals: Registros de Gerentes pendientes
         new_user: "Crear nuevo usuario"
       teachers:
         approve: Aceptar
