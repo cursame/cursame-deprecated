@@ -14,6 +14,7 @@ cel.png: cel-f9ef5a67dc3fb8dadc725067327b693f.png
 chatbubble.png: chatbubble-b424ae0b25d55df9e8db9852438c6619.png
 chatfff.png: chatfff-1da5c554c584845c3d3b0da23abe3089.png
 course_small.png: course_small-50a92fb31aaef15529d9781c2ae634b7.png
+course_small_movistar.jpg: course_small_movistar-4381a891ed28e34a1611dc619d1f39ec.jpg
 course_thumb.png: course_thumb-64fecc7269fe8bd87bcce55407481fca.png
 course_xsmall.png: course_xsmall-b78443a489659092cca2ced64e18e369.png
 course_xxsmall.png: course_xxsmall-5b45a51f96b66bd7eb85ccddd0d8eb68.png
@@ -34,7 +35,7 @@ file_icons/word.png: file_icons/word-bdef83398b8c041daf29e2223ea43501.png
 grey.gif: grey-5e3901ebae3bec18ec35c9906e81d679.gif
 happy.png: happy-145725bd10fb8e39e0eb99c0cbde1cb1.png
 happy_smile.png: happy_smile-dce5521441fa1d77cbb7d31521d6985a.png
-header-notification.jpg: header-notification-90e6da4fbc9e7e9b6e6bcdc5efbdde82.jpg
+header-notification.jpg: header-notification-6dd318000128ad1eeb152158ca4d3653.jpg
 help/calendario/calendario-actividades-recientes.png: help/calendario/calendario-actividades-recientes-ac17d07cc55b344678c5bd876755349c.png
 help/calendario/calendario-crear-actividad.png: help/calendario/calendario-crear-actividad-e9e5fd2c99d9e46d086feb754bd8ab8d.png
 help/calificaciones/calificaciones.png: help/calificaciones/calificaciones-646c6025326bb8496be59256ba002117.png
@@ -182,6 +183,7 @@ minichat_files/talk_chat.png: minichat_files/talk_chat-ffcd251b677ec9c28e81711a2
 minichat_files/talk_speak_chat.png: minichat_files/talk_speak_chat-d7c5d73dd0f7228254df9f63b9020788.png
 minichat_files/webcam_128.png: minichat_files/webcam_128-a3e20d41e89167e0069f97bcd3375583.png
 minichat_files/xchat.png: minichat_files/xchat-883321616bfb596c839ecdef7a9f59d0.png
+movistar.png: movistar-e324fc6dba4b007dcb96d2fe4c61b5af.png
 new-good.png: new-good-4889b4baca6782a39b5af9ee889e7221.png
 nosotros/alfredo.jpg: nosotros/alfredo-2d9a9f1e30df627ae333e56ff2840f40.jpg
 nosotros/alfredot.png: nosotros/alfredot-5e037d85594aef707cd9d701c07dca71.png
@@ -235,4 +237,4 @@ upload.png: upload-dea8a2b793f9384245ce3c5ffefd5bb7.png
 users-users.png: users-users-d8a2fe8a5aed1aa726c22b9da3077c82.png
 video.png: video-d39ff5fe5586a5fc90cd42c1806472b8.png
 application.js: application-7ffa053d50c2c63495de511e04657c34.js
-application.css: application-e9293d8c2fb76ab6fbaae8f8b9263df0.css
+application.css: application-057a2b1b212f948aa999fbe30d57b842.css

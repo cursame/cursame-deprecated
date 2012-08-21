@@ -1,31 +1,31 @@
 <h2 class="h2">Bienvenido <%= @resource.first_name %>!</h2>
 <% if @resource.student?%>
-<strong>A partir de ahora, puedes disfrutar de Cúrsame y todas las herramientas que te ofrece como:</strong>
+<strong>A partir de ahora, puedes disfrutar de Experto Movistar y todas las herramientas que te ofrece como:</strong>
   <ul>
-    <li>Perfil en tu red social privada</li>
-    <li>Interactuar con tus compañeros y maestros</li>
-    <li>Acceso a cursos</li>
-    <li>Tareas</li>
-    <li>Cuestionarios</li>
-    <li>Discusiones</li>
-    <li>Compartir archivos</li>
-    <li>¡Entre muchas otras!</li>
+   	 <li>Perfil en tu red social privada</li>
+	 <li>Interacción con colegas y Expertos</li>
+	 <li>Acceso a campañas y herramientas</li>
+	 <li>Test para saber qué tan Experto eres.</li>
+	 <li>Archivos compartidos</li>
+	 <li>Conocimiento grupal</li>
+	 <li>Experiencia</li>
+	 <li>¡ Y muchas cosas más !</li>
   </ul>
 <%elsif @resource.teacher?%>
 <strong>
-  El proceso para tu acceso al sistema como maestro consta de 2 pasos, tu correo debe de ser confirmado y tu cuenta debe de ser aprobada por el administrador de tu red.
+ El proceso para acceder al sistema tiene 2 sencillos pasos; primero, tienes que confirmar tu correo. Una vez hecho esto, tu cuenta debe ser aprobada por el administrador de tu red.
   <br />
-  Una vez que tu cuenta este confirmada y aprobada podrás disfrutar de Cúrsame y todas las herramientas que te ofrece como:
+ Una vez que tu cuenta esté confirmada y aprobada, disfrutarás de Experto Movistar y todas las herramientas que te ofrece como:
 </strong>
   <ul>
     <li>Perfil en tu red social privada</li>
-    <li>Interactuar con tus compañeros y alumnos</li>
-    <li>Acceso a cursos</li>
-    <li>Tareas</li>
-    <li>Cuestionarios</li>
-    <li>Discusiones</li>
-    <li>Compartir archivos</li>
-    <li>¡Entre muchas otras!</li>
+    <li>Interacción con colegas y Expertos</li>
+    <li>Acceso a campañas y herramientas</li>
+    <li>Test para saber qué tan Experto eres.</li>
+    <li>Archivos compartidos</li>
+    <li>Conocimiento grupal</li>
+    <li>Experiencia</li>
+    <li>¡ Y muchas cosas más !</li>
   </ul>
 <%end%>
 <h1> <%= link_to 'Confirmar tu Cuenta >>', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :subdomain => @resource.devise_mailer_subdomain) %></h1>

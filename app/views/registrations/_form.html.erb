@@ -16,6 +16,9 @@ background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0,
     <div class="login_texted0">   <%= "Contraseña & confirmar contraseña" %>  </div> </br>
      <%= form.input :password, :input_html => { :placeholder => t("forms.password") + " *", :class => "span4" } %>
       <%= form.input :password_confirmation, :input_html => { :placeholder => t('forms.password_confirmation') + " *", :class => "span4" } %>
+    <div class="login_texted0">   <%= "DN & DI " %>  </div> </br>
+       <%= form.input :dn, :input_html => { :placeholder => 'DN:' + " *", :class => "span4" } %>
+       <%= form.input :di, :input_html => { :placeholder => 'DI:' + " *", :class => "span4" } %>
       <%= form.input :terms_of_service, :as => :boolean, :label => link_to(t('forms.terms'), terms_path, :class => "terms fancybox.ajax"), :required => true, :input_html => { :checked => true, :style => 'display:inline;' } %>
     <% end %>
     <%= form.buttons do %>
