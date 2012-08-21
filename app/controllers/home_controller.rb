@@ -27,7 +27,7 @@ class HomeController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
   end
   def dashboard_calendar
-      @courses       = current_user.visible_courses.where(:network_id => current_network).limit(4)
+      @courses       = current_user.visible_courses.where(:network_id => current_network).limit(999999)
       @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
       @tasks=current_user.assignments + current_user.surveys + current_user.calendar_activities
       @date = params[:month] ? Date.parse(params[:month]) : Date.today
