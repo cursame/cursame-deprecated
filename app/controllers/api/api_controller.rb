@@ -21,7 +21,9 @@ class Api::ApiController < ApplicationController
   
   def assignments
      @course = Course.find params[:id]  
-     render :json => {:assignments => @course.assignments.order("due_to DESC"), :count => @course.assignments.count()}, :callback => params[:callback]      
+     #render :json => {:assignments => @course.assignments.order("due_to DESC"), :count => @course.assignments.count()}, :callback => params[:callback] 
+     render :json => {:assignments => ActiveSupport::JSON.decode(@course.assignments.order("due_to DESC").to_json(:include => [:course])), :count => @course.assignments.count()}, :callback => params[:callback]
+          
   end
   
   def discussions

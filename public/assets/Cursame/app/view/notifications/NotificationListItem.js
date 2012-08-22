@@ -34,8 +34,7 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 		},
 		
 		user: {
-			cls: 'user',
-			
+			cls: 'user'			
 		},
 		
 		text:{

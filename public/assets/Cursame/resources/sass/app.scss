@@ -304,4 +304,16 @@ iframe{
 	color : #005C84;
 	
 }
+/*hacemos los titulos mas pequeños*/
+.x-title {
+	line-height: 2.1em;
+	font-size: 0.9em;
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0 0.3em;
+	max-width: 90%;
+}
 

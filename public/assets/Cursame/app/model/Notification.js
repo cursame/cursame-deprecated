@@ -14,7 +14,7 @@ Ext.define('Cursame.model.Notification', {
 				if(value.text){
 					text = value.text[0].toUpperCase() + value.text.slice(1);
 					data = record.data;
-                	data.user = value.user ? value.user.last_name + '' + value.user.first_name : '';
+                	data.user = value.user ? value.user.last_name + '' + value.user.first_name : '&nbsp;';
                 	data.survey = value.survey ? value.survey.name : '';
                 	data.asignment = value.asignment ? value.asignment.name : '';
                 	data.course = value.course ? value.course.name : '';

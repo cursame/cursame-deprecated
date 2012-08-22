@@ -19,7 +19,6 @@ Ext.define('Cursame.view.notifications.NotificationsList', {
         allowDeselect	: false,
         useComponents	: true,
         emptyText		: 'Nothing found.',
-
 		plugins: [
             'pullrefresh',
             {

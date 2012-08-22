@@ -30,6 +30,7 @@ Ext.define('Cursame.view.phone.Main', {
 			}, {
 				xtype: 'coursenavigationview',
 				iconCls: 'tags',
+				type:'courses',
 				title: lang.courses
 			}, {
 				xtype: 'usernavigationview',
