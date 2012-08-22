@@ -62,14 +62,14 @@
 	});
 					
 </script>
-<div class="span10"style="background-image:url(/assets/mano.png); height:820px; width:982px; border:none; display:block; background-repeat:no-repeat;  zoom: 0.9; position:relative; bottom:0px; right:0px; z-index:2;">	
+<div class="span10"style="background-image:url(/assets/mano.png); height:820px; width:982px; border:none; display:block; background-repeat:no-repeat;  zoom: 0.9; position:relative; bottom:git0px; right:0px; z-index:2;">	
 <div class="span6" style=" margin-top:150px; margin-left:450px;color:#fff; width:320px; z-index:99;">
 
 <div class="nav span4" style="margin-right:100px;">
 <%= semantic_form_for @network do |form| %>
   <%= form.inputs do %>
-    <%= form.input :name, :input_html => { :value => "red", :class => "inputtext"},  :label => false  %>
-    <%= form.input :subdomain, :input_html => { :value => "subdominio", :class => "inputtext"},  :label => false %>
+    <%= form.input :name, :input_html => { :value => "Nombre de tu red", :class => "inputtext"},  :label => false  %>
+    <%= form.input :subdomain, :input_html => { :value => "Subdominio", :class => "inputtext"},  :label => false %>
     <%= form.hidden_field :variante, :value => "free"%>
 
     <%#= form.select :variante, options_for_select([[t('.free'), "free"],[t('.pro'), "pro"],[t('.enterprise'),"enterprise"]]) %>
