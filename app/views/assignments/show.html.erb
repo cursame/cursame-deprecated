@@ -68,8 +68,10 @@
       
         
         <div class="actions">
+	    <% if current_user.role == "supervisor"%>
           <h2><%= t('courses.assignments.comments') %></h2>
           <%= render :partial => 'comments/form', :locals => {:commentable => @assignment} %>
+        <%end%>
         </div>
        
         <div id="assignment_comments">
@@ -156,8 +158,10 @@
         <% end %>
         
         <div class="actions">
+	     <% if current_user.role == "supervisor"%>
           <h2><%= t('courses.assignments.comments') %></h2>
           <%= render :partial => 'comments/form', :locals => {:commentable => @assignment} %>
+         <%end%>
         </div>
         
         <div id="assignment_comments">
