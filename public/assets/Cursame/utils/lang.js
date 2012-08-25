@@ -51,7 +51,8 @@ var language ={
 		occupation:'Ocupación :',
 		like:'Me gusta',
 		notLike:'Ya no me gusta',
-		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.'
+		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.',
+		sign_out:'Salir'
     },
     en:{
         appName: 'Cúrsame',

@@ -17,8 +17,14 @@ Ext.define('Cursame.view.network.NetworkNavigationView', {
 			title: lang.wall
 		},
         navigationBar: {
-		            items: [
-		                {
+		            items: [{
+						align: 'left',
+						text:lang.sign_out,
+						handler:function(){
+							localStorage.removeItem('User');
+							window.location.reload()							
+						}
+					},{
 		                    iconCls: 'movistar',
 		                    iconMask: true,
 		                    ui: 'plain',
