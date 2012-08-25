@@ -9,7 +9,8 @@ Ext.define('Cursame.controller.phone.Main', {
 	config: {
 		refs: {
 			main: 'main',
-			tabPanel: 'main tabpanel'
+			tabPanel: 'main tabpanel',
+			loginForm:'main loginform'
 		},
 		control: {
 			'main loginform': {

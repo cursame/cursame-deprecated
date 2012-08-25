@@ -20,9 +20,9 @@ Ext.define('Cursame.view.network.NetworkNavigationView', {
 		            items: [{
 						align: 'left',
 						text:lang.sign_out,
+						itemId:'signOut',
 						handler:function(){
-							localStorage.removeItem('User');
-							window.location.reload()							
+							localStorage.removeItem('User');				
 						}
 					},{
 		                    iconCls: 'movistar',

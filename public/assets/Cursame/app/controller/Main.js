@@ -167,8 +167,16 @@ Ext.define('Cursame.controller.Main', {
 			},
 			'communitynavigationview #backBtn':{
 				tap:'goToWall'
-			}		
+			},
+			'networknavigationview #signOut':{
+				tap:'signOut'
+			},		
 		}
+	},
+	signOut:function(){
+		var login = this.getLoginForm();		
+		this.getMain().setActiveItem(login);
+		login.reset();
 	},
 	goToWall:function(){
 		this.getTabPanel().setActiveItem(0);
