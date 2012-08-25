@@ -41,11 +41,13 @@ Ext.define('Cursame.view.LoginForm', {
 				xtype:'emailfield',
 				name:'email',
 				placeHolder :lang.email,
+				value:'maestro@cursa.me',
 				clearIcon: true
 			},{
 				xtype:'passwordfield',
 				name:'password',
 				placeHolder :lang.password,
+				value:'maestrocursame7',
 				clearIcon: true
 			}]
 		},	{			
@@ -78,7 +80,8 @@ Ext.define('Cursame.view.LoginForm', {
 									
 									if(record){ //si existe el usuario
 										Cursame.User = record;
-										form.fireEvent('login', form);
+										localStorage.setItem("User", Ext.encode(op._response.response.user));
+										form.fireEvent('login', form);																		
 									}
 									else{
 										form.setMasked({

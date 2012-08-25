@@ -20,7 +20,6 @@ Ext.define("Cursame.view.Main", {
 	config: {
         layout: 'card',
         fullscreen: true,
-		//autoMaximize : true
         autoDestroy: false
     }	
     

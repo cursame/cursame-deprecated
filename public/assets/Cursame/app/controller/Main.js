@@ -182,9 +182,6 @@ Ext.define('Cursame.controller.Main', {
 			btn.show();
 		}
 	},
-	launch: function() {
-		//preventing browser back			
-	},
 	onLogin: function(form) {
 		this.loadStore(Ext.getStore('Comments'), {
 			type: 'Network'
