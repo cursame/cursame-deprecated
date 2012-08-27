@@ -28,6 +28,6 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url 
-    "/assets/#{model.role}_#{version_name}.png"
+    "uploads/assets/#{model.id}_#{version_name}.png"
   end 
 end

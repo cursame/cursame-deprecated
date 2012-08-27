@@ -8,20 +8,25 @@ $(document).ready(function() {
 
   });
 </script>
-<div id="tutorial-all" style="width:155px; margin-left:5px; margin-top:-10px;">
+<div id="tutorial-all" style="width:175px; margin-left:5px; margin-top:-10px;">
+	
 	<div class="tutorial-header">
 		<div class="title">
 		<center>
-		<h3>Tutoriales de uso</h3>	
-		<div data-toggle="modal" href="#primer_tutorial" style="margin:2px;cursor:pointer;"><%=image_tag("video.png")%></div>
+		<h3>Tutoriales de uso</h3>
+	    </div>	
+		<div data-toggle="modal" href="#primer_tutorial" style="margin:2px;cursor:pointer;"><%=image_tag("video.png")%>
+		</div>
 		</center>
-	    </div>
 	</div>
+	
+	
 <div id="desplegable-interno" style="overflow:auto; height:190px; display:none;">
+	
 <% if @tutoriales.count < 0 %>
 <%else%>
 <% @tutoriales.each do |tutoriale| %>
-<div>
+
     <div class="row with line" style="margin:0px; padding:0px;">
 <div class="user padding-all <%= cycle('odd', 'even') %>">
 	<div class="interno" style="height:20px; cursor:pointer;">
@@ -51,8 +56,7 @@ $(document).ready(function() {
 <% end %>
 </div>
 </div>
-</div>
-</div>
+
 <div id="desplegable-tutoriales" style="cursor:pointer;">
 	<center>
 	<a>Mostrar Todos</a>
