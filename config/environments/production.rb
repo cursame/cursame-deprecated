@@ -11,6 +11,7 @@ Cursame::Application.configure do
   config.assets.digest = true
   
   config.assets.initialize_on_precompile = false
+  config.assets.compile = true
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
