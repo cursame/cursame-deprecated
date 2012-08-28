@@ -44,9 +44,9 @@ es:
         unconfirmed: 'sin confirmar'
         locked: 'bloqueada'
       student_user:
-          signed_up_but_unconfirmed: 'Bienvenido a la red de Cúrsame tu usuario ha sido creado, se te ha enviado un mail de confirmación para accesar!'
+        signed_up_but_unconfirmed: 'Bienvenido a la red de Telefónica México tu usuario ha sido creado, se te ha enviado un mail de confirmación para accesar!'
       teacher_user:
-          signed_up_but_unconfirmed: 'Bienvenido a la red de Cúrsame tu usuario ha sido creado, se te ha enviado un mail de confirmación, un administrador se encargará de inmediato de validarte!'
+        signed_up_but_unconfirmed: 'Bienvenido a la red de Telefónica México tu usuario ha sido creado, se te ha enviado un mail de confirmación, un administrador se encargará de inmediato de validarte!'
     unlocks:
       send_instructions: 'Recibirás un correo electrónico con instrucciones sobre cómo desbloquear tu cuenta en unos minutos.'
       unlocked: 'Tu cuenta fue desbloqueada con éxito, has sido ingresado al sistema.'
@@ -61,3 +61,5 @@ es:
         subject: 'Instrucciones para reestablecer tu contraseña'
       unlock_instructions:
         subject: 'Instrucciones para desbloquear'
+    flash:
+       register: 'Usuario Registrado correnctamente recibiras un mail de confirmación de tu cuenta.'

@@ -7,6 +7,9 @@ Ext.define("Cursame.view.Main", {
 		'Cursame.view.notifications.NotificationsList',
 		'Cursame.view.notifications.NavigationView',
 		'Cursame.view.courses.CourseNavigationView',
+		'Cursame.view.users.UserNavigationView',
+		'Cursame.view.users.CommunityNavigationView',
+		'Cursame.view.network.NetworkNavigationView',
 		'Cursame.view.comments.CommentTpl',
 		'Cursame.view.users.UserTpl',
 		'Cursame.view.assignments.AssignmentTpl',
@@ -17,6 +20,7 @@ Ext.define("Cursame.view.Main", {
 	config: {
         layout: 'card',
         fullscreen: true,
+		//autoMaximize : true
         autoDestroy: false
     }	
     

@@ -1,6 +1,6 @@
 Cursame::Application.configure do
-  HOST = 'cursatest.com'
-  HEROKU_HOST = 'cursatest.heroku.com'
+  HOST = 'cursametelefonicamx.com'
+  HEROKU_HOST = 'cursametelefonica.heroku.com'
   config.cache_classes = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -8,12 +8,6 @@ Cursame::Application.configure do
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
-  
-  config.assets.initialize_on_precompile = false
-  config.assets.compile = true
-  
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
-   
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
   # Specifies the header that your server uses for sending files

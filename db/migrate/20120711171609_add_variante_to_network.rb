@@ -1,5 +1,5 @@
 class AddVarianteToNetwork < ActiveRecord::Migration
   def change
-    add_column :networks, :variante, :string
+    add_column :networks, :variante, :string, :default => "free"
   end
 end

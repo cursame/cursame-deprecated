@@ -1,6 +1,6 @@
 Cursame::Application.configure do
-  HOST = 'cursa.me'
-  HEROKU_HOST = 'cursame.heroku.com'
+  HOST = 'cursametelefonicamx.com'
+  HEROKU_HOST = 'cursametelefonica.heroku.com'
 
   config.cache_classes = true
   config.consider_all_requests_local       = false
@@ -11,9 +11,6 @@ Cursame::Application.configure do
   config.assets.digest = true
   
   config.assets.initialize_on_precompile = false
-  config.assets.compile = true
-
-  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
 
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
@@ -38,12 +35,12 @@ Cursame::Application.configure do
 
   config.active_support.deprecation = :notify
   ActionMailer::Base.smtp_settings = {
-    :address        => '50.116.21.144',
-    :port           => '25',
-    :authentication => 'plain',
-    :user_name      => 'wichobabas',
-    :password       => 'qor43e95',
-    :domain         => 'mail.cursame.me'
+      :address        => '50.116.21.144',
+      :port           => '25',
+      :authentication => 'plain',
+      :user_name      => 'wichobabas',
+      :password       => 'qor43e95',
+      :domain         => 'mail.cursame.me'
   }
   ActionMailer::Base.delivery_method = :smtp
 end
