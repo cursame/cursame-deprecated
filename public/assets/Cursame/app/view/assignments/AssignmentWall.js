@@ -21,9 +21,9 @@ Ext.define('Cursame.view.assignments.AssignmentWall', {
 		},
 		items:[{
 				xtype:'assignmentcontainer'
-			}/*,{		      
+			},{		      
 		        xtype: 'commentbar'
-		    }*/],
+		    }],
 		itemTpl: Ext.create('Cursame.view.comments.CommentTpl',true)
     }
 });

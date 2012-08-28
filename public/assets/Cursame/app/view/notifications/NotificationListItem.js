@@ -20,7 +20,7 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 				setHtml: 'text'
 			},
 			getAvatar: {
-				setSrc: 'avatar'
+				setScr: 'avatar'
 			},
 			getCreated:{
 				setHtml: 'created'
@@ -34,7 +34,8 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 		},
 		
 		user: {
-			cls: 'user'			
+			cls: 'user',
+			
 		},
 		
 		text:{
@@ -43,7 +44,10 @@ Ext.define('Cursame.view.notifications.NotificationListItem', {
 		
 		avatar:{
 			docked	:'left',
-			cls		:'avatar'
+			cls		:'avatar',
+			height: 48,
+		    width: 48,
+			src:Cursame.src+'resources/images/avatar_normal.png'
 		},			
 		
 		declineButton:{

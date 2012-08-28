@@ -18,21 +18,7 @@ Ext.define('Cursame.model.Comment', {
             {name:"userimage", type:"string",mapping:'user.avatar_file.small.url'},
             {name:"numcommnets", type:"int",mapping:'comments',convert:function (value, record) {
                 return  value.length;
-            }},
-			{name:"numlikes", type:"int",mapping:'like_not_likes',convert:function (value, record) {
-                return  value.length;
-            }},
-			{name: 'like', type:'string', mapping:'like_not_likes', convert:function (value, record) {
-					var like = lang.like;
-	                Ext.each(value,function(obj){
-						if(obj.user_id == Cursame.User.get('id')){
-							like = lang.notLike;
-							return false;
-						}
-					});
-					return like;
-	            }	
-			}
+            }}
         ],
 
         proxy:{

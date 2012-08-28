@@ -4,12 +4,21 @@
  * This component lists the Surveys
  */
 Ext.define('Cursame.view.users.UserContainer', {
-    extend: 'Ext.Container',
+    extend: 'Ext.List',
 	xtype:'usercontainer',
     
 	requires:['Cursame.view.users.UserTpl'],
 	
     config: {
-		tpl: Ext.create('Cursame.view.users.UserTpl',false)
+        store:'Surveys',
+		masked:{
+		    xtype: 'loadmask',
+		    message: lang.loading
+		},
+		scrollable: {
+		    direction: 'vertical',
+		    directionLock: true
+		},
+		itemTpl: Ext.create('Cursame.view.users.UserTpl',false)
     }
 });

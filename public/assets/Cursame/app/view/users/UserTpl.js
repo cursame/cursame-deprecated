@@ -12,7 +12,7 @@ Ext.define('Cursame.view.users.UserTpl', {
     constructor: function() {
        var html = [	'<div class="comment ">',
 						'<div class="img">',
-            				'<img src="{avatar_file}" />',
+            				'<img src="'+Cursame.Path+'/assets/course_small.png" />',
 						'</div>',
             		'<div class="contenido">',
             			'<div class="title">{first_name} {last_name}</div>',

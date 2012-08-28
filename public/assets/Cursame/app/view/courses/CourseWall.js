@@ -19,7 +19,9 @@ Ext.define('Cursame.view.courses.CourseWall', {
 		    direction: 'vertical',
 		    directionLock: true
 		},
-		items:[{		      
+		items:[{
+				xtype:'coursecontainer'
+			},{		      
 		        xtype: 'commentbar'
 		    }],
 		itemTpl: Ext.create('Cursame.view.comments.CommentTpl',true)

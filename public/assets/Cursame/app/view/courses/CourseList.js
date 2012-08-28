@@ -25,17 +25,15 @@ Ext.define('Cursame.view.courses.CourseList', {
             }
         ],
 		itemTpl: Ext.create('Ext.XTemplate',
-				'<div class="course  fill-container ">',
-					'<div class="left">',
+				'<div class="comment ">',
 					'<div class="img">',
-		            	'<img src="'+Cursame.Path+'/assets/course_small_movistar.jpg" />',
+		            	'<img src="'+Cursame.Path+'/assets/course_small.png" />',
 					'</div>',
-					'</div>',
-		            '<div class="properties">',
-		            	'<p>{name}</p>',
-		                /*'<div class="text">',
+		            '<div class="contenido">',
+		            	'<div class="title">{name}</div>',
+		                '<div class="text">',
 		                 	'{description}',
-		                '</div>',*/
+		                '</div>',
 		                    '<!-- minibar -->',//aqui va el minibar cuando se necesite y es la posicion nueve del arreglo
 		            '</div>',
 		        '</div>')

@@ -7,13 +7,13 @@ Ext.define('Cursame.view.users.UserWall', {
     extend: 'Ext.List',
 	xtype:'userwall',
     
-	requires:['Cursame.view.users.UserContainer','Cursame.view.comments.CommentTpl','Cursame.view.comments.CommentToolbar'],
+	requires:['Cursame.view.users.UserContainer'],
 	
     config: {
-		store:'Comments',
+		store:'Users',
 		masked:{
-		   	xtype: 'loadmask',
-		    message: lang.loading
+		   // xtype: 'loadmask',
+		    //message: lang.loading
 		},
 		scrollable: {
 		    direction: 'vertical',
@@ -21,9 +21,7 @@ Ext.define('Cursame.view.users.UserWall', {
 		},
 		items:[{
 				xtype:'usercontainer'
-			},{		      
-			    xtype: 'commentbar'
-			}],
-		itemTpl: Ext.create('Cursame.view.comments.CommentTpl',true)
+		}],
+		itemTpl: Ext.create('Cursame.view.users.UserTpl',true)
     }
 });

@@ -19,23 +19,31 @@ Ext.define('Cursame.view.LoginForm', {
 		ui:'login',
         padding:'15 15 15 15',
 		style:{
-			backGroundColor:'#005C84'
+			backGroundColor:'#FFF'
 		},
 		items:[{
-			xtype:'image',
-			margin : '30 0 0 0',
-			height:80,
-			src: Cursame.src+'resources/images/movistar.png'
+			xtype:'container',
+			height:70,
 		},{			
-			xtype:'image',
-			layout:'hbox',
-			height: 48,
-			src: Cursame.src+'resources/images/experto-text.png'
-				
+				xtype:'container',
+				layout:'hbox',
+				height: 64,
+				items:[{
+						xtype:'container',						
+						flex:1					
+					},{
+						xtype:'image',
+						padding:'15 15 15 15',	
+						src: Cursame.src+'resources/images/cursa.png',						
+						width: 150
+				},{
+						xtype:'container',
+						flex:1
+				}]
 		},{
 			xtype:'fieldset',
 			defaults:{
-				 required: true
+				 required: true,
 			},
 			items:[{
 				xtype:'emailfield',
@@ -45,14 +53,14 @@ Ext.define('Cursame.view.LoginForm', {
 			},{
 				xtype:'passwordfield',
 				name:'password',
-				placeHolder :lang.password,
+				placeHolder:lang.password,
 				clearIcon: true
 			}]
 		},	{			
 					xtype:'fieldset',
 					items:[{
 						xtype:'button',
-						text:'<div class = "movi-color">'+lang.login+'</div>',
+						text:lang.login,
 						ui:'accept',
 						handler: function(btn) {
 							var form,obj;

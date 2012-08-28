@@ -5,36 +5,27 @@
  *  and all the entities that produce a notification on cursame
  */
 Ext.define('Cursame.view.notifications.NavigationView', {
-	extend: 'Ext.navigation.View',
-	xtype: 'notificationnavigationview',
-
-	requires: ['Cursame.view.notifications.NotificationsList', 'Cursame.view.courses.CourseWall', 'Cursame.view.comments.CommentWall'],
-	config: {
-		items: {
-			xtype: 'notificationslist',
-			title: lang.notifications
-		},
-		navigationBar: {
-			items: [{
-				align: 'left',
-				ui: 'back',
-				itemId:'backBtn',
-				text:'Back'
-			}, {
-				iconCls: 'movistar',
-				iconMask: true,
-				ui: 'plain',
-				align: 'right'
-			}],
+    extend: 'Ext.navigation.View',
+	xtype:'notificationnavigationview',
+    
+	requires:[
+	'Cursame.view.notifications.NotificationsList',
+	'Cursame.view.courses.CourseWall',
+	'Cursame.view.comments.CommentWall'
+	],
+    config: {
+        items:{
+			xtype:'notificationslist',
+			title:lang.notifications
 		}
-	},
-	applyLayout: function(config) {
-		config = config || {};
+    },
+ 	applyLayout: function(config) {
+        config = config || {};
 
-		if (Ext.os.is.Android) {
-			config.animation = false;
-		}
+        if (Ext.os.is.Android) {
+            config.animation = false;
+        }
 
-		return config;
-	}
+        return config;
+    }
 });

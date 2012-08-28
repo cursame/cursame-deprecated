@@ -6,32 +6,27 @@
  *
  * @manduks april 2012
  */
+
 Ext.define('Cursame.view.surveys.SurveyTpl', {
     extend: 'Ext.XTemplate',
-    constructor: function (container) {
-        var html;
-        if (!container) {
-            html = ['<div class="course fill-container">', '<div class="left">', '<div class="img"><img src="' + Cursame.Path + '/assets/course_small.png" /></div>', '</div>', '<div class="properties">', '<p>{name}</p>', '</div>', '</div>'];
-        } else {
-            html = ['<div class="course fill-container">',
- 						'<div class="left">', 
-						'<div class="img"><img src="' + Cursame.Path + '/assets/course_small.png" /></div>',
+    constructor: function(contanier) {
+       var html = ['<div class="course fill-container">',
+					'<div class="left">',
+						'<div class="img"><img src="'+Cursame.Path+'/assets/course_small.png" /></div>',
+					'</div>',
+					'<div class="properties">',
+						'<p>{name}</p>',						
+						'<div>',
+							'<em class="prop">'+lang.valuee+': </em><em class="val">{value}</em></br>',
+							'<em class="prop">'+lang.period+': </em><em class="val">{period}</em>',
 						'</div>',
-						 '<div class="properties">', 
-						'<p>{name}</p>',
-						 '<div>', 
-						/*'<em class="prop">' + lang.valuee + ': </em><em class="val">{value}</em></br>',
-						 '<em class="prop">' + lang.period + ': </em><em class="val">{period}</em>',
-						 '</div>', 
-						'<div><em class="prop">' + lang.limitDate + ': </em><em class="val">{due_to}</em></div>', */
+						'<div><em class="prop">'+lang.limitDate+': </em><em class="val">{due_to}</em></div>',
 						'<div class="description">{description}</div>',
-						 '</div>',
-						 '</div>'];
-        }
-
-        if (container) { //si el template  debe de mostrar con minibar
-            html.splice(0, 1, '<div class="course">');
-        }
+					'</div>',				
+				'</div>'];
+		if(contanier){//si el template  debe de mostrar con minibar
+			html.splice(0,1,'<div class="course">');			
+		}
         this.callParent(html);
     }
 });

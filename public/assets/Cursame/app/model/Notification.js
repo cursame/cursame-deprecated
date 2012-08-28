@@ -14,7 +14,7 @@ Ext.define('Cursame.model.Notification', {
 				if(value.text){
 					text = value.text[0].toUpperCase() + value.text.slice(1);
 					data = record.data;
-                	data.user = value.user ? value.user.last_name + '' + value.user.first_name : '&nbsp;';
+                	data.user = value.user ? value.user.last_name + '' + value.user.first_name : '';
                 	data.survey = value.survey ? value.survey.name : '';
                 	data.asignment = value.asignment ? value.asignment.name : '';
                 	data.course = value.course ? value.course.name : '';
@@ -32,8 +32,11 @@ Ext.define('Cursame.model.Notification', {
             {name:"user_id", type:"string"},
             {name:"notificator_type", type:"string"},
             {name:"notificator_id", type:"string"},
-            {name:"avatar", type:"string",mapping:'text',convert:function(value,record){				
-				return value.user ? value.user.avatar_file.xsmall.url : value.image? value.image.xsmall.url:'resources/images/experto.png';				
+            {name:"avatar", type:"string",mapping:'text.image',convert:function(value,record){
+				console.log(value);
+				value = value ? Cursame.Path+value.url : Cursame.src+'resources/images/avatar_normal.png';
+				console.log(value);
+				return value;
 			}},
             {name:"user", type:"string"},
             {name:"survey", type:"string"},

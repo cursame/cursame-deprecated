@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  get "autocomplete_networks/index"
+
   resources :new_users_change_types
 
   resources :notificaciones_admin_actualice
@@ -9,6 +11,7 @@ Cursame::Application.routes.draw do
   resources :favorites
   
   resources :status_courses
+  
   #networks gets
   get "networks/network_cc"
   get "networks/instrucciones"
@@ -124,13 +127,6 @@ Cursame::Application.routes.draw do
   match '/discussions/:commentable_id/comment', :to => 'comments#create', :as => :comment_discussion, :conditions => {:commentable => :discussion}
   match '/users/:commentable_id/comment',       :to => 'comments#create', :as => :comment_user,       :conditions => {:commentable => :user}
   match '/delivery/:commentable_id/comment',    :to => 'comments#create', :as => :comment_delivery,   :conditions => {:commentable => :delivery}
-  match '/network/:commentable_id/comment', :to => 'comments#create',:as => :comment_network,    :conditions => {:commentable => :network}
-  #cambio del principal por el dashboard
-     #get'/network/:id', :to => 'networks#relate', :as => :relate_wall
-     #match '/network/:id/wall', :to =>'networks#principal_wall', :as => :principal_wall
-      match '/network-wall', :to =>'networks#principal_wall', :as => :principal_wall
-  #routes basics home   
-  #el dasboard se mantien como ruta principal en el el home para al free
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
    match '/ayuda', :to => 'home#help', :as => :help
@@ -152,7 +148,6 @@ Cursame::Application.routes.draw do
    match  '/blog/newpost', :to => 'home#blog/new_post', :as => :blog_new
   match  '/nosotros', :to => 'home#nosotros', :as => :nosotros
   match  '/soporte', :to => 'home#reports', :as => :soporte
-  match  '/discant_homines/quam_docere/viri_fratres/terris', :to => 'home#new_admin', :as => "new_admin"
   match  'supervisor/suspended/users', :to => 'supervisor#suspended', :as => :user_suspended
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
   get '/members', :to => 'home#members', :as => :network_members
@@ -178,5 +173,4 @@ Cursame::Application.routes.draw do
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/update_course', :to => 'api/api#update_course', :as => :update_course
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
-  match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
 end

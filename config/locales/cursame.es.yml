@@ -8,30 +8,30 @@ es:
       platform_statistics: 'Estadísticas de la plataforma'
     statistics: 
       networks_users: 'Redes - usuarios'
-      courses: 'Campañas'
+      courses: 'Cursos'
       comments: 'Comentarios'
       data: 'Dato'
       registry: 'Registro'
       total_networks: 'Total de redes'
       total_users: 'Total de usuarios'
       total_supervisors: 'Supervisores de red'
-      total_teachers: 'Administradores'
-      total_students: 'Vendedores'
-      total_courses: 'Total de Campañas'
-      total_open_courses: 'Campañas públicos'
-      total_private_courses: 'Campañas privados'
-      total_assignments: 'Total de Contenidos'
+      total_teachers: 'Maestros'
+      total_students: 'Estudiantes'
+      total_courses: 'Total de cursos'
+      total_open_courses: 'Cursos públicos'
+      total_private_courses: 'Cursos privados'
+      total_assignments: 'Total de tareas'
       total_surveys: 'Total de cuestionarios'
       total_discussions: 'Total de discusiones'
-      total_comments: 'Total de Comentarios'
-      total_comments_assignments: 'Comentarios en Contenidos'
+      total_comments: 'Total de comentarios'
+      total_comments_assignments: 'Comentarios en tareas'
       total_comments_discussions: 'Comentarios en discusiones'
-      total_comments_user_walls: 'En Comentarios de usuarios'
-      total_comments_course_walls: 'En Comentarios de Campañas'
+      total_comments_user_walls: 'En muro de usuarios'
+      total_comments_course_walls: 'En muro de cursos'
 
 
   confirm_delete: ¿Estas Seguro?
-  comment: comentar
+  comment: responder
 
   forms:
     email: 'Email'
@@ -43,8 +43,8 @@ es:
     register_btn: 'Regístrate'
     register_btn_supervisor: 'Registrar usuario'
     register_slogun: '¡Regístrate, es gratis!'
-    register_student: 'Registro de Vendedores'
-    register_teacher: 'Registro de Gerentes'
+    register_student: 'Registro de Estudiantes'
+    register_teacher: 'Registro de Maestros'
     email_confirmation_text: 'Se enviará un mail de confirmación'
     remember_me: 'Recuerdame'
     lost_password_text: '¿Olvidaste tu contraseña?'
@@ -57,21 +57,21 @@ es:
     accepting_emails: 'Deseo recibir notificaciones a mi correo'
 
   footer:
-    teacher_register: 'Registro como Administrador'
+    teacher_register: 'Registro como maestro'
 
   flash:
-    course_created: Campaña creado
-    course_updated: El Campaña fue actualizado
-    course_destroyed: El Campaña fue eliminado
+    course_created: Curso creado
+    course_updated: El curso fue actualizado
+    course_destroyed: El curso fue eliminado
     course_join_requested: Solicitud de unirse enviada
     user_updated: Perfil actualizado
-    assignment_created: La Contenido fue creada
+    assignment_created: La tarea fue creada
     network_created: La red fue creada
     network_updated: La red fue actualizada
     discussion_created: Discusión creada 
-    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el Gerente
-    delivery_created: Tu Contenido fue entregada
-    delivery_updated: Tu Contenido fue actualizada
+    account_not_active: Tu cuenta fue creada pero debe ser manualmente aprobada por el administrador
+    delivery_created: Tu tarea fue entregada
+    delivery_updated: Tu tarea fue actualizada
     survey_created: El cuestionario fue creado
     survey_created_and_published: El cuestionario fue creado y publicado
     survey_updated: El cuestionario fue actualizado
@@ -88,11 +88,11 @@ es:
   activerecord:
     models:
       course:
-        one: Campaña
-        other: Campañas
+        one: Curso
+        other: Cursos
       assignment:
-        one: Contenido
-        other: Contenidos
+        one: Tarea
+        other: Tareas
       survey:
         one: Cuestionario
         other: Cuestionarios
@@ -111,7 +111,7 @@ es:
         description: Descripción
         start_date: Fecha de inicio
         finish_date: Fecha de término
-        logo_file: Logo del Campaña
+        logo_file: Logo del curso
         reference: Referencia
         public: ¿Es público?
       asset:
@@ -172,12 +172,9 @@ es:
       settings: 'Configuración'
 
   dashboard:
-    view_all_courses: 'Ver todos los Campañas disponibles'
-    start: 'Muro'
+    view_all_courses: 'Ver todos los cursos disponibles'
+    start: 'Inicio'
     profile: 'Perfil'
-    propiety: 'Comunidad'
-    panel: 'Notificaciones'
-    campanas: 'Campañas'
     account_settings: 'Configuración de la cuenta'
 
   courses:
@@ -185,38 +182,38 @@ es:
     description: 'Descripción'
     details: 'Horario/Grupo'
     time: 'Fecha'
-    public: 'Campaña Público'
-    private: 'Campaña Privado'
-    my_courses: 'Mis Campañas'
-    create_course: 'Crear Campaña'
-    clone_course: 'Clonar Campaña'
-    edit_course: 'Editar Campaña'
-    information: 'Información de Campaña'
+    public: 'Curso Público'
+    private: 'Curso Privado'
+    my_courses: 'Mis Cursos'
+    create_course: 'Crear Curso'
+    clone_course: 'Clonar Curso'
+    edit_course: 'Editar Curso'
+    information: 'Información de Curso'
     by: 'por'
     edit: 'Editar'
     delete: 'Eliminar'
-    courses: 'Campañas'
+    courses: 'Cursos'
     add_asset: Añadir archivo
     course_menu:
-      wall: 'Comentarios'
+      wall: 'Muro'
       new_discussion: 'Crear discusión'
       discussions: 'Discusiones'
       requests: 'Solicitudes'
-      tasks: 'Contenidos'
+      tasks: 'Tareas'
       docs: 'Documentos'
       evaluations: 'Evaluaciones'
       calendar: 'Calendario'
       members: 'Miembros'
-      courses: 'Campañas'
-      my_courses: 'Mis Campañas'
-      new_course: 'Crear Campaña Nuevo'
+      courses: 'Cursos'
+      my_courses: 'Mis Cursos'
+      new_course: 'Crear Curso Nuevo'
       surveys: 'Cuestionarios'
-      assignments: 'Contenidos'
+      assignments: 'Tareas'
     members:
       members_in_group: 'Miembros en este grupo'
-      members_in_course: 'Miembros en este Campaña'
-      teachers: 'Gerentes'
-      students: 'Vendedores'
+      members_in_course: 'Miembros en este curso'
+      teachers: 'Maestros'
+      students: 'Estudiantes'
       member: 'Miembro'
       members: 'Miembros'
       count:
@@ -231,30 +228,30 @@ es:
       accepted: 'Aceptado'
       accept: 'Aceptar'
       reject: 'Rechazar'
-      remove: 'Quitar del Campaña'
+      remove: 'Quitar del curso'
       role: 'Rol'
-      student: 'Vendedores'
-      teacher: 'Gerentes'
+      student: 'Estudiante'
+      teacher: 'Maestro'
     requests: &requests
       requests: 'Solicitudes'
       pending_requests: 'Solicitudes Pendientes'
     course:
       request_join_student: Solicitar unirse
-      request_join_teacher: Ser Administrador del Campaña
+      request_join_teacher: Ser maestro del curso
       request_join_again: Solicitar unirse de nuevo
       join_requested: Solicitud pendiente
       join_rejected: Solicitud rechazada
       join_accepted: Cursando
-      confirm_delete: Esta acción eliminará todos los reCampañas del Campaña ¿Estás seguro de querer eliminarlo?
+      confirm_delete: Esta acción eliminará todos los recursos del curso ¿Estás seguro de querer eliminarlo?
     index:
-      title: Todos los Campañas disponibles
+      title: Todos los cursos disponibles
     wall:
-      header: Comentarios
+      header: Muro
     assignments:
-      create_assignment: 'Crear Contenido'
-      assignments: 'Contenidos'
-      new_assignment: 'Nueva Contenido'
-      edit_assignment: 'Editar Contenido'
+      create_assignment: 'Crear tarea'
+      assignments: 'Tareas'
+      new_assignment: 'Nueva Tarea'
+      edit_assignment: 'Editar Tarea'
       date_time: 'Fecha Límite'
       start_at: 'Fecha de Inicio'
       value: 'Valor'
@@ -263,16 +260,16 @@ es:
 
   assignments:
     show:
-      deliver: "Entregar Contenido"
+      deliver: "Entregar tarea"
       edit_delivery: Editar entrega
       deliveries: Entregas
       show_delivery: Mostrar entrega
-      failed_delivery: Contenido no entregada
-      course: Campaña
+      failed_delivery: Tarea no entregada
+      course: Curso
     index:
-      current: Abierto
-      previous: Cerrado
-      unpublished: Contenido sin publicar
+      current: Abiertas
+      previous: Cerradas
+      unpublished: No publicadas
 
   surveys:
     survey:
@@ -297,7 +294,7 @@ es:
       header: Cuestionario 
       edit_survey: Editar
       view_replies: Cuestionarios contestados
-      course: Campaña
+      course: Curso
       preview: Vista previa del cuestionario
       survey_sent: Ya enviaste tus respuestas
       survey_sent_at: 'Respuestas enviadas el:'
@@ -324,11 +321,11 @@ es:
   students:
     deliveries:
       new:
-        header: Entregar Contenido
+        header: Entregar tarea
       edit:
-        header: Editar entrega de Contenido
+        header: Editar entrega de tarea
       show:
-        header: Entrega de Contenido
+        header: Entrega de tarea
         delivered: Entrega
         comment: Comentar entrega
     survey_replies:
@@ -345,7 +342,7 @@ es:
   teachers:
     deliveries:
       index:
-        heder: Entregas para Contenido
+        heder: Entregas para tarea
         show: Mostrar entrega
     survey_replies:
       index:
@@ -361,7 +358,7 @@ es:
     birth_date: 'Fecha de nacimiento'
     occupation: 'Ocupación'
     social_networks: 'Redes sociales'
-    wall: 'Comentarios'
+    wall: 'Muro'
 
   discussions:
     title: 'Discusiones'
@@ -398,19 +395,19 @@ es:
         dashboard: 'Panel de control'
         admin: 'Administración'
         configuration: "Configuración"
-        courses: Campañas
-        teachers: Gerentes
-        students: Vendedores
-        supervisors: Gerentes
+        courses: Cursos
+        teachers: Maestros
+        students: Estudiantes
+        supervisors: Administradores
         reports: 'Reportes'
-        pending_approvals: Registros de Gerentes pendientes
+        pending_approvals: Registros de maestros pendientes
         new_user: "Crear nuevo usuario"
       teachers:
         approve: Aceptar
         reject: Rechazar
-        teacher: Administrador
-        student: Vendedor
-        supervisor: Gerente
+        teacher: Maestro
+        student: Estudiante
+        supervisor: Administrador
         update: Actualizar
         change_role: Cambiar rol
         destroy: Eliminar
@@ -421,28 +418,28 @@ es:
       approve: Aceptar
       reject: Rechazar
     teachers:
-      registered_teachers: Administradores registrados
+      registered_teachers: Maestros registrados
     students:
-      student: Vendedor
-      teacher: Gerente
-      supervisor: Gerente
+      student: Estudiante
+      teacher: Maestro
+      supervisor: Administrador
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      registered_students: Vendedores inscritos
+      registered_students: Estudiantes inscritos
     supervisors:
-      singular_supervisor: Gerente
-      plural_supervisor: Gerentes
+      singular_supervisor: Administrador
+      plural_supervisor: Administradores
       update: Actualizar
       change_role: Cambiar rol
       destroy: Eliminar
-      teacher: Administrador
-      student: Vendedor
-      supervisor: Gerente
-    export_students: "Exportar Vendedores"
-    import_students: "Importar Vendedores"
-    export_teachers: "Exportar Administradores"
-    import_teachers: "Importar Administradores"
+      teacher: Maestro
+      student: Estudiante
+      supervisor: Administrador
+    export_students: "Exportar estudiantes"
+    import_students: "Importar estudiantes"
+    export_teachers: "Exportar maestros"
+    import_teachers: "Importar maestros"
     networks:
       edit:
         example: 'Ejemplo:'
@@ -459,64 +456,63 @@ es:
     header: Notificaciones
     show_requests: Ver solicitudes
     show_delivery: Ver entrega
-    show_courses: Ver Campañas
-    show_assignment: Ver Contenido
+    show_courses: Ver cursos
+    show_assignment: Ver tarea
     show_survey: Ver cuestionario
     show_survey_reply: Ver respuestas
     show_comment: Ver comentario
     show_discussion: Ver discusión
-    wants_to_participate_in_course: quiere participar en el Campaña
-    has_delived_assignment: ha entregado la Contenido
+    wants_to_participate_in_course: quiere participar en el curso
+    has_delived_assignment: ha entregado la tarea
     has_answered_the_survey: ha contestado el cuestionario
-    for_the_course: para el Campaña
+    for_the_course: para el curso
     has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
-    your_course_request: Tu solicitud para participar en el Campaña
+    your_course_request: Tu solicitud para participar en el curso
     was_rejected: fue rechazada
-    you_where_accepted_for_course: Has sido aceptado para participar en el Campaña
-    assignment_added: Se ha creado la Contenido
-    assignment_updated: Se ha actualizado la Contenido
+    you_where_accepted_for_course: Has sido aceptado para participar en el curso
+    assignment_added: Se ha creado la tarea
+    assignment_updated: Se ha actualizado la tarea
     survey_added: Se ha creado el cuestionario
     users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión
-    has_posted_a_comment_on_comment: ha comentado en uno de tus Comentarios
+    has_posted_a_comment_on_comment: ha comentado en uno de tus comentarios
     has_posted_a_comment_on_discussion: ha comentado en la discusión
-    has_posted_a_comment_on_user: ha comentado en tu Comentarios
-    has_posted_a_comment_on_course: ha comentado en el Comentarios del Campaña
-    has_register: Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!
-        
+    has_posted_a_comment_on_user: ha comentado en tu muro
+    has_posted_a_comment_on_course: ha comentado en el muro del curso
+    
   user_mailer:
     new_comment_on_user:
-      subject: Nuevo comentario en tu Comentarios
+      subject: Nuevo comentario en tu muro
     new_comment_on_discussion:
       subject: Nuevo comentario en una de tus discusiones
     new_comment_on_course:
-      subject: Nuevo comentario en el Comentarios de uno de tus Campañas
+      subject: Nuevo comentario en el muro de uno de tus cursos
     new_comment_on_comment:
       subject: Nueva respuesta sobre tu comentario
     new_discussion:
-      subject: Nueva discusión en uno de tus Campañas
+      subject: Nueva discusión en uno de tus cursos
     new_user_by_supervisor:
       subject: Bienvenido a Cúrsame
       
   teacher_mailer:
     pending_user_on_course:
-      subject: Un usuario ha solicitado acceso a uno de tus Campañas
-      teacher: Gerente
-      student: venderor
+      subject: Un usuario ha solicitado acceso a uno de tus cursos
+      teacher: maestro
+      student: alumno
       
   supervisor_mailer:
     new_teacher_registered:
-      subject: Un Administrador ha solicitado acceso a tu red
+      subject: Un maestro ha solicitado acceso a tu red
     finished_upload_users:
       subject: Importación de usuarios completa
       
   student_mailer:
     accepted_on_course:
-      subject: Solicitud de ingreso al Campaña %{course_name} aceptada
+      subject: Solicitud de ingreso al curso %{course_name} aceptada
     new_homework:
-      subject: Nueva Contenido en uno de tus Campañas
+      subject: Nueva tarea en uno de tus cursos
     new_survey:
-      subject: Nuevo cuestionario en uno de tus Campañas
+      subject: Nuevo cuestionario en uno de tus cursos
       
   user:
     errors:

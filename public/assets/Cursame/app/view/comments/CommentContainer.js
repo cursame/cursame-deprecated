@@ -9,6 +9,6 @@ Ext.define('Cursame.view.comments.CommentContainer', {
 	xtype:'commentcontainer',
     
     config: {
-         tpl : Ext.create('Cursame.view.comments.CommentTpl',true,true)
+         tpl : Ext.create('Cursame.view.comments.CommentTpl',true)
     }
 });
