@@ -13,6 +13,8 @@ Cursame::Application.configure do
   config.assets.initialize_on_precompile = false
   config.assets.compile = true
 
+  config.assets.precompile += %w[*.png *.jpg *.jpeg *.gif]
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
   # Specifies the header that your server uses for sending files
