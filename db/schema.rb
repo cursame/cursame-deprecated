@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(:version => 20120803090904) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slogan"
-    t.text     "welcome_message"#,:limit => 255
+    t.text     "welcome_message",:limit => 255
     t.string   "logo_file"
     t.string   "time_zone"
     t.boolean  "public_registry",                 :default => true
