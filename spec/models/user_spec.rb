@@ -21,17 +21,18 @@ describe User do
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :first_name }
   end
-  describe 'default avatar' do
-     describe 'teacher' do
-       it { Factory.build(:teacher).avatar_file.small.url.should   == "/assets/teacher_small.png" }
-       it { Factory.build(:teacher).avatar_file.xsmall.url.should  == "/assets/teacher_xsmall.png" }
-       it { Factory.build(:teacher).avatar_file.xxsmall.url.should == "/assets/teacher_xxsmall.png" }
-     end
 
-     describe 'student' do
-       it { Factory.build(:student).avatar_file.small.url.should   == "/assets/student_small.png" }
-       it { Factory.build(:student).avatar_file.xsmall.url.should  == "/assets/student_xsmall.png" }
-       it { Factory.build(:student).avatar_file.xxsmall.url.should == "/assets/student_xxsmall.png" }
-     end
-   end
+  describe 'default avatar' do
+    describe 'teacher' do
+      it { Factory.build(:teacher).avatar_file.small.url.should   == "/assets/teacher_small.png" }
+      it { Factory.build(:teacher).avatar_file.xsmall.url.should  == "/assets/teacher_xsmall.png" }
+      it { Factory.build(:teacher).avatar_file.xxsmall.url.should == "/assets/teacher_xxsmall.png" }
+    end
+
+    describe 'student' do
+      it { Factory.build(:student).avatar_file.small.url.should   == "/assets/student_small.png" }
+      it { Factory.build(:student).avatar_file.xsmall.url.should  == "/assets/student_xsmall.png" }
+      it { Factory.build(:student).avatar_file.xxsmall.url.should == "/assets/student_xxsmall.png" }
+    end
+  end
 end
