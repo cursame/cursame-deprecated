@@ -21,7 +21,7 @@
    <%end%>
  
 <%end%>
-  <%= image_tag(@user.avatar_file.small.url) %>
+  <%= image_tag @user.avatar_file.small.url %>
 </div>
 <div class="underline">	
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
