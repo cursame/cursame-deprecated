@@ -169,6 +169,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def to_s
+    name
+  end
+
   private
   def correct_email_if_private_registration
     network = self.networks.first

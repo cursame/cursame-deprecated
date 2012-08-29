@@ -19,6 +19,10 @@ class Network < ActiveRecord::Base
   validates_presence_of :registry_domain, :if => :registry_is_private, :on => :update
 
   mount_uploader :logo_file, LogoUploader
+
+  def to_s
+    name
+  end
   
   private
   
