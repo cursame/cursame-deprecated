@@ -17,7 +17,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new params[:user]
-    password = Devise.friendly_token[0,20]
+    #password = Devise.friendly_token[0,20]
+    password = @password  
     build_user(password)
     if @user.save
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
