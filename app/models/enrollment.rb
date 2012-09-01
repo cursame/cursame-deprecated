@@ -25,7 +25,7 @@ class Enrollment < ActiveRecord::Base
       transitions :to => :rejected, :from => [:pending, :accepted]
     end
   end
-  
+
   def after_transition(enrollment, transition)
     Audit.log(enrollment, transition)
   end

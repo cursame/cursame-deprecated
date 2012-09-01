@@ -1,7 +1,5 @@
-GIT
-  remote: git://github.com/innku/innsights-gem.git
-  revision: 4ced9eefc890a2959ceebab38e6968bab74ad62b
-  branch: develop
+PATH
+  remote: ~/Code/Web/innsights-gem/
   specs:
     innsights (0.1.0)
       daemons
@@ -10,7 +8,7 @@ GIT
       rails (>= 3.0.0)
       resque
       rest-client
-      ruby-progressbar (~> 0.0.10)
+      ruby-progressbar
 
 GEM
   remote: http://rubygems.org/

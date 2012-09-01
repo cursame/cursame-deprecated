@@ -22,6 +22,7 @@ class AssignmentsController < ApplicationController
     @assignment = manageable_course.assignments.build(params[:assignment])
    
     if @assignment.save
+      Innsights.report("Tarea creada", :user => current_user, :group => current_network).run
       redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
       render 'new'
@@ -37,6 +38,7 @@ class AssignmentsController < ApplicationController
     @assignment = manageable_assignment
 
     if @assignment.update_attributes params[:assignment]
+      Innsights.report("Tarea actualizada", :user => current_user, :group => current_network).run
       redirect_to @assignment, :notice => I18n.t('flash.assignment_updated')
     else
       render 'edit'
@@ -45,6 +47,7 @@ class AssignmentsController < ApplicationController
 
   def destroy
     manageable_assignment.destroy
+    Innsights.report("Tarea eliminada", :user => current_user, :group => current_network).run
     redirect_to course_assignments_path(manageable_assignment.course), :notice => I18n.t('flash.assignment_deleted')
   end
 

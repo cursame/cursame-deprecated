@@ -77,6 +77,7 @@ class CoursesController < ApplicationController
   def update
     @course = current_user.manageable_courses.find params[:id]
     if @course.update_attributes params[:course]
+      Innsights.report('Curso editado', :user => current_user, :group => current_network).run
       redirect_to @course, :notice => t('flash.course_updated')
     else
       render :new

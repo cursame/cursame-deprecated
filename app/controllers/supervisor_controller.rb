@@ -58,6 +58,7 @@ class SupervisorController < ApplicationController
 
     if @user.networks.include? current_network
       @user.state = 'active'
+
       @user.save(:validate => false)
     end
     
