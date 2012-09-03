@@ -1,5 +1,5 @@
 var txtarea;
-<% if @comment.commentable_type === 'Comment' %>
+<% if @comment.commentable_type === 'Comment' %>	
     var node = $('#comment_<%= @comment.commentable.id %>').closest('.comment').find('.comment-form'),
         options,comment_link;
         txtarea = $('textarea', node);
@@ -13,10 +13,10 @@ var txtarea;
       $(this).remove();
     });
 <%else%>
-    var node = $('div.comments');
-        txtarea =$('textarea', $('div.actions'));
-        $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
-    $('.actions input[type=submit]').removeAttr('disabled');
+    var node = $('div.comments').first();
+    txtarea =$('textarea', $('div.actions'));
+	$(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
+	$('.actions input[type=submit]').removeAttr('disabled');
     $('.actions fieldset.new').slideUp('slow', function(){
       $(this).remove();
     });
