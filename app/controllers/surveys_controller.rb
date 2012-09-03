@@ -20,6 +20,7 @@ class SurveysController < ApplicationController
     @survey = manageable_course.surveys.build(params[:survey])
     if @survey.save
       flash[:notice] = I18n.t('flash.survey_created')
+      Innsights.report("Cuestionario creado", :user => current_user, :group => current_network).run
       redirect_to @survey
     else
       render 'new'
@@ -48,6 +49,7 @@ class SurveysController < ApplicationController
     @survey = current_user.manageable_surveys.find params[:id]
     if @survey.update_attributes params[:survey]
       flash[:notice] = I18n.t('flash.survey_updated')
+      Innsights.report("Cuestionario editado", :user => current_user, :group => current_network).run
       redirect_to @survey
     else
       @course = @survey.course
@@ -58,6 +60,7 @@ class SurveysController < ApplicationController
   def destroy
     survey = current_user.manageable_surveys.find(params[:id])
     survey.destroy
+    Innsights.report("Cuestionario eliminado", :user => current_user, :group => current_network).run
     redirect_to course_surveys_path(survey.course), :notice => I18n.t('flash.survey_deleted')
     @tutoriales = Tutoriale.all
     @banner = Banner.last

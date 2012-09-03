@@ -162,14 +162,75 @@ Innsights.setup do
   # app/controllers/assignments_controller.rb:55
   
   # crear cuestionario 
+  # app/controllers/surveys_controller.rb:22
   #
   # editar cuestionario 
+  # app/controllers/surveys_controller.rb:51
   #
   # eliminar cuestionario 
+  # app/controllers/surveys_controller.rb:62
   #
   # crear discusión 
+  # app/controllers/discussions_controller.rb:19
   #
   # editar discusión 
+  # app/controllers/discussions_controller.rb:52
   #
   # eliminar discusión 
+  # app/controllers/discussions_controller.rb:40
+  #
+  # ================== Alumno 
+  # solicitar unirse a un curso (arriba)
+  # comentar en un muro de un perfil (arriba)
+  #
+  # entregar una tarea 
+  watch Delivery do
+    report "Tarea entregada"
+
+    group do |delivery|
+      delivery.assignment.course.network
+    end
+
+    user :user
+    upon :create
+  end
+
+  # contestar un cuestionario 
+  watch SurveyReply do
+    report "Respuesta a cuestionario entregada"
+
+    group do |survey|
+      survey.course.network
+
+    end
+
+    user :user
+    upon :create
+  end
+  
+  # editar una entrega 
+  watch Delivery do
+    report "Tarea editada"
+
+    group do |delivery|
+      delivery.assignment.course.network
+    end
+
+    user :user
+    upon :update
+    timestamp :updated_at
+  end
+
+  # editar una respuesta de cuestionario 
+  watch SurveyReply do
+    report "Respuesta a cuestionario editada"
+
+    group do |survey|
+      survey.course.network
+    end
+
+    user :user
+    upon :update
+    timestamp :updated_at
+  end
 end
