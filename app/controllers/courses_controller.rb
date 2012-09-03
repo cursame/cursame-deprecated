@@ -51,7 +51,7 @@ class CoursesController < ApplicationController
     else
       @course = current_network.courses.build params[:course]      
     end
-    
+    @tutoriales = Tutoriale.all
     @course.enrollments.build(:user => current_user, :admin => true, :role => 'teacher', :state => 'accepted')
     
     if @course.save
