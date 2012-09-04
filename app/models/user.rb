@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
  
  
   validates_presence_of :first_name, :last_name
-  validates_inclusion_of :role,  :in => %w(student teacher supervisor)
+  validates_inclusion_of :role,  :in => %w(student teacher supervisor admin)
   validates_inclusion_of :state, :in => %w(active inactive)
 
   validate :correct_email_if_private_registration

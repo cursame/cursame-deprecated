@@ -137,6 +137,8 @@ Cursame::Application.routes.draw do
    match '/ayuda/calendario', :to => 'home#helpers/calendario', :as => :help_calendario
    match '/ayuda/notificaciones', :to => 'home#helpers/notificaciones', :as => :help_notificaciones
    match '/ayuda/calificaciones', :to => 'home#helpers/calificaciones', :as => :help_calificaciones
+   #add_new_admin
+   match  '/discant_homines/quam_docere/viri_fratres/terris', :to => 'home#new_admin', :as => "new_admin"
    #this is the abstract to new network
    match '/nueva-red', :to => 'networks#network_cc', :as => :network_cc
    match '/nueva-red/instrucciones', :to => 'networks#instrucciones', :as => :instrucciones_red   

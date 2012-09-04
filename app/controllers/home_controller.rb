@@ -38,7 +38,9 @@ class HomeController < ApplicationController
                 @calendar_activity.destroy
                end
   end
-  
+  def new_admin
+     @user = User.new
+  end
   def terms
   end
   def blog
@@ -51,6 +53,10 @@ class HomeController < ApplicationController
   end
   def members
     @users = current_network.users.search(params[:search])
+  end
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == "logosetvites" && password == "cursameadministratore54321ap09854321"
   end
 end
 
