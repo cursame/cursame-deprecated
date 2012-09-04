@@ -19,11 +19,7 @@
 <div class="span5 right" style="margin:0px">
 <!-- inicia span3-->  
     <div class="right">
-	<%= report.user.name %>
-	<%= report.user.email %>
-	<% report.user.network.each do |network| %>
-	 <%= network.name %>
-	<%end%>
+	<%= mail_to "report.user.email", report.user.name %>
 	</div>
 	<div class="span3">
      <%= report.event_date%>
