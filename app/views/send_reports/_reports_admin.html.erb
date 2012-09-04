@@ -17,13 +17,17 @@
            </br>   
 <!-- inicia span5 rigth-->
 <div class="span5 right" style="margin:0px">
-<!-- inicia span3-->
-    <div class="span3">
-     <%= report.event_date%>
-    </div>
+<!-- inicia span3-->  
     <div class="right">
 	<%= report.user.name %>
+	<%= report.user.email %>
+	<% report.user.network.each do |network| %>
+	 <%= nentwork.name %>
+	<%end%>
 	</div>
+	<div class="span3">
+     <%= report.event_date%>
+    </div>
 <!--termina span3-->
 <!--inicia span1-->
      <div class="span1">
