@@ -5,7 +5,7 @@
     <div class="span11" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px;  padding:10px;">
 	<!-- inicia span5-->
        <div class="span5">
-          <h3>  <%= report.title%> </h3>
+          <h3> <%= report.title%> </h3>
         </div>
     	<!-- termina span5-->
            </br>
@@ -21,6 +21,9 @@
     <div class="span3">
      <%= report.event_date%>
     </div>
+    <div class="right">
+	<%= report.user.name %>
+	</div>
 <!--termina span3-->
 <!--inicia span1-->
      <div class="span1">
