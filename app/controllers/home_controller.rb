@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc]
+  skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc, :new_admin]
   set_tab :dashboard
 
   def index
@@ -54,13 +54,14 @@ class HomeController < ApplicationController
   def members
     @users = current_network.users.search(params[:search])
   end
+  def network_cc
+    @network = Network.new
+    @user = User.new
+  end
   def authenticate
     authenticate_or_request_with_http_basic do |username, password|
       username == "logosetvites" && password == "cursameadministratore54321ap09854321"
+    end
   end
 end
 
-def network_cc
-  @network = Network.new
-  @user = User.new
-end
