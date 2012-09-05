@@ -95,7 +95,7 @@
 <script type="text/javascript" charset="utf-8">
 	var coursesResume = [<%= Comment.count %>,<%= Comment.total_comments_assignments %>,
 			<%= Comment.total_comments_discussions  %>,
-			<%= Comment.total_comments_user_walls  %>,<%= Comment.total_comments_course_walls *  %>];
+			<%= Comment.total_comments_user_walls  %>,<%= Comment.total_comments_course_walls %>];
 	renderCommentsGraph('comments_resume', coursesResume);
 </script>
 
