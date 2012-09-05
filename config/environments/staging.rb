@@ -8,6 +8,7 @@ Cursame::Application.configure do
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
+  config.assets.initialize_on_precompile = false
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
   # Specifies the header that your server uses for sending files
