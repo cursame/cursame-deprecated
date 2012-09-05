@@ -19,11 +19,11 @@ class UsersController < ApplicationController
     @user = User.new params[:user]
     password = Devise.friendly_token[0,20]
     build_user(password)
-    if @user.save
+    if @user.save!
       UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
       redirect_to @user, :notice => I18n.t('flash.user_created')
     else
-      render 'supervisor/new_user'
+      render 'supervisor/new_user', :notice => "envio fallido"
     end
   end
   
