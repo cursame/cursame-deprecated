@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  before_filter :authenticate, :only => [:new_admin]
   skip_before_filter :authenticate_active_user_within_network!, :only => [:index, :terms, :network_cc, :new_admin]
   set_tab :dashboard
 
