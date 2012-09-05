@@ -82,7 +82,7 @@ def network_cc
   @user = User.new
   
 end
-def authenticate
+ def authenticate
   authenticate_or_request_with_http_basic do |username, password|
     username == "logosetvites" && password == "cursameadministratore54321ap09854321"
   end

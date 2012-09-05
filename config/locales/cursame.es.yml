@@ -465,23 +465,23 @@ es:
     show_survey_reply: Ver respuestas
     show_comment: Ver comentario
     show_discussion: Ver discusión
-    wants_to_participate_in_course: quiere participar en el Campaña
+    wants_to_participate_in_course: quiere participar en la Campaña
     has_delived_assignment: ha entregado la Contenido
     has_answered_the_survey: ha contestado el cuestionario
-    for_the_course: para el Campaña
+    for_the_course: para la Campaña
     has_updated_survey_answers: ha actualizado sus respuestas para el cuestionario
-    your_course_request: Tu solicitud para participar en el Campaña
+    your_course_request: Tu solicitud para participar en la Campaña
     was_rejected: fue rechazada
-    you_where_accepted_for_course: Has sido aceptado para participar en el Campaña
-    assignment_added: Se ha creado la Contenido
-    assignment_updated: Se ha actualizado la Contenido
+    you_where_accepted_for_course: Has sido aceptado para participar en la Campaña
+    assignment_added: Se ha creado el Contenido
+    assignment_updated: Se ha actualizado el Contenido
     survey_added: Se ha creado el cuestionario
     users_uploaded: Se ha terminado de crear usuarios mediante archivo CSV
     discussion_added: Se ha creado la discusión
     has_posted_a_comment_on_comment: ha comentado en uno de tus Comentarios
     has_posted_a_comment_on_discussion: ha comentado en la discusión
     has_posted_a_comment_on_user: ha comentado en tu Comentarios
-    has_posted_a_comment_on_course: ha comentado en el Comentarios del Campaña
+    has_posted_a_comment_on_course: ha comentado en el Comentarios la Campaña
     has_register: Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!
         
   user_mailer:
@@ -494,7 +494,7 @@ es:
     new_comment_on_comment:
       subject: Nueva respuesta sobre tu comentario
     new_discussion:
-      subject: Nueva discusión en uno de tus Campañas
+      subject: Nueva discusión en una de tus Campañas
     new_user_by_supervisor:
       subject: Bienvenido a Cúrsame
       
