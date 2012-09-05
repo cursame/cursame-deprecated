@@ -78,7 +78,8 @@ Ext.define('Cursame.view.LoginForm', {
 									
 									if(record){ //si existe el usuario
 										Cursame.User = record;
-										form.fireEvent('login', form);
+										localStorage.setItem("User", Ext.encode(op._response.response.user));
+										form.fireEvent('login', form);																		
 									}
 									else{
 										form.setMasked({

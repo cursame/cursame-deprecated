@@ -1,6 +1,6 @@
 /*
 * This is the lang object
-* @manduks
+* @manduks <iam@armando.mx>
 * */
 var language ={
     es:{
@@ -17,7 +17,7 @@ var language ={
         courseInfo:'Información de la Campaña',
         wall:'Muro',
         assignments:'Contenidos',
-        surveys:'Quizzes',
+        surveys:'Cuestionarios',
         discussions:'Discusiones',
 		calendar:'Calendario',
         members:'Comunidad',
@@ -51,7 +51,8 @@ var language ={
 		occupation:'Ocupación :',
 		like:'Me gusta',
 		notLike:'Ya no me gusta',
-		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.'
+		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.',
+		sign_out:'Salir'
     },
     en:{
         appName: 'Cúrsame',
