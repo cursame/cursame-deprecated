@@ -5,8 +5,8 @@
 
 <div id="users_resume"> </div>
 	<script type="text/javascript" charset="utf-8">
-		var usersResume = [<%= Network.count %>,<%= (User.count).to_i %>,
-		<%= (User.total_supervisors) %>,<%= User.total_teachers %>,
+		var usersResume = [<%= Network.count %>,<%= User.count %>,
+		<%= User.total_supervisors %>,<%= User.total_teachers %>,
 		<%= User.total_students %>];
 		renderUsersGraph('users_resume', usersResume);
 </script>
@@ -25,11 +25,11 @@
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_users') %></td>
-      <td><%= (User.count ).to_i %></td>
+      <td><%= User.count  %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_supervisors') %></td>
-      <td><%= (User.total_supervisors ) %></td>
+      <td><%= User.total_supervisors %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_teachers') %></td>
@@ -74,15 +74,15 @@
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_assignments') %></td>
-      <td><%= (Assignment.count  ) %></td>
+      <td><%= Assignment.count %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_discussions') %></td>
-      <td><%= (Discussion.count ) %></td>
+      <td><%= Discussion.count %></td>
     </tr>
     <tr>
       <td><%= t('super_admin.statistics.total_surveys') %></td>
-      <td><%= (Survey.count ) %></td>
+      <td><%= Survey.count  %></td>
     </tr>
   </tbody>
 </table>
