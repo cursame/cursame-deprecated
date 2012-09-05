@@ -1,5 +1,6 @@
 <div class="img">
   <a href="<%= course_path(course) %>">
+	<%= link_to image_tag(course.course_logo_file.xxsmall.url), course_path(course) %>
     <img src="<%= course.course_logo_file.xxsmall.url %>" rel="tip" title="<% course.name %>">
   </a>
 </div>
