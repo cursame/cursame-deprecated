@@ -5,8 +5,7 @@ class HomeController < ApplicationController
  #tabs para modificar el menu del header      
     set_tab :dashboard, :only => %(dashboard)
     set_tab :members, :only => %(members)
-    
-  
+ 
   def index
     if current_user && current_user.active?
       case current_user.role
