@@ -1,6 +1,8 @@
 <div class="img">
+	<% @imagecourse = course.course_logo_file.xxsmall.url %>
+	
   <a href="<%= course_path(course) %>">
-    <img src="<%= image_tag(course.course_logo_file.xxsmall.url) %>" rel="tip" title="<% course.name %>">
+    <img src="<%= @imagecourse %>" rel="tip" title="<% course.name %>">
   </a>
 </div>
 
