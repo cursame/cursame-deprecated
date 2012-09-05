@@ -500,7 +500,7 @@ es:
       
   teacher_mailer:
     pending_user_on_course:
-      subject: Un usuario ha solicitado acceso a uno de tus Campañas
+      subject: Un usuario ha solicitado acceso a una de tus Campañas
       teacher: Gerente
       student: venderor
       
