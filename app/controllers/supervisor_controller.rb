@@ -2,7 +2,7 @@ require 'export_to_csv'
 
 class SupervisorController < ApplicationController
   include ExportToCsv
-
+  
   before_filter :authenticate_supervisor!
   set_tab :dashboard, :only => %w(dashboard)
   set_tab :teachers, :only => %w(teachers)

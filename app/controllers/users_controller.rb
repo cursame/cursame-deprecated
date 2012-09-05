@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   set_tab :profile, :only => %w(show)
   set_tab :wall,    :only => %w(wall)
     
-  before_filter :authenticate_supervisor!, :only => [:create]
+  #before_filter :authenticate_supervisor!, :only => [:create]
   def show
     find_user
     @favorite = Favorite.new
