@@ -15,7 +15,7 @@ Ext.Loader.setPath({
 
 Ext.application({
 	
-    name: 'Cursame',
+    name: 'Experto',
 	viewport: {
      autoMaximize: true
     },	

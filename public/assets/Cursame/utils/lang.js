@@ -1,6 +1,6 @@
 /*
 * This is the lang object
-* @manduks
+* @manduks <iam@armando.mx>
 * */
 var language ={
     es:{
@@ -17,7 +17,7 @@ var language ={
         courseInfo:'Información de la Campaña',
         wall:'Muro',
         assignments:'Contenidos',
-        surveys:'Quizzes',
+        surveys:'Cuestionarios',
         discussions:'Discusiones',
 		calendar:'Calendario',
         members:'Comunidad',
