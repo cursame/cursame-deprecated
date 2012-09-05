@@ -13,7 +13,7 @@ var txtarea;
       $(this).remove();
     });
 <%else%>
-    var node = $('div.comments');
+    var node = $('div.comments').first();
         txtarea =$('textarea', $('div.actions'));
         $(node).prepend('<%= escape_javascript(render(:partial => 'comments/comments_tpl', :locals => {:comment => @comment}))%>');
     $('.actions input[type=submit]').removeAttr('disabled');
