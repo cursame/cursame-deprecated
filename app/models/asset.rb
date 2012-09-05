@@ -20,7 +20,7 @@ class Asset < ActiveRecord::Base
                       :last_name => row["last name"].strip.capitalize,
                       :terms_of_service => "1")
       user.networks = [network]
-      password = "123456"
+      password = Devise.friendly_token[0,20]
       user.password = password
       user.confirmed_at = DateTime.now
       if user.save
