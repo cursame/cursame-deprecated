@@ -1,9 +1,9 @@
-<div class="img">
-	<% @imagecourse = course.course_logo_file.xxsmall.url %>
-  <a href="<%= course_path(course) %>">
-   <%=image_tag(@imagecourse) %>
-  </a>
-</div>
+
+	<div class="img">
+		<% @imagecourse = course.course_logo_file.xxsmall.url %>
+	   <%=link_to image_tag(@imagecourse). course_path(course) %>
+	</div>
+
 
 
 <%= I18n.t 'notifications.assignment_updated'%> <a href="<%= assignment_path(assignment) %>"><%= assignment.name %></a> 
