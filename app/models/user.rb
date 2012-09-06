@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
   # SE comoloca el cambio de tipo de usuario-
   has_many  :new_users_change_types
  
- 
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor admin)
   validates_inclusion_of :state, :in => %w(active inactive)
