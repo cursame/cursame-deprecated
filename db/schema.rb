@@ -350,7 +350,7 @@ ActiveRecord::Schema.define(:version => 20120820174259) do
     t.string   "linkedin_link"
     t.string   "avatar_file"
     t.string   "state",                  :default => "active"
-    t.boolean  "accepting_emails",       :default => true
+    t.boolean  "accepting_emails",       :default => false
     t.string   "authentication_token"
     t.integer  "chat_id"
     t.string   "calendar_activity"
