@@ -56,6 +56,7 @@ class UsersController < ApplicationController
   end
 
   def build_user(password)
+    password = Devise.friendly_token[0,20]
     @user.password = password
     @user.confirmed_at = DateTime.now
     @user.networks = [current_network]
