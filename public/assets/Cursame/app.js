@@ -10,14 +10,14 @@
 Ext.Loader.setPath({
     'Ext': '../assets/Cursame/sdk/src',
 	'Core': '../assets/Cursame/core',
-	'Cursame':'../assets/Cursame/app'
+	'Experto':'../assets/Cursame/app'
 });	
 
 Ext.application({
 	
     name: 'Experto',
 	viewport: {
-     //autoMaximize: true
+     autoMaximize: true
     },	
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
