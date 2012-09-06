@@ -14,7 +14,8 @@ class AssetsController < ApplicationController
     @asset_file.owner = current_user
     if valid_role? params[:role] 
       if @asset_file.save 
-        Asset.delay.import_csv(@asset_file.id, params[:role], current_network.id)
+        #Asset.delay.import_csv(@asset_file.id, params[:role], current_network.id)
+        Asset.import_csv(@asset_file.id, params[:role], current_network.id)
         redirect_to supervisor_dashboard_path, flash: {success: "Importando usuarios. Recibiras un correo y notificacion al terminar esta tarea."}
       else
         render 'supervisor/import_users'
