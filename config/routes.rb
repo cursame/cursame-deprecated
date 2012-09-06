@@ -77,6 +77,8 @@ Cursame::Application.routes.draw do
 
   resources :users do
     collection do
+      #crear una ruta create_user, cabiaste el form y el filter y cambiar a la accion create user
+      post :create_user
       post :upload_avatar,  :as => :upload_avatar_for
     end
     member do
@@ -158,6 +160,8 @@ Cursame::Application.routes.draw do
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
+  
+  
   
   root :to => "home#index"
   

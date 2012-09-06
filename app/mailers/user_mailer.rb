@@ -56,7 +56,7 @@ class UserMailer < ActionMailer::Base
     @network = network
     @password = password
 
-    mail to: @user.email
+    mail(to: @user.email)
   end
 
 end

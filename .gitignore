@@ -12,3 +12,4 @@ pickle-email*
 bin
 *.sqlite3-journal
 *~
+*.tar.gz
