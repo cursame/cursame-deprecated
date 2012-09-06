@@ -25,8 +25,8 @@ class Asset < ActiveRecord::Base
       user.confirmed_at = DateTime.now
       if user.save
         #UserMailer.delay.new_user_by_supervisor(user, network, password)
-        #UserMailer.new_user_by_supervisor(user, network, password)
-        Devise.reset_password_instructions(user, network, password)
+        UserMailer.new_user_by_supervisor(user, network, password)
+       
       else
         puts user.errors.full_messages
         invalid_users << user
