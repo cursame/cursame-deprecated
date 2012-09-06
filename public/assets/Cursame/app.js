@@ -10,12 +10,12 @@
 Ext.Loader.setPath({
     'Ext': '../assets/Cursame/sdk/src',
 	'Core': '../assets/Cursame/core',
-	'Experto':'../assets/Cursame/app'
+	'Cursame':'../assets/Cursame/app'
 });	
 
 Ext.application({
 	
-    name: 'Experto',
+    name: 'Cursame',
 	viewport: {
      autoMaximize: true
     },	
