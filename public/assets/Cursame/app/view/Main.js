@@ -21,6 +21,7 @@ Ext.define("Cursame.view.Main", {
         layout: 'card',
         fullscreen: true,
         autoDestroy: false
+
     }	
     
 });
