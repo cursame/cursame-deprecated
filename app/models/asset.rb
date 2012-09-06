@@ -18,6 +18,7 @@ class Asset < ActiveRecord::Base
                       :state => "active", 
                       :first_name => row["first name"].strip.capitalize, 
                       :last_name => row["last name"].strip.capitalize,
+                      :accepting_emails => true,
                       :terms_of_service => "1")
       user.networks = [network]
       password = Devise.friendly_token[0,20]
