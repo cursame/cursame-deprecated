@@ -90,7 +90,6 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (2.0.4)
-    fastercsv (1.5.5)
     faye (0.8.3)
       cookiejar (>= 0.3.0)
       em-http-request (>= 0.3.0)
@@ -332,7 +331,6 @@ DEPENDENCIES
   delayed_job_active_record
   devise (= 2.0)
   factory_girl (= 2.0.4)
-  fastercsv
   faye
   ffaker
   fog

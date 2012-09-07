@@ -12,12 +12,13 @@ class Asset < ActiveRecord::Base
     invalid_users = []
     network = Network.find network_id
 
-    CSV.parse(file.read, :headers => true) do |row|
+    CSV.parse(file.read.unpack("C*").pack("U*"), :headers => true) do |row|
+      puts row["email"]
       user = User.new(:email => row["email"],
                       :role => role, 
                       :state => "active", 
-                      :first_name => row["first name"].strip.capitalize, 
-                      :last_name => row["last name"].strip.capitalize,
+                      :first_name => row["first_name"] ? row["first_name"].strip.capitalize : "Sin nombre", 
+                      :last_name => row["last_name"] ? row["last_name"].strip.capitalize : "Sin nombre",
                       :accepting_emails => true,
                       :terms_of_service => "1")
       user.networks = [network]

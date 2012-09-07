@@ -17,7 +17,6 @@ gem "tabs_on_rails",        "~> 2.0.2"
 gem "auto_html"
 gem "transitions", :require => ["transitions", "active_record/transitions"]
 gem "csv_builder"
-gem "fastercsv"
 gem 'delayed_job_active_record'
 gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
