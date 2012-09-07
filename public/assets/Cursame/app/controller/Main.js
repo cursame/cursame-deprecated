@@ -156,6 +156,10 @@ Ext.define('Cursame.controller.Main', {
 				push:'onViewPush',
 				pop:'onViewPop'
 			},
+			'networknavigationview':{
+				push:'onNetworkNavigationViewPush',
+				pop:'onNetworkNavigationViewPop'
+			},
 			'notificationnavigationview #backBtn':{
 				tap:'goToWall'
 			},
@@ -186,6 +190,15 @@ Ext.define('Cursame.controller.Main', {
 	},
 	onViewPop:function(view,popedview,obj){
 		var btn = view.down('#backBtn');
+		if(view.getItems().length === 2){
+			btn.show();
+		}
+	},
+	onNetworkNavigationViewPush:function(view,pushedview,obj){
+		view.down('#signOut').hide();
+	},
+	onNetworkNavigationViewPop:function(view,popedview,obj){
+		var btn = view.down('#signOut');
 		if(view.getItems().length === 2){
 			btn.show();
 		}

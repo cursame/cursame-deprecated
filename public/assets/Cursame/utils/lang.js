@@ -52,7 +52,9 @@ var language ={
 		like:'Me gusta',
 		notLike:'Ya no me gusta',
 		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.',
-		sign_out:'Salir'
+		sign_out:'Salir',
+		emptyTextNotifications :'Aún no tienes notificaciones.',
+		loadMoreText:'Cargar más...'
     },
     en:{
         appName: 'Cúrsame',

@@ -21,7 +21,8 @@ Ext.define('Cursame.view.courses.CourseList', {
             'pullrefresh',
             {
                 type: 'listpaging',
-                autoPaging: true
+                autoPaging: true,
+				loadMoreText:lang.loadMoreText
             }
         ],
 		itemTpl: Ext.create('Ext.XTemplate',
