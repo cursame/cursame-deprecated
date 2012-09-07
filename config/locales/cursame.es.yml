@@ -496,7 +496,7 @@ es:
     new_discussion:
       subject: Nueva discusión en una de tus Campañas
     new_user_by_supervisor:
-      subject: Bienvenido a Cúrsame
+      subject: Bienvenido a Experto Movistar
       
   teacher_mailer:
     pending_user_on_course:
