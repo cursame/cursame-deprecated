@@ -25,8 +25,8 @@ class Asset < ActiveRecord::Base
       user.password = password
       user.confirmed_at = DateTime.now
       if user.save
-        #UserMailer.delay.new_user_by_supervisor(user, network, password)
-        UserMailer.new_user_by_supervisor(user, network, password).deliver
+        UserMailer.delay.new_user_by_supervisor(user, network, password)
+        # UserMailer.new_user_by_supervisor(user, network, password).deliver
        
       else
         puts user.errors.full_messages
