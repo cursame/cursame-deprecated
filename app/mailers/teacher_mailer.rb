@@ -11,6 +11,6 @@ class TeacherMailer < ActionMailer::Base
     @course = course
     @subdomain = network.subdomain
 
-    mail to: teachers.all.map(&:email).join(", ")
+    mail to: teachers.map(&:email).join(", ")
   end
 end
