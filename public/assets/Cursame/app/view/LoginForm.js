@@ -40,12 +40,10 @@ Ext.define('Cursame.view.LoginForm', {
 			items:[{
 				xtype:'emailfield',
 				name:'email',
-				value:'iam@armando.mx',
 				clearIcon: true
 			},{
 				xtype:'passwordfield',
 				name:'password',
-				value:'mmmmmm',
 				clearIcon: true
 			}]
 		},	{			
