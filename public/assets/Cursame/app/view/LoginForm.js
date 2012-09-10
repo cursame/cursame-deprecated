@@ -19,48 +19,40 @@ Ext.define('Cursame.view.LoginForm', {
 		ui:'login',
         padding:'15 15 15 15',
 		style:{
-			backGroundColor:'#FFF'
+			backGroundColor:'#005C84'
 		},
 		items:[{
-			xtype:'container',
-			height:70,
+			xtype:'image',
+			margin : '30 0 0 0',
+			height:80,
+			//src: Cursame.src+'resources/images/avatar_normal.png'
 		},{			
-				xtype:'container',
-				layout:'hbox',
-				height: 64,
-				items:[{
-						xtype:'container',						
-						flex:1					
-					},{
-						xtype:'image',
-						padding:'15 15 15 15',	
-						src: Cursame.src+'resources/images/cursa.png',						
-						width: 150
-				},{
-						xtype:'container',
-						flex:1
-				}]
+			xtype:'image',
+			layout:'hbox',
+			height: 48,
+			src: Cursame.src+'resources/images/cursa.png'
+				
 		},{
 			xtype:'fieldset',
 			defaults:{
-				 required: true,
+				 required: true
 			},
 			items:[{
 				xtype:'emailfield',
 				name:'email',
-				placeHolder :lang.email,
+				value:'iam@armando.mx',
 				clearIcon: true
 			},{
 				xtype:'passwordfield',
 				name:'password',
-				placeHolder:lang.password,
+				value:'mmmmmm',
 				clearIcon: true
 			}]
 		},	{			
 					xtype:'fieldset',
 					items:[{
 						xtype:'button',
-						text:lang.login,
+						text:'<div class = "movi-color">'+lang.login+'</div>',
 						ui:'accept',
 						handler: function(btn) {
 							var form,obj;
@@ -86,7 +78,8 @@ Ext.define('Cursame.view.LoginForm', {
 									
 									if(record){ //si existe el usuario
 										Cursame.User = record;
-										form.fireEvent('login', form);
+										localStorage.setItem("User", Ext.encode(op._response.response.user));
+										form.fireEvent('login', form);																		
 									}
 									else{
 										form.setMasked({

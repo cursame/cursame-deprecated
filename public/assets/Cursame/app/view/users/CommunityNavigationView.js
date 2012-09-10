@@ -1,17 +1,18 @@
 /**
- * @class Cursame.view.notifications.CourseNavigationView
+ * @class Cursame.view.users.CommunityNavigationView.js
  * @extends Ext.navigation.View
- * The navigation view of the courses, this is to navigate between the courses
+ * The navigation view of the cursame community, this is to navigate between the communitty users
+ * @author @manduks
  */
-Ext.define('Cursame.view.users.UserNavigationView', {
+Ext.define('Cursame.view.users.CommunityNavigationView', {
 	extend: 'Ext.navigation.View',
-	xtype: 'usernavigationview',
+	xtype: 'communitynavigationview',
 
-	requires: ['Cursame.view.users.UserWall'],
+	requires: ['Cursame.view.users.UserList'],
 	config: {
 		items: {
-			xtype: 'userwall',
-			title: lang.profilee
+			xtype: 'userslist',
+			title: lang.members
 		},
 		navigationBar: {
 			items: [{
@@ -19,12 +20,12 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 				ui: 'back',
 				itemId:'backBtn',
 				text:'Back'
-			}, {
-				iconCls: 'movistar',
+			}/*, {
+				iconCls: 'cursame',
 				iconMask: true,
 				ui: 'plain',
 				align: 'right'
-			}],
+			}*/],
 		}
 	},
 	applyLayout: function(config) {

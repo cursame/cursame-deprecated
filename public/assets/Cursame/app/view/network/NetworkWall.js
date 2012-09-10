@@ -1,13 +1,13 @@
 /**
- * @class Cursame.view.courses.CourseWall
- * @extends Container
- * Description
+ * @class Cursame.view.network.NetworkWall
+ * @extends Ext.List
+ * This the network wall component
  */
-Ext.define('Cursame.view.courses.CourseWall', {
+Ext.define('Cursame.view.network.NetworkWall', {
     extend: 'Ext.List',
-	xtype:'coursewall',
+	xtype:'networkwall',
     
-	requires:['Cursame.view.courses.CourseContainer','Cursame.view.comments.CommentTpl','Cursame.view.comments.CommentToolbar'],
+	requires:['Cursame.view.comments.CommentTpl','Cursame.view.comments.CommentToolbar'],
 	
     config: {
 		store:'Comments',

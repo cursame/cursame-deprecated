@@ -6,7 +6,9 @@ Ext.Loader.setPath({
 Ext.application({
 	
     name: 'Cursame',
-	
+	viewport: {
+     //autoMaximize: true
+    },
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
 

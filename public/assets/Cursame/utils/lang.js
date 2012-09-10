@@ -48,7 +48,14 @@ var language ={
 		limitDate:'Fecha Límite',
 		about_me:'Acerca de mí :',
 		studies:'Estudios :',
-		occupation:'Ocupación :'
+		occupation:'Ocupación :',
+		like:'Me gusta',
+		notLike:'Ya no me gusta',
+		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.',
+		sign_out:'Salir',
+		emptyTextNotifications :'Aún no tienes notificaciones.',
+		loadMoreText:'Cargar más...',
+		community:'Comunidad'
     },
     en:{
         appName: 'Cúrsame',

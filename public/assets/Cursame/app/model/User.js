@@ -11,7 +11,7 @@ Ext.define('Cursame.model.User', {
 			'id',
 			'about_me',
 			{name:'token', mapping:'authentication_token'},
-			'avatar_file',
+			{name:'avatar_file', mapping:'avatar_file.small.url'},
 			'birth_date',
 			'email',
 			'facebook_link',
