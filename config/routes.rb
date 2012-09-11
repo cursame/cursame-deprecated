@@ -1,9 +1,10 @@
 Cursame::Application.routes.draw do
 
   #Errores personalizados:
-  unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
-  end
+
+  #unless Rails.application.config.consider_all_requests_local
+  #  match '*not_found', to: 'errors#error_404'
+  #end
 
   get "autocomplete_networks/index"
 
