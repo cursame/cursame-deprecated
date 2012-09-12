@@ -15,19 +15,17 @@
       <div class="span5">
         <%= render :partial => "supervisor/shared/admin_menu" %>
       </div>
-     <%@password = Devise.friendly_token[0,20]%>
+
       <div class="span9">
         <h2><%= t('supervisor.shared.admin_menu.new_user') %></h2>
-        <%= semantic_form_for @user, :url => users_path, :method => :post  do |form| %>
+        <%= semantic_form_for @user, :url => create_user_users_path, :method => :post  do |form| %>
           <%= form.inputs :basic do %>
             <%= form.input :email, :input_html => { :placeholder => t('forms.email') + " *", :class => "span4" } %>
             <%= form.input :first_name, :input_html => { :placeholder => t('forms.first_name') + " *", :class => "span4", :style => 'margin-right:10px;' }%>
             <%= form.input :last_name, :input_html => { :placeholder => t('forms.last_name'), :class => "span4" } %>
-            <%= form.input :role, :as => :select, :collection => { "Profesor" => "teacher", "Estudiante" => "student", "Administrador" => "supervisor" },
+            <%= form.input :role, :collection => { "Profesor" => "teacher", "Estudiante" => "student", "Administrador" => "supervisor" },
               :prompt => t("formtastic.actions.select_one"), :hint => "El usuario recibirá un e-mail a su correo con una contraseña aleatoria" %>
-             <%= form.text_field :password, :value => @password %>
-             <%= form.text_field :password_confirmation, :value => @password %>
-            <%= form.input :status, :as => :hidden, :input_html => { :value => "active" } %>
+            <%= form.input :state, :as => :hidden, :input_html => { :value => "active" } %>
             <%= form.input :terms_of_service, :as => :hidden, :input_html => { :value => "1" } %>
           <% end %>
           <%= form.buttons :class => "fieldset-admin" do %>

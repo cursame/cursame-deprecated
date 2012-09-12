@@ -94,3 +94,5 @@ task :move_assets_to_correct_folders, [:arg1] => :environment do |t, args|
   CarrierWave.clean_cached_files!
   puts "done."
 end
+
+

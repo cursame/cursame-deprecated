@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :banners
+
   get "autocomplete_networks/index"
 
   resources :new_users_change_types
@@ -80,6 +82,8 @@ Cursame::Application.routes.draw do
 
   resources :users do
     collection do
+      #se agrega la ruta users para lograr la creación de usuario
+      post :create_user
       post :upload_avatar,  :as => :upload_avatar_for
     end
     member do
