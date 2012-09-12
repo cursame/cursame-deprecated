@@ -5,6 +5,7 @@ gem 'rails', '3.1.1'
 gem 'devise', '2.0'
 gem 'mime-types'
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
+gem 'carrierwave_direct'
 gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
