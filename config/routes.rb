@@ -1,4 +1,5 @@
 Cursame::Application.routes.draw do
+  resources :banners
 
   get "autocomplete_networks/index"
 
@@ -80,6 +81,7 @@ Cursame::Application.routes.draw do
 
   resources :users do
     collection do
+      puts :create_user
       post :upload_avatar,  :as => :upload_avatar_for
     end
     member do
