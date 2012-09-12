@@ -180,6 +180,8 @@ Cursame::Application.routes.draw do
   match '/api/api/update_course', :to => 'api/api#update_course', :as => :update_course
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
 
+  match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
+
   #Errores personalizados:
   unless Rails.application.config.consider_all_requests_local
     match '*not_found', to: 'errors#error_404'
