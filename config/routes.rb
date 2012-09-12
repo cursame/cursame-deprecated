@@ -156,7 +156,7 @@ Cursame::Application.routes.draw do
   match  '/soporte', :to => 'home#reports', :as => :soporte
   match  'supervisor/suspended/users', :to => 'supervisor#suspended', :as => :user_suspended
   get '/calendar', :to => 'home#dashboard_calendar', :as => :calendar
-  get '/network-members', :to => 'home#members', :as => :network_members
+  get '/network-members', :to => 'home#allmembers', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
   
