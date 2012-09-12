@@ -53,7 +53,12 @@ class HomeController < ApplicationController
   def help
   end
   def members
-    @users = current_network.users.search(params[:search])
+    #Se verifica que no venga nulo el parametro search para evitar mandar un nulo a la busqueda y que crashe al entrar a members
+    if params[:search] == nil
+      @users = current_network.users.search();
+    else
+      @users = current_network.users.search(params[:search]);
+    end
   end
   def network_cc
     @network = Network.new
