@@ -12,12 +12,14 @@ class Asset < ActiveRecord::Base
     invalid_users = []
     network = Network.find network_id
 
-    CSV.parse(file.read, :headers => true) do |row|
+    CSV.parse(file.read.unpack("C*").pack("U*"), :headers => true) do |row|
+      puts row["email"]
       user = User.new(:email => row["email"],
                       :role => role, 
                       :state => "active", 
-                      :first_name => row["first name"].strip.capitalize, 
-                      :last_name => row["last name"].strip.capitalize,
+                      :first_name => row["first_name"] ? row["first_name"].strip.capitalize : "Sin nombre", 
+                      :last_name => row["last_name"] ? row["last_name"].strip.capitalize : "Sin nombre",
+                      :accepting_emails => true,
                       :terms_of_service => "1")
       user.networks = [network]
       password = Devise.friendly_token[0,20]
@@ -25,6 +27,8 @@ class Asset < ActiveRecord::Base
       user.confirmed_at = DateTime.now
       if user.save
         UserMailer.delay.new_user_by_supervisor(user, network, password)
+        # UserMailer.new_user_by_supervisor(user, network, password).deliver
+       
       else
         puts user.errors.full_messages
         invalid_users << user
@@ -33,7 +37,8 @@ class Asset < ActiveRecord::Base
     Notification.create :user => self.owner, :notificator => self, :kind => 'finished_uploading_users'
     if !invalid_users.blank?
       invalid_users_csv = export_users_to_csv(invalid_users)
-      SupervisorMailer.delay.finished_upload_users(self.owner, network.subdomain, invalid_users_csv)
+      #SupervisorMailer.delay.finished_upload_users(self.owner, network.subdomain, invalid_users_csv)
+      SupervisorMailer.finished_upload_users(self.owner, network.subdomain, invalid_users_csv)
     end
   end
 

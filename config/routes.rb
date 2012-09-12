@@ -1,4 +1,6 @@
 Cursame::Application.routes.draw do
+  
+  resources :banners
 
   get "autocomplete_networks/index"
 
@@ -80,6 +82,8 @@ Cursame::Application.routes.draw do
 
   resources :users do
     collection do
+      #se agrega la ruta users para lograr la creación de usuario
+      post :create_user
       post :upload_avatar,  :as => :upload_avatar_for
     end
     member do
@@ -175,13 +179,4 @@ Cursame::Application.routes.draw do
   match '/api/api/comments', :to => 'api/api#comments', :as => :commentsjson
   match '/api/api/update_course', :to => 'api/api#update_course', :as => :update_course
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
-  match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
-
-
-
-  #Errores personalizados:
-  unless Rails.application.config.consider_all_requests_local
-    match '*not_found', to: 'errors#error_404'
-  end
-
 end

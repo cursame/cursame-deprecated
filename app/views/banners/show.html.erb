@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @banner.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @banner.description %>
+</p>
+
+<p>
+  <b>Date promotion:</b>
+  <%= @banner.date_promotion %>
+</p>
+
+<p>
+  <b>Link:</b>
+  <%= @banner.link %>
+</p>
+
+
+<%= link_to 'Edit', edit_banner_path(@banner) %> |
+<%= link_to 'Back', banners_path %>

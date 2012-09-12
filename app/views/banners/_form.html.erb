@@ -1,0 +1,46 @@
+<%= form_for(@banner) do |f| %>
+ 
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :date_promotion %><br />
+    <%= f.text_field :date_promotion %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br />
+    <%= f.text_field :link %>
+  </div>
+  <div class="actions">
+    <%= f.submit, :class=>"btn" %>
+  </div>
+<% end %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Date promotion</th>
+    <th>Link</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @banners..reverse.each do |banner| %>
+  <tr>
+    <td><%= banner.title %></td>
+    <td><%= banner.description %></td>
+    <td><%= banner.date_promotion %></td>
+    <td><%= banner.link %></td>
+    <td><%= link_to 'Destroy', banner, confirm: 'Estas seguro de eliminar el banner?', method: :delete, :class => "btn danger" %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

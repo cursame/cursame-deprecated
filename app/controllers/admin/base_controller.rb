@@ -22,6 +22,10 @@ module Admin
       @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last !
       @notificaciones_admin_actualouse = NotificacionesAdminActualouse.new
     end
+    def publicity
+      @banners = Banner.all
+      @banner = Banner.new
+    end
     private
 
     def require_admin

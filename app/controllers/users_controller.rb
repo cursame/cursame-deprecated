@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   set_tab :profile, :only => %w(show)
   set_tab :wall,    :only => %w(wall)
 
-  before_filter :authenticate_supervisor!, :only => [:create]
+  before_filter :authenticate_supervisor!, :only => [:create_user]
   def show
     find_user
     @favorite = Favorite.new
@@ -15,15 +15,15 @@ class UsersController < ApplicationController
     find_user and check_edit_permissions!
   end
 
-  def create
+  def create_user
     @user = User.new params[:user]
-     password = Devise.friendly_token[0,20]  
-     build_user(password)
+    password = Devise.friendly_token[0,20]
+    build_user(password)
     if @user.save
-      UserMailer.delay.new_user_by_supervisor(@user, current_network, password)
+      UserMailer.new_user_by_supervisor(@user, current_network, password).deliver
       redirect_to @user, :notice => I18n.t('flash.user_created')
     else
-      render 'supervisor/new_user', :notice => I18n.t('flash.user_created')
+      render 'supervisor/new_user', :notice => "envio fallido"
     end
   end
   

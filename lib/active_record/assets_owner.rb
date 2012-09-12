@@ -8,7 +8,7 @@ module ActiveRecord
       after_save do
         assets.each do |asset|
           asset.update_attribute :file_cache, asset.file_cache
-        end
+         end
       end
     end
   end
