@@ -57,6 +57,12 @@ class Comment < ActiveRecord::Base
     self.where(:commentable_type => "Course").count
   end
 
+  #con este before_destroy se elimina la notificación con el comentario
+  before_destroy do
+    @notification = Notification.first(:conditions =>{:notificator_id => self.id})
+    @notification.destroy
+  end
+
   private
 
   def commentable_id
