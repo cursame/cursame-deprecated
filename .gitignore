@@ -1,0 +1,15 @@
+.bundler
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
+*.swp
+*.swo
+public/uploads
+pickle-email*
+.DS_Store
+.sass-cache
+bin
+*.sqlite3-journal
+*~
+*.tar.gz
