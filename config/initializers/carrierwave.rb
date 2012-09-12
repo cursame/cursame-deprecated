@@ -9,7 +9,7 @@ CarrierWave.configure do |config|
 end
 
 CarrierWave.configure do |config|
-  config.root      = Rails.root.join('tmp')
+  config.root      = Rails.root.join('tmpo')
   config.cache_dir = 'uploads/cached-carrierwave'
 end
 
