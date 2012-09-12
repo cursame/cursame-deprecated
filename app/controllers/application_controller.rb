@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 
+  # errores
+  # Se declaran los errores personalizados
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: :render_500
     rescue_from ActionController::RoutingError, with: :render_404
@@ -23,8 +25,8 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 500}
     end
   end
-  
-  
+  #/errores
+
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
