@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   set_tab :calification, :only => %w(calification)
   helper_method :command_course
   def index
-    @courses = current_network.courses 
+    @courses = current_network.courses
     @tutoriales = Tutoriale.all
   end
 

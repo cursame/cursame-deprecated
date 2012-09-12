@@ -1,15 +1,22 @@
 //custom colors used in this file.
 
-$base-color: #00282E;
-$active-color: #00AFC9;
+$base-color: #005C84;
+$active-color: #0086c3;
 
-$cursame-blue: #00AFC9;
+
+
+$cursame-blue: #0086C3;
 $cursame-blue-btn:#339BB9;
+
+$movistar-login-btn : #afd6db;
+
 $decline-color:#C43C35;
 $gray: #d4d6e1;
 $text-gray: #808080;
 $text-color:#444;
 $text-size:14px;
+
+
 
 //sencha touch variables we need to override
 $list-pressed-color: lighten($gray, 5%);
@@ -39,14 +46,14 @@ $list-active-gradient: matte;
 
 //sencha mixins
 @include sencha-button-ui('decline', $decline-color, 'matte');
-@include sencha-button-ui('accept', $cursame-blue-btn, 'matte');
+
+@include sencha-button-ui('accept', $movistar-login-btn, 'glossy');
 
 //buttons
 @include pictos-iconmask('check1');
 @include pictos-iconmask('delete');
 @include pictos-iconmask('podcast');
 @include pictos-iconmask('list');
-@include pictos-iconmask('user_list');
 @include pictos-iconmask('chat');
 @include pictos-iconmask('calendar');
 @include pictos-iconmask('team1');
@@ -56,6 +63,17 @@ $list-active-gradient: matte;
 @include pictos-iconmask('doc_list');
 @include pictos-iconmask('inbox2');
 @include pictos-iconmask('nodes2');
+@include pictos-iconmask('docs_black1');
+@include pictos-iconmask('help_black');
+@include pictos-iconmask('user_list');
+@include pictos-iconmask('cursame');
+@include pictos-iconmask('rss_black2');
+@include pictos-iconmask('tags');
+@include pictos-iconmask('rss_black2');
+@include pictos-iconmask('attachment');
+@include pictos-iconmask('compose'); 
+@include pictos-iconmask('check_black1');
+@include pictos-iconmask('note1');
 
 
 //login form
@@ -77,7 +95,7 @@ $list-active-gradient: matte;
 }*/
 
 .x-form-login{
-	
+	background-image:url('../images/fondo.png');
 }
 
 //notification item style
@@ -87,8 +105,8 @@ $list-active-gradient: matte;
     border-bottom: 3px solid $gray;
 
     .avatar {
-        width: 48px;
-        height: 48px;
+        width: 42px;
+        height: 42px;
         margin-right: .5em;
         border: 1px solid $gray;
         @include border-radius(.4em);
@@ -251,6 +269,11 @@ $list-active-gradient: matte;
     }
 	.contenido{
 		width:100%;
+		.text{
+			img {
+	            width: 291px;
+	        }
+		}
 	}
 }
 
@@ -268,6 +291,7 @@ $list-active-gradient: matte;
 	border-color:#FFF;
 	bottom: -1.9em;
 }
+
 .fill-container{
 	margin:-17px -10px -9px -10px;
 }
@@ -276,3 +300,21 @@ iframe{
 	width: 291px;
 	height:193px;
 }
+
+.movi-color{
+	color : #005C84;
+	
+}
+/*hacemos los titulos mas pequeños*/
+.x-title {
+	line-height: 2.1em;
+	font-size: 0.9em;
+	text-align: center;
+	font-weight: bold;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin: 0 0.3em;
+	max-width: 90%;
+}
+

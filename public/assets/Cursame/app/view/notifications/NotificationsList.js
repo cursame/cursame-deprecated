@@ -18,13 +18,13 @@ Ext.define('Cursame.view.notifications.NotificationsList', {
 		store			: 'Notifications',
         allowDeselect	: false,
         useComponents	: true,
-        emptyText		: 'Nothing found.',
-
+        emptyText		: lang.emptyTextNotifications,
 		plugins: [
             'pullrefresh',
             {
                 type: 'listpaging',
-                autoPaging: true
+                autoPaging: true,
+				loadMoreText:lang.loadMoreText
             }
         ]
     }
