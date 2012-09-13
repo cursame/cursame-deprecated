@@ -14,9 +14,10 @@
 
    <% current_user.favorites.each do |favorites|%>
 
+   <% @favorite_p = favorites.user_favorite_id %>
    user.id <%= @user.id %> vs <%= @favorite_p %>
 
-   <%   if @user.id == favorites.user_favorite_id
+   <%   if @user.id == @favorite_p
             @control_btn=false;
         else
             @control_btn=true;
