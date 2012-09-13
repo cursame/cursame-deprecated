@@ -1,3 +1,7 @@
+<%
+@control_btn = true;
+
+%>
 <% if @user.view_status == "fantom"%>
 <div class="underline">
   <%= image_tag('anonimus-user/tamano/anonimus1.png') %>
@@ -8,18 +12,19 @@
 <%else%>
 
 
-   <% current_user.favorites.each do |favorites|%>  
-  
-   <% @favorite_p = favorites.user_favorite_id%>
-  
+   <% current_user.favorites.each do |favorites|%>
+        <%
+        if @user.id == favorites.user_favorite_id
+            @control_btn=false;
+        else
+            @control_btn=true;
+        end%>
    <%end%>
 
-   <% if @user.id === @favorite_p %>
+    <% if  @control_btn %>
+        <%= render :partial => "favorites/my_favorite_create" %>
+    <% end %>
 
-   <%else%>
-   <%= render :partial => "favorites/my_favorite_create"%>
-   <%end%>
- 
 <%end%>
   <%= image_tag @user.avatar_file.small.url %>
 </div>
