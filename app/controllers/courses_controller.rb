@@ -8,12 +8,14 @@ class CoursesController < ApplicationController
   def index
     @courses = current_network.courses
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def new
     @course = Course.new
     @courses = current_user.courses
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def create 
@@ -52,6 +54,7 @@ class CoursesController < ApplicationController
       @course = current_network.courses.build params[:course]      
     end
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
     @course.enrollments.build(:user => current_user, :admin => true, :role => 'teacher', :state => 'accepted')
     
     if @course.save
@@ -68,6 +71,7 @@ class CoursesController < ApplicationController
   def edit
     @course = current_user.manageable_courses.find params[:id]
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def update
@@ -83,12 +87,14 @@ class CoursesController < ApplicationController
     @course = accessible_course 
     @status_course = StatusCourse.new
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
   def calification
     @course = accessible_course
     @molto_course = @course.assignments
     @bella_survey = @course.surveys
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
   
   def members
@@ -105,6 +111,7 @@ class CoursesController < ApplicationController
   def wall
     @course   = accessible_course
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
     @comments = @course.comments.order("created_at DESC").page(params[:page]).per(10)    
     respond_to do |format|
         format.js

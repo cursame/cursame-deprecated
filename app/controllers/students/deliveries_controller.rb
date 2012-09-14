@@ -7,6 +7,7 @@ module Students
       @course     = @assignment.course
       @comments   = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
       @tutoriales = Tutoriale.all
+      @banner = Banner.last
     end
 
     def new

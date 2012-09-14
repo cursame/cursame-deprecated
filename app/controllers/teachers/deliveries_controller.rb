@@ -6,6 +6,7 @@ class Teachers::DeliveriesController < ApplicationController
     @deliveries = @assignment.deliveries
     @course     = @assignment.course
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def show
@@ -17,6 +18,7 @@ class Teachers::DeliveriesController < ApplicationController
     @comments   = @delivery.comments.order("created_at DESC").page(params[:page]).per(10)
     render 'students/deliveries/show'
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def update
@@ -30,5 +32,6 @@ class Teachers::DeliveriesController < ApplicationController
       @assignment = current_user.manageable_assignments.find params[:assignment_id]
       @deliveries = @assignment.deliveries
       @tutoriales = Tutoriale.all
+      @banner = Banner.last
   end
 end

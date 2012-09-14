@@ -5,6 +5,7 @@ class AssignmentsController < ApplicationController
     @current_assignments = course.assignments.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
     @previous_assignments = course.assignments.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
     unless current_user.student?
       @unpublished_assignments = course.assignments.created.order("due_to DESC")
     end
@@ -14,6 +15,7 @@ class AssignmentsController < ApplicationController
     @assignment = manageable_course.assignments.build
     @assignment.due_to = DateTime.now+1.week
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def create
@@ -51,6 +53,7 @@ class AssignmentsController < ApplicationController
     @course     = @assignment.course
     @comments   = @assignment.comments.order("created_at DESC").page(params[:page]).per(10)
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   private

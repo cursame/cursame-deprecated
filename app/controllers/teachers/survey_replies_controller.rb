@@ -4,6 +4,7 @@ class Teachers::SurveyRepliesController < ApplicationController
     @replies = @survey.survey_replies
     @course  = @survey.course
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def show
@@ -13,5 +14,6 @@ class Teachers::SurveyRepliesController < ApplicationController
     @reveal_answers = true 
     render 'students/survey_replies/show'
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 end

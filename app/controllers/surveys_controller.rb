@@ -5,6 +5,7 @@ class SurveysController < ApplicationController
     @current_surveys = course.surveys.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
     @previous_surveys = course.surveys.published.where("due_to <= ?", DateTime.now).order("due_to DESC")
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
     unless current_user.role_for_course(course) == "student"
       @unpublished_surveys = course.surveys.unpublished.order("due_to DESC")
     end
@@ -59,6 +60,7 @@ class SurveysController < ApplicationController
     survey.destroy
     redirect_to course_surveys_path(survey.course), :notice => I18n.t('flash.survey_deleted')
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def publish

@@ -4,11 +4,13 @@ class DiscussionsController < ApplicationController
   def new
     @discussion = course.discussions.build
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def index
     @course, @discussions = course, course.discussions
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def create
@@ -26,6 +28,7 @@ class DiscussionsController < ApplicationController
     @course     = @discussion.course
     @comments   = @discussion.comments.order("created_at DESC").page(params[:page]).per(10)
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def edit

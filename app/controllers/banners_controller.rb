@@ -1,28 +1,5 @@
 class BannersController < ApplicationController
-  # GET /banners
-  # GET /banners.json
-  def index
-    @banners = Banner.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @banners }
-    end
-  end
-
-  # GET /banners/1
-  # GET /banners/1.json
-  def show
-    @banner = Banner.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @banner }
-    end
-  end
-
-  # GET /banners/new
-  # GET /banners/new.json
+  
   def new
     @banner = Banner.new
 
@@ -44,7 +21,7 @@ class BannersController < ApplicationController
 
     respond_to do |format|
       if @banner.save
-        format.html { redirect_to @banner, notice: 'Banner was successfully created.' }
+        format.html { redirect_to :back, notice: 'Banner was successfully created.' }
         format.json { render json: @banner, status: :created, location: @banner }
       else
         format.html { render action: "new" }
@@ -60,13 +37,18 @@ class BannersController < ApplicationController
 
     respond_to do |format|
       if @banner.update_attributes(params[:banner])
-        format.html { redirect_to @banner, notice: 'Banner was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Banner was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
         format.json { render json: @banner.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def banner_image
+    asset_file = User.new :avatar_file => uploaded_file
+    render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
 
   # DELETE /banners/1
@@ -76,7 +58,7 @@ class BannersController < ApplicationController
     @banner.destroy
 
     respond_to do |format|
-      format.html { redirect_to banners_url }
+      format.html { redirect_to :back }
       format.json { head :ok }
     end
   end

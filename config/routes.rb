@@ -120,6 +120,7 @@ Cursame::Application.routes.draw do
     get '/reports', :to => 'base#reports', :as => :reports
     get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
     get '/public-notification', :to => 'base#notification', :as => :notification
+    get '/publicity', :to => 'base#publicity', :as => :publicity
   end
 
   match '/admin' => 'admin/base#admin'

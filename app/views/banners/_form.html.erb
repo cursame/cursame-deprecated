@@ -1,23 +1,23 @@
 <%= form_for(@banner) do |f| %>
- 
+   <h1> Publcity Manager </h1>
   <div class="field">
+	<%= f.file_field :image_banner%>
+  </div>
+	<div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :date_promotion %><br />
-    <%= f.text_field :date_promotion %>
+    <%= f.text_area :description,:rows => 8, :cols => 45 %>
   </div>
   <div class="field">
     <%= f.label :link %><br />
     <%= f.text_field :link %>
   </div>
+  
   <div class="actions">
-    <%= f.submit, :class=>"btn" %>
+    <%= f.submit "colocar banner", :class=>"btn" %>
   </div>
 <% end %>
 
@@ -32,12 +32,13 @@
     <th></th>
   </tr>
 
-<% @banners..reverse.each do |banner| %>
+<% @banners.reverse.each do |banner| %>
   <tr>
     <td><%= banner.title %></td>
     <td><%= banner.description %></td>
     <td><%= banner.date_promotion %></td>
     <td><%= banner.link %></td>
+    <td style="height:170; weight:180"><div "span2"><%= image_tag(banner.image_banner) %></div></td>
     <td><%= link_to 'Destroy', banner, confirm: 'Estas seguro de eliminar el banner?', method: :delete, :class => "btn danger" %></td>
   </tr>
 <% end %>

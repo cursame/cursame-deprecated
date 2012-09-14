@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     @friend_crocodile = current_user.id 
     @friend_salamander = find_user
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   def edit
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
      @friend_crocodile = current_user.id 
      @friend_salamander = find_user
      @tutoriales = Tutoriale.all
+     @banner = Banner.last
   end
 
   def upload_avatar

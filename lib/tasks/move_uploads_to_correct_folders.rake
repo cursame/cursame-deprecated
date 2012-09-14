@@ -95,4 +95,26 @@ task :move_assets_to_correct_folders, [:arg1] => :environment do |t, args|
   puts "done."
 end
 
-
+task :move_banner_image_to_correct_folders, [:arg1] => :environment do |t, args|
+  puts "Moving the banner image"
+  Banner.all.each do |u|
+    puts "Updating banner image #{u.id}"
+    dir = u.file.url
+    if dir
+      dir = dir.split("/")
+      if dir.count > 3
+        dir = args[:arg1] + "/uploads/"+dir.last
+        begin
+          u.remote_image_banner_url = dir
+          u.save!
+          puts "updated.\n\n"
+        rescue Exception => e
+          puts e.message
+          puts dir
+          puts "failed.\n\n"
+        end
+      end
+    end
+  end
+  puts "done."
+end
