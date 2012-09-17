@@ -17,20 +17,21 @@ Ext.define('Cursame.view.LoginForm', {
 	
     config: {
 		ui:'login',
-        padding:'15 15 15 15',
+        padding:'15 15 15 10',
 		style:{
 			backGroundColor:'#005C84'
 		},
 		items:[{
 			xtype:'image',
 			margin : '30 0 0 0',
-			height:80,
+			height:30,
 			//src: Cursame.src+'resources/images/avatar_normal.png'
 		},{			
 			xtype:'image',
 			layout:'hbox',
-			height: 48,
-			src: Cursame.src+'resources/images/cursa.png'
+			height: 98,
+			width:300,
+			src: Cursame.src+'resources/images/brand.png'
 				
 		},{
 			xtype:'fieldset',
