@@ -23,7 +23,9 @@ $list-pressed-color: lighten($gray, 5%);
 $list-active-color: $gray;
 $list-active-gradient: matte;
 
-@import 'sencha-touch/default/all';
+//@import 'sencha-touch/default/all';
+
+@import '../sdk/resources/themes/stylesheets/sencha-touch/default/all';
 
 // You may remove any of the following modules that you
 // do not use in order to create a smaller css file.

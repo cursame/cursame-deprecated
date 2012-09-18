@@ -1,14 +1,14 @@
 /*
-Syntax error: File to import not found or unreadable: sencha-touch/default/all.
+Syntax error: File to import not found or unreadable: ../sdk/resources/themes/stylesheets/sencha-touch/default/all.
               Load paths:
                 /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass
                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/blueprint/stylesheets
                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/compass/stylesheets
                 Compass::SpriteImporter
-        on line 26 of /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss
+        on line 28 of /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss
 
 Backtrace:
-/Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss:26
+/Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss:28
 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/sass-3.1.20/lib/sass/tree/import_node.rb:64:in `rescue in import'
 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/sass-3.1.20/lib/sass/tree/import_node.rb:42:in `import'
 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/sass-3.1.20/lib/sass/tree/import_node.rb:25:in `imported_file'
@@ -57,4 +57,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: sencha-touch/default/all.\A               Load paths:\A                 /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass\A                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A         on line 26 of /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss"; }
+  content: "Syntax error: File to import not found or unreadable: ../sdk/resources/themes/stylesheets/sencha-touch/default/all.\A               Load paths:\A                 /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass\A                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/blueprint/stylesheets\A                 /Users/Kenpachi/.rvm/gems/ruby-1.9.2-p290@cursame/gems/compass-0.12.2/frameworks/compass/stylesheets\A                 Compass::SpriteImporter\A         on line 28 of /Users/Kenpachi/Documents/desarrollo/Cursame/public/assets/Cursame/resources/sass/app.scss"; }
