@@ -7,7 +7,7 @@ Ext.application({
 	
     name: 'Cursame',
 	viewport: {
-     autoMaximize: Ext.os.is.iOS
+     autoMaximize: true
     },
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],

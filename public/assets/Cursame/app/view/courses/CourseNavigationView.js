@@ -19,12 +19,12 @@ Ext.define('Cursame.view.courses.CourseNavigationView', {
 				ui: 'back',
 				itemId:'backBtn',
 				text:'Back'
-			}/*, {
-				iconCls: 'cursame',
+			}, {
+				iconCls: 'team',
 				iconMask: true,
 				ui: 'plain',
 				align: 'right'
-			}*/],
+			}],
 		}
 	},
 	applyLayout: function(config) {
