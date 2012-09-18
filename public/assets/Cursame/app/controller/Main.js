@@ -242,7 +242,7 @@ Ext.define('Cursame.controller.Main', {
 	onNotificationTap: function(dataview, index, target, record, e) {
 		var type = record.get('kind');
 		if (type === 'student_assignment_delivery' || type === 'teacher_survey_replied') { // si trata de una entrega de la tarea
-			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
+			Ext.Msg.alert(lang.appName, lang.alertMsg, Ext.emptyFn);
 			return;
 		}
 
@@ -571,7 +571,7 @@ Ext.define('Cursame.controller.Main', {
             this.loadStore(Ext.getStore('Surveys'), {
                 id: courseRecord.get('id')
             }, undefined);*/
-			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
+			Ext.Msg.alert(lang.appName, lang.alertMsg, Ext.emptyFn);
 			break;
 		case 'discussions':
 			this.getCourseNavigationView().push({

@@ -19,11 +19,6 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 				ui: 'back',
 				itemId:'backBtn',
 				text:'Back'
-			}, {
-				iconCls: 'movistar',
-				iconMask: true,
-				ui: 'plain',
-				align: 'right'
 			}],
 		}
 	},
