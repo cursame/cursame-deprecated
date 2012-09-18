@@ -7,7 +7,7 @@ Ext.application({
 	
     name: 'Cursame',
 	viewport: {
-     autoMaximize: true
+     autoMaximize: ( navigator.userAgent.search("Safari") != -1 && (!Ext.browser.is.Standalone && Ext.os.is.iOS && Ext.browser.version.isGreaterThan(3) ) ? true : false )
     },
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
