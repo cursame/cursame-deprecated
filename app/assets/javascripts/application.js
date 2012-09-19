@@ -92,6 +92,7 @@ $(function(){
     return false;
   });
 
+    /*
   $('input[type=file]').livequery(function(){
     if ($(this).data('upload-path')) {
       $(this).ajaxyUpload({
@@ -116,7 +117,7 @@ $(function(){
         }
       });
     }
-  });
+  });*/
 
   $("table[data-sortable]").tablesorter( { sortList: [[ 1, 0 ]] } )
   

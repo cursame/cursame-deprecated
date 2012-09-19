@@ -18,6 +18,8 @@ course_xxsmall.png: course_xxsmall-5b45a51f96b66bd7eb85ccddd0d8eb68.png
 desplegar.png: desplegar-df3c66af2809fb52bedb7c7b83089917.png
 discusiones-notif.png: discusiones-notif-b02f3d0ce29c5a72bb3223f940b08fdf.png
 drag_selector.png: drag_selector-873cf97f10778cdb9da1d58123bcadc6.png
+error_404.png: error_404-56eb9e750ef40fa7ed318dfc22ee6345.png
+error_500.png: error_500-2d8d49a02d23e578a2e0381ee2b601b9.png
 fancybox_loading.gif: fancybox_loading-fa43be6c077295cf1d06e683819aff28.gif
 fancybox_sprite.png: fancybox_sprite-978a2a631b1c792cd426609194d3092d.png
 file_icons/access.png: file_icons/access-f8add6f0d77b714cc19e0a1acf47a905.png
@@ -232,5 +234,5 @@ teacher_xxsmall.png: teacher_xxsmall-8dea30577360e0254c48ed55f46adcd6.png
 trash.png: trash-fed6d579cb903b3e1a5b8fd4dde6cb5b.png
 upload.png: upload-dea8a2b793f9384245ce3c5ffefd5bb7.png
 video.png: video-d39ff5fe5586a5fc90cd42c1806472b8.png
-application.js: application-1a188acae1514d8a4c2cd804cf55b968.js
+application.js: application-2cf393007d5514bc57378bc6c9c8b95c.js
 application.css: application-ba4fd6a3c0a73ae4f647b9f7399b5446.css

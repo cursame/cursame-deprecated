@@ -13,3 +13,7 @@ bin
 *.sqlite3-journal
 *~
 *.tar.gz
+/pull_201209041250.dat
+/pull_201209041314.dat
+/pull_201209041316.dat
+/.idea/
