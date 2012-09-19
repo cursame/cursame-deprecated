@@ -3,12 +3,11 @@ Ext.Loader.setPath({
 	'Core': '../assets/Cursame/core',
 	'Cursame':'../assets/Cursame/app'
 });	
-console.log(Ext.browser);
 Ext.application({
 	
     name: 'Cursame',
 	viewport: {
-     autoMaximize: !Ext.browser.is.Standalone && !Ext.browser.is.chromemobile && Ext.os.is.iOS && Ext.browser.version.isGreaterThan(3)
+     autoMaximize: true
     },
 	profiles:['Cursame.profile.Phone'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
@@ -31,7 +30,6 @@ Ext.application({
 
         // Initialize the main view
         Ext.Viewport.add(Ext.create('Cursame.view.Main'));
-		console.log(Ext.browser);
     },
 
     onUpdated: function() {
