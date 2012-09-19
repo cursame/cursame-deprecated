@@ -11,7 +11,7 @@ Ext.define('Cursame.model.Course', {
 	    	{name:"id", type:"int"},
 	        {name:"name", type:"string"},
 	        {name:"description", type:"string"},
-	        {name:"image", type:"string"},
+	        {name:"image", type:"string", mapping:'course_logo_file.xsmall.url'},
 	        {name:"public", type:"boolean"},
 			{name:'owner', type:'string'},
 			{name:'members', type:'int'},

@@ -29,9 +29,9 @@ Ext.define('Cursame.view.LoginForm', {
 		},{			
 			xtype:'image',
 			layout:'hbox',
-			height: 98,
+			height: 88,
 			width:300,
-			src: Cursame.src+'resources/images/brand.png'
+			//src: Cursame.src+'resources/images/brand.png'
 				
 		},{
 			xtype:'fieldset',

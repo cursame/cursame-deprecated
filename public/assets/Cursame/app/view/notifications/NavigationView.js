@@ -16,7 +16,7 @@ Ext.define('Cursame.view.notifications.NavigationView', {
 		},
 		navigationBar: {
 			items: [{
-				align: 'left',
+				align: 'right',
 				text:lang.sign_out,
 				itemId:'signOut',
 				handler:function(){
