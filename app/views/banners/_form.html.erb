@@ -38,7 +38,7 @@
     <td><%= banner.description %></td>
     <td><%= banner.date_promotion %></td>
     <td><%= banner.link %></td>
-    <td style="height:170; weight:180"><div "span2"><%= image_tag(banner.image_banner) %></div></td>
+    <td style="height:170; weight:180"><div "span2"><%= image_tag(banner.image_banner.micro) %></div></td>
     <td><%= link_to 'Destroy', banner, confirm: 'Estas seguro de eliminar el banner?', method: :delete, :class => "btn danger" %></td>
   </tr>
 <% end %>
