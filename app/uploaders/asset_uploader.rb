@@ -19,18 +19,24 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   def thumb_url
     case to_s
-    when /\.jpg$/i, /\.png$/i, /\.tif$/i, /\.tiff$/i, /\.gif$/i
+    when /\.jpg$/i, /\.png$/i, /\.tif$/i, /\.tiff$/i, /\.gif$/i,/\.ico$/i
       '/assets/file_icons/image.png'
-    when /\.xls$/i, /\.csv$/i
+    when /\.xls$/i, /\.csv$/i,/\.sao$/i
       '/assets/file_icons/excel.png'
-    when /\.doc$/i, /\.docx$/i
+    when /\.doc$/i, /\.docx$/i,/\.odt$/i,/\.sxw$/i,/\.rtf$/i
       '/assets/file_icons/word.png'
     when /\.ade$/i, /\.adp$/i
       '/assets/file_icons/access.png'
     when /\.pdf/i
       '/assets/file_icons/pdf.png'
-    when /\.swf/i
+    when /\.swf$/i, /\.flv$/i
       '/assets/file_icons/page_white_flash.png'
+    when /\.rar$/i,/\.zip$/i,/\.tar$/i,/\.targz$/i
+      '/assets/file_icons/archive.png'
+    when /\.dwg$/i,/\.dwf$/i
+      '/assets/file_icons/cad.png'
+    when /\.exe$/i,/\.dmg$/i
+      '/assets/file_icons/exec.png'
     else
       '/assets/file_icons/text.png'
     end
