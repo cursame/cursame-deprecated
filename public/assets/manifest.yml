@@ -23,7 +23,10 @@ error_500.png: error_500-2d8d49a02d23e578a2e0381ee2b601b9.png
 fancybox_loading.gif: fancybox_loading-fa43be6c077295cf1d06e683819aff28.gif
 fancybox_sprite.png: fancybox_sprite-978a2a631b1c792cd426609194d3092d.png
 file_icons/access.png: file_icons/access-f8add6f0d77b714cc19e0a1acf47a905.png
+file_icons/archive.png: file_icons/archive-39896ed7af81b0df78cf4f40d57c42ca.png
+file_icons/cad.png: file_icons/cad-3862fe925423aa8cb155cd0c2d0612b8.png
 file_icons/excel.png: file_icons/excel-44a4365342cea5f3ddb8f8d111be4440.png
+file_icons/exec.png: file_icons/exec-c21af743ad2025999e9e1036a6c44418.png
 file_icons/image.png: file_icons/image-3fc8d26ae4a7c7bd0bfbe11979966a37.png
 file_icons/page_white_flash.png: file_icons/page_white_flash-4e52698f795c362233f556b744a40d79.png
 file_icons/pdf.png: file_icons/pdf-27d7a45388cdfb7474a82bb2b842b8c4.png
