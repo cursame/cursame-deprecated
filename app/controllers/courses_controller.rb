@@ -100,6 +100,7 @@ class CoursesController < ApplicationController
   def members
     @course = accessible_course
     @tutoriales = Tutoriale.all
+    @banner = Banner.last
     if current_user.manageable_courses.include? @course
       @pending_students = @course.pending_students
       @pending_teachers = @course.pending_teachers

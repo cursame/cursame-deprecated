@@ -47,13 +47,13 @@ ActiveRecord::Schema.define(:version => 20120914181535) do
   end
 
   create_table "banners", :force => true do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "date_promotion"
-    t.string   "link"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "image_banner"
+    t.string    "title"
+    t.text      "description"
+    t.string    "date_promotion"
+    t.string    "link"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "image_banner"
   end
 
   create_table "blogs", :force => true do |t|
