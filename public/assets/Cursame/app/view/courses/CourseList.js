@@ -30,7 +30,7 @@ Ext.define('Cursame.view.courses.CourseList', {
 					'<div class="left">',
 					'<div class="img">',
 		            	//'<img src="'+Cursame.Path+'/assets/course_small_movistar.jpg" />',
-						'<img src="'+Cursame.Path+'{image}" />',
+						'<img src="'+Cursame.Path+'{image}" width ="48" height="48"/>',
 					'</div>',
 					'</div>',
 		            '<div class="properties">',
