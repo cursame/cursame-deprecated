@@ -17,9 +17,14 @@ Ext.define('Cursame.view.users.UserNavigationView', {
 			items: [{
 				align: 'left',
 				ui: 'back',
-				itemId:'backBtn',
-				text:'Back'
-			}],
+				itemId: 'backBtn',
+				text: 'Back'
+			}, {
+				iconCls: 'cursame',
+				iconMask: true,
+				ui: 'plain',
+				align: 'right'
+			}]
 		}
 	},
 	applyLayout: function(config) {
