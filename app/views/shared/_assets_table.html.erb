@@ -12,7 +12,10 @@
     <tbody>
       <% record.assets.each do |asset| %>
 
+
         <% if (asset.file).to_s != nil %>
+
+
             <tr class='asset'>
               <td><%= image_tag asset.file.thumb_url %></td>
               <td><%= asset.name %></a></td>
@@ -20,9 +23,8 @@
               <td><%= l asset.created_at, :format => :short %></td>
               <td>
                 <%= link_to t('download'), asset.file.url , :class =>'btn info'%>
-                <% @ext = (asset.file.to_s).split('.').pop();
-                   if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'csv'|| @ext == 'sao'
-                %>
+                <% @ext = (asset.file.to_s).split('.').pop() %>
+                <% if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'csv'|| @ext == 'sao' %>
                     <%= render :partial => 'shared/document_viewer', :locals => { :asset => asset } %>
                     <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
                 <% elsif @ext == 'swf' %>
@@ -31,7 +33,7 @@
                 <% elsif @ext == 'jpg' || @ext == 'png' || @ext == 'jpeg' || @ext == 'gif' %>
                     <%= render :partial => 'shared/image_viewer', :locals => { :asset => asset } %>
                     <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
-                <%end %>
+                <% end %>
               </td>
             </tr>
         <% end %>
