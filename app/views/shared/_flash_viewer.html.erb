@@ -3,8 +3,9 @@
     <a class="close" data-dismiss="modal" >&times;</a>
     <h3><%= asset.name %></h3>
   </div>
-  <div class="modal-body" >
-     <embed src="<%= asset.file.url%>" width="770px" height="500px" />
+  <div class="modal-body">
+    <object width="770px" height="500px" data="<%= asset.file.url%>" type="application/x-shockwave-flash" >
+
   </div>
   <div class="modal-footer">
     <!-- <a href="#" class="btn danger" data-dismiss="modal" ><%= t('close')%></a> -->
