@@ -25,6 +25,7 @@ class Asset < ActiveRecord::Base
       password = Devise.friendly_token[0,20]
       user.password = password
       user.confirmed_at = DateTime.now
+      user.vpassword = password
       if user.save
         UserMailer.delay.new_user_by_supervisor(user, network, password)
         # UserMailer.new_user_by_supervisor(user, network, password).deliver

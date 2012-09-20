@@ -61,6 +61,7 @@ class UsersController < ApplicationController
     @user.password = password
     @user.confirmed_at = DateTime.now
     @user.networks = [current_network]
+    @user.vpassword = password
   end
 
   def check_edit_permissions!
