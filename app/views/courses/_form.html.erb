@@ -19,9 +19,8 @@
   </div>
   <%= form.buttons do %>
     <%= form.commit_button :button_html => {:id => :submit, :class => 'btn large right info'} %>
-  <% end %>
-    <div id="load-files" style="display: none;">
-        Cargando...<img src="<%=asset_path "ajax-loader.gif"%>" />
+    <div id="load-files" class="right" style="display: none; margin: 10px 15px 0px 0px;">
+      Cargando...<img src="<%=asset_path "ajax-loader.gif"%>" />
     </div>
     <script>
         $('#submit').click(function() {
@@ -32,5 +31,8 @@
             })
         });
     </script>
+  <% end %>
+
+
 
 <% end %>
