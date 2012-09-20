@@ -5,6 +5,7 @@ gem 'rails', '3.1.1'
 gem 'devise', '2.0'
 gem 'mime-types'
 gem 'carrierwave', :require => ["carrierwave", "carrierwave/processing/mime_types"]
+gem 'carrierwave_direct'
 gem 'mini_magick'
 gem 'fog'
 gem 'kaminari'
@@ -23,7 +24,7 @@ gem "watu_table_builder", :require => "table_builder"
 gem "faye"
 gem 'airbrake'
 
-#eliminado carrierwave_direct
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
