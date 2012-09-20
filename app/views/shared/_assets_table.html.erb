@@ -6,20 +6,39 @@
         <th class="blue"><%= Asset.human_attribute_name :name %></th>
         <th class="blue"><%= Asset.human_attribute_name :description %></th>
         <th class="blue"><%= Asset.human_attribute_name :created_at %></th>
+        <th class="blue">Acci&oacuten</th>
       </tr>
     </thead>
     <tbody>
       <% record.assets.each do |asset| %>
-        <tr class='asset'>
-          <td><%= image_tag asset.file.thumb_url %></td>
-		  <%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
-		  <td><a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %></a></td>
-          <td><%= asset.description %></td>
-          <td><%= l asset.created_at, :format => :short %></td>
-        </tr>
+
+        <% if (asset.file).to_s != nil %>
+            <tr class='asset'>
+              <td><%= image_tag asset.file.thumb_url %></td>
+              <td><%= asset.name %></a></td>
+              <td><%= asset.description %></td>
+              <td><%= l asset.created_at, :format => :short %></td>
+              <td>
+                <%= link_to t('download'), asset.file.url , :class =>'btn info'%>
+                <% @ext = (asset.file.to_s).split('.').pop();
+                   if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'csv'|| @ext == 'sao'
+                %>
+                    <%= render :partial => 'shared/document_viewer', :locals => { :asset => asset } %>
+                    <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
+                <% elsif @ext == 'swf' %>
+                    <%= render :partial => 'shared/flash_viewer', :locals => { :asset => asset } %>
+                    <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
+                <% elsif @ext == 'jpg' || @ext == 'png' || @ext == 'jpeg' || @ext == 'gif' %>
+                    <%= render :partial => 'shared/image_viewer', :locals => { :asset => asset } %>
+                    <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
+                <%end %>
+              </td>
+            </tr>
+        <% end %>
       <% end %>
     </tbody>
   </table>
 <% else %>
   <p>No hay archivos.</p>
 <% end %>
+

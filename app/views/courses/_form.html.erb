@@ -18,6 +18,19 @@
     <%= render :partial => 'shared/assets_fields', :locals => {:form => form} %>
   </div>
   <%= form.buttons do %>
-    <%= form.commit_button :button_html => {:id => :submit, :class => 'btn large right'} %>
+    <%= form.commit_button :button_html => {:id => :submit, :class => 'btn large right info'} %>
   <% end %>
+    <div id="load-files" style="display: none;">
+        Cargando...<img src="<%=asset_path "ajax-loader.gif"%>" />
+    </div>
+    <script>
+        $('#submit').click(function() {
+            $('#load-files').animate({
+                opacity:1,
+                left: '+=50',
+                height: 'toggle'
+            })
+        });
+    </script>
+
 <% end %>
