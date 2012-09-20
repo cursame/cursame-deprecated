@@ -27,9 +27,6 @@
                 <% if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'csv'|| @ext == 'sao' %>
                     <%= render :partial => 'shared/document_viewer', :locals => { :asset => asset } %>
                     <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
-                <% elsif @ext == 'swf' %>
-                    <%= render :partial => 'shared/flash_viewer', :locals => { :asset => asset } %>
-                    <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
                 <% elsif @ext == 'jpg' || @ext == 'png' || @ext == 'jpeg' || @ext == 'gif' %>
                     <%= render :partial => 'shared/image_viewer', :locals => { :asset => asset } %>
                     <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
