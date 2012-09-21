@@ -34,6 +34,11 @@
               <%= form.input :password, :as => :password %>
               <%= form.input :password_confirmation, :as => :password %>
             <% end %>
+            
+            <%= semantic_form_for current_user do |form| %>
+                <%= form.hidden_field :new_old, :value => 1 %>
+            <%end%>
+            
             <%= form.buttons do %>
               <%= form.commit_button :button_html => {:id => :submit, :class => "btn", :style => "margin-left:205px;"} %>
             <% end %>
