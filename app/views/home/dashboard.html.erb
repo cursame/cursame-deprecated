@@ -136,7 +136,7 @@
    </div>
     <div class="modal-body">
 	<center>
-	 <%= semantic_form_for @user do |form| %>
+	 <%= semantic_form_for current_user, :url => password_settings_path do |form| %>
 	  <p style="color:#fff;">Ingresa y confirma tu contraseña</p>
 	     <%= form.hidden_field :reset_password_token %>
          <%= form.inputs :password, :password_confirmation %>
@@ -145,7 +145,7 @@
 	</div>
 	<div class="modal-footer" style="background-color:#404040; color:#fff;">
 		  
-		      <%= form.hidden_field :new_old, :value => 1 %>
+		        <%= form.hidden_field :new_old, :value => 1 %>
 		        <%= form.hidden_field :user_id, :value => current_user.id%>
 		      <%= form.submit "Realizar cambio de contraseña", :class => "btn"%>
 		  <%end%>

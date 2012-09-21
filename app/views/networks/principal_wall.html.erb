@@ -42,8 +42,7 @@
    </div>
     <div class="modal-body">
 	<center>
-	 <%= semantic_form_for @user do |form| %>
-	 <p style="color:#fff;">Ingresa y confirma tu contraseña</p>
+     <%= semantic_form_for current_user, :url => password_settings_path do |form| %>	 <p style="color:#fff;">Ingresa y confirma tu contraseña</p>
 	     <%= form.hidden_field :reset_password_token %>
          <%= form.inputs :password, :password_confirmation %> 
 	</center>
