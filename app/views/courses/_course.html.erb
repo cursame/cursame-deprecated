@@ -24,7 +24,7 @@
           </span>
         <%end%>
         <% elsif enrollment.pending? %>
-          <span class="label-tag important requested"><%= t('.join_requested') %></em>	      
+        <span class="label-tag important requested"><%= t('.join_requested') %></span>
 
         <% elsif enrollment.rejected? %>
           <span class="label-tag important rejected"><%= t('.join_rejected') %></span>

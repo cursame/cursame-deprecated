@@ -15,7 +15,15 @@
       <strong>Name:</strong> <%= link_to network.name, admin_network_path(network) %><br/>
       <strong>Subdomain:</strong> <%= network.subdomain %><br />
 	  <strong>Created at:</strong> <%= network.created_at.strftime("%m/%d/%Y")  %><br />
-      <strong>Students count:</strong> <%= network.users.count %> 	  
+      <strong>Students count:</strong> <%= network.users.count %><br />
+      <strong>Status:</strong> <%= network.variante %>
+
+      <% @network=network %>
+      <%= form_for @network do |ntw|%>
+        <%= ntw.select :variante, options_for_select([['Free', 'free'], ['Pro', 'pro']], @network.variante), :class => "btn btn-primary"%>
+        <%= ntw.submit "Enviar", :class => "btn btn-primary"%>
+      <%end%>
+
     </div>	
 	<div id ="network_users<%= network.id %>"></div>
 	<script type="text/javascript" charset="utf-8">
