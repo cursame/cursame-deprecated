@@ -35,10 +35,14 @@ class NetworksController < ApplicationController
         end
       end
       def principal_wall
+        @user=current_user
+         if @user.new_old == 0
+          redirect_to settings_path
+         else   
           @network = current_network    
           @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
-          @tutoriales = Tutoriale.all  
-          @user=current_user
+          @tutoriales = Tutoriale.all         
+         end 
       end
       def relate
          @network = current_network  
