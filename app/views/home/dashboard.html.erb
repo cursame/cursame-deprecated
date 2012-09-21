@@ -139,15 +139,14 @@
 	 <%= semantic_form_for @user do |form| %>
 	     <%= form.hidden_field :reset_password_token %>
          <%= form.inputs :password, :password_confirmation %>
-         <%= form.submit "Realizar cambio de contraseña", :class => "btn"%>
-     <%end%>
+         
 	</center>
 	</div>
 	<div class="modal-footer" style="background-color:#404040; color:#fff;">
-		  <%= semantic_form_for @new_users_change_type do |n|%>
-		      <%= n.hidden_field :new_old, :value => 1 %>
-		        <%= n.hidden_field :user_id, :value => current_user.id%>
-		      <%= n.submit "ya no deseo ver el video", :class => "btn danger"%>
+		  
+		      <%= form.hidden_field :new_old, :value => 1 %>
+		        <%= form.hidden_field :user_id, :value => current_user.id%>
+		      <%= form.submit "Realizar cambio de contraseña", :class => "btn"%>
 		  <%end%>
 	</div>
    </div>
