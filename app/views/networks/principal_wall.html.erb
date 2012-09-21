@@ -34,3 +34,24 @@
     setupAutoScroll();
   });
 </script>
+<% if current_user.new_old == 0 %>
+   <div class="modal-backdrop.fade.in modal" style="background-color:#404040; color:#fff;">
+	
+   <div class="modal-header" > 
+	<h3 style="color:#fff;"><center> Hola bienvenido a Cúrsame </cursame> </h3>
+   </div>
+    <div class="modal-body">
+	<center>
+	<h1><%= link_to "Ir cambia tu contraseña aqui >>", settings_path%></h1>
+	</center>
+	</div>
+	<div class="modal-footer" style="background-color:#404040; color:#fff;">
+		  <%= semantic_form_for @new_users_change_type do |n|%>
+		      <%= n.hidden_field :new_old, :value => 1 %>
+		        <%= n.hidden_field :user_id, :value => current_user.id%>
+		      <%= n.submit "ya he cambiado mi contraseña", :class => "btn danger"%>
+		  <%end%>
+	</div>
+   </div>
+<%else%>
+<%end%>

@@ -39,6 +39,7 @@ class NetworksController < ApplicationController
           @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
           @tutoriales = Tutoriale.all         
           @user = current_user
+          @new_users_change_type = NewUsersChangeType.new
       end
       def relate
          @network = current_network  
