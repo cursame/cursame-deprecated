@@ -53,11 +53,19 @@
                         <%= form_for student do |f|%>
                           <%= f.select :role, options_for_select([[t('.student'), "student"], [t('.teacher'), "teacher"], [t('.supervisor'), "supervisor"]])%>
                           <%= f.submit t('.update'), :class => "accept btn success small"%>
-                        <%end%>
+                        <%end%></br>
+                          <%= form_for student do |fname|%>
+                             <%= fname.label :first_name %>
+                             <%= fname.text_field :first_name, :class => "span4"%></br>
+                             <%= fname.label :last_name %>
+                             <%= fname.text_field :last_name, :class => "span4" %></br>
+                             <%= fname.label :email %>
+                             <%= fname.text_field :email, :class => "span4"%></br>
+                            </br> <%= fname.submit "Subir Nombre", :class => "accept btn success right small"%>
+                         <%end%>
 
                           <h3>Cambiar el status de usuario</h3>
-		                  <%= form_for @status do |view_status|%>
-	                      
+		                  <%= form_for @status do |view_status|%>	                      
 		                  <%= view_status.select :view_status, options_for_select([[t('.suspender'), "fantom"], [t('.activar'), "live"]])%>
 		                   <%= view_status.hidden_field :user_id, :value =>  @student_id %>
 		                   <%= view_status.hidden_field :date_status, :value => Time.now %>
