@@ -1,5 +1,6 @@
 <%if current_network.variante == "free"%>
  <% if @banner? %>
    <%= link_to image_tag(@banner.image_banner), @banner.link, :target => "_blank"%>
+   <%#= link_to image_tag(@banner.image_banner.banner), @banner.link, :target => "_blank"%>
  <%end%>
 <%end%>
