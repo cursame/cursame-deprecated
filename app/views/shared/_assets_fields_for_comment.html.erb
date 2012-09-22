@@ -14,12 +14,12 @@
         <%= asset.input :name, :input_html => {:class => "span4"} %>
         <%= asset.input :description, :input_html => {:class => "span4"} %>
         <%= asset.input :file, :as => :file, :input_html => {'data-upload-path' => upload_asset_path} %>
-        <%= asset.input :file_cache, :as => :hidden %>
+        <%# asset.input :file_cache, :as => :hidden %>
         <%= asset.input :_destroy, :as => :boolean %>
       </ol>
     </fieldset>
   <% end %>
   <%= link_to t('courses.add_asset'), '#', :class => 'btn small info add_record left', :style => 'display:none' %>
-  <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :submit, :class => "btn right"}, :wrapper_html => {:class=>"right"} %>
+  <%= form.commit_button :label => t('forms.leave_comment'), :button_html => {:id => :input, :class => "btn right"}, :wrapper_html => {:class=>"right"} %>
 </fieldset>
 <%= link_to t('comments.insert_multimedia'), 'javascript:void(0)',:rel => "tooltip", :class => 'small left', :title => "#{t('comments.tooltip')}" %>
