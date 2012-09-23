@@ -37,6 +37,8 @@ class AssetUploader < CarrierWave::Uploader::Base
       '/assets/file_icons/cad.png'
     when /\.exe$/i,/\.dmg$/i
       '/assets/file_icons/exec.png'
+    when /\.ppt$/i,/\.pptx$/i
+      '/assets/file_icons/ppt.png'
     else
       '/assets/file_icons/text.png'
     end
