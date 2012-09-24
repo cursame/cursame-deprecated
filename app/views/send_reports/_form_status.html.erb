@@ -1,6 +1,6 @@
 <div class="container">
 <div class="span10" style="border:0px;">
-<%= form_for (@bug_answer = BugAnswer.new) do |f| %>
+<%= form_for @bug_answer do |f| %>
 <div class="field">
    <%= f.label :container %><br />
    <%= f.text_area :container, :rows => 8, :cols => 45 %>

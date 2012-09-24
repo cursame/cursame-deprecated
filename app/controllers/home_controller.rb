@@ -49,6 +49,7 @@ class HomeController < ApplicationController
   end
   def reports
   @user=current_user.id
+  @bug_answer= BugAnswer.new
   end
   def help
   end

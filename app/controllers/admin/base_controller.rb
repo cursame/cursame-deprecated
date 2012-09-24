@@ -11,6 +11,7 @@ module Admin
 
     def reports
       @send_reports=SendReport.all
+      @bug_answer = BugAnswer.new
     end
     
     def tutorials

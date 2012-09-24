@@ -24,7 +24,7 @@
               <td>
                 <%= link_to t('download'), asset.file.url , :class =>'btn info'%>
                 <% @ext = (asset.file.to_s).split('.').pop() %>
-                <% if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'csv'|| @ext == 'sao' %>
+                <% if @ext == 'doc' || @ext == 'docx' || @ext == 'odt' || @ext == 'rtf' || @ext == 'pdf' || @ext == 'sxw' || @ext == 'xls' || @ext == 'sao' || @ext == "ppt" || @ext == "xlsx"   %>
                     <%= render :partial => 'shared/document_viewer', :locals => { :asset => asset } %>
                     <a data-toggle="modal" href="#modal-asset-<%= asset.id %>" class="btn">Ver</a>
                 <% elsif @ext == 'jpg' || @ext == 'png' || @ext == 'jpeg' || @ext == 'gif' %>
