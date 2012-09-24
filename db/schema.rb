@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914181535) do
+ActiveRecord::Schema.define(:version => 20120924223322) do
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20120914181535) do
     t.integer   "send_report_id"
     t.string    "send_report_status"
     t.integer   "user_id"
+    t.string    "email_to"
+    t.string    "subdomain"
   end
 
   create_table "calendar_activities", :force => true do |t|

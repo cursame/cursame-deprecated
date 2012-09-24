@@ -75,7 +75,7 @@
 <div id="prt-<%=report.id%>" style="display:none" >
 <h1>Dialogo</h1>
 <div class="span12">
-<%= render :partial => "send_reports/form_status"%>
+<%= render :partial => "send_reports/form_status", :locals => {:user_to=>report.user}%>
 <% report.bug_answers.each do |answer|%>
 <div class="span8" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px; padding:10px;">
 <div class="expander" id="border-spander"><p><%= answer.container%></p></div>
