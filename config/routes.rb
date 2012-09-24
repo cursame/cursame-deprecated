@@ -21,11 +21,11 @@ Cursame::Application.routes.draw do
   resources :networks
   
   resources :statuses
-
+  
   resources :bug_answers
-
+  
   resources :send_reports
-
+  
   resources :comment_posts
 
   resources :blogs
