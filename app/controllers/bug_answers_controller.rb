@@ -1,4 +1,5 @@
 class BugAnswersController < ApplicationController
+
   def new
     @bug_answer = BugAnswer.new
 
@@ -16,7 +17,7 @@ class BugAnswersController < ApplicationController
   # POST /bug_answers
   # POST /bug_answers.json
   def create
-    @bug_answer = BugAnswer.new(params[:bug_answer])     
+    @bug_answer = BugAnswer.new(params[:bug_answer])
     respond_to do |format|
       if @bug_answer.save
          @send_report = @bug_answer.send_report
