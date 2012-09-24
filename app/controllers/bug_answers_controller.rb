@@ -1,5 +1,4 @@
 class BugAnswersController < ApplicationController
- 
   def new
     @bug_answer = BugAnswer.new
 
