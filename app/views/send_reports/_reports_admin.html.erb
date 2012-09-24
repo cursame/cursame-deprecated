@@ -19,7 +19,7 @@
 <div class="span5 right" style="margin:0px">
 <!-- inicia span3-->  
     <div class="right">
-	<%= mail_to "report.user.email", report.user.name %>
+	<%= mail_to report.user.email, report.user.name %>
 	</div>
 	<div class="span3">
      <%= report.event_date%>
@@ -76,7 +76,8 @@
 <div>
 <div class="btn right" onclick="mostrarRespuestas(<%=report.id%>)">Status de la petición</div>
 <div id="prt-<%=report.id%>" style="display:none" >
-<%= render :partial => "send_reports/form_status"%>
+
+<%= render :partial => "send_reports/form_status", :locals => {:user_to=>report.user}%>
 <div class="span10">
 <% report.bug_answers.each do |answer|%>
 <div class="span8" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px; padding:10px;">

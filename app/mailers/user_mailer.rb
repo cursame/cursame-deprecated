@@ -58,5 +58,12 @@ class UserMailer < ActionMailer::Base
 
     mail to: @user.email
   end
-
+  
+  def new_bug_answer_by_admin(mail_to, subdomain)
+     headers["X-SMTPAPI"] = '{"category": "petition bug request"}'
+    
+     @subdomain = subdomain
+     @mail_to = mail_to
+     mail to: @mail_to
+   end
 end

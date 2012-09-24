@@ -1,8 +1,7 @@
 class BugAnswersController < ApplicationController
-
   def new
     @bug_answer = BugAnswer.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bug_answer }
@@ -17,12 +16,17 @@ class BugAnswersController < ApplicationController
   # POST /bug_answers
   # POST /bug_answers.json
   def create
-    @bug_answer = BugAnswer.new(params[:bug_answer])
+    @bug_answer = BugAnswer.new(params[:bug_answer])  
+    @user = user   
+    @email_to=@bug_answer.email_to 
+    @subdomain=@bug_answer.subdomain 
+
     respond_to do |format|
       if @bug_answer.save
          @send_report = @bug_answer.send_report
          @send_report.status = @bug_answer.send_report_status
          @send_report.save
+         UserMailer.new_bug_answer_by_admin(@email_to, @subdomain).deliver
         format.html { redirect_to :back, notice: 'Bug answer was successfully created.' }
         format.json { render json: @bug_answer, status: :created, location: @bug_answer }
       else
@@ -32,6 +36,7 @@ class BugAnswersController < ApplicationController
     end
   end
 
+    
   # PUT /bug_answers/1
   # PUT /bug_answers/1.json
   def update
@@ -58,5 +63,8 @@ class BugAnswersController < ApplicationController
       format.html { redirect_to bug_answers_url }
       format.json { head :ok }
     end
+  end
+  def user
+     current_user
   end
 end

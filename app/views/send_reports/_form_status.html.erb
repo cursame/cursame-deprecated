@@ -1,6 +1,7 @@
 <div class="container">
 <div class="span10" style="border:0px;">
-<%= form_for @bug_answer do |f| %>
+<%= debug user_to.networks[0].subdomain %>
+<%= form_for @bug_answer, do |f| %>
 <div class="field">
    <%= f.label :container %><br />
    <%= f.text_area :container, :rows => 8, :cols => 45 %>
@@ -15,6 +16,15 @@
 <%end%>
 <%= f.hidden_field :send_report_id, :value => @reports_id %>
 <%= f.hidden_field :user_id, :value => current_user.id %>
+
+<% if current_user.role == "admin"%>
+<%= f.hidden_field :email_to, :value => user_to.email %>
+<%= f.hidden_field :subdomain, :value => user_to.networks[0].subdomain %>
+<%else%>
+<%= f.hidden_field :email_to, :value => "soporte@cursa.me" %>
+<%= f.hidden_field :subdomain, :value => "app" %>
+<%end%>
+    
  </div>
 <div class="right">
 <%= f.submit "send request", :class => "btn info"%>
