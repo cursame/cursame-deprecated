@@ -24,12 +24,7 @@
                 	<tr class="asset">
                 	       
                     <td><p>
-                            <%if image_tag delivery.user.avatar_file.xsmall.url? %>
-                               <%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
-                               <%else%>
-                               ----
-                            <%end%>
-                     </b></p></td>
+                        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting%> %</b></p></td>
 
                     </tr>
                      </tbody>
