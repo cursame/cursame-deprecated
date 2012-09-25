@@ -66,6 +66,60 @@
                    </table>
                 </div>
               </div>
+              <div class="tab-pane" id="tab3">	
+              <div id="total">
+              	<h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
+
+                <table class= "zebra-striped">
+
+                  <thead>
+              	<tr>
+
+              	 <% @course.users.each do |user|%>
+              	    <% if user.view_status == "fantom"%>
+              	    <%else%>
+              	  	<th class="blue"> <%if user.role == "student" %>
+              		<%= user.name %>
+              		<%else%>
+              		<%= 'Rol sin evaluación'%> 
+              		<%end%></th>
+
+              	   <% total_deliveries= 0%>
+              	   <% total_survey= 0%>
+              	  <%user.deliveries.each do |delivery|%>	   
+
+              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if (delivery.raiting < 0 && delivery.raiting != nil)%>
+
+              	  <%end%>
+              	   <%user.survey_replies.each do |survey|%>
+
+              	    <% survey.score %>
+              	    <% total_survey=total_survey+survey.score %>
+
+              	  <%end%>
+              	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
+
+              	    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+
+              	</tr>
+
+                   </thead>
+                   <tbody>
+
+              	<tr class="asset">	<td><p>
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
+                   	<%else%>
+              		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
+              		 <%end%>
+              </b></p></td></tr>
+                   </tbody> 
+
+              	<%end%>
+
+                  <%end%>
+                 </table>
+               </div>
+              </div>
             </div>
         </div>
     </div>    
