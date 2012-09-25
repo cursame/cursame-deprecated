@@ -87,9 +87,11 @@
               	   <% total_deliveries= 0%>
               	   <% total_survey= 0%>
               	  <%user.deliveries.each do |delivery|%>	   
-
+                  <% if delivery.raiting == nil %>
+                   0%
+                  <%else%>
               	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting? %>
-
+                  <%end%>
               	  <%end%>
               	   <%user.survey_replies.each do |survey|%>
 
