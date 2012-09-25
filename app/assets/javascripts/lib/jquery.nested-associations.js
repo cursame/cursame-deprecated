@@ -15,7 +15,6 @@
         } else if (value) {
           var matcher = new RegExp(association + '_attributes_\\d+');
           tag.attr(attribute, value.replace(matcher, association + '_attributes_' + newId));
-          console.log('voinas para los calvos'+newId);
 
         }; 
       });
@@ -55,7 +54,7 @@
         $(this).parents('fieldset[data-association]').each(function(){
           var association = $(this).attr('data-association');
           $(this).children('fieldset.new').each(function(){
-            idRandom = Math.ceil(Math.random()*5000);
+            idRandom = (Math.ceil(Math.random()*10000));
             $(this).nestedAssociationsChangeId(association, idRandom);
           })
         });
