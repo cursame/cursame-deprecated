@@ -3,18 +3,20 @@
 // mit licence
 
 (function($){
+  var idRandom = null;
   $.fn.nestedAssociationsChangeId = function(association, newId){
     $(this).find('[id], [for], [name]').each(function(){
       var tag = $(this);
       $.each(['id', 'for', 'name'], function(index, attribute){
         var value = tag.attr(attribute);
-
         if (value && attribute == 'name') { 
           var matcher = new RegExp('\\[' + association + '_attributes\\]\\[\\d+\\]');
           tag.attr(attribute, value.replace(matcher, '[' + association + '_attributes][' + newId + ']'));
         } else if (value) {
           var matcher = new RegExp(association + '_attributes_\\d+');
-          tag.attr(attribute, value.replace(matcher, association + '_attributes_' + newId)); 
+          tag.attr(attribute, value.replace(matcher, association + '_attributes_' + newId));
+          console.log('voinas para los calvos'+newId);
+
         }; 
       });
     });
@@ -53,7 +55,8 @@
         $(this).parents('fieldset[data-association]').each(function(){
           var association = $(this).attr('data-association');
           $(this).children('fieldset.new').each(function(){
-            $(this).nestedAssociationsChangeId(association, new Date().getTime());
+            idRandom = Math.ceil(Math.random()*5000);
+            $(this).nestedAssociationsChangeId(association, idRandom);
           })
         });
 

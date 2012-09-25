@@ -8,15 +8,15 @@
 	         <li><a href="#tab3" data-toggle="tab"><%=t('courses.calification.calificación')%></a></li>
 	         <li><a href="#tab4" data-toggle="tab"><%= t('courses.analytics') %></a></li>
 	      </ul>
-	<div class="tab-content">	
-<div class="tab-pane active" id="res">	
+	<div class="tab-content">
+<div class="tab-pane active" id="res">
 	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
   <table class= "zebra-striped">
-	
+
 	<% @molto_course.each do |molto|%>
     <thead>
 	<tr>
-	<th class="blue"><%=molto.name%></th>	
+	<th class="blue"><%=molto.name%></th>
 	</tr>
      <% molto.deliveries.each do |delivery|%>
       <% if  delivery.user.view_status =='fantom'%>
@@ -31,11 +31,11 @@
      </tbody>
      <%end%>
 	<%end%>
-   <%end%> 
+   <%end%>
    </table>
 </div>
 
-<div class="tab-pane" id="tab2">	
+<div class="tab-pane" id="tab2">
 <div id="cues">	
 	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
   <table class= "zebra-striped">
@@ -103,7 +103,7 @@
        
      </thead>
      <tbody>
-	
+
 	<tr class="asset">	<td><p> <%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
      	<%else%>
 		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
