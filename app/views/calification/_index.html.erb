@@ -5,6 +5,8 @@
 	    <div class="tabs">
 	        <ul class="tabs">
 	            <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
+	            <li><a href="#tab2" data-toggle="tab"><%= t('surveys.index.header')%></a></li>
+    	        <li><a href="#tab3" data-toggle="tab"><%=t('courses.calification.calificación')%></a></li>
 	        </ul>
 	        <div class="tab-content">	
                 <div class="tab-pane active" id="res">	
@@ -36,6 +38,34 @@
                    <%end%> 
                    </table>
                 </div>
+                
+            <div class="tab-pane" id="tab2">	
+                <div id="cues">	
+                	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
+                  <table class= "zebra-striped">
+
+                	<% @bella_survey.each do |bella|%>
+                    <thead>
+                	<tr>
+                	<th class="blue"><%=bella.name%></th>
+                	 <% bella.survey_replies.each do |reply|%>
+                	 <% if  reply.user.view_status == "fantom"%>	
+                	 <%else%>
+                	</tr>
+
+                     </thead>
+                     <tbody>
+                	<tr class="asset">	<td><p><%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
+                	         <%=reply.user.name %> /
+                	          Porcentaje del examen: <b><%= reply.score %>%</b></p></td></tr>
+
+                     </tbody>
+                     <%end%>
+                	<%end%>
+                   <%end%> 
+                   </table>
+                </div>
+              </div>
             </div>
         </div>
     </div>    
