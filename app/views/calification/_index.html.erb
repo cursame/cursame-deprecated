@@ -87,8 +87,11 @@
               	   <% total_deliveries= 0%>
               	   <% total_survey= 0%>
               	  <%user.deliveries.each do |delivery|%>	   
-
-              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if (delivery.raiting < 0 && delivery.raiting != nil)%>
+                 <% if delivery.raiting == nil %>
+                    <% total_deliveries=total_deliveries + 0 %>
+                 <%else%>
+              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting > 0 %>
+              	<%end%>
 
               	  <%end%>
               	   <%user.survey_replies.each do |survey|%>
@@ -276,8 +279,13 @@
                 <% califn = 0%>
                 <% codn = 0%>
                <%assigment.deliveries.each do |delivery|%>
-
-                 	<% califn = califn + delivery.score ? delivery.score : 0 if (delivery.raiting < 0 && delivery.raiting != nil)%>
+               
+                <% if delivery.raiting == nil %>
+                   <% califn = califn + 0 %>
+                 <%else%>
+                 	<% califn = califn + delivery.score ? delivery.score : 0 if delivery.raiting > 0 %>
+                 <%end%>
+                 
                   <% codn = califn/@course.users.count%>
                   <% codan = 100-codn%>
                   <% porcento_delivery.push(codan)%>
