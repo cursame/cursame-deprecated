@@ -29,7 +29,7 @@
                         
                                <%=link_to image_tag delivery.user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil  %>
                         <%=  delivery.user.name if  delivery.user.name != nil  %> / Porcentaje de la
-         entrega:<% if delivery.raiting == nil %><b>0%</b><%else%><b><%= (delivery.score ? delivery.score : 0) if delivery.raiting %>%</b><%end%></p></td>
+         entrega:<% if delivery.raiting == nil %><b>0%</b><%else%><b><%= (delivery.score ? delivery.score : 0) if (delivery.raiting < 0 && delivery.raiting != nil) %>%</b><%end%></p></td>
 
                     </tr>
                      </tbody>
@@ -88,7 +88,7 @@
               	   <% total_survey= 0%>
               	  <%user.deliveries.each do |delivery|%>	   
 
-              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting? %>
+              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if (delivery.raiting < 0 && delivery.raiting != nil)%>
 
               	  <%end%>
               	   <%user.survey_replies.each do |survey|%>
@@ -99,7 +99,7 @@
               	  <%end%>
               	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
 
-              	   <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+              	    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
 
               	</tr>
 
@@ -107,7 +107,7 @@
                    <tbody>
 
               	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> <%= t('courses.assignments.assignments') %> : <b><%=total_deliveries%>%</b> + <%= t('surveys.index.header')%>: <b> <%= total_survey%>%</b> = Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> Calificación tentativa <b><%= (total_survey+total_deliveries)/2%>%
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>
