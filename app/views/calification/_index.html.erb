@@ -24,7 +24,10 @@
                 	<tr class="asset">
                 	       
                     <td><p>
-                     Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting%> %</b></p></td>
+                            <%if image_tag delivery.user.avatar_file.xsmall.url != nil %>
+                               <%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
+                           <%end%>
+                        <%=  delivery.user.name != nil  %> / Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting != nil  %> %</b></p></td>
 
                     </tr>
                      </tbody>
