@@ -1,38 +1,40 @@
-<% if @course.id == 10%>
+<% if @course.id == 10 %>
 
 <div class="spam10">
 	<div class="span-two-thirds">
 	    <div class="tabs">
-	      <ul class="tabs">
-	        <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
-	      </ul>
-	<div class="tab-content">	
-<div class="tab-pane active" id="res">	
-	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
-  <table class= "zebra-striped">
-	
-	<% @molto_course.each do |molto|%>
-    <thead>
-	<tr>
-	<th class="blue"><%=molto.name%></th>	
-	</tr>
-     <% molto.deliveries.each do |delivery|%>
-      <% if  delivery.user.view_status =='fantom'%>
-      <%else%>
-     </thead>
-     <tbody>
-	<tr class="asset">
-    <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
-        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting%> %</b></p></td>
+	        <ul class="tabs">
+	            <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
+	        </ul>
+	        <div class="tab-content">	
+                <div class="tab-pane active" id="res">	
+                	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
+                  <table class= "zebra-striped">
 
-    </tr>
-     </tbody>
-     <%end%>
-	<%end%>
-   <%end%> 
-   </table>
-</div>
-</div>
+                	<% @molto_course.each do |molto|%>
+                    <thead>
+                	<tr>
+                	<th class="blue"><%=molto.name%></th>	
+                	</tr>
+                     <% molto.deliveries.each do |delivery|%>
+                      <% if  delivery.user.view_status =='fantom'%>
+                      <%else%>
+                     </thead>
+                     <tbody>
+                	<tr class="asset">
+                    <td><p>volado</p></td>
+
+                    </tr>
+                     </tbody>
+                     <%end%>
+                	<%end%>
+                   <%end%> 
+                   </table>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div> 
 
 <%else%>
 
