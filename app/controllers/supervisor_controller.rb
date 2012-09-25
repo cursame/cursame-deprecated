@@ -18,7 +18,7 @@ class SupervisorController < ApplicationController
   def teachers
     teachers = current_network.teachers.order("upper(first_name), upper(last_name) asc")
     @teachers_count = teachers.where(:view_status => 'live').where(:state => 'active').count
-    @approved = teachers.where(:view_status => 'live').where(:state => 'active').page(params[:a_page]).per(15)
+    @approved = teachers.where(:view_status => 'live').where(:state => 'active').page(params[:a_page]).per(400)
     @pending = teachers.where(:state => 'inactive').page(params[:p_page]).per(15)
     @status = Status.new
     respond_to do |format|
@@ -38,7 +38,7 @@ class SupervisorController < ApplicationController
   end
   
   def supervisors
-    @supervisors = current_network.supervisors.order("upper(first_name), upper(last_name) asc").page(params[:page]).per(15)
+    @supervisors = current_network.supervisors.order("upper(first_name), upper(last_name) asc").page(params[:page]).per(300)
     respond_to do |format|
       format.html
       format.csv { export_csv(@supervisors) }
