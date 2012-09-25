@@ -1,4 +1,40 @@
+<% if accessible_course.id == "10"%>
 
+<div class="spam10">
+	<div class="span-two-thirds">
+	    <div class="tabs">
+	      <ul class="tabs">
+	        <li><a href="#res" data-toggle="tab"><%= t('courses.assignments.assignments') %></a></li>
+	      </ul>
+	<div class="tab-content">	
+<div class="tab-pane active" id="res">	
+	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
+  <table class= "zebra-striped">
+	
+	<% @molto_course.each do |molto|%>
+    <thead>
+	<tr>
+	<th class="blue"><%=molto.name%></th>	
+	</tr>
+     <% molto.deliveries.each do |delivery|%>
+      <% if  delivery.user.view_status =='fantom'%>
+      <%else%>
+     </thead>
+     <tbody>
+	<tr class="asset">
+    <td><p><%=link_to image_tag delivery.user.avatar_file.xsmall.url %>
+        <%=  delivery.user.name %> / Porcentaje de la entrega: <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting%> %</b></p></td>
+
+    </tr>
+     </tbody>
+     <%end%>
+	<%end%>
+   <%end%> 
+   </table>
+</div>
+</div>
+
+<%else%>
 <div class="spam10">
 	<div class="span-two-thirds">
 	    <div class="tabs">
@@ -82,9 +118,7 @@
 	                        
 	   <% total_deliveries= 0%>
 	   <% total_survey= 0%>
-	  <%user.deliveries.each do |delivery|%>
-	     
-	   
+	  <%user.deliveries.each do |delivery|%>	   
 			
 	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting%>
 	   
@@ -331,3 +365,4 @@ $(document).ready(function() {
 </div>
 </div>
 </div>
+<%end%>
