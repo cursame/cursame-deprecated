@@ -4,7 +4,6 @@ class CalificationController < ApplicationController
      @deliveries = @assignments.deliveries 
      @deliveries = Deliveries.all
   end
-  
 
   def course
     @course ||= accessible_courses.find params[:course_id]
