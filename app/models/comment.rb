@@ -50,7 +50,7 @@ class Comment < ActiveRecord::Base
     when "User"
       return commentable.id
     when "Comment" 
-      return commentable.user.id
+      return commentable.user.id if commentable.user
     when "Discussion"
       return commentable.starter.id
      when "Network"

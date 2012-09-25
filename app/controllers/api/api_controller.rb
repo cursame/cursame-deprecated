@@ -157,6 +157,9 @@ class Api::ApiController < ApplicationController
       else
         @commentable = Course.find params[:id]
     end
+     puts '--------------------------------------------------'
+      puts @commentable.to_yaml ;
+      puts '--------------------------------------------------'
     if params[:type] == 'User'
       @comments = @commentable.profile_comments.order("created_at DESC");
     else
