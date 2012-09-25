@@ -24,7 +24,11 @@ class Delivery < ActiveRecord::Base
     end
   end
   def score   
-       (100 * raiting/assignment.value).to_i    
+    if raiting != nil
+       (100 * raiting/assignment.value).to_i 
+    else
+      0
+    end   
    end
    
   def limit

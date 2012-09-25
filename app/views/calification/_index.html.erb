@@ -27,7 +27,7 @@
                         
                                <%=link_to image_tag delivery.user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil  %>
                         <%=  delivery.user.name if  delivery.user.name != nil  %> / Porcentaje de la
-         entrega: <b><%  if  delivery.score != nil %> <%= (delivery.score ? delivery.score : 0) if delivery.raiting != nil  %>%<%end%></b></p></td>
+         entrega: <b><%= delivery.score %>%</b></p></td>
 
                     </tr>
                      </tbody>
