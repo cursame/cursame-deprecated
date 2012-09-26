@@ -60,9 +60,9 @@
                 	          Porcentaje del examen: <b><%= reply.score %>%</b></p></td></tr>
 
                      </tbody>
-                     <%end%>
+                    <%end%>
                 	<%end%>
-                   <%end%> 
+                  <%end%>
                    </table>
                 </div>
               </div>
@@ -99,11 +99,20 @@
               	    <% survey.score %>
               	    <% total_survey=total_survey+survey.score %>
 
-              	  <%end%>
+                  <%end%>
+
+
+
 
               	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
 
-              	    <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
+
+
+              	   <%(total_survey=(100*user.survey_replies.count)/@course.surveys.count) if user.survey_replies.count > 0%>
+
+
+                   <%#  "#{total_survey*2}+ #{total_deliveries*2}"  %>
+
 
               	</tr>
 
@@ -111,7 +120,7 @@
                    <tbody>
 
               	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= ((total_survey+total_deliveries)/2)-100%>%
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= ((total_survey*2)+(total_deliveries*2))/2 %>%
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>
