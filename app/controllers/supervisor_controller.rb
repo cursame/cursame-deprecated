@@ -10,6 +10,7 @@ class SupervisorController < ApplicationController
   set_tab :supervisors, :only => %w(supervisors)
   set_tab :new_user, :only => %w(new_user)
   set_tab :suspended, :only => %w(suspended)
+ 
   def dashboard
     @networks = current_user.networks
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
