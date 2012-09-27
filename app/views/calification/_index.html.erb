@@ -82,54 +82,57 @@
               		<%else%>
               		<%= 'Rol sin evaluación'%> 
               		<%end%></th>
-
-              	   <% total_deliveries= 0%>
-              	   <% total_survey= 0%>
-              	   <% operation_deliveries = 0%>
-              	   <% operation_survey = 0%>
-              	   <% validator_final_operation = 0%>
-              	            <% count_ass = @course.assignments.count if @course.assignments.count > 0  %>
-                            <% count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
-              	  <%user.deliveries.each do |delivery|%>	  
-              	   
+             	
+              
+              	             	           
+              	  <%user.deliveries.each do |delivery|%>
+              	  
+              	  <!--contador de cuantas tareas y cuantas entregas de cuestionario hay en el curso-->	  
+              	    <% @count_ass = @course.assignments.count if @course.assignments.count > 0  %>
+                    <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
+                 
+                 
                  <% if delivery.raiting == nil %>
-                    <% total_deliveries=total_deliveries + 0 %>
-                 <%else%>
-                    <%= total_deliveries = 0 %>
-              	    <% total_deliveries= total_deliveries + delivery.score if delivery.raiting != 0 %>
+                    <% @total_deliveries= 0 %>
+                 <%else%>   
+                    <% @total_deliveries = 0 %>               
+              	    <% @total_deliveries= @total_deliveries + delivery.score %>
               	<%end%>
 
               	  <%end%>
+              	   
               	   <%user.survey_replies.each do |survey|%>
-              	   <% total_survey= 0%>
-
-              	    <% total_survey=total_survey+survey.score %>
-
+              	    <% @total_survey= 0%>
+              	    <% @total_survey= @total_survey+survey.score %>
               	  <%end%>
 
                    
-                   <% if count_ass == nil || count_ass == 0 %>
-                   <% operation_deliveries= 0 %>
+                   <% if @count_ass == nil %>
+                   <% @operation_deliveries= 0 %>
                    
                    <%else%>
-                   <% operation_deliveries= total_deliveries/count_ass %>
+                   <% @operation_deliveries= @total_deliveries/@count_ass %>
+                   
                    <%end%>
-                   <% if count_sur == nil || count_sur == 0 %>
-                   <% operation_survey= 0 %>
+                   <% if @count_sur == nil %>
+                   <% @operation_survey= 0 %>
                    
                    <%else%>
-                   <% operation_survey= total_survey/count_sur if total_survey > 0 %>
+                   <% @operation_survey= @total_survey/@count_sur if @total_survey > 0 %>
+                   
                    
                    <%end%>
               	</tr>
-                   <% validator_final_operation = operation_deliveries + operation_survey %>
-                   
+              	   <% validator_final_operation = 0%>   
+                   <% validator_final_operation = @operation_deliveries + @operation_survey %>
+                    <%= debug @total_deliveries%>
+                    <%= debug @count_ass%>
                    </thead>
                    <tbody>
 
               	<tr class="asset">	<td><p>
               	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= (validator_final_operation)/2 %>
-              
+              	    <%= debug @total_deliveries%>+<%= debug @operation_survey%>
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>
