@@ -26,7 +26,6 @@
                 	<tr class="asset">
                 	       
                     <td><p>
-                        
                                <%=link_to image_tag delivery.user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil  %>
                         <%=  delivery.user.name if  delivery.user.name != nil  %> / Porcentaje de la
          entrega:<% if delivery.raiting == nil %><b>0%</b><%else%><b><%= (delivery.score ? delivery.score : 0) if delivery.raiting > 0 %>%</b><%end%></p></td>
@@ -88,44 +87,50 @@
               	   <% total_survey= 0%>
               	   <% operation_deliveries = 0%>
               	   <% operation_survey = 0%>
+              	   <% validator_final_operation = 0%>
+              	            <% count_ass = @course.assignments.count if @course.assignments.count > 0  %>
+                            <% count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
               	  <%user.deliveries.each do |delivery|%>	  
               	   
                  <% if delivery.raiting == nil %>
                     <% total_deliveries=total_deliveries + 0 %>
                  <%else%>
-              	    <% total_deliveries=total_deliveries + (delivery.score ? delivery.score : 0) if delivery.raiting > 0 %>
+                    <%= total_deliveries = 0 %>
+              	    <% total_deliveries= total_deliveries + delivery.score if delivery.raiting != 0 %>
               	<%end%>
 
               	  <%end%>
               	   <%user.survey_replies.each do |survey|%>
+              	   <% total_survey= 0%>
 
-              	    <% survey.score %>
               	    <% total_survey=total_survey+survey.score %>
 
               	  <%end%>
 
-                   <%= count_ass = @course.assignments.count if @course.assignments.count > 0  %>
-                   <%= count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
+                
                    
-                   <% if count_ass == nil %>
-                   <% operation_deliveries= 100 %>
+                   <% if count_ass == nil || count_ass == 0 %>
+                   <% operation_deliveries= 0 %>
                    
                    <%else%>
                    <% operation_deliveries= total_deliveries/count_ass %>
                    <%end%>
-                   <% if count_sur == nil %>
-                   <% operation_survey= 100 %>
+                   <% if count_sur == nil || count_sur == 0 %>
+                   <% operation_survey= 0 %>
                    
                    <%else%>
-                   <% operation_survey= total_survey/count_sur %>
+                   <% operation_survey= total_survey/count_sur if total_survey > 0 %>
+                   
                    <%end%>
               	</tr>
-
+                   <% validator_final_operation = operation_deliveries + operation_survey %>
+                   
                    </thead>
                    <tbody>
 
               	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= ((operation_deliveries-100)+(operation_survey-100))/2 %>%
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= validator_final_operation %>
+              
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>

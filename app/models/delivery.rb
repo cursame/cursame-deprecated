@@ -24,7 +24,7 @@ class Delivery < ActiveRecord::Base
     end
   end
   def score   
-       (100 * raiting/assignment.value).to_i 
+       (100 *raiting/assignment.value).to_i 
    end
    
   def limit
