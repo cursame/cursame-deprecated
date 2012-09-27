@@ -86,7 +86,10 @@
 
               	   <% total_deliveries= 0%>
               	   <% total_survey= 0%>
-              	  <%user.deliveries.each do |delivery|%>	   
+              	   <% operation_deliveries = 0%>
+              	   <% operation_survey = 0%>
+              	  <%user.deliveries.each do |delivery|%>	  
+              	   
                  <% if delivery.raiting == nil %>
                     <% total_deliveries=total_deliveries + 0 %>
                  <%else%>
@@ -101,23 +104,28 @@
 
               	  <%end%>
 
-
-
-              	   <%(total_deliveries=total_deliveries/user.deliveries.count) if user.deliveries.count > 0%>
-
-              	   <%(total_survey=total_survey/user.survey_replies.count) if user.survey_replies.count > 0%>
-
-
-
-
-
+                   <%= count_ass = @course.assignments.count if @course.assignments.count > 0  %>
+                   <%= count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
+                   
+                   <% if count_ass == nil %>
+                   <% operation_deliveries= 100 %>
+                   
+                   <%else%>
+                   <% operation_deliveries= total_deliveries/count_ass %>
+                   <%end%>
+                   <% if count_sur == nil %>
+                   <% operation_survey= 100 %>
+                   
+                   <%else%>
+                   <% operation_survey= total_survey/count_sur %>
+                   <%end%>
               	</tr>
 
                    </thead>
                    <tbody>
 
               	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= total_survey+total_deliveries/2 %>%
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= ((operation_deliveries-100)+(operation_survey-100))/2 %>%
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>
