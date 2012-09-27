@@ -1,3 +1,7 @@
+<%
+   @global_survey = 0;
+   @global_deliveries = 0;
+%>
 <div class="spam10">
 	<div class="span-two-thirds">
 	    <div class="tabs">
@@ -8,125 +12,144 @@
     	        <li><a href="#tab4" data-toggle="tab"><%= t('courses.analytics') %></a></li>
    	         
 	        </ul>
-	        <div class="tab-content">	
-                <div class="tab-pane active" id="res">	
+	        <div class="tab-content">
+            <div class="tab-pane active" id="res">
                 	<h3><%= t('courses.assignments.assignments') %> entregadas por el alumno</h3>
-                  <table class= "zebra-striped">
+                    <table class= "zebra-striped">
+                        <% @molto_course.each do |molto|%>
+                        <thead>
+                            <tr>
+                                <th class="blue"><%=molto.name%></th>
+                            </tr>
+                            <% molto.deliveries.each do |delivery|%>
+                                <% if  delivery.user.view_status =='fantom'%>
+                                <%else%>
+                        </thead>
+                        <tbody>
+                            <tr class="asset">
+                                <td>
+                                    <p>
+                                        <%=link_to image_tag delivery.user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil  %>
+                                        <%=  delivery.user.name if  delivery.user.name != nil  %> / Porcentaje de la entrega:
+                                            <% if delivery.raiting == nil %>
+                                                <b>0%</b>
+                                            <%else%>
+                                                <b><%= (delivery.score ? delivery.score : 0) if delivery.raiting > 0 %>%</b>
+                                        <%end%>
+                                    </p>
+                                </td>
+                            </tr>
+                         </tbody>
+                         <%end%>
+                       <%end%>
+                       <%end%>
 
-                	<% @molto_course.each do |molto|%>
-                    <thead>
-                	<tr>
-                	<th class="blue"><%=molto.name%></th>	
-                	</tr>
-                     <% molto.deliveries.each do |delivery|%>
-                      <% if  delivery.user.view_status =='fantom'%>
-                      <%else%>
-                     </thead>
-                     <tbody>
-                	<tr class="asset">
-                	       
-                    <td><p>
-                               <%=link_to image_tag delivery.user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil  %>
-                        <%=  delivery.user.name if  delivery.user.name != nil  %> / Porcentaje de la
-         entrega:<% if delivery.raiting == nil %><b>0%</b><%else%><b><%= (delivery.score ? delivery.score : 0) if delivery.raiting > 0 %>%</b><%end%></p></td>
-
-                    </tr>
-                     </tbody>
-                     <%end%>
-                	<%end%>
-                   <%end%> 
-                   </table>
+                    </table>
                 </div>
                 
             <div class="tab-pane" id="tab2">	
                 <div id="cues">	
                 	<h3><%= t('surveys.index.header')%> contestados por el alumno</h3>
-                  <table class= "zebra-striped">
+                    <table class= "zebra-striped">
+                        <% @bella_survey.each do |bella|%>
+                            <thead>
+                	            <tr>
+                	                <th class="blue"><%=bella.name%></th>
+                	                <% bella.survey_replies.each do |reply|%>
+                	                <% if  reply.user.view_status == "fantom"%>
+                	                <%else%>
+                	            </tr>
+                            </thead>
+                            <tbody>
+                	            <tr class="asset">
+                                    <td>
+                                        <p>
+                                          <%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
+                                          <%=reply.user.name %> /
+                                          Porcentaje del examen:
+                                          <% if reply.score ==nil %>
+                                            <b>0%</b>
+                                          <% else %>
+                                            <b><%= reply.score %>%</b>
+                                          <% end %>
+                                        </p>
+                                    </td>
+                                </tr>
 
-                	<% @bella_survey.each do |bella|%>
-                    <thead>
-                	<tr>
-                	<th class="blue"><%=bella.name%></th>
-                	 <% bella.survey_replies.each do |reply|%>
-                	 <% if  reply.user.view_status == "fantom"%>	
-                	 <%else%>
-                	</tr>
-
-                     </thead>
-                     <tbody>
-                	<tr class="asset">	<td><p><%= link_to image_tag(reply.user.avatar_file.xsmall.url), reply.user %>
-                	         <%=reply.user.name %> /
-                	          Porcentaje del examen: <b><%= reply.score %>%</b></p></td></tr>
-
-                     </tbody>
-                     <%end%>
-                	<%end%>
-                   <%end%>
-                   </table>
+                            </tbody>
+                                    <%end%>
+                	    <%end%>
+                        <%end%>
+                    </table>
                 </div>
-              </div>
-              <div class="tab-pane" id="tab3">	
-              <div id="total">
-              	<h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
+            </div>
 
-                <table class= "zebra-striped">
 
-                  <thead>
-              	<tr>
+            <div class="tab-pane" id="tab3">
+                <div id="total">
+              	    <h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
 
-              	 <% @course.users.each do |user|%>
-              	    <% if user.view_status == "fantom"%>
-              	    <%else%>
-              	  	<th class="blue"> <%if user.role == "student" %>
-              		<%= user.name %>
-              		<%else%>
-              		<%= 'Rol sin evaluación'%> 
-              		<%end%></th>
-             	
-              
-              	             	           
-              	  <%user.deliveries.each do |delivery|%>
-              	  
-              	  <!--contador de cuantas tareas y cuantas entregas de cuestionario hay en el curso-->	  
-              	    <% @count_ass = @course.assignments.count if @course.assignments.count > 0  %>
-                    <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
-                 
-                 
-                 <% if delivery.raiting == nil %>
-                    <% @total_deliveries= 0 %>
-                 <%else%>   
-                    <% @total_deliveries = 0 %>               
-              	    <% @total_deliveries= @total_deliveries + delivery.score %>
-              	<%end%>
+                        <table class= "zebra-striped">
+                            <thead>
+              	                <tr>
+                                    <% @course.users.each do |user|%>
+              	                    <% if user.view_status == "fantom"%>
+              	                    <%else%>
+              	  	                    <th class="blue">
+                                            <%if user.role == "student" %>
+                                                <%= user.name %>
+                                            <%else%>
+                                                <%= 'Rol sin evaluación'%>
+                                            <%end%>
+                                        </th>
+              	                        <%user.deliveries.each do |delivery|%>
+                                        <!--contador de cuantas tareas y cuantas entregas de cuestionario hay en el curso-->
+                                            <% @count_ass = @course.assignments.count if @course.assignments.count > 0  %>
+                                            <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
 
-              	  <%end%>
-              	   
-              	   <%user.survey_replies.each do |survey|%>
-              	    <% @total_survey= 0%>
-              	    <% @total_survey= @total_survey+survey.score %>
-              	  <%end%>
+                                            <% if delivery.raiting == nil %>
+                                                <% @global_deliveries += 0  %>
+                                            <%else%>
+                                                <% @global_deliveries += delivery.score > 0 ? delivery.score : 0  %>
+                                            <%end%>
 
+              	                        <%end%>
+                                        Total Tareas: <%= @global_deliveries/@course.assignments.count %>%
+                                        <%user.survey_replies.each do |survey|%>
+                                            <% if survey.score == nil %>
+                                                <% @global_survey += 0 %>
+                                            <% else %>
+                                                <% @global_survey += survey.score %>
+                                            <% end %>
+                                        <%end%>
+                                        Total Examenes: <%= @global_survey/@course.surveys.count %>%
+                                        Calificacion final <%= @global_deliveries+@global_survey %>
                    
+                                        <% @global_deliveries=0
+                                           @global_survey=0 %>
                    <% if @count_ass == nil %>
                    <% @operation_deliveries= 0 %>
-                   
+
                    <%else%>
-                   <% @operation_deliveries= @total_deliveries/@count_ass %>
-                   
+                   <%# @operation_deliveries= @total_deliveries/@count_ass %>
+
                    <%end%>
+
+
+                   <%= debug @total_survey %>
                    <% if @count_sur == nil %>
-                   <% @operation_survey= 0 %>
-                   
+                       <% @operation_survey= 0 %>
                    <%else%>
-                   <% @operation_survey= @total_survey/@count_sur if @total_survey > 0 %>
-                   
-                   
+                       <%# @operation_survey= @total_survey/@count_sur if @total_survey > 0 %>
                    <%end%>
+
               	</tr>
               	   <% validator_final_operation = 0%>   
                    <% validator_final_operation = @operation_deliveries + @operation_survey %>
-                    <%= debug @total_deliveries%>
-                    <%= debug @count_ass%>
+                    <%# debug @total_deliveries%>
+                    <%# debug @count_ass%>
+                    <%# debug @total_survey %>
+                    <%# debug @count_sur %>
                    </thead>
                    <tbody>
 

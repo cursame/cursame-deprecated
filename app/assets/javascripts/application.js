@@ -539,7 +539,7 @@ function renderCommentsGraph(renderTo, value) {
             name: 'Comentarios en tareas',
             data: [value[1]]
         }, {
-            name: 'Comentarios en iscusiones',
+            name: 'Comentarios en discusiones',
             data: [value[2]]
         },{
 	       	name: 'Comentarios en muro usuarios',

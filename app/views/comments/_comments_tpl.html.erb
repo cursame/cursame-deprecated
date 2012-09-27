@@ -59,7 +59,6 @@
   </div>
   <div class="comment-comments">
     <%= render :partial => 'comments/comment_comments', :locals => {:commentable => comment} unless comment.comments.blank? %>
-
     <% unless Comment === comment.commentable %>
         <div class="comment-form"
              <%if comment.comments.empty? %>
