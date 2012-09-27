@@ -128,7 +128,7 @@
                    <tbody>
 
               	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= validator_final_operation %>
+              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= (validator_final_operation)/2 %>
               
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
