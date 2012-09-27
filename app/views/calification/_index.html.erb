@@ -108,8 +108,10 @@
                                             <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
 
                                             <% if delivery.raiting == nil %>
+                                                tarea:<%= @global_deliveries += 0  %>
                                                 <% @global_deliveries += 0  %>
                                             <%else%>
+                                                tarea:<%= @global_deliveries += delivery.score > 0 ? delivery.score : 0 %>
                                                 <% @global_deliveries += delivery.score > 0 ? delivery.score : 0  %>
                                             <%end%>
 
