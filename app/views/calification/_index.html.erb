@@ -113,7 +113,7 @@
                                         <td>
                                             <p>
                                             <%if user.role == "student" %>
-                                                <%= image_tag(user.avatar_file.xsmall.url) if image_tag delivery.user.avatar_file.xsmall.url != nil %>
+                                                <%= image_tag(user.avatar_file.xsmall.url) if user.avatar_file.xsmall.url != nil %>
 
 
 
