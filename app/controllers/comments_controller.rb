@@ -25,8 +25,11 @@ class CommentsController < ApplicationController
   end
   
   def show
+    
     @comment = Comment.find params[:id]
     @user = current_user
+    @tutoriales = Tutoriale.all
+    @banner = Banner.last
   end
 
   private
