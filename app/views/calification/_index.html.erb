@@ -116,41 +116,7 @@
                                                 <%= image_tag(user.avatar_file.xsmall.url) if image_tag delivery.user.avatar_file.xsmall.url != nil %>
 
 
-                                                <% @molto_course.each do |tarea| %>
-                                                  <%# debug tarea.id  %>
-                                                  <% user.deliveries.each do |tarea_usr| %>
-                                                      <% if tarea.id == tarea_usr.assignment_id && tarea_usr.assignment_id != nil%>
-                                                          <% if tarea_usr.raiting == nil %>
-                                                              <% @global_deliveries += 0  %>
-                                                          <%else%>
-                                                              <% @global_deliveries += tarea_usr.score > 0 ? tarea_usr.score : 0  %>
-                                                          <%end%>
-                                                          <% break %>
-                                                      <% end %>
-                                                  <% end %>
-                                                <%  end %>
-                                                
-                                                <% @bella_survey.each do |examen| %>
-                                                  <%user.survey_replies.each do |examen_usr|%>
 
-                                                      <% if examen.id == examen_usr.survey_id && examen_usr.survey_id != nil%>
-                                                          <% if examen_usr.score == nil %>
-                                                              <% @global_survey += 0  %>
-                                                          <%else%>
-                                                              <% @global_survey += examen_usr.score > 0 ? examen_usr.score : 0  %>
-                                                          <%end%>
-                                                          <% break %>
-                                                      <% end %>
-                                                  <%end%>
-                                                <%end%>
-
-                                                <br>
-                                                
-                                                Tareas: <b><%= @operation_deliveries= @global_deliveries/@course.assignments.count %>%</b>
-                                                Examenes: <b><%= @operation_survey= @global_survey/@course.surveys.count %>%</b>
-                                                 - Calificacion tentativa: <b><%= (@operation_deliveries+@operation_survey)/2 %>%</b>
-                                                <% @global_deliveries = 0 %>
-                                                <% @global_survey = 0 %>
                                             <%else%>
                                                 <%= user.name if user.name !=nil %> = <%= 'Evaluador o administrador del grupo'%>
                                             <%end%>
