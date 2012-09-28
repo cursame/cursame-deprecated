@@ -116,7 +116,7 @@
                                                 <%= image_tag(user.avatar_file.xsmall.url) if user.avatar_file.xsmall.url != nil %>
                                                   <% @molto_course.each do |tarea| %>
                                                       <%# debug tarea.id  %>
-                                                      <%= if user != nil && user.deliveries != nil %>
+                                                      <% if user != nil && user.deliveries != nil %>
                                                       
                                                       <% user.deliveries.each do |tarea_usr| %>
                                                           <% if tarea.id == tarea_usr.assignment_id %>
