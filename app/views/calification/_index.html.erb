@@ -122,9 +122,9 @@
                                                          <% if tarea.id != nil && tarea_usr.assigment_id != nil%>
                                                           <% if tarea.id == tarea_usr.assignment_id %>
                                                               <% if tarea_usr.raiting == nil %>
-                                                                  <% @global_deliveries = 0  %>
+                                                                 
                                                               <%else%>
-                                                                  <% @global_deliveries += tarea_usr.score > 0 ? tarea_usr.score : 0  %>
+                                                                 
                                                               <%end%>
                                                               <% break %>
                                                          <% end %>
