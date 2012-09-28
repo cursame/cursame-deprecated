@@ -92,6 +92,7 @@
                         <table class= "zebra-striped">
                             <thead>
               	                <tr>
+<<<<<<< HEAD
                                     <% @course.users.each do |user|%>
                                     
                                     <% @molto_course.each do |molto|%>
@@ -100,6 +101,24 @@
                                     
                                         <%end%>
               	                    <% if user.view_status == "fantom"%>
+=======
+                                    <%# debug @molto_course %> _
+                                    
+                                    <%# @course.users[0].name %>
+
+                                    <%# debug @bella_survey %>
+
+                                    <% @course.users.each do |user|%>
+
+                                    <%# if user.user.survey_replies[0] != nil && user.deliveries[0].id==@molto_course[0].deliveries[0].id %>
+                                        <%= debug user.deliveries[0]  %>
+                                        <%= debug user.deliveries[1]  %>
+                                    <%# end %>
+
+
+                                    <%# debug user.survey_replies %>
+                                    <% if user.view_status == "fantom"%>
+>>>>>>> 2fef155dbbb0ce8b68dce81699f3d85fe2422cac
               	                    <%else%>
               	  	                    <th class="blue">
                                             <%if user.role == "student" %>
@@ -166,7 +185,7 @@
 
               	<tr class="asset">	<td><p>
               	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= (validator_final_operation)/2 %>
-              	    <%= debug @total_deliveries%>+<%= debug @operation_survey%>
+              	    <%# debug @total_deliveries%>+<%# debug @operation_survey%>
                    	<%else%>
               		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
               		 <%end%>
