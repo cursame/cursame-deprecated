@@ -117,7 +117,9 @@
                                                   <% @molto_course.each do |tarea| %>
                                                       <%# debug tarea.id  %>
                                                       <% user.deliveries.each do |tarea_usr| %>
-                                                          <% if tarea.id == tarea_usr.assignment_id && tarea_usr.assignment_id != nil%>
+                                                      <% if  tarea_usr.assignment_id == nil%>
+                                                      <%else%>
+                                                          <% if tarea.id == tarea_usr.assignment_id %>
                                                               <% if tarea_usr.raiting == nil %>
                                                                   <% @global_deliveries += 0  %>
                                                               <%else%>
@@ -125,13 +127,15 @@
                                                               <%end%>
                                                               <% break %>
                                                           <% end %>
+                                                         <%end%>
                                                       <% end %>
                                                   <%  end %>
 
                                                   <% @bella_survey.each do |examen| %>
                                                       <%user.survey_replies.each do |examen_usr|%>
-
-                                                          <% if examen.id == examen_usr.survey_id && examen_usr.survey_id != nil%>
+                                                        <% if examen_usr.survey_id == nil %>
+                                                        <%else%>
+                                                          <% if examen.id == examen_usr.survey_id %>
                                                               <% if examen_usr.score == nil %>
                                                                   <% @global_survey += 0  %>
                                                               <%else%>
@@ -139,6 +143,7 @@
                                                               <%end%>
                                                               <% break %>
                                                           <% end %>
+                                                         <% end %>
                                                       <%end%>
                                                   <%end%>
 
