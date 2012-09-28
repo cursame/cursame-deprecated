@@ -93,6 +93,12 @@
                             <thead>
               	                <tr>
                                     <% @course.users.each do |user|%>
+                                    
+                                    <% @molto_course.each do |molto|%>
+                                    
+                                        <% @caption = molto.id %>
+                                    
+                                        <%end%>
               	                    <% if user.view_status == "fantom"%>
               	                    <%else%>
               	  	                    <th class="blue">
@@ -106,22 +112,25 @@
                                         <!--contador de cuantas tareas y cuantas entregas de cuestionario hay en el curso-->
                                             <% @count_ass = @course.assignments.count if @course.assignments.count > 0  %>
                                             <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
-
+                                              <% @molto_course.each do |assigmentes|%>
+                                                  <% assigmentes.deliveries.each do |delivery|%>
+                                                     <%= @id_deliveries = delivery.id%>
+                                                  <%end%>
+                                              <%end%>
                                             <% if delivery.raiting == nil %>
-                                                tarea:<%= @global_deliveries += 0  %>
-                                                <% @global_deliveries += 0  %>
+                                                <% @global_deliveries = 0  %>
                                             <%else%>
-                                                tarea:<%= @global_deliveries += delivery.score > 0 ? delivery.score : 0 %>
-                                                <% @global_deliveries += delivery.score > 0 ? delivery.score : 0  %>
+                                                <% @global_deliveries = 0  %>
+                                                <% @global_deliveries = delivery.score %>
                                             <%end%>
 
               	                        <%end%>
-                                        Total Tareas: <%= @global_deliveries/@course.assignments.count %>%
+                                               <%= @global_deliveries%>
                                         <%user.survey_replies.each do |survey|%>
                                             <% if survey.score == nil %>
-                                                <% @global_survey += 0 %>
+                                                <% @global_survey = 0 %>
                                             <% else %>
-                                                <% @global_survey += survey.score %>
+                                                <% @global_survey = survey.score  %>
                                             <% end %>
                                         <%end%>
                                         Total Examenes: <%= @global_survey/@course.surveys.count %>%
