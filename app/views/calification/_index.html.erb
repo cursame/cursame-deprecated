@@ -119,9 +119,18 @@
                                                       <% if user != nil && user.deliveries != nil %>
                                                       
                                                       <% user.deliveries.each do |tarea_usr| %>
-                                                          
-                                                      <% end %>
-                                                      <% end %>
+                                                         <% if tarea.id != nil && tarea_user.assigment_id != nil%>
+                                                          <% if tarea.id == tarea_usr.assignment_id %>
+                                                              <% if tarea_usr.raiting == nil %>
+                                                                  <% @global_deliveries = 0  %>
+                                                              <%else%>
+                                                                  <% @global_deliveries += tarea_usr.score > 0 ? tarea_usr.score : 0  %>
+                                                              <%end%>
+                                                              <% break %>
+                                                         <% end %>
+                                                         <% end %>
+                                                         <% end %>
+                                                        <% end %>
                                                   <%  end %>
                                                     
 
