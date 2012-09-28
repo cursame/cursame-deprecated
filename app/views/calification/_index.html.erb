@@ -123,7 +123,7 @@
                                                               <% if tarea_usr.raiting == nil %>
                                                                   <% @global_deliveries += 0  %>
                                                               <%else%>
-                                                                  <% @global_deliveries += tarea_usr.score > 0 ? tarea_usr.score : 0 if tarea_usr.raiting > 0 %>
+                                                                  <% @global_deliveries += (tarea_usr.score > 0 ? tarea_usr.score : 0) if tarea_usr.raiting > 0 %>
                                                               <%end%>
                                                               <% break %>
                                                           <% end %>
@@ -139,7 +139,7 @@
                                                               <% if examen_usr.score == nil %>
                                                                   <% @global_survey += 0  %>
                                                               <%else%>
-                                                                  <% @global_survey += examen_usr.score > 0 ? examen_usr.score : 0 if examen_usr.score > 0  %>
+                                                                  <% @global_survey += (examen_usr.score > 0 ? examen_usr.score : 0) if examen_usr.score > 0  %>
                                                               <%end%>
                                                               <% break %>
                                                           <% end %>
