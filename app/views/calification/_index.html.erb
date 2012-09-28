@@ -100,7 +100,7 @@
                                             <%else%>
                                                 <th class="blue">
                                                     <%if user.role == "student" %>
-                                                        <%= user.name %>
+                                                        <%= user.name if user.name !=nil%>
                                                     <%else%>
                                                         <%= 'Rol sin evaluación'%>
                                                     <%end%>
@@ -113,7 +113,7 @@
                                         <td>
                                             <p>
                                             <%if user.role == "student" %>
-                                                <%= image_tag(user.avatar_file.xsmall.url) %>
+                                                <%= image_tag user.avatar_file.xsmall.url if image_tag delivery.user.avatar_file.xsmall.url != nil %>
 
 
                                                 <% @molto_course.each do |tarea| %>
@@ -150,7 +150,7 @@
                                                 <% @global_deliveries = 0 %>
                                                 <% @global_survey = 0 %>
                                             <%else%>
-                                                <%= user.name %> = <%= 'Evaluador o administrador del grupo'%>
+                                                <%= user.name if user.name !=nil %> = <%= 'Evaluador o administrador del grupo'%>
                                             <%end%>
                                             </p>
                                         </td>
