@@ -121,7 +121,9 @@
                                                        <% if tarea != nil%>
                                                       <% if  tarea_usr.assignment_id == nil%>
                                                       <%else%>
-                                                          <% if tarea.id == tarea_usr.assignment_id && tarea.id !=nil%>
+                                                      <% if tarea.id == nil%>
+                                                      <%else%>
+                                                          <% if tarea.id == tarea_usr.assignment_id %>
                                                               <% if tarea_usr.raiting == nil%>
                                                                   <% @global_deliveries += 0  %>
                                                               <%else%>
@@ -134,6 +136,7 @@
                                                   <%  end %>
                                                   <% end %>
                                                   <% end %>
+                                                  <%end%>
 
                                                   <% @bella_survey.each do |examen| %>
                                                 
@@ -143,7 +146,9 @@
                                                         <% if examen != nil%>
                                                         <% if examen_usr.survey_id == nil %>
                                                         <%else%>
-                                                          <% if examen.id == examen_usr.survey_id && examen.id != nil %>
+                                                        <% if  examen.id == nil %>
+                                                        <%else%>
+                                                          <% if examen.id == examen_usr.survey_id %>
                                                               <% if examen_usr.score == nil %>
                                                                   <% @global_survey += 0  %>
                                                               <%else%>
@@ -156,11 +161,26 @@
                                                   <%end%>
                                                   <%end%>
                                                   <%end%>
+                                                  <%end%>
 
+                                                   <% if @global_deliveries == 0%>
+                                                   Tareas: <b><%= @operation_deliveries= 0 %></b>
+                                                   <%else%>
                                                   <br>
                                                   Tareas: <b><%= @operation_deliveries= @global_deliveries/@course.assignments.count %>%</b>
+                                                  <%end%>
+                                                  <% if  @global_survey == 0%>
+                                                  Examenes: <b><%= @operation_survey = 0 %></b>
+                                                  <%else%>
                                                   Examenes: <b><%= @operation_survey= @global_survey/@course.surveys.count %>%</b>
+                                                  <%end%>
+                                                  <% case %>
+                                                  <% when @global_deliveries +  @global_survey == 0 %>
+                                                  - Calificacion tentativa:
+                                                  <% when @global_deliveries + @global_survey != 0 %>
+                                                  
                                                   - Calificacion tentativa: <b><%= (@operation_deliveries+@operation_survey)/2 %>%</b>
+                                                  <%end%>
                                                   <% @global_deliveries = 0 %>
                                                   <% @global_survey = 0 %>
 
