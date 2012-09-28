@@ -90,112 +90,74 @@
               	    <h3> <%=t('courses.calification.calificación')%> tentativa final</h3>
 
                         <table class= "zebra-striped">
-                            <thead>
-              	                <tr>
 
-                                    <% @course.users.each do |user|%>
-                                    
-                                    <% @molto_course.each do |molto|%>
-                                    
-                                        <% @caption = molto.id %>
-                                    
-                                        <%end%>
-              	                    <% if user.view_status == "fantom"%>
-
-                                    <%# debug @molto_course %> _
-                                    
-                                    <%# @course.users[0].name %>
-
-                                    <%# debug @bella_survey %>
-
-                                    <% @course.users.each do |user|%>
-
-                                    <%# if user.user.survey_replies[0] != nil && user.deliveries[0].id==@molto_course[0].deliveries[0].id %>
-                                        <%= debug user.deliveries[0]  %>
-                                        <%= debug user.deliveries[1]  %>
-                                    <%# end %>
+                            <% @course.users.each do |user|%>
+                                <thead>
+                                        <tr>
 
 
-                                    <%# debug user.survey_replies %>
-                                    <% if user.view_status == "fantom"%>
->>>>>>> 2fef155dbbb0ce8b68dce81699f3d85fe2422cac
-              	                    <%else%>
-              	  	                    <th class="blue">
-                                            <%if user.role == "student" %>
-                                                <%= user.name %>
+                                            <% if user.view_status == "fantom"%>
                                             <%else%>
-                                                <%= 'Rol sin evaluación'%>
-                                            <%end%>
-                                        </th>
-              	                        <%user.deliveries.each do |delivery|%>
-                                        <!--contador de cuantas tareas y cuantas entregas de cuestionario hay en el curso-->
-                                            <% @count_ass = @course.assignments.count if @course.assignments.count > 0  %>
-                                            <% @count_sur = @course.surveys.count if  @course.surveys.count > 0 %>
-                                              <% @molto_course.each do |assigmentes|%>
-                                                  <% assigmentes.deliveries.each do |delivery|%>
-                                                     <%= @id_deliveries = delivery.id%>
-                                                  <%end%>
-                                              <%end%>
-                                            <% if delivery.raiting == nil %>
-                                                <% @global_deliveries = 0  %>
-                                            <%else%>
-                                                <% @global_deliveries = 0  %>
-                                                <% @global_deliveries = delivery.score %>
-                                            <%end%>
-
-              	                        <%end%>
-                                               <%= @global_deliveries%>
-                                        <%user.survey_replies.each do |survey|%>
-                                            <% if survey.score == nil %>
-                                                <% @global_survey = 0 %>
-                                            <% else %>
-                                                <% @global_survey = survey.score  %>
+                                                <th class="blue">
+                                                    <%if user.role == "student" %>
+                                                        <%= user.name %>
+                                                    <%else%>
+                                                        <%= 'Rol sin evaluación'%>
+                                                    <%end%>
+                                                </th>
                                             <% end %>
-                                        <%end%>
-                                        Total Examenes: <%= @global_survey/@course.surveys.count %>%
-                                        Calificacion final <%= @global_deliveries+@global_survey %>
-                   
-                                        <% @global_deliveries=0
-                                           @global_survey=0 %>
-                   <% if @count_ass == nil %>
-                   <% @operation_deliveries= 0 %>
-
-                   <%else%>
-                   <%# @operation_deliveries= @total_deliveries/@count_ass %>
-
-                   <%end%>
+                                        </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="asset">
+                                        <td>
+                                            <p>
+                                            <%if user.role == "student" %>
+                                                <%= image_tag(user.avatar_file.xsmall.url) %>
 
 
-                   <%= debug @total_survey %>
-                   <% if @count_sur == nil %>
-                       <% @operation_survey= 0 %>
-                   <%else%>
-                       <%# @operation_survey= @total_survey/@count_sur if @total_survey > 0 %>
-                   <%end%>
+                                                <% @molto_course.each do |tarea| %>
+                                                  <%# debug tarea.id  %>
+                                                  <% user.deliveries.each do |tarea_usr| %>
+                                                      <% if tarea.id == tarea_usr.assignment_id %>
+                                                          <% if tarea_usr.raiting == nil %>
+                                                              <% @global_deliveries += 0  %>
+                                                          <%else%>
+                                                              <% @global_deliveries += tarea_usr.score > 0 ? tarea_usr.score : 0  %>
+                                                          <%end%>
+                                                          <% break %>
+                                                      <% end %>
+                                                  <% end %>
+                                                <%  end %>
+                                                <% @bella_survey.each do |examen| %>
+                                                  <%user.survey_replies.each do |examen_usr|%>
 
-              	</tr>
-              	   <% validator_final_operation = 0%>   
-                   <% validator_final_operation = @operation_deliveries + @operation_survey %>
-                    <%# debug @total_deliveries%>
-                    <%# debug @count_ass%>
-                    <%# debug @total_survey %>
-                    <%# debug @count_sur %>
-                   </thead>
-                   <tbody>
+                                                      <% if examen.id == examen_usr.survey_id %>
+                                                          <% if examen_usr.score == nil %>
+                                                              <% @global_survey += 0  %>
+                                                          <%else%>
+                                                              <% @global_survey += examen_usr.score > 0 ? examen_usr.score : 0  %>
+                                                          <%end%>
+                                                          <% break %>
+                                                      <% end %>
+                                                  <%end%>
+                                                <%end%>
 
-              	<tr class="asset">	<td><p>
-              	<%if user.role == "student" %><%= image_tag(user.avatar_file.xsmall.url) %> "Calificación tentativa" <b><%= (validator_final_operation)/2 %>
-              	    <%# debug @total_deliveries%>+<%# debug @operation_survey%>
-                   	<%else%>
-              		 <%= user.name %> = <%= 'Evaluador o administrador del grupo'%> 
-              		 <%end%>
-              </b></p></td></tr>
-                   </tbody> 
-
-              	<%end%>
-
-                  <%end%>
-                 </table>
+                                                <br>
+                                                Tareas: <%= @operation_deliveries= @global_deliveries/@course.assignments.count %>%
+                                                Examenes: <%= @operation_survey= @global_survey/@course.surveys.count %>%
+                                                 - Calificacion tentativa: <b><%= (@operation_deliveries+@operation_survey)/2 %>%</b>
+                                                <% @global_deliveries = 0 %>
+                                                <% @global_survey = 0 %>
+                                            <%else%>
+                                                <%= user.name %> = <%= 'Evaluador o administrador del grupo'%>
+                                            <%end%>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            <%end%>
+                        </table>
                </div>
               </div>
               <div class="tab-pane" id="tab4">	
