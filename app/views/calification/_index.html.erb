@@ -144,8 +144,8 @@
                                                 <%end%>
 
                                                 <br>
-                                                Tareas: <%= @operation_deliveries= @global_deliveries/@course.assignments.count %>%
-                                                Examenes: <%= @operation_survey= @global_survey/@course.surveys.count %>%
+                                                Tareas: <b><%= @operation_deliveries= @global_deliveries/@course.assignments.count %>%</b>
+                                                Examenes: <b><%= @operation_survey= @global_survey/@course.surveys.count %>%</b>
                                                  - Calificacion tentativa: <b><%= (@operation_deliveries+@operation_survey)/2 %>%</b>
                                                 <% @global_deliveries = 0 %>
                                                 <% @global_survey = 0 %>
