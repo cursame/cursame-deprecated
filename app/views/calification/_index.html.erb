@@ -176,7 +176,7 @@
                                                   <%end%>
                                                   <% case %>
                                                   <% when @global_deliveries +  @global_survey == 0 %>
-                                                  - Calificacion tentativa:
+                                                  - Calificacion tentativa: <b>0%</b>
                                                   <% when @global_deliveries + @global_survey != 0 %>
                                                   
                                                   - Calificacion tentativa: <b><%= (@operation_deliveries+@operation_survey)/2 %>%</b>
