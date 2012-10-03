@@ -29,7 +29,7 @@ class SupervisorController < ApplicationController
   end
 
   def students
-    @students = current_network.students.where(:view_status => 'live').order("upper(first_name), upper(last_name) asc").page(params[:page]).per(3000)
+    @students = current_network.students.where(:view_status => 'live').order("upper(first_name), upper(last_name) asc").page(params[:page]).per(10000)
     @students_count = current_network.students.where(:view_status => 'live').where(:state => 'active').count
     @status = Status.new
     respond_to do |format|
