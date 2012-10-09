@@ -17,6 +17,8 @@ class SettingsController < ApplicationController
       current_user.password_confirmation = password
       current_user.save(:validate => false)
 
+      Innsights.report("Contraseña actualizada", :user => current_user, :group => current_network).run
+
       redirect_to root_path, :notice => "Tu contraseña fue cambiada, por favor ingresa con tu nueva contraseña"
     else
       render :show
@@ -26,6 +28,7 @@ class SettingsController < ApplicationController
   def notifications
     current_user.update_attributes(:accepting_emails => params[:user][:accepting_emails].to_i)
     redirect_to dashboard_path, :notice =>  I18n.t("flash.emails_#{current_user.accepting_emails}")
+    Innsights.report("Preferencias de notificación actualizadas", :user => current_user, :group => current_network).run
   end
 
 

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DiscussionsController < ApplicationController
   set_tab :discussions
   
@@ -17,6 +19,7 @@ class DiscussionsController < ApplicationController
     @discussion = course.discussions.build params[:discussion]
     @discussion.starter = current_user
     if @discussion.save
+      Innsights.report("Discusión creada", :user => current_user, :group => current_network).run
       redirect_to @discussion, :notice => I18n.t('flash.discussion_created')
     else
       render 'new'
@@ -39,6 +42,7 @@ class DiscussionsController < ApplicationController
   def destroy
     if manageable_discussion.comments.empty?
       manageable_discussion.destroy
+      Innsights.report("Discusión eliminada", :user => current_user, :group => current_network).run
       flash[:notice] = t('flash.discussion_deleted')
     end
 
@@ -49,6 +53,7 @@ class DiscussionsController < ApplicationController
     @discussion = manageable_discussion
 
     if @discussion.update_attributes params[:discussion]
+      Innsights.report("Discusión actualizada", :user => current_user, :group => current_network).run
       redirect_to @discussion, :notice => I18n.t('flash.discussion_updated')
     else
       render 'edit'

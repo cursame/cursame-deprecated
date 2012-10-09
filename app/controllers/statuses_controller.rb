@@ -21,8 +21,14 @@ class StatusesController < ApplicationController
          @user.view_status = @status.view_status
          @user.save
         
-        format.html { redirect_to :back, notice: 'El status ha sido agregado correctamente al usuario' }
-        format.json { render json: :back , status: :created, location: @status }
+         if @user.view_status == 'live' && @user.teacher?
+           Innsights.report("Maestro aceptado", :user => current_user, :group => current_network).run
+         elsif @user.teacher?
+           Innsights.report("Maestro suspendido", :user => current_user, :group => current_network).run
+         end
+
+         format.html { redirect_to :back, notice: 'El status ha sido agregado correctamente al usuario' }
+         format.json { render json: :back , status: :created, location: @status }
       else
         format.html { render action: "new" }
         format.json { render json: @status.errors, status: :unprocessable_entity }

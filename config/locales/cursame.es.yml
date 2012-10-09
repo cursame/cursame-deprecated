@@ -408,6 +408,7 @@ es:
         teacher: Maestro
         student: Estudiante
         supervisor: Administrador
+        admin: Administrador de sistema
         update: Actualizar
         change_role: Cambiar rol
         destroy: Eliminar

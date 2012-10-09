@@ -31,6 +31,8 @@ class UsersController < ApplicationController
   def update
     find_user and check_edit_permissions!
     if @user.update_attributes(params[:user])
+      Innsights.report(current_user == @user ? "Perfil actualizado" : "Perfil actualizado por supervisor",
+                       :user => current_user, :group => current_network).run
       redirect_after_update
     else
       render :edit

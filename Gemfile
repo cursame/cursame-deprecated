@@ -24,6 +24,8 @@ gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
 gem "faye"
 gem 'airbrake'
+gem 'innsights', :github => 'innku/innsights-gem', :branch => 'develop'
+# gem 'innsights', :path => '~/Code/Web/innsights-gem/'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -55,7 +57,7 @@ group :staging, :production do
 end
 
 group :development, :test do 
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  # gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'ffaker'
   gem 'sqlite3'
   gem 'rspec-rails'
