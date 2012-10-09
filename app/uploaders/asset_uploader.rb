@@ -19,7 +19,7 @@ class AssetUploader < CarrierWave::Uploader::Base
 
   def thumb_url
     case to_s
-    when /\.jpg$/i, /\.png$/i, /\.tif$/i, /\.tiff$/i, /\.gif$/i,/\.ico$/i
+    when /\.jpg$/i, /\.png$/i, /\.tif$/i, /\.tiff$/i, /\.gif$/i,/\.ico$/i,/\.jpeg$/i
       '/assets/file_icons/image.png'
     when /\.xls$/i, /\.csv$/i,/\.sao$/i
       '/assets/file_icons/excel.png'
