@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
   mount_uploader :avatar_file, AvatarUploader
 
   scope :ordered, order('created_at DESC')
+  
+  def network
+    self.networks.first
+  end
 
   def name
     "#{first_name} #{last_name}".strip

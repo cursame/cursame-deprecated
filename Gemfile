@@ -23,6 +23,7 @@ gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
 gem "faye"
 gem 'airbrake'
+gem 'innsights', :github => 'innku/innsights-gem'
 
 
 # Gems used only for assets and not required

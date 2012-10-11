@@ -1,3 +1,16 @@
+GIT
+  remote: git://github.com/innku/innsights-gem.git
+  revision: 024a548caafd103fd27d9229cede0cba1af5125c
+  specs:
+    innsights (0.4.0)
+      daemons
+      delayed_job
+      highline
+      rails (>= 3.0.0)
+      resque
+      rest-client
+      ruby-progressbar (~> 0.0.10)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -138,6 +151,7 @@ GEM
       rubyzip
     heroku-api (0.3.1)
       excon (~> 0.15.4)
+    highline (1.6.15)
     hike (1.2.1)
     hirb (0.7.0)
     http_parser.rb (0.5.3)
@@ -220,6 +234,14 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     redcarpet (2.1.1)
+    redis (3.0.2)
+    redis-namespace (1.2.1)
+      redis (~> 3.0.0)
+    resque (1.23.0)
+      multi_json (~> 1.0)
+      redis-namespace (~> 1.0)
+      sinatra (>= 0.9.2)
+      vegas (~> 0.1.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
     rinku (1.5.1)
@@ -311,6 +333,8 @@ GEM
       raindrops (~> 0.7)
     uuid (2.3.5)
       macaddr (~> 1.0)
+    vegas (0.1.11)
+      rack (>= 1.0.0)
     warden (1.2.1)
       rack (>= 1.0)
     watu_table_builder (0.3.0)
@@ -346,6 +370,7 @@ DEPENDENCIES
   haml
   heroku
   hirb
+  innsights!
   jquery-rails
   kaminari
   launchy

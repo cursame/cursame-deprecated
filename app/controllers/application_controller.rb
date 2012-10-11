@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for resource
+    Innsights.report("#{resource.role}_sign_in", user: resource).run
     case resource.role
     when 'admin'      then admin_path(:subdomain => nil)
     when 'supervisor' then supervisor_dashboard_path(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
