@@ -1,13 +1,13 @@
 <h2 class="h2"><br/>¡Bienvenid@ <%= @user.name %>!</h2>
 
 <% if @user.student?%>
-<strong>A partir de ahora, puedes disfrutar de Experto Movistar y todas las herramientas que te ofrece como:</strong>
+<strong>A partir de ahora puedes disfrutar de Experto Social y todas las herramientas que te ofrece como:</strong>
   <ul>
     <li>Perfil en nuestra social privada</li>
-    <li>Consulta del material de todas las Campañas</li>
+    <li>Consulta de todo el material de las campañas</li>
     <li>Interacción con todos los colaboradores de Movistar</li>
-    <li>Cuestionarios</li>
-    <li>¡Entre muchas otras!</li>
+    <li>Encuestas</li>
+    <li>Mucho más ....</li>
   </ul>
 <%elsif @user.teacher?%>
 <strong>A partir de ahora, puedes disfrutar de Experto Movistar y todas las herramientas que te ofrece como:</strong>
@@ -21,6 +21,6 @@
 <%end%>
 <strong>Tu usuario es tu correo electrónico de Telefónica y tu contraseña es: <%= @password %></strong>
 <p>Te recomendamos modificar esta contraseña una vez que ingreses a la plataforma, esto se hace en la sección de "Configuración".</p>
-<h1><%= link_to 'Entrar a Experto Movistar >>', new_user_session_url(:subdomain=>@network.subdomain) %></h1>
+<h1><%= link_to 'Entra a Experto Social >>', new_user_session_url(:subdomain=>@network.subdomain) %></h1>
 <br>
 
