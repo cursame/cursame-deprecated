@@ -1,5 +1,24 @@
+<div class="container">
 <center>
-<h1>NAVEGADOR NO PERMITIDO INSTALA UNO DE ESTOS NAVEGADORES PARA PODER ACCEDER A NUESTRO SERVICIO</h1>
-<div class="btn">MOZILLA FIREFOX</div>
-<div class="btn">GOOGLE CHROME</div>
+<h2>NAVEGADOR NO PERMITIDO INSTALA UNO DE ESTOS NAVEGADORES PARA PODER ACCEDER A NUESTRO SERVICIO</h2>
+<%if browser_active=="Internet Explorer" %>
+  <p>Tu navegador no es permitido ya que no tiene la capacidad de soportarnos correctamente, prueba haciendo upgrade a una versión superior de Internet Explorer</p> 
+
+ <h3><%= link_to " Descarga Internet Explorer en versión 9.0 o 10.0", "http://ie.microsoft.com/testdrive/Info/Downloads/Default.html", :target => "_blank" %> 
+ </h3>
+ <b>
+  <%= "Navegador #{ browser_active } / Versión #{browser_version}"%>
+ </b>
+<%else%>
+</br>
+<h3><%= "Navegador #{ browser_active } / Versión #{browser_version}"%></h3>
+<%end%>
+<h2>Selecciona el navegador que deseas descargar</h2></br>
+<a class="btn" href='http://www.mozilla.org/es-MX/firefox/new/' style="cursor:pointer;" target="_blank" >
+    MOZILLA FIREFOX</br><%= image_tag("firefox.png")%>
+</a>
+<a class="btn" href='https://www.google.com/intl/es/chrome/browser/?hl=es' style="cursor:pointer;" target="_blank" >
+    GOOGLE CHROME</br><%= image_tag("chrome.png")%>
+</a>
 </center>
+</div>

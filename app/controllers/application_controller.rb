@@ -153,10 +153,7 @@ class ApplicationController < ActionController::Base
        redirect_to browser_error_path
      when @comparation = "Internet Explorer8.0"
        redirect_to browser_error_path
-     when @comparation = "Internet Explorer9.0"
-       redirect_to browser_error_path
      else
-
     end
    
   end

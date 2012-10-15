@@ -50,10 +50,7 @@
     @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last
 	%>
 	<%if user_signed_in? %>
-	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>
-	<% web_browsers_cases %>
-	<%= @d = request.env['HTTP_USER_AGENT']%>
-	<%= @comparation = browser_active+browser_version %>
+	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>	
 	<%else%>
 	<%end%>
 	 </div>
