@@ -44,6 +44,33 @@
    </script>
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <%=  render :partial => 'shared/flash', :locals => {:flash => flash} %>
+  <% @comparation = browser_active+browser_version %>
+  <%case @comparation %>
+          <% when @comparation = "Chrome#{browser_version}" %>
+          <% when @comparation = "Firefox#{browser_version}"%>
+          <% when @comparation = "Opera#{browser_version}"%>  
+          <% when @comparation = "Internet Explorer1.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer2.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer3.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer4.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer5.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer6.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer7.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer8.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer9.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+          <% when @comparation = "Internet Explorer10.0"%>
+          <%= render :partial => "errors/browser_bar" %>
+<% else %>
+<% end %>
   	<div class="container">
 	<% 
 	@notificaciones_admin_actualice = NotificacionesAdminActualouse.all
@@ -53,6 +80,7 @@
 	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>	
 	<%else%>
 	<%end%>
+
 	 </div>
 
   <%= yield %>
