@@ -134,11 +134,29 @@ class ApplicationController < ActionController::Base
   def web_browsers_cases
     @comparation = browser_active+browser_version
     case @comparation
-     when @comparation = "Chrome"
-     when @comparation = "Firefox"
-     when @comparation = "Opera"
-     when @comparation = "Internet Explorer"
+     when @comparation = "Chrome#{browser_version}"
+     when @comparation = "Firefox#{browser_version}"
+     when @comparation = "Opera#{browser_version}"
+     when @comparation = "Internet Explorer1.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer2.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer3.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer4.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer5.0"
+       redirect_to browser_error_path  
+     when @comparation = "Internet Explorer6.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer7.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer8.0"
+       redirect_to browser_error_path
+     when @comparation = "Internet Explorer9.0"
+       redirect_to browser_error_path
      else
+
     end
    
   end
