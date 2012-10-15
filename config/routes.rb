@@ -161,6 +161,7 @@ Cursame::Application.routes.draw do
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
   match '/browser_no_permitido', :to => 'errors#browser_error', :as => :browser_error
+  match '/browser_no_permitido/explicado',:to => 'errors#browser_explain', :as => :browser_error_explain
   
   root :to => "home#index"
   

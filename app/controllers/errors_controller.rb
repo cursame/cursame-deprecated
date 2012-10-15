@@ -14,5 +14,8 @@ layout 'browser_select', :except => [:error_404, :error_500, :error_503 ]
   def browser_error
   
   end
+  
+  def browser_explain
+  end
 
 end

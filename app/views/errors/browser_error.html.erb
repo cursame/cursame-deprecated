@@ -1,8 +1,8 @@
 <div class="container">
 <center>
-<h2>NAVEGADOR NO PERMITIDO INSTALA UNO DE ESTOS NAVEGADORES PARA PODER ACCEDER A NUESTRO SERVICIO</h2>
+<h2>TU NAVEGADOR NO TIENE LAS CARACTERÍSTICAS NECESARIAS PARA SOPORTAR NUESTRO SERVICIO</h2>
 <%if browser_active=="Internet Explorer" %>
-  <p>Tu navegador no es permitido ya que no tiene la capacidad de soportarnos correctamente, prueba haciendo upgrade a una versión superior de Internet Explorer</p> 
+  <p>La versión de Internet Explorer que estás utilizando, no cumple con los requerimientos básicos para utilizar correctamente Cúrsame, por favor actualiza a la versión más reciente.</p> 
 
  <h3><%= link_to " Descarga Internet Explorer en versión 9.0 o 10.0", "http://ie.microsoft.com/testdrive/Info/Downloads/Default.html", :target => "_blank" %> 
  </h3>
@@ -13,6 +13,9 @@
 </br>
 <h3><%= "Navegador #{ browser_active } / Versión #{browser_version}"%></h3>
 <%end%>
+<h2>
+<%= link_to "Más información sobre el tema >>", browser_error_explain_path%>
+</h2>
 <h2>Selecciona el navegador que deseas descargar</h2></br>
 <a class="btn" href='http://www.mozilla.org/es-MX/firefox/new/' style="cursor:pointer;" target="_blank" >
     MOZILLA FIREFOX</br><%= image_tag("firefox.png")%>
