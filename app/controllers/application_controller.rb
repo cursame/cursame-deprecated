@@ -43,6 +43,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_network
   helper_method :mobile?
   helper_method :web_browsers_cases
+  helper_method :browser_active
+  helper_method :browser_version
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
