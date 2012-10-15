@@ -20,6 +20,7 @@ class HomeController < ApplicationController
   end
 
   def dashboard
+    
     @courses       = current_user.visible_courses.where(:network_id => current_network).limit(999999)
     @notifications = current_user.notifications.order("created_at DESC").page(params[:page]).per(10)
     @users = current_user.favorites.limit(30) if current_user

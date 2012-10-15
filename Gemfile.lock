@@ -319,6 +319,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    useragent (0.4.10)
     uuid (2.3.5)
       macaddr (~> 1.0)
     vegas (0.1.11)
@@ -385,6 +386,7 @@ DEPENDENCIES
   transitions
   uglifier (>= 1.0.3)
   unicorn
+  useragent
   uuid
   watu_table_builder
   yaml_db

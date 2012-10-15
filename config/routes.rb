@@ -160,6 +160,7 @@ Cursame::Application.routes.draw do
   get '/members', :to => 'home#members', :as => :network_members
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
+  match '/browser_no_permitido', :to => 'errors#browser_error', :as => :browser_error
   
   root :to => "home#index"
   

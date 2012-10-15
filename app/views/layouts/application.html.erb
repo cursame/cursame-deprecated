@@ -51,6 +51,8 @@
 	%>
 	<%if user_signed_in? %>
 	<%= render :partial => "notificaciones_admin_actualice/header_notification"%>
+	<% web_browsers_cases %>
+	<%= @d = request.env['HTTP_USER_AGENT']%>
 	<%else%>
 	<%end%>
 	 </div>

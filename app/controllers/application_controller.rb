@@ -34,13 +34,15 @@ class ApplicationController < ActionController::Base
     end
   end
   #/errores
-
+  
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
   after_filter :current_languaje
   helper_method :current_network
+  helper_method :mobile?
+  helper_method :web_browsers_cases
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
@@ -126,5 +128,35 @@ class ApplicationController < ActionController::Base
    # request.user_agent =~ /Mobile|webOS/ 
     request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(iPhone|iPod|Android)/]
   end
-  helper_method :mobile?
+  
+  def web_browsers_cases
+    @comparation = browser_active+browser_version
+    case @comparation
+     when @comparation = "Chrome"
+     when @comparation = "Firefox"
+     when @comparation = "Opera"
+     when @comparation = "Internet Explorer"
+     else
+    end
+   
+  end
+  
+  def browser_active
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @browser = @user_agent.browser    
+  end
+
+  def browser_version
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @browser = @user_agent.version
+  end
+  
+  def computer_platform
+    @data_integrate = request.env['HTTP_USER_AGENT']
+    @user_agent = UserAgent.parse(@data_integrate)
+    @computer_plataform = @user_agent.platform
+  end
+      
 end
