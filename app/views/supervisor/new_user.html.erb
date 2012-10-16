@@ -17,6 +17,7 @@
       </div>
 
       <div class="span9">
+          <%= @password_generado = Devise.friendly_token[0,20]%>
         <h2><%= t('supervisor.shared.admin_menu.new_user') %></h2>
         <%= semantic_form_for @user, :url => create_user_users_path, :method => :post  do |form| %>
           <%= form.inputs :basic do %>
@@ -27,6 +28,11 @@
               :prompt => t("formtastic.actions.select_one"), :hint => "El usuario recibirá un e-mail a su correo con una contraseña aleatoria" %>
             <%= form.input :state, :as => :hidden, :input_html => { :value => "active" } %>
             <%= form.input :terms_of_service, :as => :hidden, :input_html => { :value => "1" } %>
+            <%#= form.input :password, :input_html => { :class => "span4", :value => @password_generado  } %>
+            <%#= form.input :password_confirmation, :input_html => { :class => "span4", :value =>@password_generado } %>
+             </br>
+             <%#= form.input :vpassword, :input_html => { :class => "span4", :value => @password_generado  } %>
+            
           <% end %>
           <%= form.buttons :class => "fieldset-admin" do %>
             <%= form.commit_button :label => "Registrar usuario", :button_html => {:id => :submit, :class => 'btn right'} %>

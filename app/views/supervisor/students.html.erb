@@ -61,7 +61,12 @@
                              <%= fname.text_field :last_name, :class => "span4" %></br>
                              <%= fname.label :email %>
                              <%= fname.text_field :email, :class => "span4"%></br>
-                            </br> <%= fname.submit "Subir Nombre", :class => "accept btn success right small"%>
+                             <%= fname.label :password %>                        
+                             <%= fname.password_field :password, :class => "span4"%></br>
+                             <%= fname.password_field :password_confirmation, :class => "span4"%></br>
+                             
+                             
+                            </br> <%= fname.submit "Cambios de usuario", :class => "accept btn success right"%>
                          <%end%>
 
                           <h3>Cambiar el status de usuario</h3>
