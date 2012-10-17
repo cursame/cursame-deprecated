@@ -135,6 +135,7 @@ Cursame::Application.routes.draw do
   #el dasboard se mantien como ruta principal en el el home para al free
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
+  match '/privacidad', :to => 'home#privacidad', :as => :privacidad
    match '/ayuda', :to => 'home#help', :as => :help
    match '/ayuda/tareas', :to => 'home#helpers/tareas', :as => :help_tareas
    match '/ayuda/cursos', :to => 'home#helpers/curso', :as => :help_cursos

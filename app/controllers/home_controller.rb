@@ -49,6 +49,9 @@ class HomeController < ApplicationController
   def terms
   end
   
+  def privacidad
+  end
+  
   def blog
     @blogs = Blog.all  
   end
