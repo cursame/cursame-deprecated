@@ -1,17 +1,16 @@
 <div class="container">
     <div class="tabs">
         <ul class="tabs">
-                <li><%= link_to "sin contestar", admin_reports_path%></li>
-                <li><%= link_to "en proceso", admin_reports_proces_path%></li>
-    	        <li><%= link_to "resolviendo",  admin_reports_resolve_path%></li>
-    	        <li><%= link_to "finalizado",  admin_reports_finished_path%></li>
+            <li><%= link_to "sin contestar", admin_reports_path%></li>
+            <li><%= link_to "en proceso", admin_reports_proces_path%></li>
+	        <li><%= link_to "resolviendo",  admin_reports_resolve_path%></li>
+	        <li><%= link_to "finalizado",  admin_reports_finished_path%></li>
          
         </ul>
      </div>
-    
-
+<% if @send_reports != nil%>
 <% @send_reports.reverse.each do |report|%>
-<% if report.status == nil%>
+<% if report.status == "2"%>
 <% @reports_id = report.id %>
 <div class="span12" style="border:0px;">
     <div class="span11" style="border:solid; margin:16px; border-color:#92B7C1; border-radius:    15px;  padding:10px;">
@@ -117,6 +116,7 @@
 <%end%>
 </div>
 </div>
+<%end%>
 <%end%>
 <%end%>
 </div>

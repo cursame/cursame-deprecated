@@ -14,6 +14,21 @@ module Admin
       @bug_answer = BugAnswer.new
     end
     
+    def reports_in_proces
+       @send_reports=SendReport.all
+       @bug_answer = BugAnswer.new
+    end
+    
+    def reports_resolve
+        @send_reports=SendReport.all
+        @bug_answer = BugAnswer.new
+    end
+      
+    def reports_finished
+        @send_reports=SendReport.all
+        @bug_answer = BugAnswer.new
+     end
+    
     def tutorials
       @tutoriales = Tutoriale.all
       @tutoriale = Tutoriale.new

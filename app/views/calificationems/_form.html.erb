@@ -1,7 +1,7 @@
 <%= form_for(@calificationem = Calificationem.new) do |f| %>
  
   <div class="field">
-    <%= f.label :califacación %><br />
+    <%= f.label :calificación %><br />
     <%= f.select :raiting, (1..@delivery.limit)  %>
   </div>
   <div class="field">

@@ -118,6 +118,9 @@ Cursame::Application.routes.draw do
     resources :networks
     get '/statistics', :to => 'base#statistics', :as => :statistics
     get '/reports', :to => 'base#reports', :as => :reports
+    get '/reports/proces', :to => 'base#reports_in_proces', :as => :reports_proces
+    get '/reports/resolve', :to => 'base#reports_resolve', :as => :reports_resolve
+    get '/reports/finished', :to => 'base#reports_finished', :as => :reports_finished 
     get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
     get '/public-notification', :to => 'base#notification', :as => :notification
     get '/publicity', :to => 'base#publicity', :as => :publicity
@@ -165,7 +168,7 @@ Cursame::Application.routes.draw do
   
   root :to => "home#index"
   
-  #this is for api for the mobile app
+#this is for api for the mobile app
   namespace :api do
     resources :tokens,:only => [:create, :destroy]
   end  
