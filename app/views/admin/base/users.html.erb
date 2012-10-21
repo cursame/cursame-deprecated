@@ -1,0 +1,37 @@
+<h1>Usuarios</h1>
+<div class="span4">
+<div class="well">
+<h2>Total = <%= @total_users.count %></h2>
+</div>
+</div>
+</br></br></br></br></br>
+<% @users.each do |user|%>
+</br>
+<div class="well">
+Nombre: <%= user.name%></br>
+Email: <%= mail_to user.email, user.email%></br>
+Role: <%= user.role%></br>
+<% user.networks.each do |network|%>
+Red_id: <%= network.id%></br>
+Nombre_de_red: <%= link_to network.name, "http://#{network.subdomain}.cursa.me"%></br></br>
+
+<div class="btn" onclick="UserAdminEdition(<%= user.id %>)">Editar usuario</div></br></br>
+
+<div id="editptr-<%= user.id %>"  style="display:none; height:150px; overflow:auto; margin-top:-5px;
+margin-left:30px;background-color:#f7f7f7;">
+   <%= form_for user do |form|%>
+     <%= form.text_field :name%></br>
+     <%= form.text_field :email%></br>
+     <%= form.text_field :role%></br>
+     <%= form.submit "Cambiar usuario", :class => "btn" %>         
+   <%end%>
+</div>
+<%end%></br>
+</div>
+<%end%>    
+ <%= paginate @users %>
+<script>
+	function UserAdminEdition(id){
+		$('#editptr-'+id).toggle();
+	}
+</script>

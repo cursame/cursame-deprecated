@@ -8,7 +8,7 @@ module Admin
 
     def statistics
     end
-
+    
     def reports
       @send_reports=SendReport.all
       @bug_answer = BugAnswer.new
@@ -41,6 +41,10 @@ module Admin
     def publicity
       @banners = Banner.all
       @banner = Banner.new
+    end
+    def users
+      @users = User.order("id").page(params[:page]).per(10)
+      @total_users = User.all
     end
     private
 
