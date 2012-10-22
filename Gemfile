@@ -29,6 +29,7 @@ gem 'innsights', :github => 'innku/innsights-gem', :branch => 'develop'
 #detect the browser type
 gem 'useragent'
 
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do

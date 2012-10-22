@@ -114,8 +114,9 @@ Cursame::Application.routes.draw do
     match '/pending_approvals/:user_id/reject', :as => :reject_user, :action => :reject_user
   end
 
-  namespace :admin do
+  namespace :admin, :shallow => true do
     resources :networks
+     
     get '/statistics', :to => 'base#statistics', :as => :statistics
     get '/reports', :to => 'base#reports', :as => :reports
     get '/reports/proces', :to => 'base#reports_in_proces', :as => :reports_proces
@@ -124,9 +125,10 @@ Cursame::Application.routes.draw do
     get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
     get '/public-notification', :to => 'base#notification', :as => :notification
     get '/users', :to => 'base#users', :as => :users
+    get '/users/specific_search', :to => 'base#specific_search', :as => :users_specific_search
     get '/publicity', :to => 'base#publicity', :as => :publicity
   end
-
+    
   match '/admin' => 'admin/base#admin'
 
   resources :comments, :only => [:update, :destroy, :show, :like_comments]

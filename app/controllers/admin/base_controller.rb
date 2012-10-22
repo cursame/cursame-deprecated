@@ -42,10 +42,23 @@ module Admin
       @banners = Banner.all
       @banner = Banner.new
     end
+    
     def users
-      @users = User.order("id").page(params[:page]).per(10)
+      @users = User.order("id").page(params[:id]).per(10)
       @total_users = User.all
     end
+    
+    def specific_search
+      
+      if params[:search] == nil
+        @users = User.search().limit(200);
+      else
+        @users = User.search(params[:search]).limit(200);
+      end      
+    end
+    
+   
+    
     private
 
     def require_admin
