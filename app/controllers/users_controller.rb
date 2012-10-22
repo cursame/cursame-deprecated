@@ -88,7 +88,7 @@ class UsersController < ApplicationController
   
   def redirect_after_update
     if @user != current_user
-      redirect_to send("supervisor_#{@user.role}s_path"), :notice => t('flash.user_updated') 
+      redirect_to :back, :notice => t('flash.user_updated') 
     else
       redirect_to @user, :notice => t('flash.user_updated')
     end
