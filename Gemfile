@@ -28,7 +28,7 @@ gem 'innsights', :github => 'innku/innsights-gem', :branch => 'develop'
 # gem 'innsights', :path => '~/Code/Web/innsights-gem/'
 #detect the browser type
 gem 'useragent'
-gem "ransack"
+#gem "ransack", :git => "git://github.com/ernie/ransack.git"
 
 # Gems used only for assets and not required
 # in production environments by default.
