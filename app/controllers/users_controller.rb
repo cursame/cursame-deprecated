@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   end
 
   def check_edit_permissions!
-    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.role ==(supervisor or admin) ?
+    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.supervisor ?
     true
   end
   
