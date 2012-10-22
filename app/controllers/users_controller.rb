@@ -66,8 +66,20 @@ class UsersController < ApplicationController
   end
 
   def check_edit_permissions!
+    case current_user.role
+    when current_user.role == "supervisor"
     raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.supervisor?
     true
+    when current_user.role == "admin"
+    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.admin?
+    true
+    when current_user.role == "student"
+    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.admin?
+    true
+    when
+    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.admin?
+    true
+    end
   end
   
   def redirect_after_update
