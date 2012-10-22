@@ -13,7 +13,12 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if current_user.role == "admin"
     find_user and check_edit_permissions!
+    redirect_to :back
+    else
+    find_user and check_edit_permissions!
+    end
   end
 
   def create_user
@@ -29,14 +34,14 @@ class UsersController < ApplicationController
   end
   
   def update
-    find_user and check_edit_permissions!
-    if @user.update_attributes(params[:user])
-      Innsights.report(current_user == @user ? "Perfil actualizado" : "Perfil actualizado por supervisor",
-                       :user => current_user, :group => current_network).run
-      redirect_after_update
-    else
-      render :edit
-    end
+    find_user and check_edit_permissions!    
+       if @user.update_attributes(params[:user])
+          Innsights.report(current_user == @user ? "Perfil actualizado" : "Perfil actualizado por supervisor",
+                           :user => current_user,  :group => current_network).run
+          redirect_after_update
+        else
+          render :edit
+        end        
   end
 
   def wall
@@ -56,7 +61,11 @@ class UsersController < ApplicationController
   
   private
   def find_user
-    @user ||= current_network.users.find params[:id]
+    if current_user.role == "admin"
+      @user ||= User.find params[:id]   
+    else
+      @user ||= current_network.users.find params[:id]
+    end
   end
 
   def build_user(password)
@@ -79,9 +88,6 @@ class UsersController < ApplicationController
     true
     when current_user.role == "teacher"
     raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.admin?
-    true
-    else
-    raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.supervisor?
     true
     end
   end

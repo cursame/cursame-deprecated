@@ -115,8 +115,7 @@ Cursame::Application.routes.draw do
   end
 
   namespace :admin, :shallow => true do
-    resources :networks
-     
+    resources :networks     
     get '/statistics', :to => 'base#statistics', :as => :statistics
     get '/reports', :to => 'base#reports', :as => :reports
     get '/reports/proces', :to => 'base#reports_in_proces', :as => :reports_proces
@@ -125,7 +124,8 @@ Cursame::Application.routes.draw do
     get '/potence-tutorial', :to => 'base#tutorials', :as => :tutorial
     get '/public-notification', :to => 'base#notification', :as => :notification
     get '/users', :to => 'base#users', :as => :users
-    get '/users/specific_search', :to => 'base#specific_search', :as => :users_specific_search
+    get '/users/:id', :to => 'users#show', :as => :users_show
+    get '/specific_search', :to => 'base#specific_search', :as => :users_specific_search
     get '/publicity', :to => 'base#publicity', :as => :publicity
   end
     

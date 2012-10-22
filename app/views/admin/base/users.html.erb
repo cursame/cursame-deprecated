@@ -9,7 +9,7 @@
 <% @users.each do |user|%>
 </br>
 <div class="well">
-Nombre: <%= user.name%></br>
+Nombre: <%= link_to user.name, admin_users_show_path(user)%></br>
 Email: <%= mail_to user.email, user.email%></br>
 Role: <%= user.role%></br>
 <% user.networks.each do |network|%>
