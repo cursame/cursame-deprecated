@@ -64,7 +64,7 @@ class CoursesController < ApplicationController
         redirect_to @course, :notice => t('flash.course_created')
       end
     else
-      render :new
+      redirect_to :back, :notice => "campos faltantes porfavor complete el formulario"
     end
   end
 
