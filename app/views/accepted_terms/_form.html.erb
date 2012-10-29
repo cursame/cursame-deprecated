@@ -1,0 +1,16 @@
+<%= semantic_form_for @accepted_term do |f| %>
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id%>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :acepted, :value => "Acepto" %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :date,:value => Time.now %>
+  </div>
+  <div class="actions">
+      <CENTER>
+   <h1> <%= f.submit "ACEPTO LOS TERMINOS Y CONDICIONES DEL SITIO", :class => "btn" %></h1>
+      <CENTER>
+  </div>
+<% end %>

@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  resources :accepted_terms
+
   resources :new_users_change_types
 
   resources :notificaciones_admin_actualice
@@ -82,8 +84,11 @@ Cursame::Application.routes.draw do
       post :upload_avatar,  :as => :upload_avatar_for
     end
     member do
+     
       get  'muro', :as => :wall_for, :to => 'users#wall'
     end
+     
+    
   end
 
   resource :settings, :only => [:show] do
@@ -136,6 +141,7 @@ Cursame::Application.routes.draw do
   match '/dashboard', :to => 'home#dashboard', :as => :dashboard
   match '/terminos', :to => 'home#terms', :as => :terms
   match '/privacidad', :to => 'home#privacidad', :as => :privacidad
+  #match '/aceptacion_de_uso', :to => 'users#acept_terms_and_conditions', :as => :terms_condition_acepted
    match '/ayuda', :to => 'home#help', :as => :help
    match '/ayuda/tareas', :to => 'home#helpers/tareas', :as => :help_tareas
    match '/ayuda/cursos', :to => 'home#helpers/curso', :as => :help_cursos

@@ -51,6 +51,10 @@ class UsersController < ApplicationController
     render :json => asset_file.as_json(:methods => [:avatar_file_cache], :only => [:avatar_file, :avatar_file_cache])
   end
   
+  def acept_terms_and_conditions
+   edit
+  end
+  
   private
   def find_user
     @user ||= current_network.users.find params[:id]
@@ -68,6 +72,8 @@ class UsersController < ApplicationController
     raise ActiveRecord::RecordNotFound unless current_user == @user or current_user.supervisor?
     true
   end
+  
+  
   
   def redirect_after_update
     if @user != current_user

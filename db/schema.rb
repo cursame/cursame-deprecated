@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120920175701) do
+ActiveRecord::Schema.define(:version => 20121029164609) do
+
+  create_table "accepted_terms", :force => true do |t|
+    t.integer  "user"
+    t.string   "acepted"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -44,16 +53,6 @@ ActiveRecord::Schema.define(:version => 20120920175701) do
     t.timestamp "updated_at"
     t.timestamp "start_at"
     t.string    "state"
-  end
-
-  create_table "banners", :force => true do |t|
-    t.string    "title"
-    t.text      "description"
-    t.string    "date_promotion"
-    t.string    "link"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "image_banner"
   end
 
   create_table "blogs", :force => true do |t|
@@ -337,12 +336,12 @@ ActiveRecord::Schema.define(:version => 20120920175701) do
 
   create_table "users", :force => true do |t|
     t.string   "role"
-    t.string   "email",                  :default => "",       :null => false
-    t.string   "encrypted_password",     :default => "",       :null => false
+    t.string   "email",                                                    :default => "",       :null => false
+    t.string   "encrypted_password",                        :limit => 128, :default => "",       :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                                            :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -350,7 +349,8 @@ ActiveRecord::Schema.define(:version => 20120920175701) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
     t.text     "about_me"
@@ -361,16 +361,17 @@ ActiveRecord::Schema.define(:version => 20120920175701) do
     t.string   "facebook_link"
     t.string   "linkedin_link"
     t.string   "avatar_file"
-    t.string   "state",                  :default => "active"
-    t.boolean  "accepting_emails",       :default => true
+    t.string   "state",                                                    :default => "active"
+    t.boolean  "accepting_emails",                                         :default => true
     t.string   "authentication_token"
     t.integer  "chat_id"
     t.string   "calendar_activity"
-    t.string   "view_status",            :default => "live"
-    t.integer  "new_old",                :default => 0
+    t.string   "view_status",                                              :default => "live"
+    t.integer  "new_old",                                                  :default => 0
     t.integer  "dn"
     t.string   "di"
     t.string   "vpassword"
+    t.string   "corfirm_acepted_terms_condition_privacity"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

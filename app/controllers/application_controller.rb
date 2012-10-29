@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_filter :current_network_pending_teachers
   after_filter  :current_languaje
   helper_method :current_network
+  helper_method :first_redirect
   protected
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
@@ -31,12 +32,16 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for resource
     Innsights.report("#{resource.role}_sign_in", user: resource).run
+    if current_user.corfirm_acepted_terms_condition_privacity == "Acepto"
+    else
     case resource.role
     when 'admin'      then admin_path(:subdomain => nil)
     when 'supervisor' then supervisor_dashboard_path(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
     else 
         #dashboard_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
         principal_wall_url(:subdomain => (request.subdomain.blank? ? current_user.networks.first.subdomain.downcase : request.subdomain.downcase))
+    end
+        accepted_terms_url  
     end
   end
 
@@ -63,7 +68,7 @@ class ApplicationController < ActionController::Base
       sign_out
       flash[:error] = t('flash.account_not_active')
       redirect_to root_path
-    elsif current_network && current_user && current_user.networks.where(:id => current_network.id).count == 0
+     elsif current_network && current_user && current_user.networks.where(:id => current_network.id).count == 0
       sign_out
       flash[:error] = t('flash.wrong_network')
       redirect_to root_path
@@ -81,7 +86,7 @@ class ApplicationController < ActionController::Base
       @pending_teachers_total = 0
     end
   end
-  
+ 
   private
   
   def filter_subdomain(subdomain)

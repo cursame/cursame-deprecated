@@ -1,0 +1,11 @@
+
+<div class ="container">
+<%= form_for  @user do |form|%>        
+        <%= form.hidden_field :corfirm_acepted_terms_condition_privacity, :value => "Acepto haber leído y conocer las políticas de privacidad, las condiciones de uso del sistema" %>
+<center>
+  <div class="span7 well" style="margin-left:250px;"> 
+   "Acepto haber leído y conocer las políticas de privacidad, las condiciones de uso del sistema"<%= form.submit "Acepto", :class => "btn" %>
+    <%end%>
+  </div>
+  </center>
+</div>

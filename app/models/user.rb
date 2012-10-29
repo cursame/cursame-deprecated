@@ -42,7 +42,9 @@ class User < ActiveRecord::Base
   has_many :statuses 
   has_many :favorites
   # SE comoloca el cambio de tipo de usuario-
-  has_many  :new_users_change_types
+  has_many :new_users_change_types
+  # se coloca el confirmar aceptación de usuario-
+  has_many :accepted_terms
  
   validates_presence_of :first_name, :last_name
   validates_inclusion_of :role,  :in => %w(student teacher supervisor admin)
