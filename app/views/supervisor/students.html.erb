@@ -64,6 +64,8 @@
                              <%= fname.label :password %>                        
                              <%= fname.password_field :password, :class => "span4"%></br>
                              <%= fname.password_field :password_confirmation, :class => "span4"%></br>
+                             <%= fname.label :bussines_role %> </br>          
+                             <%= fname.select :bussines_role, options_for_select([['supervisor', 'supervisor'], ['experto','experto'],['distribuidor VIP','distribuidor VIP'],['colaborador','colaborador'],['director','director']])%></br>
                              
                              
                             </br> <%= fname.submit "Cambios de usuario", :class => "accept btn success right"%>
