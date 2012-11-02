@@ -14,13 +14,15 @@ class Asset < ActiveRecord::Base
 
     CSV.parse(file.read.unpack("C*").pack("U*"), :headers => true) do |row|
       puts row["email"]
+      puts row["bussines_role"]
       user = User.new(:email => row["email"],
                       :role => role, 
-                      :state => "active", 
+                      :state => "active",
                       :first_name => row["first_name"] ? row["first_name"].strip.capitalize : "Sin nombre", 
                       :last_name => row["last_name"] ? row["last_name"].strip.capitalize : "Sin nombre",
                       :accepting_emails => true,
-                      :terms_of_service => "1")
+                      :terms_of_service => "1",
+                      :bussines_role => row["bussines_role"] ? row["bussines_role"].strip.capitalize : "Sin bussines_role")
       user.networks = [network]
       password = Devise.friendly_token[0,20]
       user.password = password
