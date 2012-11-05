@@ -29,7 +29,7 @@
       <div class="span9">
         <div class="users students">
 
-          <% @students.each do |student| %>
+          <% @students_view.each do |student| %>
                <%if student.view_status == 'fantom'%>
 			  <%else%>
               <% @student_id = student.id %>
@@ -87,7 +87,7 @@
             </div>
             <%end%>
            <%end%>
-          <%= paginate @students%>
+          <%= paginate @students_view%>
         </div>
       </div>
     </div>
