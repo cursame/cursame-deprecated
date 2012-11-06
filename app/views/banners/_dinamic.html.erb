@@ -1,7 +1,7 @@
 <% if current_user.role == "admin"%>
 <%else%>
 <%if current_network.variante == "free"%>
-   <%= link_to image_tag(@banner.image_banner), @banner.link, :target => "_blank"%>
+   <%#= link_to image_tag(@banner.image_banner), @banner.link, :target => "_blank"%>
    <%#= link_to image_tag(@banner.image_banner.banner), @banner.link, :target => "_blank"%>
 <%end%>
 <%end%>
