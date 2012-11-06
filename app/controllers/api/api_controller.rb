@@ -155,15 +155,15 @@ class Api::ApiController < ApplicationController
       when 'Network'
         @commentable = current_network
       else
-        @commentable = Course.find params[:id]
+        @commentable = current_network
     end
      puts '--------------------------------------------------'
       puts @commentable.to_yaml ;
       puts '--------------------------------------------------'
     if params[:type] == 'User'
-      @comments = @commentable.profile_comments.order("created_at DESC");
+      @comments = @commentable.profile_comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     else
-      @comments = @commentable.comments.order("created_at DESC");
+      @comments = @commentable.comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     end
     render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments, :like_not_likes])), :count => @comments.count()}, :callback => params[:callback]
   end

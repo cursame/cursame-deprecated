@@ -7,7 +7,10 @@ Ext.define('Cursame.view.network.NetworkWall', {
     extend: 'Ext.List',
 	xtype:'networkwall',
     
-	requires:['Cursame.view.comments.CommentTpl','Cursame.view.comments.CommentToolbar'],
+	requires:['Cursame.view.comments.CommentTpl',
+			'Cursame.view.comments.CommentToolbar',
+			'Ext.plugin.PullRefresh',
+			'Ext.plugin.ListPaging'],
 	
     config: {
 		store:'Comments',
@@ -19,6 +22,14 @@ Ext.define('Cursame.view.network.NetworkWall', {
 		    direction: 'vertical',
 		    directionLock: true
 		},
+		plugins: [
+            'pullrefresh',
+            {
+                type: 'listpaging',
+                autoPaging: true,
+				loadMoreText:lang.loadMoreText
+            }
+        ],
 		items:[{		      
 		        xtype: 'commentbar'
 		    }],
