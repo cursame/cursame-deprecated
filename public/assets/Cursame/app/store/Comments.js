@@ -8,6 +8,7 @@ Ext.define('Cursame.store.Comments', {
 	requires: ['Cursame.model.Comment'],
     
     config: {
-        model: 'Cursame.model.Comment'
+        model: 'Cursame.model.Comment',
+		pageSize: 10
     }
 });
