@@ -164,7 +164,7 @@ class Api::ApiController < ApplicationController
     if params[:type] == 'User'
       @comments = @commentable.profile_comments.order("created_at DESC")#.page(params[:page]).per(params[:limit]);
     else
-      @comments = @commentable.comments.order("created_at DESC")#.page(params[:page]).per(params[:limit]);
+      @comments = @commentable.comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     end
     render :json => {:comments => ActiveSupport::JSON.decode(@comments.to_json(:include => [:user, :comments, :like_not_likes])), :count => @comments.count()}, :callback => params[:callback]
   end
