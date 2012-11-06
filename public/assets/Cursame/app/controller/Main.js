@@ -448,6 +448,7 @@ Ext.define('Cursame.controller.Main', {
 		});
 	},
 	loadStore: function(store, params, callback) {
+		params.page = 1;
 		store.load({
 			callback: callback,
 			params: params,

@@ -15,6 +15,7 @@ Ext.define('Cursame.store.Users', {
                 return record.get('last_name')[0].toUpperCase();
             }
         },
+		pageSize: 20,
 		//filter the data using the firstName field
         sorters: 'last_name'
     }

@@ -6,6 +6,9 @@
 Ext.define('Cursame.view.users.UserList', {
     extend: 'Ext.List',
 	xtype:'userslist',
+	
+	requires:['Ext.plugin.PullRefresh',
+			'Ext.plugin.ListPaging'],
     
     config: {
         store:'Users',
@@ -20,6 +23,14 @@ Ext.define('Cursame.view.users.UserList', {
         disclosure: true,
         grouped: true,
 		indexBar: true,
+		plugins: [
+            'pullrefresh',
+            {
+                type: 'listpaging',
+                autoPaging: true,
+				loadMoreText:lang.loadMoreText
+            }
+        ],
 		itemTpl: Ext.create('Ext.XTemplate',
 				'<div class="comment ">',
 					'<div class="img">',

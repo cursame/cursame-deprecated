@@ -40,13 +40,13 @@ class Api::ApiController < ApplicationController
     case params[:type]
       when 'Course'
          @course = Course.find params[:id]       
-         @users = @course.students + @course.teachers
+         @users = @course.students.order("last_name").page(params[:page]).per(params[:limit]) + @course.teachers
       when 'Network'
-          @users = current_network.users
+          @users = current_network.users.order("last_name").page(params[:page]).per(params[:limit])
       when 'Profile'         
          @users = [@user]
       else
-         @users = @course.network.users
+         @users = current_network.users.order("last_name").page(params[:page]).per(params[:limit])
     end    
     render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]      
   end
@@ -155,14 +155,15 @@ class Api::ApiController < ApplicationController
       when 'Network'
         @commentable = current_network
       else
-        @commentable = Course.find params[:id]
+        #@commentable = Course.find params[:id]
+        @commentable = current_network
         
     end
      puts '--------------------------------------------------'
       puts @commentable.to_yaml ;
       puts '--------------------------------------------------'
     if params[:type] == 'User'
-      @comments = @commentable.profile_comments.order("created_at DESC")#.page(params[:page]).per(params[:limit]);
+      @comments = @commentable.profile_comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     else
       @comments = @commentable.comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     end
