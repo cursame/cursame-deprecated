@@ -24,8 +24,11 @@ gem 'rails-i18n'
 gem "watu_table_builder", :require => "table_builder"
 gem "faye"
 gem 'airbrake'
-gem 'innsights', :github => 'innku/innsights-gem', :branch => 'develop'
-# gem 'innsights', :path => '~/Code/Web/innsights-gem/'
+gem 'innsights', :github => "innku/innsights-gem", :branch => 'develop'
+#rake and destroy the time out
+gem "SystemTimer", :require => "system_timer", :platforms => :ruby_18
+gem "rack-timeout"
+#gem 'innsights', :path => '~/Code/Web/innsights-gem/'
 #detect the browser type
 gem 'useragent'
 #gem "ransack", :git => "git://github.com/ernie/ransack.git"
