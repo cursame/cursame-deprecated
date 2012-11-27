@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121102160904) do
+ActiveRecord::Schema.define(:version => 20121127182804) do
 
   create_table "accepted_terms", :force => true do |t|
     t.integer  "user"
@@ -373,6 +373,9 @@ ActiveRecord::Schema.define(:version => 20121102160904) do
     t.string   "vpassword"
     t.string   "corfirm_acepted_terms_condition_privacity"
     t.string   "bussines_role"
+    t.string   "region"
+    t.string   "telefonica_role"
+    t.string   "telefonica_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
