@@ -14,7 +14,8 @@ class Asset < ActiveRecord::Base
 
     CSV.parse(file.read.unpack("C*").pack("U*"), :headers => true) do |row|
       puts row["email"]
-      puts row["bussines_role"]
+      puts row["telefonica_role"]
+      puts row["telefonica_zone"]
       user = User.new(:email => row["email"],
                       :role => role, 
                       :state => "active",
