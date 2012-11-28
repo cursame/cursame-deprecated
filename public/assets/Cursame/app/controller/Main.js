@@ -35,9 +35,9 @@ Ext.define('Cursame.controller.Main', {
 			courseUserWallTextfield: 'communitynavigationview userwall toolbar textfield',
 			usersList: 'userslist',
 			communityNavigationView: 'communitynavigationview',
-			networkNavigationView : 'networknavigationview',
+			networkNavigationView: 'networknavigationview',
 			networkWallTextfield: 'networkwall toolbar textfield',
-			networkWall: 'networknavigationview networkwall',
+			networkWall: 'networknavigationview networkwall'
 		},
 		control: {
 			'notificationslist notificationlistitem button': {
@@ -140,66 +140,66 @@ Ext.define('Cursame.controller.Main', {
 				tap: 'onNetworkWallPost'
 			},
 			//implementamos el comportamiento de back
-			'notificationnavigationview':{
-				push:'onViewPush',
-				pop:'onViewPop'
+			'notificationnavigationview': {
+				push: 'onViewPush',
+				pop: 'onViewPop'
 			},
-			'usernavigationview':{
-				push:'onViewPush',
-				pop:'onViewPop'
+			'usernavigationview': {
+				push: 'onViewPush',
+				pop: 'onViewPop'
 			},
-			'coursenavigationview':{
-				push:'onViewPush',
-				pop:'onViewPop'
+			'coursenavigationview': {
+				push: 'onViewPush',
+				pop: 'onViewPop'
 			},
-			'communitynavigationview':{
-				push:'onViewPush',
-				pop:'onViewPop'
+			'communitynavigationview': {
+				push: 'onViewPush',
+				pop: 'onViewPop'
 			},
-			'networknavigationview':{
-				push:'onNetworkNavigationViewPush',
-				pop:'onNetworkNavigationViewPop'
+			'networknavigationview': {
+				push: 'onNetworkNavigationViewPush',
+				pop: 'onNetworkNavigationViewPop'
 			},
-			'notificationnavigationview #backBtn':{
-				tap:'goToWall'
+			'notificationnavigationview #backBtn': {
+				tap: 'goToWall'
 			},
-			'usernavigationview #backBtn':{
-				tap:'goToWall'
+			'usernavigationview #backBtn': {
+				tap: 'goToWall'
 			},
-			'coursenavigationview #backBtn':{
-				tap:'goToWall'
+			'coursenavigationview #backBtn': {
+				tap: 'goToWall'
 			},
-			'communitynavigationview #backBtn':{
-				tap:'goToWall'
+			'communitynavigationview #backBtn': {
+				tap: 'goToWall'
 			},
-			'networknavigationview #signOut':{
-				tap:'signOut'
-			},		
+			'networknavigationview #signOut': {
+				tap: 'signOut'
+			},
 		}
 	},
-	signOut:function(){
-		var login = this.getLoginForm();		
+	signOut: function() {
+		var login = this.getLoginForm();
 		this.getMain().setActiveItem(login);
 		login.reset();
 	},
-	goToWall:function(){
+	goToWall: function() {
 		this.getTabPanel().setActiveItem(0);
 	},
-	onViewPush:function(view,pushedview,obj){
+	onViewPush: function(view, pushedview, obj) {
 		view.down('#backBtn').hide();
 	},
-	onViewPop:function(view,popedview,obj){
+	onViewPop: function(view, popedview, obj) {
 		var btn = view.down('#backBtn');
-		if(view.getItems().length === 2){
+		if(view.getItems().length === 2) {
 			btn.show();
 		}
 	},
-	onNetworkNavigationViewPush:function(view,pushedview,obj){
+	onNetworkNavigationViewPush: function(view, pushedview, obj) {
 		view.down('#signOut').hide();
 	},
-	onNetworkNavigationViewPop:function(view,popedview,obj){
+	onNetworkNavigationViewPop: function(view, popedview, obj) {
 		var btn = view.down('#signOut');
-		if(view.getItems().length === 2){
+		if(view.getItems().length === 2) {
 			btn.show();
 		}
 	},
@@ -234,12 +234,12 @@ Ext.define('Cursame.controller.Main', {
 	},
 	onNotificationTap: function(dataview, index, target, record, e) {
 		var type = record.get('kind');
-		if (type === 'student_assignment_delivery' || type === 'teacher_survey_replied') { // si trata de una entrega de la tarea
+		if(type === 'student_assignment_delivery' || type === 'teacher_survey_replied') { // si trata de una entrega de la tarea
 			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
 			return;
 		}
 
-		if (type === 'user_comment_on_course' || type === 'student_course_accepted' || type === 'student_course_enrollment') {
+		if(type === 'user_comment_on_course' || type === 'student_course_accepted' || type === 'student_course_enrollment') {
 			this.getNotificationNavigationView().push({
 				xtype: 'coursewall',
 				title: record.data.courseObject.name
@@ -264,7 +264,7 @@ Ext.define('Cursame.controller.Main', {
 			//this.getCourseContainer().setRecord(course);
 			return;
 		}
-		if (type === 'user_comment_on_discussion' || type === 'course_discussion_added') {
+		if(type === 'user_comment_on_discussion' || type === 'course_discussion_added') {
 			this.getNotificationNavigationView().push({
 				xtype: 'discussionslist',
 				title: lang.discussions
@@ -274,7 +274,7 @@ Ext.define('Cursame.controller.Main', {
 			}, undefined);
 			return;
 		}
-		if (type === 'student_assignment_added' || type === 'student_assignment_updated') {
+		if(type === 'student_assignment_added' || type === 'student_assignment_updated') {
 			this.getNotificationNavigationView().push({
 				xtype: 'assignmentslist',
 				title: lang.assignments
@@ -283,7 +283,7 @@ Ext.define('Cursame.controller.Main', {
 				id: record.data.courseObject.id
 			}, undefined);
 		}
-		if (type === 'student_survey_added' || type === 'student_survey_updated') {
+		if(type === 'student_survey_added' || type === 'student_survey_updated') {
 			this.getNotificationNavigationView().push({
 				xtype: 'surveyslist',
 				title: lang.surveys
@@ -292,7 +292,7 @@ Ext.define('Cursame.controller.Main', {
 				id: record.data.courseObject.id
 			}, undefined);
 		}
-		if (type === 'user_comment_on_comment') {
+		if(type === 'user_comment_on_comment') {
 			this.getNotificationNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments
@@ -322,8 +322,8 @@ Ext.define('Cursame.controller.Main', {
 	onCourseWallTap: function(dataview, index, target, record, e, opt) {
 		var like = 0,
 			target;
-		if (e.getTarget('div.info')) {
-			if (this.getNotificationNavigationView().getItems().length === 3) { //si se tiene que agregar a notificaciones el commentwall
+		if(e.getTarget('div.info')) {
+			if(this.getNotificationNavigationView().getItems().length === 3) { //si se tiene que agregar a notificaciones el commentwall
 				this.getNotificationNavigationView().push({
 					xtype: 'commentwall',
 					title: lang.comments
@@ -339,9 +339,9 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Comment'
 			}, undefined);
 			this.getCommentContainer().setRecord(record);
-		} else if (e.getTarget('div.action')) {
+		} else if(e.getTarget('div.action')) {
 			target = e.getTarget('div.action');
-			if (target.innerHTML === lang.like) {
+			if(target.innerHTML === lang.like) {
 				like = 1;
 				record.data.like = lang.notLike;
 			}
@@ -351,7 +351,7 @@ Ext.define('Cursame.controller.Main', {
 	onUserWallTap: function(dataview, index, target, record, e, opt) {
 		var like = 0,
 			target;
-		if (e.getTarget('div.info')) {
+		if(e.getTarget('div.info')) {
 			this.getUserNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments
@@ -361,9 +361,9 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Comment'
 			}, undefined);
 			this.getCommentContainer().setRecord(record);
-		} else if (e.getTarget('div.action')) {
+		} else if(e.getTarget('div.action')) {
 			target = e.getTarget('div.action');
-			if (target.innerHTML === lang.like) {
+			if(target.innerHTML === lang.like) {
 				like = 1;
 				record.data.like = lang.notLike;
 			}
@@ -373,7 +373,7 @@ Ext.define('Cursame.controller.Main', {
 	onUserWallTap2: function(dataview, index, target, record, e, opt) {
 		var like = 0,
 			target;
-		if (e.getTarget('div.info')) {
+		if(e.getTarget('div.info')) {
 			this.getCourseNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments
@@ -383,9 +383,9 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Comment'
 			}, undefined);
 			this.getCommentContainer().setRecord(record);
-		} else if (e.getTarget('div.action')) {
+		} else if(e.getTarget('div.action')) {
 			target = e.getTarget('div.action');
-			if (target.innerHTML === lang.like) {
+			if(target.innerHTML === lang.like) {
 				like = 1;
 				record.data.like = lang.notLike;
 			}
@@ -395,7 +395,7 @@ Ext.define('Cursame.controller.Main', {
 	onNetworkWallTap: function(dataview, index, target, record, e, opt) {
 		var like = 0,
 			target;
-		if (e.getTarget('div.info')) {
+		if(e.getTarget('div.info')) {
 			this.getNetworkNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments
@@ -405,9 +405,9 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Comment'
 			}, undefined);
 			this.getCommentContainer().setRecord(record);
-		} else if (e.getTarget('div.action')) {
+		} else if(e.getTarget('div.action')) {
 			target = e.getTarget('div.action');
-			if (target.innerHTML === lang.like) {
+			if(target.innerHTML === lang.like) {
 				like = 1;
 				record.data.like = lang.notLike;
 			}
@@ -415,15 +415,15 @@ Ext.define('Cursame.controller.Main', {
 		}
 	},
 	onNetworkWallPost: function(btn) {
-		var record =  Ext.getStore('Comments').getData().items[0];
-		this.saveComment('Network', this.getNetworkWallTextfield(), btn,record.get('commentable_id'), Ext.getStore('Comments'));
+		var record = Ext.getStore('Comments').getData().items[0];
+		this.saveComment('Network', this.getNetworkWallTextfield(), btn, record.get('commentable_id'), Ext.getStore('Comments'));
 	},
 	onCommentWallTap: function(dataview, index, target, record, e, opt) { /**********/
 		var like = 0,
 			target;
-		if (e.getTarget('div.action')) {
+		if(e.getTarget('div.action')) {
 			target = e.getTarget('div.action');
-			if (target.innerHTML === lang.like) {
+			if(target.innerHTML === lang.like) {
 				like = 1;
 				record.data.like = lang.notLike;
 			}
@@ -432,7 +432,7 @@ Ext.define('Cursame.controller.Main', {
 	},
 	saveLike: function(type, like, target) {
 		var text = lang.like;
-		if (like) {
+		if(like) {
 			text = lang.notLike;
 		}
 		Cursame.ajax({
@@ -487,9 +487,9 @@ Ext.define('Cursame.controller.Main', {
 	onUserWallPost2: function(btn) {
 		var record = this.getCourseUserWall().items.items[0].getRecord();
 		this.saveComment('User', this.getCourseUserWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
-	},	
+	},
 	saveComment: function(type, textfield, btn, comentableId, store) {
-/*var record = this.getCommentContainer().getRecord();
+		/*var record = this.getCommentContainer().getRecord();
 			record.data.numcommnets = record.data.numcommnets + 1;
 			this.getCommentContainer().setRecord(record);*/
 		btn.disable();
@@ -527,7 +527,7 @@ Ext.define('Cursame.controller.Main', {
 			courseItems = courseContainer.items.items,
 			courseRecord = courseItems[0].getRecord();
 		btn.disable();
-		switch (btn.config.action) {
+		switch(btn.config.action) {
 		case 'wall':
 			this.getCourseNavigationView().push({
 				xtype: 'coursewall',
@@ -558,7 +558,7 @@ Ext.define('Cursame.controller.Main', {
 			}, undefined);
 			break;
 		case 'surveys':
-/*this.getCourseNavigationView().push({
+			/*this.getCourseNavigationView().push({
                 xtype: 'surveyslist',
                 title: lang.surveys
             });
@@ -583,28 +583,28 @@ Ext.define('Cursame.controller.Main', {
 	onTabPanelChange: function(tabpanel, value, oldValue, opts) {
 		var cuantos = oldValue.getItems().length;
 		oldValue.pop(cuantos - 1);
-		if (value.config.type === 'user') {
+		if(value.config.type === 'user') {
 			this.loadStore(Ext.getStore('Comments'), {
-				id: Cursame.User.get('id'),
+				id: Cursame.User.data.id,
 				type: 'User'
 			}, undefined);
 			this.getUserWall().items.items[0].setRecord(Cursame.User);
 		}
-		if (value.config.type === 'userlist') {
+		if(value.config.type === 'userlist') {
 			this.loadStore(Ext.getStore('Users'), {
 				type: 'Network'
 			}, undefined);
 		}
-		if (value.config.type === 'courses') {
+		if(value.config.type === 'courses') {
 			this.loadStore(Ext.getStore('Courses'), {}, undefined);
 		}
-		if (value.config.type === 'notifications') {
-			Ext.getStore('Notifications').load();			
+		if(value.config.type === 'notifications') {
+			Ext.getStore('Notifications').load();
 		}
-		if (value.config.type === 'wall') {
+		if(value.config.type === 'wall') {
 			this.loadStore(Ext.getStore('Comments'), {
 				type: 'Network'
-			}, undefined);			
+			}, undefined);
 		}
 	},
 	/*members*/
@@ -622,7 +622,7 @@ Ext.define('Cursame.controller.Main', {
 	onAssignmentsListTap: function(dataview, index, target, record, e, opt) {
 		this.getCourseNavigationView().push({
 			xtype: 'assignmentwall',
-            title: record.raw.course.name
+			title: record.raw.course.name
 		});
 		this.loadStore(Ext.getStore('Comments'), {
 			id: record.get('id'),
@@ -633,7 +633,7 @@ Ext.define('Cursame.controller.Main', {
 	onAssignmentsListTap2: function(dataview, index, target, record, e, opt) {
 		this.getNotificationNavigationView().push({
 			xtype: 'assignmentwall',
-            title: record.raw.course.name
+			title: record.raw.course.name
 		});
 		this.loadStore(Ext.getStore('Comments'), {
 			id: record.get('id'),
@@ -642,7 +642,7 @@ Ext.define('Cursame.controller.Main', {
 		this.getAssignmentWall().items.items[0].setRecord(record);
 	},
 	onAssignmentWallTap: function(dataview, index, target, record, e, opt) {
-		if (e.getTarget('div.minibar')) {
+		if(e.getTarget('div.minibar')) {
 			this.getCourseNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments
@@ -701,7 +701,7 @@ Ext.define('Cursame.controller.Main', {
 		this.getDiscussionWall().items.items[0].setRecord(record);
 	},
 	onDiscussionWallTap: function(dataview, index, target, record, e, opt) {
-		if (e.getTarget('div.minibar')) {
+		if(e.getTarget('div.minibar')) {
 			this.getCourseNavigationView().push({
 				xtype: 'commentwall',
 				title: lang.comments

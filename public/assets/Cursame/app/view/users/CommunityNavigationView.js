@@ -25,7 +25,7 @@ Ext.define('Cursame.view.users.CommunityNavigationView', {
 				iconMask: true,
 				ui: 'plain',
 				align: 'right'
-			}],
+			}]
 		}
 	},
 	applyLayout: function(config) {

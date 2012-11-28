@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
     @comment.user = current_user 
     respond_to do |format|
      if @comment.save
-       puts commentable
         format.html { redirect_to commentable_path_for(@comment) + "#comment_#{@comment.id}", :notice => I18n.t('flash.comment_added') }
         format.js
      else

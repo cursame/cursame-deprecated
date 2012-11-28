@@ -1,25 +1,16 @@
-/*!
- * Back Button Detection Object V 1.0.1
- * http://www.brookebryan.com/
- *
- * Copyright 2010, Brooke Bryan
- *
- * Date: Thu 27 Jan 2011 13:37 GMT
- */
-
 Ext.Loader.setPath({
     'Ext': '../assets/Cursame/sdk/src',
 	'Core': '../assets/Cursame/core',
 	'Cursame':'../assets/Cursame/app'
-});	
+});
 
 Ext.application({
 	
     name: 'Cursame',
 	viewport: {
      autoMaximize: true
-    },	
-	profiles:['Cursame.profile.Phone'],
+    },
+	profiles:['Cursame.profile.Phone','Cursame.profile.Tablet'],
 	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
 
     views: ['Main'],
@@ -39,7 +30,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('Cursame.view.Main'));		
+        Ext.Viewport.add(Ext.create('Cursame.view.Main'));
     },
 
     onUpdated: function() {
