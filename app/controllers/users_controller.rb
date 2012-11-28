@@ -14,6 +14,8 @@ class UsersController < ApplicationController
   def edit
     find_user and check_edit_permissions!
   end
+  
+ 
 
   def create_user
     @user = User.new params[:user]
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
     build_user(password)
     if @user.save
       UserMailer.new_user_by_supervisor(@user, current_network, password).deliver
-      redirect_to @user, :notice => I18n.t('flash.user_created')
+      redirect_to :back, :notice => I18n.t('flash.user_created')
     else
       render 'supervisor/new_user', :notice => "envio fallido"
     end

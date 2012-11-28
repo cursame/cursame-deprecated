@@ -14,7 +14,8 @@ class Asset < ActiveRecord::Base
 
     CSV.parse(file.read.unpack("C*").pack("U*"), :headers => true) do |row|
       puts row["email"]
-      puts row["bussines_role"]
+      puts row["telefonica_role"]
+      puts row["telefonica_zone"]
       user = User.new(:email => row["email"],
                       :role => role, 
                       :state => "active",
@@ -22,7 +23,8 @@ class Asset < ActiveRecord::Base
                       :last_name => row["last_name"] ? row["last_name"].strip.capitalize : "Sin nombre",
                       :accepting_emails => true,
                       :terms_of_service => "1",
-                      :bussines_role => row["bussines_role"] ? row["bussines_role"].strip.capitalize : "Sin bussines_role")
+                      :telefonica_role => row["telefonica_role"] ? row["telefonica_role"].strip.capitalize : "Sin telefonica_role",
+                      :telefonica_zone => row["telefonica_zone"] ? row["telefonica_zone"].strip.capitalize : "Sin telefonica_zone")
       user.networks = [network]
       password = Devise.friendly_token[0,20]
       user.password = password
