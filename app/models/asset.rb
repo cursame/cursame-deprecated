@@ -24,7 +24,7 @@ class Asset < ActiveRecord::Base
                       :accepting_emails => true,
                       :terms_of_service => "1",
                       :telefonica_role => row["telefonica_role"] ? row["telefonica_role"].strip.capitalize : "Sin telefonica_role",
-                      :telefonica_zone => row["telefonica_zone"] ? row["telefonica_zone"].strip.capitalize : "Sin telefonica_zone"
+                      :telefonica_zone => row["telefonica_zone"] ? row["telefonica_zone"].strip.capitalize : "Sin telefonica_zone")
       user.networks = [network]
       password = Devise.friendly_token[0,20]
       user.password = password
