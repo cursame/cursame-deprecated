@@ -15,7 +15,7 @@ class Api::ApiController < ApplicationController
   end
 
   def courses
-    @courses = @user.visible_courses.where(:network_id => current_network)    
+    @courses = @user.visible_courses.where(:network_id => @network)    
     render :json => {:courses => @courses.as_json, :count => @courses.count()}, :callback => params[:callback]      
   end
   
@@ -35,18 +35,25 @@ class Api::ApiController < ApplicationController
      @course = Course.find params[:id]  
      render :json => {:surveys => @course.surveys.order("created_at DESC"), :count => @course.surveys.count()}, :callback => params[:callback]      
   end
+
+  def questions
+    survey = Survey.find(params[:id])
+    @questions = survey.questions.order("created_at DESC")
+    render :json => {:questions => ActiveSupport::JSON.decode(@questions.to_json(:include => [:answers])), :count => @questions.count()}, :callback => params[:callback]
+  end
   
-  def users    
+  def users 
+     query = "%#{params[:query]}%" #where("users.last_name like ? ", q)
     case params[:type]
       when 'Course'
          @course = Course.find params[:id]       
-         @users = @course.students.order("last_name").page(params[:page]).per(params[:limit]) + @course.teachers
+         @users = @course.students.order("last_name") + @course.teachers
       when 'Network'
-          @users = current_network.users.order("last_name").page(params[:page]).per(params[:limit])
+          @users = query.length > 3 ? @network.users.where("users.last_name like ? or users.first_name like ? ", query,query).order("last_name") : @network.users.where("users.last_name like ? or users.first_name like ? ", query,query).order("last_name").page(params[:page]).per(params[:limit])
       when 'Profile'         
          @users = [@user]
       else
-         @users = current_network.users.order("last_name").page(params[:page]).per(params[:limit])
+         @users = @network.users.order("last_name")
     end    
     render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]      
   end
@@ -92,8 +99,7 @@ class Api::ApiController < ApplicationController
           next
           text = I18n.t 'notifications.assignment_updated'
         when 'student_survey_added'
-          text = I18n.t 'notifications.survey_added'          
-          #puts notification.notificator
+          text = I18n.t 'notifications.survey_added' 
           survey = notification.notificator if notification.notificator
           user = notification.notificator.course.teachers.first if notification.notificator
           @course = survey.course if notification.notificator
@@ -153,15 +159,12 @@ class Api::ApiController < ApplicationController
       when 'User'
         @commentable = User.find params[:id]
       when 'Network'
-        @commentable = current_network
+        @commentable = @network
       else
         #@commentable = Course.find params[:id]
-        @commentable = current_network
+        @commentable = @network
         
     end
-     puts '--------------------------------------------------'
-      puts @commentable.to_yaml ;
-      puts '--------------------------------------------------'
     if params[:type] == 'User'
       @comments = @commentable.profile_comments.order("created_at DESC").page(params[:page]).per(params[:limit]);
     else
@@ -192,6 +195,7 @@ class Api::ApiController < ApplicationController
   private 
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
+    @network = @user.networks[0]
     if @user.nil?
        logger.info("Token not found.")
        render :status => 200, :json => {:message => "Invalid token", :success => false}        

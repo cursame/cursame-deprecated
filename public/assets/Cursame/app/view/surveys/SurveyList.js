@@ -7,7 +7,7 @@ Ext.define('Cursame.view.surveys.SurveyList', {
     extend: 'Ext.List',
 	xtype:'surveyslist',
     
-	requires:['Cursame.view.surveys.SurveyTpl'],
+	requires:['Cursame.view.surveys.SurveyTpl','Cursame.view.surveys.Questions'],
 	
     config: {
         store:'Surveys',

@@ -40,7 +40,7 @@ var language ={
 		teacher:'Gerente',
 		student:'Vendedor',
 		admin:'Administrador',
-		loading:'Cargando ...',
+		loading:'Loading ...',
 		send: 'Enviar',
 		sendComment: 'Escribe un comentario...',
 		valuee:'Valor',
@@ -54,7 +54,11 @@ var language ={
 		alertMsg:'Para utilizar esta función por favor utiliza la plataforma desde una computadora o tablet.',
 		sign_out:'Salir',
 		emptyTextNotifications :'Aún no tienes notificaciones.',
-		loadMoreText:'Cargar más...'
+		loadMoreText:'Cargar más...',
+        search:'Buscar',
+        searchUsers:'Buscar usuarios...',
+        emptyText:'No hay resultados :(',
+        loadingQuestions:'Configurando preguntas ...'
     },
     en:{
         appName: 'Cúrsame',
@@ -63,7 +67,7 @@ var language ={
         courses :'Courses',
         profilee :'Profile',
         more :'More',
-        sorryMsg:'Sorry, something went wrong! :(' 
+        sorryMsg:'Sorry, something went wrong! :('
         //delete:'Delete'
     }
 };

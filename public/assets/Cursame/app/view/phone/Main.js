@@ -39,7 +39,7 @@ Ext.define('Cursame.view.phone.Main', {
 				iconCls: 'user_list'
 			}, {
 				xtype: 'communitynavigationview',
-				type: 'userlist',				
+				type: 'userlist',
 				title: lang.members,
 				iconCls: 'team1'
 			}]

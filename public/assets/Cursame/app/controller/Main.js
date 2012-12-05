@@ -34,6 +34,7 @@ Ext.define('Cursame.controller.Main', {
 			userWallTextfield: 'usernavigationview userwall toolbar textfield',
 			courseUserWallTextfield: 'communitynavigationview userwall toolbar textfield',
 			usersList: 'userslist',
+			usersListSearchField: 'userslist toolbar textfield',
 			communityNavigationView: 'communitynavigationview',
 			networkNavigationView: 'networknavigationview',
 			networkWallTextfield: 'networkwall toolbar textfield',
@@ -80,6 +81,12 @@ Ext.define('Cursame.controller.Main', {
 			/*members*/
 			'userslist': {
 				itemtap: 'onUsersListTap'
+			},
+			'userslist toolbar textfield': {
+				keyup: 'searchUsers'
+			},
+			'userslist toolbar button': {
+				tap: 'searchUsers'
 			},
 			/*assignments*/
 			'coursenavigationview assignmentslist': {
@@ -174,7 +181,7 @@ Ext.define('Cursame.controller.Main', {
 			},
 			'networknavigationview #signOut': {
 				tap: 'signOut'
-			},
+			}
 		}
 	},
 	signOut: function() {
@@ -559,12 +566,12 @@ Ext.define('Cursame.controller.Main', {
 			break;
 		case 'surveys':
 			/*this.getCourseNavigationView().push({
-                xtype: 'surveyslist',
-                title: lang.surveys
-            });
-            this.loadStore(Ext.getStore('Surveys'), {
-                id: courseRecord.get('id')
-            }, undefined);*/
+				xtype: 'surveyslist',
+				title: lang.surveys
+			});
+			this.loadStore(Ext.getStore('Surveys'), {
+				id: courseRecord.get('id')
+			}, undefined);*/
 			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
 			break;
 		case 'discussions':
@@ -592,7 +599,8 @@ Ext.define('Cursame.controller.Main', {
 		}
 		if(value.config.type === 'userlist') {
 			this.loadStore(Ext.getStore('Users'), {
-				type: 'Network'
+				type: 'Network',
+				letter: 'A'
 			}, undefined);
 		}
 		if(value.config.type === 'courses') {
@@ -657,14 +665,9 @@ Ext.define('Cursame.controller.Main', {
 	/*surveys*/
 	onSurveysListTap: function(dataview, index, target, record, e, opt) {
 		this.getCourseNavigationView().push({
-			xtype: 'surveywall',
-			title: record.get('name')
+			xtype:'questionscarousel',
+			surveyId: record.get('id')
 		});
-		this.loadStore(Ext.getStore('Comments'), {
-			id: record.get('id'),
-			type: 'Survey'
-		}, undefined);
-		this.getSurveyWall().items.items[0].setRecord(record);
 	},
 	onSurveysListTap2: function(dataview, index, target, record, e, opt) {
 		this.getNotificationNavigationView().push({
@@ -711,6 +714,17 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Comment'
 			}, undefined);
 			this.getCommentContainer().setRecord(record);
+		}
+	},
+	searchUsers: function(btn) {
+		var val = this.getUsersListSearchField().getValue();
+		if(val.length > 0) {
+			Ext.getStore('Users').load({
+				params: {
+					type: 'Network',
+					query: val
+				}
+			});
 		}
 	},
 	/*generico para el text field del los comentarios*/

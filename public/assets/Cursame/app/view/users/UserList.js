@@ -21,12 +21,30 @@ Ext.define('Cursame.view.users.UserList', {
 		},
 		disclosure: true,
 		grouped: true,
-		indexBar: 'true',
-		plugins: ['pullrefresh',
+		emptyText: lang.emptyText,
+		indexBar: true,
+		pluginsss: ['pullrefresh',
 		{
 			type: 'listpaging',
 			autoPaging: true,
 			loadMoreText: lang.loadMoreText
+		}],
+		items: [{
+			xtype: 'toolbar',
+			docked: 'top',
+			layout: 'hbox',
+			ui: 'accept',
+			items: [{
+				xtype: 'textfield',
+				placeHolder: lang.searchUsers,
+				flex: 5
+			}, {
+				xtype: 'button',
+				text: lang.search,
+				ui: 'accept',
+				margin: 5,
+				flex: 1
+			}]
 		}],
 		itemTpl: Ext.create('Ext.XTemplate', '<div class="comment ">', '<div class="img">', '<img src="{avatar_file}" />', '</div>', '<div class="contenido">', '<div class="title">{first_name} {last_name}</div>', '<div class="text">', '{role}', '</div>', '</div>', '</div>')
 	}

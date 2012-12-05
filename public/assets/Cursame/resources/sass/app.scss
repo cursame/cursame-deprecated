@@ -317,3 +317,16 @@ iframe{
 	max-width: 90%;
 }
 
+.question{
+	background: #FFF;
+	@include border-radius(.4em);
+	margin: 10px;
+}
+.answer{
+	color: $cursame-blue;
+	border-left: 1px solid #D4D6E1;
+	font-size:14px;
+	padding: 0.6em;
+	text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
+}
+

@@ -11,7 +11,16 @@ Ext.application({
      autoMaximize: true
     },
 	profiles:['Cursame.profile.Phone','Cursame.profile.Tablet'],
-	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
+	stores:[
+            'Notifications',
+            'Comments',
+            'CommentsComments',
+            'Courses',
+            'Users',
+            'Assignments',
+            'Surveys',
+            'Discussions',
+            'Questions'],
 
     views: ['Main'],
 
