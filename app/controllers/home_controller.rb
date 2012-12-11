@@ -31,6 +31,9 @@ class HomeController < ApplicationController
     #@new_users_change_type = NewUsersChangeType.new
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    # analytics logging
+    action = Action.new :user_id => current_user.id, :action => 'dashboard', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
+    action.save!
   end
   
   def dashboard_calendar
@@ -65,6 +68,9 @@ class HomeController < ApplicationController
   
   def members
     @users = current_network.users.search(params[:search])
+    # analytics logging
+    action = Action.new :user_id => current_user.id, :action => 'members', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
+    action.save!
   end
   
   def new_admin
@@ -72,11 +78,9 @@ class HomeController < ApplicationController
   end
   
   def principal_wall
-     
       @network = current_network    
       @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
       @tutoriales = Tutoriale.all  
-      
   end
 
 
