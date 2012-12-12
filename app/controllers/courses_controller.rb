@@ -82,9 +82,7 @@ class CoursesController < ApplicationController
     @course = accessible_course 
     @status_course = StatusCourse.new
     @tutoriales = Tutoriale.all
-    # analytics logging
-    action = Action.new :user_id => current_user.id, :action => 'show_courses', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
-    action.save!
+    action_entry 'show_courses'
   end
   def calification
     @course = accessible_course
