@@ -17,3 +17,9 @@ task :remove_temporal_carrierwave_folders do
     FileUtils.remove_dir(path_to_be_deleted, :force => true)
   puts "done."
 end
+
+task :delete_actions do
+   puts "Deleting last month actions"
+   Action.delete_all ['created_at < ?', 1.month.ago ]
+   puts "done."
+end
