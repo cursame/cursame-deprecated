@@ -32,7 +32,7 @@ class HomeController < ApplicationController
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     # analytics logging
-    action = Action.new :user_id => current_user.id, :action => 'dashboard', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
+    action = Action.new :user_id => current_user.id, :action => 'dashboard', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
     action.save!
   end
   
@@ -69,7 +69,7 @@ class HomeController < ApplicationController
   def members
     @users = current_network.users.search(params[:search])
     # analytics logging
-    action = Action.new :user_id => current_user.id, :action => 'members', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
+    action = Action.new :user_id => current_user.id, :action => 'members', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
     action.save!
   end
   
@@ -93,5 +93,8 @@ end
   authenticate_or_request_with_http_basic do |username, password|
     username == "logosetvites" && password == "cursameadministratore54321ap09854321"
   end
+  # analytics logging
+  action = Action.new :user_id => current_user.id, :action => 'authenticate', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
+  action.save!
 end
 end

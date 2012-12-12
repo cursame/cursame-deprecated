@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209022444) do
+ActiveRecord::Schema.define(:version => 20121212062155) do
 
   create_table "accepted_terms", :force => true do |t|
-    t.integer   "user"
-    t.string    "acepted"
-    t.date      "date"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
+    t.integer  "user"
+    t.string   "acepted"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "actions", :force => true do |t|
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121209022444) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ip_adress"
   end
 
   create_table "answers", :id => false, :force => true do |t|
@@ -345,46 +346,46 @@ ActiveRecord::Schema.define(:version => 20121209022444) do
   end
 
   create_table "users", :force => true do |t|
-    t.string    "role"
-    t.string    "email",                                                    :default => "",       :null => false
-    t.string    "encrypted_password",                        :limit => 128, :default => "",       :null => false
-    t.string    "reset_password_token"
-    t.timestamp "reset_password_sent_at"
-    t.timestamp "remember_created_at"
-    t.integer   "sign_in_count",                                            :default => 0
-    t.timestamp "current_sign_in_at"
-    t.timestamp "last_sign_in_at"
-    t.string    "current_sign_in_ip"
-    t.string    "last_sign_in_ip"
-    t.string    "confirmation_token"
-    t.timestamp "confirmed_at"
-    t.timestamp "confirmation_sent_at"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "first_name"
-    t.string    "last_name"
-    t.text      "about_me"
-    t.text      "studies"
-    t.date      "birth_date"
-    t.text      "occupation"
-    t.string    "twitter_link"
-    t.string    "facebook_link"
-    t.string    "linkedin_link"
-    t.string    "avatar_file"
-    t.string    "state",                                                    :default => "active"
-    t.boolean   "accepting_emails",                                         :default => true
-    t.string    "authentication_token"
-    t.integer   "chat_id"
-    t.string    "calendar_activity"
-    t.string    "view_status",                                              :default => "live"
-    t.integer   "new_old",                                                  :default => 0
-    t.integer   "dn"
-    t.string    "di"
-    t.string    "vpassword"
-    t.string    "corfirm_acepted_terms_condition_privacity"
-    t.string    "bussines_role"
-    t.string    "telefonica_role"
-    t.string    "telefonica_zone"
+    t.string   "role"
+    t.string   "email",                                                    :default => "",       :null => false
+    t.string   "encrypted_password",                        :limit => 128, :default => "",       :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                                            :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.text     "about_me"
+    t.text     "studies"
+    t.date     "birth_date"
+    t.text     "occupation"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "linkedin_link"
+    t.string   "avatar_file"
+    t.string   "state",                                                    :default => "active"
+    t.boolean  "accepting_emails",                                         :default => true
+    t.string   "authentication_token"
+    t.integer  "chat_id"
+    t.string   "calendar_activity"
+    t.string   "view_status",                                              :default => "live"
+    t.integer  "new_old",                                                  :default => 0
+    t.integer  "dn"
+    t.string   "di"
+    t.string   "vpassword"
+    t.string   "corfirm_acepted_terms_condition_privacity"
+    t.string   "bussines_role"
+    t.string   "telefonica_role"
+    t.string   "telefonica_zone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

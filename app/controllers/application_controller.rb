@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for resource
+    # analytics logging
+    action = Action.new :user_id => current_user.id, :action => 'login', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
+    action.save!
     Innsights.report("#{resource.role}_sign_in", user: resource).run
     if current_user.corfirm_acepted_terms_condition_privacity == "Acepto"
     else
