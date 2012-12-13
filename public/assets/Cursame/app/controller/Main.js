@@ -181,6 +181,9 @@ Ext.define('Cursame.controller.Main', {
 			},
 			'networknavigationview #signOut': {
 				tap: 'signOut'
+			},
+			'questionscarousel':{
+				surveyreplied:'surveyReplied'
 			}
 		}
 	},
@@ -565,14 +568,15 @@ Ext.define('Cursame.controller.Main', {
 			}, undefined);
 			break;
 		case 'surveys':
-			/*this.getCourseNavigationView().push({
+			this.courseId = courseRecord.get('id')
+			this.getCourseNavigationView().push({
 				xtype: 'surveyslist',
 				title: lang.surveys
 			});
 			this.loadStore(Ext.getStore('Surveys'), {
-				id: courseRecord.get('id')
-			}, undefined);*/
-			Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
+				id: this.courseId
+			}, undefined);			
+			//Ext.Msg.alert('Movistar', lang.alertMsg, Ext.emptyFn);
 			break;
 		case 'discussions':
 			this.getCourseNavigationView().push({
@@ -726,6 +730,12 @@ Ext.define('Cursame.controller.Main', {
 				}
 			});
 		}
+	},
+	surveyReplied:function(){		
+		this.getCourseNavigationView().pop();
+		this.loadStore(Ext.getStore('Surveys'), {
+				id: this.courseId
+			}, undefined);
 	},
 	/*generico para el text field del los comentarios*/
 	onCommentFieldChange: function(textfield, nval, oval, o) {

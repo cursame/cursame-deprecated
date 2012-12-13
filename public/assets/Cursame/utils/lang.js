@@ -58,7 +58,10 @@ var language ={
         search:'Buscar',
         searchUsers:'Buscar usuarios...',
         emptyText:'No hay resultados :(',
-        loadingQuestions:'Configurando preguntas ...'
+        loadingQuestions:'Configurando preguntas ...',
+        endSurvey:'Finalizar cuestionario',
+        sendingSurvey:'Enviando respuestas ...',
+        surveySend:'Respuestas enviadas!'
     },
     en:{
         appName: 'Cúrsame',
@@ -67,7 +70,8 @@ var language ={
         courses :'Courses',
         profilee :'Profile',
         more :'More',
-        sorryMsg:'Sorry, something went wrong! :('
+        sorryMsg:'Sorry, something went wrong! :(',
+        endSurvey:'Finalizar encuesta'
         //delete:'Delete'
     }
 };

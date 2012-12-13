@@ -191,4 +191,5 @@ Cursame::Application.routes.draw do
   match '/api/api/create_comment', :to => 'api/api#create_comment', :as => :create_comment
   match '/api/api/create_like', :to => 'api/api#create_like', :as => :create_like
   match '/api/api/questions', :to => 'api/api#questions', :as => :questions
+  match '/api/api/survey_replies', :to => 'api/api#survey_replies', :as => :survey_replies
 end

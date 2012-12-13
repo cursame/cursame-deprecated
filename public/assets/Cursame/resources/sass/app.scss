@@ -320,7 +320,7 @@ iframe{
 .question{
 	background: #FFF;
 	@include border-radius(.4em);
-	margin: 10px;
+	margin: 1em;
 }
 .answer{
 	color: $cursame-blue;
@@ -329,4 +329,17 @@ iframe{
 	padding: 0.6em;
 	text-shadow: rgba(255, 255, 255, 0.25) 0 0.08em 0;
 }
-
+.finish-survey-button{
+	color: #002130;
+	-webkit-box-flex: 1;
+	box-flex: 1;
+	-webkit-box-align: center;
+	box-align: center;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	text-align: center;
+	font-weight: bold;
+	line-height: 1.2em;
+	display: block;
+	overflow: hidden;
+}

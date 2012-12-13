@@ -21,7 +21,6 @@ class Api::ApiController < ApplicationController
   
   def assignments
      @course = Course.find params[:id]  
-     #render :json => {:assignments => @course.assignments.order("due_to DESC"), :count => @course.assignments.count()}, :callback => params[:callback] 
      render :json => {:assignments => ActiveSupport::JSON.decode(@course.assignments.order("due_to DESC").to_json(:include => [:course])), :count => @course.assignments.count()}, :callback => params[:callback]
           
   end
@@ -31,9 +30,16 @@ class Api::ApiController < ApplicationController
      render :json => {:discussions => @course.discussions.order("created_at DESC"), :count => @course.discussions.count()}, :callback => params[:callback]      
   end
   
-  def surveys
-     @course = Course.find params[:id]  
-     render :json => {:surveys => @course.surveys.order("created_at DESC"), :count => @course.surveys.count()}, :callback => params[:callback]      
+  def surveys  
+    # solo mostramos los cuestionarios que tiene pendientes :)
+    @surveys = @user.surveys.published.where("due_to >= ?", DateTime.now).order("due_to DESC")
+    @surveys_replied = Array.new
+    @surveys_replies = @user.survey_replies
+    @surveys_replies.each do |survey_reply|
+      @surveys_replied.push(survey_reply.survey)
+    end
+    @surveys = @surveys - @surveys_replied
+    render :json => {:surveys => @surveys, :count => @surveys.count()}, :callback => params[:callback]      
   end
 
   def questions
@@ -41,7 +47,7 @@ class Api::ApiController < ApplicationController
     @questions = survey.questions.order("created_at DESC")
     render :json => {:questions => ActiveSupport::JSON.decode(@questions.to_json(:include => [:answers])), :count => @questions.count()}, :callback => params[:callback]
   end
-  
+
   def users 
      query = "%#{params[:query]}%" #where("users.last_name like ? ", q)
     case params[:type]
@@ -190,8 +196,18 @@ class Api::ApiController < ApplicationController
      @like_not_like.like = params[:like]
      @like_not_like.save
      render :json => {:success => true}, :callback => params[:callback]        
-   end
+  end
   
+  def survey_replies
+    @survey = current_user.surveys.published.find params[:survey_id]
+    @survey_reply = current_user.survey_replies.build(ActiveSupport::JSON.decode(params[:survey_reply]))
+    @survey_reply.survey = @survey
+    if @survey_reply.save
+      render :json => {:success => true, :notice => t('flash.survey_reply_created')}, :callback => params[:callback]
+    else
+      render :json => {:success => false, :notice => 'Error al eviar tus respuestas :('}, :callback => params[:callback]
+    end
+  end
   private 
   def authorize
     @user=User.find_by_authentication_token(params[:auth_token])
