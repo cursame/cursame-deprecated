@@ -1,5 +1,7 @@
 
 source 'http://rubygems.org'
+
+gem 'geocoder'
 gem 'taps'
 gem 'rails', '3.1.1'
 gem 'devise', '2.0'

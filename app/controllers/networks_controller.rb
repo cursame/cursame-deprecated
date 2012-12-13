@@ -40,6 +40,7 @@ class NetworksController < ApplicationController
           @tutoriales = Tutoriale.all         
           @user = current_user
           @new_users_change_type = NewUsersChangeType.new
+	  action_entry 'principal_wall'
       end
       def relate
          @network = current_network  

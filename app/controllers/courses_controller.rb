@@ -82,6 +82,7 @@ class CoursesController < ApplicationController
     @course = accessible_course 
     @status_course = StatusCourse.new
     @tutoriales = Tutoriale.all
+    action_entry 'show_courses'
   end
   def calification
     @course = accessible_course

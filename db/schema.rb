@@ -11,15 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121126223501) do
+ActiveRecord::Schema.define(:version => 20121212062155) do
 
   create_table "accepted_terms", :force => true do |t|
-    t.integer   "user"
-    t.string    "acepted"
-    t.date      "date"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.integer   "user_id"
+    t.integer  "user"
+    t.string   "acepted"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "actions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "action"
+    t.string   "user_agent"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ip_adress"
   end
 
   create_table "answers", :id => false, :force => true do |t|
@@ -372,6 +383,7 @@ ActiveRecord::Schema.define(:version => 20121126223501) do
     t.string   "di"
     t.string   "vpassword"
     t.string   "corfirm_acepted_terms_condition_privacity"
+    t.string   "bussines_role"
     t.string   "telefonica_role"
     t.string   "telefonica_zone"
   end

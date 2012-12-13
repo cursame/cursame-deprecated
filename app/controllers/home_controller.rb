@@ -31,6 +31,7 @@ class HomeController < ApplicationController
     #@new_users_change_type = NewUsersChangeType.new
     @tasks=current_user.assignments + current_user.surveys
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    action_entry 'dashboard'
   end
   
   def dashboard_calendar
@@ -65,6 +66,7 @@ class HomeController < ApplicationController
   
   def members
     @users = current_network.users.search(params[:search])
+    action_entry 'members'
   end
   
   def new_admin
@@ -72,11 +74,9 @@ class HomeController < ApplicationController
   end
   
   def principal_wall
-     
       @network = current_network    
       @comments = @network.comments.order("created_at DESC").page(params[:page]).per(10)
       @tutoriales = Tutoriale.all  
-      
   end
 
 
