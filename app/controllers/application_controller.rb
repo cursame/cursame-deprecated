@@ -109,7 +109,14 @@ class ApplicationController < ActionController::Base
   helper_method :mobile?
 
   def action_entry(action)
-    Action.create :user_id => current_user.id, :action => action, :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city, :ip_adress => request.remote_ip
+
+    if request.location.nil?
+      country,city = 'n/a','n/a'
+    else
+      country, city = request.location.country, request.location.city
+    end
+    Action.create :user_id => current_user.id, :action => action, :user_agent => request.env['HTTP_USER_AGENT'], :country => country, :city => city, :ip_adress => request.remote_ip
+
   end
 
 end
