@@ -1,5 +1,8 @@
 Cursame::Application.routes.draw do
   
+  get "analytics/reporte_general"
+  get "analytics/resumen"
+
   resources :accepted_terms
 
   resources :new_users_change_types

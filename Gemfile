@@ -1,6 +1,7 @@
 
 source 'http://rubygems.org'
 
+gem 'useragent'
 gem 'geocoder'
 gem 'taps'
 gem 'rails', '3.1.1'

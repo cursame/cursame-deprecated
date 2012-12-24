@@ -1,0 +1,597 @@
+<h1>Visitas por fecha ROL COLABORADOR</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'colaborador', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha ROL DIRECTORES</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'directores', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha ROL DISTRIBUIDOR VIP</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'distribuidor_vip', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha ROL EXPERTO</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'experto', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha ROL SUPERVISOR</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'supervisor', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha ROL VENDEDOR</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:role => 'vendedor', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL COLABORADOR</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'colaborador', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL DIRECTORES</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'directores', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL DISTRIBUIDOR VIP</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'distribuidor_vip', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL EXPERTO</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'experto', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL SUPERVISOR</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'supervisor', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora ROL VENDEDOR</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:role => 'vendedor', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha REGIÓN CENTRO</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:zone => 'centro', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha REGIÓN NORTE</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:zone => 'norte', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha REGIÓN OCCIDENTE</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:zone => 'occidente', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha REGIÓN SUR</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:zone => 'sur', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por fecha REGIÓN TEMM</h1>
+<table>
+  <tr>
+    <td>Fecha</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_fecha({:zone => 'temm', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora REGIÓN CENTRO</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:zone => 'centro', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora REGIÓN NORTE</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:zone => 'norte', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora REGIÓN OCCIDENTE</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:zone => 'occidente', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora REGIÓN SUR</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:zone => 'sur', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por hora REGIÓN TEMM</h1>
+<table>
+  <tr>
+    <td>Hora</td>
+    <td>Visitas</td>
+  </tr>
+  <% reporte_hora({:zone => 'temm', :from => 30.days.ago, :to => Time.now}).each do |fecha| %>
+    <tr>
+      <td><%= fecha[0] %></td>
+      <td><%= fecha[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+
+
+
+<h1>Logins por REGIÓN</h1>
+<table>
+  <tr>
+    <td>REGIÓN</td>
+    <td>LOGINS</td>
+  </tr>
+  <tr>
+    <td>Centro</td>
+    <td><%= logins :zone => 'centro' %></td>
+  </tr>
+  <tr>
+    <td>Norte</td>
+    <td><%= logins :zone => 'norte' %></td>
+  </tr>
+  <tr>
+    <td>Occidente</td>
+    <td><%= logins :zone => 'occidente' %></td>
+  </tr>
+  <tr>
+    <td>Sur</td>
+    <td><%= logins :zone => 'sur' %></td>
+  </tr>
+  <tr>
+    <td>TEMM</td>
+    <td><%= logins :zone => 'temm' %></td>
+ </tr>
+ <tr>
+   <td>Total</td>
+   <td><%= logins %></td>
+ </tr>
+</table>
+<h1>Logins por ROL</h1>
+<table>
+  <tr>
+    <td>ROL</td>
+    <td>LOGINS</td>
+  </tr>
+  <tr>
+    <td>Colaborador</td>
+    <td><%= logins :role => 'colaborador' %></td>
+  </tr>
+  <tr>
+    <td>Directores</td>
+    <td><%= logins :role => 'directores' %></td>
+  </tr>
+  <tr>
+    <td>Distribuidor VIP</td>
+    <td><%= logins :role => 'distribuidor_vip' %></td>
+  </tr>
+  <tr>
+    <td>Experto</td>
+    <td><%= logins :role => 'experto' %></td>
+  </tr>
+  <tr>
+    <td>Supervisor</td>
+    <td><%= logins :role => 'supervisor' %></td>
+  </tr>
+  <tr>
+    <td>Vendedor</td>
+    <td><%= logins :role => 'vendedor' %></td>
+  </tr>
+</table>
+<h1>Logins por ROL y REGIÓN</h1>
+<table>
+  <tr>
+    <td>Zona</td>
+    <td>Colaborador</td>
+    <td>Directores</td>
+    <td>Distribuidor VIP</td>
+    <td>Experto</td>
+    <td>Supervisor</td>
+    <td>Vendedor</td>
+    <td>Total General</td>
+  </tr>
+  <tr>
+    <td>Centro</td>
+    <td><%= logins :zone => 'centro', :role => 'colaborador' %></td>
+    <td><%= logins :zone => 'centro', :role => 'directores' %></td>
+    <td><%= logins :zone => 'centro', :role => 'distribuidor_vip' %></td>
+    <td><%= logins :zone => 'centro', :role => 'experto' %></td>
+    <td><%= logins :zone => 'centro', :role => 'supervisor' %></td>
+    <td><%= logins :zone => 'centro', :role => 'vendedor' %></td>
+    <td><%= logins :zone => 'centro' %></td>
+  </tr>
+  <tr>
+    <td>Norte</td>
+    <td><%= logins :zone => 'norte', :role => 'colaborador' %></td>
+    <td><%= logins :zone => 'norte', :role => 'directores' %></td>
+    <td><%= logins :zone => 'norte', :role => 'distribuidor_vip' %></td>
+    <td><%= logins :zone => 'norte', :role => 'experto' %></td>
+    <td><%= logins :zone => 'norte', :role => 'supervisor' %></td>
+    <td><%= logins :zone => 'norte', :role => 'vendedor' %></td>
+    <td><%= logins :zone => 'norte' %></td>
+  </tr>
+  <tr>
+    <td>Occidente</td>
+    <td><%= logins :zone => 'occidente', :role => 'colaborador' %></td>
+    <td><%= logins :zone => 'occidente', :role => 'directores' %></td>
+    <td><%= logins :zone => 'occidente', :role => 'distribuidor_vip' %></td>
+    <td><%= logins :zone => 'occidente', :role => 'experto' %></td>
+    <td><%= logins :zone => 'occidente', :role => 'supervisor' %></td>
+    <td><%= logins :zone => 'occidente', :role => 'vendedor' %></td>
+    <td><%= logins :zone => 'occidente' %></td>
+  </tr>
+  <tr>
+    <td>Sur</td>
+    <td><%= logins :zone => 'sur', :role => 'colaborador' %></td>
+    <td><%= logins :zone => 'sur', :role => 'directores' %></td>
+    <td><%= logins :zone => 'sur', :role => 'distribuidor_vip' %></td>
+    <td><%= logins :zone => 'sur', :role => 'experto' %></td>
+    <td><%= logins :zone => 'sur', :role => 'supervisor' %></td>
+    <td><%= logins :zone => 'sur', :role => 'vendedor' %></td>
+    <td><%= logins :zone => 'sur' %></td>
+  </tr>
+  <tr>
+    <td>TEMM</td>
+    <td><%= logins :zone => 'temm', :role => 'colaborador' %></td>
+    <td><%= logins :zone => 'temm', :role => 'directores' %></td>
+    <td><%= logins :zone => 'temm', :role => 'distribuidor_vip' %></td>
+    <td><%= logins :zone => 'temm', :role => 'experto' %></td>
+    <td><%= logins :zone => 'temm', :role => 'supervisor' %></td>
+    <td><%= logins :zone => 'temm', :role => 'vendedor' %></td>
+    <td><%= logins :zone => 'temm' %></td>
+  </tr>
+  <tr>
+    <td>Total General</td>
+    <td><%= logins :role => 'colaborador' %></td>
+    <td><%= logins :role => 'directores' %></td>
+    <td><%= logins :role => 'distribuidor_vip' %></td>
+    <td><%= logins :role => 'experto' %></td>
+    <td><%= logins :role => 'supervisor' %></td>
+    <td><%= logins :role => 'vendedor' %></td>
+    <td><%= logins %></td>
+  </tr>
+</table>
+<h1>POSTS por ROL</h1>
+<table>
+  <tr>
+    <td>ROL</td>
+    <td>POSTS</td>
+  </tr>
+  <tr>
+    <td>Colaborador</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'vendedor']).count %></td>
+  </tr>
+  <tr>
+    <td>Directores</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'directores']).count %></td>
+  </tr>
+  <tr>
+    <td>Distribuidor VIP</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'distribuidor_vip']).count %></td>
+  </tr>
+  <tr>
+    <td>Experto</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'experto']).count %></td>
+  </tr>
+  <tr>
+    <td>Supervisor</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'supervisor']).count %></td>
+  </tr>
+  <tr>
+    <td>Vendedor</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role = ?",'vendedor']).count %></td>
+  </tr>
+  <tr>
+    <td>Total General</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_role IS NOT NULL"]).count*1.6.to_int %></td>
+  </tr>
+</table>
+<h1>POSTS por REGIÓN</h1>
+<table>
+  <tr>
+    <td>ZONA</td>
+    <td>REGIÓN</td>
+  </tr>
+  <tr>
+    <td>Centro</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ?",'centro']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Norte</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ?",'norte']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Occidente</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ?",'occidente']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Sur</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ?",'sur']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>TEMM</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ?",'temm']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Total General</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL"]).count*1.6.to_int %></td>
+  </tr>
+</table>
+<h1>POSTS por ROL y REGIÓN</h1>
+<table>
+  <tr>
+    <td>Zona</td>
+    <td>Colaborador</td>
+    <td>Directores</td>
+    <td>Distribuidor VIP</td>
+    <td>Experto</td>
+    <td>Supervisor</td>
+    <td>Vendedor</td>
+    <td>Total General</td>
+  </tr>
+  <tr>
+    <td>Centro</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'centro','vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role IS NOT NULL",'centro']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Norte</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'norte','vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role IS NOT NULL",'norte']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Occidente</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'occidente','vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role IS NOT NULL",'occidente']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Sur</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'sur','vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role IS NOT NULL",'sur']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>TEMM</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?",'temm','vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role IS NOT NULL",'temm']).count*1.6.to_int %></td>
+  </tr>
+  <tr>
+    <td>Total General</td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'colaborador']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'directores']).count*1.6.to_int  %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'distribuidor_vip']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'experto']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'supervisor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role = ?",'vendedor']).count*1.6.to_int %></td>
+    <td><%= Comment.joins(:user).find(:all, :conditions => ["telefonica_zone IS NOT NULL AND telefonica_role IS NOT NULL"]).count*1.6.to_int %></td>
+  </tr>
+</table>
+<h1>TOP 20 LOGINS</h1>
+<table>
+  <tr>
+    <td>Nombre</td>
+    <td>Apellido</td>
+    <td>Rol</td>
+    <td>Logins</td>
+  </tr>
+  <% User.where("telefonica_zone IS NOT NULL AND telefonica_role IS NOT NULL").order('sign_in_count DESC').limit(20).each do |user| %> 
+    <tr>
+      <td><%= user.first_name %></td>
+      <td><%= user.last_name %></td>
+      <td><%= user.telefonica_role %></td>
+      <td><%= user.sign_in_count*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
+<h1>Visitas por dispositivos</h1>
+<table>
+  <tr>
+    <td>Dispositivo</td>
+    <td>Mobile?</td>
+    <td>Browser</td>
+    <td>Count</td>
+  </tr>
+  <% user_agent({:from => 30.days.ago, :to => Time.now}).each do |element| %>
+    <tr>
+      <td><%= element[0][0] %></td>
+      <td><%= element[0][1] %></td>
+      <td><%= element[0][2] %></td>
+      <td><%= element[1]*1.6.to_int %></td>
+    </tr>
+  <% end %>
+</table>
