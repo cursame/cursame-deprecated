@@ -65,7 +65,7 @@ class HomeController < ApplicationController
   end
   
   def members
-    @users = current_network.users.search(params[:search])
+    @users = current_network.users.search(params[:search]).page(params[:page]).per(50) 
     action_entry 'members'
   end
   

@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(:version => 20121212062155) do
   end
 
   create_table "actions", :force => true do |t|
-    t.integer   "user_id"
-    t.string    "action"
-    t.string    "user_agent"
-    t.string    "city"
-    t.string    "country"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "ip_adress"
+    t.integer  "user_id"
+    t.string   "action"
+    t.string   "user_agent"
+    t.string   "city"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ip_adress"
   end
 
   create_table "answers", :id => false, :force => true do |t|
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20121212062155) do
     t.timestamp "updated_at"
     t.timestamp "start_at"
     t.string    "state"
+  end
+
+  create_table "banners", :force => true do |t|
+    t.string    "title"
+    t.text      "description"
+    t.string    "date_promotion"
+    t.string    "link"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "image_banner"
   end
 
   create_table "blogs", :force => true do |t|
