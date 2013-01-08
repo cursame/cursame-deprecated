@@ -87,10 +87,9 @@ class AnalyticsController < ApplicationController
   end
 
   def generate_visits_by_day_report(args = {:from => 30.days.ago, :to => Time.now})
-    join_query = 'LEFT OUTER JOIN users ON users.id = actions.user_id'
     query_conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
     query_parameters = { :order => 'DATE(actions.created_at) DESC', :group => ["DATE(actions.created_at)","users.telefonica_role","telefonica_zone"] }
-    visits = Action.joins(join_query).where(query_conditions).count(query_parameters)
+    visits = Action.joins(:user).where(query_conditions).count(query_parameters)
     CSV.generate do |csv|
       csv << ["date", "role", "zone", "visits"]
       visits.each do |key, value| # => ["2012-12-12", "vendedor", "sur"]=>26
@@ -153,23 +152,6 @@ class AnalyticsController < ApplicationController
  #   return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
  # end
 
- # def reporte_fecha(args = {:from => 30.days.ago, :to => Time.now})
- #   if args.has_key? :zone
- #     if args.has_key? :role
- #       visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role], :zone => args[:zone]
- #     else
- #       visitors = get_range :from => args[:from], :to => args[:to], :zone => args[:zone]
- #     end
- #   elsif args.has_key? :role
- #     visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role]
- #   else
- #     visitors = get_range :from => args[:from], :to => args[:to]
- #   end
- #   array = []
- #   visitors.each { |action| array << action.created_at.to_s.split[0] }
- #   return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
- # end
-
   def get_range(args = {})
     if args.has_key? :to
       date_to = args[:to]
@@ -187,8 +169,7 @@ class AnalyticsController < ApplicationController
     else
       conditions = {:actions => {:created_at => (args[:from])..date_to}}
     end
-    query = 'LEFT OUTER JOIN users ON users.id = actions.user_id'
-    return Action.joins(query).where(conditions).group(:user_id)
+    return Action.joins(:user).where(conditions).group(:user_id)
   end
 
 end
