@@ -22,8 +22,8 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def visits_by_day
-    visits = generate_visits_by_day_report
+  def visits_by_date
+    visits = generate_visits_by_date_report
     respond_to do |format|
       format.csv { render text: visits }
     end
@@ -63,9 +63,9 @@ class AnalyticsController < ApplicationController
     CSV.generate do |csv|
       csv << ['first_name','last_name','email','role','zone','logins','posts','visits']
       users.each do |user|
-        logins  = apply_percentage(user.sign_in_count)
-        posts   = apply_percentage(Comment.where(:user_id => user.id).count)
-        visits  = apply_percentage(Comment.where(:user_id => user.id).count)
+        logins = apply_percentage(user.sign_in_count)
+        posts  = apply_percentage(Comment.where(:user_id => user.id).count)
+        visits = apply_percentage(Comment.where(:user_id => user.id).count)
         csv << [user.first_name, user.last_name, user.email, user.telefonica_role, user.telefonica_zone, logins, posts, visits] 
       end
     end
@@ -86,7 +86,7 @@ class AnalyticsController < ApplicationController
     end    
   end
 
-  def generate_visits_by_day_report(args = {:from => 30.days.ago, :to => Time.now})
+  def generate_visits_by_date_report(args = {:from => 30.days.ago, :to => Time.now})
     query_conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
     query_parameters = { :order => 'DATE(actions.created_at) DESC', :group => ["DATE(actions.created_at)","users.telefonica_role","telefonica_zone"] }
     visits = Action.joins(:user).where(query_conditions).count(query_parameters)
@@ -169,7 +169,7 @@ class AnalyticsController < ApplicationController
     else
       conditions = {:actions => {:created_at => (args[:from])..date_to}}
     end
-    return Action.joins(:user).where(conditions).group(:user_id)
+    return Action.joins(:user).where(conditions).group(:user_id,:id)
   end
 
 end
