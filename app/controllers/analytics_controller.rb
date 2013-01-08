@@ -169,7 +169,7 @@ class AnalyticsController < ApplicationController
     else
       conditions = {:actions => {:created_at => (args[:from])..date_to}}
     end
-    return Action.joins(:user).where(conditions).group(:user_id,:id)
+    Action.joins(:user).where(conditions).group('action.user_id')
   end
 
 end
