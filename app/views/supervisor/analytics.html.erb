@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row">
+    <div class="span16">
+      <ul class="breadcrumb">
+        <li>
+          <%= link_to(t('.admin'), supervisor_dashboard_path) %>
+        </li>
+      </ul>  
+    </div>
+  </div>
+  <div class="dashboard">  
+    <div class="row">
+      <div class="span5">
+        <%= render :partial => "supervisor/shared/admin_menu" %>
+      </div>    
+      <div class="span-two-thirds">
+        <div class="dashboard-box">
+          <div class="underline padding-top">
+            <h2>Analytics</h2>
+          </div>
+          <div id="notifications">
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Reporte de usuarios', '/analytics/users.csv' %>
+                </div>
+              </div>
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Reporte de dispositivos', '/analytics/devices.csv' %>
+                </div>
+              </div>
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Reporte de visitas por día', '/analytics/visits_by_date.csv' %>
+                </div>
+              </div>
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Logins por región y rol', '/analytics/logins.csv' %>
+                </div>
+              </div>
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Posts por región y rol', '/analytics/posts.csv' %>
+                </div>
+              </div>
+              <div class='notification'>
+                <div class="date-published">
+                  <%= link_to 'Posts más comentados', '/analytics/most_commented_posts.csv' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render :partial => "shared/footer" %>
+</div>

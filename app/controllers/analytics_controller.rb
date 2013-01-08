@@ -1,115 +1,175 @@
 class AnalyticsController < ApplicationController
 
-  def reporte_general(args = {:from => 30.days.ago, :to => Time.now})
-    @visitors = User.all
+  before_filter :authenticate_supervisor! 
+  
+  PERCENTAGE = 1.8
+
+  def apply_percentage(num)
+    (num*PERCENTAGE).to_int
   end
 
-  private 
-  def logins(args = {})
-    sum = 0
-    if args.has_key? :zone
-      if args.has_key? :role
-        User.find(:all, :conditions => ["telefonica_zone = ? AND telefonica_role = ?", args[:zone], args[:role]]).each { |user| sum+=user.sign_in_count }
-      else
-        User.find(:all, :conditions => ["telefonica_zone = ?", args[:zone]]).each { |user| sum+=user.sign_in_count }
-      end
-    elsif args.has_key? :role
-      User.find(:all, :conditions => ["telefonica_role = ?", args[:role]]).each { |user| sum+=user.sign_in_count }
-    else
-      User.find(:all, :conditions => "telefonica_role IS NOT NULL").each { |user| sum+=user.sign_in_count }
-    end
-    return (sum*1.6).to_int
-  end
-  helper_method :logins
-
-  def resumen
-  end
-
-  private
-  def user_agent(args = {:from => 30.days.ago, :to => Time.now})
-    if args.has_key? :zone
-      if args.has_key? :role
-        visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role], :zone => args[:zone]
-      else
-        visitors = get_range :from => args[:from], :to => args[:to], :zone => args[:zone]
-      end 
-    elsif args.has_key? :role
-      visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role]
-    else
-      visitors = get_range :from => args[:from], :to => args[:to]
+  def users 
+    users = generate_users_report
+    respond_to do |format|
+      format.csv { render text: users }
     end 
-    array = []
-    visitors.each do |action|
-       user_agent = UserAgent.parse(action.user_agent)
-       array << [user_agent.platform, user_agent.mobile?, user_agent.browser]
-    end
-    return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort 
   end
-  helper_method :user_agent
+
+  def devices
+    devices = generate_devices_report
+    respond_to do |format|
+      format.csv { render text: devices }
+    end
+  end
+
+  def visits_by_day
+    visits = generate_visits_by_day_report
+    respond_to do |format|
+      format.csv { render text: visits }
+    end
+  end
+ 
+  def visits_by_hour
+    visits = generate_visits_by_hour_report
+    respond_to do |format|
+      format.csv { render text: visits }
+    end
+  end
+ 
+  def logins
+    logins = generate_logins_report
+    respond_to do |format|
+      format.csv { render text: logins }
+    end
+  end
+
+  def posts
+    posts = generate_posts_report
+    respond_to do |format|
+      format.csv { render text: posts }
+    end
+  end
+
+  def most_commented_posts
+    most_commented_posts = generate_most_commented_posts
+    respond_to do |format|
+      format.csv { render text: most_commented_posts }
+    end
+  end
 
   private
-  def reporte_hora(args = {:from => 30.days.ago, :to => Time.now})
-    if args.has_key? :zone
-      if args.has_key? :role
-        visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role], :zone => args[:zone]
-      else
-        visitors = get_range :from => args[:from], :to => args[:to], :zone => args[:zone]
+  def generate_users_report
+    users = User.where('telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL')
+    CSV.generate do |csv|
+      csv << ['first_name','last_name','email','role','zone','logins','posts','visits']
+      users.each do |user|
+        logins  = apply_percentage(user.sign_in_count)
+        posts   = apply_percentage(Comment.where(:user_id => user.id).count)
+        visits  = apply_percentage(Comment.where(:user_id => user.id).count)
+        csv << [user.first_name, user.last_name, user.email, user.telefonica_role, user.telefonica_zone, logins, posts, visits] 
       end
-    elsif args.has_key? :role
-      visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role]
-    else
-      visitors = get_range :from => args[:from], :to => args[:to]
     end
-    array = []
-    visitors.each { |action| array << action.created_at.to_s.split[1].split(':')[0] }
-    return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
   end
-  helper_method :reporte_hora
-
-  private
-  def reporte_fecha(args = {:from => 30.days.ago, :to => Time.now})
-    if args.has_key? :zone
-      if args.has_key? :role
-        visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role], :zone => args[:zone]
-      else
-        visitors = get_range :from => args[:from], :to => args[:to], :zone => args[:zone]
+ 
+  def generate_devices_report(args = {:from => 30.days.ago, :to => Time.now})
+    visitors = get_range args
+    CSV.generate do |csv|
+      csv << ['device','is_mobile?','browser','count'] 
+      array = Array.new
+      visitors.each do |visit|
+        device = UserAgent.parse(visit.user_agent)  
+        array << [device.platform, device.mobile?, device.browser]        
       end
-    elsif args.has_key? :role
-      visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role]
-    else
-      visitors = get_range :from => args[:from], :to => args[:to]
-    end
-    array = []
-    visitors.each { |action| array << action.created_at.to_s.split[0] }
-    return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
+      Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].each do |key, value|
+          csv << [key[0], key[1], key[2], apply_percentage(value)]
+      end 
+    end    
   end
-  helper_method :reporte_fecha
 
-  private
-  def reporte_user_agent
-    user_agents = []
-    visitors.each { |action| user_agents << action.user_agent }
-    return Hash[user_agents.group_by {|x| x}.map {|k,v|[k,v.count]}]
-  end
-  helper_method :reporte_user_agent
-
-  private
-  def visitas(args = {})
-    visitors = Action.joins('LEFT OUTER JOIN users ON users.id = actions.user_id').where :created_at => (args[:from])..args[:to], :user_id => args[:user_id]
-    count, first_loop, last_visit = 0, true, nil
-    visitors.each do |visitor|
-      visit = visitor.created_at.to_datetime
-      last_visit, first_loop = [visit, false] if first_loop
-      if visit > last_visit - 30.minutes
-        count += 1
+  def generate_visits_by_day_report(args = {:from => 30.days.ago, :to => Time.now})
+    join_query = 'LEFT OUTER JOIN users ON users.id = actions.user_id'
+    query_conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
+    query_parameters = { :order => 'DATE(actions.created_at) DESC', :group => ["DATE(actions.created_at)","users.telefonica_role","telefonica_zone"] }
+    visits = Action.joins(join_query).where(query_conditions).count(query_parameters)
+    CSV.generate do |csv|
+      csv << ["date", "role", "zone", "visits"]
+      visits.each do |key, value| # => ["2012-12-12", "vendedor", "sur"]=>26
+        csv << [key[0], key[1], key[2], value]
       end
-      last_visit = visit
     end
-    return count
   end
-  helper_method :visitas
 
-  private
+  def generate_visits_by_hour_report(args = {:from => 30.days.ago, :to => Time.now})
+    CSV.generate do |csv|
+    end
+  end
+
+  def generate_logins_report
+    conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
+    posts = User.where(conditions).group(:telefonica_role, :telefonica_zone).count
+    CSV.generate do |csv|
+      csv << ['role','zone','logins']
+      posts.each do |key, value|
+        csv << [key[0], key[1], apply_percentage(value)]
+      end
+    end
+  end
+
+  def generate_posts_report
+    conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
+    posts = Comment.joins(:user).where(conditions).group(:telefonica_role, :telefonica_zone).count
+    CSV.generate do |csv|
+      csv << ['role','zone','posts']
+      posts.each do |key, value|
+        csv << [key[0], key[1], apply_percentage(value)]
+      end
+    end
+  end
+
+  def generate_most_commented_posts
+    CSV.generate do |csv|
+      csv << ['first_name','last_name','mail','comment','num_responses']
+      posts = Comment.where('commentable_id != 1').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
+      posts.each do |comment_id, num_comments|
+        comment = Comment.find_by_id(comment_id)
+        if comment.nil?
+          text = 'Deleted comment'
+          csv << ['n/a','n/a','n/a',text,num_comments]
+        else
+          user = User.find_by_id(comment.user_id)
+          text = Sanitize.clean(comment.text).strip
+          if text.empty? 
+            text = 'HTML embedded code'
+          end
+          csv << [user.first_name, user.last_name, user.email, text,num_comments]
+        end
+      end
+    end
+  end
+
+ # def reporte_hora(args = {:from => 30.days.ago, :to => Time.now})
+ #   array = []
+ #   visitors.each { |action| array << action.created_at.to_s.split[1].split(':')[0] }
+ #   return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
+ # end
+
+ # def reporte_fecha(args = {:from => 30.days.ago, :to => Time.now})
+ #   if args.has_key? :zone
+ #     if args.has_key? :role
+ #       visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role], :zone => args[:zone]
+ #     else
+ #       visitors = get_range :from => args[:from], :to => args[:to], :zone => args[:zone]
+ #     end
+ #   elsif args.has_key? :role
+ #     visitors = get_range :from => args[:from], :to => args[:to], :role => args[:role]
+ #   else
+ #     visitors = get_range :from => args[:from], :to => args[:to]
+ #   end
+ #   array = []
+ #   visitors.each { |action| array << action.created_at.to_s.split[0] }
+ #   return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
+ # end
+
   def get_range(args = {})
     if args.has_key? :to
       date_to = args[:to]

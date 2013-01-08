@@ -1,7 +1,12 @@
 Cursame::Application.routes.draw do
   
-  get "analytics/reporte_general"
-  get "analytics/resumen"
+  get "analytics/users"
+  get "analytics/devices"
+  get "analytics/visits_by_date"
+  get "analytics/visits_by_hour"
+  get "analytics/logins"
+  get "analytics/posts"
+  get "analytics/most_commented_posts"
 
   resources :accepted_terms
 
@@ -112,6 +117,7 @@ Cursame::Application.routes.draw do
     get :supervisors
     get :pending_approvals
     get :import_users
+    get :analytics
     post :import_csv
     match '/pending_approvals/:user_id/accept', :as => :accept_user, :action => :accept_user
     match '/pending_approvals/:user_id/reject', :as => :reject_user, :action => :reject_user

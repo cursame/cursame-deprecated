@@ -18,9 +18,9 @@ task :remove_temporal_carrierwave_folders do
   puts "done."
 end
 
-desc "This task deletes old Action rows"
-task :delete_actions => :environment do
-   puts "Deleting last month actions"
-   Action.delete_all ['created_at < ?', 1.month.ago ]
-   puts "done."
-end
+#desc "This task deletes old Action rows"
+#task :delete_actions => :environment do
+#   puts "Deleting last month actions"
+#   Action.delete_all ['created_at < ?', 1.month.ago ]
+#   puts "done."
+#end
