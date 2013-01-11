@@ -3,7 +3,7 @@ class AnalyticsController < ApplicationController
   before_filter :authenticate_supervisor! 
  
   def apply_percentage(num)
-    1.8*num.round
+    (1.8*num).round
   end
  
   def users 
