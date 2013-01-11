@@ -5,7 +5,7 @@ class AnalyticsController < ApplicationController
   PERCENTAGE = 1.8
 
   def apply_percentage(num)
-    (num*PERCENTAGE).to_int
+    (num*PERCENTAGE).round
   end
 
   def users 
@@ -13,41 +13,6 @@ class AnalyticsController < ApplicationController
     respond_to do |format|
       format.csv { render text: users }
     end 
-  end
-
-  def devices
-    devices = generate_devices_report
-    respond_to do |format|
-      format.csv { render text: devices }
-    end
-  end
-
-  def visits_by_date
-    visits = generate_visits_by_date_report
-    respond_to do |format|
-      format.csv { render text: visits }
-    end
-  end
- 
-  def visits_by_hour
-    visits = generate_visits_by_hour_report
-    respond_to do |format|
-      format.csv { render text: visits }
-    end
-  end
- 
-  def logins
-    logins = generate_logins_report
-    respond_to do |format|
-      format.csv { render text: logins }
-    end
-  end
-
-  def posts
-    posts = generate_posts_report
-    respond_to do |format|
-      format.csv { render text: posts }
-    end
   end
 
   def most_commented_posts
@@ -58,16 +23,56 @@ class AnalyticsController < ApplicationController
   end
 
   private
-  def generate_users_report
-    users = User.where('telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL')
+  def generate_users_report(start_date = 7.days.ago.to_date, end_date = Date.today)
     CSV.generate do |csv|
-      csv << ['first_name','last_name','email','role','zone','logins','posts','visits']
-      users.each do |user|
-        logins = apply_percentage(user.sign_in_count)
-        posts  = apply_percentage(Comment.where(:user_id => user.id).count)
-        visits = apply_percentage(Comment.where(:user_id => user.id).count)
-        csv << [user.first_name, user.last_name, user.email, user.telefonica_role, user.telefonica_zone, logins, posts, visits] 
+      csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
+      start_date.upto(end_date).each do |date|
+        csv_headers << date
       end
+      ['Total Visitas', 'Tiempo de Visita', 'Comentarios', 'Likes', '1a Seccion Visitada',
+       '2da Seccion Visitada', '3ra Seccion Visitada'].each { |element| csv_headers << element }
+      csv << csv_headers
+      User.where('telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL').each do |user|
+        csv_row = Array.new
+        csv_row << "#{user.first_name} #{user.last_name}".split(' ').map {|w| w.capitalize}.join(' ')
+        csv_row << user.email
+        csv_row << user.telefonica_zone
+        csv_row << user.telefonica_role
+        start_date.upto(end_date).each do |date|
+          csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => date..(date+1.day)).count) 
+        end
+        csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => start_date..end_date).count)
+        csv_row << average_visit_time(start_date, end_date, user.id)
+        csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..end_date).count)
+        csv_row << apply_percentage(LikeNotLike.where(:user_id => user.id, :created_at => start_date..end_date).count)
+        Action.where(:user_id => user.id, :created_at => start_date..end_date).count(:group => :action, :order => 'COUNT(*) DESC', :limit => 3).each do |key,value|
+           csv_row << key
+        end
+        csv << csv_row
+      end
+    end
+  end
+
+  def average_visit_time(start_date, end_date, user_id)
+    visits_time_array = Array.new
+    first_visit, last_visit = nil, nil
+    Action.where(:user_id => user_id, :created_at => start_date..end_date).each do |visit|    
+      if first_visit.nil? || last_visit.nil?
+        first_visit, last_visit = visit.created_at, visit.created_at
+      elsif (visit.created_at-30.minutes) > last_visit
+        visits_time_array << (last_visit - first_visit).to_int
+        first_visit, last_visit = visit.created_at, visit.created_at
+      else
+        last_visit = visit.created_at
+      end
+    end
+    if visits_time_array.empty? 
+      Time.parse('00:00').to_s.split[1]
+    else
+      visits_sum     = visits_time_array.inject{|sum,x| sum + x }
+      visits_count   = visits_time_array.count
+      visits_average = visits_sum/visits_count
+      (Time.parse('00:00') + visits_average.to_int).to_s.split[1]
     end
   end
  
@@ -145,12 +150,6 @@ class AnalyticsController < ApplicationController
       end
     end
   end
-
- # def reporte_hora(args = {:from => 30.days.ago, :to => Time.now})
- #   array = []
- #   visitors.each { |action| array << action.created_at.to_s.split[1].split(':')[0] }
- #   return Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].sort
- # end
 
   def get_range(args = {})
     if args.has_key? :to
