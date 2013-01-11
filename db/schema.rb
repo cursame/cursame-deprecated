@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212062155) do
+ActiveRecord::Schema.define(:version => 20130111033846) do
 
   create_table "accepted_terms", :force => true do |t|
     t.integer   "user"
@@ -23,15 +23,19 @@ ActiveRecord::Schema.define(:version => 20121212062155) do
   end
 
   create_table "actions", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "action"
-    t.string   "user_agent"
-    t.string   "city"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ip_adress"
+    t.integer   "user_id"
+    t.string    "action"
+    t.string    "user_agent"
+    t.string    "city"
+    t.string    "country"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "ip_adress"
   end
+
+  add_index "actions", ["action"], :name => "index_actions_on_action"
+  add_index "actions", ["created_at"], :name => "index_actions_on_created_at"
+  add_index "actions", ["user_id"], :name => "index_actions_on_user_id"
 
   create_table "answers", :id => false, :force => true do |t|
     t.string    "uuid",        :limit => 36
@@ -400,5 +404,7 @@ ActiveRecord::Schema.define(:version => 20121212062155) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["telefonica_role"], :name => "index_users_on_telefonica_role"
+  add_index "users", ["telefonica_zone"], :name => "index_users_on_telefonica_zone"
 
 end
