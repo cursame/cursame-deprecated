@@ -23,13 +23,14 @@ class AnalyticsController < ApplicationController
   end
 
   private
-  def generate_users_report(start_date = 7.days.ago.to_date, end_date = Date.today)
+  def generate_users_report(start_date = '2012-12-12'.to_date, end_date = Date.today)
     CSV.generate do |csv|
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
       start_date.upto(end_date).each do |date|
         csv_headers << date
       end
-      ['Total Visitas', 'Tiempo de Visita', 'Comentarios', 'Likes', '1a Seccion Visitada',
+      ['Total Visitas', 'Comentarios', 'Likes', '1a Seccion Visitada',
+      #['Total Visitas', 'Tiempo de Visita', 'Comentarios', 'Likes', '1a Seccion Visitada',
        '2da Seccion Visitada', '3ra Seccion Visitada'].each { |element| csv_headers << element }
       csv << csv_headers
       User.where('telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL').each do |user|
@@ -42,7 +43,7 @@ class AnalyticsController < ApplicationController
           csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => date..(date+1.day)).count) 
         end
         csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => start_date..end_date).count)
-        csv_row << average_visit_time(start_date, end_date, user.id)
+        #csv_row << average_visit_time(start_date, end_date, user.id)
         csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..end_date).count)
         csv_row << apply_percentage(LikeNotLike.where(:user_id => user.id, :created_at => start_date..end_date).count)
         Action.where(:user_id => user.id, :created_at => start_date..end_date).count(:group => :action, :order => 'COUNT(*) DESC', :limit => 3).each do |key,value|
