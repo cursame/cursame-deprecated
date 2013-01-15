@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130111033846) do
+ActiveRecord::Schema.define(:version => 20130114225956) do
 
   create_table "accepted_terms", :force => true do |t|
     t.integer   "user"
@@ -152,6 +152,9 @@ ActiveRecord::Schema.define(:version => 20130111033846) do
     t.timestamp "updated_at"
     t.integer   "network_id"
   end
+
+  add_index "comments", ["created_at"], :name => "index_comments_on_created_at"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
 
   create_table "courses", :force => true do |t|
     t.string    "name"

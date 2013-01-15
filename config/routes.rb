@@ -1,12 +1,8 @@
 Cursame::Application.routes.draw do
   
   get "analytics/users"
-  get "analytics/devices"
-  get "analytics/visits_by_date"
-  get "analytics/visits_by_hour"
-  get "analytics/logins"
   get "analytics/posts"
-  get "analytics/most_commented_posts"
+  get "analytics/logins"
 
   resources :accepted_terms
 
