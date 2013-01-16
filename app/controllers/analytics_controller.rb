@@ -28,7 +28,8 @@ class AnalyticsController < ApplicationController
   end
 
   private
-  def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_users_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
+  #def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -60,7 +61,8 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_posts_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
+  #def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -84,8 +86,9 @@ class AnalyticsController < ApplicationController
       end     
     end
   end
-
-  def generate_logins_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+ 
+  def generate_logins_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
+  #def generate_logins_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
