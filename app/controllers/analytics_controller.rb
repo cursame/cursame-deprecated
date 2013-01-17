@@ -27,6 +27,13 @@ class AnalyticsController < ApplicationController
     end
   end
 
+  def devices
+    devices = generate_devices_report
+    respond_to do |format|
+      format.csv { render text: devices }
+    end
+  end
+
   private
   def generate_users_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
   #def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
@@ -136,43 +143,53 @@ class AnalyticsController < ApplicationController
     end
   end
  
- # def generate_devices_report(args = {:from => 30.days.ago, :to => Time.now})
- #   visitors = get_range args
- #   CSV.generate do |csv|
- #     csv << ['device','is_mobile?','browser','count'] 
- #     array = Array.new
- #     visitors.each do |visit|
- #       device = UserAgent.parse(visit.user_agent)  
- #       array << [device.platform, device.mobile?, device.browser]        
- #     end
- #     Hash[array.group_by {|x| x}.map {|k,v|[k,v.count]}].each do |key, value|
- #         csv << [key[0], key[1], key[2], apply_percentage(value)]
- #     end 
- #   end    
- # end
-
- # def generate_visits_by_date_report(args = {:from => 30.days.ago, :to => Time.now})
- #   query_conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
- #   query_parameters = { :order => 'DATE(actions.created_at) DESC', :group => ["DATE(actions.created_at)","users.telefonica_role","telefonica_zone"] }
- #   visits = Action.joins(:user).where(query_conditions).count(query_parameters)
- #   CSV.generate do |csv|
- #     csv << ["date", "role", "zone", "visits"]
- #     visits.each do |key, value| # => ["2012-12-12", "vendedor", "sur"]=>26
- #       csv << [key[0], key[1], key[2], value]
- #     end
- #   end
- # end
-
- # def generate_logins_report
- #   conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
- #   posts = User.where(conditions).group(:telefonica_role, :telefonica_zone).count
- #   CSV.generate do |csv|
- #     csv << ['role','zone','logins']
- #     posts.each do |key, value|
- #       csv << [key[0], key[1], apply_percentage(value)]
- #     end
- #   end
- # end
+  def generate_devices_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
+  #def generate_devices_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+    user_agents_array = Array.new
+    Action.where(:created_at => start_date..end_date).each do |action|
+      user_agent = UserAgent.parse(action.user_agent)
+      user_agents_array << "#{user_agent.platform}, #{user_agent.browser}, #{user_agent.mobile?}"
+    end
+    CSV.generate do |csv|
+      windows_os = { "Windows NT 6.2"  => "Windows 8",
+                     "Windows NT 6.1"  => "Windows 7",
+                     "Windows NT 6.0"  => "Windows Vista",
+                     "Windows NT 5.2"  => "Windows XP x64 Edition",
+                     "Windows NT 5.1"  => "Windows XP",
+                     "Windows NT 5.01" => "Windows 2000, Service Pack 1 (SP1)",
+                     "Windows NT 5.0"  => "Windows 2000",
+                     "Windows NT 4.0"  => "Windows NT 4.0",
+                     "Windows 98"      => "Windows 98",
+                     "Windows 95"      => "Windows 95",
+                     "Windows CE"      => "Windows CE" }
+      # csv headers
+      csv << ['Plataforma','Navegador','Tipo de Dispositivo','Accesos'] 
+      result_hash = Hash.new(0)
+      user_agents_array.each do |result|
+        result_hash[result]+=1
+      end
+      result_hash.each do |key,value|
+        result = key.split(',')
+        browser = result[1]
+        # platfrom parse
+        if windows_os.has_key? result[0]
+          platform = windows_os[result[0]]
+        elsif result[0] =~ /[xX]11/
+          platform = 'Unix/Linux'
+        else
+          platform = result[0]
+        end
+        # mobile identificator parse
+        if result[2] =~ /true/
+          mobile_flag = 'movil'
+        else
+          mobile_flag = 'computadora'
+        end
+        # csv rows
+        csv << [platform, browser, mobile_flag, apply_percentage(value)]
+      end
+    end    
+  end
 
  # def generate_posts_report
  #   conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'

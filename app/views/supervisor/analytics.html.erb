@@ -32,6 +32,11 @@
                 <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins.csv' %>
               </div>
             </div>
+            <div class='notification'>
+              <div class="date-published">
+                <%= link_to 'Reporte de Dispositivos', :controller=>"analytics", :action=>"devices", :format=>"csv" %>
+              </div>
+            </div>
           </div>
         </div>
       </div>

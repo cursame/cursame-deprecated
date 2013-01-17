@@ -3,6 +3,7 @@ Cursame::Application.routes.draw do
   get "analytics/users"
   get "analytics/posts"
   get "analytics/logins"
+  get "analytics/devices"
 
   resources :accepted_terms
 
