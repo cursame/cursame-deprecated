@@ -34,9 +34,15 @@ class AnalyticsController < ApplicationController
     end
   end
 
+  def most_commented
+    most_commented = generate_most_commented_report
+    respond_to do |format|
+      format.csv { render text: most_commented }
+    end
+  end
+
   private
-  def generate_users_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
-  #def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -68,8 +74,7 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_posts_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
-  #def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -94,8 +99,7 @@ class AnalyticsController < ApplicationController
     end
   end
  
-  def generate_logins_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
-  #def generate_logins_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_logins_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -143,8 +147,7 @@ class AnalyticsController < ApplicationController
     end
   end
  
-  def generate_devices_report(start_date = '2012/12/10'.to_date, end_date = Date.yesterday)
-  #def generate_devices_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_devices_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     user_agents_array = Array.new
     Action.where(:created_at => start_date..end_date).each do |action|
       user_agent = UserAgent.parse(action.user_agent)
@@ -190,57 +193,27 @@ class AnalyticsController < ApplicationController
       end
     end    
   end
-
- # def generate_posts_report
- #   conditions = 'telefonica_role IS NOT NULL AND telefonica_zone IS NOT NULL'
- #   posts = Comment.joins(:user).where(conditions).group(:telefonica_role, :telefonica_zone).count
- #   CSV.generate do |csv|
- #     csv << ['role','zone','posts']
- #     posts.each do |key, value|
- #       csv << [key[0], key[1], apply_percentage(value)]
- #     end
- #   end
- # end
-
- # def generate_most_commented_posts
- #   CSV.generate do |csv|
- #     csv << ['first_name','last_name','mail','comment','num_responses']
- #     posts = Comment.where('commentable_id != 1').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
- #     posts.each do |comment_id, num_comments|
- #       comment = Comment.find_by_id(comment_id)
- #       if comment.nil?
- #         text = 'Deleted comment'
- #         csv << ['n/a','n/a','n/a',text,num_comments]
- #       else
- #         user = User.find_by_id(comment.user_id)
- #         text = Sanitize.clean(comment.text).strip
- #         if text.empty? 
- #           text = 'HTML embedded code'
- #         end
- #         csv << [user.first_name, user.last_name, user.email, text,num_comments]
- #       end
- #     end
- #   end
- # end
-
- # def get_range(args = {})
- #   if args.has_key? :to
- #     date_to = args[:to]
- #   else
- #     date_to = Time.now
- #   end
- #   if args.has_key? :role
- #     if args.has_key? :zone
- #       conditions = {:actions => {:created_at => (args[:from])..date_to}, :users => {:telefonica_zone => args[:zone], :telefonica_role => args[:role]}}
- #     else
- #       conditions = {:actions => {:created_at => (args[:from])..date_to}, :users => {:telefonica_role => args[:role]}}
- #     end 
- #   elsif args.has_key? :zone
- #     conditions = {:actions => {:created_at => (args[:from])..date_to}, :users => {:telefonica_zone => args[:zone]}}
- #   else
- #     conditions = {:actions => {:created_at => (args[:from])..date_to}}
- #   end
- #   Action.joins(:user).where(conditions).group('action.user_id')
- # end
+   
+  def generate_most_commented_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+    CSV.generate do |csv|
+      # csv headers
+      csv << ['Nombre','Mail','Region','Rol','Post','Numero de Comentarios']
+      posts = Comment.where('commentable_id != 1').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
+      posts.each do |comment_id, num_comments|
+        comment = Comment.find_by_id(comment_id)
+        if comment.nil?
+          text = 'Post Eliminado'
+          csv << ['no disponible','no disponible','no disponible','no disponible', text, num_comments]
+        else
+          user = User.find_by_id(comment.user_id)
+          text = Sanitize.clean(comment.text).strip
+          if text.empty?
+            text = 'Post con archivo Multimedia'
+          end
+          csv << ["#{user.first_name user.last_name}", user.email, user.telefonica_zone, user.telefonica_role, text, num_comments]
+        end
+      end
+    end
+  end
 
 end
