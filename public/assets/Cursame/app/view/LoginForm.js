@@ -103,7 +103,6 @@
 					ui:'accept',
 					handler:function(){
 						Ext.Msg.prompt(lang.passwordRecover,lang.passwordRecoverEmail,function(text,mail){
-							console.log(arguments);
 							if (text==='ok') {	
 								var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 								if(reg.test(mail)){
@@ -121,7 +120,7 @@
 									alert('Formato de Email invalido!');
 								}								
 							}
-						},null,false,'contacto+1@leonrangel.com',{
+						},null,false,null,{
 							autoCapitalize: true,
 							xtype:'emailfield',
 							placeHolder: lang.email

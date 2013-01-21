@@ -8,12 +8,11 @@ class Api::TokensController < ApplicationController
     password = params[:password]
     recover = params[:recover]
 
-    puts '-----------------------------'
     if request.format != :json
       render :status=>200, :json => {:response => {:message => "The request must be json.",:success => false}}, :callback => params[:callback]
       return
     end
-    puts '-----------------------------'
+    
     if email and recover
       @user = User.find_by_email(email.downcase)
       if @user.nil?
@@ -27,11 +26,9 @@ class Api::TokensController < ApplicationController
       #password = User.generate_token('password')
       # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
       @user.password = password
-      puts password
       if(@user.save)
-        @user.email = 'iam@armando.mx'
         UserMailer.user_password(@user, network, password).deliver
-        render :status => 200, :json => {:response => {:message => "Se ha enviado tu cotrasena a tu Email",:success => true}}, :callback => params[:callback]
+        render :status => 200, :json => {:response => {:message => "Se ha enviado tu contrasena a tu Email",:success => true}}, :callback => params[:callback]
       else
         render :status => 200, :json => {:response => {:message => "El usuario no existe, verifica tu Email ",:success => true}}, :callback => params[:callback]
       end
