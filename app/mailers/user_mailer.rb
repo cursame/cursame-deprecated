@@ -62,7 +62,6 @@ class UserMailer < ActionMailer::Base
   def user_password(user, password)
     headers["X-SMTPAPI"] = '{"category": "user password"}'
     @user = user
-    @network = network
     @password = password
 
     mail(to: @user.email)

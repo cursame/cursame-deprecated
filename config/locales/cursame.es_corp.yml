@@ -493,7 +493,7 @@ es_corp:
     new_user_by_supervisor:
       subject: Bienvenido a Cúrsame
     user_password:
-      subject: Bienvenido a Cúrsame
+      subject: Recuperar Contraseña
       
   teacher_mailer:
     pending_user_on_course:

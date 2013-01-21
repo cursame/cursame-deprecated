@@ -105,7 +105,7 @@
 						Ext.Msg.prompt(lang.passwordRecover,lang.passwordRecoverEmail,function(text,mail){
 							console.log(arguments);
 							if (text==='ok') {	
-								var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+								var reg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 								if(reg.test(mail)){
 									Cursame.model.UserLogin.load(888,{
 										params:{
@@ -121,7 +121,7 @@
 									alert('Formato de Email invalido!');
 								}								
 							}
-						},null,false,'armando@hotmail.com',{
+						},null,false,'contacto+1@leonrangel.com',{
 							autoCapitalize: true,
 							xtype:'emailfield',
 							placeHolder: lang.email
