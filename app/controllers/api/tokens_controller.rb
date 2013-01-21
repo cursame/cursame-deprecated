@@ -21,6 +21,7 @@ class Api::TokensController < ApplicationController
         render :status => 200, :json => {:response => {:message => "Invalid email or password.",:success => false}}, :callback => params[:callback]
         return
       end
+      network = @user.networks.first if @user.networks.first
       password_length = 6
       password = Devise.friendly_token.first(password_length)
       #password = User.generate_token('password')
@@ -29,7 +30,7 @@ class Api::TokensController < ApplicationController
       puts password
       if(@user.save)
         @user.email = 'iam@armando.mx'
-        UserMailer.user_password(@user, password).deliver
+        UserMailer.user_password(@user, network, password).deliver
         render :status => 200, :json => {:response => {:message => "Se ha enviado tu cotrasena a tu Email",:success => true}}, :callback => params[:callback]
       else
         render :status => 200, :json => {:response => {:message => "El usuario no existe, verifica tu Email ",:success => true}}, :callback => params[:callback]

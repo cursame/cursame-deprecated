@@ -59,11 +59,12 @@ class UserMailer < ActionMailer::Base
     mail(to: @user.email)
   end
 
-  def user_password(user, password)
+  def user_password(user, network, password)
     headers["X-SMTPAPI"] = '{"category": "user password"}'
     @user = user
     @password = password
-
+    @network = network
+    
     mail(to: @user.email,:subject => "Recuperar contrasena")
   end
 
