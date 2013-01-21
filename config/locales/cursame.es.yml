@@ -497,6 +497,8 @@ es:
       subject: Nueva discusión en una de tus Campañas
     new_user_by_supervisor:
       subject: Bienvenido a Experto Movistar
+    user_password:
+      subject: Recuperar Contraseña
       
   teacher_mailer:
     pending_user_on_course:

@@ -492,6 +492,8 @@ es_corp:
       subject: Nueva discusión en uno de tus cursos
     new_user_by_supervisor:
       subject: Bienvenido a Cúrsame
+    user_password:
+      subject: Bienvenido a Cúrsame
       
   teacher_mailer:
     pending_user_on_course:

@@ -6,6 +6,7 @@ class Api::TokensController < ApplicationController
   def create
     email = params[:email]
     password = params[:password]
+    recover = params[:recover]
     if request.format != :json
       render :status=>200, :json => {:response => {:message => "The request must be json.",:success => false}}, :callback => params[:callback]
       return
@@ -14,7 +15,18 @@ class Api::TokensController < ApplicationController
       render :status => 200, :json => {:response => {:message => "The request must contain the user email and password.",:success => false}}, :callback => params[:callback]
       return
     end
-    @user = User.find_by_email(email.downcase)  
+
+    @user = User.find_by_email(email.downcase) 
+
+    if recover
+      password = User.generate_token('password')
+      # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
+      user.password = password
+      if(@user.save)
+        UserMailer.user_password(@user, password).deliver
+      end
+      return
+    end 
     
     if @user.nil?
       logger.info("User #{email} failed signin, user cannot be found.")

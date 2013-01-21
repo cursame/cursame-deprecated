@@ -3,70 +3,70 @@
  * @extends Object
  * Description
  */
-Ext.define('Cursame.view.LoginForm', {
-    extend: 'Ext.form.Panel',
-    xtype:'loginform',	
+ Ext.define('Cursame.view.LoginForm', {
+ 	extend: 'Ext.form.Panel',
+ 	xtype:'loginform',	
 
-	requires:[
-		'Ext.form.FieldSet',
-		'Ext.field.Email',
-		'Ext.field.Password',
-		'Ext.Img',
-		'Cursame.model.UserLogin'
-	],
-	
-    config: {
-		ui:'login',
-        padding:'15 15 15 15',
-		style:{
-			backGroundColor:'#005C84'
-		},
-		items:[{
-			xtype:'image',
-			margin : '30 0 0 0',
-			height:80,
-			src: Cursame.src+'resources/images/movistar.png'
-		},{			
-			xtype:'image',
-			layout:'hbox',
-			height: 48,
-			src: Cursame.src+'resources/images/experto-text.png'
-				
-		},{
-			xtype:'fieldset',
-			defaults:{
-				 required: true
-			},
-			items:[{
-				xtype:'emailfield',
-				name:'email',
-				placeHolder :lang.email,				
-				clearIcon: true
-			},{
-				xtype:'passwordfield',
-				name:'password',
-				placeHolder:lang.password,
-				clearIcon: true
-			}]
-		},	{			
-					xtype:'fieldset',
-					items:[{
-						xtype:'button',
-						text:'<div class = "movi-color">'+lang.login+'</div>',
-						ui:'accept',
-						handler: function(btn) {
-							var form,obj;
-							form = this.up('formpanel');
-							obj = form.getValues(),form;				
-							
-							form.setMasked({
-		                        xtype: 'loadmask',
-		                        message: lang.starting
-		                    });				
+ 	requires:[
+ 	'Ext.form.FieldSet',
+ 	'Ext.field.Email',
+ 	'Ext.field.Password',
+ 	'Ext.Img',
+ 	'Cursame.model.UserLogin'
+ 	],
+
+ 	config: {
+ 		ui:'login',
+ 		padding:'15 15 15 15',
+ 		style:{
+ 			backGroundColor:'#005C84'
+ 		},
+ 		items:[{
+ 			xtype:'image',
+ 			margin : '30 0 0 0',
+ 			height:80,
+ 			src: Cursame.src+'resources/images/movistar.png'
+ 		},{			
+ 			xtype:'image',
+ 			layout:'hbox',
+ 			height: 48,
+ 			src: Cursame.src+'resources/images/experto-text.png'
+
+ 		},{
+ 			xtype:'fieldset',
+ 			defaults:{
+ 				required: true
+ 			},
+ 			items:[{
+ 				xtype:'emailfield',
+ 				name:'email',
+ 				placeHolder :lang.email,				
+ 				clearIcon: true
+ 			},{
+ 				xtype:'passwordfield',
+ 				name:'password',
+ 				placeHolder:lang.password,
+ 				clearIcon: true
+ 			}]
+ 		},	{			
+ 			xtype:'fieldset',
+ 			items:[{
+ 				xtype:'button',
+ 				text:'<div class = "movi-color">'+lang.login+'</div>',
+ 				ui:'accept',
+ 				handler: function(btn) {
+ 					var form,obj;
+ 					form = this.up('formpanel');
+ 					obj = form.getValues(),form;				
+
+ 					form.setMasked({
+ 						xtype: 'loadmask',
+ 						message: lang.starting
+ 					});				
 							//para el ipad utilizamos otro tipo de masking
 							form.fireEvent('masking',form);
 							
-						  	Cursame.model.UserLogin.load(888,{
+							Cursame.model.UserLogin.load(888,{
 								params:{
 									email:obj.email,
 									password:obj.password
@@ -83,9 +83,9 @@ Ext.define('Cursame.view.LoginForm', {
 									}
 									else{
 										form.setMasked({
-					                        xtype: 'loadmask',
-					                        message: op._response.response.message
-					                    });
+											xtype: 'loadmask',
+											message: op._response.response.message
+										});
 										//para el ipad utilizamos otro tipo de masking
 										form.fireEvent('error',form,op._response.response.message);
 										
@@ -97,6 +97,35 @@ Ext.define('Cursame.view.LoginForm', {
 							});
 						}
 					}]
-			}]
-    }
-});
+				},{
+					xtype:'button',
+					text:'<div class = "movi-color">'+lang.passwordRecover+'</div>',
+					ui:'accept',
+					handler:function(){
+						Ext.Msg.prompt(lang.passwordRecover,lang.passwordRecoverEmail,function(text,mail){
+							console.log(arguments);
+							if (text==='ok') {	
+								var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+								if(reg.test(mail)){
+									Cursame.model.UserLogin.load(888,{
+										params:{
+											email:email,
+											recover:true
+										},
+										success:function(record,op){
+											alert('se ha enviado tu cotraseña a tu Email');
+										});									
+								}
+								else{
+									alert('Formato de Email invalido!');
+								}								
+							}
+						},null,false,null,{
+							autoCapitalize: true,
+							xtype:'emailfield',
+							placeHolder: lang.email
+						});
+					}
+				}]
+			}
+		});

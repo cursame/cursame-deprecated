@@ -61,7 +61,9 @@ var language ={
         loadingQuestions:'Configurando preguntas ...',
         endSurvey:'Finalizar cuestionario',
         sendingSurvey:'Enviando respuestas ...',
-        surveySend:'Respuestas enviadas!'
+        surveySend:'Respuestas enviadas!',
+        passwordRecover:'Recuperar Contraseña',
+        passwordRecoverEmail:'Escribe tu Email'
     },
     en:{
         appName: 'Cúrsame',
