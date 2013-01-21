@@ -12,12 +12,12 @@ class Api::TokensController < ApplicationController
       render :status=>200, :json => {:response => {:message => "The request must be json.",:success => false}}, :callback => params[:callback]
       return
     end
-    
+
     if email and recover
       @user = User.find_by_email(email.downcase)
       if @user.nil?
         logger.info("User #{email} failed signin, user cannot be found.")
-        render :status => 200, :json => {:response => {:message => "Invalid email or password.",:success => false}}, :callback => params[:callback]
+        render :status => 200, :json => {:response => {:message => "Invalid email.",:success => false}}, :callback => params[:callback]
         return
       end
       network = @user.networks.first if @user.networks.first
