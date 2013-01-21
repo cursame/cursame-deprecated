@@ -109,18 +109,19 @@
 								if(reg.test(mail)){
 									Cursame.model.UserLogin.load(888,{
 										params:{
-											email:email,
+											email:mail,
 											recover:true
 										},
 										success:function(record,op){
-											alert('se ha enviado tu cotraseña a tu Email');
-										});									
+											alert(op._response.response.message);
+										}
+									});									
 								}
 								else{
 									alert('Formato de Email invalido!');
 								}								
 							}
-						},null,false,null,{
+						},null,false,'armando@hotmail.com',{
 							autoCapitalize: true,
 							xtype:'emailfield',
 							placeHolder: lang.email

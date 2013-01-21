@@ -7,32 +7,40 @@ class Api::TokensController < ApplicationController
     email = params[:email]
     password = params[:password]
     recover = params[:recover]
+
+    puts '-----------------------------'
     if request.format != :json
       render :status=>200, :json => {:response => {:message => "The request must be json.",:success => false}}, :callback => params[:callback]
       return
     end
+
+    if email and recover
+      @user = User.find_by_email(email.downcase) 
+      password = User.generate_token('password')
+      # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
+      user.password = password
+      puts password
+      if(@user.save)
+        UserMailer.user_password(@user, password).deliver
+        render :status => 200, :json => {:response => {:message => "Se ha enviado tu cotraseña a tu Email",:success => true}}, :callback => params[:callback]
+      else
+        render :status => 200, :json => {:response => {:message => "El usuario no existe, verifica tu Email ",:success => false}}, :callback => params[:callback]
+      end
+      return
+    end
+
     if email.nil? or password.nil?
       render :status => 200, :json => {:response => {:message => "The request must contain the user email and password.",:success => false}}, :callback => params[:callback]
       return
     end
 
-    @user = User.find_by_email(email.downcase) 
+    @user = User.find_by_email(email.downcase)
 
-    if recover
-      password = User.generate_token('password')
-      # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
-      user.password = password
-      if(@user.save)
-        UserMailer.user_password(@user, password).deliver
-      end
-      return
-    end 
-    
     if @user.nil?
       logger.info("User #{email} failed signin, user cannot be found.")
       render :status => 200, :json => {:response => {:message => "Invalid email or password.",:success => false}}, :callback => params[:callback]
       return
-    end
+    end    
     
     if current_network && @user && @user.networks.where(:id => current_network.id).count == 0
       logger.info("User #{email} failed signin, wrong network.")
