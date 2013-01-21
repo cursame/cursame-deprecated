@@ -64,7 +64,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @password = password
 
-    mail(to: @user.email)
+    mail(to: @user.email,:subject => "Recuperar contrasena")
   end
 
 end
