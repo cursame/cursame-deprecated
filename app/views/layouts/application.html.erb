@@ -1,6 +1,6 @@
 
 <% if mobile? %>
-	<%= render :partial => "shared/mobile" %>
+  <%= render :partial => "shared/mobile" %>
 <% else%>
 <!DOCTYPE html>
 <html>
@@ -47,17 +47,17 @@
   </script>
   <%= user_signed_in? ? render(:partial => "shared/topbar") : render(:partial => 'shared/topbar_with_login') %>
   <%=  render :partial => 'shared/flash', :locals => {:flash => flash} %>
-  	<div class="container">
-	<% 
-	@notificaciones_admin_actualice = NotificacionesAdminActualouse.all
+    <div class="container">
+  <% 
+  @notificaciones_admin_actualice = NotificacionesAdminActualouse.all
     @notificaciones_admin_actualice_last = NotificacionesAdminActualouse.last
-	%>
-	<%if user_signed_in? %>
-	<%#= render :partial => "notificaciones_admin_actualice/header_notification"%>
-	<%else%>
-	<%end%>
-	 </div>
+  %>
+  <%if user_signed_in? %>
+  <%#= render :partial => "notificaciones_admin_actualice/header_notification"%>
+  <%else%>
+  <%end%>
+   </div>
   <%= yield %>
-	
+
 </html>
 <% end%>

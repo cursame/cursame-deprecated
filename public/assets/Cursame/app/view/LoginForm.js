@@ -99,8 +99,10 @@
 					}]
 				},{
 					xtype:'button',
-					text:'<div class = "movi-color">'+lang.passwordRecover+'</div>',
-					ui:'accept',
+					text:'<div class = "movi-color" style = "color:white;">'+lang.passwordRecover+'</div>',
+					baseCls:'mm',
+					cls:'mm',
+					//ui:'accept',
 					handler:function(){
 						Ext.Msg.prompt(lang.passwordRecover,lang.passwordRecoverEmail,function(text,mail){
 							if (text==='ok') {	
