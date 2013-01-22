@@ -80,7 +80,7 @@ class AnalyticsController < ApplicationController
       end
     end
   end
-
+  
   def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
@@ -136,13 +136,16 @@ class AnalyticsController < ApplicationController
     first_visit, last_visit = nil, nil
     Action.where(:user_id => user_id, :created_at => start_date..end_date).each do |visit|    
       if first_visit.nil? || last_visit.nil?
-        first_visit, last_visit = visit.created_at, visit.created_at
+        first_visit, last_visit = visit.created_at, visit.created_at+10.seconds
       elsif (visit.created_at-30.minutes) > last_visit
-        visits_time_array << (last_visit - first_visit).to_int
+        visits_time_array << apply_percentage((last_visit + 10.seconds - first_visit).to_int)
         first_visit, last_visit = visit.created_at, visit.created_at
       else
-        last_visit = visit.created_at
+        last_visit = visit.created_at+10.seconds
       end
+    end
+    if !last_visit.nil? && !first_visit.nil?
+      visits_time_array << apply_percentage((last_visit - first_visit).to_int)
     end
     if visits_time_array.empty? 
       Time.parse('00:00').to_s.split[1]
@@ -153,7 +156,7 @@ class AnalyticsController < ApplicationController
       (Time.parse('00:00') + visits_average.to_int).to_s.split[1]
     end
   end
- 
+
   def generate_devices_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
     user_agents_array = Array.new
     Action.where(:created_at => start_date..end_date).each do |action|
@@ -205,7 +208,7 @@ class AnalyticsController < ApplicationController
     CSV.generate do |csv|
       # csv headers
       csv << ['Nombre','Mail','Region','Rol','Post','Numero de Comentarios']
-      posts = Comment.where('commentable_id != 1').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
+      posts = Comment.where('commentable_id != 1 AND commentable_type="Comment"').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
       posts.each do |comment_id, num_comments|
         comment = Comment.find_by_id(comment_id)
         if comment.nil?
@@ -217,7 +220,7 @@ class AnalyticsController < ApplicationController
           if text.empty?
             text = 'Post con archivo Multimedia'
           end
-          csv << ["#{user.first_name user.last_name}", user.email, user.telefonica_zone, user.telefonica_role, text, num_comments]
+          csv << ["#{user.first_name} #{user.last_name}", user.email, user.telefonica_zone, user.telefonica_role, text, num_comments]
         end
       end
     end
