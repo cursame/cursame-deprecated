@@ -34,6 +34,13 @@ class AnalyticsController < ApplicationController
     end
   end
 
+  def surveys
+    surveys = generate_surveys_report
+    respond_to do |format|
+      format.csv {render text: surveys }
+    end
+  end
+
   def most_commented
     most_commented = generate_most_commented_report
     respond_to do |format|
@@ -212,6 +219,34 @@ class AnalyticsController < ApplicationController
           end
           csv << ["#{user.first_name user.last_name}", user.email, user.telefonica_zone, user.telefonica_role, text, num_comments]
         end
+      end
+    end
+  end
+
+  def generate_surveys_report
+    CSV.generate do |csv|
+      SurveyReply.all.each do |survey_reply|
+        survey  = Survey.find_by_id(survey_reply.survey_id)
+        user    = User.find_by_id(survey_reply.user_id)
+        csv_header = ['Nombre del Quiz','Usuario','Mail','Rol','Region','Fecha']
+        1.upto(Question.where(:survey_id => survey.id).count).each do |question|
+          csv_header << "Pregunta #{question}"
+        end
+        csv_header << 'Total'
+        csv << csv_header
+        csv_row = [survey.name, "#{user.first_name} #{user.last_name}", user.email, user.telefonica_role, user.telefonica_zone ,survey_reply.created_at] 
+        sum = 0
+        Question.where(:survey_id => survey.id).each do |question|
+          answer = Answer.find_by_question_id(question.answer_uuid)
+          if answer.position == question.position
+            sum += question.value
+            csv_row << "correcta (#{question.value} pts.)"
+          else
+            csv_row << "incorrecta (#{question.value} pts.)"
+          end
+        end
+        csv_row << "#{sum} de #{survey.value} pts"
+        csv << csv_row
       end
     end
   end
