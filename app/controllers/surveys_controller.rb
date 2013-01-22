@@ -58,7 +58,7 @@ class SurveysController < ApplicationController
   end
 
   def destroy
-    survey = current_user.manageable_surveys.find(params[:id])
+    survey = Survey.find(params[:id])
     survey.destroy
     redirect_to course_surveys_path(survey.course), :notice => I18n.t('flash.survey_deleted')
   end
