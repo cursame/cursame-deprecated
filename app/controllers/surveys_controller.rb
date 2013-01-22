@@ -30,9 +30,9 @@ class SurveysController < ApplicationController
     @survey = accessible_surveys.find params[:id]
     @course = @survey.course
     @tutoriales = Tutoriale.all
-    if current_user.role_for_course(@course) != 'teacher' && !@survey.published?
-      raise ActiveRecord::RecordNotFound
-    end
+    # if (current_user.role_for_course(@course) != 'teacher' || current_user.role_for_course(@course) != 'supervisor') && !@survey.published?
+    #   raise ActiveRecord::RecordNotFound
+    # end
     @survey_reply = current_user.survey_replies.where(:survey_id => @survey).first
   end
 
