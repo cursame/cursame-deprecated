@@ -49,7 +49,7 @@ class AnalyticsController < ApplicationController
   end
 
   private
-  def generate_users_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_users_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -69,11 +69,11 @@ class AnalyticsController < ApplicationController
         start_date.upto(end_date).each do |date|
           csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => date..(date+1.day)).count)
         end
-        csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => start_date..end_date).count)
-        csv_row << average_visit_time(start_date, end_date, user.id)
-        csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..end_date).count)
-        csv_row << apply_percentage(LikeNotLike.where(:user_id => user.id, :created_at => start_date..end_date).count)
-        Action.where(:user_id => user.id, :created_at => start_date..end_date).count(:group => :action, :order => 'COUNT(*) DESC', :limit => 3).each do |key,value|
+        csv_row << apply_percentage(Action.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
+        csv_row << average_visit_time(start_date, end_date+1.day, user.id)
+        csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
+        csv_row << apply_percentage(LikeNotLike.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
+        Action.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count(:group => :action, :order => 'COUNT(*) DESC', :limit => 3).each do |key,value|
            csv_row << key
         end
         csv << csv_row
@@ -81,7 +81,7 @@ class AnalyticsController < ApplicationController
     end
   end
   
-  def generate_posts_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_posts_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -100,13 +100,13 @@ class AnalyticsController < ApplicationController
         start_date.upto(end_date).each do |date|
           csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => date..(date+1.day)).count)
         end
-        csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..end_date).count)
+        csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
         csv << csv_row
       end     
     end
   end
  
-  def generate_logins_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_logins_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -125,7 +125,7 @@ class AnalyticsController < ApplicationController
         start_date.upto(end_date).each do |date|
           csv_row << apply_percentage(Action.where(:action => 'login', :user_id => user.id, :created_at => date..(date+1.day)).count)
         end
-        csv_row << apply_percentage(Action.where(:action => 'login', :user_id => user.id, :created_at => start_date..end_date).count)
+        csv_row << apply_percentage(Action.where(:action => 'login', :user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
         csv << csv_row
       end    
     end 
@@ -140,6 +140,7 @@ class AnalyticsController < ApplicationController
       elsif (visit.created_at-30.minutes) > last_visit
         visits_time_array << apply_percentage((last_visit + 10.seconds - first_visit).to_int)
         first_visit, last_visit = visit.created_at, visit.created_at
+
       else
         last_visit = visit.created_at+10.seconds
       end
@@ -157,9 +158,9 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_devices_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_devices_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
     user_agents_array = Array.new
-    Action.where(:created_at => start_date..end_date).each do |action|
+    Action.where(:created_at => start_date..(end_date+1.day)).each do |action|
       user_agent = UserAgent.parse(action.user_agent)
       user_agents_array << "#{user_agent.platform}, #{user_agent.browser}, #{user_agent.mobile?}"
     end
@@ -204,11 +205,13 @@ class AnalyticsController < ApplicationController
     end    
   end
    
-  def generate_most_commented_report(start_date = Date.yesterday-7.days, end_date = Date.yesterday)
+  def generate_most_commented_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv << ['Nombre','Mail','Region','Rol','Post','Numero de Comentarios']
-      posts = Comment.where('commentable_id != 1 AND commentable_type="Comment"').group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
+      conditions = 'commentable_id != 1 AND commentable_type="Comment" AND created_at > ? AND created_at < ?'
+      posts = Comment.where('commentable_id != 1 AND commentable_type="Comment" AND created_at > ? AND created_at < ?', start_date,(end_date+1.day))
+              .group(:commentable_id).order('count_commentable_id desc').limit(20).count('commentable_id')
       posts.each do |comment_id, num_comments|
         comment = Comment.find_by_id(comment_id)
         if comment.nil?
