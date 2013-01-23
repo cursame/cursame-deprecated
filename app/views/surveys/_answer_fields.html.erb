@@ -4,7 +4,7 @@
   <%= form.semantic_fields_for :answers do |answer| %>
   <h5><%= t('surveys.survey.select_correct_answer') %></h5>
     <%- record = answer.object %>
-    <fieldset class="<%= record.new_record? ? :new : nil %> associated answer sortableAnswer" rel="drag_tip" title="<%= t('surveys.drag') %>">
+    <fieldset class="<%= record.new_record? ? :new : nil %> associated answer sortableAnswer" rell="drag_tip" title="<%= t('surveys.drag') %>">
       <ol>
         <li>
           <%= form.radio_button :answer_uuid, record.uuid, :class => 'answer-uuid' %>

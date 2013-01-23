@@ -1,10 +1,10 @@
 <h2><%= t('.legend') %></h2>
 <div class="">
-  <fieldset class="nested_models questions input no-margin inputs" data-association="questions" rel="tip">
+  <fieldset class="nested_models questions input no-margin inputs" data-association="questions" rell="tip">
     <%- form.object.questions.build %>
     <%= form.semantic_fields_for :questions do |question| %>
       <%- record = question.object %>
-      <fieldset class="<%= record.new_record? ? :new : nil %> associated question" rel="drag_tip" title="<%= t('surveys.drag') %>">
+      <fieldset class="<%= record.new_record? ? :new : nil %> associated question" rell="drag_tip" title="<%= t('surveys.drag') %>">
         <% unless record.errors[:answer_uuid].blank? %> 
           <p class="inline-errors"><%= record.errors[:answer_uuid].to_sentence %></p>
         <% end %>

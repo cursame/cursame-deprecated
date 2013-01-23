@@ -31,7 +31,7 @@ $(function(){
   });
   
   $('fieldset.new.question').click(function(){  
-    $(this).addClass('question-select').siblings().removeClass('question-select'); 
+    //$(this).addClass('question-select').siblings().removeClass('question-select'); 
   });
   
   $('fieldset[data-association="answers"]').bind('setOrder', function(){
@@ -42,12 +42,12 @@ $(function(){
 
   questionAndAnswersFieldsets.nestedAssociations({
     add : function(){
-      var fields = $(this).trigger('setOrder').css('cursor', 'move');
+      var fields = $(this).trigger('setOrder');//.css('cursor', 'move');
       // var fields = $(this).trigger('setOrder');
 
-      $('html, body').animate({
+      /*$('html, body').animate({
         scrollTop: fields.offset().top
-      }, 200);
+      }, 200);*/
 
       $('input.answer-uuid', fields).val(UUIDjs.create().toString());
     },
@@ -69,8 +69,7 @@ $(function(){
       items       : 'fieldset'
       /* cancel      : 'a'  */
     } 
-    $(this).sortable(sortableSettings).children('associated').css('cursor', 'move');
-    // $(this).sortable(sortableSettings).children('.associated');
+    //$(this).sortable(sortableSettings).children('associated').css('cursor', 'move');
   });
   // Survey Form
   
