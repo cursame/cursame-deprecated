@@ -53,7 +53,9 @@
         $(this).parents('fieldset[data-association]').each(function(){
           var association = $(this).attr('data-association');
           $(this).children('fieldset.new').each(function(){
-            $(this).nestedAssociationsChangeId(association, new Date().getTime());
+            // $(this).nestedAssociationsChangeId(association, new Date().getTime());
+            idRandom = Math.ceil(Math.random()*5000);
+            $(this).nestedAssociationsChangeId(association, idRandom);
           })
         });
 
