@@ -26,6 +26,8 @@ class Api::TokensController < ApplicationController
       #password = User.generate_token('password')
       # User.create!(:email => 'someone@something.com', :password => password, :password_confirmation => password)
       @user.password = password
+      puts '-------------------'
+      # puts password
       if(@user.save)
         UserMailer.user_password(@user, network, password).deliver
         render :status => 200, :json => {:response => {:message => "Se ha enviado tu contrasena a tu Email",:success => true}}, :callback => params[:callback]

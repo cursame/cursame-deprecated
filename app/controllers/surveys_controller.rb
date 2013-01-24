@@ -18,6 +18,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = manageable_course.surveys.build(params[:survey])
+    # @survey = current_network.courses.find(params[:course_id]).surveys.build(params[:survey])
     if @survey.save
       flash[:notice] = I18n.t('flash.survey_created')
       redirect_to @survey
