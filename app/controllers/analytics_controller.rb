@@ -49,7 +49,7 @@ class AnalyticsController < ApplicationController
   end
 
   private
-  def generate_users_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
+  def generate_users_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -81,7 +81,7 @@ class AnalyticsController < ApplicationController
     end
   end
   
-  def generate_posts_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
+  def generate_posts_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -106,7 +106,7 @@ class AnalyticsController < ApplicationController
     end
   end
  
-  def generate_logins_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
+  def generate_logins_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -158,7 +158,7 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_devices_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
+  def generate_devices_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
     user_agents_array = Array.new
     Action.where(:created_at => start_date..(end_date+1.day)).each do |action|
       user_agent = UserAgent.parse(action.user_agent)
@@ -205,7 +205,7 @@ class AnalyticsController < ApplicationController
     end    
   end
    
-  def generate_most_commented_report(start_date = '10/01/2013'.to_date, end_date = '17/01/2013'.to_date)
+  def generate_most_commented_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
     CSV.generate do |csv|
       # csv headers
       csv << ['Nombre','Mail','Region','Rol','Post','Numero de Comentarios']
@@ -231,28 +231,34 @@ class AnalyticsController < ApplicationController
 
   def generate_surveys_report
     CSV.generate do |csv|
-      SurveyReply.all.each do |survey_reply|
-        survey  = Survey.find_by_id(survey_reply.survey_id)
-        user    = User.find_by_id(survey_reply.user_id)
-        csv_header = ['Nombre del Quiz','Usuario','Mail','Rol','Region','Fecha']
-        1.upto(Question.where(:survey_id => survey.id).count).each do |question|
-          csv_header << "Pregunta #{question}"
-        end
+      SurveyReply.group(:survey_id).each do |survey|
+        csv_header = ['Nombre del Quiz','Usuario','Maiol','Rol','Region','Fecha']
+        question_num = 0
+        Question.where(:survey_id => survey.survey_id).each do |question|
+          question_num += 1
+          csv_header << "Pregunta #{question_num} (#{question.value} pts.)"
+        end 
         csv_header << 'Total'
-        csv << csv_header
-        csv_row = [survey.name, "#{user.first_name} #{user.last_name}", user.email, user.telefonica_role, user.telefonica_zone ,survey_reply.created_at] 
-        sum = 0
-        Question.where(:survey_id => survey.id).each do |question|
-          answer = Answer.find_by_question_id(question.answer_uuid)
-          if answer.position == question.position
-            sum += question.value
-            csv_row << "correcta (#{question.value} pts.)"
-          else
-            csv_row << "incorrecta (#{question.value} pts.)"
+        csv << csv_header 
+        SurveyReply.all.each do |survey_reply|
+          survey  = Survey.find_by_id(survey_reply.survey_id)
+          user    = User.find_by_id(survey_reply.user_id)
+          csv_row = [survey.name, "#{user.first_name} #{user.last_name}", user.email, user.telefonica_role, user.telefonica_zone ,survey_reply.created_at] 
+          sum = 0
+          Question.where(:survey_id => survey.id).each do |question|
+            answer = Answer.find_by_uuid(question.answer_uuid)
+            unless answer.nil?
+              if answer.position == question.position
+                sum += question.value
+                csv_row << "correcta"
+              else
+                csv_row << "incorrecta"
+              end
+            end
           end
+          csv_row << "#{sum} de #{survey.value} pts"
+          csv << csv_row
         end
-        csv_row << "#{sum} de #{survey.value} pts"
-        csv << csv_row
       end
     end
   end
