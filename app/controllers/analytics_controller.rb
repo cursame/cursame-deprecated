@@ -244,19 +244,16 @@ class AnalyticsController < ApplicationController
           survey  = Survey.find_by_id(survey_reply.survey_id)
           user    = User.find_by_id(survey_reply.user_id)
           csv_row = [survey.name, "#{user.first_name} #{user.last_name}", user.email, user.telefonica_role, user.telefonica_zone ,survey_reply.created_at] 
-          sum = 0
-          Question.where(:survey_id => survey.id).each do |question|
-            answer = Answer.find_by_uuid(question.answer_uuid)
+          survey_reply.survey_answers.each do |answer|
             unless answer.nil?
-              if answer.position == question.position
-                sum += question.value
+              if answer.correct?
                 csv_row << "correcta"
               else
                 csv_row << "incorrecta"
               end
             end
           end
-          csv_row << "#{sum} de #{survey.value} pts"
+          csv_row << "#{survey_reply.score} pts"
           csv << csv_row
         end
       end
