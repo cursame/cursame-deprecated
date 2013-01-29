@@ -231,31 +231,16 @@ class AnalyticsController < ApplicationController
 
   def generate_surveys_report
     CSV.generate do |csv|
-      SurveyReply.group(:survey_id).each do |survey|
-        csv_header = ['Nombre del Quiz','Usuario','Maiol','Rol','Region','Fecha']
-        question_num = 0
-        Question.where(:survey_id => survey.survey_id).each do |question|
-          question_num += 1
-          csv_header << "Pregunta #{question_num} (#{question.value} pts.)"
-        end 
-        csv_header << 'Total'
-        csv << csv_header 
-        SurveyReply.all.each do |survey_reply|
-          survey  = Survey.find_by_id(survey_reply.survey_id)
-          user    = User.find_by_id(survey_reply.user_id)
-          csv_row = [survey.name, "#{user.first_name} #{user.last_name}", user.email, user.telefonica_role, user.telefonica_zone ,survey_reply.created_at] 
-          survey_reply.survey_answers.each do |answer|
-            unless answer.nil?
-              if answer.correct?
-                csv_row << "correcta"
-              else
-                csv_row << "incorrecta"
-              end
-            end
-          end
-          csv_row << "#{survey_reply.score} pts"
-          csv << csv_row
+      SurveyReply.all.each do |reply|
+        survey = Survey.find_by_id(reply.survey_id)
+        user   = User.find_by_id(reply.user_id)
+        survey_name = survey.name
+        csv_row = [survey.name,"#{user.first_name} #{user.last_name}","#{user.email}","#{user.telefonica_role}","#{user.telefonica_zone}",reply.created_at]
+        reply.survey_answers.each do |answer|
+          (answer.correct?) ? csv_row << "correcto" : csv_row << "incorrecto"
         end
+        csv_row << reply.score
+        csv << csv_row
       end
     end
   end
