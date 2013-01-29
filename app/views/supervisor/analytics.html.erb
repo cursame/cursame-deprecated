@@ -17,175 +17,134 @@
             <h2>Analytics</h2>
           </div>
           <div id="notifications">
-
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Quizzes', :controller=>"analytics", :action=>"surveys", :format=>"csv" %>
-              </div>
+            <div class="tabs">
+              <ul class="tabs">
+                <li>
+                  <a href="#reporte_usuarios" data-toggle="tab">Usuarios</a>
+                </li>
+                <li>
+                  <a href="#reporte_posts" data-toggle="tab">Posts</a>
+                </li>
+                <li>
+                  <a href="#reporte_logins" data-toggle="tab">Logins</a>
+                </li>
+                <li>
+                  <a href="#reporte_dispositivos" data-toggle="tab">Dispositivos</a>
+                </li>
+                <li>
+                  <a href="#reporte_post_comentarios" data-toggle="tab">Post/comentarios</a>
+                </li>
+                <li>
+                  <a href="#reporte_quizzes" data-toggle="tab">Quizzes</a>
+                </li>
+              </ul>
             </div>
 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">17 al 24 de enero</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130117-20130124.csv' %>
+            <div class="tab-content">
+              
+              <div class="tab-pane active" id="reporte_usuarios">
+                <div class='notification'>
+                  <div class="date-published">
+                    <div class="date-published">17 al 24 de enero</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130117-20130124.csv' %>
+                    <div class="date-published">10 al 17 de enero</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130110-20130117.csv' %>
+                    <div class="date-published">03 al 10 de enero</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130103-20130110.csv' %>
+                    <div class="date-published">27 de diciembre al 03 de enero</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121227-20130103.csv' %>
+                    <div class="date-published">20 al 27 de diciembre</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121220-20121227.csv' %>
+                    <div class="date-published">13 al 20 de diciembre</div>
+                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121213-20121220.csv' %>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130117-20130124.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130117-20130124.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130117-20130124.csv' %>
-              </div>
-            </div> 
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130117-20130124.csv' %>
-              </div>
-            </div>
 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">10 al 17 de enero</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130110-20130117.csv' %>
+              <div class="tab-pane" id="reporte_posts">
+                <div class='notification'>
+                  <div class="date-published">
+                    <div class="date-published">17 al 24 de enero</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130117-20130124.csv' %>
+                    <div class="date-published">10 al 17 de enero</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130110-20130117.csv' %>
+                    <div class="date-published">03 al 10 de enero</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130103-20130110.csv' %>
+                    <div class="date-published">27 de diciembre al 03 de enero</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121227-20130103.csv' %>
+                    <div class="date-published">20 al 27 de diciembre</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121220-20121227.csv' %>
+                    <div class="date-published">13 al 20 de diciembre</div>
+                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121213-20121220.csv' %>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130110-20130117.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130110-20130117.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130110-20130117.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130110-20130117.csv' %>
-              </div>
-            </div>
 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">03 al 10 de enero</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130103-20130110.csv' %>
+              <div class="tab-pane" id="reporte_logins">
+                <div class='notification'>
+                  <div class="date-published">
+                    <div class="date-published">17 al 24 de enero</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130117-20130124.csv' %>
+                    <div class="date-published">10 al 17 de enero</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130110-20130117.csv' %>
+                    <div class="date-published">03 al 10 de enero</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130103-20130110.csv' %>
+                    <div class="date-published">27 de diciembre al 03 de enero</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121227-20130103.csv' %>
+                    <div class="date-published">20 al 27 de diciembre</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121220-20121227.csv' %>
+                    <div class="date-published">13 al 20 de diciembre</div>
+                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121213-20121220.csv' %>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130103-20130110.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130103-20130110.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130103-20130110.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130103-20130110.csv' %>
-              </div>
-            </div>
 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">27 de diciembre al 03 de enero</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121227-20130103.csv' %>
+              <div class="tab-pane" id="reporte_dispositivos">
+                <div class='notification'>
+                  <div class="date-published">
+                    <div class="date-published">17 al 24 de enero</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130117-20130124.csv' %>
+                    <div class="date-published">10 al 17 de enero</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130110-20130117.csv' %>
+                    <div class="date-published">03 al 10 de enero</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130103-20130110.csv' %>
+                    <div class="date-published">27 de diciembre al 03 de enero</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121227-20130103.csv' %>
+                    <div class="date-published">20 al 27 de diciembre</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121220-20121227.csv' %>
+                    <div class="date-published">13 al 20 de diciembre</div>
+                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121213-20121220.csv' %>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121227-20130103.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121227-20130103.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121227-20130103.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121227-20130103.csv' %>
-              </div>
-            </div>
 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">20 al 27 de diciembre</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121220-20121227.csv' %>
+              <div class="tab-pane" id="reporte_post_comentarios">
+                <div class='notification'>
+                  <div class="date-published">
+                    <div class="date-published">17 al 24 de enero</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130117-20130124.csv' %>
+                    <div class="date-published">10 al 17 de enero</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130110-20130117.csv' %>
+                    <div class="date-published">03 al 10 de enero</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130103-20130110.csv' %>
+                    <div class="date-published">27 de diciembre al 03 de enero</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121227-20130103.csv' %>
+                    <div class="date-published">20 al 27 de diciembre</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121220-20121227.csv' %>
+                    <div class="date-published">13 al 20 de diciembre</div>
+                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121213-20121220.csv' %>           
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121220-20121227.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121220-20121227.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121220-20121227.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121220-20121227.csv' %>
-              </div>
-            </div>
- 
-            <div class='notification'>
-              <div class="date-published">
-                <div class="date-published">13 al 20 de diciembre</div>
-                <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121213-20121220.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121213-20121220.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121213-20121220.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121213-20121220.csv' %>
-              </div>
-            </div>
-            <div class='notification'>
-              <div class="date-published">
-                <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121213-20121220.csv' %>
-              </div>
-            </div>
 
+              <div class="tab-pane" id="reporte_quizzes">
+                <div class='notification'>
+                  <div class="date-published">
+                    <%= link_to 'Quizzes', :controller=>"analytics", :action=>"surveys", :format=>"csv" %>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
