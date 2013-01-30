@@ -370,7 +370,7 @@
             <% Survey.all.each do |survey| %>
             <div class="element quizzes" > 
               <p> <%= survey.name%> </p>
-              <%= link_to image_tag("report.png", :width=>"64px"), :controller=>"analytics", :action=>"surveys", :format=>"csv", :survey_id => survey.id %>
+              <%= link_to image_tag("/assets/report.png", :width=>"64px"), :controller=>"analytics", :action=>"surveys", :format=>"csv", :survey_id => survey.id %>
               <p><%= survey.created_at.to_s.split.first %></p>
             </div>
             <% end %>
