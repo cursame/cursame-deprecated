@@ -101,10 +101,16 @@
           <div class="underline padding-top">
             <h2>Analytics</h2>
           </div>
-          <p>Elige fecha : <input type="text" id="mes-selector" value ="01-2013"></p>
+          <div class="form-inline">
+            Elige Mes : <input type="text" id="mes-selector" value ="01-2013">              
+              <input type="radio" name="radio" value=".semanal" class="checks"> Semanal /
+              <input type="radio" name="radio" value=".quincenal" class="checks"> Quincenal /
+              <input type="radio" name="radio" value=".mensual" class="checks"> Mensual
+
+          </div>
+          </br>
           <section id="options" class="clearfix">
             <ul id="filters" class="option-set clearfix" data-option-key="filter">
-              <!-- <li><a href="#filter" data-option-value="">Todos</a></li> -->
               <li><a href="#filter" data-option-value=".usuarios">Usuarios</a></li>
               <li>/<a href="#filter" data-option-value=".posts">Posts</a></li>
               <li>/<a href="#filter" data-option-value=".logins">Logins</a></li>
@@ -113,11 +119,12 @@
               <li>/<a href="#filter" data-option-value=".quizzes">Quizzes</a></li>
             </ul>
           </section>
+
           <div id="reportes-container" class="clearfix">
 
             <!-- USUARIOS SEMANAL -->
 
-            <div class="element usuarios Enero-2013" > 
+            <div class="element usuarios semanal Enero-2013" > 
               <p> Usuarios</p>
               <a href="http://50.116.21.144/users-20130117-20130124.csv"  title="Reporte de Usuarios">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -125,7 +132,7 @@
               <p> 17 al 24 de enero </br>
             </div>
 
-            <div class="element usuarios Enero-2013" > 
+            <div class="element usuarios semanal Enero-2013" > 
               <p> Usuarios</p>
               <a href="http://50.116.21.144/users-20130110-20130117.csv"  title="Reporte de Usuarios">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -133,7 +140,7 @@
               <p>10 al 17 de enero</p>
             </div>
 
-            <div class="element usuarios Enero-2013" > 
+            <div class="element usuarios semanal Enero-2013" > 
               <p> Usuarios </p>
               <a href="http://50.116.21.144/users-20130103-20130110.csv"  title="Reporte de Usuarios">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -141,7 +148,7 @@
               <p>03 al 10 de enero</p>
             </div>
 
-            <div class="element usuarios Enero-2013" > 
+            <div class="element usuarios semanal Enero-2013" > 
               <p> Usuarios </p>
               <a href="http://50.116.21.144/users-20121227-20130103.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -149,7 +156,7 @@
               <p>27 diciembre al 03 de enero</p>
             </div>
             
-            <div class="element usuarios Diciembre-2012" > 
+            <div class="element usuarios semanal Diciembre-2012" > 
               <p> Usuarios (20 al 27 de diciembre)</p>
               <a href="http://50.116.21.144/users-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -157,7 +164,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element usuarios Diciembre-2012" > 
+            <div class="element usuarios semanal Diciembre-2012" > 
               <p> Usuarios</p>
               <a href="http://50.116.21.144/users-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -195,7 +202,7 @@
 
             <!-- POSTS SEMANALES -->
 
-            <div class="element posts Enero-2013" > 
+            <div class="element posts semanal Enero-2013" > 
               <p> Posts</p>
               <a href="http://50.116.21.144/posts-20130117-20130124.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -203,7 +210,7 @@
               <p>17 al 24 de enero</p>
             </div>
 
-            <div class="element posts Enero-2013" > 
+            <div class="element posts semanal Enero-2013" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20130110-20130117.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -211,7 +218,7 @@
               <p>10 al 17 de enero</p>
             </div>
 
-            <div class="element posts Enero-2013" > 
+            <div class="element posts semanal Enero-2013" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20130103-20130110.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -219,7 +226,7 @@
               <p>03 al 10 de enero</p>
             </div>
 
-            <div class="element posts Enero-2013" > 
+            <div class="element posts semanal Enero-2013" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20121227-20130103.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -227,7 +234,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element posts Diciembre-2012" > 
+            <div class="element posts semanal Diciembre-2012" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -235,7 +242,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element posts Diciembre-2012" > 
+            <div class="element posts semanal Diciembre-2012" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -273,7 +280,7 @@
 
             <!-- LOGINS SEMANALES -->
 
-            <div class="element logins Enero-2013" > 
+            <div class="element logins semanal Enero-2013" > 
               <p> Logins </p>
               <a href="http://50.116.21.144/logins-20130117-20130124.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -281,7 +288,7 @@
               <p>17 al 24 de enero</p>
             </div>
 
-            <div class="element logins Enero-2013" > 
+            <div class="element logins semanal Enero-2013" > 
               <p> Logins </p>
               <a href="http://50.116.21.144/logins-20130110-20130117.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -289,7 +296,7 @@
               <p>10 al 17 de enero</p>
             </div>
 
-            <div class="element logins Enero-2013" > 
+            <div class="element logins semanal Enero-2013" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20130103-20130110.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -297,7 +304,7 @@
               <p>03 al 10 de enero</p>
             </div>
 
-            <div class="element logins Enero-2013" > 
+            <div class="element logins semanal Enero-2013" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20121227-20130103.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -305,7 +312,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element logins Diciembre-2012" > 
+            <div class="element logins semanal Diciembre-2012" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -313,7 +320,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element logins Diciembre-2012" > 
+            <div class="element logins semanal Diciembre-2012" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -351,7 +358,7 @@
 
             <!-- DISPOSITIVOS SEMANAL -->
 
-            <div class="element dispositivos Enero-2013" > 
+            <div class="element dispositivos semanal Enero-2013" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20130117-20130124.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -359,7 +366,7 @@
               <p>17 al 24 de enero</p>
             </div>
 
-            <div class="element dispositivos Enero-2013" > 
+            <div class="element dispositivos semanal Enero-2013" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20130110-20130117.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -367,7 +374,7 @@
               <p>10 al 17 de enero</p>
             </div>
 
-            <div class="element dispositivos Enero-2013" > 
+            <div class="element dispositivos semanal Enero-2013" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20130103-20130110.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -375,7 +382,7 @@
               <p>03 al 10 de enero</p>
             </div>
 
-            <div class="element dispositivos Enero-2013" > 
+            <div class="element dispositivos semanal Enero-2013" > 
               <p> Dispositivos </p>
               <a href="http://50.116.21.144/devices-20121227-20130103.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -383,7 +390,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element dispositivos Diciembre-2012" > 
+            <div class="element dispositivos semanal Diciembre-2012" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -391,7 +398,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element dispositivos Diciembre-2012" > 
+            <div class="element dispositivos semanal Diciembre-2012" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -429,7 +436,7 @@
 
             <!-- POST/COMENTARIOS -->
 
-            <div class="element post_comentarios Enero-2013" > 
+            <div class="element post_comentarios semanal Enero-2013" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20130117-20130124.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -437,7 +444,7 @@
               <p>17 al 24 de enero</p>
             </div>
 
-            <div class="element post_comentarios Enero-2013" > 
+            <div class="element post_comentarios semanal Enero-2013" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20130110-20130117.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -445,7 +452,7 @@
               <p>10 al 17 de enero</p>
             </div>
 
-            <div class="element post_comentarios Enero-2013" > 
+            <div class="element post_comentarios semanal Enero-2013" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20130103-20130110.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -453,7 +460,7 @@
               <p>03 al 10 de enero</p>
             </div>
 
-            <div class="element post_comentarios Enero-2013" > 
+            <div class="element post_comentarios semanal Enero-2013" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20121227-20130103.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -461,7 +468,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element post_comentarios Diciembre-2012" > 
+            <div class="element post_comentarios semanal Diciembre-2012" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -469,7 +476,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element post_comentarios Diciembre-2012" > 
+            <div class="element post_comentarios semanal Diciembre-2012" > 
               <p> Post/Comentarios </p>
               <a href="http://50.116.21.144/most_commented-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -551,7 +558,8 @@ $(function () {
   });
 
   $container.isotope({ filter: filters.join('') });
-  //link picker
+  
+  //link picker(usuarios/post/coments ...)
   var $optionSets = $('#options .option-set'),
       $optionLinks = $optionSets.find('a');
 
@@ -579,6 +587,19 @@ $(function () {
         return false;
       });
 
+  var $checkboxes = $('div.form-inline input');
+
+   $checkboxes.change(function(){
+    var filter;
+    // get checked checkboxes values
+    $checkboxes.filter(':checked').each(function(){
+      filter = this.value;
+    });
+    
+    filters[2] = filter;
+    $container.isotope({ filter: filters.join('') });
+  });
+
   //month picker
   $('#mes-selector').monthpicker({
     pattern: 'mm-yyyy',
@@ -590,15 +611,18 @@ $(function () {
     var date = new Date(e.timeStamp),
     filter = '.'+meses[ month - 1]+'-'+ year ;
 
-    console.log(date);
-
     filters = [];
+    $('#options-meses .option-set').find('.selected').removeClass('selected');
     $('#options .option-set').find('.selected').removeClass('selected');
+    
+    $('.checks').each(function(){
+      this.checked = false;
+    });
+
 
     filters[0] = filter;
     $container.isotope({ filter: filters.join('') });
   }).bind('monthpicker-change-year',function(e,y){
-      console.log(y);
       year = y;
   });
 
