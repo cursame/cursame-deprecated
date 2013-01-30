@@ -1,3 +1,88 @@
+<style>
+#filters{ padding:0; margin:0 0 20px -10px;}
+#filters li{ list-style:none; display:inline; padding:0 10px 0 0; color:#999; }
+#filters li a{ padding:0 0 0 10px; text-decoration:none; }
+#filters li a.selected{ color:#000; text-decoration:none;}
+#reportes-container{ margin-left:-6px; width:106%; float:left; }
+#reportes-container .element {
+  margin:6px;
+  float: left;
+  overflow: hidden;
+  position: relative;
+  width:180px;
+  height:160px;
+  border: solid 1px #ddd;
+}
+
+.element p{
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.element a{
+  padding-left: 60px;
+}
+/* Start: Recommended Isotope styles */
+
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+  -moz-transition-duration: 0.8s;
+  -o-transition-duration: 0.8s;
+  transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+  -moz-transition-property: height, width;
+  -o-transition-property: height, width;
+  transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+  -moz-transition-property:    -moz-transform, opacity;
+  -o-transition-property:         top, left, opacity;
+  transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+  -moz-transition-duration: 0s;
+  -o-transition-duration: 0s;
+  transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
+</style>
 <div class="container">
   <div class="row">
     <div class="span16">
@@ -16,139 +101,359 @@
           <div class="underline padding-top">
             <h2>Analytics</h2>
           </div>
-          <div id="notifications">
-            <div class="tabs">
-              <ul class="tabs">
-                <li>
-                  <a href="#reporte_usuarios" data-toggle="tab">Usuarios</a>
-                </li>
-                <li>
-                  <a href="#reporte_posts" data-toggle="tab">Posts</a>
-                </li>
-                <li>
-                  <a href="#reporte_logins" data-toggle="tab">Logins</a>
-                </li>
-                <li>
-                  <a href="#reporte_dispositivos" data-toggle="tab">Dispositivos</a>
-                </li>
-                <li>
-                  <a href="#reporte_post_comentarios" data-toggle="tab">Post/comentarios</a>
-                </li>
-                <li>
-                  <a href="#reporte_quizzes" data-toggle="tab">Quizzes</a>
-                </li>
-              </ul>
+          <p>Elige fecha : <input type="text" id="mes-selector" value ="01-2013"></p>
+          <section id="options" class="clearfix">
+            <ul id="filters" class="option-set clearfix" data-option-key="filter">
+              <!-- <li><a href="#filter" data-option-value="">Todos</a></li> -->
+              <li><a href="#filter" data-option-value=".usuarios">Usuarios</a></li>
+              <li>/<a href="#filter" data-option-value=".posts">Posts</a></li>
+              <li>/<a href="#filter" data-option-value=".logins">Logins</a></li>
+              <li>/<a href="#filter" data-option-value=".dispositivos">Dispositivos</a></li>
+              <li>/<a href="#filter" data-option-value=".post_comentarios">Post/Comentarios</a></li>
+              <li>/<a href="#filter" data-option-value=".quizzes">Quizzes</a></li>
+            </ul>
+          </section>
+          <div id="reportes-container" class="clearfix">
+
+            <!-- USUARIOS -->
+
+            <div class="element usuarios Enero-2013" > 
+              <p> Usuarios</p>
+              <a href="http://50.116.21.144/users-20130117-20130124.csv"  title="Reporte de Usuarios">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p> 17 al 24 de enero </br>
             </div>
 
-            <div class="tab-content">
-              
-              <div class="tab-pane active" id="reporte_usuarios">
-                <div class='notification'>
-                  <div class="date-published">
-                    <div class="date-published">17 al 24 de enero</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130117-20130124.csv' %>
-                    <div class="date-published">10 al 17 de enero</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130110-20130117.csv' %>
-                    <div class="date-published">03 al 10 de enero</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20130103-20130110.csv' %>
-                    <div class="date-published">27 de diciembre al 03 de enero</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121227-20130103.csv' %>
-                    <div class="date-published">20 al 27 de diciembre</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121220-20121227.csv' %>
-                    <div class="date-published">13 al 20 de diciembre</div>
-                    <%= link_to 'Reporte de Usuarios', 'http://50.116.21.144/users-20121213-20121220.csv' %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="reporte_posts">
-                <div class='notification'>
-                  <div class="date-published">
-                    <div class="date-published">17 al 24 de enero</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130117-20130124.csv' %>
-                    <div class="date-published">10 al 17 de enero</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130110-20130117.csv' %>
-                    <div class="date-published">03 al 10 de enero</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20130103-20130110.csv' %>
-                    <div class="date-published">27 de diciembre al 03 de enero</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121227-20130103.csv' %>
-                    <div class="date-published">20 al 27 de diciembre</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121220-20121227.csv' %>
-                    <div class="date-published">13 al 20 de diciembre</div>
-                    <%= link_to 'Reporte de Posts', 'http://50.116.21.144/posts-20121213-20121220.csv' %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="reporte_logins">
-                <div class='notification'>
-                  <div class="date-published">
-                    <div class="date-published">17 al 24 de enero</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130117-20130124.csv' %>
-                    <div class="date-published">10 al 17 de enero</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130110-20130117.csv' %>
-                    <div class="date-published">03 al 10 de enero</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20130103-20130110.csv' %>
-                    <div class="date-published">27 de diciembre al 03 de enero</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121227-20130103.csv' %>
-                    <div class="date-published">20 al 27 de diciembre</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121220-20121227.csv' %>
-                    <div class="date-published">13 al 20 de diciembre</div>
-                    <%= link_to 'Reporte de Logins', 'http://50.116.21.144/logins-20121213-20121220.csv' %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="reporte_dispositivos">
-                <div class='notification'>
-                  <div class="date-published">
-                    <div class="date-published">17 al 24 de enero</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130117-20130124.csv' %>
-                    <div class="date-published">10 al 17 de enero</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130110-20130117.csv' %>
-                    <div class="date-published">03 al 10 de enero</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20130103-20130110.csv' %>
-                    <div class="date-published">27 de diciembre al 03 de enero</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121227-20130103.csv' %>
-                    <div class="date-published">20 al 27 de diciembre</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121220-20121227.csv' %>
-                    <div class="date-published">13 al 20 de diciembre</div>
-                    <%= link_to 'Reporte de Dispositivos', 'http://50.116.21.144/devices-20121213-20121220.csv' %>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="reporte_post_comentarios">
-                <div class='notification'>
-                  <div class="date-published">
-                    <div class="date-published">17 al 24 de enero</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130117-20130124.csv' %>
-                    <div class="date-published">10 al 17 de enero</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130110-20130117.csv' %>
-                    <div class="date-published">03 al 10 de enero</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20130103-20130110.csv' %>
-                    <div class="date-published">27 de diciembre al 03 de enero</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121227-20130103.csv' %>
-                    <div class="date-published">20 al 27 de diciembre</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121220-20121227.csv' %>
-                    <div class="date-published">13 al 20 de diciembre</div>
-                    <%= link_to 'Posts más comentados', 'http://50.116.21.144/most_commented-20121213-20121220.csv' %>           
-                  </div>
-                </div>
-              </div>
-
-              <div class="tab-pane" id="reporte_quizzes">
-                <div class='notification'>
-                  <div class="date-published">
-                    <%= link_to 'Quizzes', :controller=>"analytics", :action=>"surveys", :format=>"csv" %>
-                  </div>
-                </div>
-              </div>
+            <div class="element usuarios Enero-2013" > 
+              <p> Usuarios</p>
+              <a href="http://50.116.21.144/users-20130110-20130117.csv"  title="Reporte de Usuarios">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>10 al 17 de enero</p>
             </div>
-          </div>
+
+            <div class="element usuarios Enero-2013" > 
+              <p> Usuarios </p>
+              <a href="http://50.116.21.144/users-20130103-20130110.csv"  title="Reporte de Usuarios">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>03 al 10 de enero</p>
+            </div>
+
+            <div class="element usuarios Enero-2013" > 
+              <p> Usuarios </p>
+              <a href="http://50.116.21.144/users-20121227-20130103.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>27 diciembre al 03 de enero</p>
+            </div>
+            
+            <div class="element usuarios Diciembre-2012" > 
+              <p> Usuarios (20 al 27 de diciembre)</p>
+              <a href="http://50.116.21.144/users-20121220-20121227.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>20 al 27 de diciembre</p>
+            </div>
+
+            <div class="element usuarios Diciembre-2012" > 
+              <p> Usuarios</p>
+              <a href="http://50.116.21.144/users-20121213-20121220.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>13 al 20 de diciembre</p>
+            </div>
+
+            <!-- POSTS -->
+
+            <div class="element posts Enero-2013" > 
+              <p> Posts</p>
+              <a href="http://50.116.21.144/posts-20130117-20130124.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>17 al 24 de enero</p>
+            </div>
+
+            <div class="element posts Enero-2013" > 
+              <p> Posts </p>
+              <a href="http://50.116.21.144/posts-20130110-20130117.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>10 al 17 de enero</p>
+            </div>
+
+            <div class="element posts Enero-2013" > 
+              <p> Posts </p>
+              <a href="http://50.116.21.144/posts-20130103-20130110.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>03 al 10 de enero</p>
+            </div>
+
+            <div class="element posts Enero-2013" > 
+              <p> Posts </p>
+              <a href="http://50.116.21.144/posts-20121227-20130103.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>27 de diciembre al 03 de enero</p>
+            </div>
+
+            <div class="element posts Diciembre-2013" > 
+              <p> Posts </p>
+              <a href="http://50.116.21.144/posts-20121220-20121227.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>20 al 27 de diciembre</p>
+            </div>
+
+            <div class="element posts Diciembre-2013" > 
+              <p> Posts </p>
+              <a href="http://50.116.21.144/posts-20121213-20121220.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>13 al 20 de diciembre</p>
+            </div>
+
+            <!-- LOGINS -->
+
+            <div class="element logins Enero-2013" > 
+              <p> Logins </p>
+              <a href="http://50.116.21.144/logins-20130117-20130124.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>17 al 24 de enero</p>
+            </div>
+
+            <div class="element logins Enero-2013" > 
+              <p> Logins </p>
+              <a href="http://50.116.21.144/logins-20130110-20130117.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>10 al 17 de enero</p>
+            </div>
+
+            <div class="element logins Enero-2013" > 
+              <p> Logins</p>
+              <a href="http://50.116.21.144/logins-20130103-20130110.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>03 al 10 de enero</p>
+            </div>
+
+            <div class="element logins Enero-2013" > 
+              <p> Logins</p>
+              <a href="http://50.116.21.144/logins-20121227-20130103.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>27 de diciembre al 03 de enero</p>
+            </div>
+
+            <div class="element logins Diciembre-2013" > 
+              <p> Logins</p>
+              <a href="http://50.116.21.144/logins-20121220-20121227.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>20 al 27 de diciembre</p>
+            </div>
+
+            <div class="element logins Diciembre-2013" > 
+              <p> Logins</p>
+              <a href="http://50.116.21.144/logins-20121213-20121220.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>13 al 20 de diciembre</p>
+            </div>
+
+            <!-- DISPOSITIVOS -->
+
+            <div class="element dispositivos Enero-2013" > 
+              <p> Dispositivos</p>
+              <a href="http://50.116.21.144/devices-20130117-20130124.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>17 al 24 de enero</p>
+            </div>
+
+            <div class="element dispositivos Enero-2013" > 
+              <p> Dispositivos</p>
+              <a href="http://50.116.21.144/devices-20130110-20130117.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>10 al 17 de enero</p>
+            </div>
+
+            <div class="element dispositivos Enero-2013" > 
+              <p> Dispositivos</p>
+              <a href="http://50.116.21.144/devices-20130103-20130110.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>03 al 10 de enero</p>
+            </div>
+
+            <div class="element dispositivos Enero-2013" > 
+              <p> Dispositivos </p>
+              <a href="http://50.116.21.144/devices-20121227-20130103.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>27 de diciembre al 03 de enero</p>
+            </div>
+
+            <div class="element dispositivos Diciembre-2013" > 
+              <p> Dispositivos</p>
+              <a href="http://50.116.21.144/devices-20121220-20121227.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>20 al 27 de diciembre</p>
+            </div>
+
+            <div class="element dispositivos Diciembre-2013" > 
+              <p> Dispositivos</p>
+              <a href="http://50.116.21.144/devices-20121213-20121220.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>13 al 20 de diciembre</p>
+            </div>
+
+            <!-- POST/COMENTARIOS -->
+
+            <div class="element post_comentarios Enero-2013" > 
+              <p> Post/Comentarios</p>
+              <a href="http://50.116.21.144/most_commented-20130117-20130124.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>17 al 24 de enero</p>
+            </div>
+
+            <div class="element post_comentarios Enero-2013" > 
+              <p> Post/Comentarios</p>
+              <a href="http://50.116.21.144/most_commented-20130110-20130117.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>10 al 17 de enero</p>
+            </div>
+
+            <div class="element post_comentarios Enero-2013" > 
+              <p> Post/Comentarios</p>
+              <a href="http://50.116.21.144/most_commented-20130103-20130110.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>03 al 10 de enero</p>
+            </div>
+
+            <div class="element post_comentarios Enero-2013" > 
+              <p> Post/Comentarios</p>
+              <a href="http://50.116.21.144/most_commented-20121227-20130103.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>27 de diciembre al 03 de enero</p>
+            </div>
+
+            <div class="element post_comentarios Diciembre-2013" > 
+              <p> Post/Comentarios</p>
+              <a href="http://50.116.21.144/most_commented-20121220-20121227.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>20 al 27 de diciembre</p>
+            </div>
+
+            <div class="element post_comentarios Diciembre-2013" > 
+              <p> Post/Comentarios </p>
+              <a href="http://50.116.21.144/most_commented-20121213-20121220.csv">
+                <img src="/assets/report.png" alt="Image" width="64px"/>
+              </a>
+              <p>13 al 20 de diciembre</p>
+            </div>
+
+            <!-- QUIZZES -->
+
+            <% Survey.all.each do |survey| %>
+            <div class="element quizzes" > 
+              <p> <%= survey.name%> </p>
+              <%= link_to image_tag("report.png", :width=>"64px"), :controller=>"analytics", :action=>"surveys", :format=>"csv", :survey_id => survey.id %>
+              <p><%= survey.created_at.to_s.split.first %></p>
+            </div>
+            <% end %>
+
+          </div> <!-- #container -->
         </div>
       </div>
     </div>
   </div>
 </div>
 <%= render :partial => "shared/footer" %>
+<script type="text/javascript" src="http://isotope.metafizzy.co/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://isotope.metafizzy.co/jquery.isotope.min.js"></script>
+<link rel='stylesheet' href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/base/jquery-ui.css'>
+<script type="text/javascript" src="https://raw.github.com/lucianocosta/jquery.mtz.monthpicker/master/jquery.mtz.monthpicker.js"></script>
+
+
+<script type="text/javascript">
+
+var filters = ['.Enero-2013',''];
+$(function () {
+
+  $(".element a img").hover(function() {
+    $(this).stop().animate({opacity: "0.8"}, 'slow');
+  },
+  function() {
+    $(this).stop().animate({opacity: "1"}, 'slow');
+  });
+
+  var $container = $('#reportes-container'),
+  meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+  'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+
+  $container.isotope({
+    itemSelector: '.element'
+  });
+
+  $container.isotope({ filter: filters.join('') });
+  //link picker
+  var $optionSets = $('#options .option-set'),
+      $optionLinks = $optionSets.find('a');
+
+      $optionLinks.click(function(){
+        var $this = $(this);
+        // don't proceed if already selected
+        if ( $this.hasClass('selected') ) {
+          return false;
+        }
+        var $optionSet = $this.parents('.option-set');
+        $optionSet.find('.selected').removeClass('selected');
+        $this.addClass('selected');
+
+        var value = $this.attr('data-option-value');
+
+        filters[1]= value;
+
+        if(value == '.quizzes'){
+          $container.isotope({ filter: value });
+          return false;
+        }
+
+        $container.isotope({ filter: filters.join('') });
+        
+        return false;
+      });
+
+  //month picker
+  $('#mes-selector').monthpicker({
+    pattern: 'mm-yyyy',
+    selectedYear: 2013,
+    startYear: 2012,
+    finalYear: 2050,
+    monthNames: meses
+  }).bind('monthpicker-click-month', function (e, month) {
+    var date = new Date(e.timeStamp),
+    filter = '.'+meses[ month - 1]+'-'+ date.getFullYear();
+
+    filters = [];
+    $('#options .option-set').find('.selected').removeClass('selected');
+
+    filters[0] = filter;
+    $container.isotope({ filter: filters.join('') });
+  });
+
+});
+</script>
