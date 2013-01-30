@@ -139,9 +139,12 @@
 
               <div class="tab-pane" id="reporte_quizzes">
                 <div class='notification'>
-                  <div class="date-published">
-                    <%= link_to 'Quizzes', :controller=>"analytics", :action=>"surveys", :format=>"csv" %>
-                  </div>
+                  <% Survey.all.each do |survey| %>
+                    <div class="date-published">
+                      <%= survey.created_at.to_s.split.first %>
+                    </div>                    
+                    <%= link_to survey.name, :controller=>"analytics", :action=>"surveys", :format=>"csv", :survey_id => survey.id %>
+                  <% end %>
                 </div>
               </div>
             </div>

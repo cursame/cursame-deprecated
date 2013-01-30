@@ -35,7 +35,7 @@ class AnalyticsController < ApplicationController
   end
 
   def surveys
-    surveys = generate_surveys_report
+    surveys = generate_surveys_report params[:survey_id]
     respond_to do |format|
       format.csv {render text: surveys }
     end
@@ -229,9 +229,9 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_surveys_report
+  def generate_surveys_report(survey_id)
     CSV.generate do |csv|
-      SurveyReply.all.each do |reply|
+      SurveyReply.where(:survey_id => survey_id).each do |reply|
         survey = Survey.find_by_id(reply.survey_id)
         user   = User.find_by_id(reply.user_id)
         survey_name = survey.name
