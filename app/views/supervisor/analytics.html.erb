@@ -199,7 +199,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element posts Diciembre-2013" > 
+            <div class="element posts Diciembre-2012" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -207,7 +207,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element posts Diciembre-2013" > 
+            <div class="element posts Diciembre-2012" > 
               <p> Posts </p>
               <a href="http://50.116.21.144/posts-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -249,7 +249,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element logins Diciembre-2013" > 
+            <div class="element logins Diciembre-2012" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -257,7 +257,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element logins Diciembre-2013" > 
+            <div class="element logins Diciembre-2012" > 
               <p> Logins</p>
               <a href="http://50.116.21.144/logins-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -299,7 +299,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element dispositivos Diciembre-2013" > 
+            <div class="element dispositivos Diciembre-2012" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -307,7 +307,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element dispositivos Diciembre-2013" > 
+            <div class="element dispositivos Diciembre-2012" > 
               <p> Dispositivos</p>
               <a href="http://50.116.21.144/devices-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -349,7 +349,7 @@
               <p>27 de diciembre al 03 de enero</p>
             </div>
 
-            <div class="element post_comentarios Diciembre-2013" > 
+            <div class="element post_comentarios Diciembre-2012" > 
               <p> Post/Comentarios</p>
               <a href="http://50.116.21.144/most_commented-20121220-20121227.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -357,7 +357,7 @@
               <p>20 al 27 de diciembre</p>
             </div>
 
-            <div class="element post_comentarios Diciembre-2013" > 
+            <div class="element post_comentarios Diciembre-2012" > 
               <p> Post/Comentarios </p>
               <a href="http://50.116.21.144/most_commented-20121213-20121220.csv">
                 <img src="/assets/report.png" alt="Image" width="64px"/>
@@ -390,7 +390,9 @@
 
 <script type="text/javascript">
 
-var filters = ['.Enero-2013',''];
+var filters = ['.Enero-2013',''],
+    year = '2013';
+
 $(function () {
 
   $(".element a img").hover(function() {
@@ -446,13 +448,18 @@ $(function () {
     monthNames: meses
   }).bind('monthpicker-click-month', function (e, month) {
     var date = new Date(e.timeStamp),
-    filter = '.'+meses[ month - 1]+'-'+ date.getFullYear();
+    filter = '.'+meses[ month - 1]+'-'+ year ;
+
+    console.log(date);
 
     filters = [];
     $('#options .option-set').find('.selected').removeClass('selected');
 
     filters[0] = filter;
     $container.isotope({ filter: filters.join('') });
+  }).bind('monthpicker-change-year',function(e,y){
+      console.log(y);
+      year = y;
   });
 
 });
