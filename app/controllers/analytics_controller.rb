@@ -56,7 +56,7 @@ class AnalyticsController < ApplicationController
       start_date.upto(end_date).each do |date|
         csv_headers << date
       end
-      ['Total Visitas', 'Tiempo de Visita', 'Comentarios', 'Likes', '1a Seccion Visitada',
+      ['Total Visitas', 'Tiempo de Visita', 'Comentarios', 'Likes', 'Likes Recibidos', '1a Seccion Visitada',
       '2da Seccion Visitada', '3ra Seccion Visitada'].each { |element| csv_headers << element }
       csv << csv_headers
       # csv rows
@@ -73,6 +73,7 @@ class AnalyticsController < ApplicationController
         csv_row << average_visit_time(start_date, end_date+1.day, user.id)
         csv_row << apply_percentage(Comment.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
         csv_row << apply_percentage(LikeNotLike.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count)
+        csv_row << apply_percentage(received_likes(user.id,start_date,end_date))
         Action.where(:user_id => user.id, :created_at => start_date..(end_date+1.day)).count(:group => :action, :order => 'COUNT(*) DESC', :limit => 3).each do |key,value|
            csv_row << key
         end
@@ -156,6 +157,21 @@ class AnalyticsController < ApplicationController
       visits_average = visits_sum/visits_count
       (Time.parse('00:00') + visits_average.to_int).to_s.split[1]
     end
+  end
+
+  def received_likes(user_id,start_date,end_date)
+    likes = 0
+    user = User.find_by_id(user_id)
+    unless user.nil?
+      user.comments.each do |comment|
+        comment.like_not_likes.each do |like|
+           if like.created_at > start_date && like.created_at < end_date
+             likes += 1
+           end
+        end
+      end
+    end
+    return likes
   end
 
   def generate_devices_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)

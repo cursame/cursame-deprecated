@@ -175,6 +175,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def received_likes
+    likes = 0
+    self.comments.each do |comment|
+      likes += comment.like_not_likes.count
+    end
+    return likes
+  end
+
   private
   def correct_email_if_private_registration
     network = self.networks.first
