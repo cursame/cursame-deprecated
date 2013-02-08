@@ -48,7 +48,7 @@ class AnalyticsController < ApplicationController
     end
   end
 
-  def generate_users_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
+  def generate_users_report(start_date = (Date.yesterday)-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -88,7 +88,7 @@ class AnalyticsController < ApplicationController
     end
   end
   
-  def generate_posts_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
+  def generate_posts_report(start_date = (Date.yesterday)-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -113,7 +113,7 @@ class AnalyticsController < ApplicationController
     end
   end
  
-  def generate_logins_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
+  def generate_logins_report(start_date = (Date.yesterday)-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv_headers = ['Nombre', 'Correo', 'Region', 'Rol']
@@ -180,7 +180,7 @@ class AnalyticsController < ApplicationController
     return likes
   end
 
-  def generate_devices_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
+  def generate_devices_report(start_date = (Date.yesterday)-7.days, end_date = Date.yesterday)
     user_agents_array = Array.new
     Action.where(:created_at => start_date..(end_date+1.day)).each do |action|
       user_agent = UserAgent.parse(action.user_agent)
@@ -227,7 +227,7 @@ class AnalyticsController < ApplicationController
     end    
   end
    
-  def generate_most_commented_report(start_date = '24/01/2013'.to_date, end_date = '31/01/2013'.to_date)
+  def generate_most_commented_report(start_date = (Date.yesterday)-7.days, end_date = Date.yesterday)
     CSV.generate do |csv|
       # csv headers
       csv << ['Nombre','Mail','Region','Rol','Post','Numero de Comentarios']
