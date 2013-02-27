@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
 
                   :avatar_file, :avatar_file_cache, :role, :state, :terms_of_service,
                   :accepting_emails, :id, :authentication_token
-
+  
+  has_many :rankings
+  has_many :top_users, :through => :rankings
   has_and_belongs_to_many :networks
   has_many :enrollments
   has_many :courses,                   :through => :enrollments # may go away

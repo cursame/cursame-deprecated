@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130114225956) do
+ActiveRecord::Schema.define(:version => 20130226193746) do
 
   create_table "accepted_terms", :force => true do |t|
     t.integer   "user"
@@ -68,16 +68,6 @@ ActiveRecord::Schema.define(:version => 20130114225956) do
     t.timestamp "updated_at"
     t.timestamp "start_at"
     t.string    "state"
-  end
-
-  create_table "banners", :force => true do |t|
-    t.string    "title"
-    t.text      "description"
-    t.string    "date_promotion"
-    t.string    "link"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "image_banner"
   end
 
   create_table "blogs", :force => true do |t|
@@ -298,6 +288,13 @@ ActiveRecord::Schema.define(:version => 20130114225956) do
     t.integer   "position"
   end
 
+  create_table "rankings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "top_users_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "send_reports", :force => true do |t|
     t.string    "title"
     t.text      "text"
@@ -351,6 +348,12 @@ ActiveRecord::Schema.define(:version => 20130114225956) do
     t.timestamp "updated_at"
     t.string    "state"
     t.timestamp "start_at"
+  end
+
+  create_table "top_users", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "tutoriales", :force => true do |t|
