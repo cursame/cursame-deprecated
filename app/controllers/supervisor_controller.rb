@@ -77,7 +77,6 @@ class SupervisorController < ApplicationController
     @user = User.new
   end
 
-
   protected
 
   def export_csv(users)

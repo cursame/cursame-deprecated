@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="span16">
+      <ul class="breadcrumb">
+        <li><%= link_to(t('.admin'), supervisor_dashboard_path) %></li>
+      </ul>
+    </div>
+  </div>
+  <div class="dashboard">
+    <div class="row">
+      <div class="span5">
+        <%= render :partial => "supervisor/shared/admin_menu" %>
+      </div>
+      <div class="span-two-thirds">
+        <div class="dashboard-box">
+          <div class="underline padding-top">
+            <h2>Top Users</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
