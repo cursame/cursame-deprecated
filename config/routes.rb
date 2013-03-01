@@ -177,6 +177,8 @@ Cursame::Application.routes.draw do
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
   
+  #para obtener los usuarios ajax
+  get '/search_users', :to => 'supervisor/networks#search_user', :as => :search_users
   
   
   root :to => "home#index"

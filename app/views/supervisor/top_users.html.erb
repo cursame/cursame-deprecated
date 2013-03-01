@@ -15,9 +15,20 @@
         <div class="dashboard-box">
           <div class="underline padding-top">
             <h2>Top Users</h2>
+              <%= text_field_tag :user_name , data: {autocomplete_source: search_users_path} %>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+      $('#user_name').autocomplete({
+        source: $('#user_name').data('autocomplete-source'),
+        minLength: 3,
+        delay: 500
+      });
+  });
+</script>
