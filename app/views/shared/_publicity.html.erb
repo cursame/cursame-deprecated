@@ -8,7 +8,7 @@
  				<img alt="Student_xsmall" src="/assets/student_xsmall.png" width = "24px">
  			</td>
  			<td>
- 				<%=ranking.user.name%>
+ 				<%= link_to "#{ranking.user.name}", user_path(ranking.user_id) %>
  			</td>
  		</tr>
 	<% end %>
