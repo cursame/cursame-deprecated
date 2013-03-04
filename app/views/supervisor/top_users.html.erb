@@ -1,3 +1,14 @@
+<style>
+  .ui-top-users{
+    border:1px #CCC;
+    background-color: #EEE;
+    padding-bottom: 2px;
+    margin-top: 3px;
+  }
+  .ui-top-users hover{
+    background-color: #EFEFEF;
+  }
+</style>
 <div class="container">
   <div class="row">
     <div class="span16">
@@ -14,31 +25,34 @@
       <div class="span-two-thirds">
         <div class="dashboard-box">
           <div class="underline padding-top">
+            <div style="padding:0 0 15px 30px;">              
             <h2>Top Users</h2>
-            
             <input data-autocomplete-source="/search_users" id="top_users_user_name" name="top_users[user_name]" size="50" type="text" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
             <input class="btn" id="agregar-top-user" type="button" value="Agregar">
-            </br>
-            </br>
-            </br>
-            <div class="users students">
-            <%= form_tag '/save_top_users', :remote => true do %>
-            <div id="save_top_users">
-              <% TopUsers.last.rankings.each  do |ranking|%>
-                <input type="hidden" name="top_users[users][]" value="<%= ranking.user_id%>">
-                  <div class="row">
-                  <div class="span1" style="margin-left:20px;">
-                    <img alt="Student_xsmall" src="/assets/student_xsmall.png">
-                  </div>
-                  <div class="span7">
-                    <p><%=ranking.user.name%></p><br>
-                  </div>
-                </div>
-              <% end %>
             </div>
-            <%= submit_tag 'Guardar', :class => 'btn pull-right' %>
-            </div>      
+           
+            <%= form_tag '/save_top_users', :remote => true do %>
+            <ul id="save_top_users" class="ui-sortable">
+              <% TopUsers.last.rankings.each  do |ranking|%>
+                <li class="ui-top-users" style="display:block;" id="top-user-<%= ranking.user_id%>">
+                  <input type="hidden" name="top_users[users][]" value="<%= ranking.user_id%>">
+                  <img alt="Student_xsmall" src="/assets/student_xsmall.png" style="float:left; padding:0 20px 0 0;">
+                  <p style="font-size:14px; padding-top:3px;">
+                    <%=ranking.user.name%>
+                    <input class="btn danger pull-right" type="button" id = "btn-top-user-delete-<%= ranking.user_id%>" value="Eliminar">
+                    <script>
+                      $('#btn-top-user-delete-<%= ranking.user_id%>').on('click',function(){
+                        $("#top-user-<%= ranking.user_id%>").remove();   
+                      });
+                    </script>
+                  </p>
+                  <div style="clear:both;"></div>
+                </li>
+              <% end %>
+            </ul>
+            <%= submit_tag 'Guardar', :class => 'btn small info add_record pull-right' %>                
             <% end %>
+            
           </div>
         </div>
       </div>
@@ -51,6 +65,11 @@
         var users = {},
             maxNumUsers = 20,
             selectedUser;
+
+        $( "#save_top_users" ).sortable({
+          placeholder: "ui-state-highlight"
+        });
+        $( "#save_top_users" ).disableSelection();
 
         $('#top_users_user_name').autocomplete({
             source: $('#top_users_user_name').data('autocomplete-source'),
@@ -89,15 +108,12 @@
         function addToFormTopUsers(user){
           if(!users[user.id]){
             $("#save_top_users").append(
-              '<input type="hidden" name="top_users[users][]" value="'+user.id+'">'+
-              '<div class="row">'+
-                 ' <div class="span1" style="margin-left:20px;">'+
-                    '<img alt="Student_xsmall" src="/assets/student_xsmall.png">'+
-                 ' </div>'+
-                  '<div class="span5">'+
-                   '<p>'+user.first_name +' '+ user.last_name+'</p><br>'+
-                  '</div>'+
-              '</div>'
+              '<li class="ui-top-users" style="display:block;">'+
+                  '<input type="hidden" name="top_users[users][]" value="'+user.id+'">'+
+                  '<img alt="Student_xsmall" src="/assets/student_xsmall.png" style="float:left; padding:0 20px 0 0;">'+
+                  '<p style="font-size:14px; padding-top:3px;">'+user.first_name+' '+ user.last_name+'</p>'+
+                  '<div style="clear:both;"></div>'+
+              '</li>'
             );
           }
           else{
