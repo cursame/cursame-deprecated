@@ -33,10 +33,5 @@ class Supervisor::NetworksController < ApplicationController
     recipes = Recipe.search_on_title(params[:term], params[:category_id])
     render json: recipes.map(&:title)
   end
-
-  def search_user
-    @users = User.order(:last_name).where("last_name like ?", "%#{params[:term]}%")
-    render json: @users.map(&:last_name)
-  end
-  
+    
 end

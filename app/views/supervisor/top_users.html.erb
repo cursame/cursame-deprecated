@@ -15,7 +15,30 @@
         <div class="dashboard-box">
           <div class="underline padding-top">
             <h2>Top Users</h2>
-              <%= text_field_tag :user_name , data: {autocomplete_source: search_users_path} %>
+            
+            <input data-autocomplete-source="/search_users" id="top_users_user_name" name="top_users[user_name]" size="50" type="text" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
+            <input class="btn" id="agregar-top-user" type="button" value="Agregar">
+            </br>
+            </br>
+            </br>
+            <div class="users students">
+            <%= form_tag '/save_top_users', :remote => true do %>
+            <div id="save_top_users">
+              <% TopUsers.last.rankings.each  do |ranking|%>
+                <input type="hidden" name="top_users[users][]" value="<%= ranking.user_id%>">
+                  <div class="row">
+                  <div class="span1" style="margin-left:20px;">
+                    <img alt="Student_xsmall" src="/assets/student_xsmall.png">
+                  </div>
+                  <div class="span7">
+                    <p><%=ranking.user.name%></p><br>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <%= submit_tag 'Guardar', :class => 'btn pull-right' %>
+            </div>      
+            <% end %>
           </div>
         </div>
       </div>
@@ -24,11 +47,62 @@
 </div>
 
 <script>
-  $(function () {
-      $('#user_name').autocomplete({
-        source: $('#user_name').data('autocomplete-source'),
-        minLength: 3,
-        delay: 500
-      });
-  });
+    $(function () {
+        var users = {},
+            maxNumUsers = 20,
+            selectedUser;
+
+        $('#top_users_user_name').autocomplete({
+            source: $('#top_users_user_name').data('autocomplete-source'),
+            minLength: 3,
+            delay: 500,
+            // This function is executed when a suggestion is selected
+            select: function (event, ui) {
+                // Sets the text of the input textbox to the title of the object referenced
+                // by the selected list item
+                $("#top_users_user_name").val(ui.item.id + ' | ' + ui.item.first_name +' '+ ui.item.last_name );
+                // addToFormTopUsers(ui.item);
+                selectedUser = ui.item;
+                return false;
+            },
+            // This function is executed when the users focuses on a item with the mouse
+            // or keyboard
+            focus: function (event, ui) {
+                $("#top_users_user_name").val(ui.item.id + ' | ' + ui.item.first_name +' '+ ui.item.last_name );
+                // addToFormTopUsers(ui.item);
+                selectedUser = ui.item;
+                return false;
+            }
+        }).data("autocomplete")._renderItem = function (ul, item) {
+            return $("<li></li>").data("item.autocomplete", item).append(
+                '<a>' + item.id + ' | ' + item.first_name +' '+ item.last_name + '</a>').appendTo(ul);
+        };
+
+        $('#agregar-top-user').on('click',function(){
+            if($("#top_users_user_name").val()){
+              addToFormTopUsers(selectedUser);
+              $("#top_users_user_name").val('');
+              selectedUser=undefined;
+            }
+        });
+
+        function addToFormTopUsers(user){
+          if(!users[user.id]){
+            $("#save_top_users").append(
+              '<input type="hidden" name="top_users[users][]" value="'+user.id+'">'+
+              '<div class="row">'+
+                 ' <div class="span1" style="margin-left:20px;">'+
+                    '<img alt="Student_xsmall" src="/assets/student_xsmall.png">'+
+                 ' </div>'+
+                  '<div class="span5">'+
+                   '<p>'+user.first_name +' '+ user.last_name+'</p><br>'+
+                  '</div>'+
+              '</div>'
+            );
+          }
+          else{
+            alert('Ese usuario ya esta agregado!');
+          }
+        }
+    });
 </script>

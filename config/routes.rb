@@ -177,10 +177,9 @@ Cursame::Application.routes.draw do
   post  '/upload',    :to => 'assets#upload',  :as => :upload_asset
   post '/create', :to => 'assets#create', :as => :create_asset
   
-  #para obtener los usuarios ajax
-  get '/search_users', :to => 'supervisor/networks#search_user', :as => :search_users
-  
-  
+  #top_user
+  get '/search_users', :to => 'supervisor/top_users#search_users'
+  post '/save_top_users',:to => 'supervisor/top_users#save_top_users'
   root :to => "home#index"
   
   #this is for api for the mobile app

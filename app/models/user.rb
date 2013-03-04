@@ -185,13 +185,6 @@ class User < ActiveRecord::Base
     return likes
   end
 
-  def user_name
-    user.try(:last_name)
-  end
-  def user_name=(name)
-    self.category = User.find_by_last_name(name) if last_name.present?
-  end
-
   private
   def correct_email_if_private_registration
     network = self.networks.first
