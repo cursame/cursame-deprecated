@@ -1,5 +1,5 @@
 <% @top_users = TopUsers.last %>
-<% if @top_users %>
+<% if @top_users.rankings.count > 0 %>
 <table class= "zebra-striped" style = "width:300px;">
 	<thead ><h2 style ="text-align:center;color: #00afc9;"> <%= @top_users.name %> </h2></thead>
 	 <tbody>
