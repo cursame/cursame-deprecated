@@ -9,6 +9,9 @@
     background-color: #EFEFEF;
   }
 </style>
+<script>
+  var users = {};
+</script>
 <div class="container">
   <div class="row">
     <div class="span16">
@@ -41,6 +44,8 @@
                     <%=ranking.user.name%>
                     <input class="btn danger pull-right" type="button" id = "btn-top-user-delete-<%= ranking.user_id%>" value="Eliminar">
                     <script>
+                      users['<%= ranking.user_id%>']=true;
+                      
                       $('#btn-top-user-delete-<%= ranking.user_id%>').on('click',function(){
                         $("#top-user-<%= ranking.user_id%>").remove();   
                       });
@@ -62,7 +67,6 @@
 
 <script>
     $(function () {
-        var users = {},
             maxNumUsers = 20,
             selectedUser;
 
