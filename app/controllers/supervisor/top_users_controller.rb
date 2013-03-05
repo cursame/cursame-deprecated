@@ -17,12 +17,12 @@ class Supervisor::TopUsersController < ApplicationController
 		if @top_user = TopUsers.last
 			@tp_id = @top_user.id
 		else
-			TopUsers.create(:name => 'Usuarios Top')
+			TopUsers.create(:name => 'Expertos Top')
 		end
 		@user_ids = params[:top_users][:users]
 		
 		@user_ids.each_with_index do |id,idx|
-			Ranking.create('user_id' => id,'top_users_id' => 1,'order' => idx) 
+			Ranking.create('user_id' => id,'top_users_id' => @tp_id ,'order' => idx) 
 		end
 		respond_to do |format|       
           format.js

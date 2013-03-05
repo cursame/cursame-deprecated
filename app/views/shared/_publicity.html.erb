@@ -1,14 +1,14 @@
 <% @top_users = TopUsers.last %>
 <% if @top_users %>
-<table class= "zebra-striped">
+<table class= "zebra-striped" style = "width:300px;">
 	<thead ><h2 style ="text-align:center;color: #00afc9;"> <%= @top_users.name %> </h2></thead>
 	 <tbody>
 	<% @top_users.rankings.each  do |ranking|%>
  		<tr>
  			<td>
- 				<img alt="Student_xsmall" src="/assets/student_xsmall.png" width = "24px">
+ 				<img alt="Student_xsmall" src="/assets/student_xsmall.png" >
  			</td>
- 			<td>
+ 			<td width = "200px">
  				<%= link_to "#{ranking.user.name}", user_path(ranking.user_id) %>
  			</td>
  		</tr>

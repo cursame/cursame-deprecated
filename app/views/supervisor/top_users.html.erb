@@ -29,7 +29,7 @@
         <div class="dashboard-box">
           <div class="underline padding-top">
             <div style="padding:0 0 15px 30px;">              
-            <h2>Top Users</h2>
+            <h2><%= TopUsers.last.name %></h2>
             <input data-autocomplete-source="/search_users" id="top_users_user_name" name="top_users[user_name]" size="50" type="text" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true">
             <input class="btn" id="agregar-top-user" type="button" value="Agregar">
             </div>
