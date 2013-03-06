@@ -21,7 +21,7 @@ Ext.define('Cursame.view.users.topusers.TopUserList', {
 			directionLock: true
 		},
 		disclosure: true,
-		emptyText: 'No se han definido los expertos top',
+		emptyText: '  No se han definido los expertos top',
 		itemTpl: Ext.create('Ext.XTemplate', '<div class="comment ">', '<div class="img">', '<img src="{avatar_file}" />', '</div>', '<div class="contenido">', '<div class="title">{first_name} {last_name}</div>', '<div class="text">', '{role}', '</div>', '</div>', '</div>')
 	}
 });
