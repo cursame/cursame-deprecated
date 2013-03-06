@@ -16,7 +16,6 @@
  			xtype: 'tabpanel',
  			fullscreen: true,
  			activeItem: 0,
- 			//tabBarPosition: 'bottom',
  			tabBar: {
  				layout: {
  					pack : 'center',
@@ -28,7 +27,6 @@
  					indicators: false
  				}
  			},
- 			// scrollable: {direction: 'horizontal', indicators: true},
  			items: [{
  				xtype: 'networknavigationview',
  				iconCls: 'chat',
