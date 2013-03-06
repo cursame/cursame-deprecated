@@ -64,6 +64,14 @@ class Api::ApiController < ApplicationController
     render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]      
   end
 
+   def topusers 
+    @users = []
+    TopUsers.last.rankings.each  do |ranking|
+      @users.push(ranking.user)
+    end
+    render :json => {:users => @users.as_json, :count => @users.count()}, :callback => params[:callback]      
+  end
+
   def notifications
     @notifications = @user.notifications.order("created_at DESC");
     @notifications_aux = Array.new

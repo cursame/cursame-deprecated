@@ -20,7 +20,9 @@ Ext.application({
             'Assignments',
             'Surveys',
             'Discussions',
-            'Questions'],
+            'Questions',
+            'TopUsers'
+            ],
 
     views: ['Main'],
 

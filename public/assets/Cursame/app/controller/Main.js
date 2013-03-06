@@ -38,7 +38,11 @@ Ext.define('Cursame.controller.Main', {
 			communityNavigationView: 'communitynavigationview',
 			networkNavigationView: 'networknavigationview',
 			networkWallTextfield: 'networkwall toolbar textfield',
-			networkWall: 'networknavigationview networkwall'
+			networkWall: 'networknavigationview networkwall',
+			//top users
+			topUsersNavigationView: 'topusersnavigationview',
+			topUsersWall: 'topusersnavigationview userwall',
+			topUserWallTextfield: 'topusersnavigationview userwall toolbar textfield',
 		},
 		control: {
 			'notificationslist notificationlistitem button': {
@@ -184,6 +188,20 @@ Ext.define('Cursame.controller.Main', {
 			},
 			'questionscarousel':{
 				surveyreplied:'surveyReplied'
+			},
+			// top users			
+			'topusersnavigationview #backBtn': {
+				tap: 'goToWall'
+			},
+			'topuserslist': {
+				itemtap: 'onTopUsersListTap'
+			},
+			'topusersnavigationview userwall commentbar button': {
+				tap: 'onTopUserWallPost'
+			},
+			'topusersnavigationview': {
+				push: 'onViewPush',
+				pop: 'onViewPop'
 			}
 		}
 	},
@@ -498,6 +516,11 @@ Ext.define('Cursame.controller.Main', {
 		var record = this.getCourseUserWall().items.items[0].getRecord();
 		this.saveComment('User', this.getCourseUserWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
 	},
+	// top users
+	onTopUserWallPost: function(btn) {
+		var record = this.getTopUsersWall().items.items[0].getRecord();
+		this.saveComment('User', this.getTopUserWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
+	},
 	saveComment: function(type, textfield, btn, comentableId, store) {
 		/*var record = this.getCommentContainer().getRecord();
 			record.data.numcommnets = record.data.numcommnets + 1;
@@ -618,6 +641,10 @@ Ext.define('Cursame.controller.Main', {
 				type: 'Network'
 			}, undefined);
 		}
+		if(value.config.type === 'topusers') {
+			this.loadStore(Ext.getStore('TopUsers'), {
+			}, undefined);
+		}
 	},
 	/*members*/
 	onUsersListTap: function(dataview, index, target, record, e, opt) {
@@ -629,6 +656,18 @@ Ext.define('Cursame.controller.Main', {
 			type: 'User'
 		}, undefined);
 		this.getCourseUserWall().items.items[0].setRecord(record);
+	},
+	// top users
+	onTopUsersListTap: function(dataview, index, target, record, e, opt) {
+		console.log(record);
+		this.getTopUsersNavigationView().push({
+			xtype: 'userwall'
+		});
+		this.loadStore(Ext.getStore('Comments'), {
+			id: record.get('id'),
+			type: 'User'
+		}, undefined);
+		this.getTopUsersWall().items.items[0].setRecord(record);
 	},
 	/*assignments*/
 	onAssignmentsListTap: function(dataview, index, target, record, e, opt) {

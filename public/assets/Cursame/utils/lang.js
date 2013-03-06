@@ -63,7 +63,8 @@ var language ={
         sendingSurvey:'Enviando respuestas ...',
         surveySend:'Respuestas enviadas!',
         passwordRecover:'Recuperar Contraseña',
-        passwordRecoverEmail:'Escribe tu Email'
+        passwordRecoverEmail:'Escribe tu Email',
+        top:'Expertos Top'
     },
     en:{
         appName: 'Cúrsame',
