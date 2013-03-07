@@ -1,15 +1,17 @@
 <% @top_users = TopUsers.last %>
 <% if @top_users.rankings.count > 0 %>
-<table class= "zebra-striped" style = "width:300px;">
+<table class= "zebra-striped" style = "width:280px;margin-left:10px">
 	<thead ><h2 style ="text-align:center;color: #00afc9;"> <%= @top_users.name %> </h2></thead>
 	 <tbody>
 	<% @top_users.rankings.each  do |ranking|%>
  		<tr>
  			<td>
- 				<img alt="Student_xsmall" src="/assets/student_xsmall.png" >
- 			</td>
- 			<td width = "200px">
+ 				<div style="float:left">
+ 					<img alt="Student_xsmall" src="<%= ranking.user.avatar_file.xsmall.url %>" width="16px">
+ 				</div>
+ 				<div style="float:left; padding-left:5px">
  				<%= link_to "#{ranking.user.name}", user_path(ranking.user_id) %>
+ 				</div>
  			</td>
  		</tr>
 	<% end %>

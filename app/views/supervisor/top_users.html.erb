@@ -114,7 +114,7 @@
             $("#save_top_users").append(
               '<li class="ui-top-users" style="display:block;" id="top-user-'+user.id+'">'+
                   '<input type="hidden" name="top_users[users][]" value="'+user.id+'">'+
-                  '<img alt="Student_xsmall" src="/assets/student_xsmall.png" style="float:left; padding:0 20px 0 0;">'+
+                  '<img alt="Student_xsmall" src="'+user.avatar_file.xsmall.url+'" style="float:left; padding:0 20px 0 0;">'+
                   '<p style="font-size:14px; padding-top:3px;">'+
                       user.first_name+' '+ user.last_name+
                     '<input class="btn danger pull-right" type="button" id = "btn-top-user-delete-'+user.id+'" value="Eliminar">'+ 
