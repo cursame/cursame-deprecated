@@ -39,7 +39,7 @@
               <% TopUsers.last.rankings.each  do |ranking|%>
                 <li class="ui-top-users" style="display:block;" id="top-user-<%= ranking.user_id%>">
                   <input type="hidden" name="top_users[users][]" value="<%= ranking.user_id%>">
-                  <img alt="Student_xsmall" src="/assets/student_xsmall.png" style="float:left; padding:0 20px 0 0;">
+                  <img alt="Student_xsmall" src="<%=ranking.user.avatar_file.xsmall.url%>" style="float:left; padding:0 20px 0 0;">
                   <p style="font-size:14px; padding-top:3px;">
                     <%=ranking.user.name%>
                     <input class="btn danger pull-right" type="button" id = "btn-top-user-delete-<%= ranking.user_id%>" value="Eliminar">
