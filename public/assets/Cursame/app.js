@@ -2,27 +2,15 @@ Ext.Loader.setPath({
     'Ext': '../assets/Cursame/sdk/src',
 	'Core': '../assets/Cursame/core',
 	'Cursame':'../assets/Cursame/app'
-});
-
+});	
 Ext.application({
 	
     name: 'Cursame',
 	viewport: {
      autoMaximize: true
     },
-	profiles:['Cursame.profile.Phone','Cursame.profile.Tablet'],
-	stores:[
-            'Notifications',
-            'Comments',
-            'CommentsComments',
-            'Courses',
-            'Users',
-            'Assignments',
-            'Surveys',
-            'Discussions',
-            'Questions',
-            'TopUsers'
-            ],
+	profiles:['Cursame.profile.Phone'],
+	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
 
     views: ['Main'],
 
@@ -33,8 +21,8 @@ Ext.application({
         144: 'resources/icons/Icon~ipad@2x.png'
     },
     
-    phoneStartupScreen: './resources/loading/Homescreen.jpg',
-    tabletStartupScreen: './resources/loading/Homescreen~ipad.jpg',
+    phoneStartupScreen: 'resources/loading/Homescreen.jpg',
+    tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
 
     launch: function() {
         // Destroy the #appLoadingIndicator element
@@ -54,5 +42,3 @@ Ext.application({
         );
     }
 });
-
-
