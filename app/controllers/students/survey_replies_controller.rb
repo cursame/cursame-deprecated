@@ -22,7 +22,20 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply = current_user.survey_replies.build(params[:survey_reply])
     @survey_reply.survey = @survey
     if @survey_reply.save
-      redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_created')
+      reply = SurveyReply.find_by_user_id current_user
+      min, max = reply.score, @survey.value
+      if (reply.score < (@survey.value)/0.8)
+        notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{min} de #{max}. " +
+		 "Sigue capacit\u00e1ndote consultando toda la informaci\u00f3n que tenemos para ti en la secci\u00f3n de Campa\u00f1as y en Experto Movistar"
+        redirect_to survey_reply_path(@survey), :notice => notice 
+        #redirect_to survey_reply_path(@survey), :notice => t('survey_failed', :min => min, :max => max)
+      else
+        notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{min} de #{max}. " + 
+                 "\u00A1Capac\u00edtate! Consulta la secci\u00f3n de campa\u00f1as que contiene informaci\u00f3n que te ayudar\u00e1 para obtener un mejor resultado. " +
+                 "Tambi\u00e9n puedes utilizar la informaci\u00f3n de Experto Movistar."
+        redirect_to survey_reply_path(@survey), :notice => notice
+        #redirect_to survey_reply_path(@survey), :notice => t('survey_approved', :min => min, :max => max)
+      end
     else
       @course = @survey.course
       render :new
@@ -42,7 +55,20 @@ class Students::SurveyRepliesController < ApplicationController
     @course = @survey_reply.course
 
     if @survey_reply.update_attributes params[:survey_reply]
-      redirect_to survey_reply_path(@survey), :notice => t('flash.survey_reply_updated')
+      reply = SurveyReply.find_by_user_id current_user
+      min, max = reply.score, @survey.value
+      if (reply.score < (@survey.value)/0.8)
+         notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{min} de #{max}. " +
+                  "Sigue capacit\u00e1ndote consultando toda la informaci\u00f3n que tenemos para ti en la secci\u00f3n de Campa\u00f1as y en Experto Movistar"
+         redirect_to survey_reply_path(@survey), :notice => notice 
+         #redirect_to survey_reply_path(@survey), :notice => t('survey_failed', :min => min, :max => max)
+       else
+         notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{min} de #{max}. " + 
+                  "\u00A1Capac\u00edtate! Consulta la secci\u00f3n de campa\u00f1as que contiene informaci\u00f3n que te ayudar\u00e1 para obtener un mejor resultado. " +
+                  "Tambi\u00e9n puedes utilizar la informaci\u00f3n de Experto Movistar."
+         redirect_to survey_reply_path(@survey), :notice => notice
+         #redirect_to survey_reply_path(@survey), :notice => t('survey_approved', :min => min, :max => max)
+       end
     else
       render :edit
     end
