@@ -24,10 +24,10 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply.survey = @survey
     if @survey_reply.save
 
-      failed_notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{@survey_reply.score}. " +
+      failed_notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{@survey_reply.score} de 100. " +
       "Sigue capacit\u00e1ndote consultando toda la informaci\u00f3n que tenemos para ti en la secci\u00f3n de Campa\u00f1as y en Experto Movistar"
 
-      approved_notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{@survey_reply.score}. " + 
+      approved_notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{@survey_reply.score} de 100. " + 
       "\u00A1Capac\u00edtate! Consulta la secci\u00f3n de campa\u00f1as que contiene informaci\u00f3n que te ayudar\u00e1 para obtener un mejor resultado. " +
       "Tambi\u00e9n puedes utilizar la informaci\u00f3n de Experto Movistar."
 
@@ -55,10 +55,10 @@ class Students::SurveyRepliesController < ApplicationController
     @course = @survey_reply.course
     if @survey_reply.update_attributes params[:survey_reply]
 
-      failed_notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{@survey_reply.score}. " +
+      failed_notice = "Resultado no satisfactorio, tu calificaci\u00f3n es #{@survey_reply.score} de 100. " +
       "Sigue capacit\u00e1ndote consultando toda la informaci\u00f3n que tenemos para ti en la secci\u00f3n de Campa\u00f1as y en Experto Movistar"
 
-      approved_notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{@survey_reply.score}. " +
+      approved_notice = "\u00A1Felicidades! Tu calificaci\u00f3n es #{@survey_reply.score} de 100. " +
       "\u00A1Capac\u00edtate! Consulta la secci\u00f3n de campa\u00f1as que contiene informaci\u00f3n que te ayudar\u00e1 para obtener un mejor resultado. " +
       "Tambi\u00e9n puedes utilizar la informaci\u00f3n de Experto Movistar."
 
