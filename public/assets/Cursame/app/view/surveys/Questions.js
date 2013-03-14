@@ -114,9 +114,10 @@ Ext.define('Cursame.view.surveys.Questions', {
             enviar = true;
         },me);
 
-        if(!enviar){//si no estan todas las preguntas contestadas no las enviamos al server
-            return false;
-        }
+        // if(!enviar){//si no estan todas las preguntas contestadas no las enviamos al server
+        //     alert('faltan respuestas');
+        //     return false;
+        // }
 
         me.mask({
             xtype: 'loadmask',
@@ -134,14 +135,16 @@ Ext.define('Cursame.view.surveys.Questions', {
             },
             success: function(response) {
                 me.unmask();
+                console.log(response);
                 me.mask({
                     xtype: 'loadmask',
-                    message: lang.surveySend
+                    indicator: false,
+                    message: 'Puntuación : <br> '+ response.result +' de 100'
                 });
                 setTimeout(function(){
                     me.unmask();
                     me.fireEvent('surveyreplied',me);
-                },1000);
+                },2000);
             }
         });
     },

@@ -1,16 +1,27 @@
 Ext.Loader.setPath({
     'Ext': '../assets/Cursame/sdk/src',
-	'Core': '../assets/Cursame/core',
-	'Cursame':'../assets/Cursame/app'
-});	
+    'Core': '../assets/Cursame/core',
+    'Cursame': '../assets/Cursame/app'
+});
 Ext.application({
-	
+
     name: 'Cursame',
-	viewport: {
-     autoMaximize: true
+    viewport: {
+        autoMaximize: true
     },
-	profiles:['Cursame.profile.Phone'],
-	stores:['Notifications','Comments','CommentsComments','Courses','Users','Assignments','Surveys','Discussions'],
+    profiles: ['Cursame.profile.Phone', 'Cursame.profile.Tablet'],
+    stores: [
+        'Notifications',
+        'Comments',
+        'CommentsComments',
+        'Courses',
+        'Users',
+        'Assignments',
+        'Surveys',
+        'Discussions',
+        'Questions',
+        'TopUsers'
+    ],
 
     views: ['Main'],
 
@@ -20,11 +31,11 @@ Ext.application({
         114: 'resources/icons/Icon@2x.png',
         144: 'resources/icons/Icon~ipad@2x.png'
     },
-    
+
     phoneStartupScreen: 'resources/loading/Homescreen.jpg',
     tabletStartupScreen: 'resources/loading/Homescreen~ipad.jpg',
 
-    launch: function() {
+    launch: function () {
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
@@ -32,13 +43,13 @@ Ext.application({
         Ext.Viewport.add(Ext.create('Cursame.view.Main'));
     },
 
-    onUpdated: function() {
+    onUpdated: function () {
         Ext.Msg.confirm(
             "Application Update",
             "This application has just successfully been updated to the latest version. Reload now?",
-            function() {
-                window.location.reload();
-            }
-        );
+
+        function () {
+            window.location.reload();
+        });
     }
 });

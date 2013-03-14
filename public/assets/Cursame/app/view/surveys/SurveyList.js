@@ -15,7 +15,7 @@ Ext.define('Cursame.view.surveys.SurveyList', {
 			xtype: 'loadmask',
 			message: lang.loading
 		},
-		emptyText: lang.emptyText,
+		emptyText: 'No tienes cuestionarios asignados :)',
 		scrollable: {
 			direction: 'vertical',
 			directionLock: true

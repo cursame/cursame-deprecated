@@ -210,8 +210,10 @@ class Api::ApiController < ApplicationController
     @survey = current_user.surveys.published.find params[:survey_id]
     @survey_reply = current_user.survey_replies.build(ActiveSupport::JSON.decode(params[:survey_reply]))
     @survey_reply.survey = @survey
+    
     if @survey_reply.save
-      render :json => {:success => true, :notice => t('flash.survey_reply_created')}, :callback => params[:callback]
+      reply = SurveyReply.find @survey_reply.id
+      render :json => {:success => true, :result => reply.score}, :callback => params[:callback]
     else
       render :json => {:success => false, :notice => 'Error al eviar tus respuestas :('}, :callback => params[:callback]
     end
