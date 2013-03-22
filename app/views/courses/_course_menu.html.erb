@@ -17,7 +17,7 @@
 <div class="underline">	
   <%= tabs_tag(:builder => MenuTabBuilder, :open_tabs => { :class => "left-nav-main-ul" }) do |tab| %>
     <%= tab.course t('courses.information'), course_path(@course), :class => "informacion" %>
-    <%#= tab.wall t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones" %>
+    <%= tab.wall t('courses.wall.header'), wall_for_course_path(@course), :class => "actualizaciones" %>
     <%= tab.assignments t('.assignments'), course_assignments_path(@course), :class => "tareas" %>
     <%#= tab.surveys t('.surveys'), course_surveys_path(@course), :class => "surveys" %>
     <%= tab.surveys 'Cuestionarios', course_surveys_path(@course), :class => "surveys" %>

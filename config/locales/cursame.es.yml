@@ -249,7 +249,7 @@ es:
     index:
       title: Todos los Campañas disponibles
     wall:
-      header: Comentarios
+      header: Muro
     assignments:
       create_assignment: 'Crear Contenido'
       assignments: 'Contenidos'
