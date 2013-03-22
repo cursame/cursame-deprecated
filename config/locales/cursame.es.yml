@@ -356,10 +356,10 @@ es:
 
   profile:
     edit_profile: 'Editar perfil'
-    about_me: 'Acerca de mí'
+    about_me: 'Dirección o Área'
     studies: 'Estudios'
     birth_date: 'Fecha de nacimiento'
-    occupation: 'Ocupación'
+    occupation: 'Puesto'
     social_networks: 'Redes sociales'
     wall: 'Comentarios'
 
