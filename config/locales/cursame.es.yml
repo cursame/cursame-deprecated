@@ -79,6 +79,8 @@ es:
     survey_deleted: El cuestionario fue eliminado
     survey_reply_created: Tus respuestas fueron enviadas
     survey_reply_updated: Tus respuestas fueron actualizadas
+    survey_approved: "¡Felicidades! Tu calificación es %{score}. !Capacítate! Consulta la sección de campañas que contiene información que te ayudará para obtener un mejor resultado."
+    survey_failed: "Resultado no satisfactorio, tu calificación es %{score}. Sigue capacitándote consultando toda la información que tenemos para ti en la sección de Campañas y en Experto Movistar. También puedes utilizar la información de Experto Movistar."
     emails_true: 'Se ha activado la recepción de emails en notificaciones'
     emails_false: 'Se ha desactivado la recepción de emails en notificaciones'
     errors:
