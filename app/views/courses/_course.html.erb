@@ -4,7 +4,7 @@
   <div class="row">
     <div class="span6">
       <h3>
-        <%= accessible_courses.include?(course) ? link_to(course.name, course) : course.name %>
+        <%= accessible_courses.include?(course) ? link_to(course.name, wall_for_course_path(course)) : course.name %>
       </h3>
     </div>
     <div class="span4" style="margin-top: 5px;">
