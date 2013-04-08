@@ -40,22 +40,21 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 			docked: 'bottom',
 			ui:'accept',
 			//layout:'hbox',				
-			items:[/*{
+			items:[{
 					xtype:'button',
 					iconCls:'chat',
 					ui:'accept',
 					action:'wall',
-					badgeText:lang.wall,
-					iconAlign:'bottom',
-					badgeCls:'menu-badge',		
+					text:lang.wall,
+					iconAlign:'left',					
 					iconMask:true
-				},*/{
+				},{
 					xtype:'button',
 					iconCls:'attachment',
 					ui:'accept',
 					text:lang.assignments,
-					action:'assignments',	
-					iconAlign:'left',		
+					action:'assignments',
+					iconAlign:'left',
 					iconMask:true
 				},{
 					xtype:'button',
@@ -63,7 +62,7 @@ Ext.define('Cursame.view.courses.CourseMenu', {
 					ui:'accept',
 					text:lang.surveys,
 					action:'surveys',
-					iconAlign:'left',								
+					iconAlign:'left',
 					iconMask:true
 				}/*,{
 					xtype:'button',

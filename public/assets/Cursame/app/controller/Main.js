@@ -497,7 +497,8 @@ Ext.define('Cursame.controller.Main', {
 		this.saveComment('Comment', this.getCommentWallTextfield(), btn, record.get('id'), Ext.getStore('CommentsComments'));
 	},
 	onCourseWallPost: function(btn) {
-		var record = this.getCourseContainer().getRecord();
+		// var record = this.getCourseContainer().getRecord();
+		var record = this.courseRecord;
 		this.saveComment('Course', this.getCourseWallTextfield(), btn, record.get('id'), Ext.getStore('Comments'));
 	},
 	onAssignmentWallPost: function(btn) {
@@ -559,6 +560,7 @@ Ext.define('Cursame.controller.Main', {
 		var courseContainer = btn.up('container').up('container'),
 			courseItems = courseContainer.items.items,
 			courseRecord = courseItems[0].getRecord();
+			this.courseRecord = courseRecord;
 		btn.disable();
 		switch(btn.config.action) {
 		case 'wall':
