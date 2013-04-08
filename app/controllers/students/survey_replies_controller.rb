@@ -24,9 +24,9 @@ class Students::SurveyRepliesController < ApplicationController
     @survey_reply.survey = @survey
     if @survey_reply.save
       if @survey_reply.score < 80
-         redirect_to survey_reply_path(@survey), :flash => { :error => t('flash.survey_failed', :score => @survey_reply.score) }
+         redirect_to survey_reply_path(@survey), :flash => { :error => t('flash.survey_failed_html', :score => @survey_reply.score) }
        else
-         redirect_to survey_reply_path(@survey), :notice => t('flash.survey_approved', :score => @survey_reply.score)
+         redirect_to survey_reply_path(@survey), :notice => t('flash.survey_approved_html', :score => @survey_reply.score)
        end
     else
       @course = @survey.course
@@ -47,9 +47,9 @@ class Students::SurveyRepliesController < ApplicationController
     @course = @survey_reply.course
     if @survey_reply.update_attributes params[:survey_reply]
       if @survey_reply.score < 80
-         redirect_to survey_reply_path(@survey), :flash => { :error => t('flash.survey_failed', :score => @survey_reply.score) }
+         redirect_to survey_reply_path(@survey), :flash => { :error => t('flash.survey_failed_html', :score => @survey_reply.score) }
        else
-         redirect_to survey_reply_path(@survey), :notice => t('flash.survey_approved', :score => @survey_reply.score)
+         redirect_to survey_reply_path(@survey), :notice => t('flash.survey_approved_html', :score => @survey_reply.score)
        end
     else
       render :edit
