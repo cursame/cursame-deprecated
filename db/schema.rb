@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130301000628) do
+ActiveRecord::Schema.define(:version => 20130411211937) do
 
   create_table "accepted_terms", :force => true do |t|
     t.integer   "user"
@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(:version => 20130301000628) do
   end
 
   create_table "actions", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "action"
-    t.string   "user_agent"
-    t.string   "city"
-    t.string   "country"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "ip_adress"
+    t.integer   "user_id"
+    t.string    "action"
+    t.string    "user_agent"
+    t.string    "city"
+    t.string    "country"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.string    "ip_adress"
   end
 
   add_index "actions", ["action"], :name => "index_actions_on_action"
@@ -68,16 +68,6 @@ ActiveRecord::Schema.define(:version => 20130301000628) do
     t.timestamp "updated_at"
     t.timestamp "start_at"
     t.string    "state"
-  end
-
-  create_table "banners", :force => true do |t|
-    t.string    "title"
-    t.text      "description"
-    t.string    "date_promotion"
-    t.string    "link"
-    t.timestamp "created_at"
-    t.timestamp "updated_at"
-    t.string    "image_banner"
   end
 
   create_table "blogs", :force => true do |t|
@@ -299,11 +289,11 @@ ActiveRecord::Schema.define(:version => 20130301000628) do
   end
 
   create_table "rankings", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "top_users_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "order"
+    t.integer   "user_id"
+    t.integer   "top_users_id"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
+    t.integer   "order"
   end
 
   create_table "send_reports", :force => true do |t|
@@ -362,9 +352,9 @@ ActiveRecord::Schema.define(:version => 20130301000628) do
   end
 
   create_table "top_users", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string    "name"
+    t.timestamp "created_at"
+    t.timestamp "updated_at"
   end
 
   create_table "tutoriales", :force => true do |t|
@@ -417,6 +407,7 @@ ActiveRecord::Schema.define(:version => 20130301000628) do
     t.string    "bussines_role"
     t.string    "telefonica_role"
     t.string    "telefonica_zone"
+    t.integer   "top_user_score"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
