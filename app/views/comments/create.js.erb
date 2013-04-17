@@ -22,8 +22,8 @@ var txtarea;
     });
 <%end%>
 txtarea.val('');
-$('fieldset[data-association="assets"]').nestedAssociations();
 $('#comment_<%= @comment.id %>').fadeOut();
 $('#comment_<%= @comment.id %>').fadeIn();
 txtarea.blur();
+
 
