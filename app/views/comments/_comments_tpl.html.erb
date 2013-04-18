@@ -39,7 +39,8 @@
         <p style="padding-top:10px;">
         <% comment.assets.each do |asset| %>
           <% if image_tag asset.file.to_s.match /\.(png|gif|jpg)$/i %>
-            <%= image_tag asset.file %>
+			<% puts "#{asset.file.to_s}" %>
+            <%= image_tag asset.file.to_s %>
           <% else %>
             <%= image_tag asset.file.thumb_url %>
 		  <% end %>
