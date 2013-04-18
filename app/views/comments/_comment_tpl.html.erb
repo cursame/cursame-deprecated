@@ -37,8 +37,7 @@
         <% if comment.assets.any? %>
         <p>
         <% comment.assets.each do |asset| %>
-          <% if image_tag asset.file_url.match /\.(png|gif|jpg)$/i %>
-			<%= asset.file_url %>
+          <% if asset.file_url.match /\.(png|gif|jpg)$/i %>
             <%= image_tag asset.file_url %>
           <% else %>
             <%= image_tag asset.file.thumb_url %>
