@@ -38,7 +38,11 @@
         <% if comment.assets.any? %>
         <p style="padding-top:10px;">
         <% comment.assets.each do |asset| %>
-          <%= image_tag asset.file.thumb_url %>
+          <% if image_tag asset.file.to_s.match /\.(png|gif|jpg)$/i %>
+            <%= image_tag asset.file %>
+          <% else %>
+            <%= image_tag asset.file.thumb_url %>
+		  <% end %>
 		  <%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
 		  <a data-toggle="modal" href="#modal-asset-<%= asset.id %>"><%= asset.name %></a><br />
         <% end %>
