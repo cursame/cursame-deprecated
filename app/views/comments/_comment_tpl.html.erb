@@ -39,7 +39,6 @@
         <% comment.assets.each do |asset| %>
           <% if image_tag asset.file.to_s.match /\.(png|gif|jpg)$/i %>
 			<% puts "#{asset.file.to_s}" %>
-            <%= image_tag asset.file.to_s %>
           <% else %>
             <%= image_tag asset.file.thumb_url %>
 			<%=  render :partial => 'shared/document_viewer', :locals => { :asset => asset }  %>
