@@ -69,6 +69,7 @@ group :development, :test do
   gem 'hirb'
   gem "parallel_tests"
   gem 'foreman'
+  gem 'rails-dev-tweaks', '~> 0.6.1'
 end
 
 #Gem for exporting data between databases
