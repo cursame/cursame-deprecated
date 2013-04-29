@@ -16,15 +16,18 @@
   		textAreaFieldValue, search = false,
   		setValueOnTextAreaField;
 
+		notificationUsers = [];
+
   		setValueOnTextAreaField= function(event, ui){
-  			var usuario = ui.item.first_name +' '+ ui.item.last_name,
+  			var usuario = '<a href="/users/' + ui.item.id + '">' + ui.item.first_name +' '+ ui.item.last_name + '</a>',
   				comentario = textAreaFieldValue.split('@');
   				comentario[1]= usuario;			
   			textAreaField.val(comentario.join(' '));
   			search = false;
 
-  			// preparar para notificacione
-
+			// preparar para notificacione
+			console.log('user_tag: { user_id: ' + ui.item.id + ', notificationUsers: ' + notificationUsers + ' }'); 
+			notificationUsers.push(ui.item.id);
 
   			return false;
   		};
@@ -37,7 +40,6 @@
             search:function (ev,obj) {
             	return search;
             },
-            focus: setValueOnTextAreaField
         }).data("autocomplete")._renderItem = function (ul, item) {
             return $("<li></li>").data("item.autocomplete", item).append(
                 '<a>'+ item.first_name +' '+ item.last_name + '</a>').appendTo(ul);

@@ -20,6 +20,8 @@ var txtarea;
     $('.actions fieldset.new').slideUp('slow', function(){
       $(this).remove();
     });
+    notificationUsers = [];
+    //notificationUsers.forEach(function(item){alert(item)});
 <%end%>
 txtarea.val('');
 $('#comment_<%= @comment.id %>').fadeOut();
