@@ -19,9 +19,8 @@ var txtarea;
     $('.actions input[type=submit]').removeAttr('disabled');
     $('.actions fieldset.new').slideUp('slow', function(){
       $(this).remove();
-    });
+    });    
     notificationUsers = [];
-    //notificationUsers.forEach(function(item){alert(item)});
 <%end%>
 txtarea.val('');
 $('#comment_<%= @comment.id %>').fadeOut();
