@@ -484,8 +484,9 @@ es:
     has_posted_a_comment_on_discussion: ha comentado en la discusión
     has_posted_a_comment_on_user: ha comentado en tu Comentarios
     has_posted_a_comment_on_course: ha comentado en el Comentarios la Campaña
+    has_tagged_user_on_comment: te ha mencionado en un comentario
     has_register: Bienvenido a la red de Telefónica has recibido un mail de confirmación para activar tu cuenta!
-        
+
   user_mailer:
     new_comment_on_user:
       subject: Nuevo comentario en tu Comentarios

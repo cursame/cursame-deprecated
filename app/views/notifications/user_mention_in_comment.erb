@@ -1,0 +1,8 @@
+<div class="img">
+  <a href="<%= user_path(user) %>">
+    <img src="<%= user.avatar_file.xxsmall.url %>" rel="tip" title="<% user.name %>">
+  </a>
+</div>
+
+<a href="<%= user_path(user) %>"><%= user.name %></a> <%= I18n.t('notifications.has_tagged_user_on_comment') %>.
+<a href="<%= comment_path(comment) %>"  class="notification-link"><%= I18n.t('notifications.show_comment') %> &gt;&gt;</a>
