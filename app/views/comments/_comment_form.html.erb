@@ -1,11 +1,75 @@
 <% if current_user.view_status=="fantom"%>
 <%else%>
-<%= semantic_form_for Comment.new, :remote => true, :url => polymorphic_path(commentable, :action => 'comment') do |form| %>
+<%= semantic_form_for Comment.new, :remote => true, :url => polymorphic_path(commentable, :action => 'comment'), :html => { :id => "new_comment_on_comment_" + commentable.id.to_s } do |form| %>
     <%= form.inputs :text do %>
-    <%= form.input :text, :label => false, :input_html => {:rows => 1, :class => "span8", :onfocus => "toggleImageComment(this,'" + link_to(image_tag(current_user.avatar_file.xxsmall.url), user_path(current_user)) + "')"} %>
+    <%= form.input :text, :label => false, :input_html => {:rows => 1, :id => "comment_on_comment_" + commentable.id.to_s, :class => "span8", :onfocus => "toggleImageComment(this,'" + link_to(image_tag(current_user.avatar_file.xxsmall.url), user_path(current_user)) + "')"} %>
     <% end %>
   <%= form.buttons do %>
     <%= render :partial => 'shared/assets_fields_for_comment', :locals => {:form => form} %>
   <% end %>
 <% end %>
 <%end%>
+<script>
+	$(function () {
+  		var textAreaField = $('#comment_on_comment_<%= commentable.id.to_s %>'),
+  		    textAreaFieldValue,
+  		    search = false,
+  		    setValueOnTextAreaField;
+
+		notificationUsers = [];
+
+  		setValueOnTextAreaField = function(event, ui) {        
+        	var usuario = ui.item.first_name +' '+ ui.item.last_name,
+        	    comentario = textAreaFieldValue.split('@');
+  			
+  			comentario[1]= usuario;			
+  			textAreaField.val(comentario.join(' '));
+  			search = false;
+
+        	notificationUsers.push([ui.item.id, ui.item.first_name +' '+ ui.item.last_name]);
+        	console.log('[DEBUG] notificationUsers: [' + notificationUsers + ']');
+        	return false;
+  		};
+
+		textAreaField.autocomplete({
+       		source: "/search_users",
+            minLength: 3,
+            delay:  500,
+            select: setValueOnTextAreaField,
+            search: function (event, ui) { return search; },
+            focus:  function (event, ui) { return false; }
+        }).data("autocomplete")._renderItem = function (ul, item) {
+            return $("<li></li>").data("item.autocomplete", item).append(
+            			'<a>'+ item.first_name +' '+ item.last_name + '</a>'
+            		).appendTo(ul);
+        };
+    
+    	textAreaField.on('keyup',function() {
+       		var name;
+        	textAreaFieldValue = textAreaField.val();
+
+        	notificationUsers.forEach(function(array) { 
+            	if (textAreaFieldValue.match(array[1]) == null) {
+              		notificationUsers.splice(notificationUsers.indexOf(array),1);
+            	}
+          	});
+
+        	name = textAreaFieldValue.split('@');
+        	if (name[1]) {
+            	$("#comment_on_comment_<%= commentable.id.to_s %>").autocomplete( "search", name[1]);
+            	search = true;
+        	}
+    	});
+
+    	$('#new_comment_on_comment_<%= commentable.id.to_s %>').on('submit', function(e) {
+    		console.log('calling submit');
+    		var comment = $('#comment_on_comment_<%= commentable.id.to_s %>').val();
+    		notificationUsers.forEach(function(array) {
+     	    	comment = comment.replace(array[1], '<a href="/users/' + array[0] + '">' + array[1] + '</a>');
+     	    });
+     	    $('#comment_on_comment_<%= commentable.id.to_s %>').val(comment);
+      		return true;
+    	});
+
+	});
+</script>

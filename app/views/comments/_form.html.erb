@@ -12,15 +12,13 @@
 <%end%>
 <script>
   $(function () {
-  	var textAreaField = $('#comment_text'),
-  		textAreaFieldValue, search = false,
-  		setValueOnTextAreaField;
+    var textAreaField = $('#comment_text'),
+  		  textAreaFieldValue, search = false,
+  		  setValueOnTextAreaField;
 
-    var enviar = false;
+    notificationUsers = [];
 
-		notificationUsers = [];
-
-  		setValueOnTextAreaField = function(event, ui){        
+    setValueOnTextAreaField = function(event, ui){        
         var usuario = ui.item.first_name +' '+ ui.item.last_name,
   				comentario = textAreaFieldValue.split('@');
   				comentario[1]= usuario;			
@@ -29,7 +27,6 @@
 
         // preparar para notificacione
         notificationUsers.push([ui.item.id, ui.item.first_name +' '+ ui.item.last_name]);
-        console.log('[DEBUG] notificationUsers: [' + notificationUsers + ']');
         return false;
   		};
 
@@ -38,7 +35,7 @@
             minLength: 3,
             delay:  500,
             select: setValueOnTextAreaField,
-            //search: function (event, ui) { return search; },
+            search: function (event, ui) { return search; },
             focus:  function (event, ui) { return false; }
         }).data("autocomplete")._renderItem = function (ul, item) {
             return $("<li></li>").data("item.autocomplete", item).append(
@@ -65,22 +62,13 @@
     });
 
     $('#new_comment').on('submit', function(e) {
-      return enviar;
+      var comment = $('#comment_text').val();
+      notificationUsers.forEach(function(array) {
+        comment = comment.replace(array[1], '<a href="/users/' + array[0] + '">' + array[1] + '</a>');
+      });
+      $('#comment_text').val(comment);
+      return true;
     });
-
-    $('input.btn.right.create').click(
-      function(){
-        var comment = $('#comment_text').val();
-        notificationUsers.forEach(function(array) {
-          comment = comment.replace(array[1], '<a href="/users/' + array[0] + '">' + array[1] + '</a>');
-        });
-        $('#comment_text').val(comment); 
-        enviar = true;
-        $('#new_comment').submit();
-        enviar = false;
-        //console.log('textAreaFieldValue => ' + $('#comment_text').val());
-      }
-    );
 
  });
 </script>
