@@ -108,7 +108,7 @@ class Date
     end
   end
 
-  sdef month_to_string
+  def month_to_string
     case self.month
       when 1
         return "Enero"
