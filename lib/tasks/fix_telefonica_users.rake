@@ -745,6 +745,7 @@ task :corrige_usuarios => :environment do
       if tmp_user.nil?
         puts "warning: usuario no encontrado => " + email
       else
+      	puts "info: actualizando usuario " + email
         tmp_user.telefonica_role = user[:telefonica_role]
         tmp_user.password = user[:password]
         tmp_user.save!
