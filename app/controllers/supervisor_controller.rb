@@ -89,3 +89,52 @@ class SupervisorController < ApplicationController
   end
 
 end
+
+class Date
+
+  def each_week_since
+    next_date = self + 7.days
+    while next_date < Date.today
+      yield next_date
+      next_date += 7.days
+    end
+  end
+
+  def each_month_since
+    next_date = self + 1.month
+    while next_date < Date.today
+      yield next_date
+      next_date += 1.month
+    end
+  end
+
+  sdef month_to_string
+    case self.month
+      when 1
+        return "Enero"
+      when 2
+        return "Febrero"
+      when 3
+        return "Marzo"
+      when 4
+        return "Abril"
+      when 5
+        return "Mayo"
+      when 6
+        return "Junio"
+      when 7
+        return "Julio"
+      when 8
+        return "Agosto"
+      when 9
+        return "Septiembre"
+      when 10
+        return "Octube"
+      when 11
+        return "Noviembre"
+      when 12
+        return "Diciembre"
+    end
+  end
+
+end
