@@ -1,5 +1,7 @@
 Cursame::Application.routes.draw do
   
+  get "migrated_courses/index"
+
   resources :banners
 
   get "autocomplete_networks/index"

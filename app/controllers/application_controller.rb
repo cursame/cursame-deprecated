@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
+  before_filter :migrated_network
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
   after_filter :current_languaje
@@ -46,6 +47,18 @@ class ApplicationController < ActionController::Base
   helper_method :browser_active
   helper_method :browser_version
   protected
+
+  def migrated_network
+    migrated_courses = [{:subdomain => 'utez', :img_url => 'utez.png'}]
+    migrated_courses.each do |course|
+      if course[:subdomain] == current_network.subdomain
+        redirect_to "/migrated_courses/index/", :subdomain => current_network.subdomain
+        return true
+      end
+    end
+    false
+  end
+
   def authenticate_teacher!
     current_user && current_user.teacher? or throw(:warden)
   end
