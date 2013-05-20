@@ -23,7 +23,7 @@ class SurveysController < ApplicationController
       Innsights.report("Cuestionario creado", :user => current_user, :group => current_network).run
       redirect_to @survey
     else
-      render 'new'
+      redirect_to :back, :notice => "campos faltantes porfavor complete el formulario"
     end
   end
 

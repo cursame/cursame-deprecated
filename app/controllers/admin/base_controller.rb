@@ -48,7 +48,8 @@ module Admin
       @total_users = User.all
     end
     
-    def specific_search      
+    def specific_search    
+       @users = User.order("id").page(params[:id]).per(10)  
       if params[:search] == nil
         @users = User.search().limit(200);
       else

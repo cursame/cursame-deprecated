@@ -20,7 +20,18 @@ class UsersController < ApplicationController
     find_user and check_edit_permissions!
     end
   end
-
+   def create
+      @user = User.new params[:user]
+      password = Devise.friendly_token[0,20]
+      @user.vpassword = password
+      build_user(password)
+      if @user.save
+        UserMailer.new_user_by_supervisor(@user, current_network, password).deliver
+        redirect_to :back, :notice => I18n.t('flash.user_created')
+      else
+        render 'supervisor/new_user', :notice => "envio fallido"
+      end
+    end
   def create_user
     @user = User.new params[:user]
     password = Devise.friendly_token[0,20]
