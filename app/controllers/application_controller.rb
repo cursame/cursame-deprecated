@@ -64,7 +64,9 @@ class ApplicationController < ActionController::Base
     migrated_networks = [{:subdomain => 'utez', :domain => 'cursalab.com'}]
     migrated_networks.each do |network|
       if network[:subdomain] == current_network.subdomain
-        redirect_to "#{current_network.subdomain}.#{network[:domain]}"
+        # TODO crear redirect_to dinamico
+        redirect_to "http://utez.cursalab.com/"
+        #redirect_to "#{current_network.subdomain}.#{network[:domain]}"
       end
     end
   end
