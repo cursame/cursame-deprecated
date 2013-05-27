@@ -64,7 +64,7 @@ class ApplicationController < ActionController::Base
     migrated_networks = [{:subdomain => 'utez', :domain => 'cursalab.com'}]
     migrated_networks.each do |network|
       if network[:subdomain] == current_network.subdomain
-        redirect_to "#{network[:subdomain]}.#{network[:domain]}"
+        redirect_to "#{current_network.subdomain}.#{network[:domain]}"
       end
     end
   end
