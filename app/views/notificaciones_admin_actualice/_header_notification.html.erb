@@ -1,23 +1,5 @@
-<% if current_user.role == "teacher"%>
-<div class=" span10">
-<h3>De regreso a clases, ¡¡ a clonar mi curso !!</h3>
-<p>En Cúrsame puedes clonar tu curso para que sus materiales y actividades pasen a un curso nuevo sin necesidad de volver a armar el curso.</p>
-</div>
-<div class="span3">
-      <div data-toggle="modal" href="#hnot"> <%= image_tag("video.png")%></div>
-    <div class="modal hide" id="hnot" style="display:none;">
-            <a class="close" data-dismiss="modal" >×</a>
-        <div class="modal-header">
-        <h3>Clonar un curso<h3> 
-            <center>
-            <object width="460" height="315"><param name="movie" value="http://www.youtube.com/v/ltvPWARcgeI?version=3&amp;hl=es_ES"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/ltvPWARcgeI?version=3&amp;hl=es_ES" type="application/x-shockwave-flash" width="460" height="315" allowscriptaccess="always" allowfullscreen="true"></embed></object>
-            </center>
-        </div>
-        <div class="modal-body">
-        </div>
-    </div>
-</div>
-<%else%>
+
+
 <div class="span16" style="margin:0px; margin-bottom:5px;">
 
  <div class="span15" style="
@@ -126,4 +108,3 @@ margin-left:30px;background-color:#f7f7f7;" id="notificaciones-admin">
 	</script>
    	<%end%> 	 
 </div>
-<%end%>

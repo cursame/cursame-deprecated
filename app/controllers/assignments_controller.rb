@@ -25,7 +25,7 @@ class AssignmentsController < ApplicationController
       Innsights.report("Tarea creada", :user => current_user, :group => current_network).run
       redirect_to @assignment, :notice => I18n.t('flash.assignment_created')
     else
-      redirect_to :back, :notice => "campos faltantes porfavor complete el formulario"
+      render 'new'
     end
   end
 

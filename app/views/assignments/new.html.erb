@@ -21,7 +21,6 @@
       
       <div class="span10">
         <h2><%= t('courses.assignments.new_assignment') %></h2>
-         <pre>Para crear una tarea es necesario que usted llene todos los campos de lo contrario su información no podrá ser almacenada.</pre>
         <%= semantic_form_for [@course, @assignment] do |form| %>
           <%= render :partial => 'form', :locals => {:form => form} %>
         <% end %>

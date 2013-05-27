@@ -21,7 +21,6 @@
       
       <div class="span10">
         <h2><%= t('.header') %></h2>
-        <pre>Para crear un cuestionario es necesario que usted llene todos los campos de lo contrario su información no podrá ser almacenada.</pre>
         <%= semantic_form_for [@course, @survey] do |form| %>
           <%= render :partial => 'survey_fields', :locals => {:form => form} %>
           <div class="actions">
