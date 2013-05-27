@@ -37,6 +37,7 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery
   before_filter :authenticate_active_user_within_network!
+  before_filter :redirect_network
   before_filter :migrated_network
   helper_method :accessible_courses
   before_filter :current_network_pending_teachers
@@ -49,14 +50,23 @@ class ApplicationController < ActionController::Base
   protected
 
   def migrated_network
-    migrated_courses = [{:subdomain => 'utez', :img_url => 'utez.png'}]
+    # agregar los subdominios a los que se les mostrara el aviso de migración
+    migrated_courses = []
     migrated_courses.each do |course|
       if course[:subdomain] == current_network.subdomain
         redirect_to "/migrated_courses/index/", :subdomain => current_network.subdomain
-        return true
       end
     end
-    false
+  end
+
+  def redirect_network
+    # agregar las redes y el dominio al que se redireccionaran
+    migrated_networks = [{:subdomain => 'utez', :domain => 'cursalab.com'}]
+    migrated_networks.each do |network|
+      if network[:subdomain] == current_network.subdomain
+        redirect_to "#{network[:subdomain]}.#{network[:domain]}"
+      end
+    end
   end
 
   def authenticate_teacher!
