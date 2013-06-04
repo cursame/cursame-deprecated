@@ -701,7 +701,7 @@ task :corrige_usuarios => :environment do
 	{ :first_name => 'diana', :last_name => 'melendez valdez', :email => 'diana.melendez@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'norte', :passwd => 'telefonica697' },
 	{ :first_name => 'hector', :last_name => 'garcia velazquez', :email => 'hector.garcia@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'norte', :passwd => 'telefonica698' },
 	{ :first_name => 'leon', :last_name => 'garza de', :email => 'leon.garza@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'norte', :passwd => 'telefonica699' },
-	{ :first_name => 'alberto', :last_name => 'santos garcia', :email => 'alberto.santosd@telefonica.com@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'temm', :passwd => 'telefonica700' },
+	{ :first_name => 'alberto', :last_name => 'santos garcia', :email => 'alberto.santosd@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'temm', :passwd => 'telefonica700' },
 	{ :first_name => 'francisco', :last_name => 'martinez cruz', :email => 'francisco.cruz@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'temm', :passwd => 'telefonica701' },
 	{ :first_name => 'carlos', :last_name => 'martinez lucho', :email => 'carlos.martinez@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'temm', :passwd => 'telefonica702' },
 	{ :first_name => 'maria', :last_name => 'diaz flores', :email => 'maria.diaz@telefonica.com', :telefonica_role => 'colaborador', :telefonica_zone => 'temm', :passwd => 'telefonica703' },
