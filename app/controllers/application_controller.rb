@@ -51,22 +51,26 @@ class ApplicationController < ActionController::Base
 
   def migrated_network
     # agregar los subdominios a los que se les mostrara el aviso de migración
-    migrated_courses = []
-    migrated_courses.each do |course|
-      if course[:subdomain] == current_network.subdomain
-        redirect_to "/migrated_courses/index/", :subdomain => current_network.subdomain
+    # ej: migrated_courses = ['utez']
+    unless current_network.nil?
+      migrated_courses = []
+      migrated_courses.each do |course|
+        if course == current_network.subdomain
+          redirect_to "/migrated_courses/index/", :subdomain => current_network.subdomain
+        end
       end
     end
   end
 
   def redirect_network
     # agregar las redes y el dominio al que se redireccionaran
-    migrated_networks = [{:subdomain => 'utez', :domain => 'cursalab.com'}]
-    migrated_networks.each do |network|
-      if network[:subdomain] == current_network.subdomain
-        # TODO crear redirect_to dinamico
-        redirect_to "http://utez.cursalab.com/"
-        #redirect_to "#{current_network.subdomain}.#{network[:domain]}"
+    # ej: migrated_networks = [{:subdomain => 'utez', :domain => 'utez.cursalab.com'}]
+    unless current_network.nil?
+      migrated_networks = [{:subdomain => 'utez', :domain => 'utez.cursalab.com'}]
+      migrated_networks.each do |network|
+        if network[:subdomain] == current_network.subdomain
+          redirect_to "http://#{network[:domain]}/"
+        end
       end
     end
   end
