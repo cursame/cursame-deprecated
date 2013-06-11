@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     # agregar los subdominios a los que se les mostrara el aviso de migración
     # ej: migrated_courses = ['utez']
     unless current_network.nil?
-      migrated_courses = []
+      migrated_courses = ['hpijnn']
       migrated_courses.each do |course|
         if course == current_network.subdomain
           redirect_to "/migrated_courses/index/", :subdomain => current_network.subdomain
