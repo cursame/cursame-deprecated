@@ -5,8 +5,10 @@ class CommentPostsController < ApplicationController
   def create
     @comment_post = CommentPost.new(params[:comment_post])
 
-    action = Action.new :user_id => current_user.id, :action => 'comment', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
-    action.save!
+    unless request.location.nil?
+      action = Action.new :user_id => current_user.id, :action => 'comment', :user_agent => request.env['HTTP_USER_AGENT'], :country => request.location.country, :city => request.location.city
+      action.save!
+    end
 
     respond_to do |format|
       if @comment_post.save
