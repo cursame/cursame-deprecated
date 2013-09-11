@@ -1,5 +1,4 @@
 # Extensive Docs at http://github.com/innku/innsights-gem
-=begin
 Rails.configuration.to_prepare do
   Innsights.setup do
     user User do
@@ -43,4 +42,3 @@ Rails.configuration.to_prepare do
 
   end
 end
-=end
